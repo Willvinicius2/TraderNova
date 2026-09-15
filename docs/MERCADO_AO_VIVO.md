@@ -1,3 +1,52 @@
+# Mercado 0.3 — fontes de consulta para os sete ativos
+
+A partir de 0.3, os quatro mercados que exibiam “Fonte pendente” têm integração de consulta visual via TradingView. A conexão direta de cripto da versão 0.2 continua disponível.
+
+| Ativo no app | Símbolo exibido | Integração |
+|---|---|---|
+| XAUUSD | OANDA:XAUUSD | TradingView: cotação e gráfico |
+| NAS100 | OANDA:NAS100USD | TradingView: CFD US Nas 100, não NDX à vista |
+| EURUSD | OANDA:EURUSD | TradingView: cotação e gráfico |
+| USDJPY | OANDA:USDJPY | TradingView: cotação em JPY e gráfico |
+| BTCUSD | KRAKEN:BTCUSD | Kraken direta; alternativa visual TradingView |
+| ETHUSD | KRAKEN:ETHUSD | Kraken direta; alternativa visual TradingView |
+| SOLUSD | KRAKEN:SOLUSD | Kraken direta; alternativa visual TradingView |
+
+## Integração e recuperação
+
+- Os cards e a cotação selecionada usam o Web Component oficial `tv-single-ticker`, com um carregador compartilhado para reduzir downloads. O gráfico usa o widget oficial Advanced Chart.
+- Símbolo do gráfico e da cotação vêm de um único cadastro. O gráfico não permite trocar o ativo internamente. O seletor do app recria o gráfico no período M1/M5/M15/H1 escolhido; outras alterações internas permanecem no TradingView.
+- Falha de script tem prazo de 15 segundos e permite nova tentativa; callbacks tardios de uma tentativa encerrada não alteram a seguinte. O gráfico informa demora após 18 segundos, oferece recarga e link direto para a mesma fonte.
+- Cotação e gráfico são removidos sem rede ou em segundo plano e recriados ao retornar. Os widgets controlam suas próprias conexões de dados; o app não declara uma latência garantida.
+- A conexão Kraken oferece um botão para abrir a visualização alternativa do mesmo par e voltar à conexão direta. Nunca se mistura uma cotação externa com candles da conexão direta no painel principal.
+- O CSS novo está isolado no componente e usa os tokens do app. Temas claro/escuro são acompanhados por atributos/classe do documento; a faixa de ativos ganha espaço para as cotações oficiais sem alterar os demais módulos.
+
+## Limites que a interface mantém explícitos
+
+“Painel externo” significa modo de exibição. Carregar um iframe ou registrar um Web Component não confirma recebimento de preço nem mercado aberto. Horário da cotação, atraso, mercado fechado e restrições do símbolo devem ser consultados dentro do widget. Nenhum horário local é apresentado como timestamp de mercado desses quatro instrumentos. As atualizações da cotação e do gráfico externo são geridas pelo TradingView, sem garantia de sincronização atômica entre widgets.
+
+Esses widgets não fornecem uma API de dados para o robô. Seus valores não são extraídos do DOM, não entram no laboratório e não criam sinais. Os indicadores externos são consultados dentro do gráfico; os cards locais EMA/RSI/ATR são exibidos apenas sobre dados que o app realmente possui. O motor de estratégias ainda precisa de integração autorizada de dados da corretora.
+
+OANDA é uma fonte de referência identificada, não uma confirmação da corretora do usuário. A referência CFD NAS100USD não foi substituída por ETF, futuros ou índice atrasado. Preços e sessões podem diferir dos contratos do MT5.
+
+Não foram contratados serviços ou adicionadas chaves pagas. O tráfego dos widgets ocorre entre o navegador e o TradingView, fora do Supabase. A disponibilidade depende da fonte, rede e permissão de exibição do instrumento. A documentação oficial lista OANDA entre provedores de forex, índices e commodities em tempo real; isso não prova o recebimento real neste dispositivo.
+
+## Verificação desta alteração
+
+TypeScript, testes de integração de mercado anteriores e verificações do carregador com falhas, timeout, concorrência e nova tentativa. A renderização e a recepção de cotações reais dos widgets no aparelho não foram verificadas neste ambiente. A interface preserva os avisos da fonte e não substitui erros por números artificiais.
+
+## Referências oficiais
+
+- https://www.tradingview.com/widget-docs/widgets/tickers/single-ticker/
+- https://www.tradingview.com/widget-docs/widgets/charts/advanced-chart/
+- https://www.tradingview.com/widget-docs/tutorials/web-components/configuring/
+- https://www.tradingview.com/widget-docs/markets/worldwide/
+- https://www.tradingview.com/widget-docs/faq/data/
+
+---
+
+Registro da implementação anterior (0.2), mantido para contexto. As menções abaixo a mercados sem fonte são superadas pela consulta visual descrita acima; a integração direta ao motor continua pendente.
+
 # TraderNova 0.2 — Conexão de mercado
 
 Atualização: 15/09/2026.
