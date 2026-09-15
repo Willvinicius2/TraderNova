@@ -1,0 +1,35 @@
+TraderNova asset symbols — fetched 2026-09-15
+
+bitcoin.svg (953 bytes)
+Source: https://github.com/spothq/cryptocurrency-icons/blob/master/svg/color/btc.svg
+License: CC0-1.0; full license in LICENSE-cryptocurrency-icons.txt.
+Original orange Bitcoin circle and white B mark; unmodified.
+
+ethereum.svg (525 bytes)
+Source: https://github.com/spothq/cryptocurrency-icons/blob/master/svg/color/eth.svg
+License: CC0-1.0; full license in LICENSE-cryptocurrency-icons.txt.
+Blue circle with white faceted Ethereum diamond; unmodified.
+
+solana.svg (2519 bytes)
+Official source: https://solana.com/src/img/branding/solanaLogoMark.svg
+Official asset page and usage guidelines: https://solana.com/branding
+Permission context: official brand asset offered for websites and marketing, subject to Solana brand guidelines; this is not a CC0 asset. Preserve proportions and colors, keep clearspace, and do not add shadows or outlines to the mark.
+Official green-to-purple three-stripe gradient; unmodified download.
+
+gold.svg (839 bytes; recommended at small sizes)
+Source: https://github.com/game-icons/icons/blob/master/willdabeast/gold-bar.svg
+Source page: https://game-icons.net/1x1/willdabeast/gold-bar.html
+Author: Willdabeast — https://wjbstories.blogspot.com/
+License: CC BY 3.0 — https://creativecommons.org/licenses/by/3.0/
+Required attribution: Gold bar icon by Willdabeast, Game-icons.net, CC BY 3.0. Background removed; gold coloring applied through CSS.
+Single dimensional bullion bar with shine. Source artwork path preserved exactly. Only the enclosing black full-canvas background path was removed to allow transparent display. Artwork remains white, suitable for a CSS mask colored gold; no vector paths were generated or edited.
+
+eu.svg (960 bytes), us.svg (724 bytes), jp.svg (274 bytes)
+Source: https://github.com/HatScripts/circle-flags/tree/gh-pages/flags
+Exact files: eu.svg, us.svg, jp.svg
+License: MIT, Copyright (c) 2026 HatScripts; full notice in LICENSE-circle-flags.txt, which should be included with distributions.
+Small circular flag artwork, unmodified. Mask references are internal (#a). Use separate img elements to avoid duplicate inline SVG mask IDs.
+
+Verification: all seven SVG files were parsed as valid SVG XML. No script, foreignObject, image, event handlers, external hrefs, or external URL references were found. All drawings are vector paths/shapes. No rasterization or generated artwork was used. Source artwork paths were preserved; only the documented gold backgrounds were removed.
+
+Integration notes: Bitcoin and Ethereum already have full circular backgrounds. Solana needs a dark circular container and padding, with object-fit: contain, so its gradient remains clear on both themes. Gold can be displayed through a CSS mask with a warm gold foreground. The flags are ready for overlapping circular badges. Preserve these source/license notices when copying into the Site repository.

@@ -1,0 +1,72 @@
+.asset-emblem {
+  --emblem-surface: #192329;
+  --emblem-border: #38464e;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid var(--emblem-border);
+  border-radius: 30%;
+  background: var(--emblem-surface);
+  vertical-align: middle;
+  line-height: 1;
+  isolation: isolate;
+}
+.asset-emblem--xauusd { --emblem-surface: #332918; --emblem-border: #695126; }
+.asset-emblem--btcusd { --emblem-surface: #302218; --emblem-border: #6b4328; }
+.asset-emblem--ethusd { --emblem-surface: #252839; --emblem-border: #4c5279; }
+.asset-emblem--solusd { --emblem-surface: #1e2031; --emblem-border: #4c4264; }
+.asset-emblem--nas100 { --emblem-surface: #172b43; --emblem-border: #305583; color: #88baff; }
+.asset-emblem__image { width: 78%; height: 78%; object-fit: contain; display: block; }
+.asset-emblem--xauusd .asset-emblem__image { width: 84%; height: 84%; }
+.asset-emblem__bullion {
+  display: block;
+  width: 88%;
+  height: 88%;
+  background: linear-gradient(135deg, #fff2b5 8%, #efc660 45%, #c58a2c 90%);
+  mask: url('/assets/instruments/gold.svg') center / contain no-repeat;
+  -webkit-mask: url('/assets/instruments/gold.svg') center / contain no-repeat;
+}
+.asset-emblem--solusd .asset-emblem__image { width: 68%; height: 68%; }
+.asset-emblem__index { width: 64%; height: 64%; color: var(--emblem-index, #88baff); }
+.asset-emblem__pair { position: relative; display: block; width: 90%; height: 90%; }
+.asset-emblem__flag {
+  position: absolute;
+  width: 66%;
+  height: 66%;
+  border-radius: 50%;
+  border: 2px solid var(--emblem-surface);
+  object-fit: contain;
+}
+.asset-emblem__flag--0 { left: 0; top: 0; }
+.asset-emblem__flag--1 { right: 0; bottom: 0; }
+.asset-identity { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.asset-identity__text { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
+.asset-identity__ticker { font-size: 12px; font-weight: 600; letter-spacing: .25px; line-height: 1.3; }
+.asset-identity__name { font-size: 12px; font-weight: 400; letter-spacing: 0; color: var(--muted-foreground); line-height: 1.3; white-space: nowrap; }
+.asset-tile .selected-dot { flex: 0 0 auto; margin-left: 4px; }
+.asset-tile .asset-identity { flex: 1; }
+.workspace .asset-ribbon { grid-template-columns: repeat(7, minmax(158px, 1fr)); }
+.asset-option { display: flex; align-items: center; gap: 9px; }
+.signal-title .asset-identity { gap: 10px; }
+.journal-info h3 { display: flex; align-items: center; gap: 9px; }
+.signal-instrument-heading { display: flex; align-items: center; gap: 12px; }
+
+/* The instrument artwork remains recognizable with either app theme. */
+:is(.light, [data-theme="light"]) .asset-emblem { --emblem-surface: #f0f4f8; --emblem-border: #d7e0e8; }
+:is(.light, [data-theme="light"]) .asset-emblem--xauusd { --emblem-surface: #fff6da; --emblem-border: #e5cd8a; }
+:is(.light, [data-theme="light"]) .asset-emblem--btcusd { --emblem-surface: #fff0e1; --emblem-border: #edc7a3; }
+:is(.light, [data-theme="light"]) .asset-emblem--ethusd { --emblem-surface: #edf0ff; --emblem-border: #c9d0ee; }
+:is(.light, [data-theme="light"]) .asset-emblem--solusd { --emblem-surface: #20212e; --emblem-border: #514665; }
+:is(.light, [data-theme="light"]) .asset-emblem--nas100 { --emblem-surface: #e9f2ff; --emblem-border: #c0d4ef; --emblem-index: #245caa; }
+@media (max-width: 767px) {
+  .workspace .asset-ribbon { grid-template-columns: repeat(7, 160px); }
+  .signal-instrument-heading { gap: 9px; }
+  .signal-instrument-heading h2 { font-size: 18px; }
+}
+
+.asset-credits-link { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.asset-credits-link:hover { color: var(--foreground); }
