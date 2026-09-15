@@ -42,7 +42,7 @@ try{
  assert.equal(stopped.position,null);assert.equal(stopped.trades.length,1,'Fresh quote manages existing risk even when historical feed is blocked');assert.ok(stopped.trades[0].net<0);
  const lost=p.advancePaperSession(opened,blocked,{bid:50,ask:50.1,timestamp:now+2000},now+2000);assert.ok(lost.dailyPaused);assert.match(lost.halted,/diário/);
  assert.equal(p.manualOpportunity(snapshot,'T3',quote,now),null,'No manual alert without approval');
- const approval={candidateId:'T3',assetId:'BTCUSD',source:'kraken-spot',interval:60,status:'validated',forwardPassed:true,approvedAt:now-1,expiresAt:now+1000};
+ const approval={candidateId:'T3',presetId:opened.presetId,assetId:'BTCUSD',source:'kraken-spot',interval:60,status:'validated',forwardPassed:true,approvedAt:now-1,expiresAt:now+1000};
  assert.ok(p.manualOpportunity(snapshot,'T3',quote,now,[approval]));
  assert.equal(p.manualOpportunity(snapshot,'T3',{...quote,timestamp:closedAt-1},now,[approval]),null);
  assert.equal(p.manualOpportunity(snapshot,'T3',quote,now,[{...approval,source:'binance-spot'}]),null,'Approval must match exact feed');

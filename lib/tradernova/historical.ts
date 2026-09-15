@@ -1,7 +1,8 @@
 import {atr,type Candle} from './domain';
 import {candidateSignals,researchCandidates,type CandidateId} from './research';
+import {calibratedSignals,validParameters,type StrategyParameters} from './calibration';
 
-export type HistoricalOptions={candidateId:CandidateId;interval:number;from:number;to:number;initialCapital:number;riskPct:number;feeBps:number;slippageBps:number};
+export type HistoricalOptions={candidateId:CandidateId;interval:number;from:number;to:number;initialCapital:number;riskPct:number;feeBps:number;slippageBps:number;parameters?:StrategyParameters};
 export type HistoricalTrade={signalTime:number;entryTime:number;exitCandleTime:number;entry:number;exit:number;quantity:number;stop:number;target:number;fees:number;net:number;returnOnEquityPct:number;reason:string};
 export type HistoricalResult={options:HistoricalOptions;trades:HistoricalTrade[];curve:{time:number;equity:number}[];net:number;returnPct:number;maxDrawdownPct:number;profitFactor:number|null;winRate:number|null;expectancy:number|null;fees:number;exposurePct:number;buyHoldReturnPct:number;endCapital:number;bars:number;validated:false};
 
@@ -22,18 +23,21 @@ export function validateHistory(bars:Candle[],interval:number){
 export function runHistorical(bars:Candle[],options:HistoricalOptions):HistoricalResult{
  validateHistory(bars,options.interval);
  const c=researchCandidates.find(c=>c.id===options.candidateId);
+ const parameters=options.parameters;
+ if(parameters&&(!validParameters(parameters,options.candidateId)||options.interval!==60))throw new Error('Preset calibrado inválido.');
  const {from,to,interval,initialCapital,riskPct,feeBps,slippageBps}=options,step=interval*60000;
  if(!c||![from,to,initialCapital,riskPct,feeBps,slippageBps].every(Number.isFinite)||from>=to||from%step!==0||to%step!==0||initialCapital<=0||riskPct<=0||riskPct>1||feeBps<0||feeBps>100||slippageBps<0||slippageBps>100)throw new Error('Parâmetros históricos inválidos.');
  const first=bars.findIndex(b=>b.time===from),last=bars.findIndex(b=>b.time===to-step);
- if(first<200||last<first||to>Date.now())throw new Error('Janela incompleta, futura ou sem 200 candles de aquecimento.');
- const signals=candidateSignals(bars,c.id),ranges=atr(bars),fee=feeBps/10000,slip=slippageBps/10000;
+ if(first<(parameters?.trendFilter?600:200)||last<first||to>Date.now())throw new Error('Janela incompleta, futura ou sem aquecimento suficiente.');
+ const signals=parameters?calibratedSignals(bars,parameters):candidateSignals(bars,c.id),ranges=atr(bars),fee=feeBps/10000,slip=slippageBps/10000;
+ const stopAtr=parameters?.stopAtr??c.stopAtr,reward=parameters?.reward??2,hold=parameters?.hold??c.hold;
  const trades:HistoricalTrade[]=[],curve=[{time:from,equity:initialCapital}];
  let cash=initialCapital,peak=initialCapital,dd=0,exposed=0;
  function mark(time:number,equity:number){peak=Math.max(peak,equity);dd=Math.max(dd,100*(peak-equity)/peak);curve.push({time,equity});}
  for(let i=first;i<=last;){
   // The first signal must itself close inside this evaluation window.
   if(i===first||signals[i-1]!==1){mark(bars[i].time+step,cash);i++;continue;}
-  const rawEntry=bars[i].open,distance=(ranges[i-1]??0)*c.stopAtr,stop=rawEntry-distance,target=rawEntry+2*distance;
+  const rawEntry=bars[i].open,distance=(ranges[i-1]??0)*stopAtr,stop=rawEntry-distance,target=rawEntry+reward*distance;
   if(distance<=0||stop<=0){mark(bars[i].time+step,cash);i++;continue;}
   const entry=rawEntry*(1+slip),stopFill=stop*(1-slip),unitRisk=entry-stopFill+fee*(entry+stopFill);
   const before=cash,quantity=Math.min(before*riskPct/100/unitRisk,before/(entry*(1+fee))),entryFee=quantity*entry*fee;
@@ -46,7 +50,7 @@ export function runHistorical(bars:Candle[],options:HistoricalOptions):Historica
    if(stopHit){rawExit=Math.min(b.open,stop);reason=targetHit?'Stop · candle ambíguo':'Stop';break;}
    if(targetHit){rawExit=target;reason='Alvo';break;}
    rawExit=b.close;
-   if(j-i+1>=c.hold){reason='Limite de candles';break;}
+   if(j-i+1>=hold){reason='Limite de candles';break;}
    if(j===last)break;
    mark(b.time+step,cash+quantity*b.close*(1-slip)*(1-fee));
   }

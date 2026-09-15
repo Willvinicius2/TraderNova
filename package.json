@@ -15,7 +15,8 @@
     "test": "node scripts/test.mjs",
     "typecheck": "tsc --noEmit",
     "research:download": "python scripts/download-history.py",
-    "research:run": "node scripts/run-historical.mjs"
+    "research:run": "node scripts/run-historical.mjs",
+    "research:calibrate": "node scripts/calibrate-strategies.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
