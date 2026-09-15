@@ -1,0 +1,53 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+import ts from 'typescript';
+const temp=await fs.mkdtemp(path.join(os.tmpdir(),'tradernova-live-test-'));
+try{
+ const compile=async(input,output,replacements=[])=>{let source=await fs.readFile(new URL(input,import.meta.url),'utf8');let js=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;for(const [a,b]of replacements)js=js.replaceAll(a,b);await fs.writeFile(path.join(temp,output),js);};
+ await compile('../lib/tradernova/live-market.ts','live-market.mjs');
+ await compile('../app/api/market/candles/route.ts','route.mjs',[["@/lib/tradernova/live-market","./live-market.mjs"]]);
+ const m=await import(pathToFileURL(path.join(temp,'live-market.mjs'))),route=await import(pathToFileURL(path.join(temp,'route.mjs')));
+ const start=Math.floor(Date.now()/60000)*60000-120000;
+ const old={time:start,open:100,high:102,low:99,close:101,volume:5,trades:3};
+ const newer={...old,high:104,close:103,volume:8,trades:5};
+ const next={time:start+60000,open:104,high:105,low:103,close:104,volume:2,trades:1};
+ assert.deepEqual(m.mergeCandles([newer],[old]),[newer],'REST cannot rewind a newer candle');
+ assert.deepEqual(m.mergeCandles([old],[newer,newer]),[newer],'Duplicate cumulative volume must not be summed');
+ const reordered=m.mergeCandles([next],[newer]);assert.deepEqual(reordered,[newer,next]);
+ assert.deepEqual(m.mergeCandles([old],[{...newer,close:Infinity}]),[old]);
+ assert.deepEqual(m.mergeCandles([old],[{...newer,low:104}]),[old]);
+ let entry={bars:[old],receivedAt:Date.now(),hasUpdate:true};
+ for(const c of [newer,next,{...next,high:107,close:106,volume:4,trades:2}]){entry={...entry,bars:m.mergeCandles(entry.bars,[c])};assert.equal(m.displayedPrice(entry),entry.bars.at(-1).close);}
+ assert.equal(m.displayedPrice(undefined),null);
+ const event={symbol:'BTC/USD',interval:1,interval_begin:new Date(start).toISOString(),open:100,high:102,low:99,close:101,volume:5,trades:3};
+ assert.equal(m.parseOhlcEvent(event,1).assetId,'BTCUSD');assert.equal(m.parseOhlcEvent(event,15),null);assert.equal(m.parseOhlcEvent({...event,symbol:'XBT/USD'},1),null);assert.equal(m.parseOhlcEvent({...event,close:'101'},1),null);
+ assert.equal(m.parseOhlcEvent({...event,interval_begin:new Date(start+1).toISOString()},1),null);
+ assert.equal(m.isLiveAsset('XAUUSD'),false);assert.equal(m.isLiveAsset('__proto__'),false);
+ assert.equal(m.feedLabel('offline',entry,Date.now(),1),'Sem internet');assert.equal(m.feedLabel('reconnecting',entry,Date.now(),1),'Reconectando');
+ assert.equal(m.feedLabel('connected',{...entry,receivedAt:0},Date.now(),1),'Sem atualização recente');
+ const now=Date.now(),current={...next,time:Math.floor(now/60000)*60000};
+ assert.equal(m.feedLabel('connected',{...entry,bars:[current],receivedAt:now},now,1),'Ao vivo');
+ assert.equal(m.feedLabel('connected',{...entry,bars:[current],hasUpdate:false},now,1),'Aguardando negócio');
+ assert.equal(m.feedLabel('connected',{...entry,error:'not allowed'},now,1),'Fonte indisponível');
+ assert.equal(m.retryDelay(0,()=>0),5000);assert.equal(m.retryDelay(10,()=>0),30000);
+ const payload={error:[],result:{XXBTZUSD:[[start/1000,'100','102','99','101','100','5',3]],last:start/1000}};
+ assert.deepEqual(m.parseKrakenHistory(payload),[old]);assert.throws(()=>m.parseKrakenHistory({error:['rate limited']}));
+ const originalFetch=globalThis.fetch;let calls=0;
+ globalThis.fetch=async(url)=>{calls++;assert.equal(new URL(url).host,'api.kraken.com');assert.equal(new URL(url).searchParams.get('pair'),'XBTUSD');return Response.json(payload);};
+ try{
+  assert.equal((await route.GET(new Request('https://test/api/market/candles?asset=XAUUSD&interval=1'))).status,400);
+  assert.equal((await route.GET(new Request('https://test/api/market/candles?asset=BTCUSD&interval=2'))).status,400);
+  assert.equal(calls,0);
+  const req=()=>new Request('https://test/api/market/candles?asset=BTCUSD&interval=1');
+  const responses=await Promise.all([route.GET(req()),route.GET(req())]);
+  assert.equal(calls,1,'Concurrent history requests must coalesce');
+  const result=await responses[0].json();assert.equal(result.source,'kraken-spot');assert.equal(result.asset,'BTCUSD');assert.deepEqual(result.bars,[old]);
+  await route.GET(req());assert.equal(calls,1,'Brief server cache limits repeated downloads');
+  globalThis.fetch=async()=>{throw new Error('network down');};
+  const failed=await route.GET(new Request('https://test/api/market/candles?asset=SOLUSD&interval=5'));assert.equal(failed.status,502);assert.ok(!('bars' in await failed.json()),'Network failure must not return synthetic prices');
+ }finally{globalThis.fetch=originalFetch;}
+ console.log('Live market checks passed: synchronized price/candle, event validation, cumulative volume, duplicate and stale events, rollover, explicit stale/offline states, reconnect backoff, route allowlist, request coalescing, caching and upstream failure.');
+}finally{await fs.rm(temp,{recursive:true,force:true});}

@@ -1,5 +1,7 @@
 # TraderNova — Base 0.1
 
+Registro da entrega 0.1. Para o estado atual 0.2, consulte `MERCADO_AO_VIVO.md`: integração Kraken Spot adicionada; os sinais e o laboratório continuam demonstrativos.
+
 Criada em 15/09/2026. Base web responsiva; não é um aplicativo já publicado nas lojas.
 
 ## Entregue
