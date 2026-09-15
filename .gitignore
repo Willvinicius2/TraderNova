@@ -46,3 +46,10 @@ next-env.d.ts
 /work/
 
 *.tsbuildinfo
+
+# Native preview and local tooling
+/mobile/.claude/
+/mobile/CLAUDE.md
+/mobile/artifacts/
+/mobile/playwright-report/
+/mobile/test-results/

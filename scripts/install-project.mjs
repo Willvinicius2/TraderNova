@@ -1,0 +1,12 @@
+import { spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('../', import.meta.url));
+const manifest = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+if (!process.env.npm_execpath) throw new Error('Use npm run install:ci.');
+const managed = process.env.SITES_MANAGED_LINUX_CONTAINER === '1';
+const command = managed ? 'bash' : process.execPath;
+const args = managed ? ['scripts/install-pnpm.sh'] : [process.env.npm_execpath, 'exec', '--yes', '--package', manifest.packageManager, '--', 'pnpm', 'install', '--frozen-lockfile'];
+const result = spawnSync(command, args, { cwd: root, stdio: 'inherit' });
+if (result.error) throw result.error;
+process.exit(result.status ?? 1);

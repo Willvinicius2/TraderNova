@@ -1,5 +1,24 @@
 # TraderNova
 
+Projeto web existente e aplicativo Android/iPhone em [`mobile/`](mobile/README.md). Código reunido em `D:\openclaude\TradersNova`, com histórico original preservado.
+
+## Começar
+
+```powershell
+# Web, na raiz
+npm run install:ci
+npm run dev
+
+# Mobile
+cd mobile
+npm ci
+npm start
+```
+
+O instalador da raiz preserva o `pnpm-lock.yaml` e funciona no Windows sem Bash. O mobile tem instalação npm independente. Consulte [`mobile/README.md`](mobile/README.md) e [`docs/ESCOPO_CONSOLIDADO.md`](docs/ESCOPO_CONSOLIDADO.md).
+
+## Base web
+
 Base mobile web do laboratório de sinais com revisão humana. Mercado com integração pública à Kraken Spot para BTC/USD, ETH/USD e SOL/USD. Ouro, Nasdaq, EURUSD e USDJPY exibem cotações, gráficos e análise técnica via widgets TradingView/OANDA. Laboratório com três estratégias candidatas sobre histórico Kraken ou dados artificiais identificados. Sinais do robô e diário continuam demonstrativos; sem envio de ordens ou cobranças.
 
 ## Desenvolvimento
@@ -17,4 +36,4 @@ Abra Mercado para acompanhar a conexão de BTC, ETH e SOL. Use M1/M5/M15/H1 e co
 
 Leia `docs/CALIBRACAO_E_PESQUISA.md` para a atualização de dados e pesquisa, parâmetros, referências e limites.
 
-Dados próprios da corretora para o motor de estratégias, integração Supabase, worker Python, autenticação de aplicação, push, compras e aplicativos Android/iOS são próximas etapas. Leia `docs/MERCADO_AO_VIVO.md` para o status 0.3 e a limitação da verificação de conexão externa. Leia `docs/IMPLEMENTACAO.md` para detalhes e limites. A migração Supabase não foi aplicada automaticamente.
+Dados próprios da corretora para o motor de estratégias, integração Supabase, worker Python, autenticação de aplicação, push remoto e compras são próximas etapas. A base nativa Android/iOS está em mobile/; testes em aparelhos e publicação nas lojas seguem pendentes. Leia `docs/MERCADO_AO_VIVO.md` para o status 0.3 e a limitação da verificação de conexão externa. Leia `docs/IMPLEMENTACAO.md` para detalhes e limites. A migração Supabase não foi aplicada automaticamente.

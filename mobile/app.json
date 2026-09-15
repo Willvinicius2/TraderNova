@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "TraderNova",
+    "slug": "tradernova-mobile",
+    "scheme": "tradernova",
+    "version": "0.1.0",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.willvinicius.tradernova",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.willvinicius.tradernova",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#111117"
+      },
+      "predictiveBackGestureEnabled": true,
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/icon.png",
+      "name": "TraderNova Mobile",
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-sharing"
+    ]
+  }
+}
