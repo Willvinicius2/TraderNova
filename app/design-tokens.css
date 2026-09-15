@@ -15,7 +15,7 @@
   --card-shadow: 0 4px 20px rgb(0 0 0 / 5%);
   --motion-fast: 160ms;
 }
-:root, .dark {
+:root, .dark, .essential {
   color-scheme: dark;
   --background: #111117;
   --foreground: #f1f1f6;
@@ -110,6 +110,48 @@
   --glass: #fffffff2;
   --sidebar: #ffffff;
   --card-shadow: 0 4px 20px rgb(31 50 92 / 4%);
+}
+/* Essencial Dark: original mobile concept, with emerald actions. */
+.essential {
+  color-scheme: dark;
+  --background: #090f14;
+  --foreground: #edf5f8;
+  --card: #111c24;
+  --popover: #17252e;
+  --primary: #20dfb0;
+  --primary-hover: #5aebc5;
+  --primary-foreground: #07231d;
+  --secondary: #1b2b35;
+  --secondary-foreground: #d3e3eb;
+  --muted: #182731;
+  --muted-foreground: #a2b6c3;
+  --accent: #10372f;
+  --accent-foreground: #6cf1ca;
+  --accent-border: #286f5d;
+  --accent-glow: #20dfb010;
+  --border: #2b3f4c;
+  --input: #4d6574;
+  --success: #39e5b7;
+  --success-foreground: #07231d;
+  --success-soft: #10372f;
+  --success-border: #286f5d;
+  --success-glow: #39e5b726;
+  --destructive: #ff8f98;
+  --danger-soft: #38232b;
+  --danger-border: #79424e;
+  --danger-glow: #ff8f9826;
+  --warning: #edc477;
+  --warning-soft: #352d20;
+  --warning-border: #685331;
+  --purple: #b7a6f3;
+  --purple-soft: #2b2840;
+  --blue: #8cc4f4;
+  --blue-soft: #203447;
+  --pink: #eba6cf;
+  --pink-soft: #39283c;
+  --glass: #111c24f2;
+  --sidebar: #0d161d;
+  --card-shadow: 0 4px 20px rgb(0 0 0 / 5%);
 }
 :root[data-density='compact'] {
   --space-panel: 18px;
