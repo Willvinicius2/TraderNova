@@ -13,6 +13,7 @@ import {CandleChart} from './charts';
 import {AssetIcon} from './asset-icon';
 import {ExternalQuote,ExternalMarketPanel,ExternalTechnicalIndicators} from './external-market';
 import {marketSources,marketChartUrl} from '@/lib/tradernova/market-sources';
+import './asset-cards.css';
 const num=(v:number,d=2)=>v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
 function Price({value,asset,animate=true}:{value:number|null;asset:Asset;animate?:boolean}){
  const previous=useRef(value),[direction,setDirection]=useState('');
@@ -40,12 +41,18 @@ export function MarketDashboard({onRobot}:{onRobot:()=>void}){
  return <>
  <div className="market-mode-bar"><Tabs value={mode} onValueChange={setMode}><TabsList className="mode-tabs"><TabsTrigger value="live"><Radio size={15}/> Mercado real</TabsTrigger><TabsTrigger value="demo">Demonstração</TabsTrigger></TabsList></Tabs><span className="market-source">{isLive?external?`${source.provider} via TradingView`:'Kraken · mercado à vista · USD':'Amostra sintética · valores fixos'}</span></div>
  {isLive?<div className="live-info"><Info size={16}/><span>Sete ativos com fonte definida. Ouro, Nasdaq e forex: OANDA via TradingView. Cripto: Kraken. As cotações podem diferir da sua corretora no MT5.</span></div>:<div className="demo-banner"><Info size={16}/><span>Dados artificiais. Selecione “Mercado real” para acompanhar as negociações.</span></div>}
- <div className={`asset-ribbon ${isLive?'external-asset-ribbon':''}`}>{assets.map(a=>{
-  if(isLive&&(!isLiveAsset(a.id)||externalAsset===a.id))return <div key={a.id} className={`asset-tile external-asset-tile ${a.id===selected?'selected':''}`}><button className="asset-select" onClick={()=>setSelected(a.id)} aria-pressed={a.id===selected}><span className="asset-identity"><AssetIcon id={a.id} size={32}/><span className="asset-identity__text"><span className="asset-identity__ticker">{a.id}</span><span className="asset-identity__name">{a.name}</span></span></span><small>{marketSources[a.id].provider} · abrir gráfico</small></button><ExternalQuote asset={a.id}/></div>;
+ <div className="market-assets-label"><span>Ativos acompanhados <b>{assets.length}</b></span><small>Deslize para explorar</small></div>
+ <div className="asset-ribbon market-asset-ribbon" aria-label="Selecione um ativo">{assets.map(a=>{
+  const externalQuote=isLive&&(!isLiveAsset(a.id)||externalAsset===a.id),selectedCard=a.id===selected,quoteSource=marketSources[a.id];
   const e=isLiveAsset(a.id)?live.entries[a.id]:undefined,demo=examples[a.id],v=isLive?displayedPrice(e):demo.at(-1)!.close;
-  const st=isLive?(isLiveAsset(a.id)?feedLabel(live.connection,e,now,interval):'Painel externo'):'Exemplo';
-  const fresh=e?.ticker&&now-e.ticker.timestamp<30000,pct=isLive?(fresh?e.ticker!.changePct:null):(v!/demo[demo.length-25].close-1)*100;
-  return <button key={a.id} className={`asset-tile ${a.id===selected?'selected':''}`} onClick={()=>setSelected(a.id)} aria-pressed={a.id===selected}><div className="row between"><span className="asset-identity"><AssetIcon id={a.id} size={32}/><span className="asset-identity__text"><span className="asset-identity__ticker">{a.id}</span><span className="asset-identity__name">{a.name}</span></span></span>{a.id===selected&&<span className="selected-dot"/>}</div><strong><Price key={mode} value={v} asset={a} animate={isLive}/></strong><span className={pct===null?'muted':pct>=0?'positive':'negative'}>{pct===null?'—':`${pct>=0?'+':''}${num(pct)}%`}<span className="subtle"> {isLive&&pct!==null?'24h':''}</span></span><div className={`tile-feed ${st==='Ao vivo'?'positive':''}`}>{st}</div></button>;
+  const st=isLive?(externalQuote?'Painel externo':feedLabel(live.connection,e,now,interval)):'Demonstração';
+  const fresh=e?.ticker&&now-e.ticker.timestamp<30000&&e.ticker.timestamp<=now+5000,pct=isLive?(fresh?e.ticker!.changePct:null):(v!/demo[demo.length-25].close-1)*100;
+  return <article key={a.id} className={`market-asset-card ${selectedCard?'is-selected':''}`} aria-label={`${a.name} · ${a.id}`}>
+   <button className="market-asset-select" onClick={()=>setSelected(a.id)} aria-pressed={selectedCard} aria-label={`Selecionar ${a.name}`}><span className="asset-identity"><AssetIcon id={a.id} size={36}/><span className="asset-identity__text"><span className="asset-identity__ticker">{a.id}</span><span className="asset-identity__name">{a.name}</span></span></span><span className={`market-asset-marker ${selectedCard?'is-selected':''}`} aria-hidden="true">{selectedCard?<span/>:<ArrowUpRight size={16}/>}</span></button>
+   <div className="market-asset-source"><span>{isLive?externalQuote?quoteSource.provider:'Kraken Spot':'Simulação'}</span><span>{quoteSource.currency}</span></div>
+   <div className="market-asset-quote">{externalQuote?<ExternalQuote asset={a.id}/>:<button className="market-native-quote" onClick={()=>setSelected(a.id)} aria-label={`Ver gráfico de ${a.name}`}><strong><Price key={mode} value={v} asset={a} animate={isLive}/></strong><span className="market-asset-change"><span className={pct===null?'muted':pct>=0?'positive':'negative'}>{pct===null?'—':<>{pct>=0?<ArrowUpRight size={14}/>:<ArrowDownRight size={14}/>} {pct>=0?'+':''}{num(pct)}%</>}</span><span>{isLive?'24h':'Amostra'}</span></span></button>}</div>
+   <button className="market-asset-footer" onClick={()=>setSelected(a.id)} aria-label={`Abrir gráfico de ${a.name}`}><span className={`market-asset-status ${st==='Ao vivo'?'is-live':st==='Atualização periódica'?'is-periodic':''}`}><i/>{st}</span><ArrowRight size={15}/></button>
+  </article>;
  })}</div>
  <div className="market-grid"><section className="panel chart-panel live-chart-panel">
  <div className="chart-heading"><div className="row"><AssetIcon id={asset.id} size={44}/><div><h2>{asset.name}</h2><div className="metadata">{isLive?external?source.symbol:supported?livePairs[selected].ws:selected:selected}<span>·</span>{isLive?external?`${source.provider} via TradingView`:'Kraken Spot':'Feed sintético'}</div></div></div><Status label={status}/></div>

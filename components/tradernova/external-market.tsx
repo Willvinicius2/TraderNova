@@ -26,7 +26,7 @@ export const ExternalQuote=memo(function ExternalQuote({asset}:{asset:AssetId}){
   setState('loading');
   void loadQuoteWidget().then(()=>{
    if(cancelled)return;
-   const quote=document.createElement('tv-single-ticker');quote.setAttribute('symbol',marketSources[asset].symbol);quote.setAttribute('theme',theme);
+   const quote=document.createElement('tv-single-ticker');quote.setAttribute('symbol',marketSources[asset].symbol);quote.setAttribute('theme',theme);quote.setAttribute('transparent','');
    node.appendChild(quote);setState('embedded');
   }).catch(()=>{if(!cancelled)setState('unavailable');});
   return()=>{cancelled=true;node.replaceChildren();};
@@ -34,7 +34,7 @@ export const ExternalQuote=memo(function ExternalQuote({asset}:{asset:AssetId}){
  return <div className="external-quote" aria-label={`Cotação de ${asset} por ${marketSources[asset].provider}`}>
   <div ref={host}/>
   {state!=='embedded'&&<div className="external-quote-message" role="status">{widgetStatus(state)}{state==='unavailable'&&<button className="text-button" onClick={()=>setRetry(n=>n+1)}><RefreshCw size={13}/> Recarregar</button>}</div>}
-  <a className="external-attribution" href={marketChartUrl(asset)} target="_blank" rel="noopener noreferrer">{asset} no TradingView</a>
+  {state!=='embedded'&&<a className="external-attribution" href={marketChartUrl(asset)} target="_blank" rel="noopener noreferrer">Abrir cotação <ExternalLink size={12}/></a>}
  </div>;
 });
 
