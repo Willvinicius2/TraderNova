@@ -2,7 +2,7 @@
 import {memo,useEffect,useRef,useState} from 'react';
 import {ExternalLink,RefreshCw} from 'lucide-react';
 import type {AssetId} from '@/lib/tradernova/domain';
-import {chartWidgetOptions,marketChartUrl,marketSources,widgetStatus,type WidgetState} from '@/lib/tradernova/market-sources';
+import {chartWidgetOptions,technicalWidgetOptions,marketChartUrl,marketSources,widgetStatus,type WidgetState} from '@/lib/tradernova/market-sources';
 import {loadQuoteWidget} from '@/lib/tradernova/widget-loader';
 import './external-market.css';
 function useWidgetEnvironment(){
@@ -65,6 +65,26 @@ export function ExternalMarketPanel({asset,interval,onReturn}:{asset:AssetId;int
   <p className="external-market-description">{source.contract}. Confira o horário da cotação e o estado do mercado no próprio gráfico.</p>
   {state!=='embedded'&&<p className="external-market-message" role="status">{state==='unavailable'?'O painel demorou para responder ou foi bloqueado. Recarregue ou abra a fonte. Se houver uma mensagem dentro do gráfico, siga o aviso da fonte.':state==='offline'?'Você está sem internet. A conexão será retomada quando a rede voltar.':state==='paused'?'Atualizações pausadas enquanto o aplicativo está em segundo plano.':'Carregando gráfico e cotação da fonte…'}</p>}
   <div className="external-chart-host" ref={host}/>
-  <p className="external-market-description">Indicadores e desenhos estão disponíveis na barra do gráfico. Esta conexão é para consulta visual; os dados não alimentam o robô nem os testes do laboratório.</p>
+  <p className="external-market-description">Média simples e RSI estocástico já estão no gráfico; os parâmetros aparecem na legenda. Altere o período pelos botões do TraderNova. Esta conexão é para consulta visual; os dados não alimentam o robô nem os testes do laboratório.</p>
  </section>;
+}
+
+
+export function ExternalTechnicalIndicators({asset,interval}:{asset:AssetId;interval:string}){
+ const host=useRef<HTMLDivElement>(null),{online,visible,theme}=useWidgetEnvironment();
+ const [state,setState]=useState<WidgetState>('loading'),[retry,setRetry]=useState(0);
+ useEffect(()=>{
+  const node=host.current;if(!node)return;node.replaceChildren();let cancelled=false,frame:HTMLIFrameElement|null=null;
+  if(!online||!visible){setState(!online?'offline':'paused');return;}
+  setState('loading');const wrapper=document.createElement('div');wrapper.className='tradingview-widget-container';
+  const body=document.createElement('div');body.className='tradingview-widget-container__widget';wrapper.appendChild(body);
+  const attribution=document.createElement('a');attribution.className='tradingview-widget-copyright';attribution.href=marketChartUrl(asset);attribution.textContent='Análise técnica por TradingView';attribution.target='_blank';attribution.rel='noopener noreferrer';wrapper.appendChild(attribution);
+  const script=document.createElement('script');script.src='https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js';script.async=true;script.textContent=JSON.stringify(technicalWidgetOptions(asset,interval,theme));
+  const timeout=setTimeout(()=>{if(!cancelled)setState('unavailable');},18000);
+  const loaded=()=>{if(!cancelled){clearTimeout(timeout);setState('embedded');}};
+  const observer=new MutationObserver(()=>{const found=wrapper.querySelector('iframe');if(found&&found!==frame){frame=found;frame.title=`Indicadores de ${asset} · ${interval} minutos`;frame.addEventListener('load',loaded,{once:true});}});
+  observer.observe(wrapper,{childList:true,subtree:true});script.onerror=()=>{if(!cancelled){clearTimeout(timeout);setState('unavailable');}};node.appendChild(wrapper);wrapper.appendChild(script);
+  return()=>{cancelled=true;clearTimeout(timeout);observer.disconnect();frame?.removeEventListener('load',loaded);script.onerror=null;node.replaceChildren();};
+ },[asset,interval,theme,online,visible,retry]);
+ return <section className="panel external-analysis-panel"><div className="section-heading"><div><h2>Indicadores da fonte</h2><p className="micro">{marketSources[asset].symbol} · {interval==='60'?'H1':`M${interval}`} · TradingView</p></div><button className="text-button" onClick={()=>setRetry(n=>n+1)}><RefreshCw size={15}/>Recarregar</button></div><p className="external-market-description">O resumo e os valores abaixo pertencem ao mesmo instrumento e período solicitados no gráfico. “Compra” e “Venda” aqui são classificações da fonte, não sinais validados do TraderNova.</p>{state!=='embedded'&&<p className="external-market-message" role="status">{widgetStatus(state)}. {state==='unavailable'?'Abra a fonte caso o navegador ou o provedor bloqueie o painel.':''}</p>}<div ref={host} className="external-analysis-host"/><p className="micro">Horário e disponibilidade informados pela fonte. Estes valores são exibidos pelo painel externo; a leitura automática para testes de ouro, Nasdaq e forex depende de uma API de mercado.</p></section>;
 }

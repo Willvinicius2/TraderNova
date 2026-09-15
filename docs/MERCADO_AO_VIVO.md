@@ -1,5 +1,7 @@
 # Mercado 0.3 — fontes de consulta para os sete ativos
 
+Atualização posterior: consulte [Calibração e pesquisa](CALIBRACAO_E_PESQUISA.md). O limite nativo agora é 720 candles, há recuperação periódica REST, dez leituras nativas e três candidatas executáveis sobre histórico Kraken ou dados artificiais. Ouro, Nasdaq e forex também têm painel externo de análise no período do gráfico. As descrições abaixo são o registro das versões anteriores.
+
 A partir de 0.3, os quatro mercados que exibiam “Fonte pendente” têm integração de consulta visual via TradingView. A conexão direta de cripto da versão 0.2 continua disponível.
 
 | Ativo no app | Símbolo exibido | Integração |

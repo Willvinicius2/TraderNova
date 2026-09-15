@@ -18,6 +18,11 @@ try{
    assert.equal(config.symbol,new URL(m.marketChartUrl(id)).searchParams.get('symbol'),'Link and chart must keep the same instrument');
    assert.equal(config.allow_symbol_change,false,'Widget cannot change instrument behind the app selection');
    assert.equal(config.interval,interval);
+   assert.equal(config.hide_top_toolbar,true,'Only the app changes the selected timeframe');
+   const analysis=m.technicalWidgetOptions(id,interval,'light');
+   assert.equal(analysis.symbol,config.symbol);
+   assert.equal(analysis.interval,{'1':'1m','5':'5m','15':'15m','60':'1h'}[interval]);
+   assert.equal(analysis.showIntervalTabs,false,'Companion indicators retain the chart timeframe');
   }
  }
  assert.equal(m.marketSources.USDJPY.currency,'JPY');
