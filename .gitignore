@@ -53,3 +53,4 @@ next-env.d.ts
 /mobile/artifacts/
 /mobile/playwright-report/
 /mobile/test-results/
+/research/cache/

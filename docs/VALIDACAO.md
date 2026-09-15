@@ -1,4 +1,4 @@
-# Verificação da entrega — 15/09/2026
+# Verificação da entrega inicial — 15/09/2026
 
 - Código do site recuperado com histórico; arquivos de interface e motor mantidos sem alteração.
 - Web: tipos, quatro grupos de testes existentes e build de produção concluídos.
@@ -10,3 +10,7 @@
 Os testes não aprovam estratégias financeiras. Nenhum backtest histórico externo relatado nos chats foi reproduzido nesta entrega.
 
 `ci.github-actions.yml` é um modelo opcional de automação. Não está habilitado em `.github/workflows` nesta entrega.
+
+## Etapa posterior — motor e simulações
+
+Estudo real reproduzido: 18 combinações, 150 arquivos Binance com checksum, 24 meses mais aquecimento. Nenhuma combinação passou. Laboratório agora oferece presets de backtest e acompanhamento ao vivo; Robô mostra apenas sinais e busca condicionada à aprovação. Ver [motor e validação](MOTOR_E_VALIDACAO.md) e [resultados](../research/RESULTADOS.md).
