@@ -1,0 +1,318 @@
+{
+  "series": {
+    "M15": {
+      "sha256": "f0bb3612b16661118e30689ebf71f34b0a02914fd4565837b8cddefe8aa52583",
+      "bars": 99999,
+      "firstBar": 1655806500,
+      "lastBar": 1789070400,
+      "validOHLC": true,
+      "years": [
+        {
+          "year": 2022,
+          "bars": 12602,
+          "gapsOverNominalBar": 139,
+          "zeroSpread": 85
+        },
+        {
+          "year": 2023,
+          "bars": 23541,
+          "gapsOverNominalBar": 257,
+          "zeroSpread": 0
+        },
+        {
+          "year": 2024,
+          "bars": 23742,
+          "gapsOverNominalBar": 258,
+          "zeroSpread": 10
+        },
+        {
+          "year": 2025,
+          "bars": 23705,
+          "gapsOverNominalBar": 257,
+          "zeroSpread": 0
+        },
+        {
+          "year": 2026,
+          "bars": 16409,
+          "gapsOverNominalBar": 181,
+          "zeroSpread": 0
+        }
+      ]
+    },
+    "H1": {
+      "sha256": "9bb7ebfe239fb62c98cc7882c1a5e3c076bbf89fbfa91e829d9457599ef9b263",
+      "bars": 99999,
+      "firstBar": 1250733600,
+      "lastBar": 1789066800,
+      "validOHLC": true,
+      "years": [
+        {
+          "year": 2009,
+          "bars": 2132,
+          "gapsOverNominalBar": 94,
+          "zeroSpread": 2132
+        },
+        {
+          "year": 2010,
+          "bars": 5634,
+          "gapsOverNominalBar": 263,
+          "zeroSpread": 4796
+        },
+        {
+          "year": 2011,
+          "bars": 5726,
+          "gapsOverNominalBar": 262,
+          "zeroSpread": 645
+        },
+        {
+          "year": 2012,
+          "bars": 5847,
+          "gapsOverNominalBar": 258,
+          "zeroSpread": 383
+        },
+        {
+          "year": 2013,
+          "bars": 5874,
+          "gapsOverNominalBar": 257,
+          "zeroSpread": 15
+        },
+        {
+          "year": 2014,
+          "bars": 5872,
+          "gapsOverNominalBar": 257,
+          "zeroSpread": 129
+        },
+        {
+          "year": 2015,
+          "bars": 5843,
+          "gapsOverNominalBar": 257,
+          "zeroSpread": 5
+        },
+        {
+          "year": 2016,
+          "bars": 5889,
+          "gapsOverNominalBar": 257,
+          "zeroSpread": 31
+        },
+        {
+          "year": 2017,
+          "bars": 5861,
+          "gapsOverNominalBar": 256,
+          "zeroSpread": 2
+        },
+        {
+          "year": 2018,
+          "bars": 5873,
+          "gapsOverNominalBar": 257,
+          "zeroSpread": 4
+        },
+        {
+          "year": 2019,
+          "bars": 5871,
+          "gapsOverNominalBar": 257,
+          "zeroSpread": 5
+        },
+        {
+          "year": 2020,
+          "bars": 5904,
+          "gapsOverNominalBar": 258,
+          "zeroSpread": 10
+        },
+        {
+          "year": 2021,
+          "bars": 5903,
+          "gapsOverNominalBar": 260,
+          "zeroSpread": 1090
+        },
+        {
+          "year": 2022,
+          "bars": 5910,
+          "gapsOverNominalBar": 260,
+          "zeroSpread": 316
+        },
+        {
+          "year": 2023,
+          "bars": 5889,
+          "gapsOverNominalBar": 256,
+          "zeroSpread": 0
+        },
+        {
+          "year": 2024,
+          "bars": 5938,
+          "gapsOverNominalBar": 258,
+          "zeroSpread": 3
+        },
+        {
+          "year": 2025,
+          "bars": 5927,
+          "gapsOverNominalBar": 257,
+          "zeroSpread": 0
+        },
+        {
+          "year": 2026,
+          "bars": 4106,
+          "gapsOverNominalBar": 179,
+          "zeroSpread": 0
+        }
+      ]
+    },
+    "H4": {
+      "sha256": "ae72d49637d9dacf48616a6229114ec8dfa1d6afb6fd16bcea2668e142731a58",
+      "bars": 34089,
+      "firstBar": 1086926400,
+      "lastBar": 1789056000,
+      "validOHLC": true,
+      "years": [
+        {
+          "year": 2004,
+          "bars": 816,
+          "gapsOverNominalBar": 31,
+          "zeroSpread": 816
+        },
+        {
+          "year": 2005,
+          "bars": 1476,
+          "gapsOverNominalBar": 56,
+          "zeroSpread": 1476
+        },
+        {
+          "year": 2006,
+          "bars": 1469,
+          "gapsOverNominalBar": 58,
+          "zeroSpread": 1469
+        },
+        {
+          "year": 2007,
+          "bars": 1535,
+          "gapsOverNominalBar": 54,
+          "zeroSpread": 1535
+        },
+        {
+          "year": 2008,
+          "bars": 1540,
+          "gapsOverNominalBar": 53,
+          "zeroSpread": 1540
+        },
+        {
+          "year": 2009,
+          "bars": 1538,
+          "gapsOverNominalBar": 54,
+          "zeroSpread": 1538
+        },
+        {
+          "year": 2010,
+          "bars": 1528,
+          "gapsOverNominalBar": 56,
+          "zeroSpread": 1309
+        },
+        {
+          "year": 2011,
+          "bars": 1525,
+          "gapsOverNominalBar": 57,
+          "zeroSpread": 179
+        },
+        {
+          "year": 2012,
+          "bars": 1537,
+          "gapsOverNominalBar": 55,
+          "zeroSpread": 111
+        },
+        {
+          "year": 2013,
+          "bars": 1544,
+          "gapsOverNominalBar": 53,
+          "zeroSpread": 10
+        },
+        {
+          "year": 2014,
+          "bars": 1539,
+          "gapsOverNominalBar": 55,
+          "zeroSpread": 41
+        },
+        {
+          "year": 2015,
+          "bars": 1532,
+          "gapsOverNominalBar": 57,
+          "zeroSpread": 4
+        },
+        {
+          "year": 2016,
+          "bars": 1542,
+          "gapsOverNominalBar": 57,
+          "zeroSpread": 14
+        },
+        {
+          "year": 2017,
+          "bars": 1534,
+          "gapsOverNominalBar": 57,
+          "zeroSpread": 1
+        },
+        {
+          "year": 2018,
+          "bars": 1539,
+          "gapsOverNominalBar": 59,
+          "zeroSpread": 3
+        },
+        {
+          "year": 2019,
+          "bars": 1540,
+          "gapsOverNominalBar": 59,
+          "zeroSpread": 2
+        },
+        {
+          "year": 2020,
+          "bars": 1547,
+          "gapsOverNominalBar": 57,
+          "zeroSpread": 5
+        },
+        {
+          "year": 2021,
+          "bars": 1542,
+          "gapsOverNominalBar": 57,
+          "zeroSpread": 329
+        },
+        {
+          "year": 2022,
+          "bars": 1548,
+          "gapsOverNominalBar": 51,
+          "zeroSpread": 136
+        },
+        {
+          "year": 2023,
+          "bars": 1542,
+          "gapsOverNominalBar": 51,
+          "zeroSpread": 0
+        },
+        {
+          "year": 2024,
+          "bars": 1554,
+          "gapsOverNominalBar": 53,
+          "zeroSpread": 1
+        },
+        {
+          "year": 2025,
+          "bars": 1548,
+          "gapsOverNominalBar": 53,
+          "zeroSpread": 0
+        },
+        {
+          "year": 2026,
+          "bars": 1074,
+          "gapsOverNominalBar": 37,
+          "zeroSpread": 0
+        }
+      ]
+    }
+  },
+  "overlap": {
+    "completeHours": 24981,
+    "matchedWithinTick": 24981,
+    "maxPriceDifference": 0.0
+  },
+  "limitations": [
+    "Gaps include session breaks, weekends and holidays; no synthetic candles were inserted.",
+    "Price consistency does not certify historical executable spreads or commission.",
+    "Exported timestamp labels are not a verified UTC/session conversion.",
+    "A provenance audit does not establish that research periods were previously untouched."
+  ]
+}
