@@ -1,0 +1,15 @@
+{
+  "id":"external-data-v1",
+  "registeredAt":"2026-09-16",
+  "provider":"HistData public anonymous website downloads",
+  "symbols":["EURUSD","NSXUSD"],
+  "annualYears":[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+  "monthlyYear":2026,
+  "months":[1,2,3,4,5,6,7,8],
+  "format":"Generic ASCII M1 Bid OHLC, fixed EST UTC-5 without DST",
+  "endExclusiveUtc":"2026-09-01",
+  "purpose":"Acquire and audit external research data for existing project assets. No price-performance selection before a separate strategy protocol is frozen. EURUSD2024 is the already verified sample and must be reused by its recorded hash. NSXUSD maps to Nasdaq100 but is not certified equivalent to the user's NAS100 contract.",
+  "acquisition":"Serial requests using each public form; preserve raw ZIPs locally and record SHA256, URL, retrieval time and member names. Pause one second between downloads, stop on429 or unexpected forms. No paid FTP, AWS, broker account or API credentials. Do not redistribute raw data.",
+  "quality":"Strict chronological unique minute records with valid finite BidOHLC; UTC conversion explicit; aggregate complete M15/H1/H4 bins only. Do not manufacture missing minutes. Record gaps/incomplete bins and exclude data after cutoff. M1 does not supply spread or real volume.",
+  "sources":["https://www.histdata.com/","https://www.histdata.com/f-a-q/","https://www.histdata.com/f-a-q/data-files-detailed-specification/"]
+}
