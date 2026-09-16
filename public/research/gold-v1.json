@@ -1,0 +1,2225 @@
+{
+  "version": 1,
+  "id": "gold-cfd-v1",
+  "generatedAt": "2026-09-16T03:02:10.802002+00:00",
+  "protocol": {
+    "id": "gold-cfd-v1",
+    "registeredAt": "2026-09-15",
+    "source": "Existing read-only XAUUSD export from Five Percent Online MT5, exported 2026-09-10; source SHA256 must match the prior export selection manifest",
+    "timeBasis": "Broker-exported epoch labels; do not claim UTC or London/New York session alignment",
+    "dataQualityAmendmentBeforeResults": "G4 prior-day levels require exactly92 continuous M15bars (23h), beginning00:00 or01:00 on exported clock. This matches the observed full-session structures. Short holiday days, incomplete boundaries and unexplained gaps are excluded as level sources. No evaluation results were computed before this amendment.",
+    "development": [
+      "2022-07-01",
+      "2025-01-01"
+    ],
+    "validation": [
+      "2025-01-01",
+      "2026-01-01"
+    ],
+    "retrospectiveFinal": [
+      "2026-01-01",
+      "2026-09-01"
+    ],
+    "selection": "Two fixed presets per family, 10 trials total. Rank development only by stress net / stress max candle-close drawdown (zero DD is ineligible), ties by preset ascending. Eligible: >=100 trades, net>0 and PF>=1.10 in both base and stress; no unpriced overnight positions. Freeze best eligible or highest-scoring failed candidate for diagnosis before validation. A failed development candidate can never be promoted by final results.",
+    "historicalScreen": "Development eligible; validation AND final each >=100 trades, net>0, PF>=1.20, maximum drawdown <=8000 USD, maximum daily close-equity loss<=2000 USD; validation and final stress net>0, DD<=10000 and daily loss<=3000; no unpriced overnight holdings. Retrospective screen alone is not operational approval.",
+    "common": "Closed M15 signal, next available continuous M15 open on same day; one position; entries 08:00<=hour<20:00 exported broker clock; exit at 20:45 open or first subsequent available open. No invented candles. Unexpected gaps prevent new entries; open risk uses observed gap prices. Wilder ATR14. Structural stop buffer0.25ATR, accept stop distance1..3ATR at signal and recheck actual entry. Target at least1R; two trades per day except range breakout one. Long and short symmetric.",
+    "capital": 100000,
+    "riskCash": 250,
+    "dailyLossLimit": 3000,
+    "totalLossLimit": 10000,
+    "riskReference": "Fixed initial100000 floor90000; daily reference previous available close equity at broker day change. These are simulation assumptions pending program confirmation, not certified The5ers rules.",
+    "contract": {
+      "size": 100,
+      "minLot": 0.01,
+      "maxLot": 100,
+      "lotStep": 0.01,
+      "tickSize": 0.01,
+      "minimumStopDistance": 0.1,
+      "maxGrossLeverage": 10,
+      "rounding": "Stop and target round outward to the tick. Recompute reward target using actual rounded stop distance at entry, then round target outward."
+    },
+    "costs": {
+      "base": {
+        "spreadUsdPerOz": 0.6,
+        "slippageUsdPerOzPerSide": 0.1,
+        "commissionUsdPerLotRoundTrip": 10
+      },
+      "stress": {
+        "spreadUsdPerOz": 1.2,
+        "slippageUsdPerOzPerSide": 0.25,
+        "commissionUsdPerLotRoundTrip": 20
+      }
+    },
+    "costCaveat": "Fixed conservative scenarios, not verified historical executable spreads/fees. CSV spread is minimum within the candle and cannot price its own open. Actual contract costs, sessions and timezone require confirmation. Overnight positions are flagged unpriced; no invented zero swap.",
+    "families": [
+      {
+        "id": "G1",
+        "name": "Pullback de tendência",
+        "presets": [
+          20,
+          50
+        ],
+        "rule": "H1 completed: close andEMA50 aboveEMA200, EMA50 rising3bars (opposite for short). M15 previousclose<=previousreferenceEMA, currentclose>EMA andopen. Stop min of two candles minus0.25ATR; reward2; hold16bars."
+      },
+      {
+        "id": "G2",
+        "name": "Rompimento da faixa inicial",
+        "presets": [
+          60,
+          120
+        ],
+        "rule": "Freeze high/low of complete continuous 08:00 opening range of preset minutes. First close beyond edge+0.1ATR, previousclose inside range; entrybefore12:00. Stopmidrange; reward2; hold12bars; atmostoneentry/day."
+      },
+      {
+        "id": "G3",
+        "name": "Retorno às Bandas de Bollinger",
+        "presets": [
+          2,
+          2.5
+        ],
+        "rule": "H1 sideways abs(EMA50-current minus3barsago)<=0.25ATR_H1. M15 previousclose below lowerSMA20-populationSDband; currentclose returns inside and bullish. Stopmin2bars minus0.25ATR; fixedtarget SMA20 atsignal, >=1R; hold8bars. Shortsymmetric."
+      },
+      {
+        "id": "G4",
+        "name": "Varredura do dia anterior",
+        "presets": [
+          0.1,
+          0.25
+        ],
+        "rule": "Previous traded day must have exactly92 contiguousM15bars beginning00:00or01:00, as the pre-results data-quality amendment specifies; low pierced by >=presetATR and<=1ATR, closes backabove andbullish. Stoprejectionlow minus0.25ATR; reward2; hold16bars; oneattempt/level/day. Shortsymmetric previoushigh."
+      },
+      {
+        "id": "G5",
+        "name": "Divergência RSI confirmada",
+        "presets": [
+          2,
+          3
+        ],
+        "rule": "Strict pivots withpresetbars eachside confirmed onlyatrightedge. Lasttwo pivotlows separated6..40bars: newlow at least0.1ATR lower, RSI14>=5pointshigher and<45. Confirmationcandlebullish. Stopnewpivotlow minus0.25ATR; reward2; hold16bars. Short higherhigh,RSI5pointslower and>55. Never signalretroactively."
+      }
+    ],
+    "limitations": "These periods were used by other research previously. No untouched-data claim, no five-strategy approval by counting variants. Portfolio coexistence, real-time forward tests and broker contract verification remain mandatory before manual-operation alerts. No live-order capability. One fixed batch; no result-guided retuning within this protocol.",
+    "sources": [
+      "https://www.metatrader5.com/en/terminal/help/indicators/trend_indicators/bb",
+      "https://www.metatrader5.com/en/terminal/help/indicators/oscillators/rsi",
+      "https://www.mql5.com/en/book/applications/timeseries/timeseries_mqlrates"
+    ]
+  },
+  "protocolHash": "83a3dee4a185cff4f5f9f68211632f311b05bcd13da94620be4f1b3256df8a02",
+  "selectionHash": "05a83dcb15e5c50e1d39b6f28e6c6177bb9bc2ab2fbf34f21475791a08a2b1ad",
+  "sourceHashes": {
+    "M15": "f0bb3612b16661118e30689ebf71f34b0a02914fd4565837b8cddefe8aa52583",
+    "H1": "9bb7ebfe239fb62c98cc7882c1a5e3c076bbf89fbfa91e829d9457599ef9b263"
+  },
+  "engineHashes": {
+    "gold_signals.py": "4abf23a4ab9066861f0d0ccf6dc6a1dc416a3d8f47aaf118066062674c7802c8",
+    "gold_execution.py": "198f92eb0d4da091be613d12e76ac84650b13ee1953a0f4e9322434176c58260",
+    "run_gold_research.py": "7bf5d2a19f017cb0963d74ec0aedc55a4ac8d7e72629de336f1fd0bc2d2b6089"
+  },
+  "trials": [
+    {
+      "family": "G1",
+      "name": "Pullback de tendência",
+      "preset": 20,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90158.92000000265,
+        "trades": 174,
+        "net": -9841.079999997353,
+        "returnPct": -9.841079999997353,
+        "profitFactor": 0.604263671410907,
+        "maxDrawdown": 10134.069999997519,
+        "maxDrawdownPct": 10.104464928204356,
+        "maxDailyClosedEquityLoss": 498.53999999994994,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 62,
+          "insufficient_full_risk_budget": 906
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90165.38999999971,
+        "trades": 99,
+        "net": -9834.610000000292,
+        "returnPct": -9.834610000000291,
+        "profitFactor": 0.352923179362194,
+        "maxDrawdown": 9834.610000000292,
+        "maxDrawdownPct": 9.834610000000291,
+        "maxDailyClosedEquityLoss": 497.36000000001513,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 32,
+          "insufficient_full_risk_budget": 1045
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -1.0
+    },
+    {
+      "family": "G1",
+      "name": "Pullback de tendência",
+      "preset": 50,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90137.98000000343,
+        "trades": 222,
+        "net": -9862.01999999657,
+        "returnPct": -9.862019999996571,
+        "profitFactor": 0.6839044484381871,
+        "maxDrawdown": 10019.139999996623,
+        "maxDrawdownPct": 10.003422622372348,
+        "maxDailyClosedEquityLoss": 498.5199999999604,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 39,
+          "entry_stop_atr_range": 1,
+          "insufficient_full_risk_budget": 486
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90145.80999999978,
+        "trades": 113,
+        "net": -9854.19000000022,
+        "returnPct": -9.854190000000221,
+        "profitFactor": 0.4094067571098706,
+        "maxDrawdown": 9854.19000000022,
+        "maxDrawdownPct": 9.854190000000221,
+        "maxDailyClosedEquityLoss": 499.3600000000006,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 26,
+          "insufficient_full_risk_budget": 645
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -1.0
+    },
+    {
+      "family": "G2",
+      "name": "Rompimento da faixa inicial",
+      "preset": 60,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90218.50000000329,
+        "trades": 176,
+        "net": -9781.499999996711,
+        "returnPct": -9.781499999996711,
+        "profitFactor": 0.5965088933871188,
+        "maxDrawdown": 10488.359999997032,
+        "maxDrawdownPct": 10.421114631502846,
+        "maxDailyClosedEquityLoss": 249.99999999998545,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 51,
+          "insufficient_full_risk_budget": 492
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90024.52999999968,
+        "trades": 112,
+        "net": -9975.470000000321,
+        "returnPct": -9.975470000000321,
+        "profitFactor": 0.3629813494835628,
+        "maxDrawdown": 10250.530000000304,
+        "maxDrawdownPct": 10.222412232912458,
+        "maxDailyClosedEquityLoss": 249.9200000000128,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 32,
+          "insufficient_full_risk_budget": 584
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -0.9731662655491984
+    },
+    {
+      "family": "G2",
+      "name": "Rompimento da faixa inicial",
+      "preset": 120,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90065.00000000256,
+        "trades": 163,
+        "net": -9934.999999997439,
+        "returnPct": -9.934999999997439,
+        "profitFactor": 0.5112890507596185,
+        "maxDrawdown": 10362.619999997478,
+        "maxDrawdownPct": 10.318496047200435,
+        "maxDailyClosedEquityLoss": 249.91999999999825,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 13,
+          "insufficient_full_risk_budget": 303
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90035.19999999988,
+        "trades": 115,
+        "net": -9964.80000000012,
+        "returnPct": -9.96480000000012,
+        "profitFactor": 0.3242618268420868,
+        "maxDrawdown": 10143.690000000104,
+        "maxDrawdownPct": 10.125576356456042,
+        "maxDailyClosedEquityLoss": 249.7800000000134,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 10,
+          "insufficient_full_risk_budget": 365
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -0.9823644058523099
+    },
+    {
+      "family": "G3",
+      "name": "Retorno às Bandas de Bollinger",
+      "preset": 2,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90142.3100000026,
+        "trades": 140,
+        "net": -9857.689999997398,
+        "returnPct": -9.857689999997397,
+        "profitFactor": 0.45695377736947485,
+        "maxDrawdown": 9860.08999999742,
+        "maxDrawdownPct": 9.859853363516693,
+        "maxDailyClosedEquityLoss": 498.93999999992957,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 6,
+          "entry_reward_r": 3,
+          "insufficient_full_risk_budget": 372
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90081.76999999992,
+        "trades": 108,
+        "net": -9918.230000000083,
+        "returnPct": -9.918230000000085,
+        "profitFactor": 0.27068781559226524,
+        "maxDrawdown": 9918.230000000083,
+        "maxDrawdownPct": 9.918230000000085,
+        "maxDailyClosedEquityLoss": 499.43000000000757,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 6,
+          "entry_reward_r": 2,
+          "insufficient_full_risk_budget": 406
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -1.0
+    },
+    {
+      "family": "G3",
+      "name": "Retorno às Bandas de Bollinger",
+      "preset": 2.5,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90008.72000000215,
+        "trades": 128,
+        "net": -9991.279999997845,
+        "returnPct": -9.991279999997845,
+        "profitFactor": 0.417937350352236,
+        "maxDrawdown": 10366.82999999808,
+        "maxDrawdownPct": 10.328043034382434,
+        "maxDailyClosedEquityLoss": 495.7399999999616,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 5,
+          "entry_reward_r": 3,
+          "insufficient_full_risk_budget": 145
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90056.74999999981,
+        "trades": 88,
+        "net": -9943.25000000019,
+        "returnPct": -9.943250000000189,
+        "profitFactor": 0.21290275085273228,
+        "maxDrawdown": 10156.280000000188,
+        "maxDrawdownPct": 10.134690069744611,
+        "maxDailyClosedEquityLoss": 496.86000000001513,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 3,
+          "insufficient_full_risk_budget": 190
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -0.9790248004190516
+    },
+    {
+      "family": "G4",
+      "name": "Varredura do dia anterior",
+      "preset": 0.1,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90225.43000000234,
+        "trades": 140,
+        "net": -9774.569999997664,
+        "returnPct": -9.774569999997665,
+        "profitFactor": 0.5228393066880377,
+        "maxDrawdown": 10265.349999997823,
+        "maxDrawdownPct": 10.2152157640709,
+        "maxDailyClosedEquityLoss": 497.07999999997264,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "entry_stop_atr_range": 2,
+          "insufficient_full_risk_budget": 164
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90248.28999999983,
+        "trades": 93,
+        "net": -9751.710000000166,
+        "returnPct": -9.751710000000166,
+        "profitFactor": 0.3041630156496547,
+        "maxDrawdown": 9853.870000000199,
+        "maxDrawdownPct": 9.84381356006723,
+        "maxDailyClosedEquityLoss": 489.5399999999936,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "entry_stop_atr_range": 1,
+          "insufficient_full_risk_budget": 212
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -0.9896324997183816
+    },
+    {
+      "family": "G4",
+      "name": "Varredura do dia anterior",
+      "preset": 0.25,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90197.50000000247,
+        "trades": 144,
+        "net": -9802.499999997526,
+        "returnPct": -9.802499999997526,
+        "profitFactor": 0.5360020297101491,
+        "maxDrawdown": 10324.099999997634,
+        "maxDrawdownPct": 10.284386840214134,
+        "maxDailyClosedEquityLoss": 249.89999999997963,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "entry_stop_atr_range": 2,
+          "insufficient_full_risk_budget": 133
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90133.14999999985,
+        "trades": 92,
+        "net": -9866.850000000151,
+        "returnPct": -9.866850000000152,
+        "profitFactor": 0.3142663539223285,
+        "maxDrawdown": 9969.010000000184,
+        "maxDrawdownPct": 9.958836053088346,
+        "maxDailyClosedEquityLoss": 249.98000000001048,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "entry_stop_atr_range": 1,
+          "insufficient_full_risk_budget": 186
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -0.9897522421985703
+    },
+    {
+      "family": "G5",
+      "name": "Divergência RSI confirmada",
+      "preset": 2,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 97240.57000000073,
+        "trades": 56,
+        "net": -2759.4299999992654,
+        "returnPct": -2.7594299999992655,
+        "profitFactor": 0.641434092108175,
+        "maxDrawdown": 3128.1499999992666,
+        "maxDrawdownPct": 3.1272212152983228,
+        "maxDailyClosedEquityLoss": 415.4799999999668,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "entry_stop_atr_range": 2
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 95572.94000000006,
+        "trades": 56,
+        "net": -4427.0599999999395,
+        "returnPct": -4.42705999999994,
+        "profitFactor": 0.434910974474974,
+        "maxDrawdown": 4576.979999999967,
+        "maxDrawdownPct": 4.576979999999967,
+        "maxDailyClosedEquityLoss": 422.8700000000099,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "entry_stop_atr_range": 2
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -0.9672447771237741
+    },
+    {
+      "family": "G5",
+      "name": "Divergência RSI confirmada",
+      "preset": 3,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 97467.96000000057,
+        "trades": 47,
+        "net": -2532.039999999426,
+        "returnPct": -2.532039999999426,
+        "profitFactor": 0.587829775735474,
+        "maxDrawdown": 3198.8999999994994,
+        "maxDrawdownPct": 3.181964313139245,
+        "maxDailyClosedEquityLoss": 420.6199999999808,
+        "overnightUnpriced": 0,
+        "skipped": {},
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 96229.08000000002,
+        "trades": 47,
+        "net": -3770.9199999999837,
+        "returnPct": -3.770919999999984,
+        "profitFactor": 0.4047510430100572,
+        "maxDrawdown": 4093.0800000000017,
+        "maxDrawdownPct": 4.082191977557461,
+        "maxDailyClosedEquityLoss": 432.02999999999884,
+        "overnightUnpriced": 0,
+        "skipped": {},
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -0.9212915457308389
+    }
+  ],
+  "selection": [
+    {
+      "family": "G1",
+      "name": "Pullback de tendência",
+      "preset": 20,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90158.92000000265,
+        "trades": 174,
+        "net": -9841.079999997353,
+        "returnPct": -9.841079999997353,
+        "profitFactor": 0.604263671410907,
+        "maxDrawdown": 10134.069999997519,
+        "maxDrawdownPct": 10.104464928204356,
+        "maxDailyClosedEquityLoss": 498.53999999994994,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 62,
+          "insufficient_full_risk_budget": 906
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90165.38999999971,
+        "trades": 99,
+        "net": -9834.610000000292,
+        "returnPct": -9.834610000000291,
+        "profitFactor": 0.352923179362194,
+        "maxDrawdown": 9834.610000000292,
+        "maxDrawdownPct": 9.834610000000291,
+        "maxDailyClosedEquityLoss": 497.36000000001513,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 32,
+          "insufficient_full_risk_budget": 1045
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -1.0
+    },
+    {
+      "family": "G2",
+      "name": "Rompimento da faixa inicial",
+      "preset": 60,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90218.50000000329,
+        "trades": 176,
+        "net": -9781.499999996711,
+        "returnPct": -9.781499999996711,
+        "profitFactor": 0.5965088933871188,
+        "maxDrawdown": 10488.359999997032,
+        "maxDrawdownPct": 10.421114631502846,
+        "maxDailyClosedEquityLoss": 249.99999999998545,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 51,
+          "insufficient_full_risk_budget": 492
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90024.52999999968,
+        "trades": 112,
+        "net": -9975.470000000321,
+        "returnPct": -9.975470000000321,
+        "profitFactor": 0.3629813494835628,
+        "maxDrawdown": 10250.530000000304,
+        "maxDrawdownPct": 10.222412232912458,
+        "maxDailyClosedEquityLoss": 249.9200000000128,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 32,
+          "insufficient_full_risk_budget": 584
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -0.9731662655491984
+    },
+    {
+      "family": "G3",
+      "name": "Retorno às Bandas de Bollinger",
+      "preset": 2.5,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90008.72000000215,
+        "trades": 128,
+        "net": -9991.279999997845,
+        "returnPct": -9.991279999997845,
+        "profitFactor": 0.417937350352236,
+        "maxDrawdown": 10366.82999999808,
+        "maxDrawdownPct": 10.328043034382434,
+        "maxDailyClosedEquityLoss": 495.7399999999616,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 5,
+          "entry_reward_r": 3,
+          "insufficient_full_risk_budget": 145
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90056.74999999981,
+        "trades": 88,
+        "net": -9943.25000000019,
+        "returnPct": -9.943250000000189,
+        "profitFactor": 0.21290275085273228,
+        "maxDrawdown": 10156.280000000188,
+        "maxDrawdownPct": 10.134690069744611,
+        "maxDailyClosedEquityLoss": 496.86000000001513,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "family_daily_trade_cap": 3,
+          "insufficient_full_risk_budget": 190
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -0.9790248004190516
+    },
+    {
+      "family": "G4",
+      "name": "Varredura do dia anterior",
+      "preset": 0.1,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90225.43000000234,
+        "trades": 140,
+        "net": -9774.569999997664,
+        "returnPct": -9.774569999997665,
+        "profitFactor": 0.5228393066880377,
+        "maxDrawdown": 10265.349999997823,
+        "maxDrawdownPct": 10.2152157640709,
+        "maxDailyClosedEquityLoss": 497.07999999997264,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "entry_stop_atr_range": 2,
+          "insufficient_full_risk_budget": 164
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 90248.28999999983,
+        "trades": 93,
+        "net": -9751.710000000166,
+        "returnPct": -9.751710000000166,
+        "profitFactor": 0.3041630156496547,
+        "maxDrawdown": 9853.870000000199,
+        "maxDrawdownPct": 9.84381356006723,
+        "maxDailyClosedEquityLoss": 489.5399999999936,
+        "overnightUnpriced": 0,
+        "skipped": {
+          "entry_stop_atr_range": 1,
+          "insufficient_full_risk_budget": 212
+        },
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -0.9896324997183816
+    },
+    {
+      "family": "G5",
+      "name": "Divergência RSI confirmada",
+      "preset": 3,
+      "base": {
+        "scenario": "base",
+        "costs": {
+          "spread": 0.6,
+          "slippage": 0.1,
+          "commissionPerLotRT": 10.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 97467.96000000057,
+        "trades": 47,
+        "net": -2532.039999999426,
+        "returnPct": -2.532039999999426,
+        "profitFactor": 0.587829775735474,
+        "maxDrawdown": 3198.8999999994994,
+        "maxDrawdownPct": 3.181964313139245,
+        "maxDailyClosedEquityLoss": 420.6199999999808,
+        "overnightUnpriced": 0,
+        "skipped": {},
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "stress": {
+        "scenario": "stress",
+        "costs": {
+          "spread": 1.2,
+          "slippage": 0.25,
+          "commissionPerLotRT": 20.0
+        },
+        "start": 1656633600,
+        "end": 1735689600,
+        "initialCapital": 100000.0,
+        "endingBalance": 96229.08000000002,
+        "trades": 47,
+        "net": -3770.9199999999837,
+        "returnPct": -3.770919999999984,
+        "profitFactor": 0.4047510430100572,
+        "maxDrawdown": 4093.0800000000017,
+        "maxDrawdownPct": 4.082191977557461,
+        "maxDailyClosedEquityLoss": 432.02999999999884,
+        "overnightUnpriced": 0,
+        "skipped": {},
+        "observedGaps": 648,
+        "totalRiskPaused": false,
+        "valid": false,
+        "assumptions": {
+          "clock": "native exported broker labels; UTC/session offset unverified",
+          "dailyReference": "last processed close before new exported calendar day",
+          "dailyLossLimit": 3000.0,
+          "totalEquityFloor": 90000.0,
+          "plannedRiskPerTrade": 250.0,
+          "entryHours": "[08:00,20:00)",
+          "sessionCutoff": "20:45",
+          "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+          "costs": "fixed research assumptions, not historical broker costs; swap absent"
+        }
+      },
+      "eligible": false,
+      "score": -0.9212915457308389
+    }
+  ],
+  "results": [
+    {
+      "family": "G1",
+      "name": "Pullback de tendência",
+      "preset": 20,
+      "developmentEligible": false,
+      "results": {
+        "validation_base": {
+          "scenario": "base",
+          "costs": {
+            "spread": 0.6,
+            "slippage": 0.1,
+            "commissionPerLotRT": 10.0
+          },
+          "start": 1735689600,
+          "end": 1767225600,
+          "initialCapital": 100000.0,
+          "endingBalance": 94386.98000000088,
+          "trades": 277,
+          "net": -5613.019999999116,
+          "returnPct": -5.613019999999117,
+          "profitFactor": 0.8464308920957443,
+          "maxDrawdown": 7993.979999998846,
+          "maxDrawdownPct": 7.942139274313575,
+          "maxDailyClosedEquityLoss": 495.6399999999703,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "family_daily_trade_cap": 62
+          },
+          "observedGaps": 257,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "validation_stress": {
+          "scenario": "stress",
+          "costs": {
+            "spread": 1.2,
+            "slippage": 0.25,
+            "commissionPerLotRT": 20.0
+          },
+          "start": 1735689600,
+          "end": 1767225600,
+          "initialCapital": 100000.0,
+          "endingBalance": 90153.12000000084,
+          "trades": 164,
+          "net": -9846.87999999916,
+          "returnPct": -9.84687999999916,
+          "profitFactor": 0.5741265422261123,
+          "maxDrawdown": 9846.87999999916,
+          "maxDrawdownPct": 9.84687999999916,
+          "maxDailyClosedEquityLoss": 499.0599999999977,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "family_daily_trade_cap": 33,
+            "insufficient_full_risk_budget": 204
+          },
+          "observedGaps": 257,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "final_base": {
+          "scenario": "base",
+          "costs": {
+            "spread": 0.6,
+            "slippage": 0.1,
+            "commissionPerLotRT": 10.0
+          },
+          "start": 1767225600,
+          "end": 1788220800,
+          "initialCapital": 100000.0,
+          "endingBalance": 93956.41999999736,
+          "trades": 190,
+          "net": -6043.580000002636,
+          "returnPct": -6.043580000002636,
+          "profitFactor": 0.7764381879284409,
+          "maxDrawdown": 7454.200000002253,
+          "maxDrawdownPct": 7.39885141224271,
+          "maxDailyClosedEquityLoss": 496.09000000004016,
+          "overnightUnpriced": 1,
+          "skipped": {
+            "family_daily_trade_cap": 46
+          },
+          "observedGaps": 173,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "final_stress": {
+          "scenario": "stress",
+          "costs": {
+            "spread": 1.2,
+            "slippage": 0.25,
+            "commissionPerLotRT": 20.0
+          },
+          "start": 1767225600,
+          "end": 1788220800,
+          "initialCapital": 100000.0,
+          "endingBalance": 91399.67000000057,
+          "trades": 190,
+          "net": -8600.329999999434,
+          "returnPct": -8.600329999999435,
+          "profitFactor": 0.6823932596095611,
+          "maxDrawdown": 9546.109999999564,
+          "maxDrawdownPct": 9.50446144992598,
+          "maxDailyClosedEquityLoss": 497.3199999999779,
+          "overnightUnpriced": 1,
+          "skipped": {
+            "family_daily_trade_cap": 46
+          },
+          "observedGaps": 173,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        }
+      },
+      "historicalScreenPassed": false,
+      "validated": false,
+      "reasons": [
+        "Desenvolvimento não passou nos critérios fixos",
+        "validation: resultado líquido não positivo",
+        "validation: fator de lucro inferior a 1,20",
+        "validation: reprovação com custos elevados",
+        "final: resultado líquido não positivo",
+        "final: fator de lucro inferior a 1,20",
+        "final: reprovação com custos elevados",
+        "final: custo noturno não reconstruído"
+      ],
+      "pending": [
+        "Spreads e comissão executáveis do contrato",
+        "Regra diária e horário do programa",
+        "Teste prospectivo",
+        "Risco conjunto das estratégias"
+      ]
+    },
+    {
+      "family": "G2",
+      "name": "Rompimento da faixa inicial",
+      "preset": 60,
+      "developmentEligible": false,
+      "results": {
+        "validation_base": {
+          "scenario": "base",
+          "costs": {
+            "spread": 0.6,
+            "slippage": 0.1,
+            "commissionPerLotRT": 10.0
+          },
+          "start": 1735689600,
+          "end": 1767225600,
+          "initialCapital": 100000.0,
+          "endingBalance": 90146.13000000169,
+          "trades": 153,
+          "net": -9853.869999998307,
+          "returnPct": -9.853869999998308,
+          "profitFactor": 0.5796621896587673,
+          "maxDrawdown": 9853.869999998307,
+          "maxDrawdownPct": 9.853869999998308,
+          "maxDailyClosedEquityLoss": 249.89999999997963,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "family_daily_trade_cap": 44,
+            "entry_stop_atr_range": 1,
+            "insufficient_full_risk_budget": 58
+          },
+          "observedGaps": 257,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "validation_stress": {
+          "scenario": "stress",
+          "costs": {
+            "spread": 1.2,
+            "slippage": 0.25,
+            "commissionPerLotRT": 20.0
+          },
+          "start": 1735689600,
+          "end": 1767225600,
+          "initialCapital": 100000.0,
+          "endingBalance": 90034.85000000075,
+          "trades": 125,
+          "net": -9965.149999999252,
+          "returnPct": -9.965149999999253,
+          "profitFactor": 0.4803508843288659,
+          "maxDrawdown": 9965.149999999252,
+          "maxDrawdownPct": 9.965149999999253,
+          "maxDailyClosedEquityLoss": 249.8399999999965,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "family_daily_trade_cap": 32,
+            "insufficient_full_risk_budget": 104
+          },
+          "observedGaps": 257,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "final_base": {
+          "scenario": "base",
+          "costs": {
+            "spread": 0.6,
+            "slippage": 0.1,
+            "commissionPerLotRT": 10.0
+          },
+          "start": 1767225600,
+          "end": 1788220800,
+          "initialCapital": 100000.0,
+          "endingBalance": 98127.78999999822,
+          "trades": 125,
+          "net": -1872.2100000017817,
+          "returnPct": -1.8722100000017818,
+          "profitFactor": 0.8693638972638844,
+          "maxDrawdown": 3261.410000001575,
+          "maxDrawdownPct": 3.2571236253106672,
+          "maxDailyClosedEquityLoss": 249.69000000003143,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "family_daily_trade_cap": 13
+          },
+          "observedGaps": 173,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "final_stress": {
+          "scenario": "stress",
+          "costs": {
+            "spread": 1.2,
+            "slippage": 0.25,
+            "commissionPerLotRT": 20.0
+          },
+          "start": 1767225600,
+          "end": 1788220800,
+          "initialCapital": 100000.0,
+          "endingBalance": 96361.57000000021,
+          "trades": 125,
+          "net": -3638.4299999997893,
+          "returnPct": -3.638429999999789,
+          "profitFactor": 0.7503535325466266,
+          "maxDrawdown": 4805.329999999798,
+          "maxDrawdownPct": 4.800240784719838,
+          "maxDailyClosedEquityLoss": 250.0,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "family_daily_trade_cap": 13
+          },
+          "observedGaps": 173,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        }
+      },
+      "historicalScreenPassed": false,
+      "validated": false,
+      "reasons": [
+        "Desenvolvimento não passou nos critérios fixos",
+        "validation: resultado líquido não positivo",
+        "validation: fator de lucro inferior a 1,20",
+        "validation: queda acima do limite de pesquisa",
+        "validation: reprovação com custos elevados",
+        "final: resultado líquido não positivo",
+        "final: fator de lucro inferior a 1,20",
+        "final: reprovação com custos elevados"
+      ],
+      "pending": [
+        "Spreads e comissão executáveis do contrato",
+        "Regra diária e horário do programa",
+        "Teste prospectivo",
+        "Risco conjunto das estratégias"
+      ]
+    },
+    {
+      "family": "G3",
+      "name": "Retorno às Bandas de Bollinger",
+      "preset": 2.5,
+      "developmentEligible": false,
+      "results": {
+        "validation_base": {
+          "scenario": "base",
+          "costs": {
+            "spread": 0.6,
+            "slippage": 0.1,
+            "commissionPerLotRT": 10.0
+          },
+          "start": 1735689600,
+          "end": 1767225600,
+          "initialCapital": 100000.0,
+          "endingBalance": 101417.73000000013,
+          "trades": 85,
+          "net": 1417.730000000127,
+          "returnPct": 1.417730000000127,
+          "profitFactor": 1.1613583543321522,
+          "maxDrawdown": 1836.5199999999895,
+          "maxDrawdownPct": 1.8089278803624511,
+          "maxDailyClosedEquityLoss": 493.0399999999645,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "entry_reward_r": 2,
+            "family_daily_trade_cap": 2
+          },
+          "observedGaps": 257,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "validation_stress": {
+          "scenario": "stress",
+          "costs": {
+            "spread": 1.2,
+            "slippage": 0.25,
+            "commissionPerLotRT": 20.0
+          },
+          "start": 1735689600,
+          "end": 1767225600,
+          "initialCapital": 100000.0,
+          "endingBalance": 99273.68000000031,
+          "trades": 85,
+          "net": -726.3199999996868,
+          "returnPct": -0.7263199999996869,
+          "profitFactor": 0.9184272148878095,
+          "maxDrawdown": 2903.2899999998044,
+          "maxDrawdownPct": 2.8807730138913232,
+          "maxDailyClosedEquityLoss": 496.10999999998603,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "entry_reward_r": 2,
+            "family_daily_trade_cap": 2
+          },
+          "observedGaps": 257,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "final_base": {
+          "scenario": "base",
+          "costs": {
+            "spread": 0.6,
+            "slippage": 0.1,
+            "commissionPerLotRT": 10.0
+          },
+          "start": 1767225600,
+          "end": 1788220800,
+          "initialCapital": 100000.0,
+          "endingBalance": 98764.68999999919,
+          "trades": 61,
+          "net": -1235.3100000008126,
+          "returnPct": -1.2353100000008126,
+          "profitFactor": 0.8089331867049776,
+          "maxDrawdown": 1889.5500000003085,
+          "maxDrawdownPct": 1.8816869945561654,
+          "maxDailyClosedEquityLoss": 416.3100000000122,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "entry_reward_r": 1
+          },
+          "observedGaps": 173,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "final_stress": {
+          "scenario": "stress",
+          "costs": {
+            "spread": 1.2,
+            "slippage": 0.25,
+            "commissionPerLotRT": 20.0
+          },
+          "start": 1767225600,
+          "end": 1788220800,
+          "initialCapital": 100000.0,
+          "endingBalance": 98044.11000000012,
+          "trades": 61,
+          "net": -1955.889999999883,
+          "returnPct": -1.955889999999883,
+          "profitFactor": 0.7044438668653387,
+          "maxDrawdown": 2239.019999999946,
+          "maxDrawdownPct": 2.236884669894064,
+          "maxDailyClosedEquityLoss": 431.0500000000029,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "entry_reward_r": 1
+          },
+          "observedGaps": 173,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        }
+      },
+      "historicalScreenPassed": false,
+      "validated": false,
+      "reasons": [
+        "Desenvolvimento não passou nos critérios fixos",
+        "validation: menos de 100 operações",
+        "validation: fator de lucro inferior a 1,20",
+        "validation: reprovação com custos elevados",
+        "final: menos de 100 operações",
+        "final: resultado líquido não positivo",
+        "final: fator de lucro inferior a 1,20",
+        "final: reprovação com custos elevados"
+      ],
+      "pending": [
+        "Spreads e comissão executáveis do contrato",
+        "Regra diária e horário do programa",
+        "Teste prospectivo",
+        "Risco conjunto das estratégias"
+      ]
+    },
+    {
+      "family": "G4",
+      "name": "Varredura do dia anterior",
+      "preset": 0.1,
+      "developmentEligible": false,
+      "results": {
+        "validation_base": {
+          "scenario": "base",
+          "costs": {
+            "spread": 0.6,
+            "slippage": 0.1,
+            "commissionPerLotRT": 10.0
+          },
+          "start": 1735689600,
+          "end": 1767225600,
+          "initialCapital": 100000.0,
+          "endingBalance": 96211.53000000033,
+          "trades": 109,
+          "net": -3788.4699999996665,
+          "returnPct": -3.7884699999996663,
+          "profitFactor": 0.7574530091494635,
+          "maxDrawdown": 4122.539999999804,
+          "maxDrawdownPct": 4.1150637521748346,
+          "maxDailyClosedEquityLoss": 389.18000000000757,
+          "overnightUnpriced": 0,
+          "skipped": {},
+          "observedGaps": 257,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "validation_stress": {
+          "scenario": "stress",
+          "costs": {
+            "spread": 1.2,
+            "slippage": 0.25,
+            "commissionPerLotRT": 20.0
+          },
+          "start": 1735689600,
+          "end": 1767225600,
+          "initialCapital": 100000.0,
+          "endingBalance": 93845.35000000044,
+          "trades": 109,
+          "net": -6154.649999999558,
+          "returnPct": -6.154649999999558,
+          "profitFactor": 0.6099133901436752,
+          "maxDrawdown": 6197.069999999556,
+          "maxDrawdownPct": 6.194442317568443,
+          "maxDailyClosedEquityLoss": 393.9600000000064,
+          "overnightUnpriced": 0,
+          "skipped": {},
+          "observedGaps": 257,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "final_base": {
+          "scenario": "base",
+          "costs": {
+            "spread": 0.6,
+            "slippage": 0.1,
+            "commissionPerLotRT": 10.0
+          },
+          "start": 1767225600,
+          "end": 1788220800,
+          "initialCapital": 100000.0,
+          "endingBalance": 98543.85999999923,
+          "trades": 64,
+          "net": -1456.1400000007707,
+          "returnPct": -1.4561400000007707,
+          "profitFactor": 0.826927122642827,
+          "maxDrawdown": 3278.2800000004063,
+          "maxDrawdownPct": 3.2314030060130805,
+          "maxDailyClosedEquityLoss": 248.93999999998778,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "entry_stop_atr_range": 1
+          },
+          "observedGaps": 173,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "final_stress": {
+          "scenario": "stress",
+          "costs": {
+            "spread": 1.2,
+            "slippage": 0.25,
+            "commissionPerLotRT": 20.0
+          },
+          "start": 1767225600,
+          "end": 1788220800,
+          "initialCapital": 100000.0,
+          "endingBalance": 97595.81000000014,
+          "trades": 64,
+          "net": -2404.189999999857,
+          "returnPct": -2.404189999999857,
+          "profitFactor": 0.7176712774365241,
+          "maxDrawdown": 3700.7699999998877,
+          "maxDrawdownPct": 3.6591898934031675,
+          "maxDailyClosedEquityLoss": 250.0,
+          "overnightUnpriced": 0,
+          "skipped": {
+            "entry_stop_atr_range": 1
+          },
+          "observedGaps": 173,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        }
+      },
+      "historicalScreenPassed": false,
+      "validated": false,
+      "reasons": [
+        "Desenvolvimento não passou nos critérios fixos",
+        "validation: resultado líquido não positivo",
+        "validation: fator de lucro inferior a 1,20",
+        "validation: reprovação com custos elevados",
+        "final: menos de 100 operações",
+        "final: resultado líquido não positivo",
+        "final: fator de lucro inferior a 1,20",
+        "final: reprovação com custos elevados"
+      ],
+      "pending": [
+        "Spreads e comissão executáveis do contrato",
+        "Regra diária e horário do programa",
+        "Teste prospectivo",
+        "Risco conjunto das estratégias"
+      ]
+    },
+    {
+      "family": "G5",
+      "name": "Divergência RSI confirmada",
+      "preset": 3,
+      "developmentEligible": false,
+      "results": {
+        "validation_base": {
+          "scenario": "base",
+          "costs": {
+            "spread": 0.6,
+            "slippage": 0.1,
+            "commissionPerLotRT": 10.0
+          },
+          "start": 1735689600,
+          "end": 1767225600,
+          "initialCapital": 100000.0,
+          "endingBalance": 100617.97000000012,
+          "trades": 25,
+          "net": 617.9700000001176,
+          "returnPct": 0.6179700000001176,
+          "profitFactor": 1.2348356450693712,
+          "maxDrawdown": 930.4100000000617,
+          "maxDrawdownPct": 0.9162233804222776,
+          "maxDailyClosedEquityLoss": 248.00999999999476,
+          "overnightUnpriced": 0,
+          "skipped": {},
+          "observedGaps": 257,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "validation_stress": {
+          "scenario": "stress",
+          "costs": {
+            "spread": 1.2,
+            "slippage": 0.25,
+            "commissionPerLotRT": 20.0
+          },
+          "start": 1735689600,
+          "end": 1767225600,
+          "initialCapital": 100000.0,
+          "endingBalance": 99905.55000000013,
+          "trades": 25,
+          "net": -94.44999999986612,
+          "returnPct": -0.09444999999986613,
+          "profitFactor": 0.9650410476212047,
+          "maxDrawdown": 1049.219999999943,
+          "maxDrawdownPct": 1.0392971030491598,
+          "maxDailyClosedEquityLoss": 249.47999999999593,
+          "overnightUnpriced": 0,
+          "skipped": {},
+          "observedGaps": 257,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "final_base": {
+          "scenario": "base",
+          "costs": {
+            "spread": 0.6,
+            "slippage": 0.1,
+            "commissionPerLotRT": 10.0
+          },
+          "start": 1767225600,
+          "end": 1788220800,
+          "initialCapital": 100000.0,
+          "endingBalance": 98606.51999999986,
+          "trades": 17,
+          "net": -1393.4800000001414,
+          "returnPct": -1.3934800000001415,
+          "profitFactor": 0.23372009898264434,
+          "maxDrawdown": 1653.1400000001013,
+          "maxDrawdownPct": 1.648858573827302,
+          "maxDailyClosedEquityLoss": 490.6400000000285,
+          "overnightUnpriced": 0,
+          "skipped": {},
+          "observedGaps": 173,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        },
+        "final_stress": {
+          "scenario": "stress",
+          "costs": {
+            "spread": 1.2,
+            "slippage": 0.25,
+            "commissionPerLotRT": 20.0
+          },
+          "start": 1767225600,
+          "end": 1788220800,
+          "initialCapital": 100000.0,
+          "endingBalance": 98517.67000000006,
+          "trades": 17,
+          "net": -1482.3299999999435,
+          "returnPct": -1.4823299999999435,
+          "profitFactor": 0.20403692188734301,
+          "maxDrawdown": 1693.4099999999453,
+          "maxDrawdownPct": 1.6898430792283101,
+          "maxDailyClosedEquityLoss": 466.7899999999936,
+          "overnightUnpriced": 0,
+          "skipped": {},
+          "observedGaps": 173,
+          "totalRiskPaused": false,
+          "valid": false,
+          "assumptions": {
+            "clock": "native exported broker labels; UTC/session offset unverified",
+            "dailyReference": "last processed close before new exported calendar day",
+            "dailyLossLimit": 3000.0,
+            "totalEquityFloor": 90000.0,
+            "plannedRiskPerTrade": 250.0,
+            "entryHours": "[08:00,20:00)",
+            "sessionCutoff": "20:45",
+            "drawdown": "liquidation-value M15 closes; intrabar limits not certified",
+            "costs": "fixed research assumptions, not historical broker costs; swap absent"
+          }
+        }
+      },
+      "historicalScreenPassed": false,
+      "validated": false,
+      "reasons": [
+        "Desenvolvimento não passou nos critérios fixos",
+        "validation: menos de 100 operações",
+        "validation: reprovação com custos elevados",
+        "final: menos de 100 operações",
+        "final: resultado líquido não positivo",
+        "final: fator de lucro inferior a 1,20",
+        "final: reprovação com custos elevados"
+      ],
+      "pending": [
+        "Spreads e comissão executáveis do contrato",
+        "Regra diária e horário do programa",
+        "Teste prospectivo",
+        "Risco conjunto das estratégias"
+      ]
+    }
+  ],
+  "validated": false
+}

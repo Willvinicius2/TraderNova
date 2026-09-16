@@ -1,0 +1,30 @@
+{
+  "id":"gold-cfd-v1",
+  "registeredAt":"2026-09-15",
+  "source":"Existing read-only XAUUSD export from Five Percent Online MT5, exported 2026-09-10; source SHA256 must match the prior export selection manifest",
+  "timeBasis":"Broker-exported epoch labels; do not claim UTC or London/New York session alignment",
+  "dataQualityAmendmentBeforeResults":"G4 prior-day levels require exactly92 continuous M15bars (23h), beginning00:00 or01:00 on exported clock. This matches the observed full-session structures. Short holiday days, incomplete boundaries and unexplained gaps are excluded as level sources. No evaluation results were computed before this amendment.",
+  "development":["2022-07-01","2025-01-01"],
+  "validation":["2025-01-01","2026-01-01"],
+  "retrospectiveFinal":["2026-01-01","2026-09-01"],
+  "selection":"Two fixed presets per family, 10 trials total. Rank development only by stress net / stress max candle-close drawdown (zero DD is ineligible), ties by preset ascending. Eligible: >=100 trades, net>0 and PF>=1.10 in both base and stress; no unpriced overnight positions. Freeze best eligible or highest-scoring failed candidate for diagnosis before validation. A failed development candidate can never be promoted by final results.",
+  "historicalScreen":"Development eligible; validation AND final each >=100 trades, net>0, PF>=1.20, maximum drawdown <=8000 USD, maximum daily close-equity loss<=2000 USD; validation and final stress net>0, DD<=10000 and daily loss<=3000; no unpriced overnight holdings. Retrospective screen alone is not operational approval.",
+  "common":"Closed M15 signal, next available continuous M15 open on same day; one position; entries 08:00<=hour<20:00 exported broker clock; exit at 20:45 open or first subsequent available open. No invented candles. Unexpected gaps prevent new entries; open risk uses observed gap prices. Wilder ATR14. Structural stop buffer0.25ATR, accept stop distance1..3ATR at signal and recheck actual entry. Target at least1R; two trades per day except range breakout one. Long and short symmetric.",
+  "capital":100000,
+  "riskCash":250,
+  "dailyLossLimit":3000,
+  "totalLossLimit":10000,
+  "riskReference":"Fixed initial100000 floor90000; daily reference previous available close equity at broker day change. These are simulation assumptions pending program confirmation, not certified The5ers rules.",
+  "contract":{"size":100,"minLot":0.01,"maxLot":100,"lotStep":0.01,"tickSize":0.01,"minimumStopDistance":0.10,"maxGrossLeverage":10,"rounding":"Stop and target round outward to the tick. Recompute reward target using actual rounded stop distance at entry, then round target outward."},
+  "costs":{"base":{"spreadUsdPerOz":0.60,"slippageUsdPerOzPerSide":0.10,"commissionUsdPerLotRoundTrip":10},"stress":{"spreadUsdPerOz":1.20,"slippageUsdPerOzPerSide":0.25,"commissionUsdPerLotRoundTrip":20}},
+  "costCaveat":"Fixed conservative scenarios, not verified historical executable spreads/fees. CSV spread is minimum within the candle and cannot price its own open. Actual contract costs, sessions and timezone require confirmation. Overnight positions are flagged unpriced; no invented zero swap.",
+  "families":[
+    {"id":"G1","name":"Pullback de tendência","presets":[20,50],"rule":"H1 completed: close andEMA50 aboveEMA200, EMA50 rising3bars (opposite for short). M15 previousclose<=previousreferenceEMA, currentclose>EMA andopen. Stop min of two candles minus0.25ATR; reward2; hold16bars."},
+    {"id":"G2","name":"Rompimento da faixa inicial","presets":[60,120],"rule":"Freeze high/low of complete continuous 08:00 opening range of preset minutes. First close beyond edge+0.1ATR, previousclose inside range; entrybefore12:00. Stopmidrange; reward2; hold12bars; atmostoneentry/day."},
+    {"id":"G3","name":"Retorno às Bandas de Bollinger","presets":[2,2.5],"rule":"H1 sideways abs(EMA50-current minus3barsago)<=0.25ATR_H1. M15 previousclose below lowerSMA20-populationSDband; currentclose returns inside and bullish. Stopmin2bars minus0.25ATR; fixedtarget SMA20 atsignal, >=1R; hold8bars. Shortsymmetric."},
+    {"id":"G4","name":"Varredura do dia anterior","presets":[0.1,0.25],"rule":"Previous traded day must have exactly92 contiguousM15bars beginning00:00or01:00, as the pre-results data-quality amendment specifies; low pierced by >=presetATR and<=1ATR, closes backabove andbullish. Stoprejectionlow minus0.25ATR; reward2; hold16bars; oneattempt/level/day. Shortsymmetric previoushigh."},
+    {"id":"G5","name":"Divergência RSI confirmada","presets":[2,3],"rule":"Strict pivots withpresetbars eachside confirmed onlyatrightedge. Lasttwo pivotlows separated6..40bars: newlow at least0.1ATR lower, RSI14>=5pointshigher and<45. Confirmationcandlebullish. Stopnewpivotlow minus0.25ATR; reward2; hold16bars. Short higherhigh,RSI5pointslower and>55. Never signalretroactively."}
+  ],
+  "limitations":"These periods were used by other research previously. No untouched-data claim, no five-strategy approval by counting variants. Portfolio coexistence, real-time forward tests and broker contract verification remain mandatory before manual-operation alerts. No live-order capability. One fixed batch; no result-guided retuning within this protocol.",
+  "sources":["https://www.metatrader5.com/en/terminal/help/indicators/trend_indicators/bb","https://www.metatrader5.com/en/terminal/help/indicators/oscillators/rsi","https://www.mql5.com/en/book/applications/timeseries/timeseries_mqlrates"]
+}

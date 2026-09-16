@@ -16,7 +16,10 @@
     "typecheck": "tsc --noEmit",
     "research:download": "python scripts/download-history.py",
     "research:run": "node scripts/run-historical.mjs",
-    "research:calibrate": "node scripts/calibrate-strategies.mjs"
+    "research:calibrate": "node scripts/calibrate-strategies.mjs",
+    "research:calibrate:v3": "node scripts/calibrate-v3.mjs",
+    "research:gold": "python scripts/run_gold_research.py",
+    "research:gold:test": "python tests/gold-execution.py"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

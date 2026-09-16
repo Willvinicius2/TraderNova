@@ -1,18 +1,23 @@
 import {atr,type Candle} from './domain';
 import {candidateSignals,researchCandidates,type CandidateId} from './research';
 import {calibratedSignals,validParameters,type StrategyParameters} from './calibration';
+import {nextProtectedStop} from './calibration-v3';
 
-export type HistoricalOptions={candidateId:CandidateId;interval:number;from:number;to:number;initialCapital:number;riskPct:number;feeBps:number;slippageBps:number;parameters?:StrategyParameters};
-export type HistoricalTrade={signalTime:number;entryTime:number;exitCandleTime:number;entry:number;exit:number;quantity:number;stop:number;target:number;fees:number;net:number;returnOnEquityPct:number;reason:string};
+export type HistorySourcePolicy='binance-spot-halt-2023-03-24';
+export type HistoricalOptions={candidateId:CandidateId;interval:number;from:number;to:number;initialCapital:number;riskPct:number;feeBps:number;slippageBps:number;parameters?:StrategyParameters;sourcePolicy?:HistorySourcePolicy};
+export type HistoricalTrade={signalTime:number;entryTime:number;exitCandleTime:number;entry:number;exit:number;quantity:number;stop:number;target:number;fees:number;net:number;returnOnEquityPct:number;reason:string;exitStop?:number};
 export type HistoricalResult={options:HistoricalOptions;trades:HistoricalTrade[];curve:{time:number;equity:number}[];net:number;returnPct:number;maxDrawdownPct:number;profitFactor:number|null;winRate:number|null;expectancy:number|null;fees:number;exposurePct:number;buyHoldReturnPct:number;endCapital:number;bars:number;validated:false};
 
 /** Reject incomplete or mismatched data; never invent missing candles. */
-export function validateHistory(bars:Candle[],interval:number){
+export function validateHistory(bars:Candle[],interval:number,sourcePolicy?:HistorySourcePolicy){
  const step=interval*60000;
+ if(sourcePolicy!==undefined&&sourcePolicy!=='binance-spot-halt-2023-03-24')throw new Error('Política de fonte inválida.');
  if(![15,60].includes(interval)||bars.length<260)throw new Error('Histórico insuficiente ou período inválido.');
  for(let i=0;i<bars.length;i++){
   const b=bars[i];
-  if(![b.time,b.open,b.high,b.low,b.close,b.volume].every(Number.isFinite)||b.time%step!==0||b.low<=0||b.high<Math.max(b.open,b.close)||b.low>Math.min(b.open,b.close)||b.volume<0||(i>0&&b.time-bars[i-1].time!==step))throw new Error(`Candle inválido ou lacuna no índice ${i}.`);
+  // Official spot halt: no 13:00 candle; no interpolation or general gap waiver.
+  const documentedHalt=sourcePolicy==='binance-spot-halt-2023-03-24'&&interval===60&&i>0&&bars[i-1].time===1679659200000&&b.time===1679666400000;
+  if(![b.time,b.open,b.high,b.low,b.close,b.volume].every(Number.isFinite)||b.time%step!==0||b.low<=0||b.high<Math.max(b.open,b.close)||b.low>Math.min(b.open,b.close)||b.volume<0||(i>0&&b.time-bars[i-1].time!==step&&!documentedHalt))throw new Error(`Candle inválido ou lacuna no índice ${i}.`);
  }
 }
 
@@ -21,7 +26,7 @@ export function validateHistory(bars:Candle[],interval:number){
  * equity includes an estimated liquidation fee/slippage, not intrabar drawdown.
  */
 export function runHistorical(bars:Candle[],options:HistoricalOptions):HistoricalResult{
- validateHistory(bars,options.interval);
+ validateHistory(bars,options.interval,options.sourcePolicy);
  const c=researchCandidates.find(c=>c.id===options.candidateId);
  const parameters=options.parameters;
  if(parameters&&(!validParameters(parameters,options.candidateId)||options.interval!==60))throw new Error('Preset calibrado inválido.');
@@ -32,32 +37,35 @@ export function runHistorical(bars:Candle[],options:HistoricalOptions):Historica
  const signals=parameters?calibratedSignals(bars,parameters):candidateSignals(bars,c.id),ranges=atr(bars),fee=feeBps/10000,slip=slippageBps/10000;
  const stopAtr=parameters?.stopAtr??c.stopAtr,reward=parameters?.reward??2,hold=parameters?.hold??c.hold;
  const trades:HistoricalTrade[]=[],curve=[{time:from,equity:initialCapital}];
- let cash=initialCapital,peak=initialCapital,dd=0,exposed=0;
+ let cash=initialCapital,peak=initialCapital,dd=0,exposed=0,cooldownUntil=0;
  function mark(time:number,equity:number){peak=Math.max(peak,equity);dd=Math.max(dd,100*(peak-equity)/peak);curve.push({time,equity});}
  for(let i=first;i<=last;){
   // The first signal must itself close inside this evaluation window.
-  if(i===first||signals[i-1]!==1){mark(bars[i].time+step,cash);i++;continue;}
+  if(i===first||signals[i-1]!==1||bars[i].time<cooldownUntil||bars[i].time-bars[i-1].time!==step){mark(bars[i].time+step,cash);i++;continue;}
   const rawEntry=bars[i].open,distance=(ranges[i-1]??0)*stopAtr,stop=rawEntry-distance,target=rawEntry+reward*distance;
   if(distance<=0||stop<=0){mark(bars[i].time+step,cash);i++;continue;}
   const entry=rawEntry*(1+slip),stopFill=stop*(1-slip),unitRisk=entry-stopFill+fee*(entry+stopFill);
   const before=cash,quantity=Math.min(before*riskPct/100/unitRisk,before/(entry*(1+fee))),entryFee=quantity*entry*fee;
   cash-=quantity*entry+entryFee;
-  let j=i,rawExit=entry,reason='Fim da janela';
+  let j=i,rawExit=entry,reason='Fim da janela',activeStop=stop,peakClose=rawEntry;
   for(;j<=last;j++){
-   const b=bars[j],stopHit=b.low<=stop,targetHit=b.high>=target;
+   const b=bars[j],stopHit=b.low<=activeStop,targetHit=b.high>=target;
    exposed++;
    if(b.open>=target){rawExit=target;reason='Alvo · gap de abertura';break;}
-   if(stopHit){rawExit=Math.min(b.open,stop);reason=targetHit?'Stop · candle ambíguo':'Stop';break;}
+   if(stopHit){rawExit=Math.min(b.open,activeStop);reason=targetHit?'Stop · candle ambíguo':activeStop>stop?'Stop protegido':'Stop';break;}
    if(targetHit){rawExit=target;reason='Alvo';break;}
    rawExit=b.close;
-   if(j-i+1>=hold){reason='Limite de candles';break;}
+   if(b.time-bars[i].time+step>=hold*step){reason='Limite de candles';break;}
    if(j===last)break;
    mark(b.time+step,cash+quantity*b.close*(1-slip)*(1-fee));
+   peakClose=Math.max(peakClose,b.close);
+   if(parameters)activeStop=nextProtectedStop(parameters,activeStop,rawEntry,distance,peakClose,b.close,ranges[j]??0,entry*(1+fee)/((1-slip)*(1-fee)));
   }
   const exit=rawExit*(1-slip),exitFee=quantity*exit*fee;
   cash+=quantity*exit-exitFee;
   const net=cash-before;
-  trades.push({signalTime:bars[i-1].time,entryTime:bars[i].time,exitCandleTime:bars[j].time,entry,exit,quantity,stop,target,fees:entryFee+exitFee,net,returnOnEquityPct:100*net/before,reason});
+  trades.push({signalTime:bars[i-1].time,entryTime:bars[i].time,exitCandleTime:bars[j].time,entry,exit,quantity,stop,target,fees:entryFee+exitFee,net,returnOnEquityPct:100*net/before,reason,...(parameters?.trailAtr||parameters?.breakEvenR?{exitStop:activeStop}:{})});
+  cooldownUntil=bars[j].time+step*(1+(parameters?.cooldownBars??0));
   mark(bars[j].time+step,cash);i=j+1;
  }
  const gains=trades.reduce((s,t)=>s+Math.max(0,t.net),0),losses=-trades.reduce((s,t)=>s+Math.min(0,t.net),0);
