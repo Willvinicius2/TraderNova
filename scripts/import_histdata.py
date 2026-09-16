@@ -26,8 +26,8 @@ def parse_line(line):
     # Missing spread is explicitly zero in the transport schema, not free fills.
     return (int(local.timestamp()),o,h,l,c,0)
 
-def read_archives(paths,symbol):
-    records=[];provenance=[];last=None
+def read_archives(paths,symbol,drop_duplicates=False):
+    records=[];provenance=[];last=None;dropped=0
     for path in paths:
         digest=hashlib.sha256(path.read_bytes()).hexdigest()
         count=0
@@ -41,11 +41,14 @@ def read_archives(paths,symbol):
                     if not line.strip():continue
                     record=parse_line(line)
                     if last is not None and record[0]<=last:
+                        if drop_duplicates:
+                            dropped+=1
+                            continue
                         raise ValueError(f'Duplicate, overlapping or unordered source at {record[0]} in {path.name}')
                     records.append(record);last=record[0];count+=1
         provenance.append({'file':path.name,'sha256':digest,'minuteBars':count})
     if not records:raise ValueError('No M1 records')
-    return np.array(records,dtype=FIELDS),provenance
+    return np.array(records,dtype=FIELDS),provenance,dropped
 
 def aggregate(minutes,period):
     if period not in [15,60,240]:raise ValueError('Supported periods: M15/H1/H4')
@@ -68,10 +71,11 @@ def main():
     parser.add_argument('--symbol',choices=['EURUSD','USDJPY','NSXUSD'],required=True)
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--end',default='2026-09-01',help='Exclusive UTC boundary; later data is excluded')
+    parser.add_argument('--drop-duplicate-timestamps',action='store_true',help='Exclude exact repeated timestamps and record them as gaps; never shifts them')
     args=parser.parse_args()
     end=int(dt.datetime.fromisoformat(args.end).replace(tzinfo=dt.timezone.utc).timestamp())
     paths=sorted(args.source,key=lambda path:path.name)
-    minutes,sources=read_archives(paths,args.symbol)
+    minutes,sources,dropped=read_archives(paths,args.symbol,args.drop_duplicate_timestamps)
     minutes=minutes[minutes['time']<end]
     if not len(minutes):raise ValueError('No source minutes before cutoff')
     args.output.mkdir(parents=True,exist_ok=True)
@@ -79,7 +83,7 @@ def main():
               'sourceTimezone':'Fixed EST UTC-05:00, without daylight-saving changes','outputTimezone':'UTC',
               'spread':'Not supplied by M1; output spread=0 is missing data, never a zero-cost assumption',
               'volume':'Not used; no traded volume inferred','sourceFiles':sources,'endExclusive':args.end,
-              'minuteBars':len(minutes),'minuteGaps':int(sum(np.diff(minutes['time'])!=60)),
+              'minuteBars':len(minutes),'minuteGaps':int(sum(np.diff(minutes['time'])!=60)),'droppedDuplicateMinutes':dropped,
               'firstMinute':int(minutes['time'][0]),'lastMinute':int(minutes['time'][-1]),'series':{},
               'limitations':['External indicative feed, not The5ers executable quotes',
                              'Incomplete target candles are excluded; absent minutes are never filled',
