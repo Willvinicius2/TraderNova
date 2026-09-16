@@ -32,5 +32,9 @@ def run(bars,fam):
  for x in trades:eq+=x;peak=max(peak,eq);dd=max(dd,peak-eq)
  return {'trades':len(trades),'netR':round(sum(trades),4),'profitFactor':round(grossp/grossl,3) if grossl else None,'drawdownR':round(dd,4),'positive':sum(trades)>0 and grossp>grossl*1.2 and dd<15}
 def main():
- p=argparse.ArgumentParser();p.add_argument('--file',required=True);p.add_argument('--label',required=True);a=p.parse_args();b=load(a.file);out={'label':a.label,'source':str(a.file),'families':{f:run(b,f) for f in ['trend','breakout','reversion','rsi','opening']}};print(json.dumps(out,indent=2));Path('research').joinpath('fx-screen-'+a.label+'.json').write_text(json.dumps(out,indent=2))
+ p=argparse.ArgumentParser();p.add_argument('--file',required=True);p.add_argument('--label',required=True);a=p.parse_args();b=load(a.file)
+ families=['trend','breakout','reversion','rsi','opening']
+ short=[(t,-o,-l,-h,-c) for t,o,h,l,c in b]
+ out={'label':a.label,'source':str(a.file),'families':{f:{'long':run(b,f),'short':run(short,f)} for f in families}}
+ print(json.dumps(out,indent=2));Path('research').joinpath('fx-screen-'+a.label+'.json').write_text(json.dumps(out,indent=2))
 if __name__=='__main__':main()

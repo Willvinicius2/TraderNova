@@ -1,0 +1,86 @@
+{
+  "label": "val2020_21_sym",
+  "source": "research/cache/histdata/EURUSD2020_21/EURUSD_H1.csv",
+  "families": {
+    "trend": {
+      "long": {
+        "trades": 183,
+        "netR": -8.5697,
+        "profitFactor": 0.912,
+        "drawdownR": 28.0745,
+        "positive": false
+      },
+      "short": {
+        "trades": 171,
+        "netR": 28.9166,
+        "profitFactor": 1.397,
+        "drawdownR": 8.5185,
+        "positive": true
+      }
+    },
+    "breakout": {
+      "long": {
+        "trades": 256,
+        "netR": -23.7549,
+        "profitFactor": 0.834,
+        "drawdownR": 38.5829,
+        "positive": false
+      },
+      "short": {
+        "trades": 256,
+        "netR": 0.8149,
+        "profitFactor": 1.006,
+        "drawdownR": 18.7488,
+        "positive": false
+      }
+    },
+    "reversion": {
+      "long": {
+        "trades": 0,
+        "netR": 0,
+        "profitFactor": null,
+        "drawdownR": 0,
+        "positive": false
+      },
+      "short": {
+        "trades": 905,
+        "netR": 72.1089,
+        "profitFactor": 1.183,
+        "drawdownR": 17.1259,
+        "positive": false
+      }
+    },
+    "rsi": {
+      "long": {
+        "trades": 436,
+        "netR": -31.2115,
+        "profitFactor": 0.861,
+        "drawdownR": 43.2504,
+        "positive": false
+      },
+      "short": {
+        "trades": 471,
+        "netR": 35.6148,
+        "profitFactor": 1.163,
+        "drawdownR": 14.7755,
+        "positive": false
+      }
+    },
+    "opening": {
+      "long": {
+        "trades": 755,
+        "netR": -84.6026,
+        "profitFactor": 0.796,
+        "drawdownR": 91.3593,
+        "positive": false
+      },
+      "short": {
+        "trades": 747,
+        "netR": 34.6316,
+        "profitFactor": 1.099,
+        "drawdownR": 22.4329,
+        "positive": false
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "label": "dev2010_15_sym",
+  "source": "research/cache/histdata/EURUSD2010_15/EURUSD_H1.csv",
+  "families": {
+    "trend": {
+      "long": {
+        "trades": 431,
+        "netR": -16.1669,
+        "profitFactor": 0.929,
+        "drawdownR": 53.3213,
+        "positive": false
+      },
+      "short": {
+        "trades": 484,
+        "netR": -33.5355,
+        "profitFactor": 0.87,
+        "drawdownR": 36.2065,
+        "positive": false
+      }
+    },
+    "breakout": {
+      "long": {
+        "trades": 635,
+        "netR": -72.6326,
+        "profitFactor": 0.795,
+        "drawdownR": 74.5139,
+        "positive": false
+      },
+      "short": {
+        "trades": 668,
+        "netR": 50.1336,
+        "profitFactor": 1.158,
+        "drawdownR": 26.1089,
+        "positive": false
+      }
+    },
+    "reversion": {
+      "long": {
+        "trades": 0,
+        "netR": 0,
+        "profitFactor": null,
+        "drawdownR": 0,
+        "positive": false
+      },
+      "short": {
+        "trades": 2367,
+        "netR": 140.4658,
+        "profitFactor": 1.127,
+        "drawdownR": 35.8321,
+        "positive": false
+      }
+    },
+    "rsi": {
+      "long": {
+        "trades": 1232,
+        "netR": -70.553,
+        "profitFactor": 0.89,
+        "drawdownR": 85.8779,
+        "positive": false
+      },
+      "short": {
+        "trades": 1189,
+        "netR": 94.2154,
+        "profitFactor": 1.176,
+        "drawdownR": 22.1881,
+        "positive": false
+      }
+    },
+    "opening": {
+      "long": {
+        "trades": 1848,
+        "netR": -137.0775,
+        "profitFactor": 0.86,
+        "drawdownR": 159.7662,
+        "positive": false
+      },
+      "short": {
+        "trades": 1876,
+        "netR": 176.9641,
+        "profitFactor": 1.202,
+        "drawdownR": 32.1333,
+        "positive": false
+      }
+    }
+  }
+}
