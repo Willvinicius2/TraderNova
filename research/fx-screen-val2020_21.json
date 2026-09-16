@@ -1,0 +1,41 @@
+{
+  "label": "val2020_21",
+  "source": "research/cache/histdata/EURUSD2020_21/EURUSD_H1.csv",
+  "families": {
+    "trend": {
+      "trades": 183,
+      "netR": -8.5697,
+      "profitFactor": 0.912,
+      "drawdownR": 28.0745,
+      "positive": false
+    },
+    "breakout": {
+      "trades": 256,
+      "netR": -23.7549,
+      "profitFactor": 0.834,
+      "drawdownR": 38.5829,
+      "positive": false
+    },
+    "reversion": {
+      "trades": 0,
+      "netR": 0,
+      "profitFactor": null,
+      "drawdownR": 0,
+      "positive": false
+    },
+    "rsi": {
+      "trades": 436,
+      "netR": -31.2115,
+      "profitFactor": 0.861,
+      "drawdownR": 43.2504,
+      "positive": false
+    },
+    "opening": {
+      "trades": 755,
+      "netR": -84.6026,
+      "profitFactor": 0.796,
+      "drawdownR": 91.3593,
+      "positive": false
+    }
+  }
+}

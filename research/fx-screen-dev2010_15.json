@@ -1,0 +1,41 @@
+{
+  "label": "dev2010_15",
+  "source": "research/cache/histdata/EURUSD2010_15/EURUSD_H1.csv",
+  "families": {
+    "trend": {
+      "trades": 431,
+      "netR": -16.1669,
+      "profitFactor": 0.929,
+      "drawdownR": 53.3213,
+      "positive": false
+    },
+    "breakout": {
+      "trades": 635,
+      "netR": -72.6326,
+      "profitFactor": 0.795,
+      "drawdownR": 74.5139,
+      "positive": false
+    },
+    "reversion": {
+      "trades": 0,
+      "netR": 0,
+      "profitFactor": null,
+      "drawdownR": 0,
+      "positive": false
+    },
+    "rsi": {
+      "trades": 1232,
+      "netR": -70.553,
+      "profitFactor": 0.89,
+      "drawdownR": 85.8779,
+      "positive": false
+    },
+    "opening": {
+      "trades": 1848,
+      "netR": -137.0775,
+      "profitFactor": 0.86,
+      "drawdownR": 159.7662,
+      "positive": false
+    }
+  }
+}
