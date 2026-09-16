@@ -1,0 +1,7 @@
+# Research records contain SHA-256 fingerprints. Preserve their exact bytes,
+# including the source modules used in each recorded run, on every platform.
+lib/tradernova/*.ts -text
+scripts/*.mjs -text
+scripts/*.py -text
+research/*.json -text
+public/research/** -text
