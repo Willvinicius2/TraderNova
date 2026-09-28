@@ -27,7 +27,10 @@ function MobileSite() {
     });
     return () => handler.remove();
   }, [canGoBack]);
-  function openExternal(value: string) { if (externalLink(value) || sameSite(value)) void Linking.openURL(value).catch(() => Alert.alert('TraderNova', 'Não foi possível abrir o link.')); }
+  function openExternal(value: string) {
+    if (sameSite(value)) { currentPage.current = value; setUrl(value); setNavigationId(id => id + 1); return; }
+    if (externalLink(value)) void Linking.openURL(value).catch(() => Alert.alert('TraderNova', 'Não foi possível abrir o link.'));
+  }
   async function exportFile(text: string, name: unknown) {
     try {
       JSON.parse(text);
@@ -44,7 +47,7 @@ function MobileSite() {
       javaScriptEnabled domStorageEnabled cacheEnabled sharedCookiesEnabled
       startInLoadingState allowsBackForwardNavigationGestures
       originWhitelist={['https://*']} mixedContentMode="never" allowFileAccess={false}
-      onNavigationStateChange={state => setCanGoBack(state.canGoBack)}
+      onNavigationStateChange={state => { setCanGoBack(state.canGoBack); if (sameSite(state.url)) currentPage.current = state.url; }}
       onShouldStartLoadWithRequest={request => {
         if (request.isTopFrame === false) return true;
         if (sameSite(request.url)) return true;
@@ -53,6 +56,8 @@ function MobileSite() {
       onOpenWindow={event => openExternal(event.nativeEvent.targetUrl)}
       onLoadStart={() => setError(false)}
       onError={() => setError(true)}
+      onContentProcessDidTerminate={() => setError(true)}
+      onRenderProcessGone={() => setError(true)}
       onHttpError={event => { if (sameSite(event.nativeEvent.url) && event.nativeEvent.statusCode >= 400) setError(true); }}
       renderLoading={() => <View style={[styles.overlay, { backgroundColor: background }]}><ActivityIndicator color="#b99bff" /><Text style={styles.body}>Abrindo TraderNova…</Text></View>}
       injectedJavaScript={bridgeScript}

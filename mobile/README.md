@@ -12,6 +12,8 @@ npm ci
 npm start
 ```
 
+Para testar explicitamente no Expo Go, use `npm run start:go`. Isso evita abrir uma development build não instalada. O celular precisa alcançar o servidor do computador. Para testar a interface sem depender dele, abra [TraderNova](https://tradernova.willvinicius.chatgpt.site/?aba=robo) no navegador do celular e use **Testar exemplo de sinal**. Em Android, use o menu do navegador para adicionar à tela inicial; em iPhone, Compartilhar → Adicionar à Tela de Início, quando disponível.
+
 Use Expo Go compatível com SDK 57 ou uma development build. `npm run android` usa emulador/aparelho com ambiente Android instalado. `npm run web` abre o próprio site no navegador.
 
 ## Funcionamento

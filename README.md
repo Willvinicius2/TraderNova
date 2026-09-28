@@ -2,6 +2,8 @@
 
 Projeto web existente e aplicativo Android/iPhone em [`mobile/`](mobile/README.md). Código reunido em `D:\openclaude\TradersNova`, com histórico original preservado.
 
+Piloto 0.5: radar experimental ETH/BTC com duas pernas, planejamento de risco por tick, diário local de hipóteses e pesquisa de pares/funding sem duplicar as famílias anteriores. Veja a [revisão módulo por módulo](docs/REVISAO_MODULOS_2026-09-28.md). N1 foi reprovada na triagem; N2 aguarda dados. Nenhuma estratégia aprovada para operar.
+
 ## Começar
 
 ```powershell

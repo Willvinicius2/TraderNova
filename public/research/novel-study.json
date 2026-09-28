@@ -1,0 +1,79 @@
+{
+  "generatedAt": "2026-09-28T22:11:38.665Z",
+  "validated": false,
+  "candidates": [
+    {
+      "id": "N1",
+      "name": "Reversão relativa ETH/BTC",
+      "family": "arbitragem estatística de pares",
+      "thesis": "Desvios temporários do log-preço relativo podem reverter à média; uma posição em ETH é compensada por exposição oposta em BTC conforme beta causal.",
+      "rules": [
+        "H1: OLS de log(ETH) em log(BTC) nos 120 candles fechados anteriores; z atual é fora da janela, z anterior usa o mesmo ajuste.",
+        "Sinal quando z retorna de fora de ±2 para dentro ainda do mesmo lado da média; exigir 0,1 ≤ beta ≤ 5 e σ residual > 0,000001.",
+        "Entrar no open H1 seguinte: ETH e BTC em sentidos opostos, notional bruto distribuído 1:beta; congelar alfa, beta e sigma.",
+        "Sair no open seguinte a z atingir média, romper ±3 na direção adversa ou completar 24 candles; encerrar na abertura final do estudo.",
+        "Triagem com capital 10.000 USDT, gross 100%, taxa 0,10% e slippage 0,02% por lado e perna, sem otimização."
+      ],
+      "requiredData": [
+        "BTCUSDT e ETHUSDT spot H1 sincronizados e auditados",
+        "Preço e disponibilidade reais da perna vendida, borrow/margem e custos por venue para validação executável"
+      ],
+      "status": "exploratory-rejected",
+      "results": {
+        "trades": 313,
+        "netPct": -54.36305412609722,
+        "profitFactor": 0.4492766738605857,
+        "drawdownPct": 55.4490642659946
+      },
+      "limitations": [
+        "Triagem retrospectiva exploratória: mesmo histórico já inspecionado por pesquisas anteriores; não é amostra intocada nem validação prospectiva.",
+        "Venda spot é hipotética; aluguel, juros, margem, liquidação, restrições de lote e impacto não constam do cache.",
+        "Beta OLS local não demonstra cointegração; correlação e hedge podem romper. Dados Binance spot/USDT não equivalem ao Kraken USD ou ao contrato da the5.",
+        "Fonte: manifest SHA-256 ETH 98ff64bafb203ca5cc8362c4db6dbe2f0d6c3b7b07cbb19462bd50c2b1078f4b, BTC ccb0c41243c5f25994d6e37bc10e3332c64efc18d10dcf48b892ae3bf8cecb36; 313 sinais, 17519 fechamentos analisados."
+      ],
+      "references": [
+        {
+          "title": "Binance Public Data — arquivos spot e formato de klines",
+          "url": "https://github.com/binance/binance-public-data/blob/master/README.md"
+        },
+        {
+          "title": "Gatev, Goetzmann e Rouwenhorst — Pairs Trading (NBER)",
+          "url": "https://www.nber.org/papers/w7032"
+        }
+      ]
+    },
+    {
+      "id": "N2",
+      "name": "Carry de funding spot–perpétuo",
+      "family": "carry de funding com hedge spot",
+      "thesis": "Quando funding realizado compensa base e custos, long spot e short perpétuo do mesmo ativo podem receber funding com delta aproximado de zero.",
+      "rules": [
+        "Avaliar apenas contratos perpétuos com histórico real de funding realizado, horários e preços spot/perpétuo sincronizados.",
+        "Usar funding conhecido antes de cada decisão como filtro; nunca antecipar a taxa liquidada futura.",
+        "Comprar spot e vender perpétuo no mesmo notional; registrar margem, mark price, base, taxas, slippage e cada pagamento real de funding.",
+        "Encerrar se expectativa causal líquida deixar de cobrir custos e risco de base, ou se limites de margem forem alcançados; parâmetros serão fixados antes da triagem."
+      ],
+      "requiredData": [
+        "Funding realizado por símbolo e timestamp (ex.: GET /fapi/v1/fundingRate)",
+        "Klines/trades do perpétuo e spot sincronizados, mark price e base",
+        "Taxas executáveis, margem, liquidação e custo de capital"
+      ],
+      "status": "awaiting-required-data",
+      "limitations": [
+        "Sem backtest ou métricas: os caches locais contêm candles spot, não pagamentos de funding nem preços do perpétuo.",
+        "Funding pode mudar de sinal e de intervalo; pagamentos só ocorrem se a posição estiver aberta no horário de liquidação.",
+        "Hedge não elimina base, liquidação, risco de venue e execução. Não é compatível automaticamente com conta the5."
+      ],
+      "references": [
+        {
+          "title": "Binance USDⓈ-M Futures API — funding rate history e mark price",
+          "url": "https://developers.binance.info/en/docs/catalog/core-trading-derivatives-trading-usd-s-m-futures/api/rest-api/market-data"
+        },
+        {
+          "title": "Binance Futures — funding rates e liquidação",
+          "url": "https://www.binance.com/en/support/faq/detail/360033525031"
+        }
+      ]
+    }
+  ]
+}

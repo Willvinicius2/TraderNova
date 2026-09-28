@@ -1,0 +1,15 @@
+'use client';
+import {useEffect,useState} from 'react';
+import './production-workspace.css';
+type Candidate={id:string;name:string;family:string;thesis:string;rules:string[];requiredData:string[];status:string;results?:{trades:number;netPct?:number;profitFactor:number|null;drawdownPct?:number};limitations:string[];references:{title:string;url:string}[]};
+type Study={generatedAt:string;validated:false;candidates:Candidate[]};
+function isStudy(value:unknown):value is Study {
+ if(!value||typeof value!=='object')return false;
+ const s=value as Partial<Study>;
+ return s.validated===false&&Array.isArray(s.candidates)&&s.candidates.every(v=>v&&typeof v.name==='string'&&['rules','requiredData','limitations','references'].every(k=>Array.isArray(v[k as keyof Candidate])));
+}
+export function NovelResearch(){
+ const [study,setStudy]=useState<Study|null>(null),[error,setError]=useState(false),[attempt,setAttempt]=useState(0);
+ useEffect(()=>{const c=new AbortController();setError(false);fetch('/research/novel-study.json',{signal:c.signal}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(s=>{if(!isStudy(s))throw Error();setStudy(s);}).catch(()=>{if(!c.signal.aborted)setError(true);});return()=>c.abort();},[attempt]);
+ return <section><div className="section-heading"><div><h2>Novas famílias · pesquisa sem duplicatas</h2><p className="micro">Relação entre ativos e custo de financiamento. Separadas das estratégias técnicas já estudadas.</p></div><span className="tag purple">N1 + N2</span></div>{error?<div className="notice">Não foi possível carregar a pesquisa. <button onClick={()=>setAttempt(v=>v+1)}>Tentar novamente</button></div>:!study?<p role="status">Carregando a pesquisa…</p>:<div className="novel-grid">{study.candidates.map(c=><article key={c.id} className="panel padded novel-card"><div className="row between"><span className="tag">{c.id} · {c.family}</span><span className="tag amber">Não validada</span></div><h3>{c.name}</h3><p>{c.thesis}</p><p><strong>{c.status==='exploratory-rejected'?'Reprovada na triagem exploratória':c.status==='awaiting-required-data'?'Aguardando histórico de funding':c.status}</strong></p>{c.results&&<div className="pair-criteria"><div><span>Operações</span><strong>{c.results.trades}</strong></div><div><span>Líquido exploratório</span><strong className={(c.results.netPct??0)<0?'negative':''}>{c.results.netPct?.toLocaleString('pt-BR',{maximumFractionDigits:2})??'—'}%</strong></div><div><span>Fator de lucro</span><strong>{c.results.profitFactor?.toLocaleString('pt-BR',{maximumFractionDigits:2})??'—'}</strong></div></div>}<details><summary>Regras e dados necessários</summary><ul>{c.rules.map(r=><li key={r}>{r}</li>)}</ul><p className="micro">Dados: {c.requiredData.join('; ')}.</p></details><ul>{c.limitations.filter(r=>!r.startsWith('Fonte: manifest')).map(r=><li key={r}>{r}</li>)}</ul>{c.references.filter(r=>/^https:\/\//.test(r.url)).map(r=><a key={r.url} href={r.url} target="_blank" rel="noreferrer">{r.title}</a>)}</article>)}</div>}</section>;
+}
