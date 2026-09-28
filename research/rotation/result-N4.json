@@ -1,0 +1,263 @@
+{
+  "generatedAt": "2026-09-28T22:32:44.313Z",
+  "protocolSha256": "915f26a4e94f1a87cee120ef30b2d88fd0c7aa3dd34f831b98d8fcf0451797d6",
+  "validated": false,
+  "forwardPassed": false,
+  "holdoutUntouched": false,
+  "historicalScreenPass": false,
+  "checks": {
+    "positiveDevelopmentYears": true,
+    "minimumDevelopmentTrades": false,
+    "minimumValidationTrades": false,
+    "minimumFinalTrades": false,
+    "validationPositive": false,
+    "finalPositive": false,
+    "profitFactor": false,
+    "drawdown": false
+  },
+  "screen": {
+    "generatedAt": "2026-09-28T22:32:39.839Z",
+    "protocolSha256": "915f26a4e94f1a87cee120ef30b2d88fd0c7aa3dd34f831b98d8fcf0451797d6",
+    "validated": false,
+    "forwardPassed": false,
+    "dataSha256": {
+      "BTCUSDT": "eec6d00f0a38d5658b16c53928aed72cea3f1c925c8c73850ea75888c2ced678",
+      "ETHUSDT": "e476a43feed4716a833cbccfc6061816d19e722a8e439da0b8ff0b90f56a1ff3",
+      "SOLUSDT": "33393a1c43d34808db5755e905f3c3205eb836bbff9728e047830f894bd235f4"
+    },
+    "developmentYears": [
+      {
+        "window": [
+          "2022-01-01",
+          "2023-01-01"
+        ],
+        "base": {
+          "trades": 26,
+          "netPct": 14.220704,
+          "profitFactor": 1.107817,
+          "drawdownPct": 24.297255,
+          "gapExits": 0,
+          "stops": 12,
+          "rankings": 51,
+          "qualifyingRankings": 26,
+          "selections": {
+            "BTCUSDT": 5,
+            "ETHUSDT": 13,
+            "SOLUSDT": 8
+          },
+          "firstTrade": 1642377600000,
+          "lastTrade": 1670803200000
+        },
+        "stress": {
+          "trades": 26,
+          "netPct": 9.961607,
+          "profitFactor": 1.075488,
+          "drawdownPct": 24.614556,
+          "gapExits": 0,
+          "stops": 12,
+          "rankings": 51,
+          "qualifyingRankings": 26,
+          "selections": {
+            "BTCUSDT": 5,
+            "ETHUSDT": 13,
+            "SOLUSDT": 8
+          },
+          "firstTrade": 1642377600000,
+          "lastTrade": 1670803200000
+        }
+      },
+      {
+        "window": [
+          "2023-01-01",
+          "2024-01-01"
+        ],
+        "base": {
+          "trades": 32,
+          "netPct": 269.980973,
+          "profitFactor": 2.272852,
+          "drawdownPct": 26.308973,
+          "gapExits": 1,
+          "stops": 10,
+          "rankings": 51,
+          "qualifyingRankings": 32,
+          "selections": {
+            "BTCUSDT": 6,
+            "ETHUSDT": 6,
+            "SOLUSDT": 20
+          },
+          "firstTrade": 1673222400000,
+          "lastTrade": 1702260000000
+        },
+        "stress": {
+          "trades": 32,
+          "netPct": 252.570456,
+          "profitFactor": 2.204801,
+          "drawdownPct": 26.617842,
+          "gapExits": 1,
+          "stops": 10,
+          "rankings": 51,
+          "qualifyingRankings": 32,
+          "selections": {
+            "BTCUSDT": 6,
+            "ETHUSDT": 6,
+            "SOLUSDT": 20
+          },
+          "firstTrade": 1673222400000,
+          "lastTrade": 1702260000000
+        }
+      },
+      {
+        "window": [
+          "2024-01-01",
+          "2025-01-01"
+        ],
+        "base": {
+          "trades": 38,
+          "netPct": -10.033042,
+          "profitFactor": 0.917901,
+          "drawdownPct": 50.788889,
+          "gapExits": 0,
+          "stops": 13,
+          "rankings": 52,
+          "qualifyingRankings": 38,
+          "selections": {
+            "BTCUSDT": 6,
+            "ETHUSDT": 15,
+            "SOLUSDT": 17
+          },
+          "firstTrade": 1704067200000,
+          "lastTrade": 1734638400000
+        },
+        "stress": {
+          "trades": 38,
+          "netPct": -19.640689,
+          "profitFactor": 0.836899,
+          "drawdownPct": 51.903065,
+          "gapExits": 0,
+          "stops": 14,
+          "rankings": 52,
+          "qualifyingRankings": 38,
+          "selections": {
+            "BTCUSDT": 6,
+            "ETHUSDT": 15,
+            "SOLUSDT": 17
+          },
+          "firstTrade": 1704067200000,
+          "lastTrade": 1734638400000
+        }
+      }
+    ],
+    "development": {
+      "base": {
+        "trades": 98,
+        "netPct": 242.977256,
+        "profitFactor": 1.278677,
+        "drawdownPct": 50.788889,
+        "gapExits": 1,
+        "stops": 36,
+        "rankings": 156,
+        "qualifyingRankings": 98,
+        "selections": {
+          "BTCUSDT": 17,
+          "ETHUSDT": 35,
+          "SOLUSDT": 46
+        },
+        "firstTrade": 1642377600000,
+        "lastTrade": 1734638400000
+      },
+      "stress": {
+        "trades": 98,
+        "netPct": 180.234601,
+        "profitFactor": 1.222018,
+        "drawdownPct": 51.903065,
+        "gapExits": 1,
+        "stops": 37,
+        "rankings": 156,
+        "qualifyingRankings": 98,
+        "selections": {
+          "BTCUSDT": 17,
+          "ETHUSDT": 35,
+          "SOLUSDT": 46
+        },
+        "firstTrade": 1642377600000,
+        "lastTrade": 1734638400000
+      }
+    },
+    "validation": {
+      "base": {
+        "trades": 33,
+        "netPct": -6.352382,
+        "profitFactor": 0.951175,
+        "drawdownPct": 37.723136,
+        "gapExits": 0,
+        "stops": 13,
+        "rankings": 51,
+        "qualifyingRankings": 33,
+        "selections": {
+          "BTCUSDT": 7,
+          "ETHUSDT": 15,
+          "SOLUSDT": 11
+        },
+        "firstTrade": 1736121600000,
+        "lastTrade": 1766966400000
+      },
+      "stress": {
+        "trades": 33,
+        "netPct": -10.821714,
+        "profitFactor": 0.916529,
+        "drawdownPct": 38.643009,
+        "gapExits": 0,
+        "stops": 13,
+        "rankings": 51,
+        "qualifyingRankings": 33,
+        "selections": {
+          "BTCUSDT": 7,
+          "ETHUSDT": 15,
+          "SOLUSDT": 11
+        },
+        "firstTrade": 1736121600000,
+        "lastTrade": 1766966400000
+      }
+    }
+  },
+  "final": {
+    "window": [
+      "2026-01-01",
+      "2026-09-01"
+    ],
+    "base": {
+      "trades": 20,
+      "netPct": -18.59461,
+      "profitFactor": 0.642624,
+      "drawdownPct": 27.253185,
+      "gapExits": 0,
+      "stops": 3,
+      "rankings": 34,
+      "qualifyingRankings": 20,
+      "selections": {
+        "BTCUSDT": 3,
+        "ETHUSDT": 7,
+        "SOLUSDT": 10
+      },
+      "firstTrade": 1767571200000,
+      "lastTrade": 1788134400000
+    },
+    "stress": {
+      "trades": 20,
+      "netPct": -21.087382,
+      "profitFactor": 0.601559,
+      "drawdownPct": 28.800572,
+      "gapExits": 0,
+      "stops": 3,
+      "rankings": 34,
+      "qualifyingRankings": 20,
+      "selections": {
+        "BTCUSDT": 3,
+        "ETHUSDT": 7,
+        "SOLUSDT": 10
+      },
+      "firstTrade": 1767571200000,
+      "lastTrade": 1788134400000
+    }
+  }
+}

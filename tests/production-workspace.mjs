@@ -24,6 +24,8 @@ assert.deepEqual(p.readPairSignals([signal]),[signal]);assert.equal(p.readPairSi
 const demo=p.demoPairSignal(now);assert.equal(demo.mode,'demo');assert.equal(p.readPairSignals([demo]).length,1);
 const input={direction:'Compra',entry:100,stop:98,target:104,tickSize:.25,tickValue:5,volumeStep:1,minVolume:1,maxVolume:100,budget:100,roundTripCost:2,slippageTicks:1};
 const plan=r.planContractRisk(input);assert.equal(plan.riskPerUnit,52);assert.equal(plan.quantity,1);assert.equal(plan.risk,52);assert.equal(plan.reward,68);
+assert.throws(()=>r.planContractRisk({...input,target:100.25,roundTripCost:10}),/alvo não cobre/);
+assert.throws(()=>r.planContractRisk({...input,target:101,roundTripCost:10}),/alvo não cobre/);
 assert.equal(r.planContractRisk({...input,budget:51}).quantity,0);
 assert.equal(r.planContractRisk({...input,direction:'Venda',stop:102,target:96}).riskPerUnit,52);
 assert.throws(()=>r.planContractRisk({...input,stop:100.1}));assert.throws(()=>r.planContractRisk({...input,tickValue:NaN}));assert.throws(()=>r.planContractRisk({...input,target:99}));assert.throws(()=>r.planContractRisk({...input,slippageTicks:-1}));

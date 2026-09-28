@@ -52,7 +52,7 @@ h1, .page-heading h1 { font-size: var(--font-size-title); }
 .theme-toggle:hover, .icon-button:hover { color: var(--primary); background: var(--accent); }
 @media (max-width: 767px) {
   .workspace { padding: 25px var(--space-page) calc(100px + env(safe-area-inset-bottom)); }
-  .topbar { padding-inline: var(--space-page); }
+  .topbar { height:calc(72px + env(safe-area-inset-top));padding-top:env(safe-area-inset-top);padding-inline: var(--space-page); }
   .top-actions { gap: 5px; }
   .top-actions .demo-label { display: none; }
   .top-actions>.small { display: grid; }
@@ -68,3 +68,4 @@ h1, .page-heading h1 { font-size: var(--font-size-title); }
   .chart-panel { border-radius: var(--radius-card); }
   .settings-row p { line-height: 1.6; }
 }
+.install-steps{padding-left:22px;display:grid;gap:12px;line-height:1.6;margin:18px 0}.install-steps a{text-decoration:underline;text-underline-offset:3px}.account-install p+p{margin-top:12px}

@@ -1,0 +1,35 @@
+{
+  "id": "N3-crypto-weekday-exposure-v1",
+  "registeredAt": "2026-09-28",
+  "hypothesis": "Avoiding Saturday/Sunday exposure may improve net returns or drawdown after costs; this is a calendar rule, not a directional indicator or opening-range breakout.",
+  "symbols": ["BTCUSDT", "ETHUSDT", "SOLUSDT"],
+  "source": "research/cache/v3/{symbol}-1h.json, SHA-256 verified against research/cache/v3/manifest.json",
+  "timing": "At Sunday 23:00 UTC close, buy at contiguous Monday 00:00 UTC open; sell at Saturday 00:00 UTC open. Skip weeks whose planned exit is outside the window. If a gap occurs while holding, liquidate at first observed open. No intrabar stop, no short, no leverage.",
+  "windows": {
+    "developmentYears": [["2022-01-01", "2023-01-01"], ["2023-01-01", "2024-01-01"], ["2024-01-01", "2025-01-01"]],
+    "development": ["2022-01-01", "2025-01-01"],
+    "validation": ["2025-01-01", "2026-01-01"],
+    "retrospectiveFinal": ["2026-01-01", "2026-09-01"]
+  },
+  "initialCapital": 10000,
+  "allocationPct": 100,
+  "base": {"feeBpsPerFill": 10, "slippageBpsPerFill": 2},
+  "stress": {"feeBpsPerFill": 15, "slippageBpsPerFill": 5},
+  "fixedGates": {
+    "developmentPositiveYearsPerAsset": 2,
+    "minimumTradesDevelopment": 140,
+    "minimumTradesValidation": 45,
+    "minimumTradesFinal": 25,
+    "minProfitFactorValidationAndFinal": 1.2,
+    "maxDrawdownPctValidationAndFinal": 20,
+    "positiveBaseAndStressValidationAndFinal": true,
+    "minPassingAssets": 2
+  },
+  "selection": "One rule only, no parameter variants, no tuning. Development and validation first; final is calculated only after this protocol and the screen output are saved. The final dates were used by earlier project studies and are not an untouched cross-project holdout.",
+  "validated": false,
+  "references": [
+    {"title": "Hansen, Kim, Kimbrough — Periodicity in Cryptocurrency Volatility and Liquidity", "url": "https://arxiv.org/abs/2109.12142"},
+    {"title": "Liu and Tsyvinski — Risks and Returns of Cryptocurrency (NBER)", "url": "https://www.nber.org/papers/w24877"},
+    {"title": "Binance Public Data — spot klines and checksums", "url": "https://github.com/binance/binance-public-data/blob/master/README.md"}
+  ]
+}

@@ -86,10 +86,20 @@ export function canAlertForManualTrade(candidateId:CandidateId,now:number,approv
 const finite=z.number().finite(),positive=finite.positive();
 const positionSchema=z.object({entry:positive,quantity:positive,stop:positive,target:positive,entryAt:positive,expiresAt:positive,entryFee:finite.nonnegative(),cashBefore:positive,signalTime:positive});
 const sessionSchema=z.object({version:z.literal(1),candidateId:z.enum(['T1','T2','T3']),presetId:z.string().max(40).optional(),startedAt:positive,cash:finite,equity:finite,day:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),dayStartEquity:positive,lastSignalTime:finite.nonnegative(),lastQuoteAt:finite.nonnegative(),lastPrice:positive.nullable(),position:positionSchema.nullable(),trades:z.array(positionSchema.extend({exit:positive,exitAt:positive,net:finite,reason:z.string().max(150)})).max(10000),halted:z.string().max(150).nullable(),dailyPaused:z.boolean()});
-export function readPaperSession(raw:unknown,candidate:CandidateId):PaperSession|null{
+export function readPaperSession(raw:unknown,candidate:CandidateId,now=Date.now()):PaperSession|null{
  const parsed=sessionSchema.safeParse(raw);if(!parsed.success||parsed.data.candidateId!==candidate)return null;
  const s=parsed.data,expected=simulationPreset.initialCapital+s.trades.reduce((sum,t)=>sum+t.net,0)-(s.position?s.position.quantity*s.position.entry+s.position.entryFee:0);
- if(Math.abs(expected-s.cash)>.01||s.startedAt>Date.now()+5000)return null;
+ if(Math.abs(expected-s.cash)>.01||s.startedAt>now+5000)return null;
+ const dayStart=Date.parse(`${s.day}T00:00:00.000Z`),startedDay=new Date(s.startedAt).toISOString().slice(0,10);
+ if(!Number.isFinite(dayStart)||new Date(dayStart).toISOString().slice(0,10)!==s.day||s.day<startedDay||dayStart>Math.max(s.startedAt,s.lastQuoteAt))return null;
+ const crossing=s.trades.find(t=>t.entryAt<dayStart&&t.exitAt>=dayStart)??(s.position&&s.position.entryAt<dayStart?s.position:null);
+ const baseline=s.day===startedDay?simulationPreset.initialCapital:simulationPreset.initialCapital+s.trades.filter(t=>t.exitAt<dayStart).reduce((sum,t)=>sum+t.net,0);
+ // A position crossing midnight has an observed mark, not realized cash.
+ // Keep its saved baseline; validate the retained-cash lower bound only.
+ if(crossing&&s.day!==startedDay){if(s.dayStartEquity<crossing.cashBefore-crossing.quantity*crossing.entry-crossing.entryFee-.01)return null;}
+ else if(Math.abs(s.dayStartEquity-baseline)>.01)return null;
+ const marked=s.cash+(s.position&&s.lastPrice?s.position.quantity*s.lastPrice*(1-simulationPreset.slippageBps/10000)*(1-simulationPreset.feeBps/10000):0);
+ if((s.position&&!s.lastPrice)||Math.abs(s.equity-marked)>.01)return null;
  return s;
 }
 

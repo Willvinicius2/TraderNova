@@ -74,6 +74,120 @@
           "url": "https://www.binance.com/en/support/faq/detail/360033525031"
         }
       ]
+    },
+    {
+      "id": "N3",
+      "name": "Calendário semanal cripto",
+      "family": "Sazonalidade",
+      "thesis": "Uma hipótese fixa: comprar na segunda e sair no sábado. Testa o calendário sem repetir indicadores de tendência.",
+      "rules": [
+        "Comprar segunda 00h UTC após o fechamento de domingo; vender sábado 00h UTC.",
+        "Sem otimização, short ou stop intrabar. Não abrir semana sem saída dentro da janela.",
+        "Cobrar custos nas duas pontas, conferir lacunas e comparar com comprar e manter."
+      ],
+      "requiredData": [
+        "H1 de BTC, ETH e SOL",
+        "Histórico 2022–2026, calendário UTC e custos"
+      ],
+      "status": "exploratory-rejected",
+      "limitations": [
+        "Séries Binance spot H1 com hashes conferidos; não são preços executáveis de futuros da mesa.",
+        "Validação cronológica em 2025 e avaliação retrospectiva jan–ago/2026. Estes dados já foram vistos em pesquisas anteriores; não há holdout intocado nem aprovação prospectiva.",
+        "Custo base por ponta: 0,10% de taxa + 0,02% de slippage. Stress: 0,15% + 0,05%. Capital integral spot, sem alavancagem; risco e drawdown não são comparáveis ao preset de risco 0,5%.",
+        "Todos os três ativos perderam nas duas janelas de avaliação; nenhum foi habilitado no radar."
+      ],
+      "references": [
+        {
+          "title": "Hansen, Kim, Kimbrough — Periodicity in Cryptocurrency Volatility and Liquidity",
+          "url": "https://arxiv.org/abs/2109.12142"
+        },
+        {
+          "title": "Liu and Tsyvinski — Risks and Returns of Cryptocurrency (NBER)",
+          "url": "https://www.nber.org/papers/w24877"
+        },
+        {
+          "title": "Binance Public Data — spot klines and checksums",
+          "url": "https://github.com/binance/binance-public-data/blob/master/README.md"
+        }
+      ],
+      "audit": {
+        "file": "/research/calendar-study.json",
+        "rows": [
+          {
+            "label": "BTCUSDT",
+            "validationPct": -24.917641690483137,
+            "finalPct": -13.642070954917529,
+            "stressPct": -18.214450756638346,
+            "finalTrades": 34,
+            "profitFactor": 0.8036489622399811,
+            "drawdownPct": 36.71186646606688
+          },
+          {
+            "label": "ETHUSDT",
+            "validationPct": -37.33285635036605,
+            "finalPct": -17.600055649781098,
+            "stressPct": -21.96287265310657,
+            "finalTrades": 34,
+            "profitFactor": 0.7767637040501858,
+            "drawdownPct": 46.888436197081205
+          },
+          {
+            "label": "SOLUSDT",
+            "validationPct": -57.43672039477241,
+            "finalPct": -19.50515265087357,
+            "stressPct": -23.767100780380012,
+            "finalTrades": 34,
+            "profitFactor": 0.7621995239373116,
+            "drawdownPct": 48.64600420202543
+          }
+        ]
+      }
+    },
+    {
+      "id": "N4",
+      "name": "Rotação de força relativa",
+      "family": "Carteira transversal",
+      "thesis": "Uma carteira compra apenas o cripto mais forte da última semana, ou fica em caixa. Não é o spread de duas pernas da N1.",
+      "rules": [
+        "A cada segunda 00h UTC, comparar o retorno dos 168 intervalos H1 já fechados.",
+        "Comprar apenas o líder positivo entre BTC, ETH e SOL; sem líder positivo, ficar em caixa.",
+        "Stop fixo de 8%, execução pior em gap, rebalanceamento semanal e custos de venda/recompra."
+      ],
+      "requiredData": [
+        "H1 sincronizado dos três ativos",
+        "Histórico 2022–2026 e custos"
+      ],
+      "status": "exploratory-rejected",
+      "limitations": [
+        "Séries Binance spot H1 com hashes conferidos; não são preços executáveis de futuros da mesa.",
+        "Validação cronológica em 2025 e avaliação retrospectiva jan–ago/2026. Estes dados já foram vistos em pesquisas anteriores; não há holdout intocado nem aprovação prospectiva.",
+        "Custo base por ponta: 0,10% de taxa + 0,02% de slippage. Stress: 0,15% + 0,05%. Capital integral spot, sem alavancagem; risco e drawdown não são comparáveis ao preset de risco 0,5%.",
+        "O ganho de +242,98% no desenvolvimento não se sustentou: perdas em 2025 e em 2026. Falhou também em amostra, fator de lucro e drawdown."
+      ],
+      "references": [
+        {
+          "title": "Momentum transversal em cripto · estudo primário",
+          "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4322637"
+        },
+        {
+          "title": "Binance Public Data — spot klines and checksums",
+          "url": "https://github.com/binance/binance-public-data/blob/master/README.md"
+        }
+      ],
+      "audit": {
+        "file": "/research/rotation-study.json",
+        "rows": [
+          {
+            "label": "Carteira BTC/ETH/SOL",
+            "validationPct": -6.352382,
+            "finalPct": -18.59461,
+            "stressPct": -21.087382,
+            "finalTrades": 20,
+            "profitFactor": 0.642624,
+            "drawdownPct": 27.253185
+          }
+        ]
+      }
     }
   ]
 }

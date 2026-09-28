@@ -33,6 +33,12 @@ try{
  const opened=p.advancePaperSession(session,snapshot,quote,now);
  assert.ok(opened.position);near(opened.position.entry,quote.ask*1.0002);assert.ok(opened.position.entry>snapshot.readings[0].entryReference,'Forward entry uses observed price');
  assert.deepEqual(p.readPaperSession(JSON.parse(JSON.stringify(opened)),'T3'),opened,'Open positions survive reloading');assert.equal(p.readPaperSession({...opened,cash:999999},'T3'),null);
+ assert.equal(p.readPaperSession({...session,dayStartEquity:1},'T3'),null,'Reject an altered initial daily loss baseline');
+ assert.equal(p.readPaperSession({...opened,equity:999999},'T3'),null,'Equity must match the saved position mark');
+ const midnight=Date.parse(`${opened.day}T00:00:00Z`)+86400000;
+ const rollover=p.advancePaperSession(opened,{...snapshot,status:'blocked'},{bid:110,ask:110.1,timestamp:midnight},midnight);
+ assert.deepEqual(p.readPaperSession(rollover,'T3'),rollover,'Preserve observed daily baseline across midnight with an open position');
+ assert.equal(p.readPaperSession({...rollover,dayStartEquity:1},'T3'),null,'Cross-midnight baseline cannot be lower than retained cash');
  assert.equal(p.advancePaperSession(opened,snapshot,quote,now),opened,'Duplicate quote has no effect');
  const stale=p.advancePaperSession(session,snapshot,{...quote,timestamp:closedAt-5000},now);assert.equal(stale.position,null);assert.equal(stale.lastSignalTime,0,'Wait for a post-close quote before consuming signal');
  assert.ok(p.advancePaperSession(stale,snapshot,quote,now).position);

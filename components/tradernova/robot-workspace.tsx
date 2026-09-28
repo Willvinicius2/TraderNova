@@ -3,22 +3,23 @@ import {useEffect,useMemo,useRef,useState} from 'react';
 import {Bot,Radio,ShieldCheck} from 'lucide-react';
 import {toast} from 'sonner';
 import {useLiveMarket} from '@/hooks/use-live-market';
+import {marketNow} from '@/lib/tradernova/market-clock';
 import {researchCandidates} from '@/lib/tradernova/research';
 import {evaluatePaperEngine,manualOpportunity,strategyApprovals,canAlertForManualTrade} from '@/lib/tradernova/paper-engine';
 import './research-workspace.css';
 const format=(v:number)=>v.toLocaleString('pt-BR',{maximumFractionDigits:2});
 type Opportunity=NonNullable<ReturnType<typeof manualOpportunity>>;
-export function RobotWorkspace(){
+export function RobotWorkspace({alertsOn=true}:{alertsOn?:boolean}){
  const [now,setNow]=useState(0),[signals,setSignals]=useState<Opportunity[]>([]),seen=useRef(new Set<string>());
- useEffect(()=>{setNow(Date.now());const timer=setInterval(()=>setNow(Date.now()),1000);return()=>clearInterval(timer);},[]);
+ useEffect(()=>{setNow(marketNow());const timer=setInterval(()=>setNow(marketNow()),1000);return()=>clearInterval(timer);},[]);
  const approved=researchCandidates.filter(c=>canAlertForManualTrade(c.id,now,strategyApprovals));
  const feed=useLiveMarket(approved.length>0,'BTCUSD',60),entry=feed.entries.BTCUSD;
- const snapshot=useMemo(()=>evaluatePaperEngine(entry?.bars??[],60,entry?.receivedAt??0,now),[entry,now]);
+ const snapshot=useMemo(()=>evaluatePaperEngine(entry?.bars??[],60,(feed.clockReady?entry?.receivedAt:0)??0,now),[entry,feed.clockReady,now]);
  const fresh=snapshot.status==='ready'&&!!entry?.ticker&&now-entry.ticker.timestamp<=30000;
  useEffect(()=>{
-  if(!entry?.ticker||document.hidden||!navigator.onLine)return;
-  for(const c of researchCandidates){const signal=manualOpportunity(snapshot,c.id,entry.ticker,now);if(signal&&!seen.current.has(signal.id)){seen.current.add(signal.id);setSignals(old=>[signal,...old].slice(0,30));toast.info('Oportunidade para revisão manual',{description:`${signal.assetId} · Compra · Entrada ${format(signal.entry)} · Stop ${format(signal.stop)} · Take ${format(signal.target)}`,duration:15000});}}
- },[entry,snapshot,now]);
+  if(!feed.clockReady||!entry?.ticker||document.hidden||!navigator.onLine)return;
+  for(const c of researchCandidates){const signal=manualOpportunity(snapshot,c.id,entry.ticker,now);if(signal&&!seen.current.has(signal.id)){seen.current.add(signal.id);setSignals(old=>[signal,...old].slice(0,30));if(alertsOn)toast.info('Oportunidade para revisão manual',{description:`${signal.assetId} · Compra · Entrada ${format(signal.entry)} · Stop ${format(signal.stop)} · Take ${format(signal.target)}`,duration:15000});}}
+ },[entry,snapshot,now,feed.clockReady,alertsOn]);
  const status=!approved.length?'Aguardando estratégias validadas':fresh?'Buscando oportunidades':'Aguardando dados recentes';
  return <><div className="robot-overview panel"><div className="row"><span className="robot-icon large"><Bot size={30}/></span><div><h2>Motor de sinais</h2><p role="status" aria-live="polite">{status}</p></div></div><span className={`tag ${approved.length?'purple':'amber'}`}>{approved.length} estratégias habilitadas</span></div>
  <div className="section-heading"><h2>Sinais para revisão manual</h2><span className="tag">{signals.filter(s=>s.expiresAt>now).length} ativos</span></div>

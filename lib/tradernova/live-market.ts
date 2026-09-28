@@ -31,20 +31,20 @@ export function parseKrakenHistory(payload:unknown):MarketCandle[]{
  if(!validCandle(c))throw new Error('Candle inválido na fonte.');return c;});
  if(!candles.length)throw new Error('Histórico vazio.');return mergeCandles([],candles);
 }
-export function parseOhlcEvent(value:unknown,interval:number):{assetId:LiveAssetId;candle:MarketCandle}|null{
+export function parseOhlcEvent(value:unknown,interval:number,now=Date.now()):{assetId:LiveAssetId;candle:MarketCandle}|null{
  if(!value||typeof value!=='object')return null;const v=value as Record<string,unknown>;
  if(v.interval!==interval||typeof v.symbol!=='string'||typeof v.interval_begin!=='string')return null;
  const id=assetFromSymbol(v.symbol);if(!id)return null;
  const c={time:Date.parse(v.interval_begin),open:v.open,high:v.high,low:v.low,close:v.close,volume:v.volume,trades:v.trades,...(typeof v.vwap==='number'?{vwap:v.vwap}:{})} as MarketCandle;
- if(![v.open,v.high,v.low,v.close,v.volume,v.trades].every(number)||!validCandle(c)||c.time> Date.now()+5000)return null;
+ if(![v.open,v.high,v.low,v.close,v.volume,v.trades].every(number)||!validCandle(c)||c.time>now+5000)return null;
  if(c.time%(interval*60000)!==0)return null;
  return {assetId:id,candle:c};
 }
-export function parseTicker(value:unknown):{assetId:LiveAssetId;ticker:Ticker}|null{
+export function parseTicker(value:unknown,now=Date.now()):{assetId:LiveAssetId;ticker:Ticker}|null{
  if(!value||typeof value!=='object')return null;const v=value as Record<string,unknown>;
  if(typeof v.symbol!=='string'||!number(v.bid)||!number(v.ask)||!number(v.change_pct)||typeof v.timestamp!=='string')return null;
  const id=assetFromSymbol(v.symbol),timestamp=Date.parse(v.timestamp);
- if(!id||!Number.isFinite(timestamp)||timestamp>Date.now()+5000||(v.bid as number)<=0||(v.ask as number)<(v.bid as number))return null;
+ if(!id||!Number.isFinite(timestamp)||timestamp>now+5000||(v.bid as number)<=0||(v.ask as number)<(v.bid as number))return null;
  return {assetId:id,ticker:{bid:v.bid as number,ask:v.ask as number,changePct:v.change_pct as number,timestamp}};
 }
 /** Price and latest candle always come from the same OHLC event, never ticker.last. */
@@ -64,7 +64,12 @@ export function feedLabel(connection:ConnectionState,entry:MarketEntry|undefined
 /** Validate source and timeframe before merging a network response into a chart. */
 export function readHistoryResponse(value:unknown,asset:string,interval:number,now=Date.now()):{bars:MarketCandle[];receivedAt:number}{
  if(!value||typeof value!=='object')throw new Error('Histórico inválido.');
- const v=value as Record<string,unknown>,receivedAt=typeof v.receivedAt==='string'?Date.parse(v.receivedAt):NaN;
+ const v=value as Record<string,unknown>,sourceReceivedAt=typeof v.receivedAt==='string'?Date.parse(v.receivedAt):NaN;
+ const serverTime=v.serverTime===undefined?now:typeof v.serverTime==='string'?Date.parse(v.serverTime):NaN;
+ if(!Number.isFinite(serverTime)||sourceReceivedAt>serverTime+5000)throw new Error('Horário do histórico inválido.');
+ // Preserve cache age while removing server/device clock skew. The caller
+ // subtracts the request duration, conservatively including network latency.
+ const receivedAt=v.serverTime===undefined?sourceReceivedAt:now-Math.max(0,serverTime-sourceReceivedAt);
  if(v.asset!==asset||v.interval!==interval||v.source!=='kraken-spot'||!Number.isFinite(receivedAt)||receivedAt>now+30000||!Array.isArray(v.bars)||!v.bars.length)throw new Error('Fonte ou período do histórico não confere.');
  const bars=v.bars as MarketCandle[];
  if(bars.some((c,i)=>!validCandle(c)||c.time>now+5000||c.time%(interval*60000)!==0||(i>0&&c.time<=bars[i-1].time)))throw new Error('A fonte retornou candles inconsistentes.');

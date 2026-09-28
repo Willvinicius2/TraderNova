@@ -9,6 +9,7 @@ import {runHistorical,type HistoricalResult} from '@/lib/tradernova/historical';
 import {simulationPreset,evaluatePaperEngine,newPaperSession,advancePaperSession,readPaperSession,type PaperSession} from '@/lib/tradernova/paper-engine';
 import {isHistoricalStudy,type HistoricalStudy} from '@/lib/tradernova/study-types';
 import {useLiveMarket} from '@/hooks/use-live-market';
+import {marketNow} from '@/lib/tradernova/market-clock';
 import {CalibratedOverview,CalibrationResults} from './calibration-results';
 import {GoldResearchResults} from './gold-research-results';
 import {activePresets} from '@/lib/tradernova/active-presets';
@@ -23,13 +24,13 @@ function useStudy(){const [study,setStudy]=useState<HistoricalStudy|null>(null),
 
 export function StudyOverview({onChoose}:{onChoose:(id:CandidateId)=>void}){return <><GoldResearchResults/><CalibratedOverview onChoose={onChoose}/></>;}
 
-export function SimulationWorkspace({initialCandidate='T3',robot=false}:{initialCandidate?:CandidateId;robot?:boolean}){
+export function SimulationWorkspace({initialCandidate='T3',robot=false,alertsOn=true}:{initialCandidate?:CandidateId;robot?:boolean;alertsOn?:boolean}){
  const [candidate,setCandidate]=useState<CandidateId>(initialCandidate),[mode,setMode]=useState<'backtest'|'live'>(robot?'live':'backtest');
  useEffect(()=>setCandidate(initialCandidate),[initialCandidate]);
  return <><div className="robot-overview panel"><div className="row"><span className="robot-icon large">{robot?<Bot size={30}/>:<FlaskConical size={30}/>}</span><div><h2>{robot?'Motor de estratégias':'Iniciar uma simulação'}</h2><p>Estratégias preparadas. Parâmetros definidos pela pesquisa.</p></div></div><span className="tag amber">Nenhuma validada</span></div>
  <div className="simulation-controls panel padded"><label className="field-label" htmlFor="ready-strategy">Escolha a estratégia</label><Select value={candidate} onValueChange={v=>setCandidate(v as CandidateId)}><SelectTrigger id="ready-strategy" className="picker"><SelectValue/></SelectTrigger><SelectContent>{researchCandidates.map(c=><SelectItem key={c.id} value={c.id}>{c.id} · {c.name}</SelectItem>)}</SelectContent></Select><p className="micro research-form-note">Preset de pesquisa: Bitcoin · H1 · compras spot · risco de até 0,5%. {presetDescription(activePresets[candidate])}. Não é o contrato MT5 da mesa.</p>
  <div className="two-buttons simulation-modes"><button className={mode==='backtest'?'primary-button':'secondary-button'} aria-pressed={mode==='backtest'} onClick={()=>setMode('backtest')}><FlaskConical size={18}/>Backtest</button><button className={mode==='live'?'primary-button':'secondary-button'} aria-pressed={mode==='live'} onClick={()=>setMode('live')}><Radio size={18}/>Simulação em tempo real</button></div></div>
- {mode==='backtest'?<PreparedBacktest key={candidate} candidate={candidate}/>:<ForwardSimulation key={candidate} candidate={candidate}/>}
+ {mode==='backtest'?<PreparedBacktest key={candidate} candidate={candidate}/>:<ForwardSimulation key={candidate} candidate={candidate} alertsOn={alertsOn}/>}
  </>;
 }
 
@@ -57,32 +58,33 @@ function PreparedBacktest({candidate}:{candidate:CandidateId}){
  </>;
 }
 
-function ForwardSimulation({candidate}:{candidate:CandidateId}){
+function ForwardSimulation({candidate,alertsOn}:{candidate:CandidateId;alertsOn:boolean}){
  const [enabled,setEnabled]=useState(false),[now,setNow]=useState(0),[session,setSession]=useState<PaperSession|null>(null),[storageError,setStorageError]=useState(false),[archived,setArchived]=useState<PaperSession|null>(null);
  const current=useRef<PaperSession|null>(null),lastAlert=useRef('');
  const feed=useLiveMarket(enabled,'BTCUSD',60),entry=feed.entries.BTCUSD;
- const snapshot=useMemo(()=>evaluatePaperEngine(entry?.bars??[],60,entry?.receivedAt??0,now),[entry,now]);
- useEffect(()=>{setNow(Date.now());const t=setInterval(()=>setNow(Date.now()),1000);return()=>clearInterval(t);},[]);
+ const snapshot=useMemo(()=>evaluatePaperEngine(entry?.bars??[],60,(feed.clockReady?entry?.receivedAt:0)??0,now),[entry,feed.clockReady,now]);
+ useEffect(()=>{setNow(marketNow());const t=setInterval(()=>setNow(marketNow()),1000);return()=>clearInterval(t);},[]);
  useEffect(()=>{try{const old=localStorage.getItem(`tradernova-forward-${candidate}-E0X0-archive`);if(old)setArchived(readPaperSession(JSON.parse(old),candidate));const raw=localStorage.getItem(`tradernova-forward-${candidate}-v1`);if(raw){const value=readPaperSession(JSON.parse(raw),candidate);if(value){current.current=value;setSession(value);}else setStorageError(true);}}catch{setStorageError(true);}},[candidate]);
  useEffect(()=>{
-  if(!enabled||!current.current||!entry?.ticker||document.hidden||!navigator.onLine)return;
+  if(!feed.clockReady||!enabled||!current.current||!entry?.ticker||document.hidden||!navigator.onLine)return;
   const next=advancePaperSession(current.current,snapshot,entry.ticker,now);
   if(next===current.current)return;
   const opened=!current.current.position&&next.position;
   current.current=next;setSession(next);
-  if(opened){const id=String(next.position!.signalTime);if(lastAlert.current!==id){lastAlert.current=id;toast.info('Entrada fictícia gerada',{description:`${candidate} · BTC/USD · compra simulada a ${number(next.position!.entry)}.`,duration:12000});}}
+  if(opened&&alertsOn){const id=String(next.position!.signalTime);if(lastAlert.current!==id){lastAlert.current=id;toast.info('Entrada fictícia gerada',{description:`${candidate} · BTC/USD · compra simulada a ${number(next.position!.entry)}.`,duration:12000});}}
   try{localStorage.setItem(`tradernova-forward-${candidate}-v1`,JSON.stringify(next));}catch{setStorageError(true);}
- },[enabled,entry,snapshot,now,candidate]);
- function start(){if(enabled){setEnabled(false);return;}if(current.current&&(current.current.presetId??`${candidate}-E0X0`)!==activePresets[candidate].id&&!current.current.position){try{localStorage.setItem(`tradernova-forward-${candidate}-${current.current.presetId??`${candidate}-E0X0`}-archive`,JSON.stringify(current.current));setArchived(current.current);current.current=null;}catch{setStorageError(true);return;}}if(!current.current){const next=newPaperSession(candidate,Date.now());current.current=next;setSession(next);try{localStorage.setItem(`tradernova-forward-${candidate}-v1`,JSON.stringify(next));}catch{setStorageError(true);}}setEnabled(true);}
+ },[enabled,entry,snapshot,now,candidate,feed.clockReady,alertsOn]);
+ function start(){if(enabled){setEnabled(false);return;}if(current.current&&(current.current.presetId??`${candidate}-E0X0`)!==activePresets[candidate].id&&!current.current.position){try{localStorage.setItem(`tradernova-forward-${candidate}-${current.current.presetId??`${candidate}-E0X0`}-archive`,JSON.stringify(current.current));setArchived(current.current);current.current=null;}catch{setStorageError(true);return;}}setEnabled(true);}
+ useEffect(()=>{if(!enabled||!feed.clockReady||current.current)return;const next=newPaperSession(candidate,marketNow());current.current=next;setSession(next);try{localStorage.setItem(`tradernova-forward-${candidate}-v1`,JSON.stringify(next));}catch{setStorageError(true);}},[enabled,feed.clockReady,candidate]);
  const legacy=!!session&&(session.presetId??`${candidate}-E0X0`)!==activePresets[candidate].id;
  const quoteFresh=!!entry?.ticker&&now-entry.ticker.timestamp<=30000;
- const status=!enabled?'Simulação pausada':session?.halted??(legacy?'Concluindo sessão do preset anterior':snapshot.status==='ready'&&quoteFresh?(session?.position?'Acompanhando entrada fictícia':'Buscando oportunidades · simulação'):'Aguardando dados recentes');
+ const status=!enabled?'Simulação pausada':!feed.clockReady?'Sincronizando o horário da fonte':session?.halted??(legacy?'Concluindo sessão do preset anterior':snapshot.status==='ready'&&quoteFresh?(session?.position?'Acompanhando entrada fictícia':'Buscando oportunidades · simulação'):'Aguardando dados recentes');
  const reading=snapshot.readings.find(r=>r.candidateId===candidate);
  return <><section className="panel padded"><div className="row between"><div className="row"><Radio className={enabled?'positive':'muted'} size={23}/><div><h2 role="status" aria-live="polite">{status}</h2><p className="micro">BTC/USD · H1 · Kraken Spot · {snapshot.closedAt?`último fechamento ${date(snapshot.closedAt)}`:'aguardando a fonte'}</p></div></div><span className="tag purple">Dinheiro fictício</span></div><p className="research-form-note">Comece e deixe esta aba aberta. O motor espera um novo fechamento, verifica a regra e simula a entrada na cotação observada. Nenhuma condição encontrada é um resultado normal.</p><button className="primary-button full spaced" onClick={start}>{enabled?<Pause size={17}/>:<Play size={17}/>} {enabled?'Pausar simulação':legacy?(session?.position?'Acompanhar posição anterior':'Iniciar sessão com preset calibrado'):session?'Continuar simulação':'Iniciar simulação em tempo real'}</button>{legacy&&<p className="notice">Sessão do preset anterior preservada. Uma posição aberta continua sendo acompanhada sem novas entradas. Ao iniciar a versão calibrada, o histórico anterior será arquivado.</p>}{archived&&<button className="text-button spaced" onClick={()=>exportJson({session:archived,source:'kraken-spot',validated:false},`TraderNova_Sessao_Anterior_${candidate}.json`)}><Download size={16}/>Exportar sessão anterior</button>}<p className="micro research-form-note">{enabled&&snapshot.status==='ready'?(reading?.state==='buy'?'Condição de compra no último fechamento. Uma nova entrada exige fechamento observado após o início e cotação recente.':reading?.state==='sell-excluded'?'Condição de venda encontrada; este preset opera apenas compras.':'Regra verificada: aguardando uma condição de compra.'):snapshot.reason}</p>{feed.error&&<p className="research-error">{feed.error}</p>}</section>
  <div className="result-grid simulation-stats">{[['Banca fictícia',100000],['Patrimônio atual',session?.equity??100000],['Limite diário',3000],['Limite total',10000]].map(([label,value])=><div className="panel stat" key={label}><span>{label}</span><strong>{number(value as number,' USD')}</strong></div>)}</div>
  {session?.position&&<section className="panel padded"><span className="tag purple">Entrada fictícia em acompanhamento</span><h2 className="spaced">{candidate} · Compra BTC/USD</h2><div className="levels-grid"><div>Entrada<strong>{number(session.position.entry)}</strong></div><div>Stop<strong>{number(session.position.stop)}</strong></div><div>Alvo<strong>{number(session.position.target)}</strong></div></div><p className="micro">Observada em {date(session.position.entryAt)}. Quantidade {number(session.position.quantity)} BTC. Sem ordem enviada.</p></section>}
  <section className="panel padded"><div className="section-heading"><h2>Operações da simulação</h2><button disabled={!session} className="text-button" onClick={()=>exportJson({preset:simulationPreset,strategyParameters:calibrationVariants(candidate).find(p=>p.id===(session?.presetId??`${candidate}-E0X0`)),session,source:'kraken-spot',validated:false},`TraderNova_Forward_${candidate}.json`)}><Download size={16}/>Exportar</button></div>{session?.trades.length?<Table><TableHeader><TableRow><TableHead>Entrada</TableHead><TableHead>Saída</TableHead><TableHead>Resultado</TableHead><TableHead>Motivo</TableHead></TableRow></TableHeader><TableBody>{session.trades.slice(-30).reverse().map(t=><TableRow key={t.entryAt}><TableCell>{date(t.entryAt)}</TableCell><TableCell>{date(t.exitAt)}</TableCell><TableCell className={t.net>=0?'positive':'negative'}>{number(t.net,' USD')}</TableCell><TableCell>{t.reason}</TableCell></TableRow>)}</TableBody></Table>:<p className="muted">As operações aparecerão quando houver entradas. No H1, cada candle leva uma hora.</p>}</section>
  <section className="panel padded"><h2>Limites e acompanhamento</h2>
- <p className="micro research-form-note">Sua referência: banca de 100 mil, perda diária de 3 mil e total de 10 mil. A simulação usa limite total fixo, reinício diário às 00h UTC e custos estimados; o horário, a base de cálculo e o contrato MT5 da mesa ainda precisam ser confirmados.</p><p className="micro research-form-note">Funciona enquanto esta aba estiver aberta e visível. Sem dados recentes, as entradas param. Saídas usam cotações observadas: movimentos entre atualizações ou durante desconexões podem não ser capturados. O acompanhamento fica neste dispositivo.</p>{storageError&&<p role="alert" className="research-error">Não foi possível salvar a sessão local. Exporte antes de sair.</p>}</section>
+ <p className="micro research-form-note">Sua referência: banca de 100 mil, perda diária de 3 mil e total de 10 mil. A simulação usa limite total fixo, reinício diário às 00h UTC e custos estimados; o horário, a base de cálculo e o contrato MT5 da mesa ainda precisam ser confirmados.</p><p className="micro research-form-note">Funciona enquanto esta aba estiver aberta e visível. Sem dados recentes, as entradas param. Saídas usam cotações observadas: movimentos entre atualizações ou durante desconexões podem não ser capturados. O acompanhamento fica neste dispositivo.</p>{storageError&&<p role="alert" className="research-error">Não foi possível recuperar ou salvar a sessão local. Exporte antes de sair.</p>}</section>
  </>;
 }

@@ -1,3 +1,5 @@
+> Revisão posterior e situação atual: [Auditoria 0.6](AUDITORIA_FINAL_2026-09-28.md).
+
 # Revisão TraderNova · piloto 0.5
 
 ## Entrega desta rodada

@@ -10,6 +10,7 @@ export function planContractRisk(p:RiskInput){
  const side=p.direction==='Compra'?1:-1,stopTicks=(p.entry-p.stop)*side/p.tickSize,targetTicks=(p.target-p.entry)*side/p.tickSize;
  if(stopTicks<=0||targetTicks<=0)throw new Error('Revise a posição do stop e do alvo para esta direção.');
  const cost=p.roundTripCost+2*p.slippageTicks*p.tickValue,riskPerUnit=stopTicks*p.tickValue+cost,rewardPerUnit=targetTicks*p.tickValue-cost;
+ if(rewardPerUnit<=0)throw new Error('O alvo não cobre os custos e o slippage. O resultado líquido seria zero ou negativo.');
  const maxAffordable=Math.min(p.maxVolume,p.budget/riskPerUnit);
  let quantity=Number((Math.floor((maxAffordable+1e-10)/p.volumeStep)*p.volumeStep).toPrecision(12));
  if(quantity*riskPerUnit>p.budget)quantity=Number(Math.max(0,quantity-p.volumeStep).toPrecision(12));

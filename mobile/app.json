@@ -33,6 +33,12 @@
     },
     "plugins": [
       "expo-sharing"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f9e6ee09-4b87-47b7-a9b1-a1cbc3ca2a53"
+      }
+    },
+    "owner": "willvinicius"
   }
 }

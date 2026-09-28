@@ -1,0 +1,354 @@
+{
+  "generatedAt": "2026-09-28T22:29:21.135Z",
+  "protocolSha256": "bd53fcfdc08f24bba954ff747f78a6132c1ffce6f4bf286e700e3cba979c42e7",
+  "validated": false,
+  "dataSha256": {
+    "BTCUSDT": "eec6d00f0a38d5658b16c53928aed72cea3f1c925c8c73850ea75888c2ced678",
+    "ETHUSDT": "e476a43feed4716a833cbccfc6061816d19e722a8e439da0b8ff0b90f56a1ff3",
+    "SOLUSDT": "33393a1c43d34808db5755e905f3c3205eb836bbff9728e047830f894bd235f4"
+  },
+  "developmentYears": [
+    {
+      "window": [
+        "2022-01-01",
+        "2023-01-01"
+      ],
+      "base": {
+        "BTCUSDT": {
+          "trades": 52,
+          "netPct": -59.302651012542185,
+          "profitFactor": 0.5106450542348386,
+          "drawdownPct": 64.9424855637746,
+          "buyHoldPct": -64.29285581510646,
+          "gapExits": 0,
+          "firstTrade": 1641168000000,
+          "lastTrade": 1672444800000
+        },
+        "ETHUSDT": {
+          "trades": 52,
+          "netPct": -60.44832887141316,
+          "profitFactor": 0.5965453793882638,
+          "drawdownPct": 71.6179240073117,
+          "buyHoldPct": -67.54104136046546,
+          "gapExits": 0,
+          "firstTrade": 1641168000000,
+          "lastTrade": 1672444800000
+        },
+        "SOLUSDT": {
+          "trades": 52,
+          "netPct": -92.23734119180067,
+          "profitFactor": 0.42026096971017646,
+          "drawdownPct": 93.51414581918361,
+          "buyHoldPct": -94.14969667433732,
+          "gapExits": 0,
+          "firstTrade": 1641168000000,
+          "lastTrade": 1672444800000
+        }
+      },
+      "stress": {
+        "BTCUSDT": {
+          "trades": 52,
+          "netPct": -62.55164182701838,
+          "profitFactor": 0.4803102027610567,
+          "drawdownPct": 66.69225577550222,
+          "buyHoldPct": -64.34994162425079,
+          "gapExits": 0,
+          "firstTrade": 1641168000000,
+          "lastTrade": 1672444800000
+        },
+        "ETHUSDT": {
+          "trades": 52,
+          "netPct": -63.6058568036026,
+          "profitFactor": 0.570443848531485,
+          "drawdownPct": 72.7308022575889,
+          "buyHoldPct": -67.59293422281047,
+          "gapExits": 0,
+          "firstTrade": 1641168000000,
+          "lastTrade": 1672444800000
+        },
+        "SOLUSDT": {
+          "trades": 52,
+          "netPct": -92.85705740898042,
+          "profitFactor": 0.40784815050640116,
+          "drawdownPct": 94.03193091285146,
+          "buyHoldPct": -94.15904968496612,
+          "gapExits": 0,
+          "firstTrade": 1641168000000,
+          "lastTrade": 1672444800000
+        }
+      }
+    },
+    {
+      "window": [
+        "2023-01-01",
+        "2024-01-01"
+      ],
+      "base": {
+        "BTCUSDT": {
+          "trades": 52,
+          "netPct": 74.84035204423003,
+          "profitFactor": 1.6415777277365842,
+          "drawdownPct": 23.478231028819977,
+          "buyHoldPct": 155.00427740804633,
+          "gapExits": 1,
+          "firstTrade": 1672617600000,
+          "lastTrade": 1703894400000
+        },
+        "ETHUSDT": {
+          "trades": 52,
+          "netPct": 43.02853089947123,
+          "profitFactor": 1.348207380707498,
+          "drawdownPct": 26.776078740110886,
+          "buyHoldPct": 90.31376831962939,
+          "gapExits": 1,
+          "firstTrade": 1672617600000,
+          "lastTrade": 1703894400000
+        },
+        "SOLUSDT": {
+          "trades": 52,
+          "netPct": 319.6221782365942,
+          "profitFactor": 2.1441902610810266,
+          "drawdownPct": 50.43187638694502,
+          "buyHoldPct": 917.8150917872181,
+          "gapExits": 1,
+          "firstTrade": 1672617600000,
+          "lastTrade": 1703894400000
+        }
+      },
+      "stress": {
+        "BTCUSDT": {
+          "trades": 52,
+          "netPct": 60.88232500009645,
+          "profitFactor": 1.515698990472791,
+          "drawdownPct": 25.14723924360359,
+          "buyHoldPct": 154.59659637268484,
+          "gapExits": 1,
+          "firstTrade": 1672617600000,
+          "lastTrade": 1703894400000
+        },
+        "ETHUSDT": {
+          "trades": 52,
+          "netPct": 31.61013646686055,
+          "profitFactor": 1.2562363849938798,
+          "drawdownPct": 29.669542848740154,
+          "buyHoldPct": 90.0095094464028,
+          "gapExits": 1,
+          "firstTrade": 1672617600000,
+          "lastTrade": 1703894400000
+        },
+        "SOLUSDT": {
+          "trades": 52,
+          "netPct": 286.1224875549893,
+          "profitFactor": 2.0419496196101687,
+          "drawdownPct": 51.99294761455794,
+          "buyHoldPct": 916.1878880608962,
+          "gapExits": 1,
+          "firstTrade": 1672617600000,
+          "lastTrade": 1703894400000
+        }
+      }
+    },
+    {
+      "window": [
+        "2024-01-01",
+        "2025-01-01"
+      ],
+      "base": {
+        "BTCUSDT": {
+          "trades": 52,
+          "netPct": 68.57869420566611,
+          "profitFactor": 1.5033876339459749,
+          "drawdownPct": 43.400687369476884,
+          "buyHoldPct": 120.77526742219517,
+          "gapExits": 0,
+          "firstTrade": 1704067200000,
+          "lastTrade": 1735344000000
+        },
+        "ETHUSDT": {
+          "trades": 52,
+          "netPct": 2.708907401198468,
+          "profitFactor": 1.0150944231080148,
+          "drawdownPct": 54.24331916285521,
+          "buyHoldPct": 45.92325289710437,
+          "gapExits": 0,
+          "firstTrade": 1704067200000,
+          "lastTrade": 1735344000000
+        },
+        "SOLUSDT": {
+          "trades": 52,
+          "netPct": 23.37449655616597,
+          "profitFactor": 1.0952649904400622,
+          "drawdownPct": 58.2261302714143,
+          "buyHoldPct": 85.66280048169479,
+          "gapExits": 0,
+          "firstTrade": 1704067200000,
+          "lastTrade": 1735344000000
+        }
+      },
+      "stress": {
+        "BTCUSDT": {
+          "trades": 52,
+          "netPct": 55.12055399217503,
+          "profitFactor": 1.4058349771191923,
+          "drawdownPct": 45.270831848386486,
+          "buyHoldPct": 120.4223090698108,
+          "gapExits": 0,
+          "firstTrade": 1704067200000,
+          "lastTrade": 1735344000000
+        },
+        "ETHUSDT": {
+          "trades": 52,
+          "netPct": -5.490651169906869,
+          "profitFactor": 0.9689466677711726,
+          "drawdownPct": 55.755203319460094,
+          "buyHoldPct": 45.689962132615605,
+          "gapExits": 0,
+          "firstTrade": 1704067200000,
+          "lastTrade": 1735344000000
+        },
+        "SOLUSDT": {
+          "trades": 52,
+          "netPct": 13.525142334712047,
+          "profitFactor": 1.0562108310304217,
+          "drawdownPct": 59.54173355324135,
+          "buyHoldPct": 85.36597721465836,
+          "gapExits": 0,
+          "firstTrade": 1704067200000,
+          "lastTrade": 1735344000000
+        }
+      }
+    }
+  ],
+  "development": {
+    "base": {
+      "BTCUSDT": {
+        "trades": 156,
+        "netPct": 19.952824355909105,
+        "profitFactor": 1.0751244069841008,
+        "drawdownPct": 64.9424855637746,
+        "buyHoldPct": 101.98591040269838,
+        "gapExits": 1,
+        "firstTrade": 1641168000000,
+        "lastTrade": 1735344000000
+      },
+      "ETHUSDT": {
+        "trades": 156,
+        "netPct": -41.89739220386277,
+        "profitFactor": 0.860446514654691,
+        "drawdownPct": 71.6179240073117,
+        "buyHoldPct": -9.423839408872304,
+        "gapExits": 1,
+        "firstTrade": 1641168000000,
+        "lastTrade": 1735344000000
+      },
+      "SOLUSDT": {
+        "trades": 156,
+        "netPct": -59.812191383103475,
+        "profitFactor": 0.7705796872932108,
+        "drawdownPct": 93.51414581918361,
+        "buyHoldPct": 11.085348303029207,
+        "gapExits": 1,
+        "firstTrade": 1641168000000,
+        "lastTrade": 1735344000000
+      }
+    },
+    "stress": {
+      "BTCUSDT": {
+        "trades": 156,
+        "netPct": -6.5432954650603286,
+        "profitFactor": 0.9734447166325031,
+        "drawdownPct": 66.69225577550222,
+        "buyHoldPct": 101.6629910151555,
+        "gapExits": 1,
+        "firstTrade": 1641168000000,
+        "lastTrade": 1735344000000
+      },
+      "ETHUSDT": {
+        "trades": 156,
+        "netPct": -54.73155151894014,
+        "profitFactor": 0.8028837325930214,
+        "drawdownPct": 72.7308022575889,
+        "buyHoldPct": -9.568645540378018,
+        "gapExits": 1,
+        "firstTrade": 1641168000000,
+        "lastTrade": 1735344000000
+      },
+      "SOLUSDT": {
+        "trades": 156,
+        "netPct": -68.6891894710857,
+        "profitFactor": 0.7170843578936479,
+        "drawdownPct": 94.03193091285146,
+        "buyHoldPct": 10.907753674931175,
+        "gapExits": 1,
+        "firstTrade": 1641168000000,
+        "lastTrade": 1735344000000
+      }
+    }
+  },
+  "validation": {
+    "base": {
+      "BTCUSDT": {
+        "trades": 51,
+        "netPct": -24.917641690483137,
+        "profitFactor": 0.7819693303064971,
+        "drawdownPct": 43.44224009189163,
+        "buyHoldPct": -6.559249766719255,
+        "gapExits": 0,
+        "firstTrade": 1736121600000,
+        "lastTrade": 1766793600000
+      },
+      "ETHUSDT": {
+        "trades": 51,
+        "netPct": -37.33285635036605,
+        "profitFactor": 0.7930430486844439,
+        "drawdownPct": 57.06476634967531,
+        "buyHoldPct": -11.182983495362443,
+        "gapExits": 0,
+        "firstTrade": 1736121600000,
+        "lastTrade": 1766793600000
+      },
+      "SOLUSDT": {
+        "trades": 51,
+        "netPct": -57.43672039477241,
+        "profitFactor": 0.6483650519681114,
+        "drawdownPct": 62.40064369543181,
+        "buyHoldPct": -34.31345485108308,
+        "gapExits": 0,
+        "firstTrade": 1736121600000,
+        "lastTrade": 1766793600000
+      }
+    },
+    "stress": {
+      "BTCUSDT": {
+        "trades": 51,
+        "netPct": -30.801060516786883,
+        "profitFactor": 0.7292621135767321,
+        "drawdownPct": 45.04787314847573,
+        "buyHoldPct": -6.70863558168392,
+        "gapExits": 0,
+        "firstTrade": 1736121600000,
+        "lastTrade": 1766793600000
+      },
+      "ETHUSDT": {
+        "trades": 51,
+        "netPct": -42.24342470543871,
+        "profitFactor": 0.7604809093739693,
+        "drawdownPct": 57.948596429657265,
+        "buyHoldPct": -11.324977243915924,
+        "gapExits": 0,
+        "firstTrade": 1736121600000,
+        "lastTrade": 1766793600000
+      },
+      "SOLUSDT": {
+        "trades": 51,
+        "netPct": -60.77195927347563,
+        "profitFactor": 0.6215285133670965,
+        "drawdownPct": 65.12442063544891,
+        "buyHoldPct": -34.41846939832062,
+        "gapExits": 0,
+        "firstTrade": 1736121600000,
+        "lastTrade": 1766793600000
+      }
+    }
+  }
+}

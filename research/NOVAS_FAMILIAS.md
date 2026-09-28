@@ -32,3 +32,7 @@ Gerado em 28/09/2026. **Nenhuma candidata está validada ou aprovada.** O arquiv
 ## Integridade da triagem
 
 O script verifica SHA-256, contagem, cobertura e continuidade H1 de ambos os caches antes de calcular resultados. O autoteste cobre exclusão do candle atual da regressão, direção do cruzamento e custos nas duas pernas. `validated:false` e os status no JSON representam pesquisa; nenhum número é prova de rentabilidade futura.
+
+## Novas avaliações na revisão 0.6
+
+N3 calendário semanal e N4 rotação transversal foram testadas sem reciclar EMA/Donchian ou a regressão N1. Ambas reprovaram em validação e período retrospectivo recente. Ver [N3](calendar/RELATORIO.md) e [N4](rotation/RELATORIO-N4.md), com protocolo congelado, resultados de stress, fontes e reprodução. Nenhuma aprovação operacional foi adicionada.

@@ -1,0 +1,37 @@
+{
+  "id": "N4-spot-relative-momentum-v1",
+  "registeredAt": "2026-09-28",
+  "hypothesis": "A single long position in the strongest BTC/ETH/SOL asset by completed trailing weekly return may capture cross-sectional momentum after real turnover costs; cash when all returns are nonpositive.",
+  "symbols": ["BTCUSDT", "ETHUSDT", "SOLUSDT"],
+  "source": "research/cache/v3/{symbol}-1h.json, SHA-256 verified against research/cache/v3/manifest.json",
+  "timing": "At each Sunday 23:00 UTC completed close, rank each symbol's simple close-to-close return over exactly 168 contiguous completed H1 bars. Require all three complete. Choose the highest only when strictly positive, tie broken by symbol order. Enter at the contiguous Monday 00:00 open. Exit and rebuy at each next Monday open even if same symbol, charging both fills. An 8% stop from the filled entry is active each H1; a worse open gap exits at the open. After a stop stay in cash until the next Monday. Skip entries when the planned next Monday exit is beyond the evaluation window. If a data gap occurs while holding, liquidate at first observed open.",
+  "windows": {
+    "developmentYears": [["2022-01-01", "2023-01-01"], ["2023-01-01", "2024-01-01"], ["2024-01-01", "2025-01-01"]],
+    "development": ["2022-01-01", "2025-01-01"],
+    "validation": ["2025-01-01", "2026-01-01"],
+    "retrospectiveFinal": ["2026-01-01", "2026-09-01"]
+  },
+  "initialCapital": 10000,
+  "allocationPct": 100,
+  "rankingLookbackHours": 168,
+  "stopPct": 8,
+  "base": {"feeBpsPerFill": 10, "slippageBpsPerFill": 2},
+  "stress": {"feeBpsPerFill": 15, "slippageBpsPerFill": 5},
+  "fixedGates": {
+    "developmentPositiveYears": 2,
+    "minimumTradesDevelopment": 140,
+    "minimumTradesValidation": 45,
+    "minimumTradesFinal": 25,
+    "minProfitFactorValidationAndFinal": 1.2,
+    "maxDrawdownPctValidationAndFinal": 20,
+    "positiveBaseAndStressValidationAndFinal": true
+  },
+  "selection": "One fixed variant, no parameter search. Development/validation screening precedes retrospective final. All dates have prior project research exposure; this is exploratory and no pristine holdout or forward validation exists. Gates match N3 at portfolio level; N3's 2/3 asset gate does not apply to this one-portfolio rotation.",
+  "validated": false,
+  "forwardPassed": false,
+  "references": [
+    {"title": "Drogen, Hoffstein and Otte — Cross-sectional Momentum in Cryptocurrency Markets", "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4322637"},
+    {"title": "Han, Kang and Ryu — Momentum in the Cryptocurrency Market: A Comprehensive Analysis under Realistic Assumptions", "url": "https://papers.ssrn.com/sol3/papers.cfm?abstractid=4675565"},
+    {"title": "Binance Public Data — spot klines and checksums", "url": "https://github.com/binance/binance-public-data/blob/master/README.md"}
+  ]
+}

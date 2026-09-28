@@ -3,7 +3,8 @@
   "build": {
     "development": { "developmentClient": true, "distribution": "internal" },
     "preview": { "distribution": "internal", "android": { "buildType": "apk" } },
-    "production": { "autoIncrement": true }
+    "production": { "autoIncrement": true },
+    "testflight": { "extends": "production", "distribution": "store", "node": "24.14.1", "ios": { "simulator": false } }
   },
-  "submit": { "production": {} }
+  "submit": { "production": {}, "testflight": {} }
 }

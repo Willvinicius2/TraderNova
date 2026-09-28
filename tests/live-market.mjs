@@ -8,6 +8,15 @@ const temp=await fs.mkdtemp(path.join(os.tmpdir(),'tradernova-live-test-'));
 try{
  const compile=async(input,output,replacements=[])=>{let source=await fs.readFile(new URL(input,import.meta.url),'utf8');let js=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;for(const [a,b]of replacements)js=js.replaceAll(a,b);await fs.writeFile(path.join(temp,output),js);};
  await compile('../lib/tradernova/live-market.ts','live-market.mjs');
+ await compile('../lib/tradernova/market-clock.ts','market-clock.mjs');
+ const clock=await import(pathToFileURL(path.join(temp,'market-clock.mjs')));
+ const epoch=Date.UTC(2026,8,28,12),stamp=(n)=>new Date(n).toISOString();
+ assert.deepEqual(clock.clockSample(stamp(epoch),stamp(epoch+10),100,210),{serverAt:epoch+60,monotonicAt:210,uncertaintyMs:51});
+ assert.equal(clock.clockSample(stamp(epoch),stamp(epoch),100,2101),null);
+ assert.equal(clock.clockSample(stamp(epoch+1),stamp(epoch),100,200),null);
+ assert.equal(clock.clockSample('bad',stamp(epoch),100,200),null);
+ const mono=performance.now();assert(clock.syncMarketClock(stamp(epoch),stamp(epoch),mono,mono));
+ const originalNow=Date.now;try{Date.now=()=>epoch+86400000;assert(Math.abs(clock.marketNow()-epoch)<1000,'Device clock jumps cannot move market time');assert(clock.marketClockReady(mono+90000));assert(!clock.marketClockReady(mono+90001));}finally{Date.now=originalNow;}
  await compile('../app/api/market/candles/route.ts','route.mjs',[["@/lib/tradernova/live-market","./live-market.mjs"]]);
  const m=await import(pathToFileURL(path.join(temp,'live-market.mjs'))),route=await import(pathToFileURL(path.join(temp,'route.mjs')));
  const start=Math.floor(Date.now()/60000)*60000-120000;
@@ -42,6 +51,7 @@ try{
  assert.deepEqual(m.applyHistory({...entry,bars:[newer]},[old],now).bars,[newer]);
  const contract={asset:'BTCUSD',interval:1,source:'kraken-spot',receivedAt:new Date(now).toISOString(),bars:[current]};
  assert.deepEqual(m.readHistoryResponse(contract,'BTCUSD',1,now).bars,[current]);
+ assert.equal(m.readHistoryResponse({...contract,receivedAt:stamp(now+34000),serverTime:stamp(now+49000)},'BTCUSD',1,now).receivedAt,now-15000,'Preserve cache age despite server/device clock skew');
  for(const bad of [{asset:'ETHUSD'},{interval:15},{source:'synthetic'},{bars:[current,current]},{receivedAt:new Date(now+60000).toISOString()},{bars:[{...current,time:current.time+1}]}])assert.throws(()=>m.readHistoryResponse({...contract,...bad},'BTCUSD',1,now));
  const full=Array.from({length:721},(_,i)=>({...old,time:start-(720-i)*60000}));
  assert.equal(m.mergeCandles([],full).length,720);assert.equal(m.mergeCandles([],full)[0].time,full[1].time);
