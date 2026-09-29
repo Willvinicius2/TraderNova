@@ -26,6 +26,8 @@ Passar em backtest apenas habilita a etapa seguinte. A contagem exige também ob
 
 ## Contagem e continuidade
 
+O testador recebeu uma [ferramenta de bootstrap semanal](BOOTSTRAP_METHOD.md) para futuras avaliações independentes: mantém dias zero, controla resolução/erro de Monte Carlo e nunca autoriza operação. Cinco testes sintéticos e `npm test` passaram. Não foi aplicada aos retornos históricos; plano prospectivo, registro global de avaliações e prova de independência continuam necessários. A fila N13 não foi alterada.
+
 Conferência adicional do testador: **1.120 operações de N14/N15 reconciliadas** com aritmética decimal separada do executor, incluindo taxas, risco, exposição, PnL, saldo e fator de lucro. Nenhuma divergência acima da tolerância definida. As reprovações permanecem; essa conferência contábil não valida estratégias. [Evidências e limites](LEDGER_ARITHMETIC_AUDIT.md).
 
 N15 (emissão de stablecoins) **reprovou** após 239 operações: base +1,92%, PF 1,062, DD 4,13%; stress −0,86%, DD 4,39%. O critério de PF base e o lucro no stress falharam. Não houve avaliação de 2025–2026. [Relatório](STABLECOIN_LIQUIDITY_SCREEN.md). O total financeiro nesta meta passa a oito famílias reprovadas e zero aprovadas.

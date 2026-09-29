@@ -1,5 +1,7 @@
 # Testador local de estratégias
 
+Ferramenta adicional implementada: [bootstrap semanal para futuras avaliações](BOOTSTRAP_METHOD.md). Tem controle de resolução e de incerteza de Monte Carlo, cinco testes sintéticos e saída sempre não operacional. Não foi aplicada ao histórico nem modifica a fila N13; ainda exige plano prospectivo congelado e evidência de proveniência.
+
 O testador está implementado em `scripts/goal-lab.py`. A primeira família ligada à fila é **N13**, assimetria da volatilidade implícita de opções para operações direcionais em futuros BTC/ETH. Não é uma busca irrestrita de parâmetros e não conta variantes como estratégias diferentes.
 
 Execução no diretório do projeto:
