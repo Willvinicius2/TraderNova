@@ -1,0 +1,42 @@
+{
+  "id": "goal-seven-N15-stablecoin-liquidity-v1",
+  "registeredAtDate": "2026-09-29",
+  "parentProtocol": "research/goal-seven/protocol.json",
+  "family": "N15 reserve-backed stablecoin issuance and crypto buying capacity",
+  "hypothesis": "An increase in issued dollar-token balances can supply purchasing capacity for BTC. Conversely issuance may respond to flight to safety or issuer inventories; expansion is not inherently bullish. Test one fixed long rule, no reversal if it fails.",
+  "distinctness": "Liability issuance of payment/settlement tokens, distinct from native-chain transfer activity N12, miner capacity N14, price/volume patterns, leverage N11, funding carry N2 and option IV N13. Final economic distinctness must still be independently reviewed; any alternative stablecoin basket or threshold remains this same family.",
+  "source": {
+    "endpoint": "https://community-api.coinmetrics.io/v4/timeseries/asset-metrics",
+    "assets": ["usdt", "usdc"],
+    "metrics": ["SplyCur", "PriceUSD"],
+    "scope": "Use source parent tickers exactly, no sum of parent and chain-specific children. Historical chain membership/vintages are unproven; changes in coverage can resemble issuance. No claim that this equals all liquid stablecoin capital.",
+    "frequency": "1d",
+    "startInclusive": "2021-09-01",
+    "endInclusive": "2024-12-31",
+    "limits": "One public GET, page_size=10000, maximum 2 MB. A partial/error response is preserved and stops. No replacement basket after performance.",
+    "catalog": "Public catalog-all-v2 confirms daily community availability of both metrics since before2021; metadata only was viewed before this registration. Earlier obsolete catalog request returned400 unsupported assets and is preserved."
+  },
+  "rule": {
+    "condition": "SplyCur(usdt,D)+SplyCur(usdc,D) strictly exceeds the sum at D-7days. Require eight consecutive complete days for both. Each current PriceUSD must be within [0.99,1.01] inclusive. Supply sums are nominal token units at intended one-dollar parity, not realized USD balances.",
+    "direction": "long only",
+    "executionSymbol": "BTCUSDT",
+    "featureEnd": "D+24h, treating source date D as day start",
+    "decision": "D+72h",
+    "entry": "D+73h, next observed H1 open",
+    "stopPct": 0.03,
+    "holdHours": 72,
+    "riskPct": 0.25,
+    "maxGrossExposurePct": 100,
+    "positions": "At most one; ignore new triggers while held; no reentry in exit hour.",
+    "missing": "Any missing, duplicate or nonpositive/nonfinite supply/price invalidates source; no interpolation.",
+    "prospective": "Each daily input requires exact source/vintage receipt between its day end and its own D+72h deadline. Historical publication times are assumed, never certified by the delay."
+  },
+  "execution": "Existing USD-M v4 fees/slippage base and stress, archived funding and conservative marks; BTC DEV2022-2024 only. Not certified The5ers execution.",
+  "selection": "Freeze protocol, source hashes, code and tests before real trigger counts/PnL. At least100 raw triggers required before PnL; executed-trade minimum still applies. Failed DEV closes this configuration without2025/2026 evaluation, tuning, reversal or renamed variants.",
+  "validated": false,
+  "sources": [
+    "https://www.federalreserve.gov/econres/ifdp/files/ifdp1334.pdf",
+    "https://gitbook-docs.coinmetrics.io/network-data/network-data-overview/supply/current-supply",
+    "https://github.com/coinmetrics/docs-website/blob/master/asset-metrics/asset-metrics-faqs.md"
+  ]
+}

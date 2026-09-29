@@ -1,0 +1,10 @@
+{
+  "url": "https://community-api.coinmetrics.io/v4/catalog/asset-metrics?assets=usdt,usdc&metrics=SplyCur,PriceUSD",
+  "status": 400,
+  "sentAtUtc": "2026-09-29T03:02:09.322639+00:00",
+  "receivedAtUtc": "2026-09-29T03:02:09.749426+00:00",
+  "rawBytes": 86,
+  "sha256": "a998ec7dd303e9e59021c829b8b8039a325182e0f5a9e98cc8740ff71bc3bb50",
+  "partial": false,
+  "rawPath": "research/cache/goal-seven/stablecoin-probe/catalog-response.json"
+}
