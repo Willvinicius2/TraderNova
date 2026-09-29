@@ -2,7 +2,7 @@
 
 Estado central: [STATUS.md](STATUS.md), **0/7**, meta ativa. Os critérios de [protocol.json](protocol.json) continuam congelados. N2, N5, N6, N7, N11 e N12 reprovaram a triagem financeira; N8 e N10 não atingiram a amostra; N9 aguarda dados de custos executáveis. Não reabrir janelas posteriores para resgate nem contar uma variante como outra família.
 
-A frente atual é **N13**, [skew de opções para sinais em futuros](OPTIONS_SKEW_IDEA.md). A [aquisição planejada](N13_ACQUISITION_PLAN.md) tem custo de dados considerável; o piloto usa limites explícitos. O campo IV permanece na unidade nativa da fonte: a regra é invariante a uma escala constante positiva, sem inferir percentual ou anualização. Nenhum skew, sinal ou PnL N13 foi calculado.
+A frente atual é **N13**, [skew de opções para sinais em futuros](OPTIONS_SKEW_IDEA.md). A [rodada ampliada](N13_BULK_RUN.md) foi iniciada após os pilotos e suas auditorias; conferir o processo antes de qualquer retomada. O campo IV permanece na unidade nativa da fonte: a regra é invariante a uma escala constante positiva, sem inferir percentual ou anualização. Nenhum skew, sinal ou PnL real N13 foi calculado.
 
 Antes de testar N13:
 
