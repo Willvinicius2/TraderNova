@@ -1,0 +1,61 @@
+{
+  "id": "N13-option-trade-identity-audit-v1",
+  "inputManifestPath": "research\\goal-seven\\options-trades-v2-data-manifest.json",
+  "inputManifestSha256": "2a9e16fa3654b2a7a4198d27697a4179169be850400f9fd9d0326ca50a12a860",
+  "inputManifestVersion": "v2",
+  "inputManifestState": "round_limit",
+  "inputCollectorRunning": false,
+  "scope": {
+    "symbols": [
+      "BTC",
+      "ETH"
+    ],
+    "startInclusive": "2021-10-01T00:00:00+00:00",
+    "endExclusive": "2025-01-01T00:00:00+00:00",
+    "kind": "option"
+  },
+  "rawPagesAudited": 20,
+  "sourceIntegrityErrorCount": 0,
+  "sourceIntegrityErrorSamples": [],
+  "leafOccurrences": 39569,
+  "parentOccurrences": 6000,
+  "identicalLeafDuplicates": 0,
+  "httpHeadersPreserved": false,
+  "fullDataAuditComplete": false,
+  "dataApproved": false,
+  "inputInventoryClaimRootSha256": "85b07adba0b75521f687c8de9e967297ed200b31e87ee0a20b5fdaf84b710ca3",
+  "inputInventoryClaims": 20,
+  "uniqueLeafTradeIds": 39569,
+  "uniqueParentIdentities": 3427,
+  "identityConflicts": 0,
+  "timestampConflicts": 0,
+  "disjointLeafDuplicateIds": 0,
+  "parentMissingInLeaves": 0,
+  "identityConflictSamples": [],
+  "parentMissingSamples": [],
+  "inventoryRootSha256": "7c6650bff2b9bb14039753cb2bbdc80ef7da4473d57d6ffa190bec2e1fc9ad10",
+  "inventoryFilesVerified": 20,
+  "requestCadence": {
+    "v1": {
+      "requests": 10,
+      "minimumPcSendSeparationMs": 1003,
+      "below900msCount": 0
+    },
+    "v2": {
+      "requests": 10,
+      "minimumPcSendSeparationMs": 1001,
+      "below900msCount": 0
+    }
+  },
+  "coverageErrors": [
+    "pending intervals",
+    "collector coverageComplete=false",
+    "leaf chain incomplete for BTC",
+    "leaf chain incomplete for ETH"
+  ],
+  "inputManifestChangedDuringAudit": false,
+  "coverageComplete": false,
+  "fullIdentityAuditComplete": false,
+  "state": "coverage_incomplete",
+  "limitation": "Identity only: no currency/instrument metadata join, feature audit, signal, pricing or PnL. HTTP response headers were not preserved by v1/v2 collectors; PC cadence is descriptive."
+}

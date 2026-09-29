@@ -1,0 +1,59 @@
+{
+  "id": "goal-seven-N13-option-trade-skew-v1",
+  "registeredAtUtcDate": "2026-09-29",
+  "parentProtocol": "research/goal-seven/protocol.json",
+  "family": "N13 option-implied downside asymmetry for directional futures signals",
+  "counting": "One family across BTC/ETH and any variants; no option positions. Distinctness still requires evidence that it is not merely a renamed price/flow strategy.",
+  "status": "rules_registered_before_any_real_skew_signal_or_performance",
+  "source": {
+    "tradeHost": "history.deribit.com",
+    "currencies": ["BTC", "ETH"],
+    "kind": "option",
+    "acquisition": ["2021-10-01T00:00:00Z", "2025-01-01T00:00:00Z"],
+    "interval": "Half-open UTC daily windows; endpoint end_timestamp=exclusive_end-1 millisecond.",
+    "integrity": "Require complete non-truncated time coverage, raw/gzip/receipt checksums, global unique identity audit and exact parent-to-leaf reconciliation before preparing the financial screen. Conflicting copies never get selected by performance.",
+    "metadata": "Join every actual trade name to official instrument metadata. Require kind=option, matching base currency and price_index btc_usd/eth_usd, positive strike and valid creation/expiration timestamps. Determine activity at trade time from creation<=trade<expiration, never from current is_active/state. A missing or inconsistent required descriptor disqualifies aggregation; never infer it only from the instrument name.",
+    "quoteCurrency": "Inverse-option premium quote_currency may equal BTC or ETH; do not misread that as the unit of the USD strike/underlying index. price_index determines matching of the underlying used for moneyness.",
+    "availability": "Current historical trade and contract responses do not prove original publication or unrevised vintages. The historical screen is exploratory only.",
+    "independentEvidenceEligible": false
+  },
+  "dailyFeature": {
+    "label": "T is the exact end of [T-86400,T) UTC seconds; trades use source millisecond timestamps without rounding.",
+    "validTrade": "Unique trade_id within currency, finite positive iv and index_price, active option, expiry between 7 and 35 days inclusive measured at the trade timestamp.",
+    "putMoneynessInclusive": [0.85, 0.95],
+    "callMoneynessInclusive": [1.05, 1.15],
+    "minimumUniqueTradesEachSide": 5,
+    "aggregation": "Unweighted median native iv of puts minus unweighted median native iv of calls. Ignore current mark_iv. Exact copies count once; conflicting copies fail.",
+    "units": "Keep the native iv unit. A common positive constant rescaling preserves both skew sign and its comparison to a past percentile; no claim of absolute annualized-percent units.",
+    "missing": "Incomplete coverage cannot be a valid feature. A complete day with fewer than five eligible trades on either side is an invalid feature, retained as such, never filled/interpolated."
+  },
+  "signal": {
+    "lookback": 90,
+    "percentile": 60,
+    "threshold": "Nearest rank ceil(0.60*90)=54 from exactly 90 prior consecutive valid daily skews, excluding current.",
+    "condition": "Current skew strictly positive and strictly greater than the prior-only percentile.",
+    "direction": "short only",
+    "priority": ["BTCUSDT", "ETHUSDT"],
+    "decision": "T+3600 seconds",
+    "entry": "Next H1 open at T+7200 seconds; signal key=decision_time=T+3600; feature_end=T. No intervening price return used for selection.",
+    "prospective": "The raw counts/iv and instrument attributes must be bound to exact bytes/hash/vintages received by the relevant decision. The coverage proof must itself be received after the daily interval ends and no later than T+1h; without that separate receipt, the daily feature is invalid. Prior daily features use their own original T+1h receipt cutoff. Exact repeated payloads select the earliest valid receipt, irrespective of input order. The pure generator checks supplied receipt timing but cannot authenticate caller evidence; collector/replay verification remains mandatory. Historical mode must be explicit."
+  },
+  "position": {
+    "maximumSimultaneousPositions": 1,
+    "stopPct": 0.02,
+    "holdHours": 12,
+    "riskPctOfCurrentEquity": 0.25,
+    "maximumGrossExposurePct": 100,
+    "reentry": "No reentry in exit hour"
+  },
+  "execution": {
+    "engine": "scripts/goal_execution_v4.py after synthetic tests, independent review and source freeze",
+    "basePerSide": {"commissionBps": 5, "slippageBps": 2},
+    "stressPerSide": {"commissionBps": 10, "slippageBps": 5},
+    "funding": "Realized archived USD-M funding with direction-correct cash flow, conservative ambiguous entry/exit eligibility and adverse mark bounds where settlement mark is missing.",
+    "quality": "Any execution-quality flag disqualifies the trial. No source gap may retroactively cancel a price-observed entry.",
+    "contractLimit": "This is a Binance USD-M research executor; The5ers contract equivalence and executable costs remain unproven."
+  },
+  "selection": "Freeze protocol, raw/normalized source manifests, audited inputs, code and tests before computing real daily features, signal counts or financial performance. Count development 2022-01-01 inclusive to 2025-01-01 exclusive first; fewer than 100 triggers ends without PnL. Otherwise evaluate development base and stress once. Any failed gate ends without evaluation-window rescue, parameter reversal or renaming.",
+  "approval": "Neither a data audit nor a historical pass increases the validated count. Global independent/prospective, statistical, execution and software requirements still apply."
+}

@@ -1,0 +1,67 @@
+{
+  "scope": "N13 expired instrument metadata only",
+  "maxGETs": 6,
+  "maxBytes": 32000000,
+  "bytesDownloaded": 707,
+  "requests": [
+    {
+      "label": "instrument",
+      "url": "https://history.deribit.com/api/v2/public/get_instrument?instrument_name=BTC-19NOV21-56000-P",
+      "requestStartedUtc": "2026-09-29T00:20:54.667104+00:00",
+      "receivedUtc": "2026-09-29T00:20:55.573023+00:00",
+      "status": 200,
+      "headers": {
+        "Date": "Tue, 29 Sep 2026 00:20:22 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "706",
+        "Connection": "close",
+        "Server": "cloudflare",
+        "Access-Control-Allow-Credentials": "true",
+        "Vary": "Origin",
+        "cf-cache-status": "DYNAMIC",
+        "CF-RAY": "a426d2526a24a4ff-GRU"
+      },
+      "bytes": 706,
+      "sha256": "081d08ac0f3fb9d9dab6e5e2e52af47339330ceab1762c9470abaaeec3caaf77",
+      "rawPath": "research/cache/goal-seven/options-instrument-probes/instrument-BTC-19NOV21-56000-P.json",
+      "complete": true,
+      "error": null,
+      "fields": {
+        "instrument_name": "BTC-19NOV21-56000-P",
+        "kind": "option",
+        "strike": 56000.0,
+        "option_type": "put",
+        "expiration_timestamp": 1637308800000,
+        "creation_timestamp": 1635408007000,
+        "contract_size": 1.0,
+        "base_currency": "BTC",
+        "settlement_currency": "BTC",
+        "quote_currency": "BTC",
+        "state": null
+      }
+    },
+    {
+      "label": "catalog",
+      "url": "https://history.deribit.com/api/v2/public/get_instruments?currency=BTC&kind=option&expired=true",
+      "requestStartedUtc": "2026-09-29T00:20:55.573681+00:00",
+      "receivedUtc": "2026-09-29T00:20:57.777499+00:00",
+      "status": 200,
+      "headers": {
+        "Date": "Tue, 29 Sep 2026 00:20:24 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "76485600",
+        "Connection": "close",
+        "Server": "cloudflare",
+        "Access-Control-Allow-Credentials": "true",
+        "Vary": "Origin",
+        "cf-cache-status": "DYNAMIC",
+        "CF-RAY": "a426d2567d44117d-GRU"
+      },
+      "bytes": 1,
+      "sha256": "021fb596db81e6d02bf3d2586ee3981fe519f275c0ac9ca76bbcf2ebb4097d96",
+      "rawPath": "research/cache/goal-seven/options-instrument-probes/catalog-BTC-expired-options.range.bin",
+      "complete": false,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "id": "N13-deribit-option-instruments-v1",
+  "createdAtUtc": "2026-09-29T00:23:21.992556+00:00",
+  "source": "https://history.deribit.com/api/v2/public/get_instruments",
+  "scope": {
+    "currencies": [
+      "BTC",
+      "ETH"
+    ],
+    "kind": "option",
+    "expired": true,
+    "include_old": true,
+    "purpose": "metadata only; no trades/prices/performance"
+  },
+  "limits": {
+    "maxGetCount": 3,
+    "actualGetCount": 2,
+    "maxBytesPerResponse": 160000000,
+    "maxTotalBytes": 320000000,
+    "actualBytes": 153760928
+  },
+  "normalization": {
+    "allRecordsPreserved": true,
+    "duplicateNamesDropped": false,
+    "isActiveFilterApplied": false,
+    "fieldOrder": [
+      "instrument_name",
+      "kind",
+      "base_currency",
+      "quote_currency",
+      "settlement_currency",
+      "price_index",
+      "strike",
+      "option_type",
+      "creation_timestamp",
+      "expiration_timestamp",
+      "contract_size"
+    ],
+    "decimalFieldsAsStrings": [
+      "strike",
+      "contract_size"
+    ],
+    "timestamps": "epoch milliseconds as returned; raw source response retained"
+  },
+  "responses": [
+    {
+      "symbol": "BTC",
+      "url": "https://history.deribit.com/api/v2/public/get_instruments?currency=BTC&kind=option&expired=true&include_old=true",
+      "requestStartedUtc": "2026-09-29T00:22:59.928669+00:00",
+      "receivedUtc": "2026-09-29T00:23:06.149081+00:00",
+      "httpStatus": 200,
+      "responseHeaders": {
+        "Date": "Tue, 29 Sep 2026 00:22:28 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "76485600",
+        "Connection": "close",
+        "Server": "cloudflare",
+        "Access-Control-Allow-Credentials": "true",
+        "Vary": "Origin",
+        "cf-cache-status": "DYNAMIC",
+        "CF-RAY": "a426d55fd84ca672-GRU"
+      },
+      "contentLengthHeader": "76485600",
+      "downloadedBytes": 76485600,
+      "rawSha256": "559c23bf121b6b989be34f4dc76d64d554416840147f0805d46649d46a025a7b",
+      "gzipSha256": "809f18aaeb1601a3384c229d384faef338704038bbdfd02b962ef0da0094011e",
+      "rawGzipPath": "research/cache/goal-seven/options-instruments/BTC.response.json.gz",
+      "normalizedPath": "research/cache/goal-seven/options-instruments/BTC.normalized.json",
+      "normalizedSha256": "012177d31d9b46b51b78937964cac680588019afb5788ef39fbaafa1f5fdf3db",
+      "normalizedRows": 122747,
+      "quality": {
+        "records": 122747,
+        "fieldAvailability": {
+          "instrument_name": 122747,
+          "kind": 122747,
+          "base_currency": 122747,
+          "quote_currency": 122747,
+          "settlement_currency": 122747,
+          "price_index": 122747,
+          "strike": 122747,
+          "option_type": 122747,
+          "creation_timestamp": 122747,
+          "expiration_timestamp": 122747,
+          "contract_size": 122747
+        },
+        "missingInstrumentName": 0,
+        "duplicateInstrumentNames": 0,
+        "invalidTimestamps": 0,
+        "invalidNumericFields": {
+          "strike": 0,
+          "contract_size": 0
+        },
+        "nullFields": {
+          "instrument_name": 0,
+          "kind": 0,
+          "base_currency": 0,
+          "quote_currency": 0,
+          "settlement_currency": 0,
+          "price_index": 0,
+          "strike": 0,
+          "option_type": 0,
+          "creation_timestamp": 0,
+          "expiration_timestamp": 0,
+          "contract_size": 0
+        },
+        "uniqueInstrumentNames": 122747
+      }
+    },
+    {
+      "symbol": "ETH",
+      "url": "https://history.deribit.com/api/v2/public/get_instruments?currency=ETH&kind=option&expired=true&include_old=true",
+      "requestStartedUtc": "2026-09-29T00:23:10.034829+00:00",
+      "receivedUtc": "2026-09-29T00:23:18.206283+00:00",
+      "httpStatus": 200,
+      "responseHeaders": {
+        "Date": "Tue, 29 Sep 2026 00:22:37 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "77275328",
+        "Connection": "close",
+        "Server": "cloudflare",
+        "Access-Control-Allow-Credentials": "true",
+        "Vary": "Origin",
+        "cf-cache-status": "DYNAMIC",
+        "CF-RAY": "a426d59eecc5fefc-GRU"
+      },
+      "contentLengthHeader": "77275328",
+      "downloadedBytes": 77275328,
+      "rawSha256": "c5762a9f9cdedee7006fa733d632e6970be79e7bde6651246a3d249f9c3c4b56",
+      "gzipSha256": "fa838f2cae90a8ee70a8f43d8121f0ef7ddfdbb99c53af8e2185206446a9ec0f",
+      "rawGzipPath": "research/cache/goal-seven/options-instruments/ETH.response.json.gz",
+      "normalizedPath": "research/cache/goal-seven/options-instruments/ETH.normalized.json",
+      "normalizedSha256": "d176cf0869ef118dff8b45637ee5dc624b565dcaab46938b29bfe1f42dd70da8",
+      "normalizedRows": 124692,
+      "quality": {
+        "records": 124692,
+        "fieldAvailability": {
+          "instrument_name": 124692,
+          "kind": 124692,
+          "base_currency": 124692,
+          "quote_currency": 124692,
+          "settlement_currency": 124692,
+          "price_index": 124692,
+          "strike": 124692,
+          "option_type": 124692,
+          "creation_timestamp": 124692,
+          "expiration_timestamp": 124692,
+          "contract_size": 124692
+        },
+        "missingInstrumentName": 0,
+        "duplicateInstrumentNames": 0,
+        "invalidTimestamps": 0,
+        "invalidNumericFields": {
+          "strike": 0,
+          "contract_size": 0
+        },
+        "nullFields": {
+          "instrument_name": 0,
+          "kind": 0,
+          "base_currency": 0,
+          "quote_currency": 0,
+          "settlement_currency": 0,
+          "price_index": 0,
+          "strike": 0,
+          "option_type": 0,
+          "creation_timestamp": 0,
+          "expiration_timestamp": 0,
+          "contract_size": 0
+        },
+        "uniqueInstrumentNames": 124692
+      }
+    }
+  ]
+}

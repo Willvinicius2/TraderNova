@@ -1,0 +1,49 @@
+{
+  "createdAtUtc": "2026-09-29T00:29:28.649377+00:00",
+  "tradeManifestSha256": "2a9e16fa3654b2a7a4198d27697a4179169be850400f9fd9d0326ca50a12a860",
+  "catalogManifestSha256": "5c191217ffca53a88d70ce62c098369d7e8e020a38d47f6613dd2257b55b5151",
+  "catalogHashes": {
+    "BTC": {
+      "normalizedSha256": "012177d31d9b46b51b78937964cac680588019afb5788ef39fbaafa1f5fdf3db",
+      "rawSha256": "559c23bf121b6b989be34f4dc76d64d554416840147f0805d46649d46a025a7b",
+      "gzipSha256": "809f18aaeb1601a3384c229d384faef338704038bbdfd02b962ef0da0094011e"
+    },
+    "ETH": {
+      "normalizedSha256": "d176cf0869ef118dff8b45637ee5dc624b565dcaab46938b29bfe1f42dd70da8",
+      "rawSha256": "c5762a9f9cdedee7006fa733d632e6970be79e7bde6651246a3d249f9c3c4b56",
+      "gzipSha256": "fa838f2cae90a8ee70a8f43d8121f0ef7ddfdbb99c53af8e2185206446a9ec0f"
+    }
+  },
+  "tradeArchivesVerified": 20,
+  "tradeLeaves": 14,
+  "tradeSplits": 6,
+  "tradeAppearancesIncludingOverlaps": 45569,
+  "uniqueNamesPerSymbol": {
+    "BTC": 361,
+    "ETH": 431
+  },
+  "checksBySymbol": {
+    "BTC": {
+      "appearances": 28481,
+      "matched": 28481,
+      "kindOptionPass": 28481,
+      "baseCurrencyPass": 28481,
+      "priceIndexPass": 28481,
+      "creationLeTradePass": 28481,
+      "tradeLtExpiryPass": 28481,
+      "positiveStrikePass": 28481
+    },
+    "ETH": {
+      "appearances": 17088,
+      "matched": 17088,
+      "kindOptionPass": 17088,
+      "baseCurrencyPass": 17088,
+      "priceIndexPass": 17088,
+      "creationLeTradePass": 17088,
+      "tradeLtExpiryPass": 17088,
+      "positiveStrikePass": 17088
+    }
+  },
+  "failureAndMissingExamplesCapped": {},
+  "method": "metadata-only same-symbol join; archive/catalog raw, compressed and normalized hashes verified; no prices, signals, PnL, tenor/moneyness filter, or is_active filtering."
+}
