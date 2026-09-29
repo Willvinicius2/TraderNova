@@ -26,7 +26,9 @@ Passar em backtest apenas habilita a etapa seguinte. A contagem exige também ob
 
 ## Contagem e continuidade
 
-Nesta etapa foram testadas cinco famílias novas (N5, N6, N7, N11, N12) e foi finalmente testada a N2, que aguardava dados. As seis reprovaram. Não são seis aprovadas nem variantes contadas repetidamente. A auditoria do histórico encontrou [pelo menos 73 configurações/parametrizações anteriores](LEGACY_TRIALS.md), além das novas famílias; esse limite inferior não serve como contador exato de testes estatísticos independentes.
+Atualização: N14 (contração da capacidade de mineração BTC) também **reprovou**. Base: 357 operações, −6,98%, PF 0,721, DD 7,37%. Stress: 285 operações, −10,04%, DD 10,29%, com violação da conta. Regra registrada antes de uma única aquisição de 135 KB; freeze anterior à amostra e PnL. Sem consultar 2025–2026. [Relatório](MINER_PRESSURE_SCREEN.md). São agora sete famílias com reprovação financeira nesta meta, incluindo N2, e nenhuma aprovada.
+
+Foram testadas seis famílias novas (N5, N6, N7, N11, N12, N14) e a N2, que aguardava dados. As sete reprovaram. Não são sete aprovadas nem variantes contadas repetidamente. A auditoria do histórico encontrou [pelo menos 73 configurações/parametrizações anteriores](LEGACY_TRIALS.md), além das novas famílias; esse limite inferior não serve como contador exato de testes estatísticos independentes.
 
 A meta permanece ativa. A frente atual é N13, com informações de opções como variável para sinais de futuros, sem negociação de opções. A coleta pública de observações BTC/ETH/SOL com timestamps de recebimento está em execução local limitada a 24 horas. Essa coleta não aprova estratégias nem inicia seu teste prospectivo automaticamente. Estratégias com o mesmo mecanismo não serão somadas novamente por trocar instrumento ou parâmetros.
 

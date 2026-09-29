@@ -1,0 +1,13 @@
+{
+  "family": "N14",
+  "freezeSha256": "74ee247520c1d0b21bc1d7cbe787b4252e22e94ce9f7db06263fb59712d5c914",
+  "window": [
+    1640995200,
+    1735689600
+  ],
+  "qualifyingDecisionDays": 357,
+  "sampleUpperBoundReached": true,
+  "PnLComputed": false,
+  "validated": false,
+  "laterWindowsEvaluated": false
+}
