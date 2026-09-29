@@ -1,6 +1,6 @@
 # Meta: sete estratégias distintas validadas
 
-Meta registrada em 28/09/2026. **Ativa: 0/7 aprovadas.**
+Meta registrada em 28/09/2026. **Não concluída: 0/7 aprovadas. Agente aguardando dados externos.** A coleta e a fila local continuam separadamente, dentro dos limites já definidos. [Dependência e retomada](WAITING_DATA.md).
 
 Critérios congelados em [protocol.json](protocol.json): lucro líquido depois dos custos, fator de lucro base mínimo de 1,20, drawdown conservador máximo de 8% no cenário base e 10% no stress, perdas diárias limitadas e amostra mínima. O risco direcional é definido antes do teste. Reduzir exposição depois de ver o resultado não aprova uma regra.
 
@@ -36,7 +36,7 @@ Atualização: N14 (contração da capacidade de mineração BTC) também **repr
 
 Foram testadas sete famílias novas (N5, N6, N7, N11, N12, N14, N15) e a N2, que aguardava dados. As oito reprovaram. Não são estratégias aprovadas nem variantes contadas repetidamente. A auditoria do histórico encontrou [pelo menos 73 configurações/parametrizações anteriores](LEGACY_TRIALS.md), além das novas famílias; esse limite inferior não serve como contador exato de testes estatísticos independentes.
 
-A meta permanece ativa. A frente atual é N13, com informações de opções como variável para sinais de futuros, sem negociação de opções. A coleta pública de observações BTC/ETH/SOL com timestamps de recebimento está em execução local limitada a 24 horas. Essa coleta não aprova estratégias nem inicia seu teste prospectivo automaticamente. Estratégias com o mesmo mecanismo não serão somadas novamente por trocar instrumento ou parâmetros.
+O objetivo das sete estratégias permanece integral. A frente atual é N13, com informações de opções como variável para sinais de futuros, sem negociação de opções. A coleta pública de observações BTC/ETH/SOL com timestamps de recebimento foi iniciada com duração limitada a 24 horas; conferir o processo antes de declarar seu estado atual. Essa coleta não aprova estratégias nem inicia seu teste prospectivo automaticamente. Estratégias com o mesmo mecanismo não serão somadas novamente por trocar instrumento ou parâmetros.
 
 Nenhuma candidata desta rodada foi promovida à etapa prospectiva ou ao registro de sinais operacionais. Se pesquisas futuras passarem nas triagens, ainda precisarão satisfazer os critérios independentes, de execução e de observação prospectiva registrados; a quantidade desejada não comprova que sete resultados aprováveis existam.
 
