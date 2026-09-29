@@ -1,0 +1,13 @@
+{
+  "family": "N15",
+  "freezeSha256": "931f909c059030db923efabe531bd6fa9b0d807700911b58b427afa351a4be68",
+  "window": [
+    1640995200,
+    1735689600
+  ],
+  "qualifyingDecisionDays": 623,
+  "sampleUpperBoundReached": true,
+  "PnLComputed": false,
+  "validated": false,
+  "laterWindowsEvaluated": false
+}

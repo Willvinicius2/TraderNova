@@ -4,6 +4,8 @@ Estado central: [STATUS.md](STATUS.md), **0/7**, meta ativa. Os critérios de [p
 
 N14 foi pesquisada e testada enquanto a fila N13 aguardava dados: também reprovou, com resultados preservados em [MINER_PRESSURE_SCREEN.md](MINER_PRESSURE_SCREEN.md). Não inverter sua direção nem ajustar suas médias para resgatar o resultado.
 
+N15 (emissão de stablecoins) também encerrou reprovada: base +1,92%, PF 1,062 abaixo do mínimo; stress −0,86%. [STABLECOIN_LIQUIDITY_SCREEN.md](STABLECOIN_LIQUIDITY_SCREEN.md). O lucro base isolado não habilita avaliação posterior ou aprovação. Não alterar a cesta, duração ou filtro de paridade para resgate.
+
 A frente atual é **N13**, [skew de opções para sinais em futuros](OPTIONS_SKEW_IDEA.md). A [rodada ampliada](N13_BULK_RUN.md) foi iniciada após os pilotos e suas auditorias; conferir o processo antes de qualquer retomada. O campo IV permanece na unidade nativa da fonte: a regra é invariante a uma escala constante positiva, sem inferir percentual ou anualização. Nenhum skew, sinal ou PnL real N13 foi calculado.
 
 Antes de testar N13:

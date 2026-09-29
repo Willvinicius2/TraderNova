@@ -1,0 +1,58 @@
+{
+  "family": "N15",
+  "freezeSha256": "931f909c059030db923efabe531bd6fa9b0d807700911b58b427afa351a4be68",
+  "sampleSha256": "1da1fdaa3b59227e0965e888c37843e98627e03cd441e9124fee54c1b3e4d5cd",
+  "development": {
+    "base": {
+      "funding_policy": "boundary_hour_conservative_v4",
+      "scenario": "base",
+      "start": 1640995200,
+      "end": 1735689600,
+      "trade_count": 239,
+      "net_pct": 1.9159915495268853,
+      "net_cash": 1915.9915495268797,
+      "profit_factor": 1.0620105302220082,
+      "max_drawdown_pct": 4.131907276632931,
+      "max_daily_loss_pct": 1.1316945346550733,
+      "account_breach": false,
+      "funding_mark_bounds": 741,
+      "ambiguous_intrabar_funding": 5,
+      "boundary_skips": 1,
+      "validated": false,
+      "failures": [
+        "profit_factor"
+      ],
+      "detailPath": "research/cache/goal-seven/stablecoin-liquidity/development-base.json",
+      "detailSha256": "7aef1d4ec7bce29eee733147f0acf9ffb695a53e977a7c78b7d96a3f13c82ca3",
+      "dataQualityFlagCount": 0
+    },
+    "stress": {
+      "funding_policy": "boundary_hour_conservative_v4",
+      "scenario": "stress",
+      "start": 1640995200,
+      "end": 1735689600,
+      "trade_count": 239,
+      "net_pct": -0.8603918194505678,
+      "net_cash": -860.3918194505677,
+      "profit_factor": 0.9720486335855297,
+      "max_drawdown_pct": 4.388104243769935,
+      "max_daily_loss_pct": 1.0864168908566014,
+      "account_breach": false,
+      "funding_mark_bounds": 740,
+      "ambiguous_intrabar_funding": 4,
+      "boundary_skips": 1,
+      "validated": false,
+      "failures": [
+        "nonpositive_net"
+      ],
+      "detailPath": "research/cache/goal-seven/stablecoin-liquidity/development-stress.json",
+      "detailSha256": "9df08c7b72cf150815121ff63f25070e67f90c434885f7bfec1d694fe5065d4f",
+      "dataQualityFlagCount": 0
+    }
+  },
+  "developmentPassed": false,
+  "validated": false,
+  "laterWindowsEvaluated": false,
+  "historicalAssumption": true,
+  "decision": "rejected_in_development"
+}

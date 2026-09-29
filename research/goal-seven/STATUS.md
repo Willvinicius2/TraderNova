@@ -26,9 +26,11 @@ Passar em backtest apenas habilita a etapa seguinte. A contagem exige também ob
 
 ## Contagem e continuidade
 
-Atualização: N14 (contração da capacidade de mineração BTC) também **reprovou**. Base: 357 operações, −6,98%, PF 0,721, DD 7,37%. Stress: 285 operações, −10,04%, DD 10,29%, com violação da conta. Regra registrada antes de uma única aquisição de 135 KB; freeze anterior à amostra e PnL. Sem consultar 2025–2026. [Relatório](MINER_PRESSURE_SCREEN.md). São agora sete famílias com reprovação financeira nesta meta, incluindo N2, e nenhuma aprovada.
+N15 (emissão de stablecoins) **reprovou** após 239 operações: base +1,92%, PF 1,062, DD 4,13%; stress −0,86%, DD 4,39%. O critério de PF base e o lucro no stress falharam. Não houve avaliação de 2025–2026. [Relatório](STABLECOIN_LIQUIDITY_SCREEN.md). O total financeiro nesta meta passa a oito famílias reprovadas e zero aprovadas.
 
-Foram testadas seis famílias novas (N5, N6, N7, N11, N12, N14) e a N2, que aguardava dados. As sete reprovaram. Não são sete aprovadas nem variantes contadas repetidamente. A auditoria do histórico encontrou [pelo menos 73 configurações/parametrizações anteriores](LEGACY_TRIALS.md), além das novas famílias; esse limite inferior não serve como contador exato de testes estatísticos independentes.
+Atualização: N14 (contração da capacidade de mineração BTC) também **reprovou**. Base: 357 operações, −6,98%, PF 0,721, DD 7,37%. Stress: 285 operações, −10,04%, DD 10,29%, com violação da conta. Regra registrada antes de uma única aquisição de 135 KB; freeze anterior à amostra e PnL. Sem consultar 2025–2026. [Relatório](MINER_PRESSURE_SCREEN.md). Essa etapa levou a sete reprovações financeiras; a atualização N15 acima eleva o total a oito.
+
+Foram testadas sete famílias novas (N5, N6, N7, N11, N12, N14, N15) e a N2, que aguardava dados. As oito reprovaram. Não são estratégias aprovadas nem variantes contadas repetidamente. A auditoria do histórico encontrou [pelo menos 73 configurações/parametrizações anteriores](LEGACY_TRIALS.md), além das novas famílias; esse limite inferior não serve como contador exato de testes estatísticos independentes.
 
 A meta permanece ativa. A frente atual é N13, com informações de opções como variável para sinais de futuros, sem negociação de opções. A coleta pública de observações BTC/ETH/SOL com timestamps de recebimento está em execução local limitada a 24 horas. Essa coleta não aprova estratégias nem inicia seu teste prospectivo automaticamente. Estratégias com o mesmo mecanismo não serão somadas novamente por trocar instrumento ou parâmetros.
 
