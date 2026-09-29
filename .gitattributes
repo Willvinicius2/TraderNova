@@ -4,4 +4,6 @@ lib/tradernova/*.ts -text
 scripts/*.mjs -text
 scripts/*.py -text
 research/*.json -text
+research/goal-seven/** -text
+tests/goal-*.py -text
 public/research/** -text

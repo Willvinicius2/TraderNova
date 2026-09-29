@@ -1,0 +1,51 @@
+{
+  "id": "goal-seven-N10-dated-BTC-basis-v1",
+  "registeredAt": "2026-09-28",
+  "status": "preregistered-before-signal-count",
+  "parentProtocol": "research/goal-seven/protocol.json",
+  "family": "N10 cash-and-carry of fixed-expiry BTCUSDT USD-M future versus BTCUSDT spot",
+  "distinctFromN2": "Uses dated-future basis convergence and no periodic perpetual funding payments; one economic family regardless of contract quarter.",
+  "source": {
+    "spot": "Existing verified Binance spot BTCUSDT H1 research/cache/v3/BTCUSDT-1h.json",
+    "datedTrade": "Binance Vision USD-M monthly klines/BTCUSDT_YYMMDD/1h, discovered in official S3 listing and checksum verified",
+    "datedMark": "Binance Vision USD-M monthly markPriceKlines/BTCUSDT_YYMMDD/1h, discovered in official S3 listing and checksum verified",
+    "expiry": "YYMMDD contract code, 08:00 UTC on expiry day as stated in Binance USD-M Delivery Futures Contracts Specification",
+    "listing": "https://s3-ap-northeast-1.amazonaws.com/data.binance.vision",
+    "contractSpecification": "https://www.binance.com/en/support/faq/detail/3ae441db4ae740e19af3fe9228eb6619",
+    "marketCaveat": "Binance USDT spot and Binance USD-M dated futures, not The5ers/MT5 contract or executable bid/ask prices"
+  },
+  "universe": "BTC only; choose nearest fixed expiry with 21 <= calendar days to expiry <= 60 at each closed H1 decision, never a perpetual",
+  "clock": "The H1 bar with open t becomes known at t+1h; choose and evaluate using only spot/dated trade H1 closes at t. Entry requires the joint spot/dated trade/mark H1 open exactly at t+1h; if absent, the signal is an uncertain unexecutable candidate, not a clean entry. Exit uses the first joint open at or after its causal trigger. No invented bar or fill.",
+  "entry": {
+    "annualizedBasis": "(F_close/S_close - 1) * 365 / days_to_expiry at the closed H1 timestamp",
+    "annualizedBasisStrictlyGreaterThan": 0.15,
+    "indicativeRemainingBasisGain": "(F_close/S_close - 1) * ((days_to_expiry - 7) / days_to_expiry)",
+    "gainStrictlyGreaterThanTwiceBaseRoundTripCost": true,
+    "baseRoundTripCostFractionSpotNotional": 0.0038,
+    "thresholdForIndicativeGain": 0.0076,
+    "stressRoundTripCostFractionSpotNotional": 0.007,
+    "signalUsesStress": false,
+    "onePosition": true,
+    "reentry": "No reentry at exit open; earliest next H1 open with a fresh completed-hour decision"
+  },
+  "positionIfSamplePasses": {
+    "spotNotionalPctOfEntryEquity": 45,
+    "hedge": "Buy spot and short identical BTC quantity of dated future at next joint open",
+    "cash": "Remaining USD margin; no borrowing assumed for sample count; actual capital cost and margin tiers are unpriced",
+    "baseBpsPerSide": {"spotFee": 10, "spotSlippage": 2, "futureFee": 5, "futureSlippage": 2},
+    "stressBpsPerSide": {"spotFee": 15, "spotSlippage": 5, "futureFee": 10, "futureSlippage": 5}
+  },
+  "exit": {
+    "annualizedBasisAtOrBelow": 0.05,
+    "time": "At D-7 days, using known 08:00 UTC expiry; first joint open at or after that timestamp; this calendar exit does not require a fresh H1 close",
+    "priceCondition": "Use only a completed H1 close; exit next joint open",
+    "gap": "An active episode with absent joint H1 data or delayed exit is flagged uncertain; no interpolation or PnL"
+  },
+  "sampleOnly": {
+    "development": ["2022-01-01", "2025-01-01"],
+    "minimumCleanClosedEpisodes": 100,
+    "decision": "Count qualifying completed decisions and clean entry/exit episodes; calculate no PnL, returns, PF, fees paid, drawdown or stress trade paths. If clean closed episodes <100, report insufficient observable sample in this snapshot and stop without building a full execution engine or opening validation/recent windows; gaps can hide other episodes, so this is not a mathematical cap on history.",
+    "unclosedAndGapEpisodes": "Report separately, never add to clean closed episodes"
+  },
+  "approval": "Bid/ask, historical margin tiers, financing/capital cost and venue contract equivalence are absent; no sample count can approve an operational strategy."
+}

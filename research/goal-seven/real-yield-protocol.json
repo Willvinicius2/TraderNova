@@ -1,0 +1,57 @@
+{
+  "id": "goal-seven-N7-real-yield-XAU-H1-v1",
+  "registeredAt": "2026-09-28",
+  "status": "preregistered-before-development-performance",
+  "family": "External U.S. 10-year par real Treasury yield shock",
+  "counting": "One macro family regardless of direction or instrument; never count a retrospective screen as validated.",
+  "sources": {
+    "gold": "D:/openclaude/Nova pasta/SNIPER_XAUUSD/calibration/XAUUSD_H1.csv; verify SHA-256 against the original selection.json and research/gold-h1-v2-selection.json",
+    "treasury": "research/cache/goal-seven/real-yields/treasury-real-yield-10yr-2009-2026.csv; verify SHA-256 against real-yields-manifest.json",
+    "treasuryDefinition": "Daily Treasury Par Real Yield Curve Rates, 10 YR, percent per year; not assumed identical to FRED DFII10",
+    "treasuryVintage": "Historical publication timestamp and point-in-time vintages unavailable. The lag below is a conservative rule, not a proof of causal historical availability.",
+    "brokerClock": "The exported XAU H1 time labels are used as broker calendar labels. Their actual timezone/UTC offset is unverified."
+  },
+  "development": ["2010-01-01", "2016-01-01"],
+  "laterPeriods": "Do not evaluate 2016 onward automatically. Development failure ends this trial; even a development pass awaits independent audit of data, time mapping and risk.",
+  "signal": {
+    "timeframeSeconds": 3600,
+    "decisionBarBrokerHour": 8,
+    "decisionTime": "After H1 08:00–09:00 broker-labeled bar closes; execute no earlier than contiguous 09:00 broker open.",
+    "observationChoice": "For broker date d choose latest Treasury observation dated <= d minus 7 CALENDAR days, and no earlier than d minus 14 CALENDAR days. If absent, no signal.",
+    "delta": "Chosen 10 YR percent yield minus yield five earlier OBSERVATIONS in the Treasury series, in percentage points. Require all six dated rows; no calendar interpolation.",
+    "longWhenDeltaAtMostInclusive": -0.15,
+    "shortWhenDeltaAtLeastInclusive": 0.15,
+    "otherwise": "No signal; no extra price, trend, volume, holiday or market-session filters.",
+    "maximumEntriesPerBrokerDate": 1,
+    "missingOrGap": "The legacy engine requires the next contiguous same-day H1 open, otherwise skips; never backfill a candle."
+  },
+  "bracket": {
+    "atr": "ATR14 Wilder over completed exported H1 bars, computed by gold_signals.atr",
+    "stop": "Signal close minus 2*ATR14 for long, plus 2*ATR14 for short; engine rounds stop outward to 0.01 and validates bracket at actual entry.",
+    "target": "2 times the actual entry-to-rounded-stop distance, recomputed at entry by engine reward=2",
+    "holdBars": 8,
+    "cutoff": "20:00 broker-labeled time under gold_h1_execution.simulate; observed gaps follow that engine's exit policy.",
+    "intrabar": "Stop first if stop and target both in one H1; intrabar path and exact fills unknown."
+  },
+  "execution": {
+    "engine": "scripts/gold_h1_execution.py unchanged; MAX_LEVERAGE set to 1.0 in research process before simulation",
+    "capitalUSD": 100000,
+    "plannedRiskCeilingUSDPerTrade": 250,
+    "actualRisk": "0.01-lot steps and 100%-notional ceiling may size below USD250; never increase leverage to force full risk.",
+    "baseCosts": {"spreadUSDPerOz": 0.6, "slippageUSDPerSidePerOz": 0.1, "commissionUSDPerLotRoundTrip": 10},
+    "stressCosts": {"spreadUSDPerOz": 1.2, "slippageUSDPerSidePerOz": 0.25, "commissionUSDPerLotRoundTrip": 20},
+    "costCaveat": "Research assumptions, not certified contract costs; overnight swap unavailable."
+  },
+  "developmentScreen": {
+    "minimumTradesEachScenario": 100,
+    "minimumProfitFactorEachScenario": 1.2,
+    "positiveNetUSDBaseAndStress": true,
+    "maximumConservativeDrawdownProxyBaseUSD": 8000,
+    "maximumConservativeDrawdownProxyStressUSD": 10000,
+    "maximumConservativeDailyLossBaseUSD": 2000,
+    "maximumConservativeDailyLossStressUSD": 3000,
+    "requireNoOvernightUnpricedAndNoAccountBreach": true,
+    "drawdownMetricCaveat": "Legacy conservativeDrawdown measures adverse H1 bound against peaks at observed opens/closes, not the true maximum intrabar peak-to-trough drawdown; passing this proxy cannot certify the 8%/10% gate."
+  },
+  "approval": "A development pass only requests independent root audit. No point-in-time claim, untouched OOS, operational approval or increment to the seven-strategy count follows from this run."
+}

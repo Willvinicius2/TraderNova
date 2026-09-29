@@ -1,0 +1,61 @@
+{
+  "family": "N2",
+  "revision": "v1.1 numeric audit",
+  "validated": false,
+  "priorRevisionPreservationPath": "research/goal-seven/revisions/funding-v1/preservation-manifest.json",
+  "priorRevisionPreservationSha256": "106e9973b6ac1cd8a7c085f0e46153d9fa1fc93ab65c41affd19814999e6e0dd",
+  "window": [
+    "2022-01-01",
+    "2025-01-01"
+  ],
+  "developmentGatePassed": false,
+  "nextWindowsRun": false,
+  "reason": "Development gate failed; validation and recent windows withheld",
+  "outcomes": {
+    "base": {
+      "scenario": "base",
+      "trades": 26,
+      "netPct": 2.2117382843824807,
+      "profitFactor": 2.580589464299837,
+      "maxConservativeDrawdownPct": 8.791817712244207,
+      "maxConservativeDailyLossPct": 4.771167482205547,
+      "accountBreach": true,
+      "unclosedPosition": false,
+      "capitalReconciled": true,
+      "capitalReconciliationError": 0.0,
+      "intrabarEnvelopeComplete": false,
+      "uncertaintyFlags": [
+        "active-H1-data-gap",
+        "entry-funding-timing",
+        "incomplete-intrabar-envelope",
+        "intrabar-risk-time",
+        "missing-event-mark-bound",
+        "risk-bar-funding-timing"
+      ],
+      "tradesPath": "research/cache/goal-seven/funding-development-base-trades.json"
+    },
+    "stress": {
+      "scenario": "stress",
+      "trades": 33,
+      "netPct": -4.258662820526416,
+      "profitFactor": 0.23101796509999614,
+      "maxConservativeDrawdownPct": 9.648029342183701,
+      "maxConservativeDailyLossPct": 4.784554765806221,
+      "accountBreach": true,
+      "unclosedPosition": false,
+      "capitalReconciled": true,
+      "capitalReconciliationError": 0.0,
+      "intrabarEnvelopeComplete": false,
+      "uncertaintyFlags": [
+        "active-H1-data-gap",
+        "entry-funding-timing",
+        "incomplete-intrabar-envelope",
+        "intrabar-risk-time",
+        "missing-event-mark-bound",
+        "risk-bar-funding-timing"
+      ],
+      "tradesPath": "research/cache/goal-seven/funding-development-stress-trades.json"
+    }
+  },
+  "freezeSha256": "c124da24f81ed4701ac9c129a436fe2e76264bf0a7bba2b71e036e41d92e0b7e"
+}

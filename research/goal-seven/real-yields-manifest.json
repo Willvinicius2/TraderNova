@@ -1,0 +1,63 @@
+{
+  "id": "goal-seven-us-treasury-real-yield-10yr",
+  "retrievedAtUTC": "2026-09-28T23:08:48+00:00",
+  "sourceOrganization": "U.S. Department of the Treasury",
+  "sourceIndex": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rate-archives",
+  "currentSourcePage": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve",
+  "sourceFiles": [
+    {
+      "file": "research/cache/goal-seven/real-yields/treasury-real-yields-2003-2023.csv",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rate-archives/par-real-yield-curve-rates-2003-2023.csv",
+      "sha256": "68def62bf3c32a32e874ca33d6ffa60bc29c6a5a52c7cf8595e102f0d2cd6e0e",
+      "bytes": 183085,
+      "rows": 5254,
+      "firstDate": "2003-01-02",
+      "lastDate": "2023-12-29",
+      "rowsFrom2009": 3752
+    },
+    {
+      "file": "research/cache/goal-seven/real-yields/treasury-real-yields-2024.csv",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2024/all?field_tdr_date_value=2024&type=daily_treasury_real_yield_curve&page&_format=csv",
+      "sha256": "d3ff00a9287ebf68fdc80e72fb2d1895a73c84b3ff2a6ca8c6d64648cb470f16",
+      "bytes": 9042,
+      "rows": 250,
+      "firstDate": "2024-01-02",
+      "lastDate": "2024-12-31",
+      "rowsFrom2009": 250
+    },
+    {
+      "file": "research/cache/goal-seven/real-yields/treasury-real-yields-2025.csv",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2025/all?field_tdr_date_value=2025&type=daily_treasury_real_yield_curve&page&_format=csv",
+      "sha256": "d3d3131c41e1f93f4661d227ce7079049d51888b395aaff863b6ad8e08838b64",
+      "bytes": 9006,
+      "rows": 249,
+      "firstDate": "2025-01-02",
+      "lastDate": "2025-12-31",
+      "rowsFrom2009": 249
+    },
+    {
+      "file": "research/cache/goal-seven/real-yields/treasury-real-yields-2026.csv",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve&page&_format=csv",
+      "sha256": "778ab0848a416564314174c9521be69852afa0fee08dc2efb061b0e36e3f54ac",
+      "bytes": 6738,
+      "rows": 186,
+      "firstDate": "2026-01-02",
+      "lastDate": "2026-09-28",
+      "rowsFrom2009": 186
+    }
+  ],
+  "derivedFile": {
+    "file": "research/cache/goal-seven/real-yields/treasury-real-yield-10yr-2009-2026.csv",
+    "sha256": "150d2f5966ffabd976c1de330e93446658a174d148f14545e51afefdc44c7024",
+    "bytes": 71600,
+    "rows": 4437,
+    "firstDate": "2009-01-02",
+    "lastDate": "2026-09-28",
+    "unit": "percent per year"
+  },
+  "observationDateIsPublicationTimestamp": false,
+  "historicalPublicationTimestampsVerified": false,
+  "pointInTimeVintagesVerified": false,
+  "revisionAudit": "Current official archive/current CSV snapshot only; no dated historical vintages or per-observation publication timestamps were established.",
+  "useLimit": "Source audit only. A 48-US-business-hour lag is a conservative proposal, not proof that these retrospectively downloadable values were known then. No XAU backtest or approval claim from this manifest."
+}

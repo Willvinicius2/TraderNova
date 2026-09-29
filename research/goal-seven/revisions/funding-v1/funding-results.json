@@ -1,0 +1,46 @@
+{
+  "family": "N2",
+  "validated": false,
+  "window": [
+    "2022-01-01",
+    "2025-01-01"
+  ],
+  "developmentGatePassed": false,
+  "nextWindowsRun": false,
+  "reason": "Development gate failed; validation and recent windows withheld",
+  "outcomes": {
+    "base": {
+      "scenario": "base",
+      "trades": 26,
+      "netPct": 2.2117382843824807,
+      "profitFactor": 2.580589464299837,
+      "maxConservativeDrawdownPct": 5.054420417140242,
+      "maxConservativeDailyLossPct": 4.771159243421691,
+      "uncertaintyFlags": [
+        "active-H1-data-gap",
+        "entry-funding-timing",
+        "intrabar-risk-time",
+        "missing-event-mark-bound",
+        "risk-bar-funding-timing"
+      ],
+      "tradesPath": "research/cache/goal-seven/funding-development-base-trades.json"
+    },
+    "stress": {
+      "scenario": "stress",
+      "trades": 33,
+      "netPct": -4.258662820526416,
+      "profitFactor": 0.23101796509999614,
+      "maxConservativeDrawdownPct": 7.9458395325123705,
+      "maxConservativeDailyLossPct": 4.784546522323325,
+      "uncertaintyFlags": [
+        "active-H1-data-gap",
+        "entry-funding-timing",
+        "intrabar-risk-time",
+        "missing-event-mark-bound",
+        "risk-bar-funding-timing"
+      ],
+      "tradesPath": "research/cache/goal-seven/funding-development-stress-trades.json"
+    }
+  },
+  "freezeSha256": "ed0b2fff84064924aceb636489ca0f45aff6f5bafa36285f3a281ec0f42abaec"
+}

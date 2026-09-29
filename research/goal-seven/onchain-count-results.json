@@ -1,0 +1,62 @@
+{
+  "family": "N12",
+  "freezeSha256": "a0566a5a7e041e0253c626e2cce67371f30cae46d9a7f426607d08b3a80ccd4a",
+  "sampleSha256": "85874994ea7bc842915164c2622c3ab833c7f1f5ac297d4d9fa3424de1a91da9",
+  "development": {
+    "base": {
+      "funding_policy": "boundary_hour_conservative_v3",
+      "scenario": "base",
+      "start": 1640995200,
+      "end": 1735689600,
+      "trade_count": 593,
+      "net_pct": -9.721263961695104,
+      "net_cash": -9721.263961695106,
+      "profit_factor": 0.7742277183657917,
+      "max_drawdown_pct": 9.955304641670105,
+      "max_daily_loss_pct": 0.9855190103048472,
+      "account_breach": false,
+      "funding_mark_bounds": 309,
+      "ambiguous_intrabar_funding": 7,
+      "boundary_skips": 0,
+      "validated": false,
+      "failures": [
+        "nonpositive_net",
+        "profit_factor",
+        "drawdown"
+      ],
+      "detail_path": "research/cache/goal-seven/N12-development-base.json",
+      "detail_sha256": "28328c287a959a42a4f9094885714887935cb3416ba547e82ef6c1fb2fffa8ec",
+      "data_quality_flag_count": 0
+    },
+    "stress": {
+      "funding_policy": "boundary_hour_conservative_v3",
+      "scenario": "stress",
+      "start": 1640995200,
+      "end": 1735689600,
+      "trade_count": 277,
+      "net_pct": -10.132358304852197,
+      "net_cash": -10132.358304852198,
+      "profit_factor": 0.5955877288454268,
+      "max_drawdown_pct": 10.359558130213516,
+      "max_daily_loss_pct": 0.7800883434909636,
+      "account_breach": true,
+      "funding_mark_bounds": 231,
+      "ambiguous_intrabar_funding": 4,
+      "boundary_skips": 0,
+      "validated": false,
+      "failures": [
+        "nonpositive_net",
+        "drawdown",
+        "account_breach"
+      ],
+      "detail_path": "research/cache/goal-seven/N12-development-stress.json",
+      "detail_sha256": "cd21eaa11a3e8c128ea7f838944b89b3a2822cbab71f04ceecdd4a6cf8803060",
+      "data_quality_flag_count": 0
+    }
+  },
+  "developmentPassed": false,
+  "validated": false,
+  "laterWindowsEvaluated": false,
+  "historicalPublicationAvailabilityAssumed": true,
+  "decision": "rejected_in_development"
+}

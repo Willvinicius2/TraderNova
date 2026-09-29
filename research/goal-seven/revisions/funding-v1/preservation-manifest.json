@@ -1,0 +1,52 @@
+{
+  "id": "N2-v1-original-preserved-before-numeric-audit",
+  "preservedAtUtc": "2026-09-28T23:07:33.785925+00:00",
+  "files": [
+    {
+      "sourcePath": "scripts/goal_funding.py",
+      "preservedPath": "research/goal-seven/revisions/funding-v1/goal_funding.py",
+      "sha256": "3e19fcca8adba2897d8f0b2a5593e4c463647cce7d918a4e256497d02cdb1f84"
+    },
+    {
+      "sourcePath": "tests/goal-funding.py",
+      "preservedPath": "research/goal-seven/revisions/funding-v1/goal-funding.py",
+      "sha256": "b936179cb969df35fe9469ff7ce5b24bc5009219000634e92f28cdff021471d1"
+    },
+    {
+      "sourcePath": "research/goal-seven/funding-protocol.json",
+      "preservedPath": "research/goal-seven/revisions/funding-v1/funding-protocol.json",
+      "sha256": "c7c45124abaf49bab5c28e65d4ea9b9cef66008aa36c080dd8e378ad30c3ec04"
+    },
+    {
+      "sourcePath": "research/goal-seven/funding-freeze.json",
+      "preservedPath": "research/goal-seven/revisions/funding-v1/funding-freeze.json",
+      "sha256": "ed0b2fff84064924aceb636489ca0f45aff6f5bafa36285f3a281ec0f42abaec"
+    },
+    {
+      "sourcePath": "research/goal-seven/funding-results.json",
+      "preservedPath": "research/goal-seven/revisions/funding-v1/funding-results.json",
+      "sha256": "e5bccc8e23ed8bf8cbb6a65e39e143c9d5ce016349e43ef30d682f51d2ec9fb7"
+    },
+    {
+      "sourcePath": "research/goal-seven/FUNDING.md",
+      "preservedPath": "research/goal-seven/revisions/funding-v1/FUNDING.md",
+      "sha256": "8bbadbac13bac261a499783a965884b7d0f488c2378b4133c45680654b1dc99c"
+    },
+    {
+      "sourcePath": "research/cache/goal-seven/funding-development-base-trades.json",
+      "preservedPath": "research/goal-seven/revisions/funding-v1/funding-development-base-trades.json",
+      "sha256": "60c66804ce17d3af9748de9c09fa9b9e7e5cbf80ee048ffdaf5fc3301622afa2"
+    },
+    {
+      "sourcePath": "research/cache/goal-seven/funding-development-stress-trades.json",
+      "preservedPath": "research/goal-seven/revisions/funding-v1/funding-development-stress-trades.json",
+      "sha256": "30da1ba158f341e5b9aa120fa2ef5d8bf41bd0ca5841f8014c2fcefe3d4f4414"
+    }
+  ],
+  "sourceHashes": {
+    "research/goal-seven/protocol.json": "b108294aa0876ef6d22177e207f8c6deacc5d1045ced89d0a18e36f355b51839",
+    "research/goal-seven/funding-data-manifest.json": "1ac88085c331a0a136bf1ab8f321c7e63510387d1511ac17797506c01c4e32fa",
+    "research/cache/v3/manifest.json": "d2b8b4833d2e3f1d48a187fffb626339e52f9c76f744618b80ed5512440c8d93"
+  },
+  "note": "Original preregistered v1 engine and observed development results preserved before v1.1 software corrections; not a new strategy trial."
+}

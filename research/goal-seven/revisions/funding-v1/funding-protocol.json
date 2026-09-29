@@ -1,0 +1,57 @@
+{
+  "id": "goal-seven-N2-funding-carry-v1",
+  "registeredAt": "2026-09-28",
+  "status": "preregistered-unrun",
+  "parentProtocol": "research/goal-seven/protocol.json",
+  "family": "N2 carry de funding com hedge spot BTC/USDT versus short perpétuo BTCUSDT USD-M",
+  "counting": "N2 já é uma família do inventário; esta triagem não acrescenta estratégia validada.",
+  "source": {
+    "spot": "research/cache/v3/BTCUSDT-1h.json, Binance spot H1, aberto em milissegundos UTC",
+    "perp": "research/cache/funding-goal/perp_h1/BTCUSDT/*.zip, Binance USD-M BTCUSDT H1",
+    "mark": "research/cache/funding-goal/mark_h1/BTCUSDT/*.zip, Binance USD-M mark H1",
+    "funding": "research/cache/funding-goal/api_funding/BTCUSDT/page-*.json, API pública oficial; eventos confrontados com ZIPs mensais Binance Vision",
+    "manifest": "research/goal-seven/funding-data-manifest.json",
+    "contractLimitation": "Binance spot e USD-M/USDT perpétuo não demonstram executabilidade ou equivalência ao contrato de outra corretora/mesa."
+  },
+  "decision": {
+    "symbol": "BTCUSDT",
+    "clock": "cada fechamento H1 UTC; decidir com informações de timestamp estritamente anterior ao open H1 seguinte e executar somente nesse open conjunto spot/perp/mark",
+    "fundingLookbackEvents": 21,
+    "meanFundingMinimumInclusive": 0.0001,
+    "minimumObservedDays": 7,
+    "completeness": "Exigir 7 dias completos de barras H1 contíguas spot/perp/mark antes da entrada e os 21 eventos de funding mais recentes já liquidados; os 21 eventos não precisam cobrir 168 horas. Não admitir lacuna entre eventos superior ao intervalo anunciado mais 60 segundos nem atraso do último acima do intervalo anunciado mais uma hora. Não usar evento posterior à decisão.",
+    "onePosition": true,
+    "reentry": "não reentrar no mesmo open da saída; uma nova entrada pode ocorrer no open H1 posterior se o filtro ainda estiver verdadeiro"
+  },
+  "position": {
+    "entry": "próximo open H1 conjunto: comprar BTC spot e vender mesma quantidade BTC perp USD-M",
+    "spotNotionalPctEntryEquity": 45,
+    "quantity": "0.45 * equity antes da entrada / spot open",
+    "margin": "caixa restante após compra spot, slippage e taxas de abertura é margem USD do short; sem empréstimo, alavancagem adicional ou receita de venda a descoberto em caixa",
+    "timeExitHours": 720,
+    "fundingExit": "após 3 eventos consecutivos liquidados com taxa <=0, sair no primeiro próximo open conjunto observado",
+    "equityStopPctOfEntryEquity": 2,
+    "marginFloorPctOfCurrentShortMarkNotional": 10,
+    "risk": "monitorar cada H1 com bound adverso spot low e maior entre perp high e mark high; risco observado intrabar agenda saída no próximo open conjunto, sem preencher no limiar intrabar; se já violado no open, sair nesse open",
+    "gap": "lacuna em spot/perp/mark durante posição exige saída no primeiro próximo open conjunto observado e marca resultado inconclusivo; nunca interpolar",
+    "windowEnd": "fechamento administrativo no open conjunto da borda exclusiva da janela"
+  },
+  "fundingAccounting": {
+    "sign": "short perp recebe taxa positiva e paga negativa, aplicada à quantidade vezes markPrice do evento",
+    "eventWindow": "somente fundingTime estritamente depois do fill e estritamente antes do open de saída",
+    "exactEventMark": "usar markPrice positivo do evento REST quando disponível",
+    "missingEventMark": "para taxa positiva usar mark H1 low; para taxa negativa usar mark H1 high; se a hora mark estiver ausente, não presumir crédito positivo, marcar inconclusivo e sair no primeiro open conjunto",
+    "firstSecondAmbiguity": "se evento ocorrer até 1000 ms após open de entrada, crédito positivo é excluído e marcado ambíguo; pagamento negativo é incluído conservadoramente",
+    "riskBarAmbiguity": "se o bound adverso do candle indica stop/margem violados e o instante intrabar é desconhecido, nenhum crédito positivo desse candle é presumido; débitos negativos ainda são cobrados",
+    "exitBoundaryAmbiguity": "evento no exato timestamp de saída não gera crédito positivo; débito negativo possível é cobrado conservadoramente",
+    "noFutureFunding": "funding apenas após posição aberta; filtro só vê eventos já liquidados"
+  },
+  "costsBpsPerSide": {
+    "base": {"spotFee": 10, "spotAdverseSlippage": 2, "perpFee": 5, "perpAdverseSlippage": 2},
+    "stress": {"spotFee": 15, "spotAdverseSlippage": 5, "perpFee": 10, "perpAdverseSlippage": 5}
+  },
+  "financing": "custo de caixa fixado em zero apenas como hipótese de triagem; oportunidade de capital, juros reais e contrato externo não precificados; impede aprovação operacional",
+  "windows": {"development": ["2022-01-01", "2025-01-01"], "validation": ["2025-01-01", "2026-01-01"], "recent": ["2026-01-01", "2026-09-01"]},
+  "gate": "Rodar desenvolvimento primeiro. Só avançar se >=100 operações fechadas, líquido positivo base e stress, PF base >=1.2, drawdown conservador <=8% base e <=10% stress, perda diária <=2% base e <=3% stress, nenhuma lacuna/ambiguidade material ou custo desconhecido. Validação exige >=100 e período recente >=50, além de todas as outras exigências do protocolo pai. Caso contrário, parar e preservar reprovação.",
+  "approval": "Retrospectiva conhecida, custos hipotéticos e contrato não verificado: nenhum resultado pode aprovar N2 ou somar à meta."
+}

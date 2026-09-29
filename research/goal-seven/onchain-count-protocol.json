@@ -1,0 +1,60 @@
+{
+  "id": "goal-seven-N12-native-transfer-count-v1",
+  "registeredAt": "2026-09-29",
+  "parentProtocol": "research/goal-seven/protocol.json",
+  "family": "N12 on-chain native-transfer activity",
+  "status": "registered_before_series_or_signal_inspection",
+  "counting": "Same family as the unavailable adjusted-native-transfer-value proposal; never an extra strategy for changing the variable or asset.",
+  "availabilityRevision": {
+    "previousProposal": "research/goal-seven/ONCHAIN_IDEA.md: TxTfrValAdjNtv",
+    "reason": "The requested metric was unavailable through the tested free API and public CSV headers. Before any observations, counts or performance, replace it once with documented publicly available TxTfrCnt. Preserve the original proposal and failure manifest.",
+    "economicChange": "Count of positive native transfers, not adjusted value or economic volume. Automated transfers, wallet operations and changes in network structure can invalidate the interpretation as demand.",
+    "sourceMemo": "research/goal-seven/N12_DATA_OPTIONS.md",
+    "noMetricSearchAfterResults": true
+  },
+  "assets": ["BTCUSDT", "ETHUSDT"],
+  "source": {
+    "provider": "Coin Metrics Community API v4",
+    "metric": "TxTfrCnt",
+    "frequency": "1d",
+    "rawAcquisition": ["2021-09-01T00:00:00Z", "2024-12-31T23:59:59Z"],
+    "requestOnlyMetric": true,
+    "normalization": "Preserve raw source time as UTC epoch seconds, asset and decimal-string integer count. Require unique daily grid, finite strictly positive integer count, exact daily cadence. No interpolation or borrowing another metric.",
+    "quality": "Audit all daily gaps and invalid/duplicate observations before signals. Any missing required daily observation blocks the financial screen and makes the historical trial ineligible. Raw bytes, SHA-256, request URL, receipt time and normalization provenance must be preserved.",
+    "timestampConvention": "Conservatively treat each source daily label D as day start, with the activity interval ending at T=D+86400. Documentation of midnight computation for the previous day does not certify API label or historical publication timing. Preserve this fixed extra-day convention without choosing an alignment based on returns.",
+    "historicalPublicationAvailabilityAssumed": true,
+    "independentEvidenceEligible": false
+  },
+  "features": {
+    "lookback": 90,
+    "percentile": 70,
+    "method": "Nearest-rank percentile ceil(0.70*90) using exactly the 90 prior consecutive daily counts, excluding current. Positive, finite, integer counts only.",
+    "condition": "Current native-transfer count strictly exceeds its prior-only percentile; no price, trend or return filter.",
+    "priority": ["BTCUSDT", "ETHUSDT"]
+  },
+  "timing": {
+    "decision": "T+48h (source daily label D+72h)",
+    "entry": "Next H1 open at T+49h (D+73h). Executor signal key is entry-3600 and signal_close_time is entry; no next-bar price used for selection.",
+    "prospective": "All 91 source observations used for the signal must have actual received_at <= decision. Missing, nonfinite or late receipt evidence rejects the signal; source timestamps cannot stand in for receipts. A future ingestion/replay layer must bind each count to the exact raw bytes/hash/vintage received by that deadline; revising a count while keeping an old received_at is forbidden. The pure generator checks timing only and cannot authenticate provenance supplied by its caller.",
+    "historical": "Historical mode must be explicitly requested and is only exploratory. The fixed lag does not prove first publication or availability of unrevised values."
+  },
+  "position": {
+    "direction": "long only",
+    "maximumSimultaneousPositions": 1,
+    "stopPct": 0.02,
+    "holdHours": 12,
+    "riskPctOfCurrentEquity": 0.25,
+    "maximumGrossExposurePct": 100,
+    "reentry": "No reentry in exit hour"
+  },
+  "execution": {
+    "engine": "scripts/goal_execution_v3.py after synthetic tests and independent review; source files frozen before real counts",
+    "basePerSide": {"commissionBps": 5, "slippageBps": 2},
+    "stressPerSide": {"commissionBps": 10, "slippageBps": 5},
+    "funding": "Actual archived funding, exact recorded event times, conservative boundary-hour eligibility and adverse mark bounds where the settlement price is absent.",
+    "dataFailure": "Every executor data-quality flag disqualifies the trial. Never skip an entry because a later consolidated mark bar is unavailable; preserve unexecutable trade-open attempts and missing entry marks explicitly.",
+    "contractLimit": "Research Binance USD-M quantities and costs do not certify execution on The5ers contracts."
+  },
+  "selection": "Freeze protocol, source manifest, code, tests and parent hashes before signal counts. Count development triggers first; fewer than 100 ends the trial without PnL. Otherwise run development 2022-01-01 inclusive to 2025-01-01 exclusive in base and stress once. Any development failure withholds later windows; no parameter or metric rescue.",
+  "approval": "No count or exploratory result increases the seven-strategy count. All global independent/prospective, statistical, execution and software gates still apply."
+}

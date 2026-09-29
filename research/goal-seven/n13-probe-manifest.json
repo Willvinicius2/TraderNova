@@ -1,0 +1,273 @@
+{
+  "request_count": 10,
+  "total_response_bytes": 1349645,
+  "probes": [
+    {
+      "file": "2021-11-15-BTC-12UTC.json",
+      "url": "https://history.deribit.com/api/v2/public/get_last_trades_by_currency_and_time?currency=BTC&kind=option&start_timestamp=1636977600000&end_timestamp=1636981200000&count=10000&include_old=true",
+      "received_at_utc": "2026-09-29T00:03:15.527539+00:00",
+      "http_status": 200,
+      "bytes": 25617,
+      "sha256": "8efe2cad27797b77a43db48a11b299da5db1042898093f58919cc198eb0396e2",
+      "trade_records": 111,
+      "has_more": false,
+      "result_keys": [
+        "has_more",
+        "trades"
+      ],
+      "first_trade_timestamp_ms": 1636981005234,
+      "last_trade_timestamp_ms": 1636977647741,
+      "first_trade_fields": [
+        "amount",
+        "direction",
+        "index_price",
+        "instrument_name",
+        "iv",
+        "mark_price",
+        "price",
+        "tick_direction",
+        "timestamp",
+        "trade_id",
+        "trade_seq"
+      ]
+    },
+    {
+      "file": "2021-11-15-ETH-12UTC.json",
+      "url": "https://history.deribit.com/api/v2/public/get_last_trades_by_currency_and_time?currency=ETH&kind=option&start_timestamp=1636977600000&end_timestamp=1636981200000&count=10000&include_old=true",
+      "received_at_utc": "2026-09-29T00:03:16.469651+00:00",
+      "http_status": 200,
+      "bytes": 58265,
+      "sha256": "24e52beca62a62c854eb5b55733c08ab95584275e8636c1f6fc31b02cacbcc60",
+      "trade_records": 252,
+      "has_more": false,
+      "result_keys": [
+        "has_more",
+        "trades"
+      ],
+      "first_trade_timestamp_ms": 1636981198425,
+      "last_trade_timestamp_ms": 1636977757474,
+      "first_trade_fields": [
+        "amount",
+        "direction",
+        "index_price",
+        "instrument_name",
+        "iv",
+        "mark_price",
+        "price",
+        "tick_direction",
+        "timestamp",
+        "trade_id",
+        "trade_seq"
+      ]
+    },
+    {
+      "file": "2022-06-15-BTC-12UTC.json",
+      "url": "https://history.deribit.com/api/v2/public/get_last_trades_by_currency_and_time?currency=BTC&kind=option&start_timestamp=1655294400000&end_timestamp=1655298000000&count=10000&include_old=true",
+      "received_at_utc": "2026-09-29T00:03:17.611658+00:00",
+      "http_status": 200,
+      "bytes": 510552,
+      "sha256": "1d4c44e33e4024a8f2b8329abf76fb0d4298ee0bbe79f0af37687a143336080e",
+      "trade_records": 2210,
+      "has_more": false,
+      "result_keys": [
+        "has_more",
+        "trades"
+      ],
+      "first_trade_timestamp_ms": 1655297999734,
+      "last_trade_timestamp_ms": 1655294404803,
+      "first_trade_fields": [
+        "amount",
+        "direction",
+        "index_price",
+        "instrument_name",
+        "iv",
+        "mark_price",
+        "price",
+        "tick_direction",
+        "timestamp",
+        "trade_id",
+        "trade_seq"
+      ]
+    },
+    {
+      "file": "2022-06-15-ETH-12UTC.json",
+      "url": "https://history.deribit.com/api/v2/public/get_last_trades_by_currency_and_time?currency=ETH&kind=option&start_timestamp=1655294400000&end_timestamp=1655298000000&count=10000&include_old=true",
+      "received_at_utc": "2026-09-29T00:03:19.613981+00:00",
+      "http_status": 200,
+      "bytes": 425040,
+      "sha256": "047a282290d5d229a3e3b40114c5a65fb3af005802002780e697ff92155d1fcd",
+      "trade_records": 1842,
+      "has_more": false,
+      "result_keys": [
+        "has_more",
+        "trades"
+      ],
+      "first_trade_timestamp_ms": 1655297998922,
+      "last_trade_timestamp_ms": 1655294403506,
+      "first_trade_fields": [
+        "amount",
+        "direction",
+        "index_price",
+        "instrument_name",
+        "iv",
+        "liquidation",
+        "mark_price",
+        "price",
+        "tick_direction",
+        "timestamp",
+        "trade_id",
+        "trade_seq"
+      ]
+    },
+    {
+      "file": "2023-06-15-BTC-12UTC.json",
+      "url": "https://history.deribit.com/api/v2/public/get_last_trades_by_currency_and_time?currency=BTC&kind=option&start_timestamp=1686830400000&end_timestamp=1686834000000&count=10000&include_old=true",
+      "received_at_utc": "2026-09-29T00:03:21.649540+00:00",
+      "http_status": 200,
+      "bytes": 107370,
+      "sha256": "2ea9f24e16c6ed90adbc83e5ade0094c5de7a25e7434794afc83dfd33a258f0d",
+      "trade_records": 464,
+      "has_more": false,
+      "result_keys": [
+        "has_more",
+        "trades"
+      ],
+      "first_trade_timestamp_ms": 1686833988643,
+      "last_trade_timestamp_ms": 1686830400507,
+      "first_trade_fields": [
+        "amount",
+        "direction",
+        "index_price",
+        "instrument_name",
+        "iv",
+        "mark_price",
+        "price",
+        "tick_direction",
+        "timestamp",
+        "trade_id",
+        "trade_seq"
+      ]
+    },
+    {
+      "file": "2023-06-15-ETH-12UTC.json",
+      "url": "https://history.deribit.com/api/v2/public/get_last_trades_by_currency_and_time?currency=ETH&kind=option&start_timestamp=1686830400000&end_timestamp=1686834000000&count=10000&include_old=true",
+      "received_at_utc": "2026-09-29T00:03:22.329565+00:00",
+      "http_status": 200,
+      "bytes": 82595,
+      "sha256": "f99d6140f73ec857aae60325775c1a2862bcae0b9e7faaf61e8b2050dfe0ec37",
+      "trade_records": 356,
+      "has_more": false,
+      "result_keys": [
+        "has_more",
+        "trades"
+      ],
+      "first_trade_timestamp_ms": 1686833978389,
+      "last_trade_timestamp_ms": 1686830405078,
+      "first_trade_fields": [
+        "amount",
+        "direction",
+        "index_price",
+        "instrument_name",
+        "iv",
+        "mark_price",
+        "price",
+        "tick_direction",
+        "timestamp",
+        "trade_id",
+        "trade_seq"
+      ]
+    },
+    {
+      "file": "2024-06-15-BTC-12UTC.json",
+      "url": "https://history.deribit.com/api/v2/public/get_last_trades_by_currency_and_time?currency=BTC&kind=option&start_timestamp=1718452800000&end_timestamp=1718456400000&count=10000&include_old=true",
+      "received_at_utc": "2026-09-29T00:03:22.994588+00:00",
+      "http_status": 200,
+      "bytes": 79046,
+      "sha256": "85708fe59423cf83b4991e76518a252524428013db264cceb4635565094b209b",
+      "trade_records": 321,
+      "has_more": false,
+      "result_keys": [
+        "has_more",
+        "trades"
+      ],
+      "first_trade_timestamp_ms": 1718456325218,
+      "last_trade_timestamp_ms": 1718452801998,
+      "first_trade_fields": [
+        "amount",
+        "contracts",
+        "direction",
+        "index_price",
+        "instrument_name",
+        "iv",
+        "mark_price",
+        "price",
+        "tick_direction",
+        "timestamp",
+        "trade_id",
+        "trade_seq"
+      ]
+    },
+    {
+      "file": "2024-06-15-ETH-12UTC.json",
+      "url": "https://history.deribit.com/api/v2/public/get_last_trades_by_currency_and_time?currency=ETH&kind=option&start_timestamp=1718452800000&end_timestamp=1718456400000&count=10000&include_old=true",
+      "received_at_utc": "2026-09-29T00:03:23.409740+00:00",
+      "http_status": 200,
+      "bytes": 59964,
+      "sha256": "5847ec0dc415918973273d34d699dbd630a17d868162499e66a42374206825d3",
+      "trade_records": 244,
+      "has_more": false,
+      "result_keys": [
+        "has_more",
+        "trades"
+      ],
+      "first_trade_timestamp_ms": 1718456363207,
+      "last_trade_timestamp_ms": 1718452952519,
+      "first_trade_fields": [
+        "amount",
+        "contracts",
+        "direction",
+        "index_price",
+        "instrument_name",
+        "iv",
+        "mark_price",
+        "price",
+        "tick_direction",
+        "timestamp",
+        "trade_id",
+        "trade_seq"
+      ]
+    },
+    {
+      "file": "2021-11-15-BTC-12UTC-page1.json",
+      "url": "https://history.deribit.com/api/v2/public/get_last_trades_by_currency_and_time?currency=BTC&kind=option&start_timestamp=1636977600000&end_timestamp=1636981200000&count=2&include_old=true&sorting=asc",
+      "received_at_utc": "2026-09-29T00:03:57.904962+00:00",
+      "http_status": 200,
+      "bytes": 598,
+      "sha256": "1296a38fee92927994f2f801ca5d2efab5958afe1e1a6eb030866f8f94298ebf",
+      "trade_records": 2,
+      "has_more": true,
+      "first_trade_timestamp_ms": 1636977647741,
+      "last_trade_timestamp_ms": 1636977653197,
+      "trade_ids": [
+        "189693368",
+        "189693377"
+      ]
+    },
+    {
+      "file": "2021-11-15-BTC-12UTC-page2.json",
+      "url": "https://history.deribit.com/api/v2/public/get_last_trades_by_currency_and_time?currency=BTC&kind=option&start_timestamp=1636977647741&end_timestamp=1636981200000&count=2&include_old=true&sorting=asc",
+      "received_at_utc": "2026-09-29T00:03:58.602654+00:00",
+      "http_status": 200,
+      "bytes": 598,
+      "sha256": "5957fe99e753db94557b009c0754a568be2dde57df226365deeaed2479d9f4e7",
+      "trade_records": 2,
+      "has_more": true,
+      "first_trade_timestamp_ms": 1636977647741,
+      "last_trade_timestamp_ms": 1636977653197,
+      "trade_ids": [
+        "189693368",
+        "189693377"
+      ]
+    }
+  ]
+}

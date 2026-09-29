@@ -1,0 +1,205 @@
+{
+  "id": "goal-seven-N7-real-yield-XAU-H1-v1",
+  "freezeSha256": "3720a781006ffe089b112aa68ea4cf98d7f629570b13beed91215bcdfd97943f",
+  "phase": "development-only-2010-2015",
+  "laterPeriodsEvaluated": false,
+  "historicalDevelopmentScreenPass": false,
+  "gateResults": [
+    {
+      "scenario": "base",
+      "checks": {
+        "tradesAtLeast100": true,
+        "positiveNet": false,
+        "profitFactorAtLeast1_2": false,
+        "drawdownProxyUnderCap": true,
+        "dailyAdverseLossUnderCap": true,
+        "noUnpricedOvernight": true,
+        "noAccountBreach": true
+      },
+      "screenPass": false
+    },
+    {
+      "scenario": "stress",
+      "checks": {
+        "tradesAtLeast100": true,
+        "positiveNet": false,
+        "profitFactorAtLeast1_2": false,
+        "drawdownProxyUnderCap": true,
+        "dailyAdverseLossUnderCap": true,
+        "noUnpricedOvernight": true,
+        "noAccountBreach": true
+      },
+      "screenPass": false
+    }
+  ],
+  "base": {
+    "scenario": "base",
+    "costs": {
+      "spread": 0.6,
+      "slippage": 0.1,
+      "commissionPerLotRT": 10.0
+    },
+    "start": 1262304000,
+    "end": 1451606400,
+    "parameters": {
+      "barSeconds": 3600,
+      "timeframe": "H1",
+      "initialCapital": 100000.0,
+      "plannedRisk": 250.0,
+      "dailyLossCap": 3000.0,
+      "dailyLossFraction": 0.03,
+      "totalEquityFloor": 90000.0,
+      "contractOz": 100.0,
+      "lotStep": 0.01,
+      "maxLots": 100.0,
+      "maxLeverage": 1.0,
+      "tickSize": 0.01,
+      "minStopDistance": 0.1,
+      "entryHours": "[08:00,20:00)",
+      "cutoff": "20:00",
+      "costs": {
+        "spread": 0.6,
+        "slippage": 0.1,
+        "commissionPerLotRT": 10.0
+      },
+      "riskReference": "max(balance, Bid/Ask marked equity) at preceding available close",
+      "permanentBreach": true
+    },
+    "barSeconds": 3600,
+    "riskReference": "max(balance, Bid/Ask marked equity) at preceding available close",
+    "initialCapital": 100000.0,
+    "endingBalance": 96258.55000000182,
+    "trades": 232,
+    "net": -3741.449999998178,
+    "returnPct": -3.7414499999981783,
+    "profitFactor": 0.8530118919938967,
+    "maxDrawdown": 4926.619999999122,
+    "maxDrawdownPct": 4.926619999999122,
+    "observedClosedDrawdown": 4926.619999999122,
+    "observedClosedDrawdownPct": 4.926619999999122,
+    "conservativeDrawdown": 4938.839999999123,
+    "conservativeDrawdownPct": 4.938839999999123,
+    "maxDailyClosedEquityLoss": 355.5,
+    "maxDailyConservativeEquityLoss": 355.5,
+    "overnightUnpriced": 0,
+    "skipped": {},
+    "observedGaps": 1559,
+    "accountBreached": false,
+    "permanentRiskBlock": false,
+    "dailyLossBreached": false,
+    "totalLossBreached": false,
+    "breaches": [],
+    "rejectedForRiskBreach": false,
+    "totalRiskPaused": false,
+    "valid": false,
+    "assumptions": {
+      "clock": "native exported broker labels; UTC/session offset unverified",
+      "dailyReference": "max(balance, Bid/Ask marked equity) at preceding available close",
+      "dailyLossLimit": "min(3000, 0.03 * referenceEquity)",
+      "totalEquityFloor": 90000.0,
+      "breachAction": "permanent entry block, never reset by day",
+      "plannedRiskPerTrade": 250.0,
+      "entryHours": "[08:00,20:00)",
+      "sessionCutoff": "20:00",
+      "drawdown": "observed H1 close liquidation values plus separate adverse intrabar envelope",
+      "intrabarEnvelope": "adverse low/high capped at executable stop; opening gap uncapped; no favorable extreme peak",
+      "limitFills": "no fictional execution at equity floors; ordinary bracket/time/gap exits remain",
+      "riskCertification": "conservative OHLC screen only; intrabar paths, fills and broker rules not certified",
+      "costs": "fixed research assumptions, not historical broker costs; swap absent"
+    }
+  },
+  "stress": {
+    "scenario": "stress",
+    "costs": {
+      "spread": 1.2,
+      "slippage": 0.25,
+      "commissionPerLotRT": 20.0
+    },
+    "start": 1262304000,
+    "end": 1451606400,
+    "parameters": {
+      "barSeconds": 3600,
+      "timeframe": "H1",
+      "initialCapital": 100000.0,
+      "plannedRisk": 250.0,
+      "dailyLossCap": 3000.0,
+      "dailyLossFraction": 0.03,
+      "totalEquityFloor": 90000.0,
+      "contractOz": 100.0,
+      "lotStep": 0.01,
+      "maxLots": 100.0,
+      "maxLeverage": 1.0,
+      "tickSize": 0.01,
+      "minStopDistance": 0.1,
+      "entryHours": "[08:00,20:00)",
+      "cutoff": "20:00",
+      "costs": {
+        "spread": 1.2,
+        "slippage": 0.25,
+        "commissionPerLotRT": 20.0
+      },
+      "riskReference": "max(balance, Bid/Ask marked equity) at preceding available close",
+      "permanentBreach": true
+    },
+    "barSeconds": 3600,
+    "riskReference": "max(balance, Bid/Ask marked equity) at preceding available close",
+    "initialCapital": 100000.0,
+    "endingBalance": 90168.56999999979,
+    "trades": 227,
+    "net": -9831.430000000211,
+    "returnPct": -9.831430000000212,
+    "profitFactor": 0.6238049029113866,
+    "maxDrawdown": 9875.83000000022,
+    "maxDrawdownPct": 9.87583000000022,
+    "observedClosedDrawdown": 9875.83000000022,
+    "observedClosedDrawdownPct": 9.87583000000022,
+    "conservativeDrawdown": 9907.030000000217,
+    "conservativeDrawdownPct": 9.907030000000217,
+    "maxDailyClosedEquityLoss": 346.9499999999971,
+    "maxDailyConservativeEquityLoss": 346.9499999999971,
+    "overnightUnpriced": 0,
+    "skipped": {
+      "insufficient_full_risk_budget": 5
+    },
+    "observedGaps": 1559,
+    "accountBreached": false,
+    "permanentRiskBlock": false,
+    "dailyLossBreached": false,
+    "totalLossBreached": false,
+    "breaches": [],
+    "rejectedForRiskBreach": false,
+    "totalRiskPaused": false,
+    "valid": false,
+    "assumptions": {
+      "clock": "native exported broker labels; UTC/session offset unverified",
+      "dailyReference": "max(balance, Bid/Ask marked equity) at preceding available close",
+      "dailyLossLimit": "min(3000, 0.03 * referenceEquity)",
+      "totalEquityFloor": 90000.0,
+      "breachAction": "permanent entry block, never reset by day",
+      "plannedRiskPerTrade": 250.0,
+      "entryHours": "[08:00,20:00)",
+      "sessionCutoff": "20:00",
+      "drawdown": "observed H1 close liquidation values plus separate adverse intrabar envelope",
+      "intrabarEnvelope": "adverse low/high capped at executable stop; opening gap uncapped; no favorable extreme peak",
+      "limitFills": "no fictional execution at equity floors; ordinary bracket/time/gap exits remain",
+      "riskCertification": "conservative OHLC screen only; intrabar paths, fills and broker rules not certified",
+      "costs": "fixed research assumptions, not historical broker costs; swap absent"
+    }
+  },
+  "detailFiles": {
+    "base": {
+      "file": "research/cache/goal-seven/real-yields/N7-development-base.json.gz",
+      "sha256": "b5ece9339e30531a9af5ae2e7dbcaed087f6984fe70533fb19e6483644c5c958"
+    },
+    "stress": {
+      "file": "research/cache/goal-seven/real-yields/N7-development-stress.json.gz",
+      "sha256": "4fc9f83a846a43a796f14e8bd08dbc2afbafd7eeb146968e18488fd1da4fc633"
+    }
+  },
+  "pointInTimeVerified": false,
+  "drawdownMaximumRealVerified": false,
+  "operationallyApproved": false,
+  "validated": false,
+  "goalSevenApprovedCountIncrement": 0,
+  "interpretation": "Retrospective development only. Treasury vintage, broker clock, true intrabar DD and executable costs remain unverified."
+}

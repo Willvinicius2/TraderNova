@@ -1,0 +1,19 @@
+{
+  "family": "N12",
+  "freezeSha256": "a0566a5a7e041e0253c626e2cce67371f30cae46d9a7f426607d08b3a80ccd4a",
+  "window": [
+    1640995200,
+    1735689600
+  ],
+  "qualifyingDecisionDays": 593,
+  "byPrioritySelectedSymbol": {
+    "BTCUSDT": 365,
+    "ETHUSDT": 228
+  },
+  "sampleUpperBoundReached": true,
+  "inputDailyComplete": true,
+  "interpretation": "Daily triggers before execution, overlap and risk suspension; not closed trades.",
+  "PnLComputed": false,
+  "laterWindowsEvaluated": false,
+  "validated": false
+}

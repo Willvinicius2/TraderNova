@@ -1,0 +1,86 @@
+{
+  "family": "N10",
+  "validated": false,
+  "sampleOnly": true,
+  "window": [
+    "2022-01-01",
+    "2025-01-01"
+  ],
+  "sampleGatePassed": false,
+  "PnLComputed": false,
+  "laterWindowsOpened": false,
+  "detailsPath": "research/cache/goal-seven/dated/sample-episodes.json",
+  "freezeSha256": "c08e1101a3b576184dd05b756dfa15aeff85bcc52553234da43d82ecda169838",
+  "counts": {
+    "eligibleHours": 10194,
+    "validFlatDecisions": 10170,
+    "unavailableFlatDecisions": 24,
+    "qualifyingFlatDecisions": 2,
+    "signalWithoutJointOpen": 0,
+    "cleanClosedEpisodes": 2,
+    "uncertainClosedEpisodes": 0,
+    "openAtBoundary": 0,
+    "byContract": {
+      "BTCUSDT_220325": {
+        "cleanClosed": 0,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      },
+      "BTCUSDT_220624": {
+        "cleanClosed": 0,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      },
+      "BTCUSDT_220930": {
+        "cleanClosed": 0,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      },
+      "BTCUSDT_221230": {
+        "cleanClosed": 0,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      },
+      "BTCUSDT_230331": {
+        "cleanClosed": 0,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      },
+      "BTCUSDT_230630": {
+        "cleanClosed": 0,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      },
+      "BTCUSDT_230929": {
+        "cleanClosed": 0,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      },
+      "BTCUSDT_231229": {
+        "cleanClosed": 0,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      },
+      "BTCUSDT_240329": {
+        "cleanClosed": 1,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      },
+      "BTCUSDT_240628": {
+        "cleanClosed": 0,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      },
+      "BTCUSDT_240927": {
+        "cleanClosed": 0,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      },
+      "BTCUSDT_241227": {
+        "cleanClosed": 1,
+        "uncertainClosed": 0,
+        "openAtBoundary": 0
+      }
+    }
+  }
+}

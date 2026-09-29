@@ -1,0 +1,22 @@
+{
+  "id": "goal-seven-N7-real-yield-XAU-H1-v1",
+  "frozenAtUTC": "2026-09-28T23:13:02+00:00",
+  "hashes": {
+    "protocol": "db32cc62f146a1add55fce29875d779c3cb12ac6dbde0216b8fe81ce316b131f",
+    "runner": "c85402e8e36c04d0891fb7a134167d775fa95721c985dd2ef254ef6fd95a44bb",
+    "goldSignals": "4abf23a4ab9066861f0d0ccf6dc6a1dc416a3d8f47aaf118066062674c7802c8",
+    "goldExecution": "69d19466843f80b9a4307eeb7ef463c7a10fd81acf9e737e5969d3186e656e84",
+    "goldH1": "9bb7ebfe239fb62c98cc7882c1a5e3c076bbf89fbfa91e829d9457599ef9b263",
+    "sourceSelection": "17501f879fff473b7240876e6c2ae307094588993ef86362ae224448e4da4cda",
+    "priorGoldSelection": "d73cd9563a996afca298ca8d510d1df4733e46ba9f815e2cf4d236b3f7cfd131",
+    "treasury10Year": "150d2f5966ffabd976c1de330e93446658a174d148f14545e51afefdc44c7024",
+    "treasuryManifest": "3e0691e46b07975e36705e6a480c28fdb55bb9ce048a983cb3d7a03868508b76"
+  },
+  "development": [
+    "2010-01-01",
+    "2016-01-01"
+  ],
+  "laterPerformanceViewed": false,
+  "pointInTimeVintagesVerified": false,
+  "maxLeverageRuntime": 1.0
+}

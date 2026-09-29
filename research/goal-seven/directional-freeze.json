@@ -1,0 +1,147 @@
+{
+  "frozenAtUtc": "2026-09-28T23:00:45.597717+00:00",
+  "hashes": {
+    "research/goal-seven/protocol.json": "b108294aa0876ef6d22177e207f8c6deacc5d1045ced89d0a18e36f355b51839",
+    "research/goal-seven/directional-protocol.json": "3fd85ecfdc610b7975db4c30f7eeff54d8848c645391abd2183e51064d74163c",
+    "research/goal-seven/funding-data-manifest.json": "1ac88085c331a0a136bf1ab8f321c7e63510387d1511ac17797506c01c4e32fa",
+    "research/cache/v3/manifest.json": "d2b8b4833d2e3f1d48a187fffb626339e52f9c76f744618b80ed5512440c8d93",
+    "scripts/goal_execution.py": "9cc74f33eb6e0d0a85a8efbf54d03e03baf917df4f6a3d3f7d75dcceea535240",
+    "scripts/goal_signals.py": "e65afa21053ef2a007ff20d75b13845d9e9aaed570e3d6b8d294191ce6120ead",
+    "scripts/run-goal-directional.py": "de99a0bd5e11d4a07a879661ccb4e8bbee1e4a95c4be5fd48851e2a47e9c676f"
+  },
+  "families": [
+    "N5",
+    "N6"
+  ],
+  "performanceViewedAtFreeze": false,
+  "dataAudit": {
+    "spot": {
+      "BTCUSDT": {
+        "bars": 41639,
+        "first": 1638316800,
+        "last": 1788217200,
+        "gaps": [
+          {
+            "after": 1679659200,
+            "before": 1679666400
+          }
+        ]
+      },
+      "ETHUSDT": {
+        "bars": 41639,
+        "first": 1638316800,
+        "last": 1788217200,
+        "gaps": [
+          {
+            "after": 1679659200,
+            "before": 1679666400
+          }
+        ]
+      },
+      "SOLUSDT": {
+        "bars": 41639,
+        "first": 1638316800,
+        "last": 1788217200,
+        "gaps": [
+          {
+            "after": 1679659200,
+            "before": 1679666400
+          }
+        ]
+      }
+    },
+    "perp": {
+      "BTCUSDT": {
+        "bars": 40896,
+        "first": 1640995200,
+        "last": 1788217200,
+        "gaps": []
+      },
+      "ETHUSDT": {
+        "bars": 40896,
+        "first": 1640995200,
+        "last": 1788217200,
+        "gaps": []
+      },
+      "SOLUSDT": {
+        "bars": 40776,
+        "first": 1640995200,
+        "last": 1788217200,
+        "gaps": [
+          {
+            "after": 1645830000,
+            "before": 1646092800
+          },
+          {
+            "after": 1648767600,
+            "before": 1648944000
+          }
+        ]
+      }
+    },
+    "mark": {
+      "BTCUSDT": {
+        "bars": 40800,
+        "first": 1640995200,
+        "last": 1788217200,
+        "gaps": [
+          {
+            "after": 1659222000,
+            "before": 1659312000
+          },
+          {
+            "after": 1664665200,
+            "before": 1664755200
+          },
+          {
+            "after": 1677193200,
+            "before": 1677283200
+          },
+          {
+            "after": 1782687600,
+            "before": 1782777600
+          }
+        ]
+      },
+      "ETHUSDT": {
+        "bars": 40824,
+        "first": 1640995200,
+        "last": 1788217200,
+        "gaps": [
+          {
+            "after": 1664665200,
+            "before": 1664755200
+          },
+          {
+            "after": 1677193200,
+            "before": 1677283200
+          },
+          {
+            "after": 1782687600,
+            "before": 1782777600
+          }
+        ]
+      },
+      "SOLUSDT": {
+        "bars": 40824,
+        "first": 1640995200,
+        "last": 1788217200,
+        "gaps": [
+          {
+            "after": 1664665200,
+            "before": 1664755200
+          },
+          {
+            "after": 1677193200,
+            "before": 1677283200
+          },
+          {
+            "after": 1782687600,
+            "before": 1782777600
+          }
+        ]
+      }
+    }
+  },
+  "validated": false
+}

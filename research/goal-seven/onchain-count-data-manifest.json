@@ -1,0 +1,80 @@
+{
+  "id": "goal-seven-N12-onchain-count-acquisition-v1",
+  "protocol": "research/goal-seven/onchain-count-protocol.json",
+  "provider": "Coin Metrics Community API v4",
+  "endpoint": "https://community-api.coinmetrics.io/v4/timeseries/asset-metrics",
+  "queryScope": {
+    "assets": [
+      "btc",
+      "eth"
+    ],
+    "metric": "TxTfrCnt",
+    "frequency": "1d",
+    "startInclusive": "2021-09-01",
+    "endInclusive": "2024-12-31",
+    "endTimeSent": "2024-12-31T23:59:59Z",
+    "pageSize": 10000,
+    "apiKeyUsed": false
+  },
+  "limits": {
+    "maxGets": 20,
+    "maxResponseBytes": 10485760
+  },
+  "pages": [
+    {
+      "page": 1,
+      "url": "https://community-api.coinmetrics.io/v4/timeseries/asset-metrics?assets=btc%2Ceth&metrics=TxTfrCnt&frequency=1d&start_time=2021-09-01T00%3A00%3A00Z&end_time=2024-12-31T23%3A59%3A59Z&paging_from=start&page_size=10000",
+      "requestStartedUtc": "2026-09-29T00:06:48.505507Z",
+      "status": 200,
+      "receivedUtc": "2026-09-29T00:06:48.901066Z",
+      "rawPath": "research/cache/goal-seven/onchain-count/raw/page-01-http-200.json",
+      "bytes": 185862,
+      "sha256": "5baddad73888d93bc76962158ad084ef5280e6892ab367876da7a144d9e2f446"
+    }
+  ],
+  "series": {
+    "BTCUSDT": {
+      "normalized": {
+        "cachePath": "research/cache/goal-seven/onchain-count/normalized/BTCUSDT.json",
+        "sha256": "1ef2b96e42ebc88e64f100fcbe8671c464c40cb200e51c71ddedb9217b0c1400",
+        "rows": 1218,
+        "first": 1630454400,
+        "last": 1735603200
+      },
+      "sourceRows": 1218,
+      "normalizedRows": 1218,
+      "invalidTimestampRows": 0,
+      "invalidCountRows": 0,
+      "duplicateTimestampRowsExcludedAllCopies": 0,
+      "duplicateDays": [],
+      "outOfScopeRows": 0,
+      "missingDays": [],
+      "first": 1630454400,
+      "last": 1735603200
+    },
+    "ETHUSDT": {
+      "normalized": {
+        "cachePath": "research/cache/goal-seven/onchain-count/normalized/ETHUSDT.json",
+        "sha256": "1dbc2704c6881e021702806547a8afb688a10bc7d1634a37c5cfce80526b5aac",
+        "rows": 1218,
+        "first": 1630454400,
+        "last": 1735603200
+      },
+      "sourceRows": 1218,
+      "normalizedRows": 1218,
+      "invalidTimestampRows": 0,
+      "invalidCountRows": 0,
+      "duplicateTimestampRowsExcludedAllCopies": 0,
+      "duplicateDays": [],
+      "outOfScopeRows": 0,
+      "missingDays": [],
+      "first": 1630454400,
+      "last": 1735603200
+    }
+  },
+  "getCount": 1,
+  "responseBytes": 185862,
+  "acquisitionComplete": true,
+  "pitAvailabilityProven": false,
+  "interpretation": "Daily label D conservatively means activity interval ends D+24h. This is a fixed convention, not proof of publication/revision availability at historical T+48h."
+}

@@ -1,0 +1,187 @@
+{
+  "frozenAtUtc": "2026-09-28T23:57:43.204833+00:00",
+  "hashes": {
+    "research/goal-seven/protocol.json": "b108294aa0876ef6d22177e207f8c6deacc5d1045ced89d0a18e36f355b51839",
+    "research/goal-seven/open-interest-protocol.json": "d06efa3e5a22fe4b07caee48eaba341a427078f2f841d4a3bb6ee5285e3fb06c",
+    "research/goal-seven/open-interest-data-manifest.json": "d5f7817a26f81c3ed372224d808a8906f5ed8648587ae1d7ddc6fc271db02b0c",
+    "research/goal-seven/funding-data-manifest.json": "1ac88085c331a0a136bf1ab8f321c7e63510387d1511ac17797506c01c4e32fa",
+    "research/goal-seven/open-interest-clock-audit.json": "04194632dc8b49ad57966e4215f693de233a55660c124a08906d69a9c36da4fe",
+    "research/goal-seven/open-interest-clock-offset-audit.json": "22dce5f907abfefa763b024123bac48960d6a9010ec5fe2448003881cffe9f5e",
+    "scripts/check-goal-oi-clock.py": "c71516a62e8f61c90a47fa8545fa1732566c779b7846c46ea1cd08ceb27dd9a7",
+    "scripts/goal_open_interest_signals.py": "ad3b48968318e2d9b1ee138012007a577622359fe4fe5f91602db6fbca83667d",
+    "tests/goal-open-interest-signals.py": "2d76e754e0296d77ad0939c17846a1ff77e2d4ee96c6ad8e9c3a994429d77c34",
+    "tests/goal-open-interest-integration.py": "d4925f9cbd1b270a82b914d20ab9d7784d01cb278ec7558d91e401e483441ef0",
+    "scripts/goal_execution.py": "9cc74f33eb6e0d0a85a8efbf54d03e03baf917df4f6a3d3f7d75dcceea535240",
+    "scripts/run-goal-directional.py": "de99a0bd5e11d4a07a879661ccb4e8bbee1e4a95c4be5fd48851e2a47e9c676f",
+    "scripts/goal_execution_v2.py": "a72dcaeda968893cd1669b694e15db155aa6f7a3bdf994e82eba38f4f2e8fb78",
+    "tests/goal-execution-v2.py": "2255f3a3dd6e0604454d224e0dd498933715ff1559cce7bc94140c491af721c8",
+    "scripts/run-goal-open-interest.py": "d85b902fe8484286389d99c4c7107420b34c5fc6efeb7050f94f8176c2beffb1",
+    "scripts/download-goal-open-interest.py": "31a45bf87332b06d5a6ceb568972b394876d74b28eef3499908d3e8d47b61dcb"
+  },
+  "signalCountsPreviouslyViewed": false,
+  "performancePreviouslyViewed": false,
+  "historicalAssumption": true,
+  "validated": false,
+  "dataAudit": {
+    "perp": {
+      "BTCUSDT": {
+        "bars": 26304,
+        "first": 1640995200,
+        "last": 1735686000,
+        "gaps": []
+      },
+      "ETHUSDT": {
+        "bars": 26304,
+        "first": 1640995200,
+        "last": 1735686000,
+        "gaps": []
+      },
+      "SOLUSDT": {
+        "bars": 26184,
+        "first": 1640995200,
+        "last": 1735686000,
+        "gaps": [
+          {
+            "after": 1645830000,
+            "before": 1646092800
+          },
+          {
+            "after": 1648767600,
+            "before": 1648944000
+          }
+        ]
+      }
+    },
+    "mark": {
+      "BTCUSDT": {
+        "bars": 26232,
+        "first": 1640995200,
+        "last": 1735686000,
+        "gaps": [
+          {
+            "after": 1659222000,
+            "before": 1659312000
+          },
+          {
+            "after": 1664665200,
+            "before": 1664755200
+          },
+          {
+            "after": 1677193200,
+            "before": 1677283200
+          }
+        ]
+      },
+      "ETHUSDT": {
+        "bars": 26256,
+        "first": 1640995200,
+        "last": 1735686000,
+        "gaps": [
+          {
+            "after": 1664665200,
+            "before": 1664755200
+          },
+          {
+            "after": 1677193200,
+            "before": 1677283200
+          }
+        ]
+      },
+      "SOLUSDT": {
+        "bars": 26256,
+        "first": 1640995200,
+        "last": 1735686000,
+        "gaps": [
+          {
+            "after": 1664665200,
+            "before": 1664755200
+          },
+          {
+            "after": 1677193200,
+            "before": 1677283200
+          }
+        ]
+      }
+    }
+  },
+  "openInterestAudit": {
+    "BTCUSDT": {
+      "normalizedRows": 315355,
+      "mappingSeconds": 300,
+      "expectedRequiredHourlyPoints": 26304,
+      "missingRequiredHourlyPoints": 51,
+      "firstMissingHourlyPoints": [
+        1646668800,
+        1646672400,
+        1646676000,
+        1646679600,
+        1646683200,
+        1646686800,
+        1646690400,
+        1646694000,
+        1646697600,
+        1646701200,
+        1681117200,
+        1700712000,
+        1700960400,
+        1708092000,
+        1708095600,
+        1708099200
+      ],
+      "missingFiveMinutePoints": 580,
+      "requiredHourlyComplete": false
+    },
+    "ETHUSDT": {
+      "normalizedRows": 315611,
+      "mappingSeconds": 300,
+      "expectedRequiredHourlyPoints": 26304,
+      "missingRequiredHourlyPoints": 27,
+      "firstMissingHourlyPoints": [
+        1646668800,
+        1646672400,
+        1646676000,
+        1646679600,
+        1646683200,
+        1646686800,
+        1646690400,
+        1646694000,
+        1646697600,
+        1646701200,
+        1681117200,
+        1700712000,
+        1700960400,
+        1708092000,
+        1708095600,
+        1708099200
+      ],
+      "missingFiveMinutePoints": 324,
+      "requiredHourlyComplete": false
+    },
+    "SOLUSDT": {
+      "normalizedRows": 315602,
+      "mappingSeconds": 300,
+      "expectedRequiredHourlyPoints": 26304,
+      "missingRequiredHourlyPoints": 29,
+      "firstMissingHourlyPoints": [
+        1646668800,
+        1646672400,
+        1646676000,
+        1646679600,
+        1646683200,
+        1646686800,
+        1646690400,
+        1646694000,
+        1646697600,
+        1646701200,
+        1681117200,
+        1700712000,
+        1700960400,
+        1702080000,
+        1702425600,
+        1708092000
+      ],
+      "missingFiveMinutePoints": 333,
+      "requiredHourlyComplete": false
+    }
+  }
+}

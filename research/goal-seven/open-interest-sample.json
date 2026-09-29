@@ -1,0 +1,100 @@
+{
+  "family": "N11",
+  "freezeSha256": "b3ced09edceed2f90be4b8beee216e54f6fdbab4f14d07e18984243c335a7afc",
+  "window": [
+    1640995200,
+    1735689600
+  ],
+  "qualifyingDecisionHours": 3069,
+  "byPrioritySelectedSymbol": {
+    "BTCUSDT": 946,
+    "ETHUSDT": 793,
+    "SOLUSDT": 1330
+  },
+  "sampleUpperBoundReached": true,
+  "inputHourlyComplete": false,
+  "openInterestAudit": {
+    "BTCUSDT": {
+      "normalizedRows": 315355,
+      "mappingSeconds": 300,
+      "expectedRequiredHourlyPoints": 26304,
+      "missingRequiredHourlyPoints": 51,
+      "firstMissingHourlyPoints": [
+        1646668800,
+        1646672400,
+        1646676000,
+        1646679600,
+        1646683200,
+        1646686800,
+        1646690400,
+        1646694000,
+        1646697600,
+        1646701200,
+        1681117200,
+        1700712000,
+        1700960400,
+        1708092000,
+        1708095600,
+        1708099200
+      ],
+      "missingFiveMinutePoints": 580,
+      "requiredHourlyComplete": false
+    },
+    "ETHUSDT": {
+      "normalizedRows": 315611,
+      "mappingSeconds": 300,
+      "expectedRequiredHourlyPoints": 26304,
+      "missingRequiredHourlyPoints": 27,
+      "firstMissingHourlyPoints": [
+        1646668800,
+        1646672400,
+        1646676000,
+        1646679600,
+        1646683200,
+        1646686800,
+        1646690400,
+        1646694000,
+        1646697600,
+        1646701200,
+        1681117200,
+        1700712000,
+        1700960400,
+        1708092000,
+        1708095600,
+        1708099200
+      ],
+      "missingFiveMinutePoints": 324,
+      "requiredHourlyComplete": false
+    },
+    "SOLUSDT": {
+      "normalizedRows": 315602,
+      "mappingSeconds": 300,
+      "expectedRequiredHourlyPoints": 26304,
+      "missingRequiredHourlyPoints": 29,
+      "firstMissingHourlyPoints": [
+        1646668800,
+        1646672400,
+        1646676000,
+        1646679600,
+        1646683200,
+        1646686800,
+        1646690400,
+        1646694000,
+        1646697600,
+        1646701200,
+        1681117200,
+        1700712000,
+        1700960400,
+        1702080000,
+        1702425600,
+        1708092000
+      ],
+      "missingFiveMinutePoints": 333,
+      "requiredHourlyComplete": false
+    }
+  },
+  "interpretation": "Snapshot trigger count before overlapping positions, missing execution bars or stops; not trades.",
+  "PnLComputed": false,
+  "laterWindowsEvaluated": false,
+  "validated": false
+}

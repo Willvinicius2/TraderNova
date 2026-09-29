@@ -1,0 +1,57 @@
+{
+  "id": "N10-v1-original-preserved-before-causality-audit",
+  "preservedAtUtc": "2026-09-28T23:25:06.722052+00:00",
+  "files": [
+    {
+      "sourcePath": "scripts/download-goal-dated.py",
+      "preservedPath": "research/goal-seven/revisions/dated-v1/download-goal-dated.py",
+      "sha256": "14257878b10a6f08b46fe444b4755dcf0530161208c64a821b5d1067d330e394"
+    },
+    {
+      "sourcePath": "scripts/goal_dated_sample.py",
+      "preservedPath": "research/goal-seven/revisions/dated-v1/goal_dated_sample.py",
+      "sha256": "de2bfb058303c0190b6ac7259f63160df61b8628584f916bee2c31ec1bff053e"
+    },
+    {
+      "sourcePath": "tests/goal-dated-sample.py",
+      "preservedPath": "research/goal-seven/revisions/dated-v1/goal-dated-sample.py",
+      "sha256": "6153a5ec221f956c94fac937bf97786eada9f356c09c95b747b6ced1c2e25253"
+    },
+    {
+      "sourcePath": "research/goal-seven/dated-protocol.json",
+      "preservedPath": "research/goal-seven/revisions/dated-v1/dated-protocol.json",
+      "sha256": "fe06419a2fa4cb65f74658b4e295f639683578fee6298cd75890a145429c3db8"
+    },
+    {
+      "sourcePath": "research/goal-seven/dated-data-manifest.json",
+      "preservedPath": "research/goal-seven/revisions/dated-v1/dated-data-manifest.json",
+      "sha256": "b90893a0ffefe52dfa04ed36cbcd162dd03719c39af1f67e07ff1c78ddd3c2fd"
+    },
+    {
+      "sourcePath": "research/goal-seven/dated-sample-freeze.json",
+      "preservedPath": "research/goal-seven/revisions/dated-v1/dated-sample-freeze.json",
+      "sha256": "c08e1101a3b576184dd05b756dfa15aeff85bcc52553234da43d82ecda169838"
+    },
+    {
+      "sourcePath": "research/goal-seven/dated-sample.json",
+      "preservedPath": "research/goal-seven/revisions/dated-v1/dated-sample.json",
+      "sha256": "f6e90899d405147ef025608aa96a5e5294c971f7b68a9c190209d0f8f602f06a"
+    },
+    {
+      "sourcePath": "research/cache/goal-seven/dated/sample-episodes.json",
+      "preservedPath": "research/goal-seven/revisions/dated-v1/sample-episodes.json",
+      "sha256": "7c0538b6d0d599845b8f69438573ec1574c73b302259293fd546c2f8205ca388"
+    },
+    {
+      "sourcePath": "research/goal-seven/DATED_DATA.md",
+      "preservedPath": "research/goal-seven/revisions/dated-v1/DATED_DATA.md",
+      "sha256": "3935c61ccec22a4e78930832d41c43926298e7cc72390dce28cb356efe85745d"
+    },
+    {
+      "sourcePath": "research/goal-seven/DATED_SAMPLE.md",
+      "preservedPath": "research/goal-seven/revisions/dated-v1/DATED_SAMPLE.md",
+      "sha256": "cdc270140cec42159720d18ac0e8dd770dcc5319163f6fc89e7c785bb1937028"
+    }
+  ],
+  "note": "Original signal-count run preserved before v1.1 software correction; not a new economic trial."
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "contract": "BTCUSDT_240329",
+    "entryOpenMs": 1708340400000,
+    "exitOpenMs": 1711094400000,
+    "reason": "D-minus-7",
+    "uncertain": []
+  },
+  {
+    "contract": "BTCUSDT_241227",
+    "entryOpenMs": 1731236400000,
+    "exitOpenMs": 1734681600000,
+    "reason": "D-minus-7",
+    "uncertain": []
+  }
+]

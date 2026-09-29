@@ -1,0 +1,16 @@
+{
+  "id": "N10-v1.1-causal-software-audit",
+  "auditedAtUtc": "2026-09-28T23:27:14.136619+00:00",
+  "priorPreservationPath": "research/goal-seven/revisions/dated-v1/preservation-manifest.json",
+  "priorResultSha256": "f6e90899d405147ef025608aa96a5e5294c971f7b68a9c190209d0f8f602f06a",
+  "correctedResultSha256": "9ed2c861e2223cfc952a7b05e7fe59a30dcdfd564ec8c971c477fe7aac70064f",
+  "priorDetailSha256": "7c0538b6d0d599845b8f69438573ec1574c73b302259293fd546c2f8205ca388",
+  "correctedDetailSha256": "7c0538b6d0d599845b8f69438573ec1574c73b302259293fd546c2f8205ca388",
+  "countsUnchanged": true,
+  "episodesUnchanged": true,
+  "previousCleanClosedEpisodes": 2,
+  "correctedCleanClosedEpisodes": 2,
+  "newEconomicTrial": false,
+  "PnLComputed": false,
+  "laterWindowsOpened": false
+}

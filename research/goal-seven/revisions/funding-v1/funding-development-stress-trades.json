@@ -1,0 +1,433 @@
+[
+  {
+    "entry": 1641600000000,
+    "exit": 1641826800000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -277.17005747200164,
+    "entryEquity": 100000.0,
+    "exitEquity": 99722.829942528,
+    "fundingNet": 29.03341594244821,
+    "fundingEvents": 7,
+    "uncertain": [
+      "entry-funding-timing",
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1673888400000,
+    "exit": 1674248400000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -254.0249417812156,
+    "entryEquity": 99722.829942528,
+    "exitEquity": 99468.80500074678,
+    "fundingNet": 53.71692676698257,
+    "fundingEvents": 12,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1674252000000,
+    "exit": 1674684000000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -268.6161596923339,
+    "entryEquity": 99468.80500074678,
+    "exitEquity": 99200.18884105445,
+    "fundingNet": 68.35248319753923,
+    "fundingEvents": 15,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1674687600000,
+    "exit": 1676494800000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -67.1295920033881,
+    "entryEquity": 99200.18884105445,
+    "exitEquity": 99133.05924905106,
+    "fundingNet": 256.19138502191,
+    "fundingEvents": 63,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1677027600000,
+    "exit": 1677283200000,
+    "reason": "data-gap",
+    "pnl": -274.9864140282298,
+    "entryEquity": 99133.05924905106,
+    "exitEquity": 98858.07283502283,
+    "fundingNet": 16.212563498954356,
+    "fundingEvents": 5,
+    "uncertain": [
+      "active-H1-data-gap",
+      "missing-event-mark-bound",
+      "risk-bar-funding-timing"
+    ]
+  },
+  {
+    "entry": 1679130000000,
+    "exit": 1679511600000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -269.1202873836446,
+    "entryEquity": 98858.07283502283,
+    "exitEquity": 98588.95254763919,
+    "fundingNet": 37.789320140526264,
+    "fundingEvents": 13,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1698685200000,
+    "exit": 1699549200000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -202.65075314353453,
+    "entryEquity": 98588.95254763919,
+    "exitEquity": 98386.30179449565,
+    "fundingNet": 130.41607276714785,
+    "fundingEvents": 29,
+    "uncertain": [
+      "intrabar-risk-time",
+      "risk-bar-funding-timing"
+    ]
+  },
+  {
+    "entry": 1699552800000,
+    "exit": 1702144800000,
+    "reason": "time-limit",
+    "pnl": 143.6940289097838,
+    "entryEquity": 98386.30179449565,
+    "exitEquity": 98529.99582340544,
+    "fundingNet": 492.0914773095687,
+    "fundingEvents": 90,
+    "uncertain": []
+  },
+  {
+    "entry": 1702148400000,
+    "exit": 1702263600000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -248.9304853491485,
+    "entryEquity": 98529.99582340544,
+    "exitEquity": 98281.06533805629,
+    "fundingNet": 35.29370307260033,
+    "fundingEvents": 4,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1702267200000,
+    "exit": 1702562400000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -255.87380090473744,
+    "entryEquity": 98281.06533805629,
+    "exitEquity": 98025.19153715155,
+    "fundingNet": 45.82844784090275,
+    "fundingEvents": 10,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1702566000000,
+    "exit": 1704286800000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": 351.7496056878008,
+    "entryEquity": 98025.19153715155,
+    "exitEquity": 98376.94114283935,
+    "fundingNet": 657.7402020395224,
+    "fundingEvents": 60,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1704290400000,
+    "exit": 1704420000000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -270.855090860583,
+    "entryEquity": 98376.94114283935,
+    "exitEquity": 98106.08605197877,
+    "fundingNet": 22.568674318087226,
+    "fundingEvents": 5,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1704423600000,
+    "exit": 1704837600000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -262.8631710436748,
+    "entryEquity": 98106.08605197877,
+    "exitEquity": 97843.22288093509,
+    "fundingNet": 63.374318085259674,
+    "fundingEvents": 14,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1704841200000,
+    "exit": 1704985200000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -302.8592376007582,
+    "entryEquity": 97843.22288093509,
+    "exitEquity": 97540.36364333433,
+    "fundingNet": 21.91330722339886,
+    "fundingEvents": 5,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1704988800000,
+    "exit": 1705100400000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -260.0551962273166,
+    "entryEquity": 97540.36364333433,
+    "exitEquity": 97280.30844710702,
+    "fundingNet": 12.83876249761692,
+    "fundingEvents": 3,
+    "uncertain": [
+      "entry-funding-timing",
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1705104000000,
+    "exit": 1707696000000,
+    "reason": "time-limit",
+    "pnl": 37.84382223073044,
+    "entryEquity": 97280.30844710702,
+    "exitEquity": 97318.15226933775,
+    "fundingNet": 361.1225896918678,
+    "fundingEvents": 89,
+    "uncertain": [
+      "entry-funding-timing"
+    ]
+  },
+  {
+    "entry": 1708045200000,
+    "exit": 1709143200000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -98.87077308006701,
+    "entryEquity": 97318.15226933775,
+    "exitEquity": 97219.28149625768,
+    "fundingNet": 309.365490167698,
+    "fundingEvents": 38,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1709146800000,
+    "exit": 1709654400000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": 111.95822557789506,
+    "entryEquity": 97219.28149625768,
+    "exitEquity": 97331.23972183558,
+    "fundingNet": 427.65565511361325,
+    "fundingEvents": 17,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1709658000000,
+    "exit": 1709668800000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -270.76415283720416,
+    "entryEquity": 97331.23972183558,
+    "exitEquity": 97060.47556899837,
+    "fundingNet": 0.0,
+    "fundingEvents": 0,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1709672400000,
+    "exit": 1709730000000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -283.6859412399208,
+    "entryEquity": 97060.47556899837,
+    "exitEquity": 96776.78962775845,
+    "fundingNet": 32.27505338217421,
+    "fundingEvents": 2,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1709733600000,
+    "exit": 1709913600000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -197.96850064903265,
+    "entryEquity": 96776.78962775845,
+    "exitEquity": 96578.82112710942,
+    "fundingNet": 111.07213856400497,
+    "fundingEvents": 6,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1709917200000,
+    "exit": 1710471600000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": 86.17621314784628,
+    "entryEquity": 96578.82112710942,
+    "exitEquity": 96664.99734025727,
+    "fundingNet": 376.4962189445393,
+    "fundingEvents": 19,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1710475200000,
+    "exit": 1712026800000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": 246.68576835107524,
+    "entryEquity": 96664.99734025727,
+    "exitEquity": 96911.68310860834,
+    "fundingNet": 540.666463588687,
+    "fundingEvents": 54,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1712030400000,
+    "exit": 1712948400000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -111.14331372208835,
+    "entryEquity": 96911.68310860834,
+    "exitEquity": 96800.53979488625,
+    "fundingNet": 194.07579489726893,
+    "fundingEvents": 32,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1712952000000,
+    "exit": 1713038400000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -265.8650458038028,
+    "entryEquity": 96800.53979488625,
+    "exitEquity": 96534.67474908245,
+    "fundingNet": 13.183168290945492,
+    "fundingEvents": 3,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1713042000000,
+    "exit": 1713049200000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -297.98578295108746,
+    "entryEquity": 96534.67474908245,
+    "exitEquity": 96236.68896613136,
+    "fundingNet": 0.0,
+    "fundingEvents": 0,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1713052800000,
+    "exit": 1713510000000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -239.23899562872248,
+    "entryEquity": 96236.68896613136,
+    "exitEquity": 95997.44997050264,
+    "fundingNet": 35.981096459927386,
+    "fundingEvents": 15,
+    "uncertain": [
+      "entry-funding-timing",
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1716829200000,
+    "exit": 1719421200000,
+    "reason": "time-limit",
+    "pnl": 127.69652160241094,
+    "entryEquity": 95997.44997050264,
+    "exitEquity": 96125.14649210505,
+    "fundingNet": 356.42809790841454,
+    "fundingEvents": 90,
+    "uncertain": []
+  },
+  {
+    "entry": 1719939600000,
+    "exit": 1720450800000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -218.35341214461369,
+    "entryEquity": 96125.14649210505,
+    "exitEquity": 95906.79307996044,
+    "fundingNet": 57.73090484261543,
+    "fundingEvents": 17,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1729674000000,
+    "exit": 1731409200000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -136.40853573307686,
+    "entryEquity": 95906.79307996044,
+    "exitEquity": 95770.38454422736,
+    "fundingNet": 342.22788991442724,
+    "fundingEvents": 60,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1731412800000,
+    "exit": 1733367600000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": 75.89260906116397,
+    "entryEquity": 95770.38454422736,
+    "exitEquity": 95846.27715328852,
+    "fundingNet": 510.30283176400445,
+    "fundingEvents": 68,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1733371200000,
+    "exit": 1733439600000,
+    "reason": "intrabar-risk-next-open",
+    "pnl": -202.6327802958258,
+    "entryEquity": 95846.27715328852,
+    "exitEquity": 95643.6443729927,
+    "fundingNet": 51.01887652387931,
+    "fundingEvents": 2,
+    "uncertain": [
+      "intrabar-risk-time"
+    ]
+  },
+  {
+    "entry": 1733443200000,
+    "exit": 1735689600000,
+    "reason": "window-end",
+    "pnl": 97.69280648088898,
+    "entryEquity": 95643.6443729927,
+    "exitEquity": 95741.33717947359,
+    "fundingNet": 356.830049192672,
+    "fundingEvents": 77,
+    "uncertain": [
+      "entry-funding-timing"
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+# Dados para N10 — futuro BTCUSDT com vencimento
+
+Coleta oficial, gratuita e somente leitura de mercado. O [manifesto](dated-data-manifest.json) contém os objetos descobertos no índice S3 da Binance, URLs individuais, timestamps, tamanho, linhas e SHA-256 confrontado com cada `.CHECKSUM` oficial. Reproduzir com `python scripts/download-goal-dated.py`; o script usa até quatro requisições simultâneas, retry limitado e para após 403/429 persistente. Não há credenciais nem ordens.
+
+Foram listados 24 contratos `BTCUSDT_YYMMDD` tanto em `klines` quanto em `markPriceKlines`. Desses, 19 intersectam as janelas necessárias de D−60 a D−7 entre jan/2022 e ago/2026. O download selecionou **108 ZIPs H1 realmente listados** (54 trade, 54 mark); 108/108 passaram no checksum oficial. Os arquivos brutos estão em `research/cache/goal-seven/dated/`, ignorado pelo Git. O BTCUSDT spot H1 existente em `research/cache/v3/` foi reutilizado sem alteração.
+
+Na leitura de desenvolvimento, 12 contratos têm 24.178 barras trade e 24.792 barras mark arquivadas; o spot tem 27.047 barras anteriores a 2025. Há dois gaps internos de 24 horas em mark: `BTCUSDT_221230` de 02/10/2022 00:00 a 03/10/2022 00:00 UTC e `BTCUSDT_230331` de 24/02/2023 00:00 a 25/02/2023 00:00 UTC. A listagem mark inclui alguns meses após o vencimento do contrato; a coleta usou apenas meses que cruzam a janela pré-D−7, e o contador nunca interpreta dados pós-vencimento como operação.
+
+A [especificação Binance USD-M de contratos com entrega](https://www.binance.com/en/support/faq/detail/3ae441db4ae740e19af3fe9228eb6619) informa o vencimento às 08:00 UTC; os arquivos ZIP e checksums seguem a [Binance Public Data](https://github.com/binance/binance-public-data/blob/master/README.md). Não há bid/ask histórico, margem por faixa histórica nem custo de financiamento executável. Binance USD-M/USDT não comprova equivalência ao contrato de outra corretora ou mesa.

@@ -1,0 +1,29 @@
+{
+  "revision": "v1.1 numeric audit",
+  "frozenAtUtc": "2026-09-28T23:10:08.548910+00:00",
+  "performanceViewedAtFreeze": true,
+  "priorDevelopmentViewed": true,
+  "economicHypothesisChanged": false,
+  "newFamilyTrial": false,
+  "priorRevisionPreservationPath": "research/goal-seven/revisions/funding-v1/preservation-manifest.json",
+  "priorRevisionPreservationSha256": "106e9973b6ac1cd8a7c085f0e46153d9fa1fc93ab65c41affd19814999e6e0dd",
+  "hashes": {
+    "research/goal-seven/protocol.json": "b108294aa0876ef6d22177e207f8c6deacc5d1045ced89d0a18e36f355b51839",
+    "research/goal-seven/funding-protocol.json": "3e82c2ce8ab78d6060f8c0ef3db5556dd4d000c63768dfc1c85bc1d2055449c5",
+    "research/goal-seven/funding-data-manifest.json": "1ac88085c331a0a136bf1ab8f321c7e63510387d1511ac17797506c01c4e32fa",
+    "research/cache/v3/manifest.json": "d2b8b4833d2e3f1d48a187fffb626339e52f9c76f744618b80ed5512440c8d93",
+    "research/cache/v3/BTCUSDT-1h.json": "eec6d00f0a38d5658b16c53928aed72cea3f1c925c8c73850ea75888c2ced678",
+    "scripts/goal_funding.py": "0d64085478fec1abfe2d54b1477ca0516cc274a63212adeef5becbc4b083155e",
+    "tests/goal-funding.py": "9378e8051ca715365d983ec6bc639b9dba884f87ec7ca69a2ef902e5365968d3",
+    "research/goal-seven/revisions/funding-v1/preservation-manifest.json": "106e9973b6ac1cd8a7c085f0e46153d9fa1fc93ab65c41affd19814999e6e0dd"
+  },
+  "preRerunTests": "python tests/goal-funding.py: 10 passed",
+  "correctionScope": [
+    "missing joint open at boundary",
+    "intrabar favorable-then-adverse drawdown envelope",
+    "debit-before-credit cash envelope",
+    "explicit account breach",
+    "stress sample gate",
+    "capital reconciliation"
+  ]
+}

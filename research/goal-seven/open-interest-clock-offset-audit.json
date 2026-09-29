@@ -1,0 +1,236 @@
+{
+  "sampleDay": "2026-09-27",
+  "priorZeroOffsetAuditSha256": "04194632dc8b49ad57966e4215f693de233a55660c124a08906d69a9c36da4fe",
+  "archiveCreateTimeInterpretation": "UTC-labeled five-minute slot start; REST statistical timestamp corresponds to start+300 seconds in this sample",
+  "mappingSeconds": 300,
+  "symbols": {
+    "BTCUSDT": {
+      "comparisons": [
+        {
+          "apiTimestampMs": 1790467500000,
+          "archiveCreateTime": "2026-09-27 00:00:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790467800000,
+          "archiveCreateTime": "2026-09-27 00:05:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790468100000,
+          "archiveCreateTime": "2026-09-27 00:10:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790468400000,
+          "archiveCreateTime": "2026-09-27 00:15:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790468700000,
+          "archiveCreateTime": "2026-09-27 00:20:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469000000,
+          "archiveCreateTime": "2026-09-27 00:25:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469300000,
+          "archiveCreateTime": "2026-09-27 00:30:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469600000,
+          "archiveCreateTime": "2026-09-27 00:35:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469900000,
+          "archiveCreateTime": "2026-09-27 00:40:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790470200000,
+          "archiveCreateTime": "2026-09-27 00:45:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790470500000,
+          "archiveCreateTime": "2026-09-27 00:50:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        }
+      ],
+      "apiTimesOutsideArchiveDayAfterShift": [
+        1790467200000
+      ],
+      "allOverlappingQuantitiesEqual": true,
+      "allOverlappingNotionalsEqual": true
+    },
+    "ETHUSDT": {
+      "comparisons": [
+        {
+          "apiTimestampMs": 1790467500000,
+          "archiveCreateTime": "2026-09-27 00:00:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790467800000,
+          "archiveCreateTime": "2026-09-27 00:05:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790468100000,
+          "archiveCreateTime": "2026-09-27 00:10:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790468400000,
+          "archiveCreateTime": "2026-09-27 00:15:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790468700000,
+          "archiveCreateTime": "2026-09-27 00:20:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469000000,
+          "archiveCreateTime": "2026-09-27 00:25:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469300000,
+          "archiveCreateTime": "2026-09-27 00:30:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469600000,
+          "archiveCreateTime": "2026-09-27 00:35:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469900000,
+          "archiveCreateTime": "2026-09-27 00:40:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790470200000,
+          "archiveCreateTime": "2026-09-27 00:45:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790470500000,
+          "archiveCreateTime": "2026-09-27 00:50:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        }
+      ],
+      "apiTimesOutsideArchiveDayAfterShift": [
+        1790467200000
+      ],
+      "allOverlappingQuantitiesEqual": true,
+      "allOverlappingNotionalsEqual": true
+    },
+    "SOLUSDT": {
+      "comparisons": [
+        {
+          "apiTimestampMs": 1790467500000,
+          "archiveCreateTime": "2026-09-27 00:00:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790467800000,
+          "archiveCreateTime": "2026-09-27 00:05:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790468100000,
+          "archiveCreateTime": "2026-09-27 00:10:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790468400000,
+          "archiveCreateTime": "2026-09-27 00:15:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790468700000,
+          "archiveCreateTime": "2026-09-27 00:20:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469000000,
+          "archiveCreateTime": "2026-09-27 00:25:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469300000,
+          "archiveCreateTime": "2026-09-27 00:30:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469600000,
+          "archiveCreateTime": "2026-09-27 00:35:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790469900000,
+          "archiveCreateTime": "2026-09-27 00:40:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790470200000,
+          "archiveCreateTime": "2026-09-27 00:45:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        },
+        {
+          "apiTimestampMs": 1790470500000,
+          "archiveCreateTime": "2026-09-27 00:50:00",
+          "quantityEqual": true,
+          "notionalEqual": true
+        }
+      ],
+      "apiTimesOutsideArchiveDayAfterShift": [
+        1790467200000
+      ],
+      "allOverlappingQuantitiesEqual": true,
+      "allOverlappingNotionalsEqual": true
+    }
+  },
+  "historicalMappingProven": false,
+  "historicalPublicationAvailabilityProven": false,
+  "returnsOrSignalsExamined": false
+}

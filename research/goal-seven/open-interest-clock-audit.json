@@ -1,0 +1,295 @@
+{
+  "purpose": "Contemporary archive create_time / REST Unix timestamp and quantity correspondence only",
+  "acquiredAtUtc": "2026-09-28T23:29:40.795854+00:00",
+  "sampleDay": "2026-09-27",
+  "symbols": {
+    "BTCUSDT": {
+      "archive": {
+        "url": "https://data.binance.vision/data/futures/um/daily/metrics/BTCUSDT/BTCUSDT-metrics-2026-09-27.zip",
+        "path": "research/cache/goal-seven/open-interest-clock/BTCUSDT-metrics-2026-09-27.zip",
+        "sha256": "ad957aafe9d977ecf27500645e2a5ae7f4fcae83d0da9390d0f3ace5aa9da4bf",
+        "bytes": 11335
+      },
+      "checksum": {
+        "url": "https://data.binance.vision/data/futures/um/daily/metrics/BTCUSDT/BTCUSDT-metrics-2026-09-27.zip.CHECKSUM",
+        "path": "research/cache/goal-seven/open-interest-clock/BTCUSDT-metrics-2026-09-27.zip.CHECKSUM",
+        "sha256": "8ac3dc72b32975351c08229faab38f145b43c02e4d608490118f6648112c755f",
+        "bytes": 97
+      },
+      "api": {
+        "url": "https://fapi.binance.com/futures/data/openInterestHist?symbol=BTCUSDT&period=5m&startTime=1790467200000&endTime=1790470799999&limit=500",
+        "path": "research/cache/goal-seven/open-interest-clock/BTCUSDT-2026-09-27-first-hour-rest.json",
+        "sha256": "cf97c4e1a7f000594fa9fe7370cfaba7d2d8d56ba268d1baf13b266eb389320f",
+        "bytes": 2041
+      },
+      "comparisons": [
+        {
+          "timestampMs": 1790467200000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790467500000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790467800000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790468100000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790468400000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790468700000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469000000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469300000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469600000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469900000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790470200000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790470500000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        }
+      ],
+      "allQuantitiesEqualAtUTC": false
+    },
+    "ETHUSDT": {
+      "archive": {
+        "url": "https://data.binance.vision/data/futures/um/daily/metrics/ETHUSDT/ETHUSDT-metrics-2026-09-27.zip",
+        "path": "research/cache/goal-seven/open-interest-clock/ETHUSDT-metrics-2026-09-27.zip",
+        "sha256": "260078258658997b175e1d5ddd14f5e0c5229c7b84752232ed714c6476bb74b3",
+        "bytes": 11656
+      },
+      "checksum": {
+        "url": "https://data.binance.vision/data/futures/um/daily/metrics/ETHUSDT/ETHUSDT-metrics-2026-09-27.zip.CHECKSUM",
+        "path": "research/cache/goal-seven/open-interest-clock/ETHUSDT-metrics-2026-09-27.zip.CHECKSUM",
+        "sha256": "7717d42ed8a0b40970c8016ac70096b293312ebad542b27b09a8f107ddcf01a4",
+        "bytes": 97
+      },
+      "api": {
+        "url": "https://fapi.binance.com/futures/data/openInterestHist?symbol=ETHUSDT&period=5m&startTime=1790467200000&endTime=1790470799999&limit=500",
+        "path": "research/cache/goal-seven/open-interest-clock/ETHUSDT-2026-09-27-first-hour-rest.json",
+        "sha256": "7ac2a79190411f658a5f303013a58d2c58f50d94f5159b21a7d0d1f02b2eadee",
+        "bytes": 2077
+      },
+      "comparisons": [
+        {
+          "timestampMs": 1790467200000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790467500000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790467800000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790468100000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790468400000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790468700000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469000000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469300000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469600000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469900000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790470200000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790470500000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        }
+      ],
+      "allQuantitiesEqualAtUTC": false
+    },
+    "SOLUSDT": {
+      "archive": {
+        "url": "https://data.binance.vision/data/futures/um/daily/metrics/SOLUSDT/SOLUSDT-metrics-2026-09-27.zip",
+        "path": "research/cache/goal-seven/open-interest-clock/SOLUSDT-metrics-2026-09-27.zip",
+        "sha256": "8b8c5fbeb3fdd5c0d1bfa893b0f8a2b86d79fcc23ae562340b337de0bb02f51b",
+        "bytes": 11643
+      },
+      "checksum": {
+        "url": "https://data.binance.vision/data/futures/um/daily/metrics/SOLUSDT/SOLUSDT-metrics-2026-09-27.zip.CHECKSUM",
+        "path": "research/cache/goal-seven/open-interest-clock/SOLUSDT-metrics-2026-09-27.zip.CHECKSUM",
+        "sha256": "f06ca9bc396175b963c5a4d0349e147cd3e6acd8b48aa08b9a663fa9daf33c08",
+        "bytes": 97
+      },
+      "api": {
+        "url": "https://fapi.binance.com/futures/data/openInterestHist?symbol=SOLUSDT&period=5m&startTime=1790467200000&endTime=1790470799999&limit=500",
+        "path": "research/cache/goal-seven/open-interest-clock/SOLUSDT-2026-09-27-first-hour-rest.json",
+        "sha256": "d0bb1543f51e558ade41519791a3af3531da6796fa06f2d7e40d14ad43f291c6",
+        "bytes": 2077
+      },
+      "comparisons": [
+        {
+          "timestampMs": 1790467200000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790467500000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790467800000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790468100000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790468400000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790468700000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469000000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469300000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469600000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790469900000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790470200000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        },
+        {
+          "timestampMs": 1790470500000,
+          "archiveTimestampPresent": true,
+          "quantityEqual": false,
+          "notionalEqual": false
+        }
+      ],
+      "allQuantitiesEqualAtUTC": false
+    }
+  },
+  "historicalTimezoneProven": false,
+  "pointInTimeAvailabilityProven": false,
+  "returnsOrSignalsExamined": false
+}

@@ -1,0 +1,168 @@
+{
+  "id": "goal-seven-N8-CFTC-Gold-disaggregated-futures-only",
+  "retrievedAtUTC": "2026-09-28T23:18:21+00:00",
+  "sourceIndex": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
+  "market": "GOLD - COMMODITY EXCHANGE INC.",
+  "cftcContractCode": "088691",
+  "sourceFiles": [
+    {
+      "file": "research/cache/goal-seven/cot/fut_disagg_txt_hist_2006_2016.zip",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_hist_2006_2016.zip",
+      "sha256": "68c593209136ab7cfda2ec17ac5ed0bffb4b19a49f52c01308b4cedb315514c8",
+      "bytes": 12240715,
+      "innerFile": "F_Disagg06_16.txt",
+      "goldRows": 551,
+      "firstReportDate": "2006-06-13",
+      "lastReportDate": "2016-12-27"
+    },
+    {
+      "file": "research/cache/goal-seven/cot/fut_disagg_txt_2017.zip",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2017.zip",
+      "sha256": "6fc467b989df527a4fbea4ba07185e8951f35cb72563f156488904a37c100e43",
+      "bytes": 1805242,
+      "innerFile": "f_year.txt",
+      "goldRows": 52,
+      "firstReportDate": "2017-01-03",
+      "lastReportDate": "2017-12-26"
+    },
+    {
+      "file": "research/cache/goal-seven/cot/fut_disagg_txt_2018.zip",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2018.zip",
+      "sha256": "df4bf7d72e8984d6ea04087f793c9f2bf3503ea8c2149f4b01eedeef4fbe40a8",
+      "bytes": 1961740,
+      "innerFile": "f_year.txt",
+      "goldRows": 53,
+      "firstReportDate": "2018-01-02",
+      "lastReportDate": "2018-12-31"
+    },
+    {
+      "file": "research/cache/goal-seven/cot/fut_disagg_txt_2019.zip",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2019.zip",
+      "sha256": "942a438bcc6f66e65aaf594a1a1fdb8c1505fe4a0feece77a1fd97270317e753",
+      "bytes": 1981332,
+      "innerFile": "f_year.txt",
+      "goldRows": 52,
+      "firstReportDate": "2019-01-08",
+      "lastReportDate": "2019-12-31"
+    },
+    {
+      "file": "research/cache/goal-seven/cot/fut_disagg_txt_2020.zip",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2020.zip",
+      "sha256": "0aa03c0fd6360f56b6897b6eaff30e8dba774c826bf93cac61598312e19bd1cd",
+      "bytes": 1930322,
+      "innerFile": "f_year.txt",
+      "goldRows": 52,
+      "firstReportDate": "2020-01-07",
+      "lastReportDate": "2020-12-29"
+    },
+    {
+      "file": "research/cache/goal-seven/cot/fut_disagg_txt_2021.zip",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2021.zip",
+      "sha256": "12d5d49a8963367fd3439050e3e20e6a5338757dfa083432795c5556827ff8ae",
+      "bytes": 1943806,
+      "innerFile": "f_year.txt",
+      "goldRows": 52,
+      "firstReportDate": "2021-01-05",
+      "lastReportDate": "2021-12-28"
+    },
+    {
+      "file": "research/cache/goal-seven/cot/fut_disagg_txt_2022.zip",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2022.zip",
+      "sha256": "74205d75d4d7b75a9f4159ef2e6abed53eeb4771a74e5a4bf78bc0451410ab7f",
+      "bytes": 2049193,
+      "innerFile": "f_year.txt",
+      "goldRows": 52,
+      "firstReportDate": "2022-01-04",
+      "lastReportDate": "2022-12-27"
+    },
+    {
+      "file": "research/cache/goal-seven/cot/fut_disagg_txt_2023.zip",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2023.zip",
+      "sha256": "9fe75dba0256819d476bb0d01f9e8e5ac6ec2c4390f609a7e3259e85796b79ce",
+      "bytes": 2202972,
+      "innerFile": "f_year.txt",
+      "goldRows": 52,
+      "firstReportDate": "2023-01-03",
+      "lastReportDate": "2023-12-26"
+    },
+    {
+      "file": "research/cache/goal-seven/cot/fut_disagg_txt_2024.zip",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2024.zip",
+      "sha256": "5e40f60993120d26c116ab347beaf93702f5da60c7bdccbbee43cb3d0a91d01a",
+      "bytes": 2381296,
+      "innerFile": "f_year.txt",
+      "goldRows": 53,
+      "firstReportDate": "2024-01-02",
+      "lastReportDate": "2024-12-31"
+    },
+    {
+      "file": "research/cache/goal-seven/cot/fut_disagg_txt_2025.zip",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2025.zip",
+      "sha256": "17ac2fef1b53303d01e486bbf5768a4e062308a3c34a2970871f3eab89829cbc",
+      "bytes": 2420076,
+      "innerFile": "f_year.txt",
+      "goldRows": 52,
+      "firstReportDate": "2025-01-07",
+      "lastReportDate": "2025-12-30"
+    },
+    {
+      "file": "research/cache/goal-seven/cot/fut_disagg_txt_2026.zip",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2026.zip",
+      "sha256": "ca88b14a88386ba250e4c48fa786162566efedb3fd5d63c5e87dc49a9dbd39da",
+      "bytes": 1831811,
+      "innerFile": "f_year.txt",
+      "goldRows": 38,
+      "firstReportDate": "2026-01-06",
+      "lastReportDate": "2026-09-22"
+    }
+  ],
+  "normalized": {
+    "file": "research/cache/goal-seven/cot/gold-disaggregated-futures-only-asof-2006-2026.csv",
+    "sha256": "6b96d86ad19ecbaf0befaf34ac846e467a7b35450b8d07801008e04476c39a84",
+    "bytes": 40116,
+    "rows": 1059,
+    "firstReportDate": "2006-06-13",
+    "lastReportDate": "2026-09-22"
+  },
+  "actualReleaseTimestampsPresent": false,
+  "pointInTimeVintagesVerified": false,
+  "reportDateIsPublicationDate": false,
+  "historyWarning": "CFTC archive is a current snapshot keyed by position as-of date; exceptions and corrections prevent inferring exact historical public availability from the usual Friday schedule.",
+  "h3TriggerCountOnlyNoPnl": {
+    "rule": "P=(Managed Money Long-Short)/OI; strict >90th/<10th nearest-rank of 104 prior reports and two consecutive P declines/rises; one candidate per report date; five-session holding overlap can only lower entries",
+    "windowsByAsOfReportDate": {
+      "development2011_2015": {
+        "reportRows": 261,
+        "triggerUpperBound": 12,
+        "longTriggers": 12,
+        "shortTriggers": 0,
+        "minimumTradesGate": 100,
+        "minimumReachableEvenIfEveryReportTraded": true,
+        "minimumReachableWithFixedH3Trigger": false,
+        "interpretation": "Upper bound by as-of report date; actual release availability and overlapping five-session positions may reduce entries further."
+      },
+      "validation2016_2020": {
+        "reportRows": 261,
+        "triggerUpperBound": 5,
+        "longTriggers": 0,
+        "shortTriggers": 5,
+        "minimumTradesGate": 100,
+        "minimumReachableEvenIfEveryReportTraded": true,
+        "minimumReachableWithFixedH3Trigger": false,
+        "interpretation": "Upper bound by as-of report date; actual release availability and overlapping five-session positions may reduce entries further."
+      },
+      "recent2021_aug2026": {
+        "reportRows": 295,
+        "triggerUpperBound": 10,
+        "longTriggers": 2,
+        "shortTriggers": 8,
+        "minimumTradesGate": 50,
+        "minimumReachableEvenIfEveryReportTraded": true,
+        "minimumReachableWithFixedH3Trigger": false,
+        "interpretation": "Upper bound by as-of report date; actual release availability and overlapping five-session positions may reduce entries further."
+      }
+    }
+  },
+  "inspectionDisclosure": "Development-only sequencing was breached: H3 trigger counts in validation 2016-2020 and recent 2021-Aug 2026 were also inspected after the development gate was already unreachable. No prices or PnL were queried. These later windows are not untouched holdouts for H3; parameters remain unchanged.",
+  "approval": "No backtest, causal replay, profit, drawdown, validation or strategy approval from this data audit."
+}

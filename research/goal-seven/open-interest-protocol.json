@@ -1,0 +1,41 @@
+{
+  "id": "goal-seven-N11-open-interest-contraction-v1",
+  "registeredAt": "2026-09-28",
+  "parentProtocol": "research/goal-seven/protocol.json",
+  "family": "N11 recovery after simultaneous contraction of perpetual open quantity and price",
+  "counting": "One family across BTC/ETH/SOL. Requires an incremental open-interest mechanism; a price-only reversal cannot count again as a distinct strategy.",
+  "assets": ["BTCUSDT", "ETHUSDT", "SOLUSDT"],
+  "development": ["2022-01-01", "2025-01-01"],
+  "selection": "Freeze code, rules, source manifests and normalized data before counting triggers. If fewer than 100 triggers exist in development, stop without PnL. Otherwise run development base and stress once. Development failure withholds evaluation; no parameter rescue using 2025 or 2026.",
+  "inputAudit": "Compare normalized row counts with manifest, require finite positive quantities and monotonic unique 5-minute timestamps, audit coverage before signals. Any missing required hourly OI endpoint makes the historical trial ineligible even if its descriptive PnL is positive; preserve that failure in both scenarios. Missing off-hour points are reported separately. No missing observation is filled or inferred.",
+  "features": {
+    "openInterest": "Official daily/metrics quantities aligned to statistical endpoint T and T-3600 by interpreting raw create_time as UTC slot start and adding 300 seconds. Contemporary archive/REST evidence is in open-interest-clock-offset-audit.json; its historical constancy is assumed, not proven. Use sum_open_interest quantity, never sum_open_interest_value or a reconstructed OI.",
+    "price": "Trade H1 of the same USD-M perpetual, with open timestamp T-3600 and completed close at T.",
+    "condition": "OI(T)/OI(T-3600)-1 <= -0.005 AND H1.close/H1.open-1 <= -0.005, inclusive thresholds.",
+    "missing": "Reject invalid, nonfinite, nonpositive or duplicate endpoint observations; no nearest-neighbor substitution, interpolation or price-only fallback. Both exact OI endpoints and valid completed H1 are required."
+  },
+  "timing": {
+    "decision": "T+3300 seconds, using features ending at T; prospective operation requires recorded receipt timestamps for both OI snapshots and H1 no later than this decision.",
+    "entry": "Next H1 open at T+3600. Do not use the return, high, low or close of T..T+3600 for the signal. The common executor receives key=T, signal_close_time=T+3600, feature_end=T and decision_time=T+3300.",
+    "historicalAssumption": "The mapping create_time interpreted as UTC +300s is corroborated against contemporary official REST statistical timestamps, not established by historical publication documentation. Historical publication and receipt times/vintages are unavailable. The exploratory screen assumes the same mapping and availability by T+3300; a one-hour lag does not prove point-in-time availability. Prospective mode must reject missing/late receipt evidence.",
+    "historyEligibleForIndependentGate": false
+  },
+  "position": {
+    "direction": "long only",
+    "priority": ["BTCUSDT", "ETHUSDT", "SOLUSDT"],
+    "maximumSimultaneousPositions": 1,
+    "stopPct": 0.015,
+    "holdHours": 4,
+    "reentry": "No reentry in the exit hour",
+    "risk": "0.25% of current equity including planned stop costs, not a fixed USD250; maximum 100% gross exposure. Gaps can exceed planned risk."
+  },
+  "execution": {
+    "engine": "scripts/goal_execution_v2.py, continuous research quantities; preserves v1 separately and corrects uncertain funding eligibility in entry/exit hours before any N11 performance",
+    "basePerSide": {"commissionBps": 5, "slippageBps": 2},
+    "stressPerSide": {"commissionBps": 10, "slippageBps": 5},
+    "funding": "Actual archived rates reconciled to REST, exact settlement timestamps where present; conservative mark bounds. Entry/exit H1 opens lack actual first-trade timestamps: all funding possibly owed in those hours is debited and uncertain incoming funding is zero, including events several milliseconds after the bucket boundary. Other occupied hours keep ordinary settlement; no timestamp is shifted and no payment is applied twice.",
+    "riskPath": "Conservative marked H1 envelope including favorable peaks and adverse troughs; missing active bars disqualify. All global development gates apply, including sample, costs, daily loss and account breach.",
+    "contractLimit": "Binance USD-M source, not proof of The5ers/MT5 contract equivalence, historical bid/ask, lot sizes or fills."
+  },
+  "approval": "No historical trigger count or development result is independently validated. The seven-strategy count remains unchanged until all global independent/prospective, execution, statistical and software gates pass."
+}

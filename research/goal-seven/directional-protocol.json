@@ -1,0 +1,54 @@
+{
+  "id": "goal-seven-N5-N6-v1",
+  "registeredAt": "2026-09-28",
+  "status": "preregistered-unrun",
+  "parentProtocol": "research/goal-seven/protocol.json",
+  "familiesCount": 2,
+  "data": {
+    "signalSource": "Binance Spot original H1 BTCUSDT/ETHUSDT/SOLUSDT ZIP klines; time is UTC epoch seconds at bar open; OHLC and quote/taker-buy-quote volumes are required",
+    "executionSource": "Binance USD-M perpetual H1 for fills, mark H1 for valuation, realized funding events only while position is open",
+    "missingOrInvalid": "Skip signal if required bar is missing, duplicated, off-hour, has invalid OHLC or nonpositive quote volume; N5 also requires 24 contiguous valid preceding hours. Never synthesize a bar or funding event.",
+    "signalTimestamp": "Key is the open time of the H1 spot candle that has just closed. Information becomes available at key+3600 seconds; earliest entry is next perp H1 open at key+3600 seconds.",
+    "futureData": "Signal generation must be prefix invariant: later candles or funding cannot alter previous decisions."
+  },
+  "sharedExecution": {
+    "direction": "long only",
+    "maxOpenPositionsPerFamily": 1,
+    "entry": "perp H1 open at signal bar time+3600 if contiguous and executable; otherwise skip",
+    "timeExit": "perp H1 open at entry time+7200",
+    "adverseStop": "Perp trade high/low determines stop touch; if opening gap below stop, fill at the worse open. If target/time exit and stop ambiguous, stop first.",
+    "sameBarReentry": false,
+    "funding": "Only realized USD-M funding events strictly after fill and through exit according to exchange event timestamp; mark-price H1 for risk and drawdown. No forecast funding as income.",
+    "riskAndCosts": "Inherited from parent and root execution protocol; base fee 5 bps per side plus 2 bps slippage per side, stress 10+5 bps per side, subject to actual spread and funding. These are assumptions, not observed broker costs."
+  },
+  "N5": {
+    "name": "Delayed continuation after taker-buy pressure",
+    "economicMechanism": "Aggressive buy flow may precede adjustment when the same hour's spot price barely moved.",
+    "universePriority": ["BTCUSDT", "ETHUSDT", "SOLUSDT"],
+    "indicator": "2*taker_buy_quote_volume/quote_volume-1 on the completed current spot H1",
+    "minimumIndicatorInclusive": 0.20,
+    "currentOpenCloseReturnInclusive": [-0.0025, 0.0025],
+    "quoteVolumeMinimum": "Median quote_volume of the 24 contiguous valid spot H1 immediately BEFORE current H1, inclusive comparison",
+    "stopPct": 0.01,
+    "holdHours": 2,
+    "pretestChange": "Initial idea used base-volume fields; BEFORE any performance was viewed, the registered N5 rule switched to the official spot taker_buy_quote_volume / quote_volume fields. This is one hypothesis, with no reversal branch or later selection between base and quote variants."
+  },
+  "N6": {
+    "name": "BTC-to-altcoin lag",
+    "economicMechanism": "A completed BTC spot H1 jump may reach ETH or SOL with a lag.",
+    "leader": "BTCUSDT",
+    "followerPriority": ["ETHUSDT", "SOLUSDT"],
+    "leaderCurrentOpenCloseReturnMinimumInclusive": 0.0075,
+    "followerCurrentOpenCloseReturnInclusive": [-0.002, 0.002],
+    "stopPct": 0.015,
+    "holdHours": 2,
+    "counting": "Both followers and all trades together are one family; ETH wins a simultaneous qualifying tie. No BTC position, pair hedge, rotation ranking or short branch."
+  },
+  "references": [
+    "https://developers.binance.com/en/docs/catalog/core-trading-spot-trading/api/rest-api/market",
+    "https://github.com/binance/binance-public-data/blob/master/README.md",
+    "https://arxiv.org/abs/1011.6402",
+    "https://arxiv.org/abs/2108.09750"
+  ],
+  "approval": "No backtest, net profitability, low drawdown or operational approval is implied by this file."
+}

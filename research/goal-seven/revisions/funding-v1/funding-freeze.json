@@ -1,0 +1,23 @@
+{
+  "frozenAtUtc": "2026-09-28T23:06:00.219051+00:00",
+  "performanceViewedAtFreeze": false,
+  "family": "N2",
+  "sourceContract": "Binance spot BTCUSDT and Binance USD-M BTCUSDT perpetual; no other broker equivalence",
+  "hashes": {
+    "research/goal-seven/protocol.json": "b108294aa0876ef6d22177e207f8c6deacc5d1045ced89d0a18e36f355b51839",
+    "research/goal-seven/funding-protocol.json": "c7c45124abaf49bab5c28e65d4ea9b9cef66008aa36c080dd8e378ad30c3ec04",
+    "research/goal-seven/funding-data-manifest.json": "1ac88085c331a0a136bf1ab8f321c7e63510387d1511ac17797506c01c4e32fa",
+    "research/cache/v3/manifest.json": "d2b8b4833d2e3f1d48a187fffb626339e52f9c76f744618b80ed5512440c8d93",
+    "research/cache/v3/BTCUSDT-1h.json": "eec6d00f0a38d5658b16c53928aed72cea3f1c925c8c73850ea75888c2ced678",
+    "scripts/goal_funding.py": "3e19fcca8adba2897d8f0b2a5593e4c463647cce7d918a4e256497d02cdb1f84",
+    "tests/goal-funding.py": "b936179cb969df35fe9469ff7ce5b24bc5009219000634e92f28cdff021471d1"
+  },
+  "preRunTests": "python tests/goal-funding.py: 5 passed",
+  "dataAuditOnly": {
+    "spotBars": 41639,
+    "perpH1Bars": 40896,
+    "markH1Bars": 40800,
+    "realizedFundingEvents": 5112,
+    "RESTvsMonthlyFundingMatched": true
+  }
+}

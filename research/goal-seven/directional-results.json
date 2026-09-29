@@ -1,0 +1,120 @@
+{
+  "id": "N5-N6-v1",
+  "generatedAtUtc": "2026-09-28T23:01:53.770668+00:00",
+  "freeze_sha256": "ea8b7e9c6b4471d1cab809e6c0cf0c316afa658e0082ed36989f544565e83edd",
+  "validatedCount": 0,
+  "families": {
+    "N5": {
+      "development": {
+        "base": {
+          "scenario": "base",
+          "start": 1640995200,
+          "end": 1735689600,
+          "trade_count": 251,
+          "net_pct": -9.951111110253075,
+          "net_cash": -9951.11111025307,
+          "profit_factor": 0.472238634038861,
+          "max_drawdown_pct": 10.043971914982714,
+          "max_daily_loss_pct": 1.608245621871492,
+          "account_breach": true,
+          "funding_mark_bounds": 49,
+          "ambiguous_intrabar_funding": 47,
+          "boundary_skips": 0,
+          "validated": false,
+          "failures": [
+            "nonpositive_net",
+            "profit_factor",
+            "drawdown",
+            "account_breach"
+          ],
+          "data_quality_flag_count": 0,
+          "detail_path": "research/cache/goal-seven/N5-development-base.json",
+          "detail_sha256": "78c98587a5468e60d445df34d831add53faf67cc4f0dfce7de6a47af6bb1a5c6"
+        },
+        "stress": {
+          "scenario": "stress",
+          "start": 1640995200,
+          "end": 1735689600,
+          "trade_count": 175,
+          "net_pct": -10.058412175661536,
+          "net_cash": -10058.412175661535,
+          "profit_factor": 0.3337294589668699,
+          "max_drawdown_pct": 10.103386590998532,
+          "max_daily_loss_pct": 1.4723224633139855,
+          "account_breach": true,
+          "funding_mark_bounds": 49,
+          "ambiguous_intrabar_funding": 28,
+          "boundary_skips": 0,
+          "validated": false,
+          "failures": [
+            "nonpositive_net",
+            "drawdown",
+            "account_breach"
+          ],
+          "data_quality_flag_count": 0,
+          "detail_path": "research/cache/goal-seven/N5-development-stress.json",
+          "detail_sha256": "0028aa9ec4979594b7f7ab64a99463d3aae4d4aad882e95b9847347d9f700cff"
+        }
+      },
+      "developmentPassed": false,
+      "evaluation": null,
+      "validated": false,
+      "decision": "rejected_in_development"
+    },
+    "N6": {
+      "development": {
+        "base": {
+          "scenario": "base",
+          "start": 1640995200,
+          "end": 1735689600,
+          "trade_count": 78,
+          "net_pct": -4.489226930058143,
+          "net_cash": -4489.226930058139,
+          "profit_factor": 0.4849786563449167,
+          "max_drawdown_pct": 5.394879253471496,
+          "max_daily_loss_pct": 1.0529833974849316,
+          "account_breach": false,
+          "funding_mark_bounds": 7,
+          "ambiguous_intrabar_funding": 10,
+          "boundary_skips": 1,
+          "validated": false,
+          "failures": [
+            "insufficient_trades",
+            "nonpositive_net",
+            "profit_factor"
+          ],
+          "data_quality_flag_count": 0,
+          "detail_path": "research/cache/goal-seven/N6-development-base.json",
+          "detail_sha256": "1eab0c7447420140556501039a5f3ccd9d4a93772f7d6d32e3826fee0e73279a"
+        },
+        "stress": {
+          "scenario": "stress",
+          "start": 1640995200,
+          "end": 1735689600,
+          "trade_count": 78,
+          "net_pct": -5.856871232016503,
+          "net_cash": -5856.871232016507,
+          "profit_factor": 0.3628949424206191,
+          "max_drawdown_pct": 6.236427091017885,
+          "max_daily_loss_pct": 0.9972246702088742,
+          "account_breach": false,
+          "funding_mark_bounds": 7,
+          "ambiguous_intrabar_funding": 10,
+          "boundary_skips": 1,
+          "validated": false,
+          "failures": [
+            "insufficient_trades",
+            "nonpositive_net"
+          ],
+          "data_quality_flag_count": 0,
+          "detail_path": "research/cache/goal-seven/N6-development-stress.json",
+          "detail_sha256": "ed3fd472b1352dbd53d8ce17af5d644c012329a3a27e46a1750aedb412187c00"
+        }
+      },
+      "developmentPassed": false,
+      "evaluation": null,
+      "validated": false,
+      "decision": "rejected_in_development"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# Executor direcional v3 — lacuna de mark na entrada
+
+O [executor v3](../../scripts/goal_execution_v3.py) é uma revisão isolada de software. Os executores v1/v2, o congelamento N11 e seus resultados não foram modificados nem reexecutados. Não adiciona short, sinal ou parâmetros econômicos novos.
+
+Se há `trade.open` observado na hora de entrada, a posição é aberta mesmo sem a barra *mark* H1 contemporânea. O executor grava `missing_entry_mark`, debita funding possivelmente devido usando `mark_price` do evento quando disponível e não credita recebimento ambíguo. Sem preço de liquidação nem barra mark, grava também `unpriced_funding`: esse débito não pode ser quantificado ou presumido zero como evidência apta à aprovação. A falta do mark impede a marcação intrabar completa. A saída por indisponibilidade usa o primeiro `trade.open` observado **a partir da hora seguinte**; um stop já atingido na hora da entrada continua sendo tratado como stop de horário intrabar desconhecido.
+
+Se a barra de negócio ou seu `open` está ausente, não há preenchimento fictício: a tentativa gera `missing_entry_trade` e não abre posição. Barras futuras ausentes enquanto a posição está aberta preservam as flags existentes e levam à primeira abertura observada. A validação prévia de OHLC completo das barras existentes é uma verificação global de integridade da fonte: dado malformado aborta a execução; não constitui filtro econômico que possa cancelar seletivamente uma entrada. A decisão de entrada v3 não consulta a existência da barra mark da própria hora.
+
+**Toda flag em `data_quality_flags` reprova obrigatoriamente qualquer novo runner**, inclusive `missing_entry_mark`, `missing_entry_trade` e `unpriced_funding`. A função `gate` existente em `scripts/run-goal-directional.py` já classifica qualquer lista não vazia como `incomplete_active_source`; um runner futuro deve preservar essa regra. PnL ou risco calculados na presença de mark ausente são apenas descritivos e não satisfazem a barreira de qualidade.
+
+`python tests/goal-execution-v3.py` passou com fixtures sintéticas de mark ausente na entrada, open de negócio ausente, OHLC posterior alterado, funding, custos, stops, gaps e reconciliação. Nenhuma janela histórica ou posterior foi executada com v3.

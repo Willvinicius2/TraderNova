@@ -1,0 +1,11 @@
+# Relógio e unidade do arquivo de posições abertas
+
+Auditoria anterior a qualquer contagem ou PnL da N11, em 28/09/2026. O texto `create_time` do arquivo não foi presumido equivalente ao `timestamp` da API. Foram preservados três ZIPs oficiais de 27/09/2026 com checksums e as respostas públicas `openInterestHist`, período 5m, para 00:00–00:55 UTC. Nenhum preço, retorno ou sinal foi comparado nesta auditoria.
+
+A [comparação inicial sem deslocamento](open-interest-clock-audit.json) encontrou **0/12 correspondências** em cada ativo. Ao comparar o rótulo da API com `create_time` interpretado em UTC **mais 300 segundos**, quantidade e nocional coincidiram exatamente em **11/11 pontos sobrepostos por ativo**, BTC, ETH e SOL: [evidência preservada](open-interest-clock-offset-audit.json). A observação REST das 00:00 exigiria o arquivo anterior, às 23:55, ausente desta amostra; não é contada como correspondência. Outro agente repetiu a comparação dos bytes e confirmou os 33 pares.
+
+Assim, o loader preserva `time` como rótulo original e cria `observation_end=time+300` antes de selecionar finais de hora. Para fechar em T, usa a linha original de T−300; para T−3600, a linha T−3900. O dia anterior deve estar disponível nas fronteiras. Os testes de integração verificam essa conversão e impedem uso da linha que só termina cinco minutos depois de T.
+
+Esta correspondência contemporânea sustenta o mapeamento **nessa amostra**. Sua estabilidade em 2022–2024 continua sendo hipótese explícita, não prova de timezone histórico, vintage ou disponibilidade pública. O [arquivo público Binance](https://github.com/binance/binance-public-data/blob/master/README.md) admite revisões posteriores e publica arquivos diários no dia seguinte; baixar o ZIP hoje não prova quando a estatística ficou disponível no passado. A decisão T+55 minutos e a entrada T+60 minutos não eliminam essa limitação. Nenhum resultado retrospectivo aumentará a contagem de estratégias validadas.
+
+Reprodução local: os JSONs contêm URLs, caminhos e SHA-256 dos bytes. `python scripts/check-goal-oi-clock.py --offset-audit --verify` recalcula a comparação dos bytes preservados e confere o relatório, sem rede ou sobrescrita. Não há pedido autenticado, conta, ordem ou fonte paga.

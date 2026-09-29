@@ -1,0 +1,28 @@
+{
+  "id": "N10-dated-sample-v1.1-causal-software",
+  "revision": "v1.1",
+  "frozenAtUtc": "2026-09-28T23:26:38.084837+00:00",
+  "signalCountsPreviouslyViewed": true,
+  "N10PnLViewedAtFreeze": false,
+  "economicHypothesisChanged": false,
+  "newFamilyTrial": false,
+  "priorRevisionPreservationPath": "research/goal-seven/revisions/dated-v1/preservation-manifest.json",
+  "priorRevisionPreservationSha256": "14fc49b0205fa97ad5788bfc5da84f3f922e9ffba885fad45aaaa3fed336c8b4",
+  "hashes": {
+    "research/goal-seven/protocol.json": "b108294aa0876ef6d22177e207f8c6deacc5d1045ced89d0a18e36f355b51839",
+    "research/goal-seven/dated-protocol.json": "0c799e09e8e13f22cad74fa34e18dcfe81cfcd2a975ceaa8fb74edf4d138f192",
+    "research/goal-seven/dated-data-manifest.json": "b90893a0ffefe52dfa04ed36cbcd162dd03719c39af1f67e07ff1c78ddd3c2fd",
+    "research/cache/v3/manifest.json": "d2b8b4833d2e3f1d48a187fffb626339e52f9c76f744618b80ed5512440c8d93",
+    "research/cache/v3/BTCUSDT-1h.json": "eec6d00f0a38d5658b16c53928aed72cea3f1c925c8c73850ea75888c2ced678",
+    "scripts/download-goal-dated.py": "14257878b10a6f08b46fe444b4755dcf0530161208c64a821b5d1067d330e394",
+    "scripts/goal_dated_sample.py": "43b8e9a9018485ad6ef83cce74f3487a3a456303c81e41872a45f5cc0edf5746",
+    "tests/goal-dated-sample.py": "ae57c560095a0f1419e83d31c30bbd529ffaac9c7a80b4b752852298bb1c4608",
+    "research/goal-seven/revisions/dated-v1/preservation-manifest.json": "14fc49b0205fa97ad5788bfc5da84f3f922e9ffba885fad45aaaa3fed336c8b4"
+  },
+  "preRecountTests": "python tests/goal-dated-sample.py: 7 passed",
+  "correctionScope": [
+    "current open checks only finite positive open",
+    "closed prior hour checks finite OHLC",
+    "missing entry open creates uncertain pending signal and first later joint-open fill before D-7"
+  ]
+}

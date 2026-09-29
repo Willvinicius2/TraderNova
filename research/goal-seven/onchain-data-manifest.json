@@ -1,0 +1,25 @@
+{
+  "family": "N12",
+  "status": "blocked-community-api-403",
+  "source": "Coin Metrics Community API v4 (official, public endpoint)",
+  "requestedMetric": "TxTfrValAdjNtv",
+  "requestedFrequency": "1d",
+  "requestedAssets": ["btc", "eth"],
+  "intendedWindowInclusive": ["2021-09-01", "2024-12-31"],
+  "feasibilityProbe": {
+    "url": "https://community-api.coinmetrics.io/v4/timeseries/asset-metrics?assets=btc%2Ceth&metrics=TxTfrValAdjNtv&frequency=1d&start_time=2021-09-01&end_time=2021-09-03&paging_from=start&page_size=2",
+    "httpStatus": 403,
+    "providerErrorType": "forbidden",
+    "providerErrorMessage": "Requested metric 'TxTfrValAdjNtv' with frequency '1d' for asset 'btc' is not available with supplied credentials.",
+    "rawResponsePreserved": false,
+    "rawSha256": null,
+    "receivedUtc": null,
+    "observationLimit": "Feasibility probe printed the decoded error, but did not retain exact response bytes or receive time; neither is reconstructed."
+  },
+  "pagesDownloaded": 0,
+  "normalizedRows": 0,
+  "ethAvailability": "not_probed_after_btc_403",
+  "post2024Requested": false,
+  "pitAvailabilityProven": false,
+  "reasonStopped": "The official no-key Community API denied the first filtered request; no credential, paid API or alternate provider was used."
+}
