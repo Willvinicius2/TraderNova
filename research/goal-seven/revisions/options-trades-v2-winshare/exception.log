@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "D:\openclaude\TradersNova\scripts\download-goal-options-trades-v2.py", line 492, in <module>
+    main()
+    ~~~~^^
+  File "D:\openclaude\TradersNova\scripts\download-goal-options-trades-v2.py", line 488, in main
+    print(json.dumps(run(args.max_requests, args.max_raw_bytes, args.max_duration), indent=2))
+                     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\openclaude\TradersNova\scripts\download-goal-options-trades-v2.py", line 470, in run
+    return _run_locked(max_requests, max_raw_bytes, max_duration, client,
+                       sleep, monotonic, wall)
+  File "D:\openclaude\TradersNova\scripts\download-goal-options-trades-v2.py", line 434, in _run_locked
+    atomic_json(MANIFEST, manifest)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\openclaude\TradersNova\scripts\download-goal-options-trades-v2.py", line 105, in atomic_json
+    os.replace(temporary, path)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Acesso negado: 'D:\\openclaude\\TradersNova\\research\\goal-seven\\options-trades-v2-data-manifest.json.535169473d084ab8bb0bed900efb20af.tmp' -> 'D:\\openclaude\\TradersNova\\research\\goal-seven\\options-trades-v2-data-manifest.json'

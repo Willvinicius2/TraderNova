@@ -102,7 +102,16 @@ def atomic_json(path: Path, value):
         with temporary.open('x', encoding='utf-8', newline='\n') as stream:
             json.dump(value, stream, indent=2, ensure_ascii=False, allow_nan=False)
             stream.write('\n')
-        os.replace(temporary, path)
+        # Windows readers/antivirus can briefly hold the destination without
+        # delete-sharing. Retry only sharing/access errors, keeping old bytes.
+        for attempt in range(7):
+            try:
+                os.replace(temporary, path)
+                break
+            except PermissionError:
+                if attempt == 6:
+                    raise
+                time.sleep(0.05 * (2 ** attempt))
     finally:
         temporary.unlink(missing_ok=True)
 
@@ -469,6 +478,15 @@ def run(max_requests=20, max_raw_bytes=10_000_000, max_duration=3600, client=fet
         try:
             return _run_locked(max_requests, max_raw_bytes, max_duration, client,
                                sleep, monotonic, wall)
+        except Exception as exc:
+            if MANIFEST.exists():
+                state = json.loads(MANIFEST.read_text(encoding='utf-8'))
+                if state.get('runningPid') == os.getpid():
+                    state['state'] = 'stopped_exception'
+                    state['lastError'] = {'timeUtc': utc_now(),
+                                          'message': type(exc).__name__ + ': ' + str(exc)}
+                    atomic_json(MANIFEST, state)
+            raise
         finally:
             if MANIFEST.exists():
                 state = json.loads(MANIFEST.read_text(encoding='utf-8'))

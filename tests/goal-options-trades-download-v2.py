@@ -3,6 +3,7 @@ import importlib.util
 import json
 import tempfile
 import unittest
+from unittest.mock import patch
 import urllib.parse
 from pathlib import Path
 
@@ -13,6 +14,38 @@ spec.loader.exec_module(mod)
 
 
 class CollectorV2Tests(unittest.TestCase):
+    def test_windows_transient_replace_retries_and_preserves_old_file(self):
+        destination = Path(self.tmp.name) / 'atomic.json'
+        destination.write_text('{"old":true}', encoding='utf-8')
+        original = mod.os.replace
+        attempts = []
+        def replace(source, target):
+            attempts.append(1)
+            if len(attempts) < 3:
+                self.assertEqual(json.loads(destination.read_text()), {'old': True})
+                raise PermissionError('sharing violation fixture')
+            original(source, target)
+        with patch.object(mod.os, 'replace', side_effect=replace), patch.object(mod.time, 'sleep') as wait:
+            mod.atomic_json(destination, {'new': True})
+        self.assertEqual(json.loads(destination.read_text()), {'new': True})
+        self.assertEqual(wait.call_count, 2)
+        with patch.object(mod.os, 'replace', side_effect=PermissionError('permanent')), patch.object(mod.time, 'sleep') as wait:
+            with self.assertRaises(PermissionError):
+                mod.atomic_json(destination, {'uncommitted': True})
+        self.assertEqual(wait.call_count, 6)
+        self.assertEqual(json.loads(destination.read_text()), {'new': True})
+
+    def test_unexpected_failure_has_durable_state_and_keeps_uncertain_request(self):
+        def crash(*args):
+            raise KeyError('unexpected fixture')
+        with self.assertRaises(KeyError):
+            mod.run(max_requests=1, client=crash)
+        state = json.loads(mod.MANIFEST.read_text())
+        self.assertEqual(state['state'], 'stopped_exception')
+        self.assertIsNone(state['runningPid'])
+        self.assertIsNotNone(state['inFlight'])
+        self.assertIn('KeyError', state['lastError']['message'])
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.old = mod.CACHE, mod.MANIFEST
