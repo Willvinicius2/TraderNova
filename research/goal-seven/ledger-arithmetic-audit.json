@@ -1,0 +1,59 @@
+{
+  "audit": "decimal-ledger-reconciliation-v1",
+  "scriptSha256": "164b58f3ecaced73f452c37bd72c57683b8712f26969e3c7a5e847af6b67d586",
+  "toleranceCash": "0.000001",
+  "validated": false,
+  "limitations": [
+    "Recorded funding is reconciled, not independently replayed from events.",
+    "Drawdown check is a closed-balance lower bound, not intrabar reconstruction.",
+    "No proof of fills, market availability, broker contract equivalence or strategy validity."
+  ],
+  "results": [
+    {
+      "family": "N14",
+      "resultPath": "research/goal-seven/miner-pressure-results.json",
+      "resultSha256": "f5450031519184d5d55c03a7dd265e29f0909aec1956838f7d8e1bc2f81abc5a",
+      "runs": [
+        {
+          "scenario": "base",
+          "tradesChecked": 357,
+          "detailSha256": "6eabc09602e7bb47c2985a0112a257bd14cd959b8700a3fa624500731472666d",
+          "netCashDecimal": "-6984.431130649037596770133560807677270",
+          "closedBalanceDrawdownLowerBoundPct": "7.160748083000142594347215887819557574642",
+          "arithmeticPassed": true
+        },
+        {
+          "scenario": "stress",
+          "tradesChecked": 285,
+          "detailSha256": "99a35743a5c5fc5afc854f3e0b208d2c9bf10c8e657b60094e7d745490745168",
+          "netCashDecimal": "-10041.80993729087701508935774588424157",
+          "closedBalanceDrawdownLowerBoundPct": "10.08475999555794821576928867011195276561",
+          "arithmeticPassed": true
+        }
+      ]
+    },
+    {
+      "family": "N15",
+      "resultPath": "research/goal-seven/stablecoin-liquidity-results.json",
+      "resultSha256": "d743a111a837f049a7b9859b16ddad07b173e96d8b1c27e2e10974219e19b5ac",
+      "runs": [
+        {
+          "scenario": "base",
+          "tradesChecked": 239,
+          "detailSha256": "7aef1d4ec7bce29eee733147f0acf9ffb695a53e977a7c78b7d96a3f13c82ca3",
+          "netCashDecimal": "1915.991549526575905319109798817241670",
+          "closedBalanceDrawdownLowerBoundPct": "3.916536788014784006015006568476949547119",
+          "arithmeticPassed": true
+        },
+        {
+          "scenario": "stress",
+          "tradesChecked": 239,
+          "detailSha256": "9df08c7b72cf150815121ff63f25070e67f90c434885f7bfec1d694fe5065d4f",
+          "netCashDecimal": "-860.39181945091507871173450036989255",
+          "closedBalanceDrawdownLowerBoundPct": "4.154449584605179427911128763875846068759",
+          "arithmeticPassed": true
+        }
+      ]
+    }
+  ]
+}

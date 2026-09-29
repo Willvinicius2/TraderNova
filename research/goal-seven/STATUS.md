@@ -26,6 +26,8 @@ Passar em backtest apenas habilita a etapa seguinte. A contagem exige também ob
 
 ## Contagem e continuidade
 
+Conferência adicional do testador: **1.120 operações de N14/N15 reconciliadas** com aritmética decimal separada do executor, incluindo taxas, risco, exposição, PnL, saldo e fator de lucro. Nenhuma divergência acima da tolerância definida. As reprovações permanecem; essa conferência contábil não valida estratégias. [Evidências e limites](LEDGER_ARITHMETIC_AUDIT.md).
+
 N15 (emissão de stablecoins) **reprovou** após 239 operações: base +1,92%, PF 1,062, DD 4,13%; stress −0,86%, DD 4,39%. O critério de PF base e o lucro no stress falharam. Não houve avaliação de 2025–2026. [Relatório](STABLECOIN_LIQUIDITY_SCREEN.md). O total financeiro nesta meta passa a oito famílias reprovadas e zero aprovadas.
 
 Atualização: N14 (contração da capacidade de mineração BTC) também **reprovou**. Base: 357 operações, −6,98%, PF 0,721, DD 7,37%. Stress: 285 operações, −10,04%, DD 10,29%, com violação da conta. Regra registrada antes de uma única aquisição de 135 KB; freeze anterior à amostra e PnL. Sem consultar 2025–2026. [Relatório](MINER_PRESSURE_SCREEN.md). Essa etapa levou a sete reprovações financeiras; a atualização N15 acima eleva o total a oito.
