@@ -1,0 +1,40 @@
+{
+  "id": "goal-seven-N14-miner-pressure-v1",
+  "registeredAtDate": "2026-09-29",
+  "parentProtocol": "research/goal-seven/protocol.json",
+  "family": "N14 proof-of-work miner capacity contraction",
+  "hypothesis": "Falling mining capacity may accompany financial pressure and inventory sales by miners. A short BTC future tests this conjecture; hashrate is not a direct measure of selling, and weather, regulation or random block arrivals can cause contraction without selling pressure.",
+  "distinctness": "Mining supply/capital expenditure mechanism, distinct input from native transfers N12, leverage/open interest N11 and option skew N13. Simple moving-average operators are not themselves a new family. Final independent economic distinctness remains required; only one mining family can count across variants.",
+  "source": {
+    "endpoint": "https://community-api.coinmetrics.io/v4/timeseries/asset-metrics",
+    "asset": "btc",
+    "metric": "HashRate",
+    "frequency": "1d",
+    "startInclusive": "2021-09-01",
+    "endInclusive": "2024-12-31",
+    "units": "BTC TH/s estimated from difficulty and block production; retain source decimal string.",
+    "limits": "One public GET, page_size=10000, maximum 2 MB response. Preserve any HTTP error; no paid service, alternate metric or unregistered fallback.",
+    "historicalAvailability": "Current response does not prove historical publication/vintages. Treat D as day start, feature end D+24h, wait another 48h, then enter next H1 open. This conservative delay is an exploratory assumption, not proof of original availability."
+  },
+  "rule": {
+    "condition": "Arithmetic mean of the latest 7 consecutive daily HashRate values is strictly less than arithmetic mean of latest 30 consecutive values, both ending at D. Equality does not trigger. No price filter.",
+    "direction": "short only",
+    "symbol": "BTCUSDT",
+    "featureEnd": "D+24h",
+    "decision": "D+72h",
+    "entry": "D+73h at observed H1 open",
+    "stopPct": 0.02,
+    "holdHours": 12,
+    "riskPct": 0.25,
+    "maxGrossExposurePct": 100,
+    "missing": "Require all 30 consecutive positive finite daily values. No interpolation, duplicate dates or replacement series.",
+    "prospective": "Bind values/vintages to receipts; each input must have been received between its day end and its own D+72h deadline. Prospective implementation/feed still unproven."
+  },
+  "execution": "Reuse frozen USD-M executor v4 and base/stress fees, slippage and funding rules. Prices from BTC development only; no short option positions or financial orders. The5ers contract/cost equivalence unproven.",
+  "selection": "No real HashRate, trigger count or N14 performance read before this registration. Freeze inputs, rule, code and tests before sample. DEV2022-2024 only. Fewer than100 triggers stops without PnL; any financial gate failure stops before2025/2026. No reversal, threshold tuning, exposure reduction or additional asset after seeing results.",
+  "validated": false,
+  "sources": [
+    "https://gitbook-docs.coinmetrics.io/network-data/network-data-overview/mining/hash-rate",
+    "https://coinmetrics.substack.com/p/state-of-the-network-issue-174"
+  ]
+}
