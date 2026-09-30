@@ -1,10 +1,10 @@
 {
   "target": 7,
-  "state": "active_research",
+  "state": "waiting_quota",
   "researchModel": "gpt-6-luna",
   "reasoningEffort": "low or medium",
   "lastRound": "2026-09-30",
-  "lastRoundOutcome": "Importador CFD offline e coletor Aave one-shot implementados e testados. Captura RPC HTTP403 preservada; sem bloco novo, sem financeiro. UTC/custos The5ers pendentes; coleta L2 viva. Auditoria offline de bundles em implementação; 0/7.",
+  "lastRoundOutcome": "Cota semanal35%, aumento2pp nesta sessão; novas tarefas de modelos suspensas. Rodadas6-10 commit23646bd; APR/APY testado, desenho N21 e protótipo N22 preservados; testes N22/compilação MT5 pendentes. Coleta raw L2 viva e limitada;0/7. Retomada ACTIVE em12h até elegibilidade.",
   "limits": {
     "maxAttemptsPerRound": 2,
     "maxConcurrentCompute": 1,
@@ -17,5 +17,5 @@
   "automaticApproval": false,
   "modelCallsInLocalCalculations": 0,
   "mode": "consecutive_rounds",
-  "recoveryIntervalMinutes": 5
+  "recoveryIntervalMinutes": 720
 }

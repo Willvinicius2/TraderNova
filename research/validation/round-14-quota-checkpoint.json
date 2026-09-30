@@ -1,0 +1,130 @@
+{
+  "schema": "tradernova.quota-checkpoint.v1",
+  "recorded_at_local_clock_unverified": "2026-09-30T05:05:29.997972+00:00",
+  "quota": {
+    "source": "native_get_usage_limits",
+    "weekly_used_percent": 35,
+    "session_start_percent": 33,
+    "session_delta_points": 2,
+    "weekly_ceiling": 35,
+    "ordinary_usage_allowed": true,
+    "reset_unix": 1791250742
+  },
+  "state": "waiting_quota",
+  "automation_active": true,
+  "recovery_interval_minutes": 720,
+  "model_tasks_stopped": true,
+  "financial_approvals": 0,
+  "target": 7,
+  "prospective_observation_approved": false,
+  "orders_sent": 0,
+  "committed_rounds_6_10": "23646bd",
+  "preserved_files": [
+    {
+      "path": "scripts/aave_rate_normalization.py",
+      "sha256": "4780701e5404b27f515b9801c69918633c57ab7332c34d0fa2c8e9330a4a2f93",
+      "bytes": 3324
+    },
+    {
+      "path": "tests/aave-rate-normalization.py",
+      "sha256": "c9ea271378cbfd3e88fa9bf82c4a89c9130fcdce8f98b56e21247fba51a743ee",
+      "bytes": 1891
+    },
+    {
+      "path": "scripts/n22_signal_features.py",
+      "sha256": "11b9eeba16597e160412d8878c519a5359d07133f65956814a3d903cb60ac096",
+      "bytes": 8294
+    },
+    {
+      "path": "tests/n22-signal-features.py",
+      "sha256": "a676cc520f885e8818ab3b18c71c782fe8c414c948b1c0126141ee5eeff86dfa",
+      "bytes": 6158
+    },
+    {
+      "path": "scripts/test.mjs",
+      "sha256": "6b6350c9ef18e39d9ff911573e61d950719323393021a5d2ed0b00e9f1bb26a2",
+      "bytes": 995
+    },
+    {
+      "path": "research/validation/n21-evidence-contract.json",
+      "sha256": "f560e3dba2d018524632f6740737a39736b037af3269babbb04b2cc90e4cd754",
+      "bytes": 4199
+    },
+    {
+      "path": "research/validation/n21-evidence-contract.md",
+      "sha256": "dea1a5ca42d28fcf7c9bbb1774c956fc167ff034560abe4f8b08652c269d36ad",
+      "bytes": 1129
+    },
+    {
+      "path": "research/validation/round-11-rate-normalization.md",
+      "sha256": "d7c3afea800815c6dc87a88f65b69113448a17f8a107bd86f129157f338edf73",
+      "bytes": 2025
+    },
+    {
+      "path": "research/validation/round-11-rate-review.md",
+      "sha256": "7019607e093f25f4c8e3f9e014de3c07860c504eaaf7fdb5c72492d7236d7fef",
+      "bytes": 1985
+    },
+    {
+      "path": "research/validation/round-12-provenance-review.md",
+      "sha256": "952cf11264807f29be6b1654563ca1c6417cf7b6de8aee2eb677618780b89ef1",
+      "bytes": 2067
+    },
+    {
+      "path": "research/validation/round-13-n22-review.md",
+      "sha256": "06873883159dae737858e53da5ad05dc82b0448792fc478f1fbe7c1fe55274c9",
+      "bytes": 2293
+    },
+    {
+      "path": "research/validation/round-11-sources/aave-risk-borrow-interest-rate.md",
+      "sha256": "0367085685d74319d652b94b2e72c65c90a5d95197b404bfd01030d100e917ef",
+      "bytes": 8313
+    },
+    {
+      "path": "research/validation/round-11-sources/AaveMathUtils.sol",
+      "sha256": "3fb980676171c7821dfa3b1bd62a177bcf2e131ac2df091f5081bb4af521fc67",
+      "bytes": 3364
+    }
+  ],
+  "verification": {
+    "previous_completed_test_run": "9 web suites,5 worker tests,20 Python test methods across5 modules passed",
+    "n22_tests": "not executed; code and static review preserved, integration pending",
+    "normalizer": "theoretical constant-rate annual per-second compounding; not SDK parity or realized interest"
+  },
+  "collector_status_snapshot": {
+    "runId": "b90d6dd5-0201-4111-91a7-c0d872f9adb0",
+    "state": "capturing",
+    "startedAt": "2026-09-30T03:23:28.106Z",
+    "endedAt": null,
+    "lastHeartbeatAt": "2026-09-30T05:05:29.516Z",
+    "lastChunkAt": "2026-09-30T05:04:37.477Z",
+    "chunks": 101,
+    "events": 61149,
+    "duplicates": 1,
+    "consecutiveFailures": 0,
+    "lastSequence": 100850649686,
+    "error": null,
+    "validated": false,
+    "ordersSent": 0
+  },
+  "blockers": [
+    "No independently verified UTC synchronization; do not shift historical timestamps or repeat unchanged clock query",
+    "No actual The5ers High Stakes MT5 contract/cost export received",
+    "Aave first request HTTP403; failure bytes preserved; no captured finalized state",
+    "N21 and N22 predicates are mathematical prototypes with unverified caller claims, not executable prospectively approved engines"
+  ],
+  "next_tasks": [
+    "Review N22 huge-integer string conversion bounds and quote timestamp/freshness; run tests only after eligible quota",
+    "Finalize N21 evidence contract without adding unrequested mandatory human approval; independent review remains required",
+    "Reconcile round11 normalization documentation formula name/pinned primary sources, create source/hash records and ledger entries11-13 when eligible",
+    "Verify official MetaEditor CLI and compile read-only exporter with bounded hidden process and compiler log; never launch trading terminal or change system clock implicitly"
+  ],
+  "protocol_deviations": [
+    "Round11 may contain5 limited search queries across agents/root against maximum4; no further round11 searches; primary raw sources subsequently frozen by direct file fetch"
+  ],
+  "notes": [
+    "No new financial backtests or orders",
+    "Uncommitted code and reviews preserved; do not present pending N22 tests or compilation as complete",
+    "Do not spawn new agents while quota>=35, unavailable or pauseDay; restore5min recovery when eligible"
+  ]
+}
