@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "source": "Direct user replies in this chat on 2026-09-30",
+  "firm": "The5ers",
+  "program": "High Stakes",
+  "instrumentClass": "CFD",
+  "requestedSymbols": ["BTCUSD", "ETHUSD"],
+  "server": null,
+  "accountPhase": null,
+  "symbolSpecificationsApproved": false,
+  "commissionApproved": false,
+  "utcClockApproved": false,
+  "executionFeedApproved": false,
+  "binanceRole": "Auxiliary research source only, not The5ers execution prices or costs",
+  "strategyCountApproved": 0,
+  "limitations": [
+    "Official High Stakes page lists crypto as an asset class, not every account ticker or contract condition.",
+    "Obtain current MT5 symbol specifications, commission schedule, sessions and executable bid/ask before financial evaluation.",
+    "Do not label Binance spot or perp PnL as The5ers CFD performance.",
+    "Broker risk and trading restrictions must be reviewed in addition to the unchanged project gates."
+  ],
+  "references": [
+    "https://the5ers.com/high-stakes/",
+    "https://the5ers.com/en/asset-specifications/",
+    "https://the5ers.com/faqs/prohibited-trading-practices/"
+  ]
+}

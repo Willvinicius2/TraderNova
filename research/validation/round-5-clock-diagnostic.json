@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "source": "https://api.binance.com/api/v3/time",
+  "requestStartedLocalUtc": "2026-09-30T03:34:30.608254+00:00",
+  "responseReceivedLocalUtc": "2026-09-30T03:34:30.988564+00:00",
+  "serverTime": 1790739237341,
+  "roundTripSeconds": 0.38031005859375,
+  "estimatedLocalMinusServerSeconds": 33.457409143447876,
+  "uncertaintySecondsAtLeast": 0.190155029296875,
+  "windowsTimeService": "stopped",
+  "historicalDataApproved": false,
+  "systemClockChanged": false,
+  "finding": "Raw L2 event ages are 33.669 to 33.694 seconds. Current server-clock comparison suggests local clock skew; it does not certify historical offset or network latency.",
+  "nextAction": "Establish trustworthy UTC for future receipt timestamps. Preserve original timestamps; no retroactive shift to manufacture eligibility."
+}
