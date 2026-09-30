@@ -108,11 +108,6 @@ def operate(root, action, **args):
                 raise Blocked('An attempt is active; inspect and finish it before resuming')
             if state['pauseDay'] == day(t):
                 raise Blocked('Daily quota-delta pause')
-            if len(state['rounds']) >= LIMITS['maxScheduledChecks']:
-                raise Blocked('Scheduled check allowance reached; explicit review required')
-            recent = state['rounds'][-LIMITS['maxUnchangedRounds']:]
-            if len(recent)==LIMITS['maxUnchangedRounds'] and len({r['evidenceHash'] for r in recent})==1:
-                raise Blocked('Three unchanged rounds; stop recurring work until new evidence is reviewed')
             if sum(day(parse_time(a['startedAt']))==day(t) for a in state['attempts']) >= LIMITS['maxAttemptsPerDay']:
                 raise Blocked('Daily attempt ceiling reached')
         if action == 'preflight':

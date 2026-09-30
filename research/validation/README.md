@@ -2,11 +2,15 @@
 
 Pedido de 29/09/2026. **0/7 validadas.** Cinco hipóteses novas não equivalem a cinco aprovações. O pedido mais recente restaura sete aprovações; o novo `protocol.json` atualiza a identificação e a governança da meta; mantém integralmente custos, drawdown, amostra, independência e observação prospectiva. O protocolo antigo permanece byte a byte para preservar seus hashes e auditorias.
 
-N16–N20 estão em `candidates.json`: liquidações confirmadas, demanda de ETF spot, depósitos em exchanges, diferença executável entre praças e surpresa de inflação. Cada mecanismo conta uma vez. Cruzamentos de indicadores são filtros, não famílias adicionais.
+N16–N22 estão em `candidates.json`: liquidações confirmadas, demanda de ETF spot, depósitos em exchanges, diferença executável entre praças, surpresa de inflação, recuperação da liquidez passiva e aperto de crédito DeFi. Sete hipóteses não são sete aprovações. Cada mecanismo conta uma vez. Cruzamentos de indicadores são filtros, não famílias adicionais.
+
+A pesquisa diária permanece agendada até sete aprovações comprovadas; ausência de dados muda a frente da próxima rodada. Não há encerramento por três evidências iguais ou sete rodadas totais. Cota, STOP, concorrência e prazos continuam limitando cada rodada; ver `SUPERVISION.md`.
 
 O módulo `scripts/goal_five_signals.py` verifica features fornecidas e produz somente intenções de pesquisa. Seus testes sintéticos verificam o código, não lucro. Agregadores point-in-time, conectores, execução completa de N16–N20 e dados suficientes ainda precisam ser construídos/auditados antes de qualquer backtest. Nenhum serviço pago foi habilitado.
 
-Para conferir uma condição offline: `npm run research:five:check -- --candidate N17 --input caminho/features.json`. O formato de entrada está no módulo e nos exemplos sintéticos em `tests/goal-five-signals.py`. Horários informados pelo arquivo são validados quanto à ordem, mas sua autenticidade depende de auditoria externa. O comando não envia ordens nem transforma dados fornecidos em aprovação.
+Para conferir uma condição offline: `npm run research:five:check -- --candidate N17 --input caminho/features.json`; o comando aceita N16–N22. Regras N21/N22 ficam em `scripts/continuous_signals.py`, com banda absoluta fixa, metadados causais, blocos sincronizados e ATR anterior. Testes: `python tests/continuous-signals.py`. Flags de integridade e horários fornecidos dependem de auditoria externa; condições não são fills/PnL.
+
+`node scripts/capture-depth-pilot.mjs` captura apenas um piloto público BTCUSDT L2 (até 25 segundos, menos de 2 MB), verifica sequência e grava JSON bruto/hash no cache. Lock exclusivo e STOP impedem duplicação. Não constrói variáveis, não oferece cobertura contínua nem envia ordens. Captura prolongada, retenção limitada e executor devem ser revisados antes da avaliação prospectiva.
 
 ## Fluxo e consumo
 

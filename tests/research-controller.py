@@ -48,11 +48,28 @@ class Tests(unittest.TestCase):
   history=m.read(self.root/'research/cache/validation/controller-state.json')
   self.assertEqual(history['attempts'][0]['outcome'],'blocked')
   with self.assertRaises(m.Blocked):m.operate(self.root,'preflight',**self.q)
- def test_unchanged_rounds_stop(self):
+ def test_repeated_evidence_and_history_do_not_stop_research(self):
   start=m.now()
-  for i in range(3):
+  for i in range(8):
    t=start+timedelta(days=i)
    with patch.object(m,'now',return_value=t):m.operate(self.root,'round',weekly_used=1,quota_observed_at=t.isoformat(),evidence='data')
-  with self.assertRaises(m.Blocked):m.operate(self.root,'preflight',**self.q)
+  t=start+timedelta(days=8)
+  with patch.object(m,'now',return_value=t):
+   self.assertTrue(m.operate(self.root,'preflight',weekly_used=1,quota_observed_at=t.isoformat())['ready'])
+   m.operate(self.root,'round',weekly_used=1,quota_observed_at=t.isoformat(),evidence='data')
+   with self.assertRaisesRegex(m.Blocked,'already recorded today'):
+    m.operate(self.root,'round',weekly_used=1,quota_observed_at=t.isoformat(),evidence='data')
+
+ def test_round_daily_duplicate_and_attempt_daily_cap_remain(self):
+  t=m.now()
+  with patch.object(m,'now',return_value=t):
+   m.operate(self.root,'round',weekly_used=1,quota_observed_at=t.isoformat(),evidence='data')
+   with self.assertRaises(m.Blocked):m.operate(self.root,'round',weekly_used=1,quota_observed_at=t.isoformat(),evidence='data')
+   for i in range(2):
+    (self.root/'rule').write_text('rule-'+str(i))
+    ident=self.begin()['active']
+    m.operate(self.root,'finish',attempt_id=ident,outcome='blocked',weekly_used=1)
+   with self.assertRaisesRegex(m.Blocked,'Daily attempt ceiling'):
+    self.begin()
 
 if __name__=='__main__':unittest.main()

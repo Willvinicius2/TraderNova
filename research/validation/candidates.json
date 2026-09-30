@@ -184,6 +184,80 @@
           "url": "https://www.bls.gov/about-bls/dissemination.htm"
         }
       ]
+    },
+    {
+      "id": "N21",
+      "name": "Recuperação da liquidez passiva após choque",
+      "family": "passive_liquidity_resilience",
+      "assets": [
+        "BTCUSD"
+      ],
+      "thesis": "Recuperação da profundidade disponível no mesmo livro após uma queda pode indicar absorção da oferta.",
+      "rules": [
+        "BTCUSDT spot; manter snapshot e diffs L2 sem lacunas, registrar event time e received_at. Nenhum dado com atraso maior que um segundo.",
+        "Choque: mid cai pelo menos 5 bp em um segundo e best bid recua. Fixar a banda absoluta de bids entre o mid anterior e 10 bp abaixo dele; D0 é profundidade nessa banda antes do choque.",
+        "Após cinco segundos completos, exigir ausência de nova mínima do mid e profundidade D5 >=1,25 D0 na MESMA banda absoluta de preços; D0 deve ser positivo.",
+        "Comprar no primeiro ask após a decisão; stop 10 bp abaixo da mínima do evento; saída após dez minutos. Uma posição e intervalo mínimo de trinta minutos entre entradas."
+      ],
+      "requiredData": [
+        "Snapshot e todos os diffs L2 com identificadores de sequência e recebimento",
+        "Cinco segundos completos após o choque e cotações executáveis posteriores",
+        "Comissão taker, spread, profundidade para o tamanho fixado e slippage",
+        "Captura prospectiva contínua e executor completo antes de avaliar performance"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "Amostra REST pontual confirma acesso atual, não cobertura ou sinal.",
+        "Quantidade agregada não identifica reposição de ordens individuais; usar banda fixa evita mudança de composição.",
+        "Nenhum histórico L2 PIT gratuito completo demonstrado. Sem integridade de sequência, descartar o evento.",
+        "BTCUSDT é fonte de pesquisa; paridade com contrato BTCUSD efetivo ainda não estabelecida."
+      ],
+      "references": [
+        {
+          "title": "Binance · sincronização de snapshot e diffs L2",
+          "url": "https://github.com/binance/binance-spot-api-docs/blob/master/web-socket-streams.md"
+        }
+      ]
+    },
+    {
+      "id": "N22",
+      "name": "Aperto de crédito DeFi e preço do Ethereum",
+      "family": "defi_credit_liquidity_squeeze",
+      "assets": [
+        "ETHUSD"
+      ],
+      "thesis": "Aperto simultâneo de liquidez em reservas de crédito pode acompanhar desalavancagem no Ethereum.",
+      "rules": [
+        "Congelar deployment Ethereum Core Aave V3, chain_id=1 e reservas USDC 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48 e WETH 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2 antes da coleta.",
+        "Utilização = dívida / (dívida + liquidez disponível). Por bloco finalizado registrar número, hash, timestamp e instante de recebimento; sincronizar as duas reservas no mesmo bloco.",
+        "Janela encerrada de trinta minutos: utilização aumenta >=5 pontos percentuais nas duas reservas, APY variável aumenta >=100 bp em pelo menos uma e ETH/USD cai >=0,5%.",
+        "Short no primeiro preço executável após a decisão; stop a um ATR(14) anterior de barras de trinta minutos; saída em seis horas, sem posições sobrepostas e intervalo mínimo de seis horas.",
+        "Nenhum sinal com reserva pausada/frozen, oracle inválido, reorganização, leitura não finalizada ou dados fora de sincronia."
+      ],
+      "requiredData": [
+        "Deployment, contratos, hashes de bloco finalizado e observações com timestamp de conhecimento",
+        "Estados sincronizados das reservas, dívida, liquidez e APY variável",
+        "ETH bid/ask executável, ATR anterior, contrato, tamanho, comissão, slippage e funding",
+        "Histórico auditável ou captura prospectiva suficiente antes de desenvolvimento"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "Introspecção da API confirma endpoint atual, não série histórica PIT.",
+        "RPC público pode limitar consultas; disponibilidade histórica gratuita não confirmada.",
+        "Short spot precisa empréstimo; contrato perpétuo executável e seus custos ainda devem ser congelados.",
+        "Confirmação do preço pode ser reativa; não alterar os limiares após observar resultados."
+      ],
+      "references": [
+        {
+          "title": "Aave · utilização, liquidez e taxas por reserva",
+          "url": "https://www.aave.com/docs/aave-v3/markets/data"
+        },
+        {
+          "title": "Aave · contratos de consulta de reservas",
+          "url": "https://www.aave.com/docs/aave-v3/smart-contracts/view-contracts"
+        }
+      ]
     }
-  ]
+  ],
+  "updatedOn": "2026-09-30"
 }

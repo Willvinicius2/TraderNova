@@ -1,0 +1,16 @@
+{
+  "asOf": "2026-09-30",
+  "candidate": "N21",
+  "purpose": "Read-only data access and sequencing pilot, not financial validation",
+  "rawPath": "research/cache/validation/depth-pilot-1790737854101.json",
+  "rawSha256": "cba6786866c8b5123938e8d19714e9ffe90d76cadc5fa4ca1a04496c0c684b19",
+  "events": 103,
+  "sequenceChecked": true,
+  "historicalDataApproved": false,
+  "signalsEvaluated": false,
+  "executionCostsApproved": false,
+  "performanceEvaluated": false,
+  "validated": false,
+  "ordersSent": 0,
+  "nextAction": "Review bounded prospective capture with retention and clock auditing, feature aggregation, executable costs and paper-only executor. Do not count short pilot toward strategy validation."
+}

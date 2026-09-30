@@ -1,10 +1,10 @@
 {
   "target": 7,
-  "state": "waiting_for_auditable_data",
+  "state": "active_research",
   "researchModel": "gpt-6-luna",
   "reasoningEffort": "low or medium",
-  "lastRound": "2026-09-29",
-  "lastRoundOutcome": "Nenhuma hipótese adicional distinta pronta para desenvolvimento foi identificada com os dados locais.",
+  "lastRound": "2026-09-30",
+  "lastRoundOutcome": "Fontes oficiais revisadas. N21 (liquidez passiva) e N22 (crédito DeFi) registradas após revisão de novidade; coleta prospectiva e execução financeira pendentes. Sete hipóteses em estudo, zero aprovações.",
   "limits": {
     "maxAttemptsPerDay": 2,
     "maxConcurrentCompute": 1,
@@ -12,9 +12,7 @@
     "maxOutputBytes": 2000000,
     "weeklyUsedCeiling": 35,
     "maxWeeklyDeltaPerRound": 2,
-    "maxResearchAgents": 2,
-    "maxUnchangedRounds": 3,
-    "maxScheduledChecks": 7
+    "maxResearchAgents": 2
   },
   "automaticApproval": false,
   "modelCallsInLocalCalculations": 0

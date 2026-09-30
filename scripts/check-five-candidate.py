@@ -4,10 +4,12 @@ import json
 from pathlib import Path
 from goal_five_signals import (n16_liquidation_reclaim, n17_etf_flow,
                                n18_exchange_deposit, n19_cross_venue, n20_cpi_surprise)
+from continuous_signals import n21_liquidity_resilience, n22_aave_credit_stress
 
 RULES = dict(zip(['N16', 'N17', 'N18', 'N19', 'N20'],
                 [n16_liquidation_reclaim, n17_etf_flow, n18_exchange_deposit,
                  n19_cross_venue, n20_cpi_surprise]))
+RULES.update(N21=n21_liquidity_resilience,N22=n22_aave_credit_stress)
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
