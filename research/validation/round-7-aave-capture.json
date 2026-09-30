@@ -1,0 +1,15 @@
+{
+  "schema": "tradernova.research.acquisition-round.v1",
+  "round": 7,
+  "source": "https://ethereum-rpc.publicnode.com",
+  "manifest": "research/validation/round-7-capture-failure/manifest.json",
+  "manifestSha256": "ccecc9f9ef4d295bd3d5a3af35301b512f8dc7d4f60f7177beef0f0d7984ef0b",
+  "result": "HTTP 403 on eth_chainId; no finalized block or reserve data acquired",
+  "rawPreserved": true,
+  "utcApproved": false,
+  "strategyCountApproved": 0,
+  "testStatus": "Four mock boundary checks passed; not financial evidence",
+  "collector": "scripts/capture_aave_finalized.py",
+  "collectorSha256": "6556551e94f3f1e8cfd94b5e0b3ecf7b1f256065b6abf7cf14ab80c3b46af222",
+  "nextTask": "Offline bundle auditing, with failure bundles rejected and no repeated blocked-source calls"
+}

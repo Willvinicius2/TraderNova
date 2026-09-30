@@ -1,0 +1,60 @@
+{
+  "approval": {
+    "costs": false,
+    "feed": false,
+    "financial": false,
+    "strategy": false,
+    "utc_clock": false
+  },
+  "capture_bytes": 566,
+  "chain_id_expected": 1,
+  "deployment": {
+    "data_provider": "0x7B4EB56E7CD4b454BA8ff71E4518426369a138A3",
+    "pool": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+    "reserves": [
+      {
+        "a_token": "0x98c23e9d8f34fefb1b7bd6a91b7ff122f4e16f5c",
+        "asset": "0xA0b86991c6218b36c1d19D4A2e9Eb0cE3606eB48",
+        "symbol": "USDC"
+      },
+      {
+        "a_token": "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+        "asset": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "symbol": "WETH"
+      }
+    ],
+    "selectors": {
+      "balanceOf(address)": "0x70a08231",
+      "getReserveData(address)": "0x35ea6a75"
+    }
+  },
+  "endpoint": "https://ethereum-rpc.publicnode.com",
+  "failure": "RPC request failed: eth_chainId",
+  "requests": [
+    {
+      "headers_bytes": 490,
+      "headers_serialization": "urllib normalized headers, not original wire bytes",
+      "headers_sha256": "690f941eef3dd196c630239fb23bc0badf8bd90e4bf05937d15dd2f2c135ae86",
+      "http_status": 403,
+      "id": 1,
+      "method": "eth_chainId",
+      "params": [],
+      "parse_error": "response is not valid JSON",
+      "raw_files": [
+        "01-eth-chainId-request.bin",
+        "01-eth-chainId-headers.bin",
+        "01-eth-chainId-response.bin"
+      ],
+      "received_monotonic": 25052.6065352,
+      "received_utc": "2026-09-30T04:10:15.894281Z",
+      "request_sha256": "09fabe0af56b7726f1666ddd147482df4d951f86f66124b936716c53ab0e8471",
+      "response_bytes": 17,
+      "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "saved_response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "started_monotonic": 25052.500528,
+      "started_utc": "2026-09-30T04:10:15.788265Z"
+    }
+  ],
+  "schema": "tradernova.aave-finalized-raw.v1",
+  "status": "failed_raw_only"
+}

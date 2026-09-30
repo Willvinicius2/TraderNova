@@ -1,0 +1,29 @@
+{
+  "schema": "tradernova.research.implementation-round.v1",
+  "capturedLocalUtcUnverified": "2026-09-30T04:05:07.1040616Z",
+  "round": 6,
+  "contribution": "Offline CFD contract importer for The5ers High Stakes",
+  "implementationFiles": [
+    "scripts/import_cfd_contracts.py",
+    "tests/cfd-contract-import.py",
+    "research/validation/tools/The5ersContractExport.mq5"
+  ],
+  "hashes": {
+    "tests/cfd-contract-import.py": "dc178b18d74b6b20c2a4c11d13c2aa4b2ca9d4cd826e6cc92f638d2ee41f7369",
+    "research/validation/tools/The5ersContractExport.mq5": "152e8318d7bbb2ef111379ef2a38f1ad0d0d22e59ad906a3c7422a25ded30957",
+    "scripts/import_cfd_contracts.py": "6b39ef572009abf3e20fa1face5cc10d52b36af6de18ddecc93d3c746a22eb4e"
+  },
+  "verification": "Root test runner passed: web core suites, five L2 worker checks and four adversarial importer tests. Fixtures synthetic; no financial evidence.",
+  "actualMt5SnapshotImported": false,
+  "exporterCompiled": false,
+  "exporterExecuted": false,
+  "strategyCountApproved": 0,
+  "gatesChanged": false,
+  "blockers": [
+    "Actual MT5 CSV/metadata not received",
+    "Commission and sessions not verified",
+    "Clock and CFD quote feed not verified",
+    "Program/server identity only user claim"
+  ],
+  "nextTask": "Prepare bounded Aave finalized-block capture, preserving raw headers and same-block replies"
+}

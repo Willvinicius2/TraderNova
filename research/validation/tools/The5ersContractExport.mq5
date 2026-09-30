@@ -109,7 +109,7 @@ void OnStart()
    }
    FileClose(file);
 
-   int meta=FileOpen(meta_name,FILE_WRITE|FILE_TXT|FILE_ANSI|FILE_COMMON);
+   int meta=FileOpen(meta_name,FILE_WRITE|FILE_TXT|FILE_ANSI|FILE_COMMON,0,CP_UTF8);
    if(meta==INVALID_HANDLE)
    {
       Print("CSV saved; metadata open failed: ",GetLastError());

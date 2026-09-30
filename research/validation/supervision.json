@@ -4,7 +4,7 @@
   "researchModel": "gpt-6-luna",
   "reasoningEffort": "low or medium",
   "lastRound": "2026-09-30",
-  "lastRoundOutcome": "Rodadas consecutivas: amostras Aave via API e RPC finalized preservadas. Worker local L2 iniciado sem IA; captura gzip limitada a 256 MiB. Features, custos e executor pendentes; 0/7 aprovadas.",
+  "lastRoundOutcome": "Importador CFD offline e coletor Aave one-shot implementados e testados. Captura RPC HTTP403 preservada; sem bloco novo, sem financeiro. UTC/custos The5ers pendentes; coleta L2 viva. Auditoria offline de bundles em implementação; 0/7.",
   "limits": {
     "maxAttemptsPerRound": 2,
     "maxConcurrentCompute": 1,

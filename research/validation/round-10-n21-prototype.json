@@ -1,0 +1,26 @@
+{
+  "schema": "tradernova.research.implementation-round.v1",
+  "round": 10,
+  "contribution": "N21 fixed-band feature predicate prototype only",
+  "files": [
+    "scripts/n21_signal_features.py",
+    "tests/n21-signal-features.py"
+  ],
+  "hashes": {
+    "scripts/n21_signal_features.py": "567d09e110a8d2c30ad7b73f9eb95b56af725e69767d672c8bc2a3e4e0c1f233",
+    "tests/n21-signal-features.py": "f330588a4163b76b8ef54a48a1c40c78b8c55980c5e7a2d4f2f94e48f72d5eaf"
+  },
+  "tests": "Five synthetic N21 checks passed and all root test suites passed (18 new Python test methods across four modules). No PnL or real N21 evaluation.",
+  "validated": false,
+  "execution": false,
+  "prospectiveObservationStarted": false,
+  "strategyCountApproved": 0,
+  "rulesChanged": false,
+  "limitations": [
+    "Caller-prepared bookstates are untrusted until an evidence-bound adapter exists",
+    "Increasing sequence alone does not prove full-window continuity",
+    "UTC and event-age declarations not independently established",
+    "Exact 1-second and 5-second state availability not implemented in sampler",
+    "No CFD feed/fills/costs/cooldown enforcement"
+  ]
+}

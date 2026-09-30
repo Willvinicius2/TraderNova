@@ -1,0 +1,30 @@
+{
+  "schema": "tradernova.research.implementation-round.v1",
+  "round": 8,
+  "contribution": "Offline Aave raw-bundle integrity and conservative APR/utilization decoding",
+  "inputs": [
+    "scripts/audit_aave_bundle.py",
+    "tests/aave-bundle-audit.py"
+  ],
+  "hashes": {
+    "scripts/audit_aave_bundle.py": "ebdb366defb18179bd7b67a3f740a1e9d3bda2d32399ed96be0501b64bf4b0d9",
+    "tests/aave-bundle-audit.py": "ff0f8345ec342f4979c03f14a1d92422fa16c8f3f40b575c168a08f5d267c262"
+  },
+  "tests": "Five adversarial offline checks passed. Failed HTTP403 acquisition correctly rejected as incomplete. All project test suites passed before final duplicate-key check; targeted check passed afterwards.",
+  "financialEvidence": false,
+  "strategyCountApproved": 0,
+  "costsApproved": false,
+  "utcApproved": false,
+  "poolSemanticAbiApproved": false,
+  "decoderOffsets": {
+    "variableBorrowRateRay": 6,
+    "stableDebt": 3,
+    "variableDebt": 4
+  },
+  "limitations": [
+    "Provider tuple checked against prior bytes; not independent contract certification",
+    "Pool tuple remains opaque",
+    "Only structural local integrity; source authenticity and causal availability not proved",
+    "APR is not APY; do not feed into frozen N22 APY rule without prior normalization review"
+  ]
+}
