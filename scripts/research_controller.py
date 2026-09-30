@@ -108,17 +108,17 @@ def operate(root, action, **args):
                 raise Blocked('An attempt is active; inspect and finish it before resuming')
             if state['pauseDay'] == day(t):
                 raise Blocked('Daily quota-delta pause')
-            if sum(day(parse_time(a['startedAt']))==day(t) for a in state['attempts']) >= LIMITS['maxAttemptsPerDay']:
-                raise Blocked('Daily attempt ceiling reached')
         if action == 'preflight':
             return {'ready': True, **summary()}
         if action == 'round':
             evidence = file_hash(root, args['evidence'])
-            if any(day(parse_time(r['at']))==day(t) for r in state['rounds']):
-                raise Blocked('A scheduled round was already recorded today')
+            if any(r.get('evidenceHash') == evidence for r in state['rounds']):
+                raise Blocked('Identical research evidence was already recorded')
             state['rounds'].append({'at': t.isoformat(), 'evidenceHash': evidence,
                                     'note': args.get('note', '')[:1000], 'weeklyUsed': args['weekly_used']})
         elif action == 'begin':
+            if (cache / 'depth-worker.lock').exists():
+                raise Blocked('Continuous capture is active; supervisor must stop it before development compute')
             registry = read(root / 'research/validation/candidates.json')['candidates']
             if len({c['family'] for c in registry}) != len(registry):
                 raise Blocked('Duplicate mechanisms in the registered candidates')

@@ -4,9 +4,9 @@
   "researchModel": "gpt-6-luna",
   "reasoningEffort": "low or medium",
   "lastRound": "2026-09-30",
-  "lastRoundOutcome": "Fontes oficiais revisadas. N21 (liquidez passiva) e N22 (crédito DeFi) registradas após revisão de novidade; coleta prospectiva e execução financeira pendentes. Sete hipóteses em estudo, zero aprovações.",
+  "lastRoundOutcome": "Rodadas consecutivas: amostras Aave via API e RPC finalized preservadas. Worker local L2 iniciado sem IA; captura gzip limitada a 256 MiB. Features, custos e executor pendentes; 0/7 aprovadas.",
   "limits": {
-    "maxAttemptsPerDay": 2,
+    "maxAttemptsPerRound": 2,
     "maxConcurrentCompute": 1,
     "maxAgentSeconds": 180,
     "maxOutputBytes": 2000000,
@@ -15,5 +15,7 @@
     "maxResearchAgents": 2
   },
   "automaticApproval": false,
-  "modelCallsInLocalCalculations": 0
+  "modelCallsInLocalCalculations": 0,
+  "mode": "consecutive_rounds",
+  "recoveryIntervalMinutes": 5
 }

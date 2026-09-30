@@ -4,13 +4,17 @@ Pedido de 29/09/2026. **0/7 validadas.** Cinco hipóteses novas não equivalem a
 
 N16–N22 estão em `candidates.json`: liquidações confirmadas, demanda de ETF spot, depósitos em exchanges, diferença executável entre praças, surpresa de inflação, recuperação da liquidez passiva e aperto de crédito DeFi. Sete hipóteses não são sete aprovações. Cada mecanismo conta uma vez. Cruzamentos de indicadores são filtros, não famílias adicionais.
 
-A pesquisa diária permanece agendada até sete aprovações comprovadas; ausência de dados muda a frente da próxima rodada. Não há encerramento por três evidências iguais ou sete rodadas totais. Cota, STOP, concorrência e prazos continuam limitando cada rodada; ver `SUPERVISION.md`.
+A pesquisa passa a encadear rodadas no mesmo turno, com recuperação automática a cada cinco minutos enquanto PC e Codex estiverem disponíveis. Não há espera diária nem limite global de duas tentativas por dia; até duas tentativas por lote, sem duplicatas. Ausência de dados muda a próxima tarefa. Cota, STOP, concorrência e prazos continuam limitando o trabalho; ver `SUPERVISION.md`.
 
 O módulo `scripts/goal_five_signals.py` verifica features fornecidas e produz somente intenções de pesquisa. Seus testes sintéticos verificam o código, não lucro. Agregadores point-in-time, conectores, execução completa de N16–N20 e dados suficientes ainda precisam ser construídos/auditados antes de qualquer backtest. Nenhum serviço pago foi habilitado.
 
 Para conferir uma condição offline: `npm run research:five:check -- --candidate N17 --input caminho/features.json`; o comando aceita N16–N22. Regras N21/N22 ficam em `scripts/continuous_signals.py`, com banda absoluta fixa, metadados causais, blocos sincronizados e ATR anterior. Testes: `python tests/continuous-signals.py`. Flags de integridade e horários fornecidos dependem de auditoria externa; condições não são fills/PnL.
 
 `node scripts/capture-depth-pilot.mjs` captura apenas um piloto público BTCUSDT L2 (até 25 segundos, menos de 2 MB), verifica sequência e grava JSON bruto/hash no cache. Lock exclusivo e STOP impedem duplicação. Não constrói variáveis, não oferece cobertura contínua nem envia ordens. Captura prolongada, retenção limitada e executor devem ser revisados antes da avaliação prospectiva.
+
+`node scripts/continuous-depth-worker.mjs --root D:/openclaude/TradersNova` mantém captura L2 em blocos gzip consecutivos, sem chamadas a modelos. A coleta foi iniciada em 30/09/2026; confira processo/lock e `research/cache/validation/depth-worker-status.json` antes de qualquer retomada. Cache raw até 256 MiB; nunca remove histórico automaticamente. Para ao atingir capacidade, STOP ou três falhas seguidas. Não assume validade financeira, cobertura da banda N21, sincronização do relógio, preenchimentos de ordens nem custos. `npm test` inclui os controles do worker.
+
+Rodadas 3/4: amostra oficial GraphQL e uma amostra RPC por bloco finalizado da Aave preservadas. O corpo completo do header não foi arquivado; taxas do contrato são APR nominal, não APY. Nenhuma dessas amostras torna N22 pronta para desenvolvimento. Coletor GraphQL sem limites foi recusado; implantação de coleta por bloco, normalização e executor continuam pendentes.
 
 ## Fluxo e consumo
 

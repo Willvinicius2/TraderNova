@@ -1,0 +1,8 @@
+{
+  "received_at": "2026-09-30T03:18Z (approximate request window; exact HTTP receive instant was not instrumented)",
+  "sha256": "c5f24b5a838733e3a7b8240e2de1bc2e41efb0e86fac5a27e9c19df397049484",
+  "source": "https://api.v3.aave.com/graphql",
+  "caveat": "Response is current API data, not block-pinned/finalized; received time approximate from session date, no PIT/history inferred.",
+  "payload_file": "graphql-response.json",
+  "request_query": "ReserveRequest(market,underlyingToken,chainId); fields market, underlyingToken, supplyInfo.total/apy, borrowInfo.total/availableLiquidity/apy/utilizationRate/borrowingState, isFrozen, isPaused"
+}

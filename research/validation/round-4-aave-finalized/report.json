@@ -1,0 +1,100 @@
+{
+  "protocol": "Aave V3 Ethereum Core",
+  "chainId": 1,
+  "pool": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+  "dataProvider": "0x7B4EB56E7CD4b454BA8ff71E4518426369a138A3",
+  "rpc": "https://ethereum-rpc.publicnode.com",
+  "block": {
+    "tag": "finalized",
+    "numberHex": "0x18e1036",
+    "number": 26087478,
+    "hash": "0x678d461edd50ff34a3e318275bc9294b3ce1c1c27619d2f4e3745e674c35d8f2",
+    "timestampHex": "0x6abc7bd7",
+    "timestampUtc": "2026-09-30T03:02:47Z"
+  },
+  "requestWindowUtc": {
+    "firstRpcStart": "2026-09-30T03:20:28.3979359Z",
+    "lastRpcReceive": "2026-09-30T03:22:13.8602866Z"
+  },
+  "reserves": [
+    {
+      "availableLiquidityRaw": "151925592040766",
+      "variableBorrowRateApr": 0.0438421367718987,
+      "variableBorrowRateRay": "43842136771898738665509079",
+      "totalBorrow": "2244946708.2743",
+      "aToken": "0x98c23e9d8f34fefb1b7bd6a91b7ff122f4e16f5c",
+      "symbol": "USDC",
+      "lastReserveUpdate": "2026-09-30T03:01:59Z",
+      "utilizationFormula": "totalDebt/(totalDebt+availableLiquidity)",
+      "address": "0xA0b86991c6218b36c1d19D4A2e9Eb0cE3606eB48",
+      "utilization": 0.936615,
+      "decimals": 6,
+      "totalStableDebtRaw": "0",
+      "availableLiquidity": "151925592.040766",
+      "totalVariableDebtRaw": "2244946708274300"
+    },
+    {
+      "availableLiquidityRaw": "285513135568893261186972",
+      "variableBorrowRateApr": 0.02056652922597798,
+      "variableBorrowRateRay": "20566529225977975535070611",
+      "totalBorrow": "1754664.966389066183224589",
+      "aToken": "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+      "symbol": "WETH",
+      "lastReserveUpdate": "2026-09-30T03:01:11Z",
+      "utilizationFormula": "totalDebt/(totalDebt+availableLiquidity)",
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "utilization": 0.860083,
+      "decimals": 18,
+      "totalStableDebtRaw": "0",
+      "availableLiquidity": "285513.135568893261186972",
+      "totalVariableDebtRaw": "1754664966389066183224589"
+    }
+  ],
+  "rawResponses": [
+    {
+      "received": "2026-09-30T03:21:19.0570319Z",
+      "method": "AaveProtocolDataProvider.getReserveData(address)",
+      "sha256": "c6bd5d2e267978c6d4803edf4e5b9ad60d2cbd865c50aac70caeed2a498cc4d8",
+      "started": "2026-09-30T03:21:18.7696734Z",
+      "file": "reserve-eth_call-response.json"
+    },
+    {
+      "received": "2026-09-30T03:21:49.8266115Z",
+      "method": "Pool.getReserveData(address), aToken decoded from old Core return tuple word 8",
+      "sha256": "a05f3bedbf121828d7e297a7d5fca291ce5a94171c574d60745717cd3951ac36",
+      "started": "2026-09-30T03:21:49.5536698Z",
+      "file": "pool-eth_call-response.json"
+    },
+    {
+      "received": "2026-09-30T03:22:13.8602866Z",
+      "method": "underlying ERC20.balanceOf(aToken)",
+      "sha256": "67791bba837e8c49178a5ce7a2b8c810b46851a532997ccbd3f874c7a2e90d8f",
+      "started": "2026-09-30T03:22:13.5839985Z",
+      "file": "liquidity-eth_call-response.json"
+    }
+  ],
+  "failedAttempts": [
+    {
+      "received": "2026-09-30T03:20:29.4697015Z",
+      "jsonRpcError": {
+        "message": "Cannot fulfill request",
+        "code": -32046
+      },
+      "httpStatus": 200,
+      "started": "2026-09-30T03:20:28.3979359Z",
+      "endpoint": "https://cloudflare-eth.com",
+      "method": "eth_getBlockByNumber finalized"
+    }
+  ],
+  "abiSources": [
+    "https://www.aave.com/docs/aave-v3/smart-contracts/view-contracts",
+    "https://aave.com/docs/aave-v3/smart-contracts/pool?language=en"
+  ],
+  "addressSource": "https://governance.aave.com/t/bgd-aave-v3-ethereum-new-deployment-vs-aave-v2-upgrade/9990?page=2",
+  "limitations": [
+    "Single finalized snapshot only; no PIT series or performance established.",
+    "VariableBorrowRate is RAY-scaled nominal annual rate, not APY.",
+    "Reserve lastUpdateTimestamp precedes finalized block timestamp.",
+    "Fee, venue, slippage/funding and executable short contract remain unverified."
+  ]
+}

@@ -16,6 +16,8 @@ assert.equal(new Set(plan.candidates.map(c=>c.family)).size,plan.candidates.leng
 assert.equal(plan.supervision.state,'active_research');
 assert.equal(plan.supervision.limits.maxScheduledChecks,undefined);
 assert.equal(plan.supervision.limits.maxUnchangedRounds,undefined);
+assert.equal(plan.supervision.limits.maxAttemptsPerDay,undefined);
+assert.equal(plan.supervision.limits.maxAttemptsPerRound,2);
 for(const c of plan.candidates){assert.equal(c.status,'awaiting_data');assert(c.requiredData.length);assert(c.references.every(r=>r.url.startsWith('https://')));assert(c.assets.every(a=>protocol.assets.includes(a)));}
 for(const s of plan.sources)assert.equal(s.sha256,sha(s.path),'Published source hash must match the preserved report');
 const result=read('research/goal-seven/options-skew-results.json');
