@@ -1,0 +1,33 @@
+{
+  "id": "N13-option-skew-daily-preparation-v1",
+  "historicalAssumption": true,
+  "prospectiveEvidenceComplete": false,
+  "freezeSha256": "3c80fb7c1e4f489e885ae9da187c67ba78ffadb0d11af5ff4db1e59310f8c7aa",
+  "inputSha256": {
+    "prepareScript": "870c543d0a81186b5209648acf44a4c178077e28a5d06d882457b8911849fcb5",
+    "prepareTests": "e11c8f38c4f8f311057fb88f7f5e103a33277a548e0643ab910de1efddcd439e",
+    "signalGenerator": "32368eb17ff2b5b34171d583c40c47bc01d293d32d92f9308ba582f5b4b158ba",
+    "protocol": "98a232ed79cc9e5c2be612e51e19da97655311fd4cb8eb106da586b93e03f790",
+    "tradeManifest": "bfbcb7ded8b0e77f5e8083a715a0b900fa4501b6ed594a7e783103269cae0fb2",
+    "identityAudit": "f111f24da996ebabba58d644fc430bd6d7f7da4629c09df28c539d5e2621dc00",
+    "instrumentManifest": "5c191217ffca53a88d70ce62c098369d7e8e020a38d47f6613dd2257b55b5151",
+    "metadataAudit": "12f3ca00055eaf5df491fca27a93dd8159a89dd0c64a291fb2c84343a394bfcf"
+  },
+  "series": {
+    "BTCUSDT": {
+      "cachePath": "research/cache/goal-seven/options-skew-daily-BTCUSDT.json",
+      "sha256": "232993a10a96ca4cd2b65918cb6898ca2a9db0d349912f76d6f545184478a347",
+      "rows": 1188
+    },
+    "ETHUSDT": {
+      "cachePath": "research/cache/goal-seven/options-skew-daily-ETHUSDT.json",
+      "sha256": "83fca73f767b91650d2ebf60aff5e96c97fe8c475b82cc11478f699be16fc02d",
+      "rows": 1188
+    }
+  },
+  "validated": false,
+  "daysPerSymbol": 1188,
+  "signalsComputed": false,
+  "pnlComputed": false,
+  "dataApproved": false
+}

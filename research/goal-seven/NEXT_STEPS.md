@@ -1,3 +1,5 @@
+> Superado em 29/09/2026: a fila N13 terminou reprovada. Não reiniciar a coleta nem repetir backtests. Continuidade em [validation](../validation/README.md); os passos abaixo são registro histórico.
+
 # Continuidade da meta
 
 Estado central: [STATUS.md](STATUS.md), **0/7**, meta ativa. Os critérios de [protocol.json](protocol.json) continuam congelados. N2, N5, N6, N7, N11 e N12 reprovaram a triagem financeira; N8 e N10 não atingiram a amostra; N9 aguarda dados de custos executáveis. Não reabrir janelas posteriores para resgate nem contar uma variante como outra família.

@@ -1,0 +1,19 @@
+{
+  "family": "N13",
+  "freezeSha256": "3c80fb7c1e4f489e885ae9da187c67ba78ffadb0d11af5ff4db1e59310f8c7aa",
+  "dailyManifestSha256": "83145cc08176fe97c0eb641b4d3074fe4f6faff4e6c2669ac862a2a4a9c61fde",
+  "window": [
+    1640995200,
+    1735689600
+  ],
+  "qualifyingDecisionDays": 570,
+  "byPrioritySelectedSymbol": {
+    "BTCUSDT": 460,
+    "ETHUSDT": 110
+  },
+  "sampleUpperBoundReached": true,
+  "interpretation": "Triggers are an upper bound, not executed or closed trades.",
+  "PnLComputed": false,
+  "laterWindowsEvaluated": false,
+  "validated": false
+}

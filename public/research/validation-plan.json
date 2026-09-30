@@ -1,0 +1,515 @@
+{
+  "version": 1,
+  "asOf": "2026-09-29",
+  "target": 7,
+  "validatedCount": 0,
+  "validated": false,
+  "protocol": {
+    "id": "seven-distinct-strategies-supervised-v1",
+    "registeredAt": "2026-09-29",
+    "target": 7,
+    "status": "active",
+    "assets": [
+      "XAUUSD",
+      "NAS100",
+      "BTCUSD",
+      "ETHUSD",
+      "SOLUSD",
+      "EURUSD",
+      "USDJPY"
+    ],
+    "counting": "One economically distinct family counts at most once, regardless of asset, timeframe, threshold, direction, parameter set or portfolio weighting. Existing rejected families cannot be renamed to increase the count.",
+    "capital": 100000,
+    "directionalRiskPct": 0.25,
+    "directionalGrossExposurePct": 100,
+    "screenGates": {
+      "positiveNetEveryEvaluationWindow": true,
+      "profitFactorBaseMinimum": 1.2,
+      "maxConservativeDrawdownBasePct": 8,
+      "maxConservativeDrawdownStressPct": 10,
+      "maxConservativeDailyLossBasePct": 2,
+      "maxConservativeDailyLossStressPct": 3,
+      "positiveNetStressEveryEvaluationWindow": true,
+      "minimumTradesDevelopment": 100,
+      "minimumTradesValidation": 100,
+      "minimumTradesRecent": 50,
+      "minimumAnnualizedReturnOverDrawdownCombinedEvaluation": 1,
+      "allowAccountBreach": false,
+      "allowUnpricedCarryingCosts": false
+    },
+    "windows": {
+      "cryptoDevelopment": [
+        "2022-01-01",
+        "2025-01-01"
+      ],
+      "cryptoValidation": [
+        "2025-01-01",
+        "2026-01-01"
+      ],
+      "cryptoRecent": [
+        "2026-01-01",
+        "2026-09-01"
+      ]
+    },
+    "selection": "Freeze family rules, all variants, data universe, costs and tests before computing performance. Run development first. Reject development failures without using later windows to rescue them. Freeze any development selection and its source/protocol hashes before evaluation. Record every attempted configuration, including failures and unexecutable hypotheses. A modification is a new registered trial in the same family, not another strategy.",
+    "execution": "Closed information only; execute no earlier than next available tradable observation. No fills at inaccessible past prices. Preserve actual source gaps, fees, spread, slippage, financing/funding and liquidation exposure. Compute conservative intrabar marked drawdown, not just closed trades. Fix position sizing before testing; do not shrink risk after observing drawdown to manufacture approval.",
+    "independence": "All local crypto history through August 2026 has been inspected in earlier studies. These windows are chronological exploratory screens, never untouched holdouts. Historical passes do not increase the validated count.",
+    "prospectiveGate": {
+      "minimumCalendarDaysAfterRuleFreeze": 60,
+      "minimumClosedTrades": 100,
+      "positiveNetAfterObservedCosts": true,
+      "sameBaseAndStressDrawdownGates": true,
+      "executionFeedAndContractMatchRequired": true,
+      "causalReplayForwardParityRequired": true,
+      "operationalApprovalRequiresIndependentReview": true
+    },
+    "statisticalGate": {
+      "familyWiseAlpha": 0.05,
+      "independentTrialAlpha": "0.05 / (k * (k + 1)), k is the globally registered independent-evaluation trial number, never reset per family or batch",
+      "method": "A preregistered one-sided weekly block-bootstrap estimate on independent net marked daily returns; all zero/inactive days retained; at least 10000 replicates, stored seed and Monte Carlo uncertainty. Require positive lower confidence bound at allocated alpha; no zero p-values. Short samples or insufficient bootstrap resolution are inconclusive, never passed.",
+      "caveat": "A bootstrap estimate assumes the observed blocks are representative and cannot establish future profitability. Reused retrospective screens are ineligible for this independent-evidence gate. The project-wide prior search is disclosed rather than pretending that only the newest trials occurred."
+    },
+    "completion": "Only seven distinct families passing historical, independent/prospective, execution and software checks complete the goal. No fixed calendar deadline or guaranteed successful count. Financial orders, account opening, paid services and Apple signing are outside this research goal.",
+    "sources": [
+      "https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf",
+      "https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf",
+      "https://github.com/binance/binance-public-data/blob/master/README.md"
+    ],
+    "supersedes": {
+      "path": "research/goal-seven/protocol.json",
+      "sha256": "b108294aa0876ef6d22177e207f8c6deacc5d1045ced89d0a18e36f355b51839",
+      "reason": "User restored minimum seven validated families and requested bounded research agents; all financial, independence and prospective gates remain unchanged."
+    }
+  },
+  "protocolSha256": "23c1d1356c2cce410a77308c874ea1c2ae85d02a0d201f0db05b6be126d0e73d",
+  "candidates": [
+    {
+      "id": "N16",
+      "name": "Liquidações forçadas com recuperação de preço",
+      "family": "forced_liquidation_reversal",
+      "assets": [
+        "BTCUSD",
+        "ETHUSD",
+        "SOLUSD"
+      ],
+      "thesis": "Liquidações confirmadas em mais de uma praça, seguidas de recuperação da faixa anterior, podem indicar uma reversão curta.",
+      "rules": [
+        "Usar barras completas de 5 minutos.",
+        "Somar eventos USD de liquidação forçada de >=2 venue_id únicos; cada feed precisa feed_complete=true; valor ausente nunca vira zero.",
+        "Comparar os totais long/short atuais com o percentil empírico 99 dos 30 totais diários anteriores para o mesmo slot de 5 minutos; history_meta deve terminar estritamente antes da barra atual.",
+        "Long se total long excede p99, mínima da barra sinal < mínima da barra anterior e fechamento fica dentro da faixa anterior; short espelhado para máxima. Se ambos os lados qualificarem, nenhum sinal.",
+        "Entrada após decision_at; stop_price no extremo da barra de sinal; exigir distância do fechamento ao stop <=2 ATR(14) calculado só com barras encerradas antes da decisão; saída após 60 minutos."
+      ],
+      "requiredData": [
+        "Eventos de liquidação por praça, horário de recebimento e prova de cobertura",
+        "Candles completos de 5 minutos",
+        "30 observações diárias anteriores do mesmo horário",
+        "ATR de 14 barras anteriores"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "Feeds podem omitir ou agrupar eventos; não preencher lacunas com zero.",
+        "Histórico agregado não comprova o que era conhecido naquele instante.",
+        "Stop no extremo do sinal, fixo antes da entrada; nenhum ajuste depois de observar perdas.",
+        "O feed público forceOrder da Binance é amostrado e sozinho não atende à exigência de cobertura integral."
+      ],
+      "references": [
+        {
+          "title": "Binance · fluxo público de liquidações e limites de amostragem",
+          "url": "https://github.com/binance/binance-futures-connector-python/blob/main/binance/websocket/um_futures/websocket_client.py"
+        }
+      ]
+    },
+    {
+      "id": "N17",
+      "name": "Fluxo de ETF Bitcoin + EMA 20",
+      "family": "published_fund_flow",
+      "assets": [
+        "BTCUSD"
+      ],
+      "thesis": "Fluxo excepcional de fundos de Bitcoin, confirmado pela tendência diária, pode representar demanda ou oferta persistente.",
+      "rules": [
+        "Após publicação do fluxo diário, calcular z contra os 60 fluxos diários anteriores; comprar se z>=2 e fechamento diário>EMA20; vender se z<=-2 e fechamento<EMA20.",
+        "history_meta deve terminar estritamente antes da observação de fluxo. EMA20 usa somente fechamentos concluídos disponíveis até decision_at.",
+        "Entrada após decision_at; stop a 1 ATR(14) anterior do preço de entrada; saída após 120 horas corridas."
+      ],
+      "requiredData": [
+        "Fluxos líquidos diários de ETFs BTC com horário de publicação e revisões",
+        "Fechamentos diários BTC e EMA 20",
+        "ATR das 14 barras anteriores",
+        "60 fluxos anteriores à observação corrente"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "Dados publicados podem ser corrigidos; são necessários arquivos preservados na data.",
+        "Farside é um agregador; a tabela não certifica disponibilidade histórica nem lucro."
+      ],
+      "references": [
+        {
+          "title": "Farside Bitcoin ETF daily flow table",
+          "url": "https://farside.co.uk/btc/"
+        },
+        {
+          "title": "Farside data cadence",
+          "url": "https://farside.co.uk/page/4/"
+        }
+      ]
+    },
+    {
+      "id": "N18",
+      "name": "Depósitos em exchanges + mínima de 20 dias",
+      "family": "external_exchange_deposit_supply",
+      "assets": [
+        "BTCUSD"
+      ],
+      "thesis": "Depósitos externos excepcionalmente altos, junto à perda de uma mínima anterior, podem indicar pressão de venda.",
+      "rules": [
+        "Usar inflow diário BTC externo em exchanges, excluindo transferências internas.",
+        "Calcular z contra 365 observações diárias concluídas anteriores; exigir z>=2 e fechamento abaixo da mínima das 20 mínimas diárias anteriores. history_meta deve terminar antes do evento e as 20 mínimas devem ser positivas, com metadata.",
+        "Entrada após decision_at; stop a 1 ATR(14) anterior do preço de entrada; saída após 72 horas corridas."
+      ],
+      "requiredData": [
+        "Depósitos BTC externos com rótulos de carteiras válidos na data",
+        "Exclusão auditável de transferências internas",
+        "Candles diários BTC, 365 observações de depósitos e 20 mínimas anteriores",
+        "ATR das 14 barras anteriores"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "Rótulos de carteiras e classificação de transferências podem mudar com o tempo.",
+        "Não foi confirmada fonte gratuita com 365 dias e classificação preservada historicamente.",
+        "A documentação explica a métrica; não valida os parâmetros nem a rentabilidade."
+      ],
+      "references": [
+        {
+          "title": "CryptoQuant exchange inflow/outflow/netflow definitions",
+          "url": "https://userguide.cryptoquant.com/cryptoquant-metrics/exchange/exchange-in-outflow-and-netflow"
+        },
+        {
+          "title": "CryptoQuant API data and Basic plan scope",
+          "url": "https://www.cryptoquant.com/apis"
+        }
+      ]
+    },
+    {
+      "id": "N19",
+      "name": "Diferença executável entre praças",
+      "family": "cross_venue_executable_spread",
+      "assets": [
+        "BTCUSD",
+        "ETHUSD",
+        "SOLUSD"
+      ],
+      "thesis": "Uma diferença de preço do mesmo ativo entre duas praças pode convergir; a hipótese exige compra e venda de quantidades iguais.",
+      "rules": [
+        "Comparar dois snapshots L2 sincronizados: idade do mais recente<=1s; timestamps separados>=60s e diferença entre pernas<=1s.",
+        "Em cada snapshot, spread líquido percentual=(rich_bid-cheap_ask)/cheap_ask*100-entry_cost_pct-exit_cost_pct-carry_cost_pct; ambos precisam ser >=0,30%. Custos devem ser explícitos e não negativos.",
+        "Nos dois snapshots exigir mesmas duas venues distintas e mesma quantidade positiva, shortAvailable=true, carryCostsKnown=true e profundidade em ambas as pernas>=quantidade.",
+        "Entrada após decision_at em duas pernas de mesma quantidade: long no cheap_ask e short no rich_bid. Stop quando spread líquido atingir 2x spread líquido do snapshot mais recente; saída após 15 minutos corridos."
+      ],
+      "requiredData": [
+        "Livros de ofertas sincronizados, profundidade e estado das praças",
+        "Dois registros elegíveis separados por pelo menos 60 segundos",
+        "Taxas, impacto, slippage e financiamento de ambas as pernas",
+        "Disponibilidade documentada de empréstimo e venda a descoberto"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "Vender spot exige empréstimo ou margem realmente disponíveis.",
+        "Candles não reconstroem livros executáveis; preços teóricos não provam preenchimentos simultâneos.",
+        "Custos de saída e financiamento entram antes do cálculo do spread líquido; não foi adquirida base histórica suficiente."
+      ],
+      "references": [
+        {
+          "title": "Binance · reconstrução de livro de ofertas",
+          "url": "https://github.com/binance/binance-spot-api-docs/blob/master/web-socket-streams.md"
+        }
+      ]
+    },
+    {
+      "id": "N20",
+      "name": "Surpresa de inflação + rompimento EURUSD",
+      "family": "macro_consensus_surprise",
+      "assets": [
+        "EURUSD"
+      ],
+      "thesis": "Inflação dos EUA diferente do consenso registrado antes da divulgação, confirmada pelo preço, pode provocar um ajuste curto do dólar.",
+      "rules": [
+        "Usar apenas releases de CPI dos EUA. Consenso deve possuir published_at, received_at e archive timestamp estritamente anteriores ao release; release_at<=decision_at.",
+        "Surpresa=actual-consensus; calcular z contra 60 surpresas anteriores ao release com history_meta estritamente anterior.",
+        "Aguardar barra completa de 5min iniciada no release: feature_end=release+300s e decision_at>=feature_end e <release+600s. A faixa pré-release é o intervalo de 5min encerrado no release.",
+        "Se z>=1 e EURUSD fechar abaixo da mínima pré-release, vender EURUSD; se z<=-1 e fechar acima da máxima, comprar EURUSD.",
+        "Entrada após decision_at; stop a 1 ATR(14) calculado com barras encerradas antes do release; saída após 4 horas corridas."
+      ],
+      "requiredData": [
+        "CPI divulgado com horário oficial",
+        "Consenso mediano arquivado antes da divulgação",
+        "60 surpresas anteriores comparáveis",
+        "Candles EURUSD de 5 minutos, faixa anterior à divulgação e ATR prévio"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "BLS publica valores e calendário, mas não fornece o consenso de mercado necessário.",
+        "Sem consenso arquivado antes do anúncio, o teste não é elegível.",
+        "Eventos mensais tornam a amostra de 100 operações demorada; nenhuma frequência artificial foi adicionada."
+      ],
+      "references": [
+        {
+          "title": "BLS CPI release schedule",
+          "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+        },
+        {
+          "title": "BLS release dissemination and archives",
+          "url": "https://www.bls.gov/about-bls/dissemination.htm"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "N2",
+      "name": "Funding com hedge",
+      "status": "rejected_in_development",
+      "base": {
+        "trades": 26,
+        "netPct": 2.2117382843824807,
+        "profitFactor": 2.580589464299837,
+        "drawdownPct": 8.791817712244207,
+        "accountBreach": true
+      },
+      "stress": {
+        "trades": 33,
+        "netPct": -4.258662820526416,
+        "profitFactor": 0.23101796509999614,
+        "drawdownPct": 9.648029342183701,
+        "accountBreach": true
+      }
+    },
+    {
+      "id": "N5",
+      "name": "Fluxo agressor",
+      "status": "rejected_in_development",
+      "base": {
+        "trades": 251,
+        "netPct": -9.951111110253075,
+        "profitFactor": 0.472238634038861,
+        "drawdownPct": 10.043971914982714,
+        "accountBreach": true
+      },
+      "stress": {
+        "trades": 175,
+        "netPct": -10.058412175661536,
+        "profitFactor": 0.3337294589668699,
+        "drawdownPct": 10.103386590998532,
+        "accountBreach": true
+      }
+    },
+    {
+      "id": "N6",
+      "name": "Transmissão BTC → ETH/SOL",
+      "status": "rejected_in_development",
+      "base": {
+        "trades": 78,
+        "netPct": -4.489226930058143,
+        "profitFactor": 0.4849786563449167,
+        "drawdownPct": 5.394879253471496,
+        "accountBreach": false
+      },
+      "stress": {
+        "trades": 78,
+        "netPct": -5.856871232016503,
+        "profitFactor": 0.3628949424206191,
+        "drawdownPct": 6.236427091017885,
+        "accountBreach": false
+      }
+    },
+    {
+      "id": "N7",
+      "name": "Juro real e ouro",
+      "status": "rejected_in_development",
+      "base": {
+        "trades": 232,
+        "netPct": -3.7414499999981783,
+        "profitFactor": 0.8530118919938967,
+        "drawdownPct": 4.938839999999123,
+        "accountBreach": false
+      },
+      "stress": {
+        "trades": 227,
+        "netPct": -9.831430000000212,
+        "profitFactor": 0.6238049029113866,
+        "drawdownPct": 9.907030000000217,
+        "accountBreach": false
+      }
+    },
+    {
+      "id": "N11",
+      "name": "Posições abertas",
+      "status": "rejected_in_development",
+      "base": {
+        "trades": 180,
+        "netPct": -9.946466181749381,
+        "profitFactor": 0.5780025318362685,
+        "drawdownPct": 10.180901804843884,
+        "accountBreach": true
+      },
+      "stress": {
+        "trades": 157,
+        "netPct": -10.163808049710788,
+        "profitFactor": 0.4993526076458021,
+        "drawdownPct": 10.314049216346259,
+        "accountBreach": true
+      }
+    },
+    {
+      "id": "N12",
+      "name": "Transferências on-chain",
+      "status": "rejected_in_development",
+      "base": {
+        "trades": 593,
+        "netPct": -9.721263961695104,
+        "profitFactor": 0.7742277183657917,
+        "drawdownPct": 9.955304641670105,
+        "accountBreach": false
+      },
+      "stress": {
+        "trades": 277,
+        "netPct": -10.132358304852197,
+        "profitFactor": 0.5955877288454268,
+        "drawdownPct": 10.359558130213516,
+        "accountBreach": true
+      }
+    },
+    {
+      "id": "N13",
+      "name": "Skew de opções",
+      "status": "rejected_in_development",
+      "base": {
+        "trades": 570,
+        "netPct": -8.680855212400495,
+        "profitFactor": 0.8090450296445357,
+        "drawdownPct": 12.364169660201675,
+        "accountBreach": false
+      },
+      "stress": {
+        "trades": 443,
+        "netPct": -9.891375789182232,
+        "profitFactor": 0.7132882306659759,
+        "drawdownPct": 11.390367220781927,
+        "accountBreach": true
+      }
+    },
+    {
+      "id": "N14",
+      "name": "Capacidade de mineração",
+      "status": "rejected_in_development",
+      "base": {
+        "trades": 357,
+        "netPct": -6.984431130648883,
+        "profitFactor": 0.7212024774400718,
+        "drawdownPct": 7.371012108672711,
+        "accountBreach": false
+      },
+      "stress": {
+        "trades": 285,
+        "netPct": -10.041809937290846,
+        "profitFactor": 0.5339613655978567,
+        "drawdownPct": 10.29332978114085,
+        "accountBreach": true
+      }
+    },
+    {
+      "id": "N15",
+      "name": "Emissão de stablecoins",
+      "status": "rejected_in_development",
+      "base": {
+        "trades": 239,
+        "netPct": 1.9159915495268853,
+        "profitFactor": 1.0620105302220082,
+        "drawdownPct": 4.131907276632931,
+        "accountBreach": false
+      },
+      "stress": {
+        "trades": 239,
+        "netPct": -0.8603918194505678,
+        "profitFactor": 0.9720486335855297,
+        "drawdownPct": 4.388104243769935,
+        "accountBreach": false
+      }
+    }
+  ],
+  "sources": [
+    {
+      "path": "research/goal-seven/funding-results.json",
+      "sha256": "9312f04904902d83cd45a9872563150906c359710ab8a85af1b74ba553a2214c"
+    },
+    {
+      "path": "research/goal-seven/directional-results.json",
+      "sha256": "4507859e65bbe3c22dd0f6c60f7c5c5e8e1ea8c5a7826d0c9e2361e03cf78f94"
+    },
+    {
+      "path": "research/goal-seven/real-yield-results.json",
+      "sha256": "f4fa7c797503e09f5220414aded94c25ebc4aa20eb9655c2ff3d3f96a9cb4658"
+    },
+    {
+      "path": "research/goal-seven/open-interest-results.json",
+      "sha256": "f0f8d745bde4285cac0b2e0752b9e83d505ceeb9480087e66774f23430f4f15c"
+    },
+    {
+      "path": "research/goal-seven/onchain-count-results.json",
+      "sha256": "5fe49a81561eb3ed2ee452b33e1de20149d969cc8d61d580d1820103872f0c66"
+    },
+    {
+      "path": "research/goal-seven/options-skew-results.json",
+      "sha256": "751314904a3332ee88dcf9c549cb908e01a11d34b26a8af9934a087db02250cb"
+    },
+    {
+      "path": "research/goal-seven/miner-pressure-results.json",
+      "sha256": "f5450031519184d5d55c03a7dd265e29f0909aec1956838f7d8e1bc2f81abc5a"
+    },
+    {
+      "path": "research/goal-seven/stablecoin-liquidity-results.json",
+      "sha256": "d743a111a837f049a7b9859b16ddad07b173e96d8b1c27e2e10974219e19b5ac"
+    }
+  ],
+  "limitations": [
+    "Nenhuma aprovação financeira ou operacional.",
+    "Histórico cripto até agosto/2026 já examinado; não é holdout intocado.",
+    "N16–N20 aguardam dados auditáveis e executor completo; módulo de condições não envia ordens."
+  ],
+  "pending": [
+    {
+      "id": "N8",
+      "reason": "Amostra COT insuficiente: 12 sinais."
+    },
+    {
+      "id": "N9",
+      "reason": "Swaps históricos e Bid/Ask do contrato ausentes."
+    },
+    {
+      "id": "N10",
+      "reason": "Amostra de futuros datados insuficiente: 2 episódios."
+    }
+  ],
+  "supervision": {
+    "target": 7,
+    "state": "waiting_for_auditable_data",
+    "researchModel": "gpt-6-luna",
+    "reasoningEffort": "low or medium",
+    "lastRound": "2026-09-29",
+    "lastRoundOutcome": "Nenhuma hipótese adicional distinta pronta para desenvolvimento foi identificada com os dados locais.",
+    "limits": {
+      "maxAttemptsPerDay": 2,
+      "maxConcurrentCompute": 1,
+      "maxAgentSeconds": 180,
+      "maxOutputBytes": 2000000,
+      "weeklyUsedCeiling": 35,
+      "maxWeeklyDeltaPerRound": 2,
+      "maxResearchAgents": 2,
+      "maxUnchangedRounds": 3,
+      "maxScheduledChecks": 7
+    },
+    "automaticApproval": false,
+    "modelCallsInLocalCalculations": 0
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "N13-option-trade-identity-audit-v1",
+  "inputManifestPath": "D:\\openclaude\\TradersNova\\research\\goal-seven\\options-trades-v2-data-manifest.json",
+  "inputManifestSha256": "bfbcb7ded8b0e77f5e8083a715a0b900fa4501b6ed594a7e783103269cae0fb2",
+  "inputManifestVersion": "v2",
+  "inputManifestState": "coverage_complete_audit_pending",
+  "inputCollectorRunning": false,
+  "scope": {
+    "symbols": [
+      "BTC",
+      "ETH"
+    ],
+    "startInclusive": "2021-10-01T00:00:00+00:00",
+    "endExclusive": "2025-01-01T00:00:00+00:00",
+    "kind": "option"
+  },
+  "rawPagesAudited": 4698,
+  "sourceIntegrityErrorCount": 0,
+  "sourceIntegrityErrorSamples": [],
+  "leafOccurrences": 21999538,
+  "parentOccurrences": 11556000,
+  "identicalLeafDuplicates": 0,
+  "httpHeadersPreserved": false,
+  "fullDataAuditComplete": false,
+  "dataApproved": false,
+  "inputInventoryClaimRootSha256": "fba52907f408a583c151aca9ff448a00c0f39289a553bdde97427f23be769862",
+  "inputInventoryClaims": 4698,
+  "uniqueLeafTradeIds": 21999538,
+  "uniqueParentIdentities": 9493899,
+  "identityConflicts": 0,
+  "timestampConflicts": 0,
+  "disjointLeafDuplicateIds": 0,
+  "parentMissingInLeaves": 0,
+  "identityConflictSamples": [],
+  "parentMissingSamples": [],
+  "inventoryRootSha256": "9c26b1a7dfcc27bc286acf4ceea0b573595412f685b475984cbade864d4b50cd",
+  "inventoryFilesVerified": 4698,
+  "requestCadence": {
+    "v1": {
+      "requests": 10,
+      "minimumPcSendSeparationMs": 1003,
+      "below900msCount": 0
+    },
+    "v2": {
+      "requests": 4688,
+      "minimumPcSendSeparationMs": 967,
+      "below900msCount": 0
+    }
+  },
+  "coverageErrors": [],
+  "inputManifestChangedDuringAudit": false,
+  "coverageComplete": true,
+  "fullIdentityAuditComplete": true,
+  "state": "identity_complete_metadata_pending",
+  "limitation": "Identity only: no currency/instrument metadata join, feature audit, signal, pricing or PnL. HTTP response headers were not preserved by v1/v2 collectors; PC cadence is descriptive."
+}

@@ -1,0 +1,189 @@
+{
+  "version": 1,
+  "registeredOn": "2026-09-29",
+  "target": 7,
+  "validated": false,
+  "candidates": [
+    {
+      "id": "N16",
+      "name": "Liquidações forçadas com recuperação de preço",
+      "family": "forced_liquidation_reversal",
+      "assets": [
+        "BTCUSD",
+        "ETHUSD",
+        "SOLUSD"
+      ],
+      "thesis": "Liquidações confirmadas em mais de uma praça, seguidas de recuperação da faixa anterior, podem indicar uma reversão curta.",
+      "rules": [
+        "Usar barras completas de 5 minutos.",
+        "Somar eventos USD de liquidação forçada de >=2 venue_id únicos; cada feed precisa feed_complete=true; valor ausente nunca vira zero.",
+        "Comparar os totais long/short atuais com o percentil empírico 99 dos 30 totais diários anteriores para o mesmo slot de 5 minutos; history_meta deve terminar estritamente antes da barra atual.",
+        "Long se total long excede p99, mínima da barra sinal < mínima da barra anterior e fechamento fica dentro da faixa anterior; short espelhado para máxima. Se ambos os lados qualificarem, nenhum sinal.",
+        "Entrada após decision_at; stop_price no extremo da barra de sinal; exigir distância do fechamento ao stop <=2 ATR(14) calculado só com barras encerradas antes da decisão; saída após 60 minutos."
+      ],
+      "requiredData": [
+        "Eventos de liquidação por praça, horário de recebimento e prova de cobertura",
+        "Candles completos de 5 minutos",
+        "30 observações diárias anteriores do mesmo horário",
+        "ATR de 14 barras anteriores"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "Feeds podem omitir ou agrupar eventos; não preencher lacunas com zero.",
+        "Histórico agregado não comprova o que era conhecido naquele instante.",
+        "Stop no extremo do sinal, fixo antes da entrada; nenhum ajuste depois de observar perdas.",
+        "O feed público forceOrder da Binance é amostrado e sozinho não atende à exigência de cobertura integral."
+      ],
+      "references": [
+        {
+          "title": "Binance · fluxo público de liquidações e limites de amostragem",
+          "url": "https://github.com/binance/binance-futures-connector-python/blob/main/binance/websocket/um_futures/websocket_client.py"
+        }
+      ]
+    },
+    {
+      "id": "N17",
+      "name": "Fluxo de ETF Bitcoin + EMA 20",
+      "family": "published_fund_flow",
+      "assets": [
+        "BTCUSD"
+      ],
+      "thesis": "Fluxo excepcional de fundos de Bitcoin, confirmado pela tendência diária, pode representar demanda ou oferta persistente.",
+      "rules": [
+        "Após publicação do fluxo diário, calcular z contra os 60 fluxos diários anteriores; comprar se z>=2 e fechamento diário>EMA20; vender se z<=-2 e fechamento<EMA20.",
+        "history_meta deve terminar estritamente antes da observação de fluxo. EMA20 usa somente fechamentos concluídos disponíveis até decision_at.",
+        "Entrada após decision_at; stop a 1 ATR(14) anterior do preço de entrada; saída após 120 horas corridas."
+      ],
+      "requiredData": [
+        "Fluxos líquidos diários de ETFs BTC com horário de publicação e revisões",
+        "Fechamentos diários BTC e EMA 20",
+        "ATR das 14 barras anteriores",
+        "60 fluxos anteriores à observação corrente"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "Dados publicados podem ser corrigidos; são necessários arquivos preservados na data.",
+        "Farside é um agregador; a tabela não certifica disponibilidade histórica nem lucro."
+      ],
+      "references": [
+        {
+          "title": "Farside Bitcoin ETF daily flow table",
+          "url": "https://farside.co.uk/btc/"
+        },
+        {
+          "title": "Farside data cadence",
+          "url": "https://farside.co.uk/page/4/"
+        }
+      ]
+    },
+    {
+      "id": "N18",
+      "name": "Depósitos em exchanges + mínima de 20 dias",
+      "family": "external_exchange_deposit_supply",
+      "assets": [
+        "BTCUSD"
+      ],
+      "thesis": "Depósitos externos excepcionalmente altos, junto à perda de uma mínima anterior, podem indicar pressão de venda.",
+      "rules": [
+        "Usar inflow diário BTC externo em exchanges, excluindo transferências internas.",
+        "Calcular z contra 365 observações diárias concluídas anteriores; exigir z>=2 e fechamento abaixo da mínima das 20 mínimas diárias anteriores. history_meta deve terminar antes do evento e as 20 mínimas devem ser positivas, com metadata.",
+        "Entrada após decision_at; stop a 1 ATR(14) anterior do preço de entrada; saída após 72 horas corridas."
+      ],
+      "requiredData": [
+        "Depósitos BTC externos com rótulos de carteiras válidos na data",
+        "Exclusão auditável de transferências internas",
+        "Candles diários BTC, 365 observações de depósitos e 20 mínimas anteriores",
+        "ATR das 14 barras anteriores"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "Rótulos de carteiras e classificação de transferências podem mudar com o tempo.",
+        "Não foi confirmada fonte gratuita com 365 dias e classificação preservada historicamente.",
+        "A documentação explica a métrica; não valida os parâmetros nem a rentabilidade."
+      ],
+      "references": [
+        {
+          "title": "CryptoQuant exchange inflow/outflow/netflow definitions",
+          "url": "https://userguide.cryptoquant.com/cryptoquant-metrics/exchange/exchange-in-outflow-and-netflow"
+        },
+        {
+          "title": "CryptoQuant API data and Basic plan scope",
+          "url": "https://www.cryptoquant.com/apis"
+        }
+      ]
+    },
+    {
+      "id": "N19",
+      "name": "Diferença executável entre praças",
+      "family": "cross_venue_executable_spread",
+      "assets": [
+        "BTCUSD",
+        "ETHUSD",
+        "SOLUSD"
+      ],
+      "thesis": "Uma diferença de preço do mesmo ativo entre duas praças pode convergir; a hipótese exige compra e venda de quantidades iguais.",
+      "rules": [
+        "Comparar dois snapshots L2 sincronizados: idade do mais recente<=1s; timestamps separados>=60s e diferença entre pernas<=1s.",
+        "Em cada snapshot, spread líquido percentual=(rich_bid-cheap_ask)/cheap_ask*100-entry_cost_pct-exit_cost_pct-carry_cost_pct; ambos precisam ser >=0,30%. Custos devem ser explícitos e não negativos.",
+        "Nos dois snapshots exigir mesmas duas venues distintas e mesma quantidade positiva, shortAvailable=true, carryCostsKnown=true e profundidade em ambas as pernas>=quantidade.",
+        "Entrada após decision_at em duas pernas de mesma quantidade: long no cheap_ask e short no rich_bid. Stop quando spread líquido atingir 2x spread líquido do snapshot mais recente; saída após 15 minutos corridos."
+      ],
+      "requiredData": [
+        "Livros de ofertas sincronizados, profundidade e estado das praças",
+        "Dois registros elegíveis separados por pelo menos 60 segundos",
+        "Taxas, impacto, slippage e financiamento de ambas as pernas",
+        "Disponibilidade documentada de empréstimo e venda a descoberto"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "Vender spot exige empréstimo ou margem realmente disponíveis.",
+        "Candles não reconstroem livros executáveis; preços teóricos não provam preenchimentos simultâneos.",
+        "Custos de saída e financiamento entram antes do cálculo do spread líquido; não foi adquirida base histórica suficiente."
+      ],
+      "references": [
+        {
+          "title": "Binance · reconstrução de livro de ofertas",
+          "url": "https://github.com/binance/binance-spot-api-docs/blob/master/web-socket-streams.md"
+        }
+      ]
+    },
+    {
+      "id": "N20",
+      "name": "Surpresa de inflação + rompimento EURUSD",
+      "family": "macro_consensus_surprise",
+      "assets": [
+        "EURUSD"
+      ],
+      "thesis": "Inflação dos EUA diferente do consenso registrado antes da divulgação, confirmada pelo preço, pode provocar um ajuste curto do dólar.",
+      "rules": [
+        "Usar apenas releases de CPI dos EUA. Consenso deve possuir published_at, received_at e archive timestamp estritamente anteriores ao release; release_at<=decision_at.",
+        "Surpresa=actual-consensus; calcular z contra 60 surpresas anteriores ao release com history_meta estritamente anterior.",
+        "Aguardar barra completa de 5min iniciada no release: feature_end=release+300s e decision_at>=feature_end e <release+600s. A faixa pré-release é o intervalo de 5min encerrado no release.",
+        "Se z>=1 e EURUSD fechar abaixo da mínima pré-release, vender EURUSD; se z<=-1 e fechar acima da máxima, comprar EURUSD.",
+        "Entrada após decision_at; stop a 1 ATR(14) calculado com barras encerradas antes do release; saída após 4 horas corridas."
+      ],
+      "requiredData": [
+        "CPI divulgado com horário oficial",
+        "Consenso mediano arquivado antes da divulgação",
+        "60 surpresas anteriores comparáveis",
+        "Candles EURUSD de 5 minutos, faixa anterior à divulgação e ATR prévio"
+      ],
+      "status": "awaiting_data",
+      "limitations": [
+        "BLS publica valores e calendário, mas não fornece o consenso de mercado necessário.",
+        "Sem consenso arquivado antes do anúncio, o teste não é elegível.",
+        "Eventos mensais tornam a amostra de 100 operações demorada; nenhuma frequência artificial foi adicionada."
+      ],
+      "references": [
+        {
+          "title": "BLS CPI release schedule",
+          "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+        },
+        {
+          "title": "BLS release dissemination and archives",
+          "url": "https://www.bls.gov/about-bls/dissemination.htm"
+        }
+      ]
+    }
+  ]
+}

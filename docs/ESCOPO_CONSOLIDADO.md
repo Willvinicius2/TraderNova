@@ -44,3 +44,7 @@ O último relato descreveu 18 combinações BTC/ETH/SOL em M15/H1, arquivos Bina
 ## Custos
 
 Nenhuma infraestrutura paga, cobrança, conta de loja ou serviço de negociação foi ativado. Estimativas antigas de gratuidade são hipóteses de piloto, não garantia de custo atual.
+
+## Atualização de 29/09/2026
+
+Meta mínima atual: sete famílias economicamente distintas validadas, conforme `research/validation/protocol.json`; 0/7 aprovadas. Os critérios financeiros e prospectivos anteriores não mudaram. N16–N20 têm hipóteses e condições de sinal registradas; faltam dados auditáveis e execução completa. Pesquisa anterior, incluindo N13 reprovada, preservada. Interface e três temas permanecem. Assinatura Apple adiada.

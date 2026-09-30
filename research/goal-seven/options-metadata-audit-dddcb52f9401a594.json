@@ -1,0 +1,18 @@
+{
+  "id": "N13-option-metadata-audit-v1",
+  "snapshotSha256": "dddcb52f9401a594458b51c9fa60cd97bbf0658ab8117e1ea63215ab433ad0eb",
+  "tradeManifestSha256": "bfbcb7ded8b0e77f5e8083a715a0b900fa4501b6ed594a7e783103269cae0fb2",
+  "identityAuditSha256": "f111f24da996ebabba58d644fc430bd6d7f7da4629c09df28c539d5e2621dc00",
+  "instrumentManifestSha256": "5c191217ffca53a88d70ce62c098369d7e8e020a38d47f6613dd2257b55b5151",
+  "identityInputManifestSha256": "bfbcb7ded8b0e77f5e8083a715a0b900fa4501b6ed594a7e783103269cae0fb2",
+  "tradeOccurrencesInLeaves": 21999538,
+  "matchedInstrumentNames": 86238,
+  "missingInstrumentNames": 0,
+  "invalidInstrumentNames": 0,
+  "missingExamples": [],
+  "invalidExamples": [],
+  "fullMetadataAuditComplete": true,
+  "fullDataAuditComplete": false,
+  "dataApproved": false,
+  "historicalOnly": true
+}

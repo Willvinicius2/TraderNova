@@ -1,0 +1,77 @@
+{
+  "id": "seven-distinct-strategies-supervised-v1",
+  "registeredAt": "2026-09-29",
+  "target": 7,
+  "status": "active",
+  "assets": [
+    "XAUUSD",
+    "NAS100",
+    "BTCUSD",
+    "ETHUSD",
+    "SOLUSD",
+    "EURUSD",
+    "USDJPY"
+  ],
+  "counting": "One economically distinct family counts at most once, regardless of asset, timeframe, threshold, direction, parameter set or portfolio weighting. Existing rejected families cannot be renamed to increase the count.",
+  "capital": 100000,
+  "directionalRiskPct": 0.25,
+  "directionalGrossExposurePct": 100,
+  "screenGates": {
+    "positiveNetEveryEvaluationWindow": true,
+    "profitFactorBaseMinimum": 1.2,
+    "maxConservativeDrawdownBasePct": 8,
+    "maxConservativeDrawdownStressPct": 10,
+    "maxConservativeDailyLossBasePct": 2,
+    "maxConservativeDailyLossStressPct": 3,
+    "positiveNetStressEveryEvaluationWindow": true,
+    "minimumTradesDevelopment": 100,
+    "minimumTradesValidation": 100,
+    "minimumTradesRecent": 50,
+    "minimumAnnualizedReturnOverDrawdownCombinedEvaluation": 1,
+    "allowAccountBreach": false,
+    "allowUnpricedCarryingCosts": false
+  },
+  "windows": {
+    "cryptoDevelopment": [
+      "2022-01-01",
+      "2025-01-01"
+    ],
+    "cryptoValidation": [
+      "2025-01-01",
+      "2026-01-01"
+    ],
+    "cryptoRecent": [
+      "2026-01-01",
+      "2026-09-01"
+    ]
+  },
+  "selection": "Freeze family rules, all variants, data universe, costs and tests before computing performance. Run development first. Reject development failures without using later windows to rescue them. Freeze any development selection and its source/protocol hashes before evaluation. Record every attempted configuration, including failures and unexecutable hypotheses. A modification is a new registered trial in the same family, not another strategy.",
+  "execution": "Closed information only; execute no earlier than next available tradable observation. No fills at inaccessible past prices. Preserve actual source gaps, fees, spread, slippage, financing/funding and liquidation exposure. Compute conservative intrabar marked drawdown, not just closed trades. Fix position sizing before testing; do not shrink risk after observing drawdown to manufacture approval.",
+  "independence": "All local crypto history through August 2026 has been inspected in earlier studies. These windows are chronological exploratory screens, never untouched holdouts. Historical passes do not increase the validated count.",
+  "prospectiveGate": {
+    "minimumCalendarDaysAfterRuleFreeze": 60,
+    "minimumClosedTrades": 100,
+    "positiveNetAfterObservedCosts": true,
+    "sameBaseAndStressDrawdownGates": true,
+    "executionFeedAndContractMatchRequired": true,
+    "causalReplayForwardParityRequired": true,
+    "operationalApprovalRequiresIndependentReview": true
+  },
+  "statisticalGate": {
+    "familyWiseAlpha": 0.05,
+    "independentTrialAlpha": "0.05 / (k * (k + 1)), k is the globally registered independent-evaluation trial number, never reset per family or batch",
+    "method": "A preregistered one-sided weekly block-bootstrap estimate on independent net marked daily returns; all zero/inactive days retained; at least 10000 replicates, stored seed and Monte Carlo uncertainty. Require positive lower confidence bound at allocated alpha; no zero p-values. Short samples or insufficient bootstrap resolution are inconclusive, never passed.",
+    "caveat": "A bootstrap estimate assumes the observed blocks are representative and cannot establish future profitability. Reused retrospective screens are ineligible for this independent-evidence gate. The project-wide prior search is disclosed rather than pretending that only the newest trials occurred."
+  },
+  "completion": "Only seven distinct families passing historical, independent/prospective, execution and software checks complete the goal. No fixed calendar deadline or guaranteed successful count. Financial orders, account opening, paid services and Apple signing are outside this research goal.",
+  "sources": [
+    "https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf",
+    "https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf",
+    "https://github.com/binance/binance-public-data/blob/master/README.md"
+  ],
+  "supersedes": {
+    "path": "research/goal-seven/protocol.json",
+    "sha256": "b108294aa0876ef6d22177e207f8c6deacc5d1045ced89d0a18e36f355b51839",
+    "reason": "User restored minimum seven validated families and requested bounded research agents; all financial, independence and prospective gates remain unchanged."
+  }
+}

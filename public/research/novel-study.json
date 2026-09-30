@@ -58,8 +58,9 @@
         "Klines/trades do perpétuo e spot sincronizados, mark price e base",
         "Taxas executáveis, margem, liquidação e custo de capital"
       ],
-      "status": "awaiting-required-data",
+      "status": "exploratory-rejected",
       "limitations": [
+        "Atualização 29/09/2026: funding reprovado. Base +2,21%, DD 8,79%; stress −4,26%, DD 9,65%; amostra insuficiente, violação diária e lacunas. Nenhuma aprovação.",
         "Sem backtest ou métricas: os caches locais contêm candles spot, não pagamentos de funding nem preços do perpétuo.",
         "Funding pode mudar de sinal e de intervalo; pagamentos só ocorrem se a posição estiver aberta no horário de liquidação.",
         "Hedge não elimina base, liquidação, risco de venue e execução. Não é compatível automaticamente com conta the5."
@@ -73,7 +74,13 @@
           "title": "Binance Futures — funding rates e liquidação",
           "url": "https://www.binance.com/en/support/faq/detail/360033525031"
         }
-      ]
+      ],
+      "results": {
+        "trades": 26,
+        "netPct": 2.2117382843824807,
+        "profitFactor": 2.580589464299837,
+        "drawdownPct": 8.791817712244207
+      }
     },
     {
       "id": "N3",

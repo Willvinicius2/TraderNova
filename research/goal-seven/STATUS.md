@@ -1,3 +1,5 @@
+> Atualização de 29/09/2026: N13 encerrou reprovada no desenvolvimento (base −8,68%, DD 12,36%; stress −9,89%, DD 11,39%). Nove famílias reprovadas nesta meta, nenhuma aprovada. Pedido posterior do usuário restaurou a meta mínima de sete, sem reduzir critérios: [estado vigente](../validation/README.md). O texto abaixo preserva o acompanhamento anterior à conclusão da fila.
+
 # Meta: sete estratégias distintas validadas
 
 Meta registrada em 28/09/2026. **Não concluída: 0/7 aprovadas. Agente aguardando dados externos.** A coleta e a fila local continuam separadamente, dentro dos limites já definidos. [Dependência e retomada](WAITING_DATA.md).

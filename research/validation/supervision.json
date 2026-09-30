@@ -1,0 +1,21 @@
+{
+  "target": 7,
+  "state": "waiting_for_auditable_data",
+  "researchModel": "gpt-6-luna",
+  "reasoningEffort": "low or medium",
+  "lastRound": "2026-09-29",
+  "lastRoundOutcome": "Nenhuma hipótese adicional distinta pronta para desenvolvimento foi identificada com os dados locais.",
+  "limits": {
+    "maxAttemptsPerDay": 2,
+    "maxConcurrentCompute": 1,
+    "maxAgentSeconds": 180,
+    "maxOutputBytes": 2000000,
+    "weeklyUsedCeiling": 35,
+    "maxWeeklyDeltaPerRound": 2,
+    "maxResearchAgents": 2,
+    "maxUnchangedRounds": 3,
+    "maxScheduledChecks": 7
+  },
+  "automaticApproval": false,
+  "modelCallsInLocalCalculations": 0
+}
