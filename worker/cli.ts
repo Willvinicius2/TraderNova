@@ -2,6 +2,7 @@ import {appendFileSync, mkdirSync} from 'node:fs';
 import path from 'node:path';
 import {parseConfig} from './config';
 import {createLogger, type Logger} from './log';
+import {startSignalReadServer} from './http';
 import {createWorker} from './worker';
 const sleep = (ms: number, signal: AbortSignal) => new Promise<void>((resolve) => {
   const timer = setTimeout(resolve, ms);
@@ -22,6 +23,15 @@ export async function main(argv: string[], env: Record<string, string | undefine
   }
   const log: Logger = createLogger(sinks, {provider: 'kraken-spot', symbol: config.pair, interval: config.interval});
   const worker = await createWorker({config, log, fetch: (url, init) => fetch(url, init)});
+  // Leitura de sinais por HTTP (só 127.0.0.1) apenas no laço contínuo; --once nunca abre porta.
+  let reader: Awaited<ReturnType<typeof startSignalReadServer>> | null = null;
+  if (!config.once && config.httpPort !== null) {
+    try { reader = await startSignalReadServer({signalsDir: path.join(config.dataDir, 'signals'), port: config.httpPort, log}); } catch (error) {
+      log.error('http_nao_iniciou', {port: config.httpPort, error: error instanceof Error ? error.message : String(error), reason: 'Use --http-port com outra porta ou --no-http.'});
+      return 2;
+    }
+    log.info('http_leitura_iniciado', {host: '127.0.0.1', port: reader.port, route: 'GET /signals/:id'});
+  }
   const stop = new AbortController();
   for (const sig of ['SIGINT', 'SIGTERM'] as const) process.on(sig, () => { if (!stop.signal.aborted) log.info('encerrando', {signal: sig, reason: 'O ciclo atual será concluído antes de sair.'}); stop.abort(); });
   log.info('worker_iniciado', {mode: config.once ? 'once' : 'loop', poll_seconds: config.pollSeconds, data_dir: path.resolve(config.dataDir), signal_mode: 'research'});
@@ -37,6 +47,7 @@ export async function main(argv: string[], env: Record<string, string | undefine
     if (config.once || stop.signal.aborted) break;
     await sleep(worker.nextDelayMs(), stop.signal);
   } while (!stop.signal.aborted);
+  await reader?.close();
   log.info('worker_encerrado', {exit_code: exit});
   return config.once ? exit : 0;
 }

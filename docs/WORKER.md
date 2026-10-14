@@ -31,7 +31,12 @@ Opções (flag > variável de ambiente > padrão):
 | `--poll-seconds` (5 a 600) | `TRADERNOVA_WORKER_POLL_SECONDS` | `30` |
 | `--data-dir` | `TRADERNOVA_WORKER_DATA_DIR` | `worker-data` |
 | `--log-file` | `TRADERNOVA_WORKER_LOG_FILE` | (só stdout) |
+| `--http-port` (1 a 65535) | `TRADERNOVA_WORKER_HTTP_PORT` | `8790` |
+| `--no-http` | - | servidor de leitura ligado |
 | `--once` | - | laço |
+
+## Leitura de sinais por HTTP
+No laço contínuo (`npm run worker`, nunca em `--once`) o worker abre um servidor somente leitura em `127.0.0.1` (sem CORS) com **uma** rota: `GET /signals/:id` (200 registro, 404 desconhecido, 400 ID inválido, 405 outros métodos). Lê o JSONL do disco a cada chamada. Porta ocupada encerra o worker com código 2 (use `--http-port` ou `--no-http`). Quem consome é `/api/signals/[id]` do app; ver [`SINAIS.md`](SINAIS.md).
 
 ## Como o TypeScript é executado
 `node worker/cli.mjs` registra `worker/ts-loader.mjs` (hooks do Node) que transpila `.ts` com o pacote `typescript` já instalado e resolve imports sem extensão e o alias `@/`. Escolhido porque `--experimental-strip-types` não resolve os imports sem extensão de `lib/`. Zero dependências novas; os testes usam o mesmo carregador.

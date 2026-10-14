@@ -4,6 +4,7 @@ import {candidateSignals,researchCandidates,type CandidateId} from './research';
 import {z} from 'zod';
 import {activePresets} from './active-presets';
 import {calibratedSignals,type StrategyParameters} from './calibration';
+import {newPublicSignalId,signalDedupKey} from './signal-record';
 export type EngineReading={candidateId:CandidateId;state:'waiting'|'buy'|'sell-excluded';signalTime:number;entryReference:number|null;stop:number|null;target:number|null;evidence:string[]};
 export type EngineSnapshot={status:'ready'|'blocked';reason:string;source:'kraken-spot';evaluatedAt:number;closedAt:number|null;readings:EngineReading[]};
 export function evaluatePaperEngine(bars:Candle[],interval:number,receivedAt:number,now:number,presets:Partial<Record<CandidateId,StrategyParameters>>=activePresets):EngineSnapshot{
@@ -97,5 +98,6 @@ export function manualOpportunity(snapshot:EngineSnapshot,candidate:CandidateId,
  if(!canAlertForManualTrade(candidate,now,approvals)||snapshot.status!=='ready'||snapshot.closedAt===null||now-snapshot.closedAt<0||now-snapshot.closedAt>30000||![quote.bid,quote.ask,quote.timestamp].every(Number.isFinite)||quote.bid<=0||quote.ask<quote.bid||quote.timestamp<snapshot.closedAt||now-quote.timestamp>30000||quote.timestamp>now+5000)return null;
  const r=snapshot.readings.find(r=>r.candidateId===candidate&&r.state==='buy');if(!r||r.entryReference===null||r.stop===null)return null;
  const distance=r.entryReference-r.stop;if(distance<=0||quote.ask-distance<=0)return null;
- return {id:`${candidate}:${activePresets[candidate].id}:${snapshot.closedAt}`,candidateId:candidate,source:snapshot.source,assetId:simulationPreset.assetId,direction:'Compra' as const,entry:quote.ask,stop:quote.ask-distance,target:quote.ask+distance*activePresets[candidate].reward,createdAt:now,expiresAt:snapshot.closedAt+30000,evidence:r.evidence,signalTime:r.signalTime};
+ // publicId é opaco (UUID, seguro em links); dedupKey identifica o candle/estratégia e nunca vai para links. Ver docs/SINAIS.md.
+ return {publicId:newPublicSignalId(),dedupKey:signalDedupKey({strategyId:candidate,strategyVersion:activePresets[candidate].id,provider:'kraken-spot',instrument:simulationPreset.assetId,timeframeMinutes:simulationPreset.interval,side:'buy',signalTime:snapshot.closedAt}),candidateId:candidate,source:snapshot.source,assetId:simulationPreset.assetId,direction:'Compra' as const,entry:quote.ask,stop:quote.ask-distance,target:quote.ask+distance*activePresets[candidate].reward,createdAt:now,expiresAt:snapshot.closedAt+30000,evidence:r.evidence,signalTime:r.signalTime};
 }

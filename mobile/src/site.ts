@@ -8,7 +8,7 @@ export function externalLink(url: string) {
   catch { return false; }
 }
 export function signalLink(url: string): string | null {
-  const id = /^tradernova:\/\/signal\/([a-zA-Z0-9-]{1,100})\/?$/.exec(url)?.[1];
+  const id = /^tradernova:\/\/signal\/([0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})\/?$/i.exec(url)?.[1];
   if (!id) return null;
   const target = new URL(SITE_URL); target.searchParams.set('aba', 'robo'); target.searchParams.set('sinal', id);
   return target.href;

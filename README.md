@@ -48,7 +48,7 @@ Temas: **Essencial Dark**, **Nova Lab** e **Claro & Direto** (ou acompanhar o di
 
 ## O que ainda não existe
 
-- Sinais persistentes e a rota `/sinal`; hoje os sinais vivem só no navegador.
+- Sinais persistentes em produção: o contrato, o worker local e a ficha `?aba=robo&sinal=<uuid>` (lida de `/api/signals/<uuid>`) já existem, mas o armazenamento é um arquivo local do worker; sem Supabase, login nem hospedagem do worker. Ver [`docs/SINAIS.md`](docs/SINAIS.md).
 - Worker de ingestão no servidor (os dados são lidos pelo navegador).
 - Supabase e login: a migração em `supabase/migrations` está preparada, mas não foi aplicada.
 - Notificações push (só avisos dentro do app aberto).

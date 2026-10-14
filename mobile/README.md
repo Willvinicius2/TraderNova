@@ -20,7 +20,7 @@ Use Expo Go compatível com SDK 57 ou uma development build. `npm run android` u
 - A interface é a publicação original, sem outra camada de cards, menus ou telas recriadas.
 - Preferências, diário e experimentos usam o armazenamento do site dentro da WebView. Esse armazenamento é separado do navegador do computador e ainda não sincroniza pela conta.
 - Área segura e barra de status acompanham o tema escolhido no site.
-- Links externos HTTPS abrem no navegador. O botão voltar do Android retorna dos detalhes/abas; os links `tradernova://signal/ID` abrem exemplos já salvos na mesma WebView.
+- Links externos HTTPS abrem no navegador. O botão voltar do Android retorna dos detalhes/abas; os links `tradernova://signal/<uuid>` (somente UUID v4) abrem a ficha do sinal persistido na mesma WebView (`?aba=robo&sinal=<uuid>`); ver docs/SINAIS.md.
 - Exportações JSON acionadas pelo site abrem o compartilhamento nativo.
 - Em falha de carregamento, há aviso e tentativa de reconexão. **O app depende de internet**; não há funcionamento offline completo ou feed contínuo em segundo plano.
 

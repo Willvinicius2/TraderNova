@@ -8,7 +8,7 @@ Criada em 15/09/2026. Base web responsiva; não é um aplicativo já publicado n
 - Sete ativos demonstrativos: XAUUSD, NAS100, BTCUSD, ETHUSD, SOLUSD, EURUSD, USDJPY.
 - Navegação mobile com Mercado, Robô, Estratégias, Testes, Diário e Conta.
 - Candles determinísticos por ativo e período. EMA20, ATR14 e RSI14 calculados sobre os candles sintéticos.
-- Alertas internos de compra/venda com link para a ficha, validade de 60 segundos, revisão e prevenção de registro duplicado. Link `?sinal=<id>` recupera o exemplo no mesmo dispositivo.
+- Alertas internos de compra/venda com link para a ficha, validade de 60 segundos, revisão e prevenção de registro duplicado. Link `?aba=robo&sinal=<uuid>` abre a ficha de um sinal persistido consultado em `/api/signals/<uuid>` (ver docs/SINAIS.md); não procura mais exemplos locais.
 - Seis candidatas especificadas. Nenhuma foi implementada e validada no mercado. Métricas ainda não medidas permanecem vazias.
 - Testador local EMA9/21, separado da S1, com custo em R, stop ATR, alvo configurável, saída por tempo, próximo candle, tratamento conservador de ambiguidade e gaps.
 - Resultado sintético: R líquido, trades, acerto, curva e drawdown de patrimônio fechado. Não inclui risco intratrade, ticks, especificações de contrato, dimensionamento monetário, sessões, atraso humano ou separação de amostra. Não usar para validar estratégias reais.

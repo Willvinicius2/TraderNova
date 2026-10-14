@@ -10,11 +10,15 @@ for (const value of ['javascript:alert(1)', 'file:///test', 'https://evil.exampl
 assert.equal(site.externalLink('https://www.tradingview.com/chart/'), true);
 assert.equal(site.externalLink('javascript:alert(1)'), false);
 assert.equal(site.externalLink('https://user:password@example.com/'), false);
-assert.equal(site.signalLink('tradernova://signal/test-123'), `${site.SITE_URL}?aba=robo&sinal=test-123`);
-for (const url of ['tradernova://signal/../x', 'tradernova://signal/a%2Fb', 'https://signal/test', 'tradernova://trade/buy']) assert.equal(site.signalLink(url), null);
+const uuid = '3f2b8a9e-6c1d-4e7a-9b52-0a1c4d8e7f60';
+assert.equal(site.signalLink(`tradernova://signal/${uuid}`), `${site.SITE_URL}?aba=robo&sinal=${uuid}`);
+assert.equal(site.signalLink(`tradernova://signal/${uuid}/`), `${site.SITE_URL}?aba=robo&sinal=${uuid}`);
+assert.equal(site.signalLink(`tradernova://signal/${uuid.toUpperCase()}`), `${site.SITE_URL}?aba=robo&sinal=${uuid.toUpperCase()}`);
+const rejected = ['tradernova://signal/T1:T1-E0X0:1789948800000', 'tradernova://signal/test-123', 'tradernova://signal/../x', `tradernova://signal/../${uuid}`, 'tradernova://signal/a%2Fb', `tradernova://signal/${uuid}%2F..`, `tradernova://signal/${uuid}?aba=conta`, `tradernova://signal/${uuid}&sinal=x`, `tradernova://signal/${uuid}#x`, ` tradernova://signal/${uuid}`, `tradernova://signal/${uuid}0`, `tradernova://signal/${uuid.slice(0, -1)}`, `tradernova://signal/${uuid}${'a'.repeat(200)}`, `tradernova://signal/${'a'.repeat(5000)}`, 'tradernova://signal/', 'https://signal/test', 'tradernova://trade/buy'];
+for (const url of rejected) assert.equal(site.signalLink(url), null, url);
 new Function(site.bridgeScript);
 assert.equal(site.parentPage(`${site.SITE_URL}?aba=robo&sinal=test`), `${site.SITE_URL}?aba=robo`);
 assert.equal(site.parentPage(`${site.SITE_URL}?aba=diario`), `${site.SITE_URL}?aba=mercado`);
 assert.equal(site.parentPage(site.SITE_URL), null);
 assert.equal(site.parentPage('https://evil.example/?aba=diario'), null);
-console.log('Mobile checks passed: original site, origin boundary, HTTPS-only external links, identifier-only deep links, valid bridge script.');
+console.log('Mobile checks passed: original site, origin boundary, HTTPS-only external links, UUID-only deep links, valid bridge script.');

@@ -8,7 +8,7 @@ const require=createRequire(import.meta.url);
 export async function loadResearchModules(){
  const temp=await fs.mkdtemp(path.join(os.tmpdir(),'tradernova-engine-'));
  try{
-  for(const name of ['domain','indicators','research','calibration','calibration-v3','active-presets','historical','paper-engine']){
+  for(const name of ['domain','indicators','research','calibration','calibration-v3','active-presets','signal-record','historical','paper-engine']){
    const source=await fs.readFile(new URL(`../lib/tradernova/${name}.ts`,import.meta.url),'utf8');
    const js=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText.replace(/from '(\.\/[^']+)'/g,"from '$1.mjs'").replaceAll("'zod'",JSON.stringify(pathToFileURL(require.resolve('zod')).href));
    await fs.writeFile(path.join(temp,`${name}.mjs`),js);
