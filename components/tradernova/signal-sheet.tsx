@@ -10,6 +10,7 @@ import {AssetIcon} from '@/components/tradernova/asset-icon';
 const price=(v:number)=>v.toLocaleString('pt-BR',{maximumFractionDigits:v<10?5:2});
 const when=(t:number)=>new Date(t).toLocaleString('pt-BR');
 // Ficha de um sinal persistido, aberta por ?aba=robo&sinal=<uuid>. Só mostra o que a fonte devolveu; nunca usa exemplo ou demonstração no lugar.
+const formatRemaining=(s:number)=>{const h=Math.floor(s/3600),m=Math.floor(s%3600/60),r=s%60;return h?`${h}h ${String(m).padStart(2,'0')}min`:m?`${m}min ${String(r).padStart(2,'0')}s`:`${r}s`;};
 export function SignalSheet({id,onClose}:{id:string;onClose:()=>void}){
  const now=useNow(),[attempt,setAttempt]=useState(0),[result,setResult]=useState<{key:string;response:SignalApiResponse}|null>(null),key=`${attempt}`;
  useEffect(()=>{
@@ -22,7 +23,7 @@ export function SignalSheet({id,onClose}:{id:string;onClose:()=>void}){
  {model.kind==='loading'&&<div className="sheet-body"><p className="muted" role="status" aria-live="polite">Carregando sinal…</p></div>}
  {model.kind==='message'&&<div className="sheet-body"><div className="notice" role="status"><strong>{model.title}</strong><br/>{model.text}</div>{model.retry&&<button className="secondary-button full" onClick={()=>setAttempt(a=>a+1)}>Tentar novamente</button>}</div>}
  {model.kind==='signal'&&(()=>{const r=model.record,buy=r.side==='buy',known=assets.some(a=>a.id===r.instrument);return <div className="sheet-body">
-  <div className="row between"><div className="signal-instrument-heading">{known&&<AssetIcon id={r.instrument as AssetId} size={44}/>}<h2>{r.instrument} <span className="muted">· {model.timeframeLabel}</span></h2></div><span className={`tag ${model.status==='active'?'amber':'neutral'}`}>{model.status==='active'?`${model.remainingSeconds}s restantes`:model.status==='expired'?'Expirado':'Invalidado'}</span></div>
+  <div className="row between"><div className="signal-instrument-heading">{known&&<AssetIcon id={r.instrument as AssetId} size={44}/>}<h2>{r.instrument} <span className="muted">· {model.timeframeLabel}</span></h2></div><span className={`tag ${model.status==='active'?'amber':'neutral'}`}>{model.status==='active'?`${formatRemaining(model.remainingSeconds)} restantes`:model.status==='expired'?'Expirado':'Invalidado'}</span></div>
   <div className={`signal-hero ${buy?'positive':'negative'}`}>{buy?<ArrowUpRight size={28}/>:<ArrowDownLeft size={28}/>}{model.directionLabel}</div>
   <div className="row"><span className={`tag ${model.modeTone}`}>{model.modeLabel}</span><span className="micro">{model.sourceLabel} · {model.timeframeLabel} · {r.strategyId} · {r.strategyVersion}</span></div>
   {model.status==='invalidated'&&<div className="notice">Sinal invalidado{model.invalidationReason?`: ${model.invalidationReason}`:'.'}</div>}
