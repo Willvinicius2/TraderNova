@@ -55,3 +55,6 @@ next-env.d.ts
 /mobile/test-results/
 /research/cache/
 __pycache__/
+
+# worker de ingestão (dados locais)
+/worker-data/
