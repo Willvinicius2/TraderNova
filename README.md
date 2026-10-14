@@ -1,39 +1,60 @@
 # TraderNova
 
-Projeto web existente e aplicativo Android/iPhone em [`mobile/`](mobile/README.md). Código reunido em `D:\openclaude\TradersNova`, com histórico original preservado.
+Laboratório de sinais com revisão humana: acompanha o mercado, pesquisa estratégias e registra decisões. Web na raiz; app Android/iPhone em [`mobile/`](mobile/README.md), que embute a interface publicada. Sinais são exemplos de pesquisa: nenhuma estratégia está aprovada e o app não envia ordens nem cobra.
 
-## Começar
+## Requisitos e instalação
 
-```powershell
-# Web, na raiz
-npm run install:ci
-npm run dev
+- Node >= 22.13 (pnpm na versão de `package.json`; o instalador cuida disso).
+- Instale com `npm run install:ci`. **Não use `npm install` na raiz**: o instalador preserva o `pnpm-lock.yaml` e funciona no Windows sem Bash.
+- O mobile tem instalação npm própria (`mobile/package-lock.json`).
 
-# Mobile
-cd mobile
-npm ci
-npm start
-```
+## Comandos (raiz)
 
-O instalador da raiz preserva o `pnpm-lock.yaml` e funciona no Windows sem Bash. O mobile tem instalação npm independente. Consulte [`mobile/README.md`](mobile/README.md) e [`docs/ESCOPO_CONSOLIDADO.md`](docs/ESCOPO_CONSOLIDADO.md).
+| Comando | O que faz |
+| --- | --- |
+| `npm run dev` | Servidor de desenvolvimento em http://localhost:5173 |
+| `npm run build` | Build de produção (saída em `dist/`) |
+| `npm test` | Testes do motor, mercado ao vivo, fontes e calibração |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run lint` | ESLint (o `mobile/` é ignorado: tem ferramentas próprias) |
 
-## Base web
+Mobile (dentro de `mobile/`): `npm ci`, `npm start`, `npm run typecheck`, `npm test`, `npm run export`.
 
-Base mobile web do laboratório de sinais com revisão humana. Mercado com integração pública à Kraken Spot para BTC/USD, ETH/USD e SOL/USD. Ouro, Nasdaq, EURUSD e USDJPY exibem cotações, gráficos e análise técnica via widgets TradingView/OANDA. Laboratório com três estratégias candidatas sobre histórico Kraken ou dados artificiais identificados. Sinais do robô e diário continuam demonstrativos; sem envio de ordens ou cobranças.
+## O que cada aba faz hoje
 
-## Desenvolvimento
-Node 22.13+ e pnpm (usar a versão declarada em package.json). Instale preservando pnpm-lock.yaml. `pnpm dev` inicia o desenvolvimento; `pnpm build` gera a versão de produção. A hospedagem deste projeto é gerenciada por Sites.
+- **Mercado**: cotação e gráfico dos sete ativos do catálogo, com modo "Mercado real" e modo "Demonstração" (dados sintéticos fixos). Períodos M1/M5/M15/H1, estado da conexão e indicadores (EMA 20, RSI 14, ATR 14) calculados sobre a mesma série do gráfico.
+- **Robô**: motor de sinais manual. Aguarda estratégias validadas; hoje nenhuma foi aprovada, então aparece "Aguardando estratégias validadas" e nenhum sinal é emitido.
+- **Estratégias**: repertório de hipóteses (T1, T2, T3 e candidatas) com regras, evidências e o contador de estratégias validadas (zero). Dali é possível abrir o Laboratório com a candidata escolhida.
+- **Laboratório**: backtest pronto de uma candidata sobre histórico verificado de BTC/USDT H1 (amostra versionada, conferida por SHA-256, com taxa e slippage), resultados das rodadas de calibração e da pesquisa de ouro, e simulação em tempo real (paper) com Kraken, salva neste navegador. Nada aqui valida uma estratégia.
+- **Diário**: decisões registradas durante a revisão de um exemplo, salvas só neste dispositivo, com exportação em JSON. Fica vazio até haver uma revisão.
+- **Conta / Preferências**: tema, espaçamento, alertas dentro do app e itens futuros (dados e conta, TraderNova Pro) marcados como pendentes.
 
-## Verificações
-`node tests/core.mjs` verifica propriedades do motor e estados críticos.
-`node tests/live-market.mjs` verifica a integração de dados com eventos e HTTP controlados.
-`node tests/market-sources.mjs` verifica símbolos, períodos e recuperação dos widgets.
-`node tests/calibration-research.mjs` verifica indicadores, causalidade das três candidatas, execução e histórico de resultados.
-`pnpm exec tsc --noEmit` verifica tipos.
+Temas: **Essencial Dark**, **Nova Lab** e **Claro & Direto** (ou acompanhar o dispositivo).
 
-## Status funcional
-Abra Mercado para acompanhar a conexão de BTC, ETH e SOL. Use M1/M5/M15/H1 e confira fonte e atualização. O gráfico nativo e dez leituras usam a mesma série; consultas periódicas recuperam dados quando o canal ao vivo está indisponível. Na aba Robô, gere um exemplo, clique em “Analisar”, faça a revisão e consulte o Diário. Em Estratégias, escolha T1, T2 ou T3 e prepare um teste no Laboratório. Escolha histórico real ou simulação, informe custos e consulte resultados, replay da própria amostra e exportação JSON. Os últimos 12 experimentos ficam neste navegador. Nenhuma estratégia é validada automaticamente.
+## Fontes de dados
 
-Leia `docs/CALIBRACAO_E_PESQUISA.md` para a atualização de dados e pesquisa, parâmetros, referências e limites.
+- **Kraken Spot** (WebSocket e HTTP públicos): BTC/USD, ETH/USD e SOL/USD. É a única fonte que alimenta o motor e a simulação em tempo real.
+- **TradingView/OANDA** (widgets): XAUUSD, NAS100, EURUSD e USDJPY. Servem apenas para consulta visual; **não alimentam o motor, o robô nem os testes**. As cotações podem diferir da sua corretora no MT5.
+- Pesquisa offline: arquivos públicos mensais da Binance (BTC/USDT) e amostras congeladas de ouro em `research/`.
 
-Dados próprios da corretora para o motor de estratégias, integração Supabase, worker Python, autenticação de aplicação, push remoto e compras são próximas etapas. A base nativa Android/iOS está em mobile/; testes em aparelhos e publicação nas lojas seguem pendentes. Leia `docs/MERCADO_AO_VIVO.md` para o status 0.3 e a limitação da verificação de conexão externa. Leia `docs/IMPLEMENTACAO.md` para detalhes e limites. A migração Supabase não foi aplicada automaticamente.
+## Scripts de pesquisa
+
+- `npm run research:download`: baixa e confere (checksum) o histórico público da Binance para `research/cache`.
+- `npm run research:run`: roda o estudo histórico do protocolo e gera os resultados em `public/research/`.
+- `npm run research:calibrate`: calibração das candidatas (rodada v2).
+- `npm run research:calibrate:v3`: calibração v3, com protocolo congelado.
+- `npm run research:gold`: pesquisa offline de ouro (CFD) a partir de um arquivo de origem (`--source`).
+- `npm run research:gold:test`: testes da execução da pesquisa de ouro.
+
+## O que ainda não existe
+
+- Sinais persistentes e a rota `/sinal`; hoje os sinais vivem só no navegador.
+- Worker de ingestão no servidor (os dados são lidos pelo navegador).
+- Supabase e login: a migração em `supabase/migrations` está preparada, mas não foi aplicada.
+- Notificações push (só avisos dentro do app aberto).
+- Dados licenciados para ouro, índices e forex.
+- Cobrança, publicação nas lojas e execução de ordens.
+
+## Documentação
+
+[`docs/ESCOPO_CONSOLIDADO.md`](docs/ESCOPO_CONSOLIDADO.md), [`docs/MOTOR_E_VALIDACAO.md`](docs/MOTOR_E_VALIDACAO.md), [`docs/CALIBRACAO_E_PESQUISA.md`](docs/CALIBRACAO_E_PESQUISA.md), [`docs/MERCADO_AO_VIVO.md`](docs/MERCADO_AO_VIVO.md), [`docs/IMPLEMENTACAO.md`](docs/IMPLEMENTACAO.md), [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md), [`docs/VALIDACAO.md`](docs/VALIDACAO.md).

@@ -9,6 +9,7 @@ import {runHistorical,type HistoricalResult} from '@/lib/tradernova/historical';
 import {simulationPreset,evaluatePaperEngine,newPaperSession,advancePaperSession,readPaperSession,type PaperSession} from '@/lib/tradernova/paper-engine';
 import {isHistoricalStudy,type HistoricalStudy} from '@/lib/tradernova/study-types';
 import {useLiveMarket} from '@/hooks/use-live-market';
+import {useNow} from '@/hooks/use-now';
 import {CalibratedOverview,CalibrationResults} from './calibration-results';
 import {GoldResearchResults} from './gold-research-results';
 import {activePresets} from '@/lib/tradernova/active-presets';
@@ -25,7 +26,7 @@ export function StudyOverview({onChoose}:{onChoose:(id:CandidateId)=>void}){retu
 
 export function SimulationWorkspace({initialCandidate='T3',robot=false}:{initialCandidate?:CandidateId;robot?:boolean}){
  const [candidate,setCandidate]=useState<CandidateId>(initialCandidate),[mode,setMode]=useState<'backtest'|'live'>(robot?'live':'backtest');
- useEffect(()=>setCandidate(initialCandidate),[initialCandidate]);
+ const [seenCandidate,setSeenCandidate]=useState(initialCandidate);if(seenCandidate!==initialCandidate){setSeenCandidate(initialCandidate);setCandidate(initialCandidate);}
  return <><div className="robot-overview panel"><div className="row"><span className="robot-icon large">{robot?<Bot size={30}/>:<FlaskConical size={30}/>}</span><div><h2>{robot?'Motor de estratégias':'Iniciar uma simulação'}</h2><p>Estratégias preparadas. Parâmetros definidos pela pesquisa.</p></div></div><span className="tag amber">Nenhuma validada</span></div>
  <div className="simulation-controls panel padded"><label className="field-label" htmlFor="ready-strategy">Escolha a estratégia</label><Select value={candidate} onValueChange={v=>setCandidate(v as CandidateId)}><SelectTrigger id="ready-strategy" className="picker"><SelectValue/></SelectTrigger><SelectContent>{researchCandidates.map(c=><SelectItem key={c.id} value={c.id}>{c.id} · {c.name}</SelectItem>)}</SelectContent></Select><p className="micro research-form-note">Preset de pesquisa: Bitcoin · H1 · compras spot · risco de até 0,5%. {presetDescription(activePresets[candidate])}. Não é o contrato MT5 da mesa.</p>
  <div className="two-buttons simulation-modes"><button className={mode==='backtest'?'primary-button':'secondary-button'} aria-pressed={mode==='backtest'} onClick={()=>setMode('backtest')}><FlaskConical size={18}/>Backtest</button><button className={mode==='live'?'primary-button':'secondary-button'} aria-pressed={mode==='live'} onClick={()=>setMode('live')}><Radio size={18}/>Simulação em tempo real</button></div></div>
@@ -58,11 +59,11 @@ function PreparedBacktest({candidate}:{candidate:CandidateId}){
 }
 
 function ForwardSimulation({candidate}:{candidate:CandidateId}){
- const [enabled,setEnabled]=useState(false),[now,setNow]=useState(0),[session,setSession]=useState<PaperSession|null>(null),[storageError,setStorageError]=useState(false),[archived,setArchived]=useState<PaperSession|null>(null);
+ const [enabled,setEnabled]=useState(false),[session,setSession]=useState<PaperSession|null>(null),[storageError,setStorageError]=useState(false),[archived,setArchived]=useState<PaperSession|null>(null);
  const current=useRef<PaperSession|null>(null),lastAlert=useRef('');
- const feed=useLiveMarket(enabled,'BTCUSD',60),entry=feed.entries.BTCUSD;
+ const now=useNow(),feed=useLiveMarket(enabled,'BTCUSD',60),entry=feed.entries.BTCUSD;
  const snapshot=useMemo(()=>evaluatePaperEngine(entry?.bars??[],60,entry?.receivedAt??0,now),[entry,now]);
- useEffect(()=>{setNow(Date.now());const t=setInterval(()=>setNow(Date.now()),1000);return()=>clearInterval(t);},[]);
+ // eslint-disable-next-line react-hooks/set-state-in-effect -- hidrata a sessão salva em localStorage por estratégia após a montagem (indisponível no servidor)
  useEffect(()=>{try{const old=localStorage.getItem(`tradernova-forward-${candidate}-E0X0-archive`);if(old)setArchived(readPaperSession(JSON.parse(old),candidate));const raw=localStorage.getItem(`tradernova-forward-${candidate}-v1`);if(raw){const value=readPaperSession(JSON.parse(raw),candidate);if(value){current.current=value;setSession(value);}else setStorageError(true);}}catch{setStorageError(true);}},[candidate]);
  useEffect(()=>{
   if(!enabled||!current.current||!entry?.ticker||document.hidden||!navigator.onLine)return;

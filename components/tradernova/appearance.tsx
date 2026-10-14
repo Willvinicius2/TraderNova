@@ -1,6 +1,6 @@
 'use client';
 
-import {createContext, useContext, useEffect, useState} from 'react';
+import {createContext, useContext, useEffect, useSyncExternalStore} from 'react';
 import {ThemeProvider, useTheme} from 'next-themes';
 import {Check, Monitor, Moon, Palette, Sun, Zap} from 'lucide-react';
 import {Toaster} from 'sonner';
@@ -11,18 +11,29 @@ import './appearance.css';
 
 type Density = 'comfortable' | 'compact';
 const DensityContext = createContext<{density: Density; setDensity: (value: Density) => void}>({density: 'comfortable', setDensity: () => {}});
+const densityKey = 'tradernova-density-v1';
+const densityListeners = new Set<() => void>();
+let densityMemory: Density | null = null;
+function readDensity(): Density {
+  if (densityMemory) return densityMemory;
+  try {return localStorage.getItem(densityKey) === 'compact' ? 'compact' : 'comfortable';} catch { /* Default spacing remains usable if browser storage is unavailable. */ return 'comfortable';}
+}
+function subscribeDensity(listener: () => void) {
+  densityListeners.add(listener);
+  window.addEventListener('storage', listener);
+  return () => {densityListeners.delete(listener); window.removeEventListener('storage', listener);};
+}
+const subscribeNothing = () => () => {};
+// Browser-only flag: false on the server and during hydration, true afterwards (avoids theme mismatches).
+function useMounted() {return useSyncExternalStore(subscribeNothing, () => true, () => false);}
 export function AppearanceProvider({children}: {children: React.ReactNode}) {
-  const [density, updateDensity] = useState<Density>('comfortable');
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('tradernova-density-v1');
-      if (saved === 'compact') {updateDensity(saved); document.documentElement.dataset.density = saved;}
-    } catch { /* Default spacing remains usable if browser storage is unavailable. */ }
-  }, []);
+  const density = useSyncExternalStore(subscribeDensity, readDensity, () => 'comfortable' as Density);
+  useEffect(() => {if (density === 'compact') document.documentElement.dataset.density = density;}, [density]);
   function setDensity(value: Density) {
-    updateDensity(value);
+    densityMemory = value;
     document.documentElement.dataset.density = value;
-    try {localStorage.setItem('tradernova-density-v1', value);} catch { /* Keep the session preference. */ }
+    try {localStorage.setItem(densityKey, value);} catch { /* Keep the session preference. */ }
+    densityListeners.forEach(listener => listener());
   }
   return <ThemeProvider attribute="class" defaultTheme="dark" themes={['essential', 'dark', 'light']} enableSystem storageKey="tradernova-theme-v1" disableTransitionOnChange>
     <DensityContext.Provider value={{density, setDensity}}>{children}<ThemeChrome/></DensityContext.Provider>
@@ -44,8 +55,7 @@ const themes = [
 ] as const;
 export function ThemeToggle() {
   const {theme, setTheme} = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
   const current = mounted ? themes.find(item => item.value === theme)?.title ?? 'Acompanhar o dispositivo' : '';
   return <DropdownMenu><DropdownMenuTrigger asChild>
     <button className="icon-button theme-toggle" aria-label="Escolher tema" title={current ? `Tema: ${current}` : 'Escolher tema'} disabled={!mounted}><Palette size={19}/></button>
@@ -61,8 +71,7 @@ export function ThemeToggle() {
 export function AppearanceSettings() {
   const {theme, setTheme} = useTheme();
   const {density, setDensity} = useContext(DensityContext);
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
   return <section className="panel padded appearance-panel" aria-labelledby="appearance-title">
     <div className="appearance-heading"><span className="appearance-icon"><Palette size={21}/></span><div><h2 id="appearance-title">Do seu jeito</h2><p>Escolha a aparência do seu TraderNova.</p></div></div>
     <RadioGroup className="theme-options" aria-label="Tema do aplicativo" value={mounted ? theme : undefined} onValueChange={setTheme} disabled={!mounted}>

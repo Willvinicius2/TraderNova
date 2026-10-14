@@ -1,5 +1,6 @@
 'use client';
 import {useEffect,useMemo,useRef,useState} from 'react';
+import {useNow} from '@/hooks/use-now';
 import {Bot,Radio,ShieldCheck} from 'lucide-react';
 import {toast} from 'sonner';
 import {useLiveMarket} from '@/hooks/use-live-market';
@@ -9,8 +10,7 @@ import './research-workspace.css';
 const format=(v:number)=>v.toLocaleString('pt-BR',{maximumFractionDigits:2});
 type Opportunity=NonNullable<ReturnType<typeof manualOpportunity>>;
 export function RobotWorkspace(){
- const [now,setNow]=useState(0),[signals,setSignals]=useState<Opportunity[]>([]),seen=useRef(new Set<string>());
- useEffect(()=>{setNow(Date.now());const timer=setInterval(()=>setNow(Date.now()),1000);return()=>clearInterval(timer);},[]);
+ const now=useNow(),[signals,setSignals]=useState<Opportunity[]>([]),seen=useRef(new Set<string>());
  const approved=researchCandidates.filter(c=>canAlertForManualTrade(c.id,now,strategyApprovals));
  const feed=useLiveMarket(approved.length>0,'BTCUSD',60),entry=feed.entries.BTCUSD;
  const snapshot=useMemo(()=>evaluatePaperEngine(entry?.bars??[],60,entry?.receivedAt??0,now),[entry,now]);
