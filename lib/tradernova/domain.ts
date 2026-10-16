@@ -1,3 +1,4 @@
+import type {ObservationSignal} from './paper-engine';
 export type AssetId = 'XAUUSD' | 'NAS100' | 'BTCUSD' | 'ETHUSD' | 'SOLUSD' | 'EURUSD' | 'USDJPY';
 export type Candle = { time: number; open: number; high: number; low: number; close: number; volume: number };
 export type Asset = { id: AssetId; name: string; mark: string; price: number; decimals: number; color: string; kind: string };
@@ -19,7 +20,9 @@ export const strategies = [
  {id:'S6',name:'Faixa de abertura',group:'Sessão',summary:'Expansão e reteste da faixa inicial, com foco no Nasdaq.',tags:['Opening range','Sessão'],rule:'Congelar a faixa após seu encerramento; calendário, sessão e horário de verão precisam ser configurados.',status:'Depende de dados'},
 ];
 export type Signal = {id:string;assetId:AssetId;direction:'Compra'|'Venda';createdAt:number;expiresAt:number;entry:number;stop:number;target:number;demo:true;strategyId:string};
-export type JournalEntry = {id:string;signal:Signal;decision:'Revisado'|'Ignorado';createdAt:number;note:string};
+export type JournalSignal = Signal|ObservationSignal;
+export type JournalEntry = {id:string;signal:JournalSignal;decision:'Revisado'|'Ignorado';createdAt:number;note:string};
+export function isObservationSignal(s:JournalSignal):s is ObservationSignal {return 'kind' in s&&s.kind==='observation';}
 export function makeSignal(asset:Asset,direction:'Compra'|'Venda'):Signal {
  const now=Date.now(), distance=asset.price*0.0025, side=direction==='Compra'?1:-1;
  return {id:crypto.randomUUID(),assetId:asset.id,direction,createdAt:now,expiresAt:now+60000,entry:asset.price,stop:asset.price-distance*side,target:asset.price+2*distance*side,demo:true,strategyId:'S1'};

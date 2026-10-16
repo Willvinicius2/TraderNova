@@ -23,5 +23,10 @@ try{
  assert.deepEqual(p.readObservationSignals([{...good,createdAt:now+60000}],now),[]);
  assert.deepEqual(p.readObservationSignals({a:1},now),[]);
  assert.equal(p.readObservationSignals(Array.from({length:250},(_,i)=>({...good,id:`x${i}`,createdAt:now-i})),now).length,200);
+ const st=m.storage.demoStorage,base={version:1,alertsOn:true,report:null},j=signal=>({id:'j1',signal,decision:'Revisado',createdAt:now,note:''});
+ assert.equal(st.safeParse({...base,journal:[j(good)]}).success,true);
+ assert.equal(st.safeParse({...base,journal:[j({id:'d',assetId:'XAUUSD',direction:'Compra',createdAt:now,expiresAt:now+60000,entry:1,stop:0.9,target:1.2,demo:true,strategyId:'S1'})]}).success,true);
+ assert.equal(st.safeParse({...base,journal:[j({...good,validated:true})]}).success,false);
+ assert.equal(st.safeParse({...base,signals:[],journal:[j(good)]}).success,true);
  console.log('Observation signals: unvalidated emission on BTC/ETH/SOL, freshness gates, no approval bypass and storage validation passed.');
 }finally{await m.cleanup();}
