@@ -3,6 +3,7 @@ import {closedCandles,countGaps} from './indicators';
 import {candidateSignals,researchCandidates,type CandidateId} from './research';
 import {z} from 'zod';
 import {activePresets} from './active-presets';
+import {liveAssetIds,type LiveAssetId} from './live-market';
 import {calibratedSignals,type StrategyParameters} from './calibration';
 export type EngineReading={candidateId:CandidateId;state:'waiting'|'buy'|'sell-excluded';signalTime:number;entryReference:number|null;stop:number|null;target:number|null;evidence:string[]};
 export type EngineSnapshot={status:'ready'|'blocked';reason:string;source:'kraken-spot';evaluatedAt:number;closedAt:number|null;readings:EngineReading[]};
@@ -108,4 +109,20 @@ export function manualOpportunity(snapshot:EngineSnapshot,candidate:CandidateId,
  const r=snapshot.readings.find(r=>r.candidateId===candidate&&r.state==='buy');if(!r||r.entryReference===null||r.stop===null)return null;
  const distance=r.entryReference-r.stop;if(distance<=0||quote.ask-distance<=0)return null;
  return {id:`${candidate}:${activePresets[candidate].id}:${snapshot.closedAt}`,candidateId:candidate,source:snapshot.source,assetId:simulationPreset.assetId,direction:'Compra' as const,entry:quote.ask,stop:quote.ask-distance,target:quote.ask+distance*activePresets[candidate].reward,createdAt:now,expiresAt:snapshot.closedAt+30000,evidence:r.evidence,signalTime:r.signalTime};
+}
+
+/** Observation signals: computed by the real engine, never validated, never tied to orders. */
+export type ObservationSignal={id:string;kind:'observation';validated:false;candidateId:CandidateId;presetId:string;source:'kraken-spot';assetId:LiveAssetId;direction:'Compra';entry:number;stop:number;target:number;createdAt:number;signalTime:number;closedAt:number;quoteAt:number;expiresAt:number;evidence:string[]};
+export function observationOpportunity(snapshot:EngineSnapshot,candidate:CandidateId,assetId:LiveAssetId,quote:{bid:number;ask:number;timestamp:number},now:number):ObservationSignal|null{
+ if(snapshot.status!=='ready'||snapshot.closedAt===null||now-snapshot.closedAt<0||now-snapshot.closedAt>30000||![quote.bid,quote.ask,quote.timestamp].every(Number.isFinite)||quote.bid<=0||quote.ask<quote.bid||quote.timestamp<snapshot.closedAt||now-quote.timestamp>30000||quote.timestamp>now+5000)return null;
+ const r=snapshot.readings.find(r=>r.candidateId===candidate&&r.state==='buy');if(!r||r.entryReference===null||r.stop===null)return null;
+ const distance=r.entryReference-r.stop;if(distance<=0||quote.ask-distance<=0)return null;
+ const preset=activePresets[candidate];
+ return {id:`obs:${assetId}:${candidate}:${preset.id}:${snapshot.closedAt}`,kind:'observation',validated:false,candidateId:candidate,presetId:preset.id,source:'kraken-spot',assetId,direction:'Compra',entry:quote.ask,stop:quote.ask-distance,target:quote.ask+distance*preset.reward,createdAt:now,signalTime:r.signalTime,closedAt:snapshot.closedAt,quoteAt:quote.timestamp,expiresAt:snapshot.closedAt+3600000,evidence:r.evidence};
+}
+export const observationStorageKey='tradernova-observation-v1';
+const observationSchema=z.object({id:z.string().max(120),kind:z.literal('observation'),validated:z.literal(false),candidateId:z.enum(['T1','T2','T3']),presetId:z.string().max(40),source:z.literal('kraken-spot'),assetId:z.enum(liveAssetIds as [LiveAssetId,...LiveAssetId[]]),direction:z.literal('Compra'),entry:positive,stop:positive,target:positive,createdAt:positive,signalTime:positive,closedAt:positive,quoteAt:positive,expiresAt:positive,evidence:z.array(z.string().max(300)).max(10)}).strict();
+export function readObservationSignals(raw:unknown,now:number):ObservationSignal[]{
+ if(!Array.isArray(raw))return [];
+ return raw.slice(0,200).flatMap(item=>{const p=observationSchema.safeParse(item);return p.success&&p.data.createdAt<=now+5000?[p.data as ObservationSignal]:[];}).sort((a,b)=>b.createdAt-a.createdAt);
 }
