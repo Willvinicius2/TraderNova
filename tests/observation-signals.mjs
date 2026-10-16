@@ -13,11 +13,15 @@ try{
  assert.equal(p.observationOpportunity(snapshot,'T3','BTCUSD',{...quote,timestamp:closedAt-1},now),null);
  assert.equal(p.observationOpportunity(snapshot,'T3','BTCUSD',{...quote,timestamp:closedAt+31000},closedAt+31000),null);
  assert.equal(p.observationOpportunity({...snapshot,readings:[{...snapshot.readings[0],state:'waiting'}]},'T3','BTCUSD',quote,now),null);
+ const e=p.observationOpportunity(snapshot,'T3','ETHUSD',quote,now);assert.ok(e);assert.equal(e.assetId,'ETHUSD');assert.ok(e.id.startsWith('obs:ETHUSD:'));assert.notEqual(e.id,s.id,'Same close on another asset is a distinct signal');
+ assert.equal(p.observationOpportunity(snapshot,'T3','SOLUSD',quote,now)?.assetId,'SOLUSD');
  const good=JSON.parse(JSON.stringify(s));
  assert.deepEqual(p.readObservationSignals([good],now),[good]);
+ assert.equal(p.readObservationSignals([{...good,assetId:'SOLUSD'},{...good,id:'y',assetId:'ETHUSD'}],now).length,2);
+ assert.deepEqual(p.readObservationSignals([{...good,assetId:'XAUUSD'}],now),[],'Assets without a live feed are rejected');
  assert.deepEqual(p.readObservationSignals([{...good,validated:true}],now),[]);
  assert.deepEqual(p.readObservationSignals([{...good,createdAt:now+60000}],now),[]);
  assert.deepEqual(p.readObservationSignals({a:1},now),[]);
  assert.equal(p.readObservationSignals(Array.from({length:250},(_,i)=>({...good,id:`x${i}`,createdAt:now-i})),now).length,200);
- console.log('Observation signals: unvalidated emission, freshness gates, no approval bypass and storage validation passed.');
+ console.log('Observation signals: unvalidated emission on BTC/ETH/SOL, freshness gates, no approval bypass and storage validation passed.');
 }finally{await m.cleanup();}
