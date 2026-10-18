@@ -36,6 +36,7 @@ Node 22.13+ e pnpm (usar a versão declarada em package.json). `pnpm --version` 
 `node tests/market-sources.mjs` verifica símbolos, períodos e recuperação dos widgets.
 `node tests/calibration-research.mjs` verifica indicadores, causalidade das três candidatas, execução e histórico de resultados.
 `pnpm exec tsc --noEmit` verifica tipos.
+`pnpm exec eslint .` verifica só o código do app: research/, vendor/, build/, dist/, outputs/, work/, public/ e mobile/ ficam fora do lint pela lista de ignorados em eslint.config.mjs.
 
 ## Status funcional
 Abra Mercado para acompanhar a conexão de BTC, ETH e SOL. Use M1/M5/M15/H1 e confira fonte e atualização. O gráfico nativo e dez leituras usam a mesma série; consultas periódicas recuperam dados quando o canal ao vivo está indisponível. Na aba Robô, gere um exemplo, clique em “Analisar”, faça a revisão e consulte o Diário. Em Estratégias, escolha T1, T2 ou T3 e prepare um teste no Laboratório. Escolha histórico real ou simulação, informe custos e consulte resultados, replay da própria amostra e exportação JSON. Os últimos 12 experimentos ficam neste navegador. Nenhuma estratégia é validada automaticamente.

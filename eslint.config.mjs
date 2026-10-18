@@ -12,6 +12,20 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Research outputs, vendored sources, build artifacts and external material
+    // are not app code: `eslint .` reports app/, components/, lib/, hooks/, db/
+    // and the root tooling (scripts/, tests/, config files) only.
+    "research/**",
+    "vendor/**",
+    "dist/**",
+    "outputs/**",
+    "work/**",
+    "public/**",
+    ".vinext/**",
+    ".wrangler/**",
+    ".claude/**",
+    // The mobile app is a separate package with its own tooling (mobile/).
+    "mobile/**",
   ]),
   {
     files: ["components/ui/**/*.{ts,tsx}", "hooks/use-mobile.ts"],
