@@ -28,7 +28,7 @@ O instalador da raiz preserva o `pnpm-lock.yaml` e funciona no Windows sem Bash.
 Base mobile web do laboratório de sinais com revisão humana. Mercado com integração pública à Kraken Spot para BTC/USD, ETH/USD e SOL/USD. Ouro, Nasdaq, EURUSD e USDJPY exibem cotações, gráficos e análise técnica via widgets TradingView/OANDA. Laboratório com três estratégias candidatas sobre histórico Kraken ou dados artificiais identificados. Sinais do robô e diário continuam demonstrativos; sem envio de ordens ou cobranças.
 
 ## Desenvolvimento
-Node 22.13+ e pnpm (usar a versão declarada em package.json). Instale preservando pnpm-lock.yaml. `pnpm dev` inicia o desenvolvimento; `pnpm build` gera a versão de produção. A hospedagem deste projeto é gerenciada por Sites.
+Node 22.13+ e pnpm (usar a versão declarada em package.json). `pnpm --version` na raiz deve imprimir 11.25.0: o pnpm global baixa essa versão sozinho para `%LOCALAPPDATA%\pnpm\.tools\pnpm`; se o wrapper falhar com "Failed to switch pnpm", apague essa pasta e rode de novo, ou instale direto com `npm install -g pnpm@11.25.0`. Instale preservando pnpm-lock.yaml. `pnpm dev` inicia o desenvolvimento; `pnpm build` gera a versão de produção. A hospedagem deste projeto é gerenciada por Sites.
 
 ## Verificações
 `node tests/core.mjs` verifica propriedades do motor e estados críticos.
