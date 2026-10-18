@@ -5,6 +5,8 @@ import type {AssetId} from '@/lib/tradernova/domain';
 import {chartWidgetOptions,technicalWidgetOptions,marketChartUrl,marketSources,widgetStatus,type WidgetState} from '@/lib/tradernova/market-sources';
 import {loadQuoteWidget} from '@/lib/tradernova/widget-loader';
 import './external-market.css';
+type WidgetOutcome={key:string;state:WidgetState};
+const widgetState=(online:boolean,visible:boolean,key:string,outcome:WidgetOutcome|null):WidgetState=>!online?'offline':!visible?'paused':outcome?.key===key?outcome.state:'loading';
 function useWidgetEnvironment(){
  const [environment,setEnvironment]=useState({online:true,visible:true,theme:'dark' as 'light'|'dark'});
  useEffect(()=>{
@@ -19,18 +21,19 @@ function useWidgetEnvironment(){
 
 export const ExternalQuote=memo(function ExternalQuote({asset}:{asset:AssetId}){
  const host=useRef<HTMLDivElement>(null),{online,visible,theme}=useWidgetEnvironment();
- const [state,setState]=useState<WidgetState>('loading'),[retry,setRetry]=useState(0);
+ const [outcome,setOutcome]=useState<WidgetOutcome|null>(null),[retry,setRetry]=useState(0);
+ const key=[asset,online,visible,theme,retry].join('|'),state=widgetState(online,visible,key,outcome);
  useEffect(()=>{
   const node=host.current;if(!node)return;node.replaceChildren();let cancelled=false;
-  if(!online||!visible){setState(!online?'offline':'paused');return;}
-  setState('loading');
+  if(!online||!visible)return;
+  const setState=(next:WidgetState)=>setOutcome({key,state:next});
   void loadQuoteWidget().then(()=>{
    if(cancelled)return;
    const quote=document.createElement('tv-single-ticker');quote.setAttribute('symbol',marketSources[asset].symbol);quote.setAttribute('theme',theme);quote.setAttribute('transparent','');
    node.appendChild(quote);setState('embedded');
   }).catch(()=>{if(!cancelled)setState('unavailable');});
   return()=>{cancelled=true;node.replaceChildren();};
- },[asset,online,visible,theme,retry]);
+ },[asset,online,visible,theme,retry,key]);
  return <div className="external-quote" aria-label={`Cotação de ${asset} por ${marketSources[asset].provider}`}>
   <div ref={host}/>
   {state!=='embedded'&&<div className="external-quote-message" role="status">{widgetStatus(state)}{state==='unavailable'&&<button className="text-button" onClick={()=>setRetry(n=>n+1)}><RefreshCw size={13}/> Recarregar</button>}</div>}
@@ -40,12 +43,13 @@ export const ExternalQuote=memo(function ExternalQuote({asset}:{asset:AssetId}){
 
 export function ExternalMarketPanel({asset,interval,onReturn}:{asset:AssetId;interval:string;onReturn?:()=>void}){
  const host=useRef<HTMLDivElement>(null),{online,visible,theme}=useWidgetEnvironment();
- const [state,setState]=useState<WidgetState>('loading'),[retry,setRetry]=useState(0);
+ const [outcome,setOutcome]=useState<WidgetOutcome|null>(null),[retry,setRetry]=useState(0);
+ const key=[asset,interval,theme,online,visible,retry].join('|'),state=widgetState(online,visible,key,outcome);
  const source=marketSources[asset];
  useEffect(()=>{
   const node=host.current;if(!node)return;node.replaceChildren();let cancelled=false,frame:HTMLIFrameElement|null=null;
-  if(!online||!visible){setState(!online?'offline':'paused');return;}
-  setState('loading');
+  if(!online||!visible)return;
+  const setState=(next:WidgetState)=>setOutcome({key,state:next});
   const wrapper=document.createElement('div');wrapper.className='tradingview-widget-container';wrapper.style.cssText='height:100%;width:100%';
   const content=document.createElement('div');content.className='tradingview-widget-container__widget';content.style.cssText='height:calc(100% - 32px);width:100%';wrapper.appendChild(content);
   const attribution=document.createElement('div');attribution.className='tradingview-widget-copyright';
@@ -59,7 +63,7 @@ export function ExternalMarketPanel({asset,interval,onReturn}:{asset:AssetId;int
   script.onerror=()=>{if(!cancelled){clearTimeout(timer);setState('unavailable');}};
   node.appendChild(wrapper);wrapper.appendChild(script);
   return()=>{cancelled=true;clearTimeout(timer);observer.disconnect();frame?.removeEventListener('load',loaded);script.onerror=null;node.replaceChildren();};
- },[asset,interval,theme,online,visible,retry,source.provider]);
+ },[asset,interval,theme,online,visible,retry,source.provider,key]);
  return <section className="external-market-panel">
   <div className="external-market-controls"><span className="tag">{widgetStatus(state)}</span><button className="text-button" onClick={()=>setRetry(n=>n+1)}><RefreshCw size={15}/> Recarregar painel</button><a className="text-button" href={marketChartUrl(asset)} target="_blank" rel="noopener noreferrer">Abrir fonte <ExternalLink size={14}/></a>{onReturn&&<button className="text-button" onClick={onReturn}>Voltar à conexão direta</button>}</div>
   <p className="external-market-description">{source.contract}. Confira o horário da cotação e o estado do mercado no próprio gráfico.</p>
@@ -72,11 +76,12 @@ export function ExternalMarketPanel({asset,interval,onReturn}:{asset:AssetId;int
 
 export function ExternalTechnicalIndicators({asset,interval}:{asset:AssetId;interval:string}){
  const host=useRef<HTMLDivElement>(null),{online,visible,theme}=useWidgetEnvironment();
- const [state,setState]=useState<WidgetState>('loading'),[retry,setRetry]=useState(0);
+ const [outcome,setOutcome]=useState<WidgetOutcome|null>(null),[retry,setRetry]=useState(0);
+ const key=[asset,interval,theme,online,visible,retry].join('|'),state=widgetState(online,visible,key,outcome);
  useEffect(()=>{
   const node=host.current;if(!node)return;node.replaceChildren();let cancelled=false,frame:HTMLIFrameElement|null=null;
-  if(!online||!visible){setState(!online?'offline':'paused');return;}
-  setState('loading');const wrapper=document.createElement('div');wrapper.className='tradingview-widget-container';
+  if(!online||!visible)return;
+  const setState=(next:WidgetState)=>setOutcome({key,state:next});const wrapper=document.createElement('div');wrapper.className='tradingview-widget-container';
   const body=document.createElement('div');body.className='tradingview-widget-container__widget';wrapper.appendChild(body);
   const attribution=document.createElement('a');attribution.className='tradingview-widget-copyright';attribution.href=marketChartUrl(asset);attribution.textContent='Análise técnica por TradingView';attribution.target='_blank';attribution.rel='noopener noreferrer';wrapper.appendChild(attribution);
   const script=document.createElement('script');script.src='https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js';script.async=true;script.textContent=JSON.stringify(technicalWidgetOptions(asset,interval,theme));
@@ -85,6 +90,6 @@ export function ExternalTechnicalIndicators({asset,interval}:{asset:AssetId;inte
   const observer=new MutationObserver(()=>{const found=wrapper.querySelector('iframe');if(found&&found!==frame){frame=found;frame.title=`Indicadores de ${asset} · ${interval} minutos`;frame.addEventListener('load',loaded,{once:true});}});
   observer.observe(wrapper,{childList:true,subtree:true});script.onerror=()=>{if(!cancelled){clearTimeout(timeout);setState('unavailable');}};node.appendChild(wrapper);wrapper.appendChild(script);
   return()=>{cancelled=true;clearTimeout(timeout);observer.disconnect();frame?.removeEventListener('load',loaded);script.onerror=null;node.replaceChildren();};
- },[asset,interval,theme,online,visible,retry]);
+ },[asset,interval,theme,online,visible,retry,key]);
  return <section className="panel external-analysis-panel"><div className="section-heading"><div><h2>Indicadores da fonte</h2><p className="micro">{marketSources[asset].symbol} · {interval==='60'?'H1':`M${interval}`} · TradingView</p></div><button className="text-button" onClick={()=>setRetry(n=>n+1)}><RefreshCw size={15}/>Recarregar</button></div><p className="external-market-description">O resumo e os valores abaixo pertencem ao mesmo instrumento e período solicitados no gráfico. “Compra” e “Venda” aqui são classificações da fonte, não sinais validados do TraderNova.</p>{state!=='embedded'&&<p className="external-market-message" role="status">{widgetStatus(state)}. {state==='unavailable'?'Abra a fonte caso o navegador ou o provedor bloqueie o painel.':''}</p>}<div ref={host} className="external-analysis-host"/><p className="micro">Horário e disponibilidade informados pela fonte. Estes valores são exibidos pelo painel externo; a leitura automática para testes de ouro, Nasdaq e forex depende de uma API de mercado.</p></section>;
 }

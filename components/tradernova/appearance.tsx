@@ -1,6 +1,6 @@
 'use client';
 
-import {createContext, useContext, useEffect, useState} from 'react';
+import {createContext, useContext, useEffect, useState, useSyncExternalStore} from 'react';
 import {ThemeProvider, useTheme} from 'next-themes';
 import {Check, Monitor, Moon, Palette, Sun, Zap} from 'lucide-react';
 import {Toaster} from 'sonner';
@@ -10,15 +10,19 @@ import {DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuRadioG
 import './appearance.css';
 
 type Density = 'comfortable' | 'compact';
+const subscribeNoop = () => () => {};
+function useMounted() {return useSyncExternalStore(subscribeNoop, () => true, () => false);}
 const DensityContext = createContext<{density: Density; setDensity: (value: Density) => void}>({density: 'comfortable', setDensity: () => {}});
 export function AppearanceProvider({children}: {children: React.ReactNode}) {
   const [density, updateDensity] = useState<Density>('comfortable');
+  /* eslint-disable react-hooks/set-state-in-effect -- Restores browser-only state (localStorage/URL/document) after mount; a lazy initializer would break hydration. */
   useEffect(() => {
     try {
       const saved = localStorage.getItem('tradernova-density-v1');
       if (saved === 'compact') {updateDensity(saved); document.documentElement.dataset.density = saved;}
     } catch { /* Default spacing remains usable if browser storage is unavailable. */ }
   }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
   function setDensity(value: Density) {
     updateDensity(value);
     document.documentElement.dataset.density = value;
@@ -44,8 +48,7 @@ const themes = [
 ] as const;
 export function ThemeToggle() {
   const {theme, setTheme} = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
   const current = mounted ? themes.find(item => item.value === theme)?.title ?? 'Acompanhar o dispositivo' : '';
   return <DropdownMenu><DropdownMenuTrigger asChild>
     <button className="icon-button theme-toggle" aria-label="Escolher tema" title={current ? `Tema: ${current}` : 'Escolher tema'} disabled={!mounted}><Palette size={19}/></button>
@@ -61,8 +64,7 @@ export function ThemeToggle() {
 export function AppearanceSettings() {
   const {theme, setTheme} = useTheme();
   const {density, setDensity} = useContext(DensityContext);
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
   return <section className="panel padded appearance-panel" aria-labelledby="appearance-title">
     <div className="appearance-heading"><span className="appearance-icon"><Palette size={21}/></span><div><h2 id="appearance-title">Do seu jeito</h2><p>Escolha a aparência do seu TraderNova.</p></div></div>
     <RadioGroup className="theme-options" aria-label="Tema do aplicativo" value={mounted ? theme : undefined} onValueChange={setTheme} disabled={!mounted}>

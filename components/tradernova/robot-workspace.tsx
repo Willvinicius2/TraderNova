@@ -13,6 +13,7 @@ function download(data:unknown,name:string){const url=URL.createObjectURL(new Bl
 function load(){try{return readObservationSignals(JSON.parse(localStorage.getItem(observationStorageKey)||'[]'),Date.now());}catch{return [];}}
 export function RobotWorkspace({alertsOn=true,onReview,decided}:{alertsOn?:boolean;onReview?:(s:ObservationSignal)=>void;decided?:Record<string,'Revisado'|'Ignorado'>}){
  const [now,setNow]=useState(0),[signals,setSignals]=useState<ObservationSignal[]>([]),[ready,setReady]=useState(false),[storageError,setStorageError]=useState(false),seen=useRef(new Set<string>()),current=useRef<ObservationSignal[]>([]);
+ // eslint-disable-next-line react-hooks/set-state-in-effect -- Restores browser-only state (localStorage/URL/document) after mount; a lazy initializer would break hydration.
  useEffect(()=>{const data=load();current.current=data;setSignals(data);seen.current=new Set(data.map(s=>s.id));setNow(marketNow());setReady(true);const timer=setInterval(()=>setNow(marketNow()),1000);return()=>clearInterval(timer);},[]);
  const feed=useLiveMarket(true,'BTCUSD',60),entries=feed.entries;
  const snapshots=useMemo(()=>Object.fromEntries(liveAssetIds.map(id=>{const entry=entries[id];return [id,evaluatePaperEngine(entry?.bars??[],60,(feed.clockReady?entry?.receivedAt:0)??0,now)];})) as Record<LiveAssetId,EngineSnapshot>,[entries,feed.clockReady,now]);

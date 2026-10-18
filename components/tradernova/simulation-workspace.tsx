@@ -26,7 +26,7 @@ export function StudyOverview({onChoose}:{onChoose:(id:CandidateId)=>void}){retu
 
 export function SimulationWorkspace({initialCandidate='T3',robot=false,alertsOn=true}:{initialCandidate?:CandidateId;robot?:boolean;alertsOn?:boolean}){
  const [candidate,setCandidate]=useState<CandidateId>(initialCandidate),[mode,setMode]=useState<'backtest'|'live'>(robot?'live':'backtest');
- useEffect(()=>setCandidate(initialCandidate),[initialCandidate]);
+ const [syncedCandidate,setSyncedCandidate]=useState(initialCandidate);if(initialCandidate!==syncedCandidate){setSyncedCandidate(initialCandidate);setCandidate(initialCandidate);}
  return <><div className="robot-overview panel"><div className="row"><span className="robot-icon large">{robot?<Bot size={30}/>:<FlaskConical size={30}/>}</span><div><h2>{robot?'Motor de estratégias':'Iniciar uma simulação'}</h2><p>Estratégias preparadas. Parâmetros definidos pela pesquisa.</p></div></div><span className="tag amber">Nenhuma validada</span></div>
  <div className="simulation-controls panel padded"><label className="field-label" htmlFor="ready-strategy">Escolha a estratégia</label><Select value={candidate} onValueChange={v=>setCandidate(v as CandidateId)}><SelectTrigger id="ready-strategy" className="picker"><SelectValue/></SelectTrigger><SelectContent>{researchCandidates.map(c=><SelectItem key={c.id} value={c.id}>{c.id} · {c.name}</SelectItem>)}</SelectContent></Select><p className="micro research-form-note">Preset de pesquisa: Bitcoin · H1 · compras spot · risco de até 0,5%. {presetDescription(activePresets[candidate])}. Não é o contrato MT5 da mesa.</p>
  <div className="two-buttons simulation-modes"><button className={mode==='backtest'?'primary-button':'secondary-button'} aria-pressed={mode==='backtest'} onClick={()=>setMode('backtest')}><FlaskConical size={18}/>Backtest</button><button className={mode==='live'?'primary-button':'secondary-button'} aria-pressed={mode==='live'} onClick={()=>setMode('live')}><Radio size={18}/>Simulação em tempo real</button></div></div>
@@ -63,7 +63,9 @@ function ForwardSimulation({candidate,alertsOn}:{candidate:CandidateId;alertsOn:
  const current=useRef<PaperSession|null>(null),lastAlert=useRef('');
  const feed=useLiveMarket(enabled,'BTCUSD',60),entry=feed.entries.BTCUSD;
  const snapshot=useMemo(()=>evaluatePaperEngine(entry?.bars??[],60,(feed.clockReady?entry?.receivedAt:0)??0,now),[entry,feed.clockReady,now]);
+ // eslint-disable-next-line react-hooks/set-state-in-effect -- Clock starts after mount so server and client markup match.
  useEffect(()=>{setNow(marketNow());const t=setInterval(()=>setNow(marketNow()),1000);return()=>clearInterval(t);},[]);
+ // eslint-disable-next-line react-hooks/set-state-in-effect -- Restores browser-only state (localStorage/URL/document) after mount; a lazy initializer would break hydration.
  useEffect(()=>{try{const old=localStorage.getItem(`tradernova-forward-${candidate}-E0X0-archive`);if(old)setArchived(readPaperSession(JSON.parse(old),candidate));const raw=localStorage.getItem(`tradernova-forward-${candidate}-v1`);if(raw){const value=readPaperSession(JSON.parse(raw),candidate);if(value){current.current=value;setSession(value);}else setStorageError(true);}}catch{setStorageError(true);}},[candidate]);
  useEffect(()=>{
   if(!feed.clockReady||!enabled||!current.current||!entry?.ticker||document.hidden||!navigator.onLine)return;
@@ -75,6 +77,7 @@ function ForwardSimulation({candidate,alertsOn}:{candidate:CandidateId;alertsOn:
   try{localStorage.setItem(`tradernova-forward-${candidate}-v1`,JSON.stringify(next));}catch{setStorageError(true);}
  },[enabled,entry,snapshot,now,candidate,feed.clockReady,alertsOn]);
  function start(){if(enabled){setEnabled(false);return;}if(current.current&&(current.current.presetId??`${candidate}-E0X0`)!==activePresets[candidate].id&&!current.current.position){try{localStorage.setItem(`tradernova-forward-${candidate}-${current.current.presetId??`${candidate}-E0X0`}-archive`,JSON.stringify(current.current));setArchived(current.current);current.current=null;}catch{setStorageError(true);return;}}setEnabled(true);}
+ // eslint-disable-next-line react-hooks/set-state-in-effect -- Records signals as the live feed updates; the feed exposes state, not events.
  useEffect(()=>{if(!enabled||!feed.clockReady||current.current)return;const next=newPaperSession(candidate,marketNow());current.current=next;setSession(next);try{localStorage.setItem(`tradernova-forward-${candidate}-v1`,JSON.stringify(next));}catch{setStorageError(true);}},[enabled,feed.clockReady,candidate]);
  const legacy=!!session&&(session.presetId??`${candidate}-E0X0`)!==activePresets[candidate].id;
  const quoteFresh=!!entry?.ticker&&now-entry.ticker.timestamp<=30000;

@@ -5,7 +5,7 @@ import {Tabs,TabsList,TabsTrigger} from '@/components/ui/tabs';
 import {Sheet,SheetContent,SheetHeader,SheetTitle,SheetDescription} from '@/components/ui/sheet';
 import {Switch} from '@/components/ui/switch';
 import {Progress} from '@/components/ui/progress';
-import {assets,createCandles,ema,atr,rsi,formatPrice,type AssetId,type Asset} from '@/lib/tradernova/domain';
+import {assets,createCandles,ema,atr,rsi,formatPrice,type AssetId,type Asset,type Candle} from '@/lib/tradernova/domain';
 import {isLiveAsset,livePairs,displayedPrice,feedLabel,type MarketEntry} from '@/lib/tradernova/live-market';
 import {useLiveMarket} from '@/hooks/use-live-market';
 import {marketNow} from '@/lib/tradernova/market-clock';
@@ -22,19 +22,21 @@ function Price({value,asset,animate=true}:{value:number|null;asset:Asset;animate
  return <span className={`moving-price ${direction}`}><span key={value}>{value===null?'—':formatPrice(value,asset)}</span>{direction==='quote-up'?<ArrowUpRight size={15}/>:direction==='quote-down'?<ArrowDownRight size={15}/>:null}</span>;
 }
 function Status({label}:{label:string}){return <span className={`feed-status ${label==='Ao vivo'?'is-live':''}`}><i/>{label}</span>;}
+const noBars:Candle[]=[];
 export function MarketDashboard({onRobot}:{onRobot:()=>void}){
  const [externalAsset,setExternalAsset]=useState<AssetId|null>(null);
  const [mode,setMode]=useState('live'),[selected,setSelected]=useState<AssetId>('BTCUSD'),[frame,setFrame]=useState('1'),[showEma,setShowEma]=useState(true),[showVolume,setShowVolume]=useState(true),[indicatorsOpen,setIndicatorsOpen]=useState(false),[now,setNow]=useState(0);
  const isLive=mode==='live',supported=isLiveAsset(selected),external=isLive&&(!supported||externalAsset===selected),source=marketSources[selected],asset=assets.find(a=>a.id===selected)!,interval=Number(frame);
  const live=useLiveMarket(isLive,selected,interval),entry=supported?live.entries[selected]:undefined;
  const examples=useMemo(()=>Object.fromEntries(assets.map(a=>[a.id,createCandles(a,240,interval)])),[interval]);
- const bars=isLive?(entry?.bars??[]):examples[selected],last=bars.at(-1),price=isLive?displayedPrice(entry):(last?.close??null),status=isLive?(external?'Painel externo':feedLabel(live.connection,entry,now,interval)):'Demonstração';
+ const bars=isLive?(entry?.bars??noBars):examples[selected],last=bars.at(-1),price=isLive?displayedPrice(entry):(last?.close??null),status=isLive?(external?'Painel externo':feedLabel(live.connection,entry,now,interval)):'Demonstração';
  const ticker=entry?.ticker,tickerFresh=live.clockReady&&!!ticker&&now-ticker.timestamp<30000&&ticker.timestamp<=now+5000;
  const demoChange=last&&bars.length>24?(last.close/bars[bars.length-25].close-1)*100:null;
  const change=isLive?(tickerFresh?ticker?.changePct??null:null):demoChange;
- const priceValues=useMemo(()=>bars.map(b=>b.close),[bars]),ema20=useMemo(()=>ema(priceValues,20).at(-1)??null,[priceValues]),atr14=useMemo(()=>atr(bars).at(-1)??null,[bars]),rsi14=useMemo(()=>rsi(bars),[bars]);
+ const ema20=useMemo(()=>ema(bars.map(b=>b.close),20).at(-1)??null,[bars]),atr14=useMemo(()=>atr(bars).at(-1)??null,[bars]),rsi14=useMemo(()=>rsi(bars),[bars]);
  const marketIndicators=[{name:'EMA 20',value:ema20===null?'—':formatPrice(ema20,asset),desc:'Tendência',tone:'positive'},{name:'RSI 14',value:rsi14===null?'—':num(rsi14,1),desc:'Momento',tone:'purple'},{name:'ATR 14',value:atr14===null?'—':formatPrice(atr14,asset),desc:'Amplitude',tone:'amber'},{name:'POC',value:'Pendente',desc:'Perfil ainda não implementado',tone:'muted'}];
  const remaining=last?Math.max(0,Math.ceil((last.time+interval*60000-now)/1000)):0,mm=Math.floor(remaining/60),ss=remaining%60;
+ // eslint-disable-next-line react-hooks/set-state-in-effect -- Clock starts after mount so server and client markup match.
  useEffect(()=>{setNow(marketNow());const t=setInterval(()=>setNow(marketNow()),1000);return()=>clearInterval(t);},[]);
  const age=entry?.receivedAt?Math.max(0,Math.floor((now-entry.receivedAt)/1000)):null;
  const time=(t:number)=>new Date(t).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
