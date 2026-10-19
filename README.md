@@ -2,6 +2,8 @@
 
 Laboratório de sinais com revisão humana: acompanha o mercado, pesquisa estratégias e registra decisões. Web na raiz; app Android/iPhone em [`mobile/`](mobile/README.md), que embute a interface publicada. Sinais são exemplos de pesquisa: nenhuma estratégia está aprovada e o app não envia ordens nem cobra.
 
+**Plano de entrega:** [`ROADMAP.md`](ROADMAP.md) (fases, tarefas e decisões pendentes) e [`docs/EQUIPE.md`](docs/EQUIPE.md) (papéis da equipe).
+
 ## Requisitos e instalação
 
 - Node >= 22.13 (pnpm na versão de `package.json`; o instalador cuida disso).
