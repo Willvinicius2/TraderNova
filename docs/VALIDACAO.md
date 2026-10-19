@@ -9,7 +9,7 @@
 
 Os testes não aprovam estratégias financeiras. Nenhum backtest histórico externo relatado nos chats foi reproduzido nesta entrega.
 
-`ci.github-actions.yml` é um modelo opcional de automação. Não está habilitado em `.github/workflows` nesta entrega.
+O CI está habilitado em [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (Fase 1, issue #9): web (tipos, lint, testes), RLS das migrações num Postgres descartável e mobile (tipos, testes, exportação).
 
 ## Etapa posterior — motor e simulações
 

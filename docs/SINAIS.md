@@ -12,6 +12,12 @@ Contrato único de um sinal e o caminho que ele percorre até a ficha no app. S�
 
 ## Fluxo
 ```
+worker (research) --signal-store supabase -> tabela public.research_signals (Supabase, chave de serviço)
+   -> app: GET /api/signals/:id  lê com TRADERNOVA_SUPABASE_READ_KEY (só no servidor)
+   -> ficha na aba Robô
+```
+Sem Supabase configurado, o caminho local continua valendo:
+```
 worker (research) -> signals/*.jsonl (armazém em arquivo)
    -> servidor de leitura do worker  GET http://127.0.0.1:8790/signals/:id
    -> app: GET /api/signals/:id  (app/api/signals/[id]/route.ts)
@@ -21,10 +27,18 @@ worker (research) -> signals/*.jsonl (armazém em arquivo)
 - **Rota `/api/signals/[id]`** (somente GET, `Cache-Control: no-store`): valida o UUID, lê pelo adaptador escolhido por ambiente, valida o registro com `signalRecordSchema` e devolve `{state, record?}`. Registro malformado, outro `publicId`, erro HTTP, corpo grande demais ou tempo esgotado (3 s) viram `source-unavailable`, nunca um sinal. Sem a variável abaixo, responde `503 source-unavailable/not-configured`: nunca há exemplo ou fixture no lugar. A autorização por usuário ainda não existe (`unauthorized` não sai hoje); o ponto de encaixe está em `lookupSignal(..., authorize)`.
 - **Ficha**: abre quando a página carrega com `sinal=<id>` (força a aba Robô) e mostra carregando, ativo (ativo, direção, fonte, timeframe, estratégia/versão, geração, validade com contagem, entrada, stop, alvo, evidências e selo do modo), expirado, invalidado (com motivo), não encontrado ("Sinal não encontrado. Nenhum sinal foi criado no lugar."), ID inválido e fonte indisponível ("A fonte de sinais não está conectada neste ambiente."). O texto digitado em `sinal` nunca é exibido. A busca antiga em `tradernova-demo-v1` foi removida; os exemplos de demonstração do Diário continuam locais, mas já não geram `?sinal=`.
 
+## Supabase (Fase 1)
+Migração [`202610190001_research_signals.sql`](../supabase/migrations/202610190001_research_signals.sql): tabela `public.research_signals` com as mesmas colunas do contrato (tempos em ms, `dedup_key` única, checagem de coerência entrada/stop/alvo, `mode` só `research|test|alert`). RLS ligado: `anon` não lê nada, `authenticated` só lê, apenas `service_role` grava. O adaptador ([`supabase-signals.ts`](../lib/tradernova/supabase-signals.ts)) usa o PostgREST com tempo limite de 5 s e trata linha inválida, mais de uma linha, erro HTTP ou corpo grande como `source-unavailable`. A gravação do worker é idempotente (`on_conflict=dedup_key`, duplicata devolve o registro existente).
+
+Na Fase 1 a rota lê com uma chave de servidor porque ainda não há login. Na Fase 2 ela passa a usar o token do usuário e o RLS decide o acesso.
+
 ## Variáveis de ambiente
 | Variável | Onde | Efeito |
 |---|---|---|
-| `TRADERNOVA_SIGNAL_SOURCE_URL` | app web | URL base do worker (ex.: `http://127.0.0.1:8790`). Ausente ou não http/https: fonte não conectada. |
+| `TRADERNOVA_SUPABASE_URL` | app web e worker | URL do projeto (`https://<ref>.supabase.co`; `http` só em localhost para testes). |
+| `TRADERNOVA_SUPABASE_READ_KEY` | app web (servidor) | Chave usada pela rota para ler `research_signals`. Com URL + esta chave, o Supabase tem prioridade sobre o worker local. Nunca vai para o navegador nem para o app. |
+| `TRADERNOVA_SUPABASE_SERVICE_KEY` | worker | Chave de serviço para gravar sinais (`--signal-store supabase`). Só no processo do worker; a rota nunca a usa. |
+| `TRADERNOVA_SIGNAL_SOURCE_URL` | app web | URL base do worker (ex.: `http://127.0.0.1:8790`), usada quando o Supabase não está configurado. Ausente ou não http/https: fonte não conectada. |
 | `TRADERNOVA_WORKER_HTTP_PORT` | worker | Porta do servidor de leitura (padrão 8790). |
 
 O app roda no runtime do Cloudflare (workerd): variáveis do shell **não** chegam à rota por padrão. Use um arquivo `.env` na raiz (ignorado pelo git) ou `CLOUDFLARE_INCLUDE_PROCESS_ENV=true` junto com a variável.
@@ -48,7 +62,7 @@ npm run dev
 Abra `http://localhost:5173/?aba=robo&sinal=<uuid>` com um `publicId` de `worker-data\signals\*.jsonl`. Um UUID desconhecido mostra "não encontrado"; sem a variável, "fonte não conectada". Também dá para consultar direto: `Invoke-RestMethod http://localhost:5173/api/signals/<uuid>`.
 
 ## Ainda não existe
-Supabase substituirá o armazém em arquivo (a rota passa a usar outro adaptador de `SignalSource`); login/autorização por usuário; hospedar o worker; push; sinais `alert`.
+Migração aplicada no projeto Supabase real (depende do acesso, issue #14); login/autorização por usuário; hospedar o worker; push; sinais `alert`.
 
 ## Testes
-`tests/signal-record.mjs` (contrato), `tests/signal-route.mjs` (rota com `fetch` simulado, modelo da ficha, servidor de leitura do worker em porta efêmera e regressão do ID do motor), `tests/worker.mjs` e `mobile/tests/site.mjs` (deep link só com UUID).
+`tests/signal-record.mjs` (contrato), `tests/signal-route.mjs` (rota com `fetch` simulado, modelo da ficha, servidor de leitura do worker em porta efêmera e regressão do ID do motor), `tests/supabase-signals.mjs` (adaptador Supabase com `fetch` simulado: leitura, prioridade de ambiente, gravação idempotente), `npm run test:rls` (migrações e RLS num Postgres descartável, ver `supabase/tests/`), `tests/worker.mjs` e `mobile/tests/site.mjs` (deep link só com UUID).

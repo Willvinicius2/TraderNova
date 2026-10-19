@@ -1,9 +1,10 @@
 import {isPublicSignalId,resolveSignalView,signalRecordSchema,type SignalRecord,type SignalView} from './signal-record';
+import {SupabaseSignalError,supabaseSignalSource,supabaseSignalsFromEnv} from './supabase-signals';
 // Leitura server-side de um sinal persistido por um adaptador EXPLÍCITO escolhido por ambiente. Sem fonte configurada nada é inventado. Ver docs/SINAIS.md.
 export type SourceUnavailableReason='not-configured'|'unreachable'|'invalid-response';
 export type SignalApiResponse=SignalView|{state:'source-unavailable';reason:SourceUnavailableReason};
 export type SignalSource={read(id:string):Promise<SignalRecord|null>};
-export type SourceFetch=(url:string,init:{signal:AbortSignal;headers:Record<string,string>;redirect:'manual'})=>Promise<{ok:boolean;status:number;text():Promise<string>}>;
+export type SourceFetch=(url:string,init:{method?:'GET'|'POST';signal:AbortSignal;headers:Record<string,string>;body?:string;redirect:'manual'})=>Promise<{ok:boolean;status:number;text():Promise<string>}>;
 export class SourceError extends Error{constructor(readonly reason:Exclude<SourceUnavailableReason,'not-configured'>){super(reason);}}
 const maxBody=65536;
 // Adaptador do worker local (GET /signals/:id). 404 = sem registro; qualquer outra falha, timeout ou corpo inválido vira SourceError.
@@ -21,8 +22,16 @@ export function workerHttpSource(baseUrl:string,fetchFn:SourceFetch,timeoutMs=30
   }catch{throw new SourceError('invalid-response');}
  }};
 }
-// Escolha do adaptador: só TRADERNOVA_SIGNAL_SOURCE_URL (http/https). Ausente ou inválida = null (fonte não conectada).
+// Adaptador do Supabase (tabela research_signals). Erros do cliente viram SourceError com o mesmo motivo.
+export function supabaseSource(cfg:Parameters<typeof supabaseSignalSource>[0]):SignalSource{
+ const source=supabaseSignalSource(cfg);
+ return {async read(id){try{return await source.read(id);}catch(error){throw new SourceError(error instanceof SupabaseSignalError?error.reason:'unreachable');}}};
+}
+// Escolha do adaptador: Supabase (TRADERNOVA_SUPABASE_URL + TRADERNOVA_SUPABASE_READ_KEY, só no servidor) tem prioridade;
+// senão TRADERNOVA_SIGNAL_SOURCE_URL (worker local, http/https). Nada configurado ou inválido = null (fonte não conectada).
 export function signalSourceFromEnv(env:Record<string,string|undefined>,fetchFn:SourceFetch):SignalSource|null{
+ const supabase=supabaseSignalsFromEnv(env,'TRADERNOVA_SUPABASE_READ_KEY',fetchFn);
+ if(supabase)return supabaseSource(supabase);
  const raw=env.TRADERNOVA_SIGNAL_SOURCE_URL?.trim();if(!raw)return null;
  try{const url=new URL(raw);if(url.protocol!=='http:'&&url.protocol!=='https:')return null;return workerHttpSource(url.href,fetchFn);}catch{return null;}
 }

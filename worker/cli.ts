@@ -1,6 +1,7 @@
 import {appendFileSync, mkdirSync} from 'node:fs';
 import path from 'node:path';
 import {parseConfig} from './config';
+import {supabaseSignalStore, supabaseSignalsFromEnv} from '../lib/tradernova/supabase-signals';
 import {createLogger, type Logger} from './log';
 import {startSignalReadServer} from './http';
 import {createWorker} from './worker';
@@ -22,10 +23,21 @@ export async function main(argv: string[], env: Record<string, string | undefine
     sinks.push((line) => appendFileSync(file, `${line}\n`));
   }
   const log: Logger = createLogger(sinks, {provider: 'kraken-spot', symbol: config.pair, interval: config.interval});
-  const worker = await createWorker({config, log, fetch: (url, init) => fetch(url, init)});
-  // Leitura de sinais por HTTP (só 127.0.0.1) apenas no laço contínuo; --once nunca abre porta.
+  // Supabase: chave de serviço SÓ por variável de ambiente (nunca flag, para não ficar no histórico do shell).
+  let signalStore;
+  if (config.signalStore === 'supabase') {
+    const supabase = supabaseSignalsFromEnv(env, 'TRADERNOVA_SUPABASE_SERVICE_KEY', (url, init) => fetch(url, init));
+    if (!supabase) {
+      log.error('configuracao_invalida', {error: 'Defina TRADERNOVA_SUPABASE_URL (https) e TRADERNOVA_SUPABASE_SERVICE_KEY para usar --signal-store supabase.'});
+      return 2;
+    }
+    signalStore = supabaseSignalStore(supabase);
+  }
+  const worker = await createWorker({config, log, fetch: (url, init) => fetch(url, init), signalStore});
+  // Leitura de sinais por HTTP (só 127.0.0.1) apenas no laço contínuo e com armazém em arquivo; --once nunca abre porta.
+  // Com Supabase a ficha lê direto do banco (/api/signals com TRADERNOVA_SUPABASE_READ_KEY).
   let reader: Awaited<ReturnType<typeof startSignalReadServer>> | null = null;
-  if (!config.once && config.httpPort !== null) {
+  if (!config.once && config.httpPort !== null && config.signalStore === 'file') {
     try { reader = await startSignalReadServer({signalsDir: path.join(config.dataDir, 'signals'), port: config.httpPort, log}); } catch (error) {
       log.error('http_nao_iniciou', {port: config.httpPort, error: error instanceof Error ? error.message : String(error), reason: 'Use --http-port com outra porta ou --no-http.'});
       return 2;
@@ -34,7 +46,7 @@ export async function main(argv: string[], env: Record<string, string | undefine
   }
   const stop = new AbortController();
   for (const sig of ['SIGINT', 'SIGTERM'] as const) process.on(sig, () => { if (!stop.signal.aborted) log.info('encerrando', {signal: sig, reason: 'O ciclo atual será concluído antes de sair.'}); stop.abort(); });
-  log.info('worker_iniciado', {mode: config.once ? 'once' : 'loop', poll_seconds: config.pollSeconds, data_dir: path.resolve(config.dataDir), signal_mode: 'research'});
+  log.info('worker_iniciado', {mode: config.once ? 'once' : 'loop', poll_seconds: config.pollSeconds, data_dir: path.resolve(config.dataDir), signal_mode: 'research', signal_store: config.signalStore});
   let exit = 0;
   do {
     try {

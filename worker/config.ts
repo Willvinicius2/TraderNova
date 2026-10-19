@@ -1,10 +1,10 @@
 import {isLiveAsset, livePairs, type LiveAssetId} from '../lib/tradernova/live-market';
 export const allowedIntervals = [15, 60] as const;
-export type WorkerConfig = {pair: LiveAssetId; interval: 15 | 60; dataDir: string; pollSeconds: number; logFile: string | null; once: boolean; httpPort: number | null};
+export type WorkerConfig = {pair: LiveAssetId; interval: 15 | 60; dataDir: string; pollSeconds: number; logFile: string | null; once: boolean; httpPort: number | null; signalStore: 'file' | 'supabase'};
 export const provider = 'kraken-spot' as const;
 export const krakenSymbol = (pair: LiveAssetId) => livePairs[pair].rest;
-const flagNames: Record<string, keyof WorkerConfig> = {'--pair': 'pair', '--interval': 'interval', '--data-dir': 'dataDir', '--poll-seconds': 'pollSeconds', '--log-file': 'logFile', '--http-port': 'httpPort'};
-const envNames: Record<string, keyof WorkerConfig> = {TRADERNOVA_WORKER_PAIR: 'pair', TRADERNOVA_WORKER_INTERVAL: 'interval', TRADERNOVA_WORKER_DATA_DIR: 'dataDir', TRADERNOVA_WORKER_POLL_SECONDS: 'pollSeconds', TRADERNOVA_WORKER_LOG_FILE: 'logFile', TRADERNOVA_WORKER_HTTP_PORT: 'httpPort'};
+const flagNames: Record<string, keyof WorkerConfig> = {'--pair': 'pair', '--interval': 'interval', '--data-dir': 'dataDir', '--poll-seconds': 'pollSeconds', '--log-file': 'logFile', '--http-port': 'httpPort', '--signal-store': 'signalStore'};
+const envNames: Record<string, keyof WorkerConfig> = {TRADERNOVA_WORKER_PAIR: 'pair', TRADERNOVA_WORKER_INTERVAL: 'interval', TRADERNOVA_WORKER_DATA_DIR: 'dataDir', TRADERNOVA_WORKER_POLL_SECONDS: 'pollSeconds', TRADERNOVA_WORKER_LOG_FILE: 'logFile', TRADERNOVA_WORKER_HTTP_PORT: 'httpPort', TRADERNOVA_WORKER_SIGNAL_STORE: 'signalStore'};
 /** Prioridade: flags da linha de comando > variáveis de ambiente > padrões. Lança Error com mensagem em português. */
 export function parseConfig(argv: string[], env: Record<string, string | undefined> = {}): WorkerConfig {
   const raw: Partial<Record<keyof WorkerConfig, string>> = {};
@@ -29,5 +29,7 @@ export function parseConfig(argv: string[], env: Record<string, string | undefin
   if (!Number.isFinite(pollSeconds) || pollSeconds < 5 || pollSeconds > 600) throw new Error('O intervalo de consulta deve ficar entre 5 e 600 segundos.');
   const httpPort = Number(raw.httpPort ?? 8790);
   if (!Number.isInteger(httpPort) || httpPort < 1 || httpPort > 65535) throw new Error('A porta HTTP de leitura deve ficar entre 1 e 65535.');
-  return {pair, interval: interval as 15 | 60, dataDir: raw.dataDir ?? 'worker-data', pollSeconds, logFile: raw.logFile ?? null, once, httpPort: noHttp ? null : httpPort};
+  const signalStore = (raw.signalStore ?? 'file').toLowerCase();
+  if (signalStore !== 'file' && signalStore !== 'supabase') throw new Error(`Armazém de sinais não suportado: ${raw.signalStore}. Use file ou supabase.`);
+  return {pair, interval: interval as 15 | 60, dataDir: raw.dataDir ?? 'worker-data', pollSeconds, logFile: raw.logFile ?? null, once, httpPort: noHttp ? null : httpPort, signalStore};
 }
