@@ -32,8 +32,12 @@ Opções (flag > variável de ambiente > padrão):
 | `--data-dir` | `TRADERNOVA_WORKER_DATA_DIR` | `worker-data` |
 | `--log-file` | `TRADERNOVA_WORKER_LOG_FILE` | (só stdout) |
 | `--http-port` (1 a 65535) | `TRADERNOVA_WORKER_HTTP_PORT` | `8790` |
+| `--signal-store` (`file` ou `supabase`) | `TRADERNOVA_WORKER_SIGNAL_STORE` | `file` |
 | `--no-http` | - | servidor de leitura ligado |
 | `--once` | - | laço |
+
+## Gravar sinais no Supabase
+Com `--signal-store supabase` o worker grava em `public.research_signals` em vez do JSONL. Precisa de `TRADERNOVA_SUPABASE_URL` (https) e `TRADERNOVA_SUPABASE_SERVICE_KEY` **só no ambiente** (nunca por flag, para não aparecer na lista de processos). Faltando qualquer uma, o worker encerra com código 2 (`configuracao_invalida`). Nesse modo o servidor de leitura local não sobe: a rota da web lê direto do Supabase. Os candles continuam em `--data-dir`.
 
 ## Leitura de sinais por HTTP
 No laço contínuo (`npm run worker`, nunca em `--once`) o worker abre um servidor somente leitura em `127.0.0.1` (sem CORS) com **uma** rota: `GET /signals/:id` (200 registro, 404 desconhecido, 400 ID inválido, 405 outros métodos). Lê o JSONL do disco a cada chamada. Porta ocupada encerra o worker com código 2 (use `--http-port` ou `--no-http`). Quem consome é `/api/signals/[id]` do app; ver [`SINAIS.md`](SINAIS.md).
@@ -69,5 +73,5 @@ Uma linha JSON por evento em stdout (e no arquivo, se configurado): `ts, level, 
 - A Kraken devolve no máximo 720 candles recentes; lacunas maiores que isso não são recuperáveis.
 - Um par/intervalo por processo (rode vários processos com `--data-dir` diferente se precisar).
 - Sinais apenas de pesquisa; sem push/notificação ainda.
-- Supabase não está integrado: o armazém em arquivo (`openFileSignalStore`, implementa `SignalStore`) é o adaptador até lá.
+- Armazéns de sinais: arquivo (`openFileSignalStore`, padrão) ou Supabase (`supabaseSignalStore`), ambos implementam `SignalStore`.
 - O relógio do computador é a referência de "agora"; mantenha-o sincronizado.
