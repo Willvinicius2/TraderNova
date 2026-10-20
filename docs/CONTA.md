@@ -1,6 +1,6 @@
 # Conta do usuário (Fase 2)
 
-Login sem senha pelo Supabase Auth, diário sincronizado, exportação e exclusão de conta. Issues [#19](../../../issues/19), [#21](../../../issues/21) e [#23](../../../issues/23); a tabela de preferências de [#22](../../../issues/22) já está na migração.
+Login sem senha pelo Supabase Auth, diário sincronizado, exportação e exclusão de conta. Issues [#19](../../../issues/19), [#21](../../../issues/21), [#22](../../../issues/22) e [#23](../../../issues/23).
 
 **Estado:** código e testes prontos; nada aplicado no Supabase real (depende de [#14](../../../issues/14)). Sem as variáveis abaixo a aba Conta continua mostrando “Supabase preparado no projeto; não conectado.” e o diário segue só no aparelho.
 
@@ -24,6 +24,7 @@ Aba Conta ── e-mail ──► POST /auth/v1/otp (PKCE S256, chave publicáve
 - **Diário.** Logado, a aba Diário mostra e grava em `journal_entries` (modo `demo`, com o retrato do sinal como foi visto). O diário local continua guardado; ele só sobe pelo botão **Importar diário deste dispositivo**, nunca automaticamente. Importar de novo não duplica (`unique(user_id, client_id)`). Sem conexão, a decisão é salva no aparelho e pode ser importada depois. A exportação JSON continua funcionando nos dois modos.
 - **Exportar meus dados** chama `export_my_data()` (security invoker: só o que a RLS deixa ver) e baixa um JSON; no app, abre o compartilhamento nativo.
 - **Excluir conta** pede a confirmação digitando EXCLUIR e chama `delete_my_account()`, que apaga `auth.users` do próprio usuário; diário, aparelhos, preferências e planos saem em cascata. Os dados locais do aparelho não são apagados.
+- **Preferências** (tema, densidade, alertas no app): ao entrar, a conta manda; se ela ainda não tem preferências, as do aparelho sobem. Depois, cada mudança é gravada em `user_preferences` (`components/tradernova/preference-sync.tsx`).
 - **Sair** encerra a sessão no servidor quando possível e sempre apaga a sessão local.
 
 ## Configurar quando o Supabase estiver acessível
@@ -53,5 +54,4 @@ cd mobile && npm run typecheck && npm test && npm run export   # deep link trade
 ## Pendências
 
 - Aplicar no projeto real e testar o e-mail de ponta a ponta (#14).
-- Preferências (tema, densidade, alertas) já têm tabela e chamadas no cliente; falta ligar à interface (#22).
 - `/api/signals` por usuário (#20) e registro de push após login (Fase 4, `docs/NOTIFICACOES.md`).
