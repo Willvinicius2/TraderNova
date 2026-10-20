@@ -10,6 +10,7 @@ const {createWorker, buildSignalRecord} = await imp('../worker/worker.ts');
 const {createLogger} = await imp('../worker/log.ts');
 const {parseConfig, workerConfigs} = await imp('../worker/config.ts');
 const {main} = await imp('../worker/cli.ts');
+const {createPushDispatcher} = await imp('../worker/push.ts');
 const {openFileSignalStore} = await imp('../worker/signal-file-store.ts');
 const {signalRecordSchema} = await imp('../lib/tradernova/signal-record.ts');
 const {evaluatePaperEngine, strategyApprovals} = await imp('../lib/tradernova/paper-engine.ts');
@@ -43,11 +44,11 @@ function makeWorld(latest = baseCurrent) {
 const baseTmp = await fs.mkdtemp(path.join(os.tmpdir(), 'tradernova-worker-test-'));
 let n = 0;
 const newDir = () => path.join(baseTmp, `t${n++}`);
-async function setup(dir, world, {evaluate, clock = {t: baseCurrent + 10000}, config = {}} = {}) {
+async function setup(dir, world, {evaluate, clock = {t: baseCurrent + 10000}, config = {}, onSignalsCreated} = {}) {
   const lines = [];
   const log = createLogger([(l) => lines.push(JSON.parse(l))], {provider: 'kraken-spot', symbol: 'BTCUSD', interval: 60}, () => clock.t);
   const cfg = {...parseConfig([], {}), dataDir: dir, ...config};
-  const worker = await createWorker({config: cfg, log, fetch: world.fetch, now: () => clock.t, evaluate});
+  const worker = await createWorker({config: cfg, log, fetch: world.fetch, now: () => clock.t, evaluate, onSignalsCreated});
   return {worker, lines, clock, events: (e) => lines.filter((l) => l.event === e)};
 }
 const readLines = async (file) => (await fs.readFile(file, 'utf8')).split('\n').filter(Boolean);
@@ -185,6 +186,28 @@ try {
     const reopened = await openFileSignalStore(path.join(dir, 'signals', 'kraken-spot_BTCUSD_60m.jsonl'));
     assert.equal((await reopened.findByDedupKey(stored[0].dedupKey)).publicId, stored[0].publicId);
     assert.equal((await reopened.insertIfAbsent({...stored[0], publicId: '11111111-1111-4111-8111-111111111111'})).created, false);
+  }
+  // 8b. Gancho de push: recebe só os sinais criados; falha no push não derruba o ciclo nem repete a avaliação.
+  {
+    const dir = newDir(), world = makeWorld(), calls = [];
+    const a = await setup(dir, world, {evaluate: stubEvaluate, onSignalsCreated: async (records) => { calls.push(records); throw new Error('expo fora'); }});
+    const r = await a.worker.cycle();
+    assert.equal(r.signalsCreated, 1);
+    assert.equal(calls.length, 1);
+    assert.deepEqual(calls[0].map((x) => [x.strategyId, x.mode]), [['T1', 'research']]);
+    assert.equal(a.events('push_falhou').length, 1);
+    await fs.rm(path.join(dir, 'checkpoints'), {recursive: true});
+    const b = await setup(dir, world, {evaluate: stubEvaluate, onSignalsCreated: async (records) => { calls.push(records); return {ok: true}; }});
+    await b.worker.cycle();
+    assert.equal(calls.length, 1, 'duplicata não chama o push de novo');
+    // Dispatcher real: só pesquisa = nenhuma consulta de aparelhos e nenhum envio.
+    const fetched = [];
+    const dispatch = createPushDispatcher({url: 'https://exemplo.supabase.co', key: 'k', fetch: async (url) => { fetched.push(url); return {ok: true, status: 200, text: async () => '[]'}; }}, {fetch: async (url) => { fetched.push(url); return {ok: true, status: 200, text: async () => '{"data":[]}'}; }});
+    assert.deepEqual(await dispatch(calls[0]), {skipped: 'research-only'});
+    assert.equal(fetched.length, 0);
+    // Sinal 'alert' sem aparelhos: consulta o banco e não envia nada.
+    assert.deepEqual(await dispatch([{...calls[0][0], mode: 'alert'}]), {sent: 0, failed: 0, skipped: 0, disabledDevices: 0});
+    assert.ok(fetched.length > 0 && fetched.every((u) => u.startsWith('https://exemplo.supabase.co/rest/v1/')), 'nada foi para o Expo');
   }
   // 9. Sinal fora da janela de entrada de 30 s é descartado, não gravado.
   {

@@ -6,6 +6,7 @@ import {supabaseWorkerStatusWriter} from '../lib/tradernova/worker-status';
 import {createLogger, type Logger} from './log';
 import {startSignalReadServer} from './http';
 import {createWorker} from './worker';
+import {createPushDispatcher} from './push';
 const sleep = (ms: number, signal: AbortSignal) => new Promise<void>((resolve) => {
   const timer = setTimeout(resolve, ms);
   signal.addEventListener('abort', () => { clearTimeout(timer); resolve(); }, {once: true});
@@ -25,7 +26,7 @@ export async function main(argv: string[], env: Record<string, string | undefine
   }
   const log: Logger = createLogger(sinks, {provider: 'kraken-spot'});
   // Supabase: chave de serviço SÓ por variável de ambiente (nunca flag, para não ficar no histórico do shell).
-  let signalStore, statusSink;
+  let signalStore, statusSink, onSignalsCreated;
   if (config.signalStore === 'supabase') {
     const supabase = supabaseSignalsFromEnv(env, 'TRADERNOVA_SUPABASE_SERVICE_KEY', (url, init) => fetch(url, init));
     if (!supabase) {
@@ -34,12 +35,14 @@ export async function main(argv: string[], env: Record<string, string | undefine
     }
     signalStore = supabaseSignalStore(supabase);
     statusSink = supabaseWorkerStatusWriter(supabase);
+    // Push (Fase 4): só com Supabase. EXPO_ACCESS_TOKEN é opcional; sinal de pesquisa nunca é enviado pela política padrão.
+    onSignalsCreated = createPushDispatcher({url: supabase.url, key: supabase.key, fetch: (url, init) => fetch(url, init)}, {fetch: (url, init) => fetch(url, init), accessToken: env.EXPO_ACCESS_TOKEN?.trim() || undefined});
   }
   // Um worker por combinação par/intervalo, cada um com armazém e checkpoint próprios (mesmo formato de antes).
   const workers = [];
   for (const target of workerConfigs(config)) {
     const targetLog = createLogger(sinks, {provider: 'kraken-spot', symbol: target.pair, interval: target.interval});
-    workers.push({target, log: targetLog, worker: await createWorker({config: target, log: targetLog, fetch: (url, init) => fetch(url, init), signalStore, statusSink})});
+    workers.push({target, log: targetLog, worker: await createWorker({config: target, log: targetLog, fetch: (url, init) => fetch(url, init), signalStore, statusSink, onSignalsCreated})});
   }
   // Leitura de sinais por HTTP (só 127.0.0.1) apenas no laço contínuo e com armazém em arquivo; --once nunca abre porta.
   // Com Supabase a ficha lê direto do banco (/api/signals com TRADERNOVA_SUPABASE_READ_KEY).
