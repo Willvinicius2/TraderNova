@@ -13,6 +13,20 @@ export function signalLink(url: string): string | null {
   const target = new URL(SITE_URL); target.searchParams.set('aba', 'robo'); target.searchParams.set('sinal', id);
   return target.href;
 }
+// Retorno do link mágico (Supabase Auth, PKCE): tradernova://auth?code=… abre a aba Conta na mesma WebView,
+// onde o site troca o código pelo verificador guardado nela. Só code e mensagens de erro passam adiante.
+export function authLink(url: string): string | null {
+  const match = /^tradernova:\/\/auth\/?(?:\?([^#]{0,2000}))?(?:#(.{0,2000}))?$/.exec(url);
+  if (!match) return null;
+  const query = new URLSearchParams(match[1] ?? ''), hash = new URLSearchParams(match[2] ?? '');
+  const target = new URL(SITE_URL); target.searchParams.set('aba', 'conta');
+  const code = query.get('code');
+  if (code !== null) { if (!/^[A-Za-z0-9._-]{1,200}$/.test(code)) return null; target.searchParams.set('code', code); }
+  const error = query.get('error_description') ?? hash.get('error_description') ?? query.get('error') ?? hash.get('error');
+  if (error !== null) target.searchParams.set('error_description', error.slice(0, 200));
+  if (code === null && error === null) return null;
+  return target.href;
+}
 export function parentPage(url: string): string | null {
   if (!sameSite(url)) return null;
   const target = new URL(url);

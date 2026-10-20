@@ -5,7 +5,7 @@ import * as Sharing from 'expo-sharing';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { WebView } from 'react-native-webview';
-import { SITE_URL, bridgeScript, externalLink, sameSite, signalLink, parentPage } from './src/site';
+import { SITE_URL, bridgeScript, externalLink, sameSite, signalLink, authLink, parentPage } from './src/site';
 
 function MobileSite() {
   const web = useRef<WebView>(null);
@@ -14,7 +14,7 @@ function MobileSite() {
   const [navigationId, setNavigationId] = useState(0);
   const [error, setError] = useState(false), [background, setBackground] = useState('#111117'), [light, setLight] = useState(false);
   useEffect(() => {
-    const open = (value: string) => { const target = signalLink(value); if (target) { setError(false); setUrl(target); setNavigationId(id => id + 1); } };
+    const open = (value: string) => { const target = signalLink(value) ?? authLink(value); if (target) { setError(false); setUrl(target); setNavigationId(id => id + 1); } };
     void Linking.getInitialURL().then(value => { if (value) open(value); }).catch(() => {});
     const listener = Linking.addEventListener('url', event => open(event.url));
     return () => listener.remove();
