@@ -26,7 +26,7 @@ Preparação das issues [#33](https://github.com/Willvinicius2/TraderNova/issues
 const targets = await loadPushTargets(cfg);
 await dispatchPush({signals: novos, ...targets, now: Date.now(), store: supabasePushDeliveryStore(cfg), send: createExpoPushSender({fetch})});
 ```
-Ainda **não está ligado** no worker (arquivo da Fase 1). O serviço Expo Push é gratuito; `EXPO_ACCESS_TOKEN` é opcional.
+Ligado no worker por `worker/push.ts` quando o armazém é o Supabase (`--signal-store supabase`): roda depois de gravar sinais novos e do checkpoint, e uma falha de push só gera o aviso `push_falhou`. Com a política padrão, um lote só de sinais de pesquisa nem consulta aparelhos (`push_resultado` com `skipped: research-only`). O serviço Expo Push é gratuito; `EXPO_ACCESS_TOKEN` é opcional.
 
 ## App (`mobile/`)
 - `expo-notifications` com canal Android `sinais`. Permissão **nunca** é pedida na abertura: o site manda `{type:'push-register'}` pela ponte (depois do login e do opt-in) e recebe a resposta no evento `tradernova-push` (`granted` com token, `denied` ou `unavailable`). O site grava o token em `push_devices` com a sessão do usuário.
@@ -36,7 +36,7 @@ Ainda **não está ligado** no worker (arquivo da Fase 1). O serviço Expo Push 
 ## Pendente (precisa do Will ou de outra fase)
 1. Vincular o app a uma conta Expo (`eas init`) e configurar FCM (Android) / APNs (iOS, conta paga) — gratuito no Android.
 2. Login (Fase 2) e a tela de preferências/central no site, chamando `push-register`.
-3. Worker hospedado chamando `dispatchPush` após gravar sinais (Fase 1).
+3. Worker hospedado (Fase 1, #15); a chamada a `dispatchPush` já está ligada.
 4. Teste em aparelho Android real: notificação com app fechado, sem duplicata, abrindo a ficha certa.
 
 ## Testes

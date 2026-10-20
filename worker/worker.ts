@@ -14,7 +14,7 @@ import {writeFileStatus} from './status-file';
 import type {WorkerStatus} from '../lib/tradernova/worker-status';
 export type StatusSink = (status: WorkerStatus) => Promise<void>;
 export type Evaluator = (bars: Candle[], interval: number, receivedAt: number, now: number) => EngineSnapshot;
-export type WorkerDeps = {config: WorkerConfig; log: Logger; fetch: FetchLike; now?: () => number; evaluate?: Evaluator; signalStore?: SignalStore; statusSink?: StatusSink};
+export type WorkerDeps = {config: WorkerConfig; log: Logger; fetch: FetchLike; now?: () => number; evaluate?: Evaluator; signalStore?: SignalStore; statusSink?: StatusSink; onSignalsCreated?: (records: SignalRecord[]) => Promise<unknown>};
 export type CycleResult = {ok: boolean; feed: FeedState; newCandles: number; evaluated: boolean; signalsCreated: number};
 /** Janela de entrada do motor: uma leitura só vale até 30 s depois do fechamento (ver advancePaperSession / manualOpportunity). */
 export const entryWindowMs = 30000;
@@ -81,6 +81,7 @@ export async function createWorker(deps: WorkerDeps) {
     const snapshot = evaluate([...tail.slice(-maxEngineBars), forming], config.interval, receivedAt, serverNow);
     if (snapshot.status !== 'ready') { log.info('motor_bloqueado', {candle_open_time: lastClosed, reason: snapshot.reason}); return result; }
     result.evaluated = true;
+    const created: SignalRecord[] = [];
     for (const reading of snapshot.readings) {
       const version = activePresets[reading.candidateId].id;
       if (reading.state !== 'buy') { log.info('leitura', {strategy: reading.candidateId, strategy_version: version, candle_open_time: reading.signalTime, state: reading.state}); continue; }
@@ -88,13 +89,18 @@ export async function createWorker(deps: WorkerDeps) {
       if (!record || record.expiresAt <= serverNow) { log.warn('sinal_descartado', {strategy: reading.candidateId, strategy_version: version, candle_open_time: reading.signalTime, reason: 'Janela de entrada de 30 s já encerrada.'}); continue; }
       try {
         const saved = await signals.insertIfAbsent(record);
-        if (saved.created) result.signalsCreated++;
+        if (saved.created) { result.signalsCreated++; created.push(saved.record); }
         log.info(saved.created ? 'sinal_registrado' : 'sinal_duplicado_ignorado', {strategy: reading.candidateId, strategy_version: version, candle_open_time: reading.signalTime, mode: saved.record.mode, public_id: saved.record.publicId});
       } catch (error) {
         log.error('sinal_invalido', {strategy: reading.candidateId, strategy_version: version, candle_open_time: reading.signalTime, error: error instanceof Error ? error.message : String(error)});
       }
     }
     await store.saveCheckpoint({lastEvaluatedOpenTime: lastClosed});
+    // Notificações: depois de gravar e do checkpoint, para que uma falha de push nunca repita a avaliação.
+    if (created.length && deps.onSignalsCreated) {
+      try { log.info('push_resultado', {signals: created.length, result: await deps.onSignalsCreated(created)}); }
+      catch (error) { log.warn('push_falhou', {signals: created.length, error: error instanceof Error ? error.message : String(error)}); }
+    }
     return result;
   }
   /** Espera até a próxima consulta; acelera (5 s) logo após a virada do candle, enquanto o novo fechamento ainda não foi avaliado. */

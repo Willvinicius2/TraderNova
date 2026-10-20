@@ -47,6 +47,9 @@ Ao fim de cada ciclo, com ou sem sucesso, o worker grava a saúde de cada combin
 ## Gravar sinais no Supabase
 Com `--signal-store supabase` o worker grava em `public.research_signals` em vez do JSONL. Precisa de `TRADERNOVA_SUPABASE_URL` (https) e `TRADERNOVA_SUPABASE_SERVICE_KEY` **só no ambiente** (nunca por flag, para não aparecer na lista de processos). Faltando qualquer uma, o worker encerra com código 2 (`configuracao_invalida`). Nesse modo o servidor de leitura local não sobe: a rota da web lê direto do Supabase. Os candles continuam em `--data-dir`.
 
+## Notificações push
+Com o Supabase, depois de gravar sinais novos o worker chama o envio de push (`worker/push.ts`, regras em [`NOTIFICACOES.md`](NOTIFICACOES.md)). Hoje todo sinal é de pesquisa e a política padrão não envia pesquisa, então nada sai. `EXPO_ACCESS_TOKEN` (opcional) vai só no ambiente.
+
 ## Leitura de sinais por HTTP
 No laço contínuo (`npm run worker`, nunca em `--once`) o worker abre um servidor somente leitura em `127.0.0.1` (sem CORS) com **uma** rota: `GET /signals/:id` (200 registro, 404 desconhecido, 400 ID inválido, 405 outros métodos). Lê o JSONL do disco a cada chamada. Porta ocupada encerra o worker com código 2 (use `--http-port` ou `--no-http`). Quem consome é `/api/signals/[id]` do app; ver [`SINAIS.md`](SINAIS.md).
 
