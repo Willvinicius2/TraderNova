@@ -1,0 +1,66 @@
+{
+  "id": "research-v4",
+  "registeredAt": "2026-10-19",
+  "status": "Registered before any v4 data was downloaded or any v4 result was computed. Data download was blocked in the registering environment; no candle of any v4 window has been read under these rules.",
+  "purpose": "One bounded batch with two new families distinct from T1-T3 (trend/breakout): R1 Bollinger + RSI mean reversion and V1 volatility-compression regime with completed-H4 trend. Issues #24, #27, #29 and #30.",
+  "engine": "lib/tradernova/research-v4.ts (runV4, v4Signals, v4Variants). The runner records its SHA256 with the frozen selection. Engine changes after the first result require a new protocol version.",
+  "families": ["R1", "V1"],
+  "variants": ["R1-E0X0", "R1-E0X1", "R1-E1X0", "R1-E1X1", "V1-E0X0", "V1-E0X1", "V1-E1X0", "V1-E1X1"],
+  "variantRules": {
+    "R1": "Bollinger 20 population sigma x2, RSI 14 Wilder. Long: previous close < previous lower band, previous RSI <= 30, current close back above the lower band and above its open. Short symmetric (upper band, RSI >= 70, bearish candle). E1 also requires close above EMA200 for longs, below for shorts. Exit at the next open after the first close at or beyond the 20 SMA, at the ATR stop, or at the time limit. X0: stop 2 ATR14, 24 hours. X1: stop 3 ATR14, 48 hours. No fixed target.",
+    "V1": "Bollinger width (upper-lower)/middle. Compression regime when the previous candle's width ranks in the lowest 20% of the 500 widths before it (strictly lower share). Long: close above the upper band and completed-H4 trend up (EMA20 > EMA50, close > EMA50, EMA50 above its value 3 H4 candles earlier; only complete contiguous H4 groups). Short symmetric. E1 also requires ATR14/close of the previous candle below the median of its 500 predecessors. X0: stop 2 ATR, target 3R, 48 hours. X1: stop 2 ATR, target 5R, 120 hours, ATR x3 trailing stop on closes after 1R, effective next candle, never loosened."
+  },
+  "common": "Closed H1 candles only, entry at the next contiguous open. One position at a time per asset and family. Six-hour cooldown after the exit candle. Stop takes precedence on ambiguous candles; adverse gaps fill at the open; favourable gaps through the target fill at the target. Signal candle, its predecessor and the entry candle must be contiguous; source gaps are never interpolated. Stop distance must be at least 3x the estimated round-trip cost. Warm-up 700 H1 candles before the first evaluated signal. Risk 0.5% of current simulated equity per trade, initial capital 10000, positions forced closed at each window end.",
+  "markets": {
+    "crypto": {
+      "source": "Binance Spot monthly 1h archives with published SHA256 checksums (data.binance.vision). Spot USDT is not the The5ers contract.",
+      "symbols": ["BTCUSDT", "ETHUSDT", "SOLUSDT"],
+      "download": {"BTCUSDT": ["2017-09-01", "2026-09-01"], "ETHUSDT": ["2017-09-01", "2026-09-01"], "SOLUSDT": ["2020-09-01", "2026-09-01"]},
+      "sides": "long",
+      "calendar": "24x7",
+      "maxLeverage": 1,
+      "costs": {"base": {"feeBps": 10, "slippageBps": 2, "spread": 0}, "stress": {"feeBps": 15, "slippageBps": 5, "spread": 0}},
+      "developmentWindows": [["2022-01-01","2022-07-01"],["2022-07-01","2023-01-01"],["2023-01-01","2023-07-01"],["2023-07-01","2024-01-01"],["2024-01-01","2024-07-01"],["2024-07-01","2025-01-01"]],
+      "validationWindows": {
+        "A-unusedPre2022": {"BTCUSDT": ["2018-01-01","2022-01-01"], "ETHUSDT": ["2018-01-01","2022-01-01"], "SOLUSDT": ["2020-10-01","2022-01-01"]},
+        "B-reusedRecent": {"BTCUSDT": ["2025-01-01","2026-09-01"], "ETHUSDT": ["2025-01-01","2026-09-01"], "SOLUSDT": ["2025-01-01","2026-09-01"]}
+      },
+      "chronology": "2022-01 to 2026-08 was used by v1-v3 for T1-T3; development reuses 2022-2024 as v3 did. Window A (before 2022) was never used by any TraderNova research and is a backward out-of-sample test, not a chronological one. Window B was seen with other rules and is reported as reused. Both A and B must pass. No historical untouched window after 2026-08 is long enough; the prospective reserve is the forward test.",
+      "adequacy": {"totalTrades": 120, "perAssetTrades": 20, "cellsWithFiveTrades": 12},
+      "validationMinTrades": 60,
+      "maxMissingHourShare": 0.005
+    },
+    "fx": {
+      "source": "HistData ASCII M1 bid quotes (fixed EST), aggregated to complete UTC H1 by scripts/import_histdata.py. Indicative feed, not The5ers executable quotes; spread is modelled explicitly.",
+      "symbols": ["EURUSD", "USDJPY"],
+      "download": {"EURUSD": ["2009-01-01", "2026-09-01"], "USDJPY": ["2009-01-01", "2026-09-01"]},
+      "sides": "both",
+      "calendar": "fx",
+      "maxLeverage": 10,
+      "costs": {
+        "base": {"feeBps": 0, "slippageBps": 0, "spread": {"EURUSD": 0.00012, "USDJPY": 0.014}},
+        "stress": {"feeBps": 0, "slippageBps": 0, "spread": {"EURUSD": 0.0002, "USDJPY": 0.022}}
+      },
+      "costCaveat": "Round-trip spread plus commission plus slippage as one price amount: 1.2 pips base, 2.0 pips stress (USDJPY 1.4/2.2). Swap is not modelled. These are hypotheses until #25 confirms the contract: if confirmed costs exceed the stress scenario, or swap over the held nights exceeds the stress margin, any pass is void and the batch must be rerun as a new version. Confirmed costs can only revoke a pass, never create one.",
+      "developmentWindows": [["2010-01-01","2011-01-01"],["2011-01-01","2012-01-01"],["2012-01-01","2013-01-01"],["2013-01-01","2014-01-01"],["2014-01-01","2015-01-01"],["2015-01-01","2016-01-01"]],
+      "validationWindows": {"A-unusedFx": {"EURUSD": ["2016-01-01","2020-01-01"], "USDJPY": ["2016-01-01","2020-01-01"]}},
+      "excludedWindows": [["2020-01-01","2022-01-01"]],
+      "reserveWindow": ["2022-01-01","2026-09-01"],
+      "chronology": "The earlier FX screen (research/fx-screen-*.json) read EURUSD 2010-2015 and 2020-2021. 2010-2015 is reused for development only; 2020-2021 is excluded from v4. 2016-2019 and 2022-2026/08 were never read by TraderNova FX research. The reserve is opened once, only for (family, asset) cells that pass validation, after the validation results file is written.",
+      "adequacy": {"totalTrades": 120, "perAssetTrades": 40, "cellsWithFiveTrades": 8},
+      "validationMinTrades": 100,
+      "maxMissingHourShare": 0.03
+    }
+  },
+  "selection": "Separately per market and family: run all four variants on every development cell (asset x window). Score = median cell returnPct - 0.25 x maximum cell drawdownPct. A variant is eligible only if it meets the market adequacy counts and its pooled development net is positive under both base and stress costs. The highest eligible score wins, ties by id. If no variant is eligible, the family is rejected in that market and is not run on validation. Write research/v4-selection-<market>.json with protocol, engine and source hashes before any validation candle is simulated.",
+  "historicalScreen": "Per frozen (family, asset) and per validation window: trades >= validationMinTrades, net > 0, profit factor >= 1.20, candle-close drawdown <= 15%, stress net > 0, and missing-hour share <= maxMissingHourShare (closures excluded). Multiple-testing gate: the t statistic of per-trade returnOnEquityPct pooled over all validation windows of that asset must be >= 3.02, the one-sided Bonferroni threshold for alpha 0.05 over the 40 variant x asset cells in this batch (8 variants x 5 assets). FX cells must also pass the same screen on the reserve window, with the same thresholds.",
+  "multipleTesting": {"variantsThisBatch": 8, "variantAssetCells": 40, "alpha": 0.05, "tThreshold": 3.02, "priorTrialsRecorded": 93, "priorTrialsDetail": "spot v1 18, H1 v2 27, H1 v3 21, gold v1 10, gold H1 v2 7, FX screen 10 (5 families x long/short)", "note": "Prior trials are reported, not added to the threshold; they used different rules and families. The batch is one pre-registered search: no further variants after results."},
+  "approval": "A historical pass is not an approval and does not count toward the five-strategy goal. A family counts once (assets are not separate strategies; R1 is the same method class as the rejected gold G3 and counts once across assets) only after: historical pass on at least one asset; #25 contract and costs confirmed within the stress scenario; at least 30 days and 10 trades of prospective forward test (#31) with the frozen variant, no rule violation, engine parity with the replay, and forward drawdown not above the worst validation drawdown; and a versioned entry in the approval register (#32).",
+  "rules": [
+    "Criteria, windows, costs and variants in this file do not change after any v4 result is computed. Any amendment before results must be committed with its reason and may only make the screen stricter.",
+    "No window reopening, exclusion of unfavourable periods, re-running with new variants, or lowering of thresholds after losses.",
+    "Data-quality failures (checksum, missing-hour share) reject the window; they are never repaired by interpolation.",
+    "Every trial, including rejected ones, is published in public/research/v4-<market>.json.",
+    "No live orders, broker credentials or paid data."
+  ]
+}
