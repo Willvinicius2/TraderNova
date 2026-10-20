@@ -10,8 +10,11 @@ import {computeFeedState, contiguousTail, type FeedState} from './feed';
 import {fetchKrakenOhlc, type FetchLike} from './kraken';
 import type {Logger} from './log';
 import {openFileSignalStore} from './signal-file-store';
+import {writeFileStatus} from './status-file';
+import type {WorkerStatus} from '../lib/tradernova/worker-status';
+export type StatusSink = (status: WorkerStatus) => Promise<void>;
 export type Evaluator = (bars: Candle[], interval: number, receivedAt: number, now: number) => EngineSnapshot;
-export type WorkerDeps = {config: WorkerConfig; log: Logger; fetch: FetchLike; now?: () => number; evaluate?: Evaluator; signalStore?: SignalStore};
+export type WorkerDeps = {config: WorkerConfig; log: Logger; fetch: FetchLike; now?: () => number; evaluate?: Evaluator; signalStore?: SignalStore; statusSink?: StatusSink};
 export type CycleResult = {ok: boolean; feed: FeedState; newCandles: number; evaluated: boolean; signalsCreated: number};
 /** Janela de entrada do motor: uma leitura só vale até 30 s depois do fechamento (ver advancePaperSession / manualOpportunity). */
 export const entryWindowMs = 30000;
@@ -32,11 +35,19 @@ export async function createWorker(deps: WorkerDeps) {
   let forming: MarketCandle | null = null; // só em memória, nunca gravado
   let lastFetchOk = false, lastState: FeedState | null = null;
   let lastSuccessAt = store.checkpoint().lastSuccessAt;
+  const statusSink: StatusSink = deps.statusSink ?? ((status) => writeFileStatus(config.dataDir, status));
   const setState = (state: FeedState, reason: string) => {
     if (state !== lastState) log.info('estado_do_feed', {feed_state: state, reason, previous: lastState});
     lastState = state;
   };
+  /** Ciclo + heartbeat. A falha ao gravar a saúde só gera aviso: nunca interrompe a ingestão. */
   async function cycle(): Promise<CycleResult> {
+    const result = await runCycle();
+    const status: WorkerStatus = {provider, instrument: config.pair, timeframeMinutes: config.interval, pollSeconds: config.pollSeconds, lastCycleAt: now(), lastSuccessAt, feedState: lastState ?? result.feed, lastClosedOpenTime: store.checkpoint().lastClosedOpenTime};
+    try { await statusSink(status); } catch (error) { log.warn('saude_nao_gravada', {error: error instanceof Error ? error.message : String(error)}); }
+    return result;
+  }
+  async function runCycle(): Promise<CycleResult> {
     const result: CycleResult = {ok: false, feed: 'desconectado', newCandles: 0, evaluated: false, signalsCreated: 0};
     let rows: MarketCandle[];
     try {

@@ -36,6 +36,11 @@ insert into public.research_signals(public_id,dedup_key,strategy_id,strategy_ver
 -- Worker: duplicata pela chave de deduplicação é ignorada (on conflict), incoerência de preços é rejeitada.
 insert into public.research_signals(public_id,dedup_key,strategy_id,strategy_version,instrument,provider,timeframe_minutes,side,signal_time,generated_at,expires_at,entry_reference,stop,target,evidence,mode)
  values ('40000000-0000-4000-8000-000000000002','T1|E0X0|kraken-spot|BTCUSD|60|buy|1','T1','E0X0','BTCUSD','kraken-spot',60,'buy',1,2,3,100,95,110,'[]','test') on conflict (dedup_key) do nothing;
+insert into public.worker_status(provider,instrument,timeframe_minutes,poll_seconds,last_cycle_at,feed_state) values ('kraken-spot','BTCUSD',60,30,1,'ao_vivo');
+insert into public.worker_status(provider,instrument,timeframe_minutes,poll_seconds,last_cycle_at,feed_state) values ('kraken-spot','BTCUSD',60,30,2,'atrasado')
+ on conflict (provider,instrument,timeframe_minutes) do update set last_cycle_at=excluded.last_cycle_at,feed_state=excluded.feed_state;
+select t.rows('heartbeat sobrescreve a mesma linha',$q$select * from public.worker_status where last_cycle_at=2$q$,1);
+select t.denied('estado de feed inventado',$q$insert into public.worker_status(provider,instrument,timeframe_minutes,poll_seconds,last_cycle_at,feed_state) values ('k','ETHUSD',60,30,1,'otimo')$q$,'23514');
 select t.rows('dedup no banco','select * from public.research_signals',1);
 select t.denied('stop acima da entrada numa compra',$q$insert into public.research_signals(public_id,dedup_key,strategy_id,strategy_version,instrument,provider,timeframe_minutes,side,signal_time,generated_at,expires_at,entry_reference,stop,evidence,mode) values (gen_random_uuid(),'x','T1','E0X0','BTCUSD','k',60,'buy',1,2,3,100,105,'[]','test')$q$,'23514');
 select t.denied('modo fora da lista',$q$insert into public.research_signals(public_id,dedup_key,strategy_id,strategy_version,instrument,provider,timeframe_minutes,side,signal_time,generated_at,expires_at,entry_reference,stop,evidence,mode) values (gen_random_uuid(),'y','T1','E0X0','BTCUSD','k',60,'buy',1,2,3,100,95,'[]','live')$q$,'23514');
@@ -43,7 +48,7 @@ reset role;
 
 -- anon: nada.
 set role anon;
-select t.denied('anon lê '||tbl,'select * from public.'||tbl) from unnest(array['instrument_profiles','strategy_versions','test_runs','signals','journal_entries','entitlements','push_devices','research_signals']) tbl;
+select t.denied('anon lê '||tbl,'select * from public.'||tbl) from unnest(array['instrument_profiles','strategy_versions','test_runs','signals','journal_entries','entitlements','push_devices','research_signals','worker_status']) tbl;
 select t.denied('anon grava research_signals',$q$delete from public.research_signals$q$);
 reset role;
 
@@ -68,6 +73,8 @@ select t.rows('A lê sinais de pesquisa','select * from public.research_signals'
 select t.denied('A grava sinal de pesquisa',$q$insert into public.research_signals(public_id,dedup_key,strategy_id,strategy_version,instrument,provider,timeframe_minutes,side,signal_time,generated_at,expires_at,entry_reference,stop,evidence,mode) values (gen_random_uuid(),'z','T1','E0X0','BTCUSD','k',60,'buy',1,2,3,100,95,'[]','test')$q$);
 select t.denied('A altera sinal de pesquisa',$q$update public.research_signals set stop=1$q$);
 select t.denied('A apaga sinal de pesquisa',$q$delete from public.research_signals$q$);
+select t.rows('A lê a saúde do worker','select * from public.worker_status',1);
+select t.denied('A altera a saúde do worker',$q$update public.worker_status set feed_state='ao_vivo'$q$);
 
 -- Usuário B não vê o diário nem o aparelho de A.
 set request.jwt.claims='{"sub":"00000000-0000-4000-8000-00000000000b"}';

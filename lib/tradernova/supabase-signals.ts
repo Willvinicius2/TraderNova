@@ -4,7 +4,7 @@ import {isPublicSignalId,signalRecordSchema,type SignalRecord,type SignalStore} 
 export type SupabaseFetch=(url:string,init:{method?:'GET'|'POST';signal:AbortSignal;headers:Record<string,string>;body?:string;redirect:'manual'})=>Promise<{ok:boolean;status:number;text():Promise<string>}>;
 export class SupabaseSignalError extends Error{constructor(readonly reason:'unreachable'|'invalid-response',message:string=reason){super(message);}}
 export type ResearchSignalRow={public_id:string;dedup_key:string;strategy_id:string;strategy_version:string;instrument:string;provider:string;timeframe_minutes:number;side:'buy'|'sell';signal_time:number;generated_at:number;expires_at:number;entry_reference:number;stop:number;target:number|null;evidence:string[];mode:SignalRecord['mode'];invalidated_at:number|null;invalidation_reason:string|null};
-const table='research_signals',maxBody=262144;
+const maxBody=262144;
 // PostgREST pode devolver numeric/bigint como texto; converte só strings numéricas.
 const num=(v:unknown)=>typeof v==='string'&&v.trim()!==''&&Number.isFinite(Number(v))?Number(v):v;
 const numOrNull=(v:unknown)=>v===null?null:num(v);
@@ -20,7 +20,8 @@ export function rowToRecord(row:unknown):SignalRecord{
  return parsed.data;
 }
 export type SupabaseSignalsConfig={url:string;key:string;fetch:SupabaseFetch;timeoutMs?:number};
-function client({url,key,fetch:fetchFn,timeoutMs=5000}:SupabaseSignalsConfig){
+// Cliente PostgREST mínimo de uma tabela. Exportado para outras tabelas do servidor (ex.: worker_status).
+export function supabaseTable({url,key,fetch:fetchFn,timeoutMs=5000}:SupabaseSignalsConfig,table:string){
  const origin=new URL(url);
  if(origin.protocol!=='https:'&&!(origin.protocol==='http:'&&['127.0.0.1','localhost'].includes(origin.hostname)))throw new Error('O Supabase exige HTTPS (http só em 127.0.0.1/localhost para testes).');
  if(!key.trim())throw new Error('Chave do Supabase ausente.');
@@ -40,7 +41,7 @@ function client({url,key,fetch:fetchFn,timeoutMs=5000}:SupabaseSignalsConfig){
 }
 // Leitura por ID público (rota /api/signals/[id]). ID fora do formato nunca vira consulta.
 export function supabaseSignalSource(cfg:SupabaseSignalsConfig){
- const c=client(cfg);
+ const c=supabaseTable(cfg,'research_signals');
  return {async read(id:string){
   if(!isPublicSignalId(id))return null;
   const record=await c.one(`public_id=eq.${encodeURIComponent(id.toLowerCase())}`);
@@ -50,7 +51,7 @@ export function supabaseSignalSource(cfg:SupabaseSignalsConfig){
 }
 // Armazém do worker: idempotente pela chave de deduplicação (unique no banco + on_conflict).
 export function supabaseSignalStore(cfg:SupabaseSignalsConfig):SignalStore{
- const c=client(cfg),source=supabaseSignalSource(cfg);
+ const c=supabaseTable(cfg,'research_signals'),source=supabaseSignalSource(cfg);
  const findByDedupKey=(key:string)=>c.one(`dedup_key=eq.${encodeURIComponent(key)}`);
  return {
   get:(id)=>source.read(id),
@@ -71,5 +72,5 @@ export function supabaseSignalStore(cfg:SupabaseSignalsConfig):SignalStore{
 export function supabaseSignalsFromEnv(env:Record<string,string|undefined>,keyVar:'TRADERNOVA_SUPABASE_READ_KEY'|'TRADERNOVA_SUPABASE_SERVICE_KEY',fetchFn:SupabaseFetch):SupabaseSignalsConfig|null{
  const url=env.TRADERNOVA_SUPABASE_URL?.trim(),key=env[keyVar]?.trim();
  if(!url||!key)return null;
- try{client({url,key,fetch:fetchFn});return {url,key,fetch:fetchFn};}catch{return null;}
+ try{supabaseTable({url,key,fetch:fetchFn},'research_signals');return {url,key,fetch:fetchFn};}catch{return null;}
 }
