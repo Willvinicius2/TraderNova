@@ -32,7 +32,14 @@
       "output": "single"
     },
     "plugins": [
-      "expo-sharing"
+      "expo-sharing",
+      [
+        "expo-notifications",
+        {
+          "color": "#b99bff",
+          "defaultChannel": "sinais"
+        }
+      ]
     ]
   }
 }

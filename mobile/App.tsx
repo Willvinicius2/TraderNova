@@ -6,6 +6,8 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { WebView } from 'react-native-webview';
 import { SITE_URL, bridgeScript, externalLink, sameSite, signalLink, parentPage } from './src/site';
+import { notificationTarget, pushResultScript } from './src/push';
+import { onNotificationTap, registerForPush } from './src/notifications';
 
 function MobileSite() {
   const web = useRef<WebView>(null);
@@ -17,7 +19,8 @@ function MobileSite() {
     const open = (value: string) => { const target = signalLink(value); if (target) { setError(false); setUrl(target); setNavigationId(id => id + 1); } };
     void Linking.getInitialURL().then(value => { if (value) open(value); }).catch(() => {});
     const listener = Linking.addEventListener('url', event => open(event.url));
-    return () => listener.remove();
+    const stopTaps = onNotificationTap(data => { const target = notificationTarget(data); if (target) { setError(false); setUrl(target); setNavigationId(id => id + 1); } });
+    return () => { listener.remove(); stopTaps(); };
   }, []);
   useEffect(() => {
     const handler = BackHandler.addEventListener('hardwareBackPress', () => {
@@ -63,6 +66,7 @@ function MobileSite() {
           if (value.type === 'route' && typeof value.url === 'string' && sameSite(value.url)) currentPage.current = value.url;
           if (value.type === 'theme' && /^#[0-9a-f]{6}$/i.test(value.color) && typeof value.light === 'boolean') { setBackground(value.color); setLight(value.light); }
           if (value.type === 'export' && typeof value.text === 'string' && value.text.length <= 2000000) void exportFile(value.text, value.name);
+          if (value.type === 'push-register') void registerForPush().then(result => { if (sameSite(currentPage.current)) web.current?.injectJavaScript(pushResultScript(result)); });
           if (value.type === 'export-error') Alert.alert('TraderNova', 'Não foi possível exportar. Tente novamente na versão web.');
         } catch { /* Ignore unrelated or malformed messages from embedded resources. */ }
       }}
