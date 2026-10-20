@@ -8,7 +8,8 @@ import '../worker/register.mjs';
 const imp = (rel) => import(pathToFileURL(path.resolve(new URL(rel, import.meta.url).pathname)).href);
 const {createWorker, buildSignalRecord} = await imp('../worker/worker.ts');
 const {createLogger} = await imp('../worker/log.ts');
-const {parseConfig} = await imp('../worker/config.ts');
+const {parseConfig, workerConfigs} = await imp('../worker/config.ts');
+const {main} = await imp('../worker/cli.ts');
 const {openFileSignalStore} = await imp('../worker/signal-file-store.ts');
 const {signalRecordSchema} = await imp('../lib/tradernova/signal-record.ts');
 const {evaluatePaperEngine, strategyApprovals} = await imp('../lib/tradernova/paper-engine.ts');
@@ -232,6 +233,36 @@ try {
     assert.equal(parseConfig([], {TRADERNOVA_WORKER_PAIR: 'ethusd'}).pair, 'ETHUSD');
     assert.equal(parseConfig(['--pair', 'SOLUSD', '--interval=15', '--once'], {TRADERNOVA_WORKER_PAIR: 'ETHUSD'}).interval, 15);
     for (const bad of [['--pair', 'XAUUSD'], ['--interval', '5'], ['--poll-seconds', '1'], ['--nada']]) assert.throws(() => parseConfig(bad, {}));
+    // Vários pares/intervalos: produto cartesiano, sem repetição, listas têm prioridade sobre --pair/--interval.
+    const multi = parseConfig(['--pairs', 'btcusd, ETHUSD,BTCUSD', '--intervals=15,60', '--pair', 'SOLUSD'], {});
+    assert.deepEqual(multi.targets, [{pair: 'BTCUSD', interval: 15}, {pair: 'BTCUSD', interval: 60}, {pair: 'ETHUSD', interval: 15}, {pair: 'ETHUSD', interval: 60}]);
+    assert.deepEqual([multi.pair, multi.interval], ['BTCUSD', 15]);
+    assert.deepEqual(parseConfig([], {TRADERNOVA_WORKER_PAIRS: 'SOLUSD,ETHUSD', TRADERNOVA_WORKER_INTERVALS: '60'}).targets, [{pair: 'SOLUSD', interval: 60}, {pair: 'ETHUSD', interval: 60}]);
+    assert.deepEqual(d.targets, [{pair: 'BTCUSD', interval: 60}], 'padrão continua um par só');
+    const split = workerConfigs(multi);
+    assert.equal(split.length, 4);
+    assert.deepEqual(split.map((c) => [c.pair, c.interval, c.targets.length, c.dataDir]), [['BTCUSD', 15, 1, 'worker-data'], ['BTCUSD', 60, 1, 'worker-data'], ['ETHUSD', 15, 1, 'worker-data'], ['ETHUSD', 60, 1, 'worker-data']]);
+    for (const bad of [['--pairs', 'BTCUSD,XAUUSD'], ['--intervals', '15,5'], ['--pairs', ','], ['--intervals', '']]) assert.throws(() => parseConfig(bad, {}), undefined, bad.join(' '));
+  }
+  // 12b. Vários pares num processo: armazéns separados e a falha de um par não derruba os outros.
+  {
+    const dir = newDir(), world = makeWorld(Math.floor(Date.now() / STEP) * STEP);
+    const realFetch = globalThis.fetch, realWrite = process.stdout.write, out = [];
+    globalThis.fetch = async (url, init) => (new URL(url).searchParams.get('pair') === 'ETHUSD' ? Promise.reject(new TypeError('fetch failed')) : world.fetch(url, init));
+    process.stdout.write = (line) => { out.push(JSON.parse(line)); return true; };
+    let code;
+    try { code = await main(['--pairs', 'BTCUSD,ETHUSD', '--once', '--data-dir', dir], {}); } finally { globalThis.fetch = realFetch; process.stdout.write = realWrite; }
+    assert.equal(code, 1, '--once sai com 1 se alguma combinação falhou');
+    assert.ok((await readLines(candleFile(dir))).length > 0, 'BTC gravou candles mesmo com ETH fora');
+    assert.deepEqual(await dirFiles(dir, 'candles'), ['kraken-spot_BTCUSD_60m.jsonl']);
+    assert.ok(out.some((l) => l.event === 'consulta_falhou' && l.symbol === 'ETHUSD'), 'falha registrada com o par certo');
+    assert.ok(out.some((l) => l.event === 'ciclo_concluido' && l.symbol === 'BTCUSD'));
+    assert.deepEqual(out.find((l) => l.event === 'worker_iniciado').targets, ['BTCUSD/60m', 'ETHUSD/60m']);
+    // Heartbeat por combinação, inclusive da que falhou (estado desconectado, sem afirmar ao vivo).
+    const status = async (pair) => JSON.parse(await fs.readFile(path.join(dir, 'status', `kraken-spot_${pair}_60m.json`), 'utf8'));
+    assert.equal((await status('ETHUSD')).feedState, 'desconectado');
+    assert.equal((await status('ETHUSD')).lastSuccessAt, null);
+    assert.ok((await status('BTCUSD')).lastSuccessAt > 0);
   }
   // 13. buildSignalRecord só aceita 'buy'.
   {
