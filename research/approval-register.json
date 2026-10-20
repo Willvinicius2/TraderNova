@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-20",
+  "limits": {
+    "maxOpenRiskPct": 1.5,
+    "maxClusterRiskPct": 1.0,
+    "dailyLossLimitPct": 3,
+    "dailyBufferPct": 0.5,
+    "clusters": {
+      "cripto": [
+        "BTCUSD",
+        "ETHUSD",
+        "SOLUSD",
+        "BTCUSDT",
+        "ETHUSDT",
+        "SOLUSDT"
+      ],
+      "dolar": [
+        "EURUSD",
+        "USDJPY"
+      ]
+    }
+  },
+  "entries": []
+}
