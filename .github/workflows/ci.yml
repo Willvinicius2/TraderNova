@@ -17,6 +17,8 @@ jobs:
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
+      # O build de produção é o que vai para o Cloudflare (docs/DEPLOY.md).
+      - run: npm run build
   rls:
     # Migrações do Supabase num Postgres descartável (nunca no projeto real).
     runs-on: ubuntu-latest

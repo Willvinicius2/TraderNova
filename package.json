@@ -16,6 +16,7 @@
     "worker": "node worker/cli.mjs",
     "worker:once": "node worker/cli.mjs --once",
     "test:rls": "node scripts/test-rls.mjs",
+    "db:migrate": "node scripts/apply-migrations.mjs",
     "typecheck": "tsc --noEmit",
     "research:download": "python scripts/download-history.py",
     "research:run": "node scripts/run-historical.mjs",
