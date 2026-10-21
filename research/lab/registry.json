@@ -1,0 +1,86 @@
+{
+ "note": "Toda estratégia testada no projeto. Antes de criar uma nova, confira aqui: a mesma regra central com outros parâmetros, outro ativo ou outro tempo gráfico NÃO é estratégia nova.",
+ "strategies": [
+  {
+   "id": "T1",
+   "name": "Cruzamento EMA 9/21",
+   "family": "tendencia",
+   "coreRule": "Cruzamento de médias móveis exponenciais (qualquer par de médias rápida/lenta)",
+   "testedOn": "cripto spot 2024-2026",
+   "status": "REPROVADA",
+   "origin": "pesquisa anterior"
+  },
+  {
+   "id": "T2",
+   "name": "Pullback EMA 20/50 + RSI",
+   "family": "continuacao",
+   "coreRule": "Retração até EMA20 em tendência EMA20>EMA50 com RSI 50-65",
+   "testedOn": "cripto spot 2024-2026",
+   "status": "REPROVADA",
+   "origin": "pesquisa anterior"
+  },
+  {
+   "id": "T3",
+   "name": "Rompimento Donchian 20",
+   "family": "rompimento",
+   "coreRule": "Fechamento além da máxima/mínima de N candles (Donchian/Turtle, qualquer N) com filtro EMA",
+   "testedOn": "cripto spot 2024-2026",
+   "status": "REPROVADA",
+   "origin": "pesquisa anterior"
+  },
+  {
+   "id": "G1",
+   "name": "Pullback de tendência EMA50/200 + recruzamento EMA20",
+   "family": "tendencia",
+   "coreRule": "Recruzamento da EMA20 a favor de EMA50>EMA200",
+   "testedOn": "ouro CFD; EURUSD (triagem trend)",
+   "status": "REPROVADA",
+   "origin": "pesquisa anterior"
+  },
+  {
+   "id": "G2",
+   "name": "Rompimento da faixa inicial (opening range)",
+   "family": "rompimento",
+   "coreRule": "Rompimento da faixa das primeiras horas do dia, com ou sem reteste",
+   "testedOn": "ouro CFD; EURUSD (triagem opening)",
+   "status": "REPROVADA",
+   "origin": "pesquisa anterior"
+  },
+  {
+   "id": "G3",
+   "name": "Retorno às Bandas de Bollinger",
+   "family": "reversao",
+   "coreRule": "Fechamento volta para dentro da Bollinger após sair, alvo na média",
+   "testedOn": "ouro CFD; EURUSD (triagem reversion à SMA20)",
+   "status": "REPROVADA",
+   "origin": "pesquisa anterior"
+  },
+  {
+   "id": "G4",
+   "name": "Varredura da máxima/mínima do dia anterior",
+   "family": "reversao",
+   "coreRule": "Rompe extremo do dia anterior e fecha de volta dentro (liquidity sweep)",
+   "testedOn": "ouro CFD",
+   "status": "REPROVADA",
+   "origin": "pesquisa anterior"
+  },
+  {
+   "id": "G5",
+   "name": "Divergência RSI confirmada",
+   "family": "reversao",
+   "coreRule": "Divergência entre pivôs de preço e RSI14",
+   "testedOn": "ouro CFD",
+   "status": "REPROVADA",
+   "origin": "pesquisa anterior"
+  },
+  {
+   "id": "FX-RSI",
+   "name": "RSI<35 com candle de alta",
+   "family": "reversao",
+   "coreRule": "RSI14 abaixo de 35 e candle de alta (RSI sobrevendido simples)",
+   "testedOn": "EURUSD H1 triagem",
+   "status": "REPROVADA",
+   "origin": "pesquisa anterior"
+  }
+ ]
+}
