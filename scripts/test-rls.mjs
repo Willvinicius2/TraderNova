@@ -17,11 +17,24 @@ const target = new URL(url); target.pathname = `/${db}`;
 if (psql(url, ['-c', `create database ${db}`], 'criar banco') === false) process.exit(1);
 let ok = true;
 try {
-  const migrations = fs.readdirSync('supabase/migrations').filter((f) => f.endsWith('.sql')).sort().map((f) => `supabase/migrations/${f}`);
-  for (const file of ['supabase/tests/auth-stub.sql', ...migrations]) if (psql(target.href, ['-f', file], file) === false) { ok = false; break; }
+  if (psql(target.href, ['-f', 'supabase/tests/auth-stub.sql'], 'auth-stub') === false) ok = false;
+  // Migrações pelo mesmo script usado no projeto real; a segunda execução não pode ter nada pendente.
+  const migrate = (args) => spawnSync(process.execPath, ['scripts/apply-migrations.mjs', ...args], {encoding: 'utf8', env: {...process.env, TRADERNOVA_MIGRATIONS_DATABASE_URL: target.href}});
   if (ok) {
-    const out = psql(target.href, ['-t', '-A', '-f', 'supabase/tests/rls.sql'], 'supabase/tests/rls.sql');
-    if (out === false) ok = false; else console.log(out.trim().split('\n').filter((l) => l.startsWith('RLS')).join('\n'));
+    const first = migrate(['--apply']), second = migrate([]);
+    if (first.status !== 0 || second.status !== 0 || !second.stdout.includes('Nenhuma migração pendente.')) {
+      process.stdout.write(first.stdout + first.stderr + second.stdout + second.stderr); console.error('Falhou em: aplicar migrações'); ok = false;
+    }
+  }
+  if (ok) {
+    // helpers.sql primeiro; depois todo rls*.sql em ordem (cada fase acrescenta seu próprio arquivo).
+    const tests = fs.readdirSync('supabase/tests').filter((f) => /^rls.*\.sql$/.test(f)).sort().map((f) => `supabase/tests/${f}`);
+    for (const file of ['supabase/tests/helpers.sql', ...tests]) {
+      const out = psql(target.href, ['-t', '-A', '-f', file], file);
+      if (out === false) { ok = false; break; }
+      const summary = out.trim().split('\n').filter((l) => l.startsWith('RLS')).join('\n');
+      if (summary) console.log(summary);
+    }
   }
 } finally { psql(url, ['-c', `drop database if exists ${db}`], 'apagar banco'); }
 process.exit(ok ? 0 : 1);

@@ -1,0 +1,35 @@
+# Worker de pesquisa do TraderNova como serviço systemd (VM Linux gratuita). Ver docs/DEPLOY.md.
+# Espera o repositório em /opt/tradernova (dependências instaladas com npm run install:ci)
+# e as variáveis em /etc/tradernova/worker.env (modelo: deploy/worker/worker.env.example).
+[Unit]
+Description=TraderNova worker de pesquisa (Kraken -> Supabase)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=tradernova
+WorkingDirectory=/opt/tradernova
+EnvironmentFile=/etc/tradernova/worker.env
+Environment=TRADERNOVA_WORKER_DATA_DIR=/var/lib/tradernova
+ExecStart=/usr/bin/env node worker/cli.mjs --no-http
+Restart=always
+RestartSec=15
+# Encerramento limpo: o worker termina o ciclo atual ao receber SIGTERM.
+KillSignal=SIGTERM
+TimeoutStopSec=60
+MemoryMax=400M
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target

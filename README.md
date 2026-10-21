@@ -48,7 +48,7 @@ Temas: **Essencial Dark**, **Nova Lab** e **Claro & Direto** (ou acompanhar o di
 
 ## O que ainda não existe
 
-- Sinais persistentes em produção: o contrato, o worker local e a ficha `?aba=robo&sinal=<uuid>` (lida de `/api/signals/<uuid>`) já existem, mas o armazenamento é um arquivo local do worker; sem Supabase, login nem hospedagem do worker. Ver [`docs/SINAIS.md`](docs/SINAIS.md).
+- Sinais persistentes em produção: o código para Supabase, worker com vários pares e saúde do worker está pronto e testado, mas as migrações ainda não foram aplicadas no projeto real, o worker não está hospedado e não há login. Ver [`docs/SINAIS.md`](docs/SINAIS.md) e o passo a passo em [`docs/DEPLOY.md`](docs/DEPLOY.md).
 - Worker de ingestão no servidor (os dados são lidos pelo navegador).
 - Supabase e login: a migração em `supabase/migrations` está preparada, mas não foi aplicada.
 - Notificações push (só avisos dentro do app aberto).
@@ -57,4 +57,4 @@ Temas: **Essencial Dark**, **Nova Lab** e **Claro & Direto** (ou acompanhar o di
 
 ## Documentação
 
-[`docs/ESCOPO_CONSOLIDADO.md`](docs/ESCOPO_CONSOLIDADO.md), [`docs/MOTOR_E_VALIDACAO.md`](docs/MOTOR_E_VALIDACAO.md), [`docs/CALIBRACAO_E_PESQUISA.md`](docs/CALIBRACAO_E_PESQUISA.md), [`docs/MERCADO_AO_VIVO.md`](docs/MERCADO_AO_VIVO.md), [`docs/IMPLEMENTACAO.md`](docs/IMPLEMENTACAO.md), [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md), [`docs/VALIDACAO.md`](docs/VALIDACAO.md).
+[`docs/ESCOPO_CONSOLIDADO.md`](docs/ESCOPO_CONSOLIDADO.md), [`docs/MOTOR_E_VALIDACAO.md`](docs/MOTOR_E_VALIDACAO.md), [`docs/CALIBRACAO_E_PESQUISA.md`](docs/CALIBRACAO_E_PESQUISA.md), [`docs/MERCADO_AO_VIVO.md`](docs/MERCADO_AO_VIVO.md), [`docs/IMPLEMENTACAO.md`](docs/IMPLEMENTACAO.md), [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md), [`docs/VALIDACAO.md`](docs/VALIDACAO.md), [`docs/WORKER.md`](docs/WORKER.md), [`docs/DEPLOY.md`](docs/DEPLOY.md).
