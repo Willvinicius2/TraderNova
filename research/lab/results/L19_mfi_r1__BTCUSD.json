@@ -1,0 +1,233 @@
+{
+ "strategy": "L19_mfi_r1",
+ "name": "Money Flow Index com filtro de tendência SMA200",
+ "family": "tempo_volume",
+ "sources": [
+  "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/money-flow-index-mfi",
+  "https://help.ctrader.com/indicators/built-in/volume/money-flow-index/"
+ ],
+ "rule": "Igual a L19_mfi (MFI(n) cruza de volta acima de lo para comprar / abaixo de 100-lo para vender; saída em 50 ou no nível oposto; stop k*ATR14), mas compras só com fechamento acima da SMA200 e vendas só abaixo. Volume só do Bitstamp.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "07396dcab556eb60975af85db0a8fd5a4939ad652e91415159c9530ad667629c",
+ "refinement": "filtro de tendencia SMA200",
+ "combinationsTested": 144,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H1",
+   "params": {
+    "n": 14,
+    "lo": 10,
+    "exit": "opposite",
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 15,
+    "netR": 27.31,
+    "pf": 3.948,
+    "winRate": 0.467,
+    "expR": 1.8207,
+    "maxDDR": 4.62,
+    "sharpeTrade": 0.4595,
+    "tStat": 1.78,
+    "tradesPerYear": 3.0,
+    "retPct": 13.66,
+    "maxDDPct": 2.31,
+    "avgBars": 133.5
+   },
+   "neighborMedianPF": 1.547,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "n": 20,
+    "lo": 10,
+    "exit": "opposite",
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 3,
+    "netR": 26.82,
+    "pf": null,
+    "winRate": 1.0,
+    "expR": 8.9408,
+    "maxDDR": 0.0,
+    "sharpeTrade": 2.1217,
+    "tStat": 3.67,
+    "tradesPerYear": 0.6,
+    "retPct": 13.41,
+    "maxDDPct": 0.0,
+    "avgBars": 569.0
+   },
+   "neighborMedianPF": 0,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "n": 20,
+    "lo": 10,
+    "exit": "opposite",
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 3,
+    "netR": 26.82,
+    "pf": null,
+    "winRate": 1.0,
+    "expR": 8.9408,
+    "maxDDR": 0.0,
+    "sharpeTrade": 2.1217,
+    "tStat": 3.67,
+    "tradesPerYear": 0.6,
+    "retPct": 13.41,
+    "maxDDPct": 0.0,
+    "avgBars": 569.0
+   },
+   "neighborMedianPF": 0,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "n": 20,
+    "lo": 20,
+    "exit": "opposite",
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 46,
+    "netR": 20.45,
+    "pf": 1.853,
+    "winRate": 0.522,
+    "expR": 0.4445,
+    "maxDDR": 5.12,
+    "sharpeTrade": 0.2463,
+    "tStat": 1.67,
+    "tradesPerYear": 9.2,
+    "retPct": 10.22,
+    "maxDDPct": 2.56,
+    "avgBars": 65.6
+   },
+   "neighborMedianPF": 0.978,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "n": 14,
+    "lo": 10,
+    "exit": "opposite",
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 15,
+    "netR": 18.38,
+    "pf": 3.367,
+    "winRate": 0.533,
+    "expR": 1.2252,
+    "maxDDR": 3.39,
+    "sharpeTrade": 0.4491,
+    "tStat": 1.74,
+    "tradesPerYear": 3.0,
+    "retPct": 9.19,
+    "maxDDPct": 1.69,
+    "avgBars": 139.5
+   },
+   "neighborMedianPF": 1.249,
+   "robust": true,
+   "eligible": false
+  }
+ ],
+ "selected": {
+  "tf": "H1",
+  "params": {
+   "n": 10,
+   "lo": 10,
+   "exit": "opposite",
+   "k": 2.0,
+   "side": "long"
+  },
+  "development": {
+   "trades": 78,
+   "netR": 25.68,
+   "pf": 1.465,
+   "winRate": 0.372,
+   "expR": 0.3293,
+   "maxDDR": 8.68,
+   "sharpeTrade": 0.1355,
+   "tStat": 1.2,
+   "tradesPerYear": 15.6,
+   "retPct": 12.84,
+   "maxDDPct": 4.34,
+   "avgBars": 32.9
+  },
+  "neighborMedianPF": 1.215,
+  "deflatedSharpe": 0.0,
+  "validation": {
+   "base": {
+    "trades": 29,
+    "netR": -19.33,
+    "pf": 0.309,
+    "winRate": 0.138,
+    "expR": -0.6666,
+    "maxDDR": 19.33,
+    "sharpeTrade": -0.5712,
+    "tStat": -3.08,
+    "tradesPerYear": 14.5,
+    "retPct": -9.67,
+    "maxDDPct": 9.67,
+    "avgBars": 20.0
+   },
+   "stress": {
+    "trades": 29,
+    "netR": -22.7,
+    "pf": 0.266,
+    "winRate": 0.138,
+    "expR": -0.7829,
+    "maxDDR": 22.7,
+    "sharpeTrade": -0.6666,
+    "tStat": -3.59,
+    "tradesPerYear": 14.5,
+    "retPct": -11.35,
+    "maxDDPct": 11.35,
+    "avgBars": 20.0
+   },
+   "passed": false
+  },
+  "warning": "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

@@ -1,0 +1,227 @@
+{
+ "strategy": "L06_ibs",
+ "name": "Internal Bar Strength (IBS)",
+ "family": "reversao",
+ "sources": [
+  "https://quantifiedstrategies.substack.com/p/the-internal-bar-strength-ibs-indicator",
+  "https://doc.stocksharp.com/en/designer-gallery/Internal_Bar_Strength_IBS_Mean_Reversion"
+ ],
+ "rule": "IBS=(fechamento-mínima)/(máxima-mínima) do candle. Compra no fechamento quando IBS < limiar baixo (fonte: 0,2); sai quando IBS > limiar alto (fonte: 0,8). Venda espelhada (IBS > 1-baixo, sai com IBS < 1-alto). Stop k*ATR14.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "dedfbe4528ae7581f3ab42857f31f859787e7bd03a4865021e3a4e4abd736373",
+ "refinement": null,
+ "combinationsTested": 216,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "lo": 0.25,
+    "hi": 0.7,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 190,
+    "netR": 11.39,
+    "pf": 1.369,
+    "winRate": 0.7,
+    "expR": 0.0599,
+    "maxDDR": 4.45,
+    "sharpeTrade": 0.1162,
+    "tStat": 1.6,
+    "tradesPerYear": 38.0,
+    "retPct": 5.7,
+    "maxDDPct": 2.22,
+    "avgBars": 2.0
+   },
+   "neighborMedianPF": 1.174,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "lo": 0.25,
+    "hi": 0.8,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 172,
+    "netR": 13.33,
+    "pf": 1.367,
+    "winRate": 0.663,
+    "expR": 0.0775,
+    "maxDDR": 6.23,
+    "sharpeTrade": 0.1238,
+    "tStat": 1.62,
+    "tradesPerYear": 34.4,
+    "retPct": 6.67,
+    "maxDDPct": 3.12,
+    "avgBars": 3.0
+   },
+   "neighborMedianPF": 1.369,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "lo": 0.25,
+    "hi": 0.9,
+    "k": 4.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 705,
+    "netR": 18.94,
+    "pf": 1.161,
+    "winRate": 0.61,
+    "expR": 0.0269,
+    "maxDDR": 9.49,
+    "sharpeTrade": 0.0496,
+    "tStat": 1.32,
+    "tradesPerYear": 140.9,
+    "retPct": 9.47,
+    "maxDDPct": 4.74,
+    "avgBars": 9.5
+   },
+   "neighborMedianPF": 1.018,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "lo": 0.25,
+    "hi": 0.9,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 738,
+    "netR": 26.0,
+    "pf": 1.161,
+    "winRate": 0.598,
+    "expR": 0.0352,
+    "maxDDR": 13.11,
+    "sharpeTrade": 0.0515,
+    "tStat": 1.4,
+    "tradesPerYear": 147.5,
+    "retPct": 13.0,
+    "maxDDPct": 6.56,
+    "avgBars": 8.9
+   },
+   "neighborMedianPF": 1.103,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "lo": 0.2,
+    "hi": 0.9,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 632,
+    "netR": 23.76,
+    "pf": 1.169,
+    "winRate": 0.595,
+    "expR": 0.0376,
+    "maxDDR": 12.35,
+    "sharpeTrade": 0.0537,
+    "tStat": 1.35,
+    "tradesPerYear": 126.3,
+    "retPct": 11.88,
+    "maxDDPct": 6.17,
+    "avgBars": 8.9
+   },
+   "neighborMedianPF": 1.139,
+   "robust": true,
+   "eligible": true
+  }
+ ],
+ "selected": {
+  "tf": "D1",
+  "params": {
+   "lo": 0.25,
+   "hi": 0.7,
+   "k": 2.0,
+   "side": "long"
+  },
+  "development": {
+   "trades": 190,
+   "netR": 11.39,
+   "pf": 1.369,
+   "winRate": 0.7,
+   "expR": 0.0599,
+   "maxDDR": 4.45,
+   "sharpeTrade": 0.1162,
+   "tStat": 1.6,
+   "tradesPerYear": 38.0,
+   "retPct": 5.7,
+   "maxDDPct": 2.22,
+   "avgBars": 2.0
+  },
+  "neighborMedianPF": 1.174,
+  "deflatedSharpe": 0.02,
+  "validation": {
+   "base": {
+    "trades": 115,
+    "netR": -2.15,
+    "pf": 0.894,
+    "winRate": 0.617,
+    "expR": -0.0187,
+    "maxDDR": 3.77,
+    "sharpeTrade": -0.0405,
+    "tStat": -0.43,
+    "tradesPerYear": 57.5,
+    "retPct": -1.08,
+    "maxDDPct": 1.89,
+    "avgBars": 2.1
+   },
+   "stress": {
+    "trades": 115,
+    "netR": -4.35,
+    "pf": 0.795,
+    "winRate": 0.6,
+    "expR": -0.0378,
+    "maxDDR": 4.66,
+    "sharpeTrade": -0.0817,
+    "tStat": -0.88,
+    "tradesPerYear": 57.5,
+    "retPct": -2.17,
+    "maxDDPct": 2.33,
+    "avgBars": 2.1
+   },
+   "passed": false
+  },
+  "warning": "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

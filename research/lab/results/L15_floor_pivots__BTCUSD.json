@@ -1,0 +1,173 @@
+{
+ "strategy": "L15_floor_pivots",
+ "name": "Pivôs clássicos diários (P, R1, S1): rejeição ou rompimento",
+ "family": "padroes",
+ "sources": [
+  "https://daytradingtoolkit.com/strategies/pivot-point-day-trading-strategy",
+  "https://doc.stocksharp.com/en/designer-gallery/Pivot_Point_Reversal",
+  "https://c.mql5.com/forextsd/forum/161/pivot_trading.pdf",
+  "https://help.stockdoctor.com.au/hc/en-us/articles/360000099896-Pivot-Points"
+ ],
+ "rule": "Com máxima M, mínima m e fechamento F do dia UTC anterior: P=(M+m+F)/3, R1=2P-m, S1=2P-M, R2=P+(M-m), S2=P-(M-m). Modo rejeição: compra quando o candle toca/fura S1 e fecha de volta acima de S1 com corpo de alta, alvo em P; venda no espelho em R1, alvo P. Modo rompimento: compra quando o fechamento cruza acima de R1, alvo R2; venda quando cruza abaixo de S1, alvo S2. Stop k*ATR14; saída por tempo após 'hold' horas. Não usa o extremo do dia anterior como gatilho de varredura.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "4607d7614a6c04468b5c233bf00f57cb5b7c0042b333b149798c3f80e0232a9a",
+ "refinement": null,
+ "combinationsTested": 144,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "M15",
+   "params": {
+    "mode": "rompimento",
+    "k": 3.0,
+    "hold": 48,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 731,
+    "netR": 12.33,
+    "pf": 1.037,
+    "winRate": 0.588,
+    "expR": 0.0169,
+    "maxDDR": 40.25,
+    "sharpeTrade": 0.0165,
+    "tStat": 0.45,
+    "tradesPerYear": 146.1,
+    "retPct": 6.17,
+    "maxDDPct": 20.12,
+    "avgBars": 25.3
+   },
+   "neighborMedianPF": 0.884,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "mode": "rompimento",
+    "k": 3.0,
+    "hold": 48,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 387,
+    "netR": 2.33,
+    "pf": 1.052,
+    "winRate": 0.708,
+    "expR": 0.006,
+    "maxDDR": 11.21,
+    "sharpeTrade": 0.0174,
+    "tStat": 0.34,
+    "tradesPerYear": 77.4,
+    "retPct": 1.16,
+    "maxDDPct": 5.6,
+    "avgBars": 3.6
+   },
+   "neighborMedianPF": 0.873,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "M15",
+   "params": {
+    "mode": "rompimento",
+    "k": 3.0,
+    "hold": 24,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 739,
+    "netR": 7.8,
+    "pf": 1.024,
+    "winRate": 0.587,
+    "expR": 0.0106,
+    "maxDDR": 41.62,
+    "sharpeTrade": 0.0106,
+    "tStat": 0.29,
+    "tradesPerYear": 147.7,
+    "retPct": 3.9,
+    "maxDDPct": 20.81,
+    "avgBars": 23.3
+   },
+   "neighborMedianPF": 0.873,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "mode": "rompimento",
+    "k": 2.0,
+    "hold": 24,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 566,
+    "netR": 3.2,
+    "pf": 1.016,
+    "winRate": 0.625,
+    "expR": 0.0056,
+    "maxDDR": 31.39,
+    "sharpeTrade": 0.007,
+    "tStat": 0.17,
+    "tradesPerYear": 113.2,
+    "retPct": 1.6,
+    "maxDDPct": 15.7,
+    "avgBars": 6.8
+   },
+   "neighborMedianPF": 0.92,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "mode": "rompimento",
+    "k": 2.0,
+    "hold": 48,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 562,
+    "netR": -0.71,
+    "pf": 0.997,
+    "winRate": 0.626,
+    "expR": -0.0013,
+    "maxDDR": 32.28,
+    "sharpeTrade": -0.0015,
+    "tStat": -0.04,
+    "tradesPerYear": 112.4,
+    "retPct": -0.36,
+    "maxDDPct": 16.14,
+    "avgBars": 7.6
+   },
+   "neighborMedianPF": 0.92,
+   "robust": false,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null
+}

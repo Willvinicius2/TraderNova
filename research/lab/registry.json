@@ -81,6 +81,362 @@
    "testedOn": "EURUSD H1 triagem",
    "status": "REPROVADA",
    "origin": "pesquisa anterior"
+  },
+  {
+   "id": "L04_tsmom",
+   "name": "Momentum de série temporal (TSMOM)",
+   "family": "tendencia",
+   "coreRule": "A cada 'rebal' dias (convertidos em candles do tempo gráfico, ancorados no início do dia UTC) olha o retorno dos últimos 'look' dias: positivo = comprado, negativo = vendido (side=both) ou fora (side=long). Mantém a posição até o próximo rebalanceamento que mude o sinal. Sem volatility scaling (resultado já é medido em R). Stop de proteção k*ATR com ATR de 14 dias (14*candles por dia); depois de um stop só reentra no próximo rebalanceamento.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "CANDIDATA",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://papers.ssrn.com/abstract=2089463",
+    "https://fairmodel.econ.yale.edu/ec439/jpde.pdf",
+    "https://quantpedia.com/deconstructing-the-time-series-momentum-strategy/"
+   ]
+  },
+  {
+   "id": "L07_stochastic",
+   "name": "Estocástico de Lane (cruzamento %K/%D nas zonas)",
+   "family": "reversao",
+   "coreRule": "Estocástico lento (%K = média 3 do %K rápido de n candles; %D = média 3 do %K). Compra quando %K cruza acima de %D com %D abaixo da zona de sobrevenda (Lane: 20); vende quando cruza abaixo com %D acima de 100-zona. Sai da compra quando %K passa de 100-zona (sobrecompra) e da venda quando %K cai abaixo da zona. Stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "CANDIDATA",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://help.trendspider.com/kb/indicators/lanes-stochastic-oscillator",
+    "https://www.barchart.com/education/technical-indicators/stochastic_fast",
+    "https://www.babypips.com/forexpedia/Stochastics"
+   ]
+  },
+  {
+   "id": "L12_keltner_breakout",
+   "name": "Rompimento do canal de Keltner",
+   "family": "volatilidade",
+   "coreRule": "Canal de Keltner moderno: EMA(n) ± k×ATR(n). Compra quando o fechamento cruza acima da banda superior; vende quando cruza abaixo da inferior. Sai quando o fechamento volta para o outro lado da EMA central. Stop inicial stop_k×ATR(n).",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "CANDIDATA",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://doc.stocksharp.com/en/designer-gallery/Keltner_Channel_Breakout",
+    "https://www.babypips.com/forexpedia/keltner-channel",
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/keltner-channels"
+   ]
+  },
+  {
+   "id": "L01_supertrend",
+   "name": "Supertrend (virada de direção)",
+   "family": "tendencia",
+   "coreRule": "Linha Supertrend = (máx+mín)/2 ± mult*ATR(n) com bandas finais que só apertam; direção vira para alta quando o fechamento passa acima da banda superior e para baixa quando fecha abaixo da inferior. Compra na virada para alta, vende (side=both) na virada para baixa; sai na virada oposta. Stop inicial na própria linha Supertrend do candle de sinal (mínimo 0,5*ATR).",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://help.ctrader.com/indicators/built-in/trend/supertrend/",
+    "https://www.luxalgo.com/library/indicator/r6dAP7yi-supertrend/"
+   ]
+  },
+  {
+   "id": "L02_adx_dmi",
+   "name": "Sistema direcional de Wilder (DI+/DI- com ADX)",
+   "family": "tendencia",
+   "coreRule": "DI+ e DI- de Wilder (suavização de Wilder, período n) e ADX. Compra quando DI+ cruza acima de DI- com ADX >= limiar; vende (side=both) quando DI- cruza acima de DI+ com ADX >= limiar. Sai no cruzamento oposto dos DIs (independe do ADX). Stop inicial k*ATR(14).",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://www.barchart.com/trader/help/studies/adx.php",
+    "https://www.metatrader5.com/en/terminal/help/indicators/trend_indicators/admi",
+    "Wilder, J. W. (1978), New Concepts in Technical Trading Systems (definição clássica)"
+   ]
+  },
+  {
+   "id": "L03_ichimoku",
+   "name": "Ichimoku: cruzamento Tenkan/Kijun com nuvem e Chikou",
+   "family": "tendencia",
+   "coreRule": "Tenkan=(máx+mín)/2 de 9*s, Kijun de 26*s, Senkou A=(Tenkan+Kijun)/2 e Senkou B=(máx+mín)/2 de 52*s, ambos deslocados 26*s candles à frente (a nuvem em i usa dados até i-26*s). Chikou confirma quando o fechamento atual está acima (abaixo) do fechamento de 26*s candles atrás. Compra: Tenkan cruza acima da Kijun com fechamento acima da nuvem e Chikou acima; venda (side=both) espelhada. Saída: cruzamento oposto Tenkan/Kijun (exit=tk) ou fechamento do lado errado da Kijun (exit=kijun). Stop inicial k*ATR(14). s=1 é o padrão 9/26/52; s=2 e 3 alongam (comum em cripto 24/7).",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ichimoku_Kink%C5%8D_Hy%C5%8D",
+    "https://www.luxalgo.com/library/concept/ichimoku-signals.md"
+   ]
+  },
+  {
+   "id": "L05_connors_rsi2",
+   "name": "RSI(2) de Connors com filtro SMA200",
+   "family": "reversao",
+   "coreRule": "Compra quando o fechamento está acima da SMA200 e o RSI(2) fecha abaixo do limiar (5/10/15); sai quando fecha acima da SMA5 (ou abaixo da SMA200). Venda espelhada: abaixo da SMA200 e RSI(2) acima de 100-limiar, sai ao fechar abaixo da SMA5. Stop de proteção k*ATR14 (a fonte não usa stop; o motor exige um).",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://www.luxalgo.com/library/concept/rsi-2/",
+    "https://backtrex.com/en/backtests/connors-rsi-2-sp-500",
+    "Connors & Alvarez (2008), Short Term Trading Strategies That Work, cap. RSI(2)"
+   ]
+  },
+  {
+   "id": "L06_ibs",
+   "name": "Internal Bar Strength (IBS)",
+   "family": "reversao",
+   "coreRule": "IBS=(fechamento-mínima)/(máxima-mínima) do candle. Compra no fechamento quando IBS < limiar baixo (fonte: 0,2); sai quando IBS > limiar alto (fonte: 0,8). Venda espelhada (IBS > 1-baixo, sai com IBS < 1-alto). Stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://quantifiedstrategies.substack.com/p/the-internal-bar-strength-ibs-indicator",
+    "https://doc.stocksharp.com/en/designer-gallery/Internal_Bar_Strength_IBS_Mean_Reversion"
+   ]
+  },
+  {
+   "id": "L08_williams_r",
+   "name": "Williams %R (-90 / -30)",
+   "family": "reversao",
+   "coreRule": "%R(n) = -100*(máxima n - fechamento)/(máxima n - mínima n). Compra no fechamento quando %R < limiar de entrada (fonte: -90); sai quando fecha acima da máxima do candle anterior ou %R > limiar de saída (fonte: -30). Venda espelhada (%R > -100-entrada; sai abaixo da mínima anterior ou %R < -100-saída). Stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://quantifiedstrategies.substack.com/p/williams-r-trading-strategy-williams-203",
+    "https://incrediblecharts.com/indicators/williams_percent_r.php"
+   ]
+  },
+  {
+   "id": "L09_ttm_squeeze",
+   "name": "TTM Squeeze (John Carter)",
+   "family": "volatilidade",
+   "coreRule": "Squeeze ligado quando a Bollinger(20, 2 desvios) fica inteira dentro do Keltner(EMA20 ± kc×ATR20). Quando o squeeze desliga (dispara) depois de ao menos min_sq candles ligado, entra na direção do momentum (regressão linear de 20 candles do preço menos a média entre ponto médio Donchian 20 e SMA20, como no histograma de Carter). Saída: 'fade' = momentum perde força por 2 candles seguidos (mudança de cor do histograma); 'zero' = momentum cruza o zero. Stop inicial stop_k×ATR20.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ttm-squeeze",
+    "https://www.luxalgo.com/library/concept/ttm-squeeze/",
+    "John F. Carter, Mastering the Trade (McGraw-Hill, 2005/2012), cap. 'The Squeeze'"
+   ]
+  },
+  {
+   "id": "L10_williams_volbreak",
+   "name": "Volatility breakout de Larry Williams",
+   "family": "volatilidade",
+   "coreRule": "Dia em UTC. Nível de compra = abertura do dia + k×(máx-mín do dia anterior); venda = abertura - k×range. Executado em candles intradiários (H1/H4): o primeiro fechamento do dia além do nível gera a entrada na abertura do candle seguinte (aproxima a ordem stop de Williams). Stop = sf×range do dia anterior. Saída por tempo: hold_days dias (24 candles H1 ou 6 H4 por dia), como a saída 'na abertura seguinte'/bailout curto de Williams. Escolha documentada: H1/H4 em vez de D1 para não usar a máxima do próprio dia como preço de entrada.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://www.luxalgo.com/library/concept/volatility-breakout/",
+    "Larry Williams, Long-Term Secrets to Short-Term Trading (Wiley, 1999), cap. sobre volatility breakout"
+   ]
+  },
+  {
+   "id": "L11_nr7",
+   "name": "NR7 de Toby Crabel",
+   "family": "volatilidade",
+   "coreRule": "Candle NR7 = range (máx-mín) menor que o de cada um dos 6 anteriores. Nos 'window' candles seguintes, o primeiro fechamento acima da máxima do NR7 compra e o primeiro abaixo da mínima vende (aproximação, no fechamento, da ordem stop de rompimento de Crabel, pois o motor só entra na abertura seguinte). Stop: 'bar' = lado oposto do NR7 (distância do fechamento até ele, mínimo 0,5×ATR14) ou 'atr' = 1×ATR14. Saída rápida por tempo: hold candles.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://quantifiedstrategies.substack.com/p/nr7-trading-strategy-explained-for",
+    "https://www.luxalgo.com/library/concept/nr4-nr7-narrow-range-bars/",
+    "Toby Crabel, Day Trading with Short Term Price Patterns and Opening Range Breakout (1990)"
+   ]
+  },
+  {
+   "id": "L13_heikin_ashi",
+   "name": "Tendência Heikin Ashi (velas sem pavio contra)",
+   "family": "padroes",
+   "coreRule": "Calcula velas Heikin Ashi (fechHA=(A+M+m+F)/4, abertHA=(abertHA ant.+fechHA ant.)/2, máx/mín incluindo abertHA/fechHA). Compra quando as últimas n velas HA são de alta e sem sombra inferior (tendência forte de alta); venda no espelho (n velas de baixa sem sombra superior). Sai na primeira vela HA de cor oposta. Stop k*ATR14. Preços de execução são os reais.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://www.xtb.com/en/education/heikin-ashi",
+    "https://www.luxalgo.com/blog/heikin-ashi-charts-clear-strategies-for-traders/",
+    "https://doc.stocksharp.com/en/api-examples/0012_Heikin_Ashi_Consecutive",
+    "Dan Valcu, 'Using the Heikin-Ashi Technique', Technical Analysis of Stocks & Commodities, fev/2004"
+   ]
+  },
+  {
+   "id": "L14_alligator_fractal",
+   "name": "Alligator + rompimento de fractal (Bill Williams)",
+   "family": "padroes",
+   "coreRule": "Alligator = SMMA da mediana (A+m)/2: mandíbula 13 deslocada 8, dentes 8 deslocados 5, lábios 5 deslocados 3 (deslocamento usa só valores passados). Fractal de alta = máxima maior que as 2 máximas de cada lado (confirmado 2 candles depois). Compra quando o fechamento rompe a máxima do último fractal de alta que está acima dos dentes; venda no espelho com fractal de baixa abaixo dos dentes. Opcional: exigir Alligator 'acordado' (lábios>dentes>mandíbula). Sai quando fecha do outro lado da linha de saída (lábios/dentes/mandíbula). Stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://www.metatrader5.com/en/terminal/help/indicators/bw_indicators/alligator",
+    "https://nepafx.yolasite.com/fractals.php",
+    "https://doc.stocksharp.com/en/api-examples/2077_Bill_Williams",
+    "Bill Williams, Trading Chaos (1995) / New Trading Dimensions (1998)"
+   ]
+  },
+  {
+   "id": "L15_floor_pivots_r1",
+   "name": "Pivôs diários: rompimento de R1/S1 com filtro de tendência",
+   "family": "padroes",
+   "coreRule": "P=(M+m+F)/3 do dia UTC anterior, R1=2P-m, S1=2P-M, R2/S2=P±(M-m). Compra quando o fechamento cruza acima de R1 e está acima da EMA(L); venda quando cruza abaixo de S1 e está abaixo da EMA(L). Stop k*ATR14; sai se fechar do outro lado do P do dia, por alvo R2/S2 (se tgt='R2') ou por tempo após 'hold' horas.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://daytradingtoolkit.com/strategies/pivot-point-day-trading-strategy",
+    "https://c.mql5.com/forextsd/forum/161/pivot_trading.pdf",
+    "https://help.stockdoctor.com.au/hc/en-us/articles/360000099896-Pivot-Points"
+   ]
+  },
+  {
+   "id": "L16_engulfing_trend",
+   "name": "Engolfo a favor da tendência (SMA longa)",
+   "family": "padroes",
+   "coreRule": "Engolfo de alta: candle anterior de baixa e candle atual de alta cujo corpo cobre o corpo anterior (abertura <= fechamento anterior e fechamento >= abertura anterior), corpo atual >= minbody*ATR. Só compra com fechamento acima da SMA(L); venda no espelho (engolfo de baixa abaixo da SMA(L)). Stop além da mínima/máxima dos dois candles do padrão (mínimo 0,5*ATR); alvo tr*R; saída por tempo após 20 candles.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://www.tradingview.com/script/HDIiStyH-Optimized-Engulfing-Strategy/",
+    "https://ungeracademy.com/blog/how-to-test-patterns-with-trading-systems-example-test-on-engulfing",
+    "Steve Nison, Japanese Candlestick Charting Techniques (1991) - definição do engolfo"
+   ]
+  },
+  {
+   "id": "L18_obv_breakout",
+   "name": "Rompimento do OBV (Granville) confirmado pelo preço",
+   "family": "tempo_volume",
+   "coreRule": "OBV de Granville (soma o volume do candle se fecha acima do anterior, subtrai se fecha abaixo). Compra quando o OBV fecha acima da máxima dos N candles anteriores (rompimento do OBV, que segundo Granville antecede o preço) e o preço confirma fechando acima da EMA(N). Venda no espelho (OBV abaixo da mínima de N e preço abaixo da EMA). Sai quando o OBV cruza de volta sua média SMA(N). Stop k*ATR14. Volume é só do Bitstamp (uma corretora).",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/on-balance-volume-obv",
+    "https://www.incrediblecharts.com/indicators/on_balance_volume.php",
+    "https://www.metatrader4.com/en/trading-platform/help/analytics/tech_indicators/on_balance_volume"
+   ]
+  },
+  {
+   "id": "L19_mfi_r1",
+   "name": "Money Flow Index com filtro de tendência SMA200",
+   "family": "tempo_volume",
+   "coreRule": "Igual a L19_mfi (MFI(n) cruza de volta acima de lo para comprar / abaixo de 100-lo para vender; saída em 50 ou no nível oposto; stop k*ATR14), mas compras só com fechamento acima da SMA200 e vendas só abaixo. Volume só do Bitstamp.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/money-flow-index-mfi",
+    "https://help.ctrader.com/indicators/built-in/volume/money-flow-index/"
+   ]
+  },
+  {
+   "id": "L15_floor_pivots",
+   "name": "Pivôs clássicos diários (P, R1, S1): rejeição ou rompimento",
+   "family": "padroes",
+   "coreRule": "Com máxima M, mínima m e fechamento F do dia UTC anterior: P=(M+m+F)/3, R1=2P-m, S1=2P-M, R2=P+(M-m), S2=P-(M-m). Modo rejeição: compra quando o candle toca/fura S1 e fecha de volta acima de S1 com corpo de alta, alvo em P; venda no espelho em R1, alvo P. Modo rompimento: compra quando o fechamento cruza acima de R1, alvo R2; venda quando cruza abaixo de S1, alvo S2. Stop k*ATR14; saída por tempo após 'hold' horas. Não usa o extremo do dia anterior como gatilho de varredura.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://daytradingtoolkit.com/strategies/pivot-point-day-trading-strategy",
+    "https://doc.stocksharp.com/en/designer-gallery/Pivot_Point_Reversal",
+    "https://c.mql5.com/forextsd/forum/161/pivot_trading.pdf",
+    "https://help.stockdoctor.com.au/hc/en-us/articles/360000099896-Pivot-Points"
+   ]
+  },
+  {
+   "id": "L17_btc_seasonality",
+   "name": "Sazonalidade intradiária do BTC (21h-23h UTC)",
+   "family": "tempo_volume",
+   "coreRule": "Regra da fonte: comprado em BTC só na janela de horas de retorno mais forte (fonte: compra às 21:00 UTC e vende às 23:00 UTC, todos os dias; fora disso, caixa). Só compra. Entrada na abertura do candle H1 da hora 'entry_hour', saída por tempo após 'hold' horas. Stop de proteção fixo 2*ATR14 (H1), que a fonte não tem; calibra-se só a janela (hora de entrada e duração).",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://quantpedia.com/are-there-seasonal-intraday-or-overnight-anomalies-in-bitcoin/",
+    "https://quantpedia.com/strategies/intraday-seasonality-in-bitcoin"
+   ]
+  },
+  {
+   "id": "L17_btc_seasonality_r1",
+   "name": "Sazonalidade intradiária do BTC (21h-23h UTC) só em dias fortes",
+   "family": "tempo_volume",
+   "coreRule": "Comprado na janela intradiária da fonte (entrada na abertura da hora 'entry_hour' UTC, saída após 'hold' horas), mas só nos dias citados como mais fortes: 'fri' = sexta; 'thu_fri' = quinta e sexta; 'thu_sun' = quinta a domingo. Só compra. Stop de proteção 2*ATR14 H1.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://quantpedia.com/are-there-seasonal-intraday-or-overnight-anomalies-in-bitcoin/",
+    "https://quantpedia.com/the-seasonality-of-bitcoin/"
+   ]
+  },
+  {
+   "id": "L17_btc_seasonality_r2",
+   "name": "Sazonalidade intradiária do BTC (21h-23h UTC) em regime de alta",
+   "family": "tempo_volume",
+   "coreRule": "Comprado na janela da fonte (entrada na abertura da hora 'entry_hour' UTC, saída após 'hold' horas), só quando o fechamento H1 está acima da SMA de 'trend_days' dias (24*N candles H1). Só compra. Stop 2*ATR14 H1.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://quantpedia.com/are-there-seasonal-intraday-or-overnight-anomalies-in-bitcoin/",
+    "https://quantpedia.com/strategies/intraday-seasonality-in-bitcoin"
+   ]
+  },
+  {
+   "id": "L19_mfi",
+   "name": "Money Flow Index: volta da sobrevenda/sobrecompra",
+   "family": "tempo_volume",
+   "coreRule": "MFI(n) de Quong & Soudack: preço típico (H+L+C)/3 vezes volume; razão entre fluxo positivo e negativo de n candles; MFI = 100 - 100/(1+razão). Níveis da fonte 20/80 (extremos 10/90). Compra quando o MFI volta a cruzar para cima do nível de sobrevenda (lo); venda quando volta a cruzar para baixo de 100-lo. Saída quando o MFI chega a 50 ('mid') ou ao nível oposto ('opposite'); stop k*ATR14. Volume é só do Bitstamp.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/money-flow-index-mfi",
+    "https://help.ctrader.com/indicators/built-in/volume/money-flow-index/"
+   ]
+  },
+  {
+   "id": "L20_vwap_reversion",
+   "name": "Reversão ao VWAP diário/rolante",
+   "family": "tempo_volume",
+   "coreRule": "VWAP = soma(preço típico*volume)/soma(volume), ancorado na meia-noite UTC ('day', exige 4h de sessão) ou rolante de 24h ('rolling'). Compra quando o fechamento fica abaixo de VWAP - d*ATR14 (esticado demais, convenção de 'fade the extreme' das bandas de VWAP); venda no espelho. Alvo: preço volta ao VWAP (saída no candle seguinte ao fechamento além do VWAP); stop k*ATR14; saída por tempo em 24h. Volume só do Bitstamp.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://www.tradingview.com/script/mthvTwSg-VWAP-Intraday-Weekly-Monthly/",
+    "https://www.tradingview.com/script/HBa1RdfD-Institutional-VWAP-Bands-JOAT/",
+    "https://www.luxalgo.com/library/indicator/CzQ5lLHJ-vwap-strategy/"
+   ]
+  },
+  {
+   "id": "L20_vwap_reversion_r1",
+   "name": "Reversão ao VWAP com recuperação da banda e tendência",
+   "family": "tempo_volume",
+   "coreRule": "Banda = VWAP (dia UTC ou rolante 24h) +- d*ATR14. Compra quando o candle anterior fechou abaixo da banda inferior e o atual fecha de volta acima dela, com fechamento acima da EMA200; venda no espelho abaixo da EMA200. Alvo: VWAP; stop k*ATR14; saída por tempo em 24h. Volume só do Bitstamp.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://www.tradingview.com/script/mthvTwSg-VWAP-Intraday-Weekly-Monthly/",
+    "https://www.tradingview.com/script/HBa1RdfD-Institutional-VWAP-Bands-JOAT/",
+    "https://www.luxalgo.com/library/indicator/CzQ5lLHJ-vwap-strategy/"
+   ]
+  },
+  {
+   "id": "L20_vwap_reversion_r2",
+   "name": "Reversão ao VWAP semanal com recuperação da banda",
+   "family": "tempo_volume",
+   "coreRule": "VWAP semanal ancorado na segunda 00:00 UTC ('week', exige 1 dia de semana) ou rolante de 7 dias ('rolling'). Banda = VWAP +- d*ATR14. Compra quando o candle anterior fechou abaixo da banda inferior e o atual fecha de volta acima dela (ainda abaixo do VWAP), com fechamento acima da EMA200; venda no espelho. Alvo: VWAP; stop k*ATR14; saída por tempo em 7 dias. Volume só do Bitstamp.",
+   "testedOn": "BTCUSD lab-v1",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 1",
+   "sources": [
+    "https://www.tradingview.com/script/mthvTwSg-VWAP-Intraday-Weekly-Monthly/",
+    "https://www.tradingview.com/script/HBa1RdfD-Institutional-VWAP-Bands-JOAT/"
+   ]
   }
  ]
 }

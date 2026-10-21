@@ -1,0 +1,223 @@
+{
+ "strategy": "L13_heikin_ashi",
+ "name": "Tendência Heikin Ashi (velas sem pavio contra)",
+ "family": "padroes",
+ "sources": [
+  "https://www.xtb.com/en/education/heikin-ashi",
+  "https://www.luxalgo.com/blog/heikin-ashi-charts-clear-strategies-for-traders/",
+  "https://doc.stocksharp.com/en/api-examples/0012_Heikin_Ashi_Consecutive",
+  "Dan Valcu, 'Using the Heikin-Ashi Technique', Technical Analysis of Stocks & Commodities, fev/2004"
+ ],
+ "rule": "Calcula velas Heikin Ashi (fechHA=(A+M+m+F)/4, abertHA=(abertHA ant.+fechHA ant.)/2, máx/mín incluindo abertHA/fechHA). Compra quando as últimas n velas HA são de alta e sem sombra inferior (tendência forte de alta); venda no espelho (n velas de baixa sem sombra superior). Sai na primeira vela HA de cor oposta. Stop k*ATR14. Preços de execução são os reais.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "b7713859b1233f30145c2d1e7b43495306421e48e8791f61e964792b14818b2a",
+ "refinement": null,
+ "combinationsTested": 72,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "n": 1,
+    "k": 1.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 136,
+    "netR": 81.36,
+    "pf": 3.342,
+    "winRate": 0.397,
+    "expR": 0.5982,
+    "maxDDR": 4.26,
+    "sharpeTrade": 0.2832,
+    "tStat": 3.3,
+    "tradesPerYear": 27.2,
+    "retPct": 40.68,
+    "maxDDPct": 2.13,
+    "avgBars": 5.7
+   },
+   "neighborMedianPF": 3.601,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 3,
+    "k": 1.5,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 102,
+    "netR": 76.65,
+    "pf": 3.452,
+    "winRate": 0.412,
+    "expR": 0.7515,
+    "maxDDR": 3.8,
+    "sharpeTrade": 0.2913,
+    "tStat": 2.94,
+    "tradesPerYear": 20.4,
+    "retPct": 38.33,
+    "maxDDPct": 1.9,
+    "avgBars": 5.3
+   },
+   "neighborMedianPF": 3.551,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 1,
+    "k": 1.5,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 264,
+    "netR": 82.77,
+    "pf": 2.181,
+    "winRate": 0.333,
+    "expR": 0.3135,
+    "maxDDR": 5.87,
+    "sharpeTrade": 0.1743,
+    "tStat": 2.83,
+    "tradesPerYear": 52.8,
+    "retPct": 41.39,
+    "maxDDPct": 2.93,
+    "avgBars": 4.9
+   },
+   "neighborMedianPF": 2.425,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 2,
+    "k": 1.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 90,
+    "netR": 67.64,
+    "pf": 3.752,
+    "winRate": 0.456,
+    "expR": 0.7516,
+    "maxDDR": 3.84,
+    "sharpeTrade": 0.316,
+    "tStat": 3.0,
+    "tradesPerYear": 18.0,
+    "retPct": 33.82,
+    "maxDDPct": 1.92,
+    "avgBars": 6.1
+   },
+   "neighborMedianPF": 3.82,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 3,
+    "k": 1.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 60,
+    "netR": 65.55,
+    "pf": 4.937,
+    "winRate": 0.5,
+    "expR": 1.0925,
+    "maxDDR": 4.56,
+    "sharpeTrade": 0.4001,
+    "tStat": 3.1,
+    "tradesPerYear": 12.0,
+    "retPct": 32.77,
+    "maxDDPct": 2.28,
+    "avgBars": 6.5
+   },
+   "neighborMedianPF": 3.923,
+   "robust": true,
+   "eligible": true
+  }
+ ],
+ "selected": {
+  "tf": "D1",
+  "params": {
+   "n": 1,
+   "k": 1.5,
+   "side": "long"
+  },
+  "development": {
+   "trades": 136,
+   "netR": 81.36,
+   "pf": 3.342,
+   "winRate": 0.397,
+   "expR": 0.5982,
+   "maxDDR": 4.26,
+   "sharpeTrade": 0.2832,
+   "tStat": 3.3,
+   "tradesPerYear": 27.2,
+   "retPct": 40.68,
+   "maxDDPct": 2.13,
+   "avgBars": 5.7
+  },
+  "neighborMedianPF": 3.601,
+  "deflatedSharpe": 0.002,
+  "validation": {
+   "base": {
+    "trades": 55,
+    "netR": -5.22,
+    "pf": 0.745,
+    "winRate": 0.273,
+    "expR": -0.0949,
+    "maxDDR": 9.79,
+    "sharpeTrade": -0.1021,
+    "tStat": -0.76,
+    "tradesPerYear": 27.5,
+    "retPct": -2.61,
+    "maxDDPct": 4.9,
+    "avgBars": 4.2
+   },
+   "stress": {
+    "trades": 55,
+    "netR": -6.58,
+    "pf": 0.693,
+    "winRate": 0.273,
+    "expR": -0.1196,
+    "maxDDR": 10.98,
+    "sharpeTrade": -0.1287,
+    "tStat": -0.95,
+    "tradesPerYear": 27.5,
+    "retPct": -3.29,
+    "maxDDPct": 5.49,
+    "avgBars": 4.2
+   },
+   "passed": false
+  },
+  "warning": "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

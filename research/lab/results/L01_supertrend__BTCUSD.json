@@ -1,0 +1,221 @@
+{
+ "strategy": "L01_supertrend",
+ "name": "Supertrend (virada de direção)",
+ "family": "tendencia",
+ "sources": [
+  "https://help.ctrader.com/indicators/built-in/trend/supertrend/",
+  "https://www.luxalgo.com/library/indicator/r6dAP7yi-supertrend/"
+ ],
+ "rule": "Linha Supertrend = (máx+mín)/2 ± mult*ATR(n) com bandas finais que só apertam; direção vira para alta quando o fechamento passa acima da banda superior e para baixa quando fecha abaixo da inferior. Compra na virada para alta, vende (side=both) na virada para baixa; sai na virada oposta. Stop inicial na própria linha Supertrend do candle de sinal (mínimo 0,5*ATR).",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "65f2041fa7b7655062cda00c80bc973ec43b15e791a2e840aca8e0b3f8f66d6c",
+ "refinement": null,
+ "combinationsTested": 120,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H4",
+   "params": {
+    "atr_n": 7,
+    "mult": 2.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 133,
+    "netR": 142.47,
+    "pf": 4.143,
+    "winRate": 0.466,
+    "expR": 1.0712,
+    "maxDDR": 4.28,
+    "sharpeTrade": 0.2871,
+    "tStat": 3.31,
+    "tradesPerYear": 26.6,
+    "retPct": 71.24,
+    "maxDDPct": 2.14,
+    "avgBars": 44.6
+   },
+   "neighborMedianPF": 3.649,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "atr_n": 7,
+    "mult": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 180,
+    "netR": 177.16,
+    "pf": 3.424,
+    "winRate": 0.467,
+    "expR": 0.9842,
+    "maxDDR": 6.38,
+    "sharpeTrade": 0.232,
+    "tStat": 3.11,
+    "tradesPerYear": 36.0,
+    "retPct": 88.58,
+    "maxDDPct": 3.19,
+    "avgBars": 33.0
+   },
+   "neighborMedianPF": 3.59,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "atr_n": 7,
+    "mult": 3.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 90,
+    "netR": 123.25,
+    "pf": 5.264,
+    "winRate": 0.489,
+    "expR": 1.3695,
+    "maxDDR": 4.06,
+    "sharpeTrade": 0.3465,
+    "tStat": 3.29,
+    "tradesPerYear": 18.0,
+    "retPct": 61.63,
+    "maxDDPct": 2.03,
+    "avgBars": 62.1
+   },
+   "neighborMedianPF": 4.108,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "atr_n": 14,
+    "mult": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 354,
+    "netR": 195.28,
+    "pf": 2.309,
+    "winRate": 0.398,
+    "expR": 0.5516,
+    "maxDDR": 8.09,
+    "sharpeTrade": 0.1725,
+    "tStat": 3.24,
+    "tradesPerYear": 70.8,
+    "retPct": 97.64,
+    "maxDDPct": 4.05,
+    "avgBars": 29.6
+   },
+   "neighborMedianPF": 2.317,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "atr_n": 20,
+    "mult": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 112,
+    "netR": 119.54,
+    "pf": 4.036,
+    "winRate": 0.464,
+    "expR": 1.0673,
+    "maxDDR": 4.59,
+    "sharpeTrade": 0.2936,
+    "tStat": 3.11,
+    "tradesPerYear": 22.4,
+    "retPct": 59.77,
+    "maxDDPct": 2.3,
+    "avgBars": 52.6
+   },
+   "neighborMedianPF": 3.411,
+   "robust": true,
+   "eligible": true
+  }
+ ],
+ "selected": {
+  "tf": "H4",
+  "params": {
+   "atr_n": 7,
+   "mult": 2.5,
+   "side": "long"
+  },
+  "development": {
+   "trades": 133,
+   "netR": 142.47,
+   "pf": 4.143,
+   "winRate": 0.466,
+   "expR": 1.0712,
+   "maxDDR": 4.28,
+   "sharpeTrade": 0.2871,
+   "tStat": 3.31,
+   "tradesPerYear": 26.6,
+   "retPct": 71.24,
+   "maxDDPct": 2.14,
+   "avgBars": 44.6
+  },
+  "neighborMedianPF": 3.649,
+  "deflatedSharpe": 0.003,
+  "validation": {
+   "base": {
+    "trades": 62,
+    "netR": 1.2,
+    "pf": 1.047,
+    "winRate": 0.371,
+    "expR": 0.0193,
+    "maxDDR": 5.72,
+    "sharpeTrade": 0.016,
+    "tStat": 0.13,
+    "tradesPerYear": 31.0,
+    "retPct": 0.6,
+    "maxDDPct": 2.86,
+    "avgBars": 30.5
+   },
+   "stress": {
+    "trades": 62,
+    "netR": -0.92,
+    "pf": 0.966,
+    "winRate": 0.371,
+    "expR": -0.0149,
+    "maxDDR": 6.89,
+    "sharpeTrade": -0.0123,
+    "tStat": -0.1,
+    "tradesPerYear": 31.0,
+    "retPct": -0.46,
+    "maxDDPct": 3.44,
+    "avgBars": 30.5
+   },
+   "passed": false
+  },
+  "warning": "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

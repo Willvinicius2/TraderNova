@@ -1,0 +1,229 @@
+{
+ "strategy": "L14_alligator_fractal",
+ "name": "Alligator + rompimento de fractal (Bill Williams)",
+ "family": "padroes",
+ "sources": [
+  "https://www.metatrader5.com/en/terminal/help/indicators/bw_indicators/alligator",
+  "https://nepafx.yolasite.com/fractals.php",
+  "https://doc.stocksharp.com/en/api-examples/2077_Bill_Williams",
+  "Bill Williams, Trading Chaos (1995) / New Trading Dimensions (1998)"
+ ],
+ "rule": "Alligator = SMMA da mediana (A+m)/2: mandíbula 13 deslocada 8, dentes 8 deslocados 5, lábios 5 deslocados 3 (deslocamento usa só valores passados). Fractal de alta = máxima maior que as 2 máximas de cada lado (confirmado 2 candles depois). Compra quando o fechamento rompe a máxima do último fractal de alta que está acima dos dentes; venda no espelho com fractal de baixa abaixo dos dentes. Opcional: exigir Alligator 'acordado' (lábios>dentes>mandíbula). Sai quando fecha do outro lado da linha de saída (lábios/dentes/mandíbula). Stop k*ATR14.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "80362de0a6a9e27f6fdd5b38bfeba5f6d1a7e51bb818e66eeeb706ea0dfb8320",
+ "refinement": null,
+ "combinationsTested": 72,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H4",
+   "params": {
+    "align": false,
+    "exit_line": "jaw",
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 181,
+    "netR": 206.65,
+    "pf": 3.848,
+    "winRate": 0.398,
+    "expR": 1.1417,
+    "maxDDR": 8.22,
+    "sharpeTrade": 0.224,
+    "tStat": 3.01,
+    "tradesPerYear": 36.2,
+    "retPct": 103.32,
+    "maxDDPct": 4.11,
+    "avgBars": 28.0
+   },
+   "neighborMedianPF": 3.245,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "align": false,
+    "exit_line": "jaw",
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 178,
+    "netR": 139.64,
+    "pf": 4.017,
+    "winRate": 0.404,
+    "expR": 0.7845,
+    "maxDDR": 5.58,
+    "sharpeTrade": 0.2292,
+    "tStat": 3.06,
+    "tradesPerYear": 35.6,
+    "retPct": 69.82,
+    "maxDDPct": 2.79,
+    "avgBars": 29.0
+   },
+   "neighborMedianPF": 3.258,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "align": false,
+    "exit_line": "jaw",
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 56,
+    "netR": 93.07,
+    "pf": 5.059,
+    "winRate": 0.393,
+    "expR": 1.662,
+    "maxDDR": 3.79,
+    "sharpeTrade": 0.3204,
+    "tStat": 2.4,
+    "tradesPerYear": 11.2,
+    "retPct": 46.54,
+    "maxDDPct": 1.9,
+    "avgBars": 23.0
+   },
+   "neighborMedianPF": 6.536,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "align": false,
+    "exit_line": "teeth",
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 217,
+    "netR": 115.02,
+    "pf": 2.956,
+    "winRate": 0.41,
+    "expR": 0.5301,
+    "maxDDR": 6.28,
+    "sharpeTrade": 0.2523,
+    "tStat": 3.72,
+    "tradesPerYear": 43.4,
+    "retPct": 57.51,
+    "maxDDPct": 3.14,
+    "avgBars": 20.8
+   },
+   "neighborMedianPF": 2.665,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "align": false,
+    "exit_line": "teeth",
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 218,
+    "netR": 173.79,
+    "pf": 3.02,
+    "winRate": 0.408,
+    "expR": 0.7972,
+    "maxDDR": 9.49,
+    "sharpeTrade": 0.2552,
+    "tStat": 3.77,
+    "tradesPerYear": 43.6,
+    "retPct": 86.89,
+    "maxDDPct": 4.74,
+    "avgBars": 20.5
+   },
+   "neighborMedianPF": 2.69,
+   "robust": true,
+   "eligible": true
+  }
+ ],
+ "selected": {
+  "tf": "H4",
+  "params": {
+   "align": false,
+   "exit_line": "jaw",
+   "k": 2.0,
+   "side": "long"
+  },
+  "development": {
+   "trades": 181,
+   "netR": 206.65,
+   "pf": 3.848,
+   "winRate": 0.398,
+   "expR": 1.1417,
+   "maxDDR": 8.22,
+   "sharpeTrade": 0.224,
+   "tStat": 3.01,
+   "tradesPerYear": 36.2,
+   "retPct": 103.32,
+   "maxDDPct": 4.11,
+   "avgBars": 28.0
+  },
+  "neighborMedianPF": 3.245,
+  "deflatedSharpe": 0.0,
+  "validation": {
+   "base": {
+    "trades": 82,
+    "netR": -8.62,
+    "pf": 0.804,
+    "winRate": 0.244,
+    "expR": -0.1051,
+    "maxDDR": 18.2,
+    "sharpeTrade": -0.0729,
+    "tStat": -0.66,
+    "tradesPerYear": 41.0,
+    "retPct": -4.31,
+    "maxDDPct": 9.1,
+    "avgBars": 17.5
+   },
+   "stress": {
+    "trades": 82,
+    "netR": -13.09,
+    "pf": 0.724,
+    "winRate": 0.244,
+    "expR": -0.1596,
+    "maxDDR": 22.31,
+    "sharpeTrade": -0.1105,
+    "tStat": -1.0,
+    "tradesPerYear": 41.0,
+    "retPct": -6.54,
+    "maxDDPct": 11.15,
+    "avgBars": 17.5
+   },
+   "passed": false
+  },
+  "warning": "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

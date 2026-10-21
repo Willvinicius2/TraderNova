@@ -1,0 +1,234 @@
+{
+ "strategy": "L09_ttm_squeeze",
+ "name": "TTM Squeeze (John Carter)",
+ "family": "volatilidade",
+ "sources": [
+  "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ttm-squeeze",
+  "https://www.luxalgo.com/library/concept/ttm-squeeze/",
+  "John F. Carter, Mastering the Trade (McGraw-Hill, 2005/2012), cap. 'The Squeeze'"
+ ],
+ "rule": "Squeeze ligado quando a Bollinger(20, 2 desvios) fica inteira dentro do Keltner(EMA20 ± kc×ATR20). Quando o squeeze desliga (dispara) depois de ao menos min_sq candles ligado, entra na direção do momentum (regressão linear de 20 candles do preço menos a média entre ponto médio Donchian 20 e SMA20, como no histograma de Carter). Saída: 'fade' = momentum perde força por 2 candles seguidos (mudança de cor do histograma); 'zero' = momentum cruza o zero. Stop inicial stop_k×ATR20.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "d65e7942555c1f64a704ab76af084c9d9cca78c7b4800feef8fa9c975d84df28",
+ "refinement": null,
+ "combinationsTested": 144,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H4",
+   "params": {
+    "kc": 1.5,
+    "min_sq": 1,
+    "exit": "zero",
+    "stop_k": 1.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 140,
+    "netR": 179.8,
+    "pf": 3.513,
+    "winRate": 0.464,
+    "expR": 1.2843,
+    "maxDDR": 6.92,
+    "sharpeTrade": 0.3009,
+    "tStat": 3.56,
+    "tradesPerYear": 28.0,
+    "retPct": 89.9,
+    "maxDDPct": 3.46,
+    "avgBars": 21.0
+   },
+   "neighborMedianPF": 3.115,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "kc": 1.5,
+    "min_sq": 1,
+    "exit": "zero",
+    "stop_k": 2.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 137,
+    "netR": 105.6,
+    "pf": 3.156,
+    "winRate": 0.496,
+    "expR": 0.7708,
+    "maxDDR": 4.84,
+    "sharpeTrade": 0.2933,
+    "tStat": 3.43,
+    "tradesPerYear": 27.4,
+    "retPct": 52.8,
+    "maxDDPct": 2.42,
+    "avgBars": 23.2
+   },
+   "neighborMedianPF": 2.877,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "kc": 1.5,
+    "min_sq": 1,
+    "exit": "fade",
+    "stop_k": 1.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 160,
+    "netR": 112.21,
+    "pf": 3.075,
+    "winRate": 0.5,
+    "expR": 0.7013,
+    "maxDDR": 5.51,
+    "sharpeTrade": 0.2777,
+    "tStat": 3.51,
+    "tradesPerYear": 32.0,
+    "retPct": 56.1,
+    "maxDDPct": 2.76,
+    "avgBars": 8.3
+   },
+   "neighborMedianPF": 2.314,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "kc": 1.5,
+    "min_sq": 6,
+    "exit": "zero",
+    "stop_k": 2.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 360,
+    "netR": 188.06,
+    "pf": 2.156,
+    "winRate": 0.386,
+    "expR": 0.5224,
+    "maxDDR": 9.71,
+    "sharpeTrade": 0.1981,
+    "tStat": 3.76,
+    "tradesPerYear": 72.0,
+    "retPct": 94.03,
+    "maxDDPct": 4.86,
+    "avgBars": 23.1
+   },
+   "neighborMedianPF": 1.929,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "kc": 1.5,
+    "min_sq": 1,
+    "exit": "zero",
+    "stop_k": 1.5,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 29,
+    "netR": 92.5,
+    "pf": 8.739,
+    "winRate": 0.517,
+    "expR": 3.1897,
+    "maxDDR": 3.1,
+    "sharpeTrade": 0.3824,
+    "tStat": 2.06,
+    "tradesPerYear": 5.8,
+    "retPct": 46.25,
+    "maxDDPct": 1.55,
+    "avgBars": 21.3
+   },
+   "neighborMedianPF": 9.549,
+   "robust": true,
+   "eligible": false
+  }
+ ],
+ "selected": {
+  "tf": "H4",
+  "params": {
+   "kc": 1.5,
+   "min_sq": 1,
+   "exit": "zero",
+   "stop_k": 1.5,
+   "side": "long"
+  },
+  "development": {
+   "trades": 140,
+   "netR": 179.8,
+   "pf": 3.513,
+   "winRate": 0.464,
+   "expR": 1.2843,
+   "maxDDR": 6.92,
+   "sharpeTrade": 0.3009,
+   "tStat": 3.56,
+   "tradesPerYear": 28.0,
+   "retPct": 89.9,
+   "maxDDPct": 3.46,
+   "avgBars": 21.0
+  },
+  "neighborMedianPF": 3.115,
+  "deflatedSharpe": 0.0,
+  "validation": {
+   "base": {
+    "trades": 45,
+    "netR": -13.61,
+    "pf": 0.574,
+    "winRate": 0.244,
+    "expR": -0.3024,
+    "maxDDR": 22.64,
+    "sharpeTrade": -0.1716,
+    "tStat": -1.15,
+    "tradesPerYear": 22.5,
+    "retPct": -6.8,
+    "maxDDPct": 11.32,
+    "avgBars": 12.1
+   },
+   "stress": {
+    "trades": 45,
+    "netR": -16.88,
+    "pf": 0.511,
+    "winRate": 0.244,
+    "expR": -0.3752,
+    "maxDDR": 25.06,
+    "sharpeTrade": -0.2125,
+    "tStat": -1.43,
+    "tradesPerYear": 22.5,
+    "retPct": -8.44,
+    "maxDDPct": 12.53,
+    "avgBars": 12.1
+   },
+   "passed": false
+  },
+  "warning": "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

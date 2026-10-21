@@ -1,0 +1,222 @@
+{
+ "strategy": "L05_connors_rsi2",
+ "name": "RSI(2) de Connors com filtro SMA200",
+ "family": "reversao",
+ "sources": [
+  "https://www.luxalgo.com/library/concept/rsi-2/",
+  "https://backtrex.com/en/backtests/connors-rsi-2-sp-500",
+  "Connors & Alvarez (2008), Short Term Trading Strategies That Work, cap. RSI(2)"
+ ],
+ "rule": "Compra quando o fechamento está acima da SMA200 e o RSI(2) fecha abaixo do limiar (5/10/15); sai quando fecha acima da SMA5 (ou abaixo da SMA200). Venda espelhada: abaixo da SMA200 e RSI(2) acima de 100-limiar, sai ao fechar abaixo da SMA5. Stop de proteção k*ATR14 (a fonte não usa stop; o motor exige um).",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "ef7afb9e2c32ca92238340a92d32a3f57d68f5436209dd1799148a3a585a7b43",
+ "refinement": null,
+ "combinationsTested": 54,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "thr": 15,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 85,
+    "netR": 6.3,
+    "pf": 1.369,
+    "winRate": 0.741,
+    "expR": 0.0741,
+    "maxDDR": 2.26,
+    "sharpeTrade": 0.1237,
+    "tStat": 1.14,
+    "tradesPerYear": 17.0,
+    "retPct": 3.15,
+    "maxDDPct": 1.13,
+    "avgBars": 2.8
+   },
+   "neighborMedianPF": 1.224,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "thr": 15,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 128,
+    "netR": 6.21,
+    "pf": 1.224,
+    "winRate": 0.719,
+    "expR": 0.0485,
+    "maxDDR": 3.55,
+    "sharpeTrade": 0.0794,
+    "tStat": 0.9,
+    "tradesPerYear": 25.6,
+    "retPct": 3.1,
+    "maxDDPct": 1.77,
+    "avgBars": 3.0
+   },
+   "neighborMedianPF": 1.093,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "thr": 10,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 53,
+    "netR": 4.21,
+    "pf": 1.368,
+    "winRate": 0.755,
+    "expR": 0.0795,
+    "maxDDR": 2.06,
+    "sharpeTrade": 0.1251,
+    "tStat": 0.91,
+    "tradesPerYear": 10.6,
+    "retPct": 2.11,
+    "maxDDPct": 1.03,
+    "avgBars": 2.7
+   },
+   "neighborMedianPF": 1.224,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "thr": 15,
+    "k": 4.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 78,
+    "netR": 2.4,
+    "pf": 1.305,
+    "winRate": 0.756,
+    "expR": 0.0308,
+    "maxDDR": 1.71,
+    "sharpeTrade": 0.0893,
+    "tStat": 0.79,
+    "tradesPerYear": 15.6,
+    "retPct": 1.2,
+    "maxDDPct": 0.86,
+    "avgBars": 3.2
+   },
+   "neighborMedianPF": 1.191,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "thr": 15,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 81,
+    "netR": 2.36,
+    "pf": 1.191,
+    "winRate": 0.753,
+    "expR": 0.0292,
+    "maxDDR": 2.02,
+    "sharpeTrade": 0.0636,
+    "tStat": 0.57,
+    "tradesPerYear": 16.2,
+    "retPct": 1.18,
+    "maxDDPct": 1.01,
+    "avgBars": 3.1
+   },
+   "neighborMedianPF": 1.192,
+   "robust": true,
+   "eligible": true
+  }
+ ],
+ "selected": {
+  "tf": "D1",
+  "params": {
+   "thr": 15,
+   "k": 2.0,
+   "side": "long"
+  },
+  "development": {
+   "trades": 85,
+   "netR": 6.3,
+   "pf": 1.369,
+   "winRate": 0.741,
+   "expR": 0.0741,
+   "maxDDR": 2.26,
+   "sharpeTrade": 0.1237,
+   "tStat": 1.14,
+   "tradesPerYear": 17.0,
+   "retPct": 3.15,
+   "maxDDPct": 1.13,
+   "avgBars": 2.8
+  },
+  "neighborMedianPF": 1.224,
+  "deflatedSharpe": 0.2,
+  "validation": {
+   "base": {
+    "trades": 18,
+    "netR": -0.93,
+    "pf": 0.794,
+    "winRate": 0.667,
+    "expR": -0.0519,
+    "maxDDR": 3.11,
+    "sharpeTrade": -0.0905,
+    "tStat": -0.38,
+    "tradesPerYear": 9.0,
+    "retPct": -0.47,
+    "maxDDPct": 1.56,
+    "avgBars": 2.7
+   },
+   "stress": {
+    "trades": 18,
+    "netR": -1.21,
+    "pf": 0.739,
+    "winRate": 0.667,
+    "expR": -0.0671,
+    "maxDDR": 3.27,
+    "sharpeTrade": -0.1169,
+    "tStat": -0.5,
+    "tradesPerYear": 9.0,
+    "retPct": -0.6,
+    "maxDDPct": 1.63,
+    "avgBars": 2.7
+   },
+   "passed": false
+  },
+  "warning": "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

@@ -1,0 +1,92 @@
+{
+ "L04_tsmom": {
+  "development": {
+   "trades": 46,
+   "netR": 594.19,
+   "semMaiorR": 54.79,
+   "maiorR": 539.41,
+   "retPct05": 297.1,
+   "ddPct05": 2.42,
+   "buyHoldPct": 6628.6
+  },
+  "validation": {
+   "trades": 17,
+   "netR": 5.15,
+   "semMaiorR": -3.58,
+   "maiorR": 8.73,
+   "retPct05": 2.58,
+   "ddPct05": 2.86,
+   "buyHoldPct": -43.0
+  },
+  "reserve": {
+   "trades": 35,
+   "netR": 41.63,
+   "semMaiorR": 24.95,
+   "maiorR": 16.68,
+   "retPct05": 20.81,
+   "ddPct05": 1.81,
+   "buyHoldPct": 401.8
+  },
+  "fragil": true
+ },
+ "L07_stochastic": {
+  "development": {
+   "trades": 36,
+   "netR": 4.88,
+   "semMaiorR": 3.5,
+   "maiorR": 1.38,
+   "retPct05": 2.44,
+   "ddPct05": 1.01,
+   "buyHoldPct": 6628.6
+  },
+  "validation": {
+   "trades": 20,
+   "netR": 1.85,
+   "semMaiorR": 0.87,
+   "maiorR": 0.99,
+   "retPct05": 0.93,
+   "ddPct05": 0.79,
+   "buyHoldPct": -43.0
+  },
+  "reserve": {
+   "trades": 38,
+   "netR": 5.17,
+   "semMaiorR": 3.46,
+   "maiorR": 1.72,
+   "retPct05": 2.59,
+   "ddPct05": 1.39,
+   "buyHoldPct": 401.8
+  },
+  "fragil": false
+ },
+ "L12_keltner_breakout": {
+  "development": {
+   "trades": 122,
+   "netR": 270.15,
+   "semMaiorR": 222.57,
+   "maiorR": 47.58,
+   "retPct05": 135.08,
+   "ddPct05": 2.82,
+   "buyHoldPct": 6628.6
+  },
+  "validation": {
+   "trades": 53,
+   "netR": 9.34,
+   "semMaiorR": 1.3,
+   "maiorR": 8.04,
+   "retPct05": 4.67,
+   "ddPct05": 4.66,
+   "buyHoldPct": -43.0
+  },
+  "reserve": {
+   "trades": 143,
+   "netR": 45.38,
+   "semMaiorR": 2.76,
+   "maiorR": 42.62,
+   "retPct05": 22.69,
+   "ddPct05": 20.28,
+   "buyHoldPct": 401.8
+  },
+  "fragil": false
+ }
+}

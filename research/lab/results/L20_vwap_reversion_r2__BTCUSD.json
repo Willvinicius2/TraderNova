@@ -1,0 +1,171 @@
+{
+ "strategy": "L20_vwap_reversion_r2",
+ "name": "Reversão ao VWAP semanal com recuperação da banda",
+ "family": "tempo_volume",
+ "sources": [
+  "https://www.tradingview.com/script/mthvTwSg-VWAP-Intraday-Weekly-Monthly/",
+  "https://www.tradingview.com/script/HBa1RdfD-Institutional-VWAP-Bands-JOAT/"
+ ],
+ "rule": "VWAP semanal ancorado na segunda 00:00 UTC ('week', exige 1 dia de semana) ou rolante de 7 dias ('rolling'). Banda = VWAP +- d*ATR14. Compra quando o candle anterior fechou abaixo da banda inferior e o atual fecha de volta acima dela (ainda abaixo do VWAP), com fechamento acima da EMA200; venda no espelho. Alvo: VWAP; stop k*ATR14; saída por tempo em 7 dias. Volume só do Bitstamp.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "29f1df6c52ccdf0488b44f25339ced7ecf3b3f1f32cd29dfbf5c3c27b2d6558f",
+ "refinement": "VWAP semanal",
+ "combinationsTested": 64,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H1",
+   "params": {
+    "anchor": "week",
+    "d": 3.0,
+    "k": 2.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 18,
+    "netR": 4.14,
+    "pf": 1.619,
+    "winRate": 0.611,
+    "expR": 0.2302,
+    "maxDDR": 2.74,
+    "sharpeTrade": 0.2242,
+    "tStat": 0.95,
+    "tradesPerYear": 3.6,
+    "retPct": 2.07,
+    "maxDDPct": 1.37,
+    "avgBars": 25.7
+   },
+   "neighborMedianPF": 0.865,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "anchor": "rolling",
+    "d": 3.0,
+    "k": 2.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 8,
+    "netR": 3.34,
+    "pf": 4.202,
+    "winRate": 0.875,
+    "expR": 0.4169,
+    "maxDDR": 1.04,
+    "sharpeTrade": 0.6157,
+    "tStat": 1.74,
+    "tradesPerYear": 1.6,
+    "retPct": 1.67,
+    "maxDDPct": 0.52,
+    "avgBars": 14.6
+   },
+   "neighborMedianPF": 0.926,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "anchor": "rolling",
+    "d": 3.0,
+    "k": 1.5,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 74,
+    "netR": 5.76,
+    "pf": 1.126,
+    "winRate": 0.473,
+    "expR": 0.0779,
+    "maxDDR": 9.51,
+    "sharpeTrade": 0.0557,
+    "tStat": 0.48,
+    "tradesPerYear": 14.8,
+    "retPct": 2.88,
+    "maxDDPct": 4.76,
+    "avgBars": 9.7
+   },
+   "neighborMedianPF": 0.942,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "anchor": "rolling",
+    "d": 3.0,
+    "k": 1.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 21,
+    "netR": 1.05,
+    "pf": 1.08,
+    "winRate": 0.476,
+    "expR": 0.0501,
+    "maxDDR": 6.99,
+    "sharpeTrade": 0.0359,
+    "tStat": 0.16,
+    "tradesPerYear": 4.2,
+    "retPct": 0.53,
+    "maxDDPct": 3.49,
+    "avgBars": 7.6
+   },
+   "neighborMedianPF": 0.88,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "anchor": "rolling",
+    "d": 2.5,
+    "k": 2.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 26,
+    "netR": 0.55,
+    "pf": 1.058,
+    "winRate": 0.615,
+    "expR": 0.021,
+    "maxDDR": 2.23,
+    "sharpeTrade": 0.0258,
+    "tStat": 0.13,
+    "tradesPerYear": 5.2,
+    "retPct": 0.27,
+    "maxDDPct": 1.12,
+    "avgBars": 11.7
+   },
+   "neighborMedianPF": 0.752,
+   "robust": false,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null
+}

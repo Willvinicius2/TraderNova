@@ -1,0 +1,227 @@
+{
+ "strategy": "L03_ichimoku",
+ "name": "Ichimoku: cruzamento Tenkan/Kijun com nuvem e Chikou",
+ "family": "tendencia",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Ichimoku_Kink%C5%8D_Hy%C5%8D",
+  "https://www.luxalgo.com/library/concept/ichimoku-signals.md"
+ ],
+ "rule": "Tenkan=(máx+mín)/2 de 9*s, Kijun de 26*s, Senkou A=(Tenkan+Kijun)/2 e Senkou B=(máx+mín)/2 de 52*s, ambos deslocados 26*s candles à frente (a nuvem em i usa dados até i-26*s). Chikou confirma quando o fechamento atual está acima (abaixo) do fechamento de 26*s candles atrás. Compra: Tenkan cruza acima da Kijun com fechamento acima da nuvem e Chikou acima; venda (side=both) espelhada. Saída: cruzamento oposto Tenkan/Kijun (exit=tk) ou fechamento do lado errado da Kijun (exit=kijun). Stop inicial k*ATR(14). s=1 é o padrão 9/26/52; s=2 e 3 alongam (comum em cripto 24/7).",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "86628b62ca0e1f8e6914a8c4a494daa56ef285d72300ac3df0044a5c8763f29e",
+ "refinement": null,
+ "combinationsTested": 72,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H4",
+   "params": {
+    "s": 3,
+    "exit": "tk",
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 33,
+    "netR": 112.4,
+    "pf": 6.695,
+    "winRate": 0.364,
+    "expR": 3.4059,
+    "maxDDR": 3.17,
+    "sharpeTrade": 0.3792,
+    "tStat": 2.18,
+    "tradesPerYear": 6.6,
+    "retPct": 56.2,
+    "maxDDPct": 1.58,
+    "avgBars": 62.2
+   },
+   "neighborMedianPF": 5.97,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "s": 3,
+    "exit": "kijun",
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 32,
+    "netR": 106.79,
+    "pf": 6.974,
+    "winRate": 0.406,
+    "expR": 3.337,
+    "maxDDR": 3.17,
+    "sharpeTrade": 0.4404,
+    "tStat": 2.49,
+    "tradesPerYear": 6.4,
+    "retPct": 53.39,
+    "maxDDPct": 1.58,
+    "avgBars": 56.9
+   },
+   "neighborMedianPF": 5.133,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "s": 2,
+    "exit": "tk",
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 44,
+    "netR": 100.29,
+    "pf": 5.517,
+    "winRate": 0.455,
+    "expR": 2.2794,
+    "maxDDR": 4.78,
+    "sharpeTrade": 0.3718,
+    "tStat": 2.47,
+    "tradesPerYear": 8.8,
+    "retPct": 50.15,
+    "maxDDPct": 2.39,
+    "avgBars": 50.6
+   },
+   "neighborMedianPF": 4.023,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "s": 3,
+    "exit": "kijun",
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 52,
+    "netR": 99.36,
+    "pf": 4.152,
+    "winRate": 0.365,
+    "expR": 1.9107,
+    "maxDDR": 5.73,
+    "sharpeTrade": 0.3075,
+    "tStat": 2.22,
+    "tradesPerYear": 10.4,
+    "retPct": 49.68,
+    "maxDDPct": 2.87,
+    "avgBars": 49.2
+   },
+   "neighborMedianPF": 3.859,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "s": 3,
+    "exit": "tk",
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 33,
+    "netR": 80.62,
+    "pf": 6.423,
+    "winRate": 0.424,
+    "expR": 2.4432,
+    "maxDDR": 2.91,
+    "sharpeTrade": 0.4069,
+    "tStat": 2.34,
+    "tradesPerYear": 6.6,
+    "retPct": 40.31,
+    "maxDDPct": 1.46,
+    "avgBars": 76.9
+   },
+   "neighborMedianPF": 5.832,
+   "robust": true,
+   "eligible": false
+  }
+ ],
+ "selected": {
+  "tf": "H1",
+  "params": {
+   "s": 3,
+   "exit": "tk",
+   "k": 2.0,
+   "side": "both"
+  },
+  "development": {
+   "trades": 209,
+   "netR": 198.06,
+   "pf": 2.324,
+   "winRate": 0.311,
+   "expR": 0.9477,
+   "maxDDR": 13.61,
+   "sharpeTrade": 0.2172,
+   "tStat": 3.14,
+   "tradesPerYear": 41.8,
+   "retPct": 99.03,
+   "maxDDPct": 6.8,
+   "avgBars": 55.1
+  },
+  "neighborMedianPF": 2.342,
+  "deflatedSharpe": 0.0,
+  "validation": {
+   "base": {
+    "trades": 92,
+    "netR": -18.99,
+    "pf": 0.749,
+    "winRate": 0.207,
+    "expR": -0.2064,
+    "maxDDR": 22.59,
+    "sharpeTrade": -0.0985,
+    "tStat": -0.95,
+    "tradesPerYear": 46.0,
+    "retPct": -9.49,
+    "maxDDPct": 11.3,
+    "avgBars": 44.0
+   },
+   "stress": {
+    "trades": 92,
+    "netR": -30.23,
+    "pf": 0.643,
+    "winRate": 0.185,
+    "expR": -0.3286,
+    "maxDDR": 33.35,
+    "sharpeTrade": -0.1566,
+    "tStat": -1.5,
+    "tradesPerYear": 46.0,
+    "retPct": -15.11,
+    "maxDDPct": 16.68,
+    "avgBars": 44.0
+   },
+   "passed": false
+  },
+  "warning": "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

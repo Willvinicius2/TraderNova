@@ -1,0 +1,166 @@
+{
+ "strategy": "L17_btc_seasonality_r2",
+ "name": "Sazonalidade intradiária do BTC (21h-23h UTC) em regime de alta",
+ "family": "tempo_volume",
+ "sources": [
+  "https://quantpedia.com/are-there-seasonal-intraday-or-overnight-anomalies-in-bitcoin/",
+  "https://quantpedia.com/strategies/intraday-seasonality-in-bitcoin"
+ ],
+ "rule": "Comprado na janela da fonte (entrada na abertura da hora 'entry_hour' UTC, saída após 'hold' horas), só quando o fechamento H1 está acima da SMA de 'trend_days' dias (24*N candles H1). Só compra. Stop 2*ATR14 H1.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "ccd850e8f3809871f0954bd8b0cf01441331137b4d95fa5cb330276880e2e462",
+ "refinement": "regime de alta",
+ "combinationsTested": 27,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H1",
+   "params": {
+    "entry_hour": 22,
+    "hold": 3,
+    "trend_days": 20
+   },
+   "dev": {
+    "trades": 1088,
+    "netR": -61.05,
+    "pf": 0.781,
+    "winRate": 0.425,
+    "expR": -0.0561,
+    "maxDDR": 64.18,
+    "sharpeTrade": -0.0869,
+    "tStat": -2.87,
+    "tradesPerYear": 217.5,
+    "retPct": -30.53,
+    "maxDDPct": 32.09,
+    "avgBars": 2.8
+   },
+   "neighborMedianPF": 0.706,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "entry_hour": 22,
+    "hold": 3,
+    "trend_days": 10
+   },
+   "dev": {
+    "trades": 1078,
+    "netR": -69.78,
+    "pf": 0.748,
+    "winRate": 0.42,
+    "expR": -0.0647,
+    "maxDDR": 72.99,
+    "sharpeTrade": -0.1017,
+    "tStat": -3.34,
+    "tradesPerYear": 215.5,
+    "retPct": -34.89,
+    "maxDDPct": 36.5,
+    "avgBars": 2.8
+   },
+   "neighborMedianPF": 0.711,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "entry_hour": 21,
+    "hold": 3,
+    "trend_days": 10
+   },
+   "dev": {
+    "trades": 1076,
+    "netR": -77.07,
+    "pf": 0.711,
+    "winRate": 0.414,
+    "expR": -0.0716,
+    "maxDDR": 79.1,
+    "sharpeTrade": -0.1208,
+    "tStat": -3.96,
+    "tradesPerYear": 215.1,
+    "retPct": -38.53,
+    "maxDDPct": 39.55,
+    "avgBars": 2.8
+   },
+   "neighborMedianPF": 0.665,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "entry_hour": 22,
+    "hold": 2,
+    "trend_days": 10
+   },
+   "dev": {
+    "trades": 1078,
+    "netR": -82.32,
+    "pf": 0.652,
+    "winRate": 0.41,
+    "expR": -0.0764,
+    "maxDDR": 84.42,
+    "sharpeTrade": -0.1457,
+    "tStat": -4.78,
+    "tradesPerYear": 215.5,
+    "retPct": -41.16,
+    "maxDDPct": 42.21,
+    "avgBars": 1.9
+   },
+   "neighborMedianPF": 0.619,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "entry_hour": 22,
+    "hold": 3,
+    "trend_days": 50
+   },
+   "dev": {
+    "trades": 1133,
+    "netR": -91.6,
+    "pf": 0.683,
+    "winRate": 0.412,
+    "expR": -0.0808,
+    "maxDDR": 93.82,
+    "sharpeTrade": -0.1349,
+    "tStat": -4.54,
+    "tradesPerYear": 226.5,
+    "retPct": -45.8,
+    "maxDDPct": 46.91,
+    "avgBars": 2.9
+   },
+   "neighborMedianPF": 0.697,
+   "robust": false,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null
+}

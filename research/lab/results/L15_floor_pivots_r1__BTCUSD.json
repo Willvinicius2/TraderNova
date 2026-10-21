@@ -1,0 +1,234 @@
+{
+ "strategy": "L15_floor_pivots_r1",
+ "name": "Pivôs diários: rompimento de R1/S1 com filtro de tendência",
+ "family": "padroes",
+ "sources": [
+  "https://daytradingtoolkit.com/strategies/pivot-point-day-trading-strategy",
+  "https://c.mql5.com/forextsd/forum/161/pivot_trading.pdf",
+  "https://help.stockdoctor.com.au/hc/en-us/articles/360000099896-Pivot-Points"
+ ],
+ "rule": "P=(M+m+F)/3 do dia UTC anterior, R1=2P-m, S1=2P-M, R2/S2=P±(M-m). Compra quando o fechamento cruza acima de R1 e está acima da EMA(L); venda quando cruza abaixo de S1 e está abaixo da EMA(L). Stop k*ATR14; sai se fechar do outro lado do P do dia, por alvo R2/S2 (se tgt='R2') ou por tempo após 'hold' horas.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "e2ada906fa4c4a37b4ff48b73722be9d93623a151d30c579fe402cc11d402dc3",
+ "refinement": "rompimento com filtro EMA e saída no P (ver META)",
+ "combinationsTested": 216,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H4",
+   "params": {
+    "L": 200,
+    "tgt": "nenhum",
+    "k": 1.5,
+    "hold": 96,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 211,
+    "netR": 136.45,
+    "pf": 2.656,
+    "winRate": 0.441,
+    "expR": 0.6467,
+    "maxDDR": 6.54,
+    "sharpeTrade": 0.2539,
+    "tStat": 3.69,
+    "tradesPerYear": 42.2,
+    "retPct": 68.23,
+    "maxDDPct": 3.27,
+    "avgBars": 9.0
+   },
+   "neighborMedianPF": 2.318,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "L": 100,
+    "tgt": "nenhum",
+    "k": 1.5,
+    "hold": 96,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 407,
+    "netR": 409.96,
+    "pf": 2.573,
+    "winRate": 0.376,
+    "expR": 1.0073,
+    "maxDDR": 19.67,
+    "sharpeTrade": 0.2104,
+    "tStat": 4.25,
+    "tradesPerYear": 81.4,
+    "retPct": 204.98,
+    "maxDDPct": 9.83,
+    "avgBars": 24.1
+   },
+   "neighborMedianPF": 2.306,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "L": 200,
+    "tgt": "nenhum",
+    "k": 2.0,
+    "hold": 96,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 339,
+    "netR": 280.93,
+    "pf": 2.568,
+    "winRate": 0.395,
+    "expR": 0.8287,
+    "maxDDR": 13.89,
+    "sharpeTrade": 0.216,
+    "tStat": 3.98,
+    "tradesPerYear": 67.8,
+    "retPct": 140.46,
+    "maxDDPct": 6.94,
+    "avgBars": 27.1
+   },
+   "neighborMedianPF": 2.385,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "L": 100,
+    "tgt": "nenhum",
+    "k": 1.5,
+    "hold": 96,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 776,
+    "netR": 455.44,
+    "pf": 1.879,
+    "winRate": 0.335,
+    "expR": 0.5869,
+    "maxDDR": 23.04,
+    "sharpeTrade": 0.1458,
+    "tStat": 4.06,
+    "tradesPerYear": 155.1,
+    "retPct": 227.72,
+    "maxDDPct": 11.52,
+    "avgBars": 21.3
+   },
+   "neighborMedianPF": 1.867,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "L": 200,
+    "tgt": "nenhum",
+    "k": 1.5,
+    "hold": 96,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 373,
+    "netR": 360.25,
+    "pf": 2.448,
+    "winRate": 0.351,
+    "expR": 0.9658,
+    "maxDDR": 18.57,
+    "sharpeTrade": 0.1986,
+    "tStat": 3.83,
+    "tradesPerYear": 74.6,
+    "retPct": 180.12,
+    "maxDDPct": 9.29,
+    "avgBars": 23.0
+   },
+   "neighborMedianPF": 2.244,
+   "robust": true,
+   "eligible": true
+  }
+ ],
+ "selected": {
+  "tf": "H4",
+  "params": {
+   "L": 200,
+   "tgt": "nenhum",
+   "k": 1.5,
+   "hold": 96,
+   "side": "long"
+  },
+  "development": {
+   "trades": 211,
+   "netR": 136.45,
+   "pf": 2.656,
+   "winRate": 0.441,
+   "expR": 0.6467,
+   "maxDDR": 6.54,
+   "sharpeTrade": 0.2539,
+   "tStat": 3.69,
+   "tradesPerYear": 42.2,
+   "retPct": 68.23,
+   "maxDDPct": 3.27,
+   "avgBars": 9.0
+  },
+  "neighborMedianPF": 2.318,
+  "deflatedSharpe": 0.028,
+  "validation": {
+   "base": {
+    "trades": 76,
+    "netR": -1.41,
+    "pf": 0.959,
+    "winRate": 0.355,
+    "expR": -0.0186,
+    "maxDDR": 9.1,
+    "sharpeTrade": -0.0163,
+    "tStat": -0.14,
+    "tradesPerYear": 38.0,
+    "retPct": -0.71,
+    "maxDDPct": 4.55,
+    "avgBars": 7.4
+   },
+   "stress": {
+    "trades": 76,
+    "netR": -6.4,
+    "pf": 0.828,
+    "winRate": 0.342,
+    "expR": -0.0842,
+    "maxDDR": 12.39,
+    "sharpeTrade": -0.0743,
+    "tStat": -0.65,
+    "tradesPerYear": 38.0,
+    "retPct": -3.2,
+    "maxDDPct": 6.2,
+    "avgBars": 7.4
+   },
+   "passed": false
+  },
+  "warning": "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

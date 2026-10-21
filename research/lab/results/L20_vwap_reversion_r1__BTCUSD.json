@@ -1,0 +1,172 @@
+{
+ "strategy": "L20_vwap_reversion_r1",
+ "name": "Reversão ao VWAP com recuperação da banda e tendência",
+ "family": "tempo_volume",
+ "sources": [
+  "https://www.tradingview.com/script/mthvTwSg-VWAP-Intraday-Weekly-Monthly/",
+  "https://www.tradingview.com/script/HBa1RdfD-Institutional-VWAP-Bands-JOAT/",
+  "https://www.luxalgo.com/library/indicator/CzQ5lLHJ-vwap-strategy/"
+ ],
+ "rule": "Banda = VWAP (dia UTC ou rolante 24h) +- d*ATR14. Compra quando o candle anterior fechou abaixo da banda inferior e o atual fecha de volta acima dela, com fechamento acima da EMA200; venda no espelho abaixo da EMA200. Alvo: VWAP; stop k*ATR14; saída por tempo em 24h. Volume só do Bitstamp.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "33d1ca1cc03d6290576fe876c2521c37475f084fda922bf44879cef34c919055",
+ "refinement": "reclaim da banda + tendencia EMA200",
+ "combinationsTested": 64,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H1",
+   "params": {
+    "anchor": "day",
+    "d": 2.5,
+    "k": 2.5,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 45,
+    "netR": 3.16,
+    "pf": 1.306,
+    "winRate": 0.533,
+    "expR": 0.0702,
+    "maxDDR": 2.84,
+    "sharpeTrade": 0.0748,
+    "tStat": 0.5,
+    "tradesPerYear": 9.0,
+    "retPct": 1.58,
+    "maxDDPct": 1.42,
+    "avgBars": 9.0
+   },
+   "neighborMedianPF": 0.869,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "anchor": "rolling",
+    "d": 3.0,
+    "k": 2.5,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 38,
+    "netR": 0.07,
+    "pf": 1.006,
+    "winRate": 0.579,
+    "expR": 0.0019,
+    "maxDDR": 7.44,
+    "sharpeTrade": 0.0023,
+    "tStat": 0.01,
+    "tradesPerYear": 7.6,
+    "retPct": 0.04,
+    "maxDDPct": 3.72,
+    "avgBars": 11.0
+   },
+   "neighborMedianPF": 0.833,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "anchor": "day",
+    "d": 3.0,
+    "k": 2.5,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 9,
+    "netR": -0.22,
+    "pf": 0.869,
+    "winRate": 0.556,
+    "expR": -0.0243,
+    "maxDDR": 1.36,
+    "sharpeTrade": -0.0501,
+    "tStat": -0.15,
+    "tradesPerYear": 1.8,
+    "retPct": -0.11,
+    "maxDDPct": 0.68,
+    "avgBars": 10.0
+   },
+   "neighborMedianPF": 0.735,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "M15",
+   "params": {
+    "anchor": "day",
+    "d": 3.0,
+    "k": 2.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 116,
+    "netR": -1.27,
+    "pf": 0.973,
+    "winRate": 0.629,
+    "expR": -0.0109,
+    "maxDDR": 12.7,
+    "sharpeTrade": -0.0121,
+    "tStat": -0.13,
+    "tradesPerYear": 23.2,
+    "retPct": -0.63,
+    "maxDDPct": 6.35,
+    "avgBars": 17.6
+   },
+   "neighborMedianPF": 0.916,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "anchor": "day",
+    "d": 3.0,
+    "k": 2.5,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 3,
+    "netR": -0.56,
+    "pf": 0.463,
+    "winRate": 0.667,
+    "expR": -0.1853,
+    "maxDDR": 1.03,
+    "sharpeTrade": -0.2423,
+    "tStat": -0.42,
+    "tradesPerYear": 0.6,
+    "retPct": -0.28,
+    "maxDDPct": 0.52,
+    "avgBars": 9.7
+   },
+   "neighborMedianPF": 0.718,
+   "robust": false,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null
+}

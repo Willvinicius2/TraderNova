@@ -1,0 +1,259 @@
+{
+ "strategy": "L07_stochastic",
+ "name": "Estocástico de Lane (cruzamento %K/%D nas zonas)",
+ "family": "reversao",
+ "sources": [
+  "https://help.trendspider.com/kb/indicators/lanes-stochastic-oscillator",
+  "https://www.barchart.com/education/technical-indicators/stochastic_fast",
+  "https://www.babypips.com/forexpedia/Stochastics"
+ ],
+ "rule": "Estocástico lento (%K = média 3 do %K rápido de n candles; %D = média 3 do %K). Compra quando %K cruza acima de %D com %D abaixo da zona de sobrevenda (Lane: 20); vende quando cruza abaixo com %D acima de 100-zona. Sai da compra quando %K passa de 100-zona (sobrecompra) e da venda quando %K cai abaixo da zona. Stop k*ATR14.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "c458cbb115b9915a7f894bf358cb29cffc0b8c9964cf419e43d097478147336f",
+ "refinement": null,
+ "combinationsTested": 108,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "n": 9,
+    "zone": 25,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 36,
+    "netR": 4.88,
+    "pf": 1.729,
+    "winRate": 0.667,
+    "expR": 0.1354,
+    "maxDDR": 2.03,
+    "sharpeTrade": 0.212,
+    "tStat": 1.27,
+    "tradesPerYear": 7.2,
+    "retPct": 2.44,
+    "maxDDPct": 1.01,
+    "avgBars": 10.6
+   },
+   "neighborMedianPF": 1.294,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 14,
+    "zone": 25,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 40,
+    "netR": 4.1,
+    "pf": 1.266,
+    "winRate": 0.575,
+    "expR": 0.1024,
+    "maxDDR": 4.14,
+    "sharpeTrade": 0.0898,
+    "tStat": 0.57,
+    "tradesPerYear": 8.0,
+    "retPct": 2.05,
+    "maxDDPct": 2.07,
+    "avgBars": 11.6
+   },
+   "neighborMedianPF": 1.27,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 14,
+    "zone": 25,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 34,
+    "netR": 3.92,
+    "pf": 1.418,
+    "winRate": 0.647,
+    "expR": 0.1154,
+    "maxDDR": 2.86,
+    "sharpeTrade": 0.1324,
+    "tStat": 0.77,
+    "tradesPerYear": 6.8,
+    "retPct": 1.96,
+    "maxDDPct": 1.43,
+    "avgBars": 14.0
+   },
+   "neighborMedianPF": 1.266,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 9,
+    "zone": 20,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 28,
+    "netR": 3.9,
+    "pf": 1.474,
+    "winRate": 0.679,
+    "expR": 0.1393,
+    "maxDDR": 4.47,
+    "sharpeTrade": 0.1658,
+    "tStat": 0.88,
+    "tradesPerYear": 5.6,
+    "retPct": 1.95,
+    "maxDDPct": 2.24,
+    "avgBars": 12.2
+   },
+   "neighborMedianPF": 1.27,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 14,
+    "zone": 20,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 24,
+    "netR": 3.64,
+    "pf": 1.85,
+    "winRate": 0.75,
+    "expR": 0.1519,
+    "maxDDR": 1.31,
+    "sharpeTrade": 0.2527,
+    "tStat": 1.24,
+    "tradesPerYear": 4.8,
+    "retPct": 1.82,
+    "maxDDPct": 0.66,
+    "avgBars": 17.8
+   },
+   "neighborMedianPF": 1.131,
+   "robust": true,
+   "eligible": false
+  }
+ ],
+ "selected": {
+  "tf": "D1",
+  "params": {
+   "n": 9,
+   "zone": 25,
+   "k": 3.0,
+   "side": "long"
+  },
+  "development": {
+   "trades": 36,
+   "netR": 4.88,
+   "pf": 1.729,
+   "winRate": 0.667,
+   "expR": 0.1354,
+   "maxDDR": 2.03,
+   "sharpeTrade": 0.212,
+   "tStat": 1.27,
+   "tradesPerYear": 7.2,
+   "retPct": 2.44,
+   "maxDDPct": 1.01,
+   "avgBars": 10.6
+  },
+  "neighborMedianPF": 1.294,
+  "deflatedSharpe": 0.221,
+  "validation": {
+   "base": {
+    "trades": 20,
+    "netR": 1.85,
+    "pf": 1.537,
+    "winRate": 0.7,
+    "expR": 0.0927,
+    "maxDDR": 1.58,
+    "sharpeTrade": 0.1672,
+    "tStat": 0.75,
+    "tradesPerYear": 10.0,
+    "retPct": 0.93,
+    "maxDDPct": 0.79,
+    "avgBars": 11.3
+   },
+   "stress": {
+    "trades": 20,
+    "netR": 1.62,
+    "pf": 1.459,
+    "winRate": 0.7,
+    "expR": 0.0811,
+    "maxDDR": 1.62,
+    "sharpeTrade": 0.1461,
+    "tStat": 0.65,
+    "tradesPerYear": 10.0,
+    "retPct": 0.81,
+    "maxDDPct": 0.81,
+    "avgBars": 11.3
+   },
+   "passed": true
+  },
+  "reserve": {
+   "base": {
+    "trades": 38,
+    "netR": 5.17,
+    "pf": 1.541,
+    "winRate": 0.711,
+    "expR": 0.1362,
+    "maxDDR": 2.79,
+    "sharpeTrade": 0.1752,
+    "tStat": 1.08,
+    "tradesPerYear": 10.0,
+    "retPct": 2.59,
+    "maxDDPct": 1.39,
+    "avgBars": 9.3
+   },
+   "stress": {
+    "trades": 38,
+    "netR": 4.39,
+    "pf": 1.449,
+    "winRate": 0.684,
+    "expR": 0.1156,
+    "maxDDR": 2.91,
+    "sharpeTrade": 0.149,
+    "tStat": 0.92,
+    "tradesPerYear": 10.0,
+    "retPct": 2.2,
+    "maxDDPct": 1.45,
+    "avgBars": 9.3
+   },
+   "passed": true
+  },
+  "warning": "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
+ },
+ "verdict": "CANDIDATA"
+}

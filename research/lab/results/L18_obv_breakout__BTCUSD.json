@@ -1,0 +1,221 @@
+{
+ "strategy": "L18_obv_breakout",
+ "name": "Rompimento do OBV (Granville) confirmado pelo preço",
+ "family": "tempo_volume",
+ "sources": [
+  "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/on-balance-volume-obv",
+  "https://www.incrediblecharts.com/indicators/on_balance_volume.php",
+  "https://www.metatrader4.com/en/trading-platform/help/analytics/tech_indicators/on_balance_volume"
+ ],
+ "rule": "OBV de Granville (soma o volume do candle se fecha acima do anterior, subtrai se fecha abaixo). Compra quando o OBV fecha acima da máxima dos N candles anteriores (rompimento do OBV, que segundo Granville antecede o preço) e o preço confirma fechando acima da EMA(N). Venda no espelho (OBV abaixo da mínima de N e preço abaixo da EMA). Sai quando o OBV cruza de volta sua média SMA(N). Stop k*ATR14. Volume é só do Bitstamp (uma corretora).",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "2e391bbbf1d22f42782e86d9cbf5cf6a853301c45aeb700f12900e098f5f1b99",
+ "refinement": null,
+ "combinationsTested": 36,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H4",
+   "params": {
+    "n": 80,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 65,
+    "netR": 166.24,
+    "pf": 6.219,
+    "winRate": 0.462,
+    "expR": 2.5575,
+    "maxDDR": 3.3,
+    "sharpeTrade": 0.4549,
+    "tStat": 3.67,
+    "tradesPerYear": 13.0,
+    "retPct": 83.12,
+    "maxDDPct": 1.65,
+    "avgBars": 59.1
+   },
+   "neighborMedianPF": 3.941,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "n": 80,
+    "k": 3.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 117,
+    "netR": 149.09,
+    "pf": 4.311,
+    "winRate": 0.47,
+    "expR": 1.2742,
+    "maxDDR": 4.89,
+    "sharpeTrade": 0.3533,
+    "tStat": 3.82,
+    "tradesPerYear": 23.4,
+    "retPct": 74.54,
+    "maxDDPct": 2.44,
+    "avgBars": 60.9
+   },
+   "neighborMedianPF": 3.941,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "n": 40,
+    "k": 3.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 236,
+    "netR": 156.19,
+    "pf": 2.814,
+    "winRate": 0.419,
+    "expR": 0.6618,
+    "maxDDR": 6.12,
+    "sharpeTrade": 0.2012,
+    "tStat": 3.09,
+    "tradesPerYear": 47.2,
+    "retPct": 78.09,
+    "maxDDPct": 3.06,
+    "avgBars": 30.7
+   },
+   "neighborMedianPF": 3.352,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "n": 40,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 251,
+    "netR": 234.5,
+    "pf": 2.829,
+    "winRate": 0.394,
+    "expR": 0.9343,
+    "maxDDR": 9.43,
+    "sharpeTrade": 0.1956,
+    "tStat": 3.1,
+    "tradesPerYear": 50.2,
+    "retPct": 117.25,
+    "maxDDPct": 4.71,
+    "avgBars": 27.2
+   },
+   "neighborMedianPF": 3.317,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "n": 80,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 551,
+    "netR": 394.27,
+    "pf": 2.12,
+    "winRate": 0.338,
+    "expR": 0.7155,
+    "maxDDR": 15.93,
+    "sharpeTrade": 0.1888,
+    "tStat": 4.43,
+    "tradesPerYear": 110.2,
+    "retPct": 197.13,
+    "maxDDPct": 7.97,
+    "avgBars": 46.1
+   },
+   "neighborMedianPF": 2.138,
+   "robust": true,
+   "eligible": true
+  }
+ ],
+ "selected": {
+  "tf": "H4",
+  "params": {
+   "n": 80,
+   "k": 2.0,
+   "side": "long"
+  },
+  "development": {
+   "trades": 65,
+   "netR": 166.24,
+   "pf": 6.219,
+   "winRate": 0.462,
+   "expR": 2.5575,
+   "maxDDR": 3.3,
+   "sharpeTrade": 0.4549,
+   "tStat": 3.67,
+   "tradesPerYear": 13.0,
+   "retPct": 83.12,
+   "maxDDPct": 1.65,
+   "avgBars": 59.1
+  },
+  "neighborMedianPF": 3.941,
+  "deflatedSharpe": 0.894,
+  "validation": {
+   "base": {
+    "trades": 35,
+    "netR": -4.36,
+    "pf": 0.824,
+    "winRate": 0.257,
+    "expR": -0.1247,
+    "maxDDR": 12.88,
+    "sharpeTrade": -0.0633,
+    "tStat": -0.37,
+    "tradesPerYear": 17.5,
+    "retPct": -2.18,
+    "maxDDPct": 6.44,
+    "avgBars": 32.5
+   },
+   "stress": {
+    "trades": 35,
+    "netR": -6.36,
+    "pf": 0.758,
+    "winRate": 0.257,
+    "expR": -0.1817,
+    "maxDDR": 14.19,
+    "sharpeTrade": -0.092,
+    "tStat": -0.54,
+    "tradesPerYear": 17.5,
+    "retPct": -3.18,
+    "maxDDPct": 7.1,
+    "avgBars": 32.5
+   },
+   "passed": false
+  }
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

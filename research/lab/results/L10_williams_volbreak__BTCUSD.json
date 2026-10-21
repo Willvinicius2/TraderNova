@@ -1,0 +1,226 @@
+{
+ "strategy": "L10_williams_volbreak",
+ "name": "Volatility breakout de Larry Williams",
+ "family": "volatilidade",
+ "sources": [
+  "https://www.luxalgo.com/library/concept/volatility-breakout/",
+  "Larry Williams, Long-Term Secrets to Short-Term Trading (Wiley, 1999), cap. sobre volatility breakout"
+ ],
+ "rule": "Dia em UTC. Nível de compra = abertura do dia + k×(máx-mín do dia anterior); venda = abertura - k×range. Executado em candles intradiários (H1/H4): o primeiro fechamento do dia além do nível gera a entrada na abertura do candle seguinte (aproxima a ordem stop de Williams). Stop = sf×range do dia anterior. Saída por tempo: hold_days dias (24 candles H1 ou 6 H4 por dia), como a saída 'na abertura seguinte'/bailout curto de Williams. Escolha documentada: H1/H4 em vez de D1 para não usar a máxima do próprio dia como preço de entrada.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "4fdf8bae937c09b9b0a266888918d70c877bf418473acb924e04d8826f9ea583",
+ "refinement": null,
+ "combinationsTested": 96,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H1",
+   "params": {
+    "k": 0.7,
+    "sf": 0.5,
+    "hold_days": 2,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 318,
+    "netR": 327.97,
+    "pf": 2.624,
+    "winRate": 0.434,
+    "expR": 1.0313,
+    "maxDDR": 12.34,
+    "sharpeTrade": 0.2082,
+    "tStat": 3.71,
+    "tradesPerYear": 63.6,
+    "retPct": 163.98,
+    "maxDDPct": 6.17,
+    "avgBars": 30.2
+   },
+   "neighborMedianPF": 2.192,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "k": 0.9,
+    "sf": 1.0,
+    "hold_days": 3,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 210,
+    "netR": 187.55,
+    "pf": 2.777,
+    "winRate": 0.462,
+    "expR": 0.8931,
+    "maxDDR": 7.26,
+    "sharpeTrade": 0.268,
+    "tStat": 3.88,
+    "tradesPerYear": 42.0,
+    "retPct": 93.78,
+    "maxDDPct": 3.63,
+    "avgBars": 12.6
+   },
+   "neighborMedianPF": 2.272,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "k": 0.7,
+    "sf": 1.0,
+    "hold_days": 3,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 248,
+    "netR": 201.85,
+    "pf": 2.753,
+    "winRate": 0.492,
+    "expR": 0.8139,
+    "maxDDR": 8.16,
+    "sharpeTrade": 0.2591,
+    "tStat": 4.08,
+    "tradesPerYear": 49.6,
+    "retPct": 100.92,
+    "maxDDPct": 4.08,
+    "avgBars": 13.3
+   },
+   "neighborMedianPF": 2.401,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "k": 0.7,
+    "sf": 1.0,
+    "hold_days": 2,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 278,
+    "netR": 169.63,
+    "pf": 2.482,
+    "winRate": 0.55,
+    "expR": 0.6102,
+    "maxDDR": 7.53,
+    "sharpeTrade": 0.2173,
+    "tStat": 3.62,
+    "tradesPerYear": 55.6,
+    "retPct": 84.81,
+    "maxDDPct": 3.76,
+    "avgBars": 9.6
+   },
+   "neighborMedianPF": 2.135,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "k": 0.7,
+    "sf": 0.5,
+    "hold_days": 3,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 287,
+    "netR": 380.56,
+    "pf": 2.837,
+    "winRate": 0.366,
+    "expR": 1.326,
+    "maxDDR": 17.07,
+    "sharpeTrade": 0.2276,
+    "tStat": 3.86,
+    "tradesPerYear": 57.4,
+    "retPct": 190.28,
+    "maxDDPct": 8.54,
+    "avgBars": 39.7
+   },
+   "neighborMedianPF": 2.577,
+   "robust": true,
+   "eligible": true
+  }
+ ],
+ "selected": {
+  "tf": "H1",
+  "params": {
+   "k": 0.7,
+   "sf": 0.5,
+   "hold_days": 2,
+   "side": "long"
+  },
+  "development": {
+   "trades": 318,
+   "netR": 327.97,
+   "pf": 2.624,
+   "winRate": 0.434,
+   "expR": 1.0313,
+   "maxDDR": 12.34,
+   "sharpeTrade": 0.2082,
+   "tStat": 3.71,
+   "tradesPerYear": 63.6,
+   "retPct": 163.98,
+   "maxDDPct": 6.17,
+   "avgBars": 30.2
+  },
+  "neighborMedianPF": 2.192,
+  "deflatedSharpe": 0.998,
+  "validation": {
+   "base": {
+    "trades": 125,
+    "netR": -9.12,
+    "pf": 0.904,
+    "winRate": 0.296,
+    "expR": -0.0729,
+    "maxDDR": 18.74,
+    "sharpeTrade": -0.0393,
+    "tStat": -0.44,
+    "tradesPerYear": 62.5,
+    "retPct": -4.56,
+    "maxDDPct": 9.37,
+    "avgBars": 24.9
+   },
+   "stress": {
+    "trades": 125,
+    "netR": -25.26,
+    "pf": 0.764,
+    "winRate": 0.296,
+    "expR": -0.2021,
+    "maxDDR": 26.91,
+    "sharpeTrade": -0.1085,
+    "tStat": -1.21,
+    "tradesPerYear": 62.5,
+    "retPct": -12.63,
+    "maxDDPct": 13.46,
+    "avgBars": 24.9
+   },
+   "passed": false
+  }
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}
