@@ -21,4 +21,22 @@ assert.equal(site.parentPage(`${site.SITE_URL}?aba=robo&sinal=test`), `${site.SI
 assert.equal(site.parentPage(`${site.SITE_URL}?aba=diario`), `${site.SITE_URL}?aba=mercado`);
 assert.equal(site.parentPage(site.SITE_URL), null);
 assert.equal(site.parentPage('https://evil.example/?aba=diario'), null);
-console.log('Mobile checks passed: original site, origin boundary, HTTPS-only external links, UUID-only deep links, valid bridge script.');
+// Push (Fase 4): toque só abre ficha de UUID válido; token Expo validado; resposta ao site é JS válido e não executa conteúdo.
+const os = await import('node:os'), path = await import('node:path');
+const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'tradernova-mobile-'));
+try {
+  const compile = async (name) => fs.writeFile(path.join(dir, `${name}.mjs`), ts.transpileModule(await fs.readFile(new URL(`../src/${name}.ts`, import.meta.url), 'utf8'), { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ES2022 } }).outputText.replace(/from '\.\/site'/, "from './site.mjs'"));
+  await compile('site'); await compile('push');
+  const push = await import(new URL(`file://${path.join(dir, 'push.mjs')}`).href);
+  assert.equal(push.PUSH_CHANNEL_ID, 'sinais');
+  assert.equal(push.notificationTarget({ url: `tradernova://signal/${uuid}`, signalId: uuid }), `${site.SITE_URL}?aba=robo&sinal=${uuid}`);
+  for (const data of [null, undefined, 'x', {}, { url: 42 }, { url: 'https://evil.example/' }, { url: 'tradernova://signal/test-123' }, { url: `tradernova://signal/${uuid}?aba=conta` }, { url: `tradernova://signal/${uuid}${'a'.repeat(300)}` }]) assert.equal(push.notificationTarget(data), null, JSON.stringify(data));
+  assert.equal(push.isExpoPushToken('ExponentPushToken[abcdefghij12]'), true);
+  for (const bad of ['', 'ExponentPushToken[abc]', 'abc', null]) assert.equal(push.isExpoPushToken(bad), false);
+  const events = [];
+  const script = push.pushResultScript({ status: 'granted', token: 'ExponentPushToken[abcdefghij12]', platform: 'android' });
+  new Function('window', 'CustomEvent', script)({ dispatchEvent: e => events.push(e) }, class { constructor(type, init) { this.type = type; this.detail = init.detail; } });
+  assert.deepEqual(events.map(e => [e.type, e.detail.status, e.detail.token]), [['tradernova-push', 'granted', 'ExponentPushToken[abcdefghij12]']]);
+  new Function(push.pushResultScript({ status: 'unavailable', reason: 'not-configured' }));
+} finally { await fs.rm(dir, { recursive: true, force: true }); }
+console.log('Mobile checks passed: original site, origin boundary, HTTPS-only external links, UUID-only deep links, valid bridge script, push tap and token.');

@@ -22,6 +22,7 @@ Use Expo Go compatível com SDK 57 ou uma development build. `npm run android` u
 - Área segura e barra de status acompanham o tema escolhido no site.
 - Links externos HTTPS abrem no navegador. O botão voltar do Android retorna dos detalhes/abas; os links `tradernova://signal/<uuid>` (somente UUID v4) abrem a ficha do sinal persistido na mesma WebView (`?aba=robo&sinal=<uuid>`); ver docs/SINAIS.md.
 - Exportações JSON acionadas pelo site abrem o compartilhamento nativo.
+- Push (Fase 4, preparado): `expo-notifications` com canal `sinais`. A permissão só é pedida quando o site envia `push-register` (após login); o toque na notificação abre a ficha pelo mesmo link `tradernova://signal/<uuid>`. Sem conta Expo vinculada, nenhum token é gerado. Ver [docs/NOTIFICACOES.md](../docs/NOTIFICACOES.md).
 - Em falha de carregamento, há aviso e tentativa de reconexão. **O app depende de internet**; não há funcionamento offline completo ou feed contínuo em segundo plano.
 
 ## Verificar

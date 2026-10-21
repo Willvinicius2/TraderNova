@@ -20,7 +20,7 @@ Consolidado em 15/09/2026 a partir dos chats **Modelos mobile TraderNova** e **S
 | Indicadores | 10 sobre a série cripto | Mesma implementação do site |
 | Temas | 3, preferência no navegador | Mesmos 3 temas, preferência na WebView |
 | Alertas/diário | Exemplos locais | Mesma interface e armazenamento na WebView |
-| Notificações | Sem push integrado | Deep links preparados; push pendente |
+| Notificações | Sem push integrado | Deep links, regras de envio, tabelas e registro no app preparados (docs/NOTIFICACOES.md); envio real pendente de conta Expo, login e worker hospedado |
 | Laboratório | Histórico/replay/exportação | Mesmo laboratório; compartilhamento JSON nativo |
 | Conta/assinaturas | Contratos iniciais | Piloto, sem cobrança |
 | Backend | Migração Supabase existente | Integração pendente |
