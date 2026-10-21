@@ -123,13 +123,19 @@ def main():
         df = df[df.index >= pd.Timestamp(per["warmup"][0], tz="UTC")]
         cache = {}
         for c in combos:
-            _, m = evaluate(mod, df, c, cb, dev_a, dev_b)
+            trs, m = evaluate(mod, df, c, cb, dev_a, dev_b)
+            by_year = {}
+            for t in trs:
+                by_year[t.exit_time[:4]] = by_year.get(t.exit_time[:4], 0.0) + t.r
+            m["anosPositivos"] = sum(1 for v in by_year.values() if v > 0)
+            m["anosTotal"] = int(round(years(dev_a, dev_b)))
             cache[json.dumps(c, sort_keys=True)] = m
             rows.append({"tf": tf, "params": c, "dev": m})
         for row in [r for r in rows if r["tf"] == tf]:
             m = row["dev"]
             ok = (m["trades"] >= min_trades(tf, "development") and m["netR"] > 0 and (m["pf"] or 0) >= 1.15
-                  and m["semMaiorR"] > 0 and m["maxDDPct"] <= MAX_DD_PCT)
+                  and m["semMaiorR"] > 0 and m["maxDDPct"] <= MAX_DD_PCT
+                  and (PROTOCOL["id"] < "lab-v3" or m["anosPositivos"] >= m["anosTotal"] - 1))
             nbs = [cache[json.dumps(nb, sort_keys=True)] for nb in neighbors(meta, row["params"])]
             nb_pf = statistics.median([(x["pf"] or 0) for x in nbs]) if nbs else None
             row["neighborMedianPF"] = round(nb_pf, 3) if nb_pf is not None else None

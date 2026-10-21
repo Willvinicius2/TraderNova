@@ -1,5 +1,79 @@
 [
- {"agente": "r3-lazybear", "rodada": 3, "foco": "TradingView comunidade (LazyBear e cia.)", "ids": ["TV24", "TV25", "TV26", "TV27"]},
- {"agente": "r3-filtros", "rodada": 3, "foco": "TradingView comunidade (filtros de tendência)", "ids": ["TV28", "TV29", "TV30", "TV31"]},
- {"agente": "r3-estrutura", "rodada": 3, "foco": "TradingView comunidade (estrutura e ML)", "ids": ["TV32", "TV33", "TV34", "TV35"]}
+ {
+  "agente": "r3-lazybear",
+  "rodada": 3,
+  "foco": "TradingView comunidade (LazyBear e cia.)",
+  "ids": [
+   "TV24",
+   "TV25",
+   "TV26",
+   "TV27"
+  ]
+ },
+ {
+  "agente": "r3-filtros",
+  "rodada": 3,
+  "foco": "TradingView comunidade (filtros de tendência)",
+  "ids": [
+   "TV28",
+   "TV29",
+   "TV30",
+   "TV31"
+  ]
+ },
+ {
+  "agente": "r3-estrutura",
+  "rodada": 3,
+  "foco": "TradingView comunidade (estrutura e ML)",
+  "ids": [
+   "TV32",
+   "TV33",
+   "TV34",
+   "TV35"
+  ]
+ },
+ {
+  "agente": "r4-trailing",
+  "rodada": 4,
+  "foco": "TradingView: trailing adaptativo",
+  "ids": [
+   "TV36",
+   "TV37",
+   "TV38",
+   "TV39"
+  ]
+ },
+ {
+  "agente": "r4-momento",
+  "rodada": 4,
+  "foco": "TradingView: momento suavizado",
+  "ids": [
+   "TV40",
+   "TV41",
+   "TV42",
+   "TV43"
+  ]
+ },
+ {
+  "agente": "r4-ehlers-tasc",
+  "rodada": 4,
+  "foco": "TradingView: Ehlers (TASC recentes)",
+  "ids": [
+   "TV44",
+   "TV45",
+   "TV46",
+   "TV47"
+  ]
+ },
+ {
+  "agente": "r4-ehlers-classicos",
+  "rodada": 4,
+  "foco": "TradingView: Ehlers clássicos",
+  "ids": [
+   "TV48",
+   "TV49",
+   "TV50",
+   "TV51"
+  ]
+ }
 ]

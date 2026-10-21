@@ -148,5 +148,35 @@
    "buyHoldPct": 401.8
   },
   "fragil": false
+ },
+ "TV39_smoothed_ha": {
+  "development": {
+   "trades": 111,
+   "netR": 133.16,
+   "semMaiorR": 94.46,
+   "maiorR": 38.7,
+   "retPct05": 66.58,
+   "ddPct05": 2.38,
+   "buyHoldPct": 6628.6
+  },
+  "validation": {
+   "trades": 45,
+   "netR": 5.86,
+   "semMaiorR": 1.59,
+   "maiorR": 4.27,
+   "retPct05": 2.93,
+   "ddPct05": 3.13,
+   "buyHoldPct": -43.0
+  },
+  "reserve": {
+   "trades": 84,
+   "netR": 34.83,
+   "semMaiorR": 22.51,
+   "maiorR": 12.32,
+   "retPct05": 17.42,
+   "ddPct05": 3.67,
+   "buyHoldPct": 401.8
+  },
+  "fragil": false
  }
 }

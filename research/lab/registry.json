@@ -918,6 +918,222 @@
     "https://www.luxalgo.com/library/indicator/kRIjThLZ-trend-magic/",
     "https://it.tradingview.com/script/uRqGTZOw"
    ]
+  },
+  {
+   "id": "TV39_smoothed_ha",
+   "name": "Trend Indicator A-V2: cor da Heikin Ashi suavizada por EMA",
+   "family": "tendencia",
+   "coreRule": "Pine v2.3 (média EMA, período 9): velas Heikin Ashi do próprio tempo gráfico (fech=(A+M+m+F)/4; abertura=(abertHA[1]+fechHA[1])/2); EMA(n) da abertura HA e EMA(n) do fechamento HA. A nuvem fica positiva quando a EMA do fechamento HA está acima da EMA da abertura HA. Compra quando a EMA do fechamento HA cruza acima da EMA da abertura HA; venda no cruzamento abaixo. O script é só indicador (sem ordens): sai/inverte na troca de cor; side=long só compra; stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "CANDIDATA",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/scripts/dziv/",
+    "https://www.mql5.com/en/job/250638",
+    "Código: github.com/deepentropy/lightweight-charts-indicators src/community/trend-indicator-a-v2.ts (port fiel do Pine v2.3)"
+   ]
+  },
+  {
+   "id": "TV36_ott",
+   "name": "Optimized Trend Tracker (OTT): linha de suporte VAR cruza a OTT",
+   "family": "tendencia",
+   "coreRule": "Pine (fonte fechamento, período 2, percentual 1,4): VAR = média VIDYA com alfa 2/(n+1) multiplicado por |CMO de 9 candles|; longStop = VAR*(1-pct), só sobe enquanto VAR > longStop anterior; shortStop = VAR*(1+pct), só desce; direção vira quando a VAR atravessa o stop oposto; MT = stop da direção; OTT = MT*(200±pct)/200 (+ se VAR>MT). Sinal padrão do script (showsignalsk): compra quando a VAR (linha de suporte) cruza acima da OTT de 2 candles atrás, venda no cruzamento abaixo. Sai/inverte no sinal oposto; side=long só compra. Sem stop no script: stop de proteção k*ATR14 (Wilder).",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/zVhoDQME/",
+    "Código: github.com/deepentropy/lightweight-charts-indicators src/community/optimized-trend-tracker.ts (port fiel do Pine)"
+   ]
+  },
+  {
+   "id": "TV37_alphatrend",
+   "name": "AlphaTrend (MFI + ATR): cruzamento com a própria linha de 2 candles atrás",
+   "family": "tendencia",
+   "coreRule": "Pine (coeficiente 1, período 14): ATR = SMA(TR, período); upT = mínima - ATR*coef; downT = máxima + ATR*coef; AlphaTrend = se MFI(hlc3, período) >= 50 (ou RSI com novol): max(upT, AT[1]) senão min(downT, AT[1]). Compra quando AT cruza acima de AT[2] e a última venda bruta é mais recente que a compra bruta anterior (filtro de alternância O1>K2 do script); venda no espelho. Sai/inverte no sinal oposto; side=long só compra. Sem stop no script: stop de proteção k*ATR14 (Wilder).",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/o50NYLAZ-AlphaTrend/",
+    "Código: github.com/deepentropy/lightweight-charts-indicators src/community/alpha-trend.ts (port fiel do Pine)"
+   ]
+  },
+  {
+   "id": "TV38_follow_line",
+   "name": "Follow Line (rompimento de Bollinger + ATR): virada da linha",
+   "family": "tendencia",
+   "coreRule": "Pine (BB 21, desvio 1, filtro ATR ligado, ATR 5): fechamento acima de SMA+desv*DP leva a linha para mínima - ATR (nunca abaixo da linha anterior); fechamento abaixo de SMA-desv*DP leva a linha para máxima + ATR (nunca acima); dentro das bandas a linha fica. Tendência = +1 quando a linha sobe, -1 quando desce. Compra na virada para +1, venda na virada para -1 (alertas do script). Como no original, o ATR(5) de cada lado é uma RMA do TR calculada só nos candles em que é chamado. Sai/inverte na virada oposta; side=long só compra. Sem stop no script: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/29iYBNku-Follow-Line-Indicator/",
+    "https://it.tradingview.com/script/RwHWOeMU",
+    "Código: github.com/deepentropy/lightweight-charts-indicators src/community/follow-line.ts (port fiel do Pine)"
+   ]
+  },
+  {
+   "id": "TV40_tsi",
+   "name": "True Strength Index (Blau / everget)",
+   "family": "momento",
+   "coreRule": "TSI = 100*EMA(EMA(Δfech,longo),curto)/EMA(EMA(|Δfech|,longo),curto); sinal = EMA(TSI). Compra quando o TSI cruza acima do sinal e vende quando cruza abaixo (inverte). Com filtro de zona, a compra só vale se o cruzamento ocorre com TSI < 0 (venda com TSI > 0); a saída é sempre o cruzamento oposto. Stop de proteção k*ATR(14) (o original não tem stop).",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/oscillators/tsi_true_strength_index.pine",
+    "https://kr.tradingview.com/script/JOaLTNxW-True-Strength-Index-with-Zones-Alerts",
+    "https://school.stockcharts.com/doku.php?id=technical_indicators:true_strength_index"
+   ]
+  },
+  {
+   "id": "TV41_ttf",
+   "name": "Trend Trigger Factor (Pee / everget)",
+   "family": "tendencia",
+   "coreRule": "BP = maior máxima(n) − menor mínima(n) de n candles atrás; SP = maior máxima de n candles atrás − menor mínima(n); TTF = 200*(BP−SP)/(BP+SP). Compra quando o TTF cruza acima de +nível, vende quando cruza abaixo de −nível; entre os níveis mantém a posição (sai só no cruzamento oposto). Stop de proteção k*ATR(14) (o original não tem stop).",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/wSMZKu7B-Indicator-Trend-Trigger-Factor/",
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/oscillators/trend_trigger_factor.pine"
+   ]
+  },
+  {
+   "id": "TV42_tcf",
+   "name": "Trend Continuation Factor (Pee / everget)",
+   "family": "tendencia",
+   "coreRule": "+TCF = soma em n candles de (alta do candle − sequência acumulada de quedas); −TCF espelhado. Compra quando +TCF passa a ser > 0, vende quando −TCF passa a ser > 0. Saída: quando o próprio lado deixa de ser positivo (neutral) ou só quando o lado oposto fica positivo (opposite). Stop de proteção k*ATR(14) (o original não tem stop).",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/oscillators/trend_continuation_factor.pine",
+    "https://www.traders.com/Documentation/FEEDbk_docs/2002/03/Abstracts_new/Pee/pee.html",
+    "https://www.tradingview.com/script/ymW2vLS6/"
+   ]
+  },
+  {
+   "id": "TV43_ultimate_rsi",
+   "name": "Ultimate RSI (LuxAlgo)",
+   "family": "momento",
+   "coreRule": "Diferença usada no RSI = amplitude máx−mín de n candles quando há nova máxima (positiva) ou nova mínima (negativa), senão a variação do fechamento; aRSI = RMA(diff)/RMA(|diff|)*50+50, sinal = EMA(aRSI,m). Modo mid: compra ao cruzar acima de 50, vende abaixo. Modo signal: compra ao cruzar acima do sinal, vende abaixo. Inverte no oposto; stop k*ATR(14).",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://tradingview.com/script/17Jj7Vcg-Ultimate-RSI-LuxAlgo",
+    "https://www.luxalgo.com/library/indicator/ultimate-rsi/",
+    "https://github.com/deepentropy/lightweight-charts-indicators/blob/main/src/community/ultimate-rsi.ts"
+   ]
+  },
+  {
+   "id": "TV44_trendflex",
+   "name": "Trendflex de Ehlers: cruzamento da linha zero",
+   "family": "tendencia",
+   "coreRule": "ss = SuperSmoother(fechamento, N); Trendflex = (N*ss - soma(ss[1..N]))/N, normalizado por sqrt(rms), rms = 0,04*v² + 0,96*rms anterior. Compra quando o Trendflex cruza acima de 0; vende quando cruza abaixo; sai no cruzamento oposto (inverte se 'both'). Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/6tSfPE3W-Reflex-Trendflex/",
+    "Ehlers, J. F. 'Reflex: A New Zero-Lag Indicator', Technical Analysis of Stocks & Commodities, fev/2020",
+    "Código Pine traduzido: github.com/deepentropy/lightweight-charts-indicators src/community/reflex-trendflex.ts"
+   ]
+  },
+  {
+   "id": "TV45_reversion_index",
+   "name": "Reversion Index de Ehlers: Smooth cruza Trigger em zona extrema",
+   "family": "reversao",
+   "coreRule": "d = fech - fech[1]; razão = soma(d, L)/soma(|d|, L); Smooth = SuperSmoother(razão, 8); Trigger = SuperSmoother(razão, 4) (cada um filtra a média de 2 candles). Compra quando o Smooth cruza acima do Trigger com Smooth < -nível; vende quando cruza abaixo com Smooth > +nível. Sai no cruzamento oposto. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/V35NeC45-TASC-2026-01-The-Reversion-Index",
+    "https://www.prorealcode.com/topic/reversion-index/",
+    "Código Pine traduzido: github.com/deepentropy/lightweight-charts-indicators src/community/tasc-2026-01-the-reversion-index.ts"
+   ]
+  },
+  {
+   "id": "TV46_cybernetic",
+   "name": "Cybernetic Oscillator de Ehlers: lado da linha zero (modo Trend)",
+   "family": "tendencia",
+   "coreRule": "hp = passa-alta de 2ª ordem (período HP) do fechamento; lp = SuperSmoother(hp, LP); osc = lp/RMS(lp, 100). Compra quando osc cruza acima de 0; vende quando cruza abaixo; sai no cruzamento oposto (inverte se 'both'). Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/QwMaFZTL-TASC-2025-06-Cybernetic-Oscillator",
+    "Código Pine traduzido: github.com/deepentropy/lightweight-charts-indicators src/community/tasc-2025-06-cybernetic-oscillator.ts"
+   ]
+  },
+  {
+   "id": "TV47_continuation_index",
+   "name": "Continuation Index de Ehlers: comprado acima de +0,5, vendido abaixo de -0,5",
+   "family": "tendencia",
+   "coreRule": "us = UltimateSmoother(fech, L/2); lg = média dos 'ordem' termos de Laguerre (gamma) cujo 1º termo é UltimateSmoother(fech, L); ref = 2*(us-lg)/SMA(|us-lg|, L); CI = Fisher inversa de ref = tanh(ref). Compra quando CI cruza acima de +0,5 e sai quando volta abaixo de +0,5; vende quando cruza abaixo de -0,5 e sai quando volta acima de -0,5. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/5ZrOut79-TASC-2025-09-The-Continuation-Index/",
+    "https://traders.com/Documentation/FEEDbk_docs/2025/09/TradersTips.html",
+    "Código Pine traduzido: github.com/deepentropy/lightweight-charts-indicators src/community/tasc-2025-09-the-continuation-index.ts"
+   ]
+  },
+  {
+   "id": "TV48_decycler",
+   "name": "Ehlers Decycler Oscillator (everget): cruzamento das duas linhas ou do zero",
+   "family": "tendencia",
+   "coreRule": "HP(x,P,m): passa-alta de 2 polos com alpha=(cos a+sin a-1)/cos a, a=2pi/(m*P*sqrt2). Decycler = close - HP(close,P,1); Osc = 100*K*HP(Decycler,P,0,5)/close. Linha 1: P1, K=1; linha 2: P2=0,8*P1, K=1,2 (padrão 125/100). Modo 'cross' (descrição do autor): compra quando a linha 2 cruza acima da linha 1, vende no inverso. Modo 'zero' (FILA): compra quando a linha 1 cruza acima de 0, vende abaixo. Sai no sinal oposto. O Pine não tem stop: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/5xelSGhd-Ehlers-Decycler-Oscillator/",
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/oscillators/ehlers_decycler_oscillator.pine"
+   ]
+  },
+  {
+   "id": "TV49_cyber_cycle",
+   "name": "Ehlers Cyber Cycle (everget): cruzamento Cycle/Trigger",
+   "family": "reversao",
+   "coreRule": "Smooth = (C + 2C1 + 2C2 + C3)/6; Cycle = (1-a/2)^2*(S-2S1+S2) + 2(1-a)*Cycle1 - (1-a)^2*Cycle2; Trigger = Cycle do candle anterior. Compra quando Cycle cruza acima do Trigger, vende quando cruza abaixo; sai no cruzamento oposto. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/Rol6rD2Y-Ehlers-Cyber-Cycle/",
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/oscillators/ehlers_cyber_cycle.pine"
+   ]
+  },
+  {
+   "id": "TV50_center_gravity",
+   "name": "Ehlers Center of Gravity (everget): cruzamento CG/CG anterior",
+   "family": "reversao",
+   "coreRule": "Fonte hl2. CG = -Σ_{i=0..L-1}(i+1)*src[i] / Σ src[i]; sinal = CG do candle anterior. Compra quando CG cruza acima do sinal, vende quando cruza abaixo; sai no cruzamento oposto. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/cbPsaSCd-CG-Oscillator-Center-of-Gravity/",
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/oscillators/center_of_gravity_oscillator.pine"
+   ]
+  },
+  {
+   "id": "TV51_roofing",
+   "name": "Ehlers Roofing Filter (everget): cruzamento do zero ou do próprio valor 2 candles atrás",
+   "family": "reversao",
+   "coreRule": "HP = passa-alta de 2 polos (período hp); Roof = SuperSmoother 2 polos (período ssf) de (HP+HP1)/2. Modo 'zero': compra quando Roof cruza acima de 0, vende abaixo. Modo 'lag2': compra quando Roof cruza acima de Roof[2], vende abaixo. Sai no sinal oposto. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 4",
+   "sources": [
+    "https://www.tradingview.com/script/rVixuZKT-Ehlers-Roofing-Filter/",
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/oscillators/ehlers_roofing_filter.pine"
+   ]
   }
  ]
 }

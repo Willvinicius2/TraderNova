@@ -1,4 +1,4 @@
-# Laboratório de estratégias: resultados até a rodada 3
+# Laboratório de estratégias: resultados até a rodada 4
 
 Gerado por `python research/lab/report.py`. Rodada 1 usou o protocolo lab-v1 e a rodada 2 o lab-v2 (mais rígido); ver `protocol.json`. Calibração só no desenvolvimento (BTC 2016–2020), validação 2021–2022 e reserva 2023–out/2026 sem reajuste, custo base 0,10% por lado e stress 0,20%. CANDIDATA passou no histórico, mas ainda precisa de acompanhamento prospectivo, custos reais da conta e risco conjunto. Não é promessa de lucro.
 
@@ -9,6 +9,7 @@ Gerado por `python research/lab/report.py`. Rodada 1 usou o protocolo lab-v1 e a
 | L12_keltner_breakout Rompimento do canal de Keltner | volatilidade | **CANDIDATA** | H4 | {"n": 50, "k": 3.0, "stop_k": 1.5, "side": "both"} | 122 op · +270.1R · PF 4.571 · DD 5.64R | 53 op · +9.3R · PF 1.258 · DD 9.31R | 143 op · +45.4R · PF 1.389 · DD 40.57R | 144 | 0.028 |
 | TV21_aroon Aroon (Chande): cruzamento Up/Down | tendencia | **CANDIDATA** | H4 | {"n": 50, "level": 70, "k": 4.0, "side": "both"} | 176 op · +114.6R · PF 2.731 · DD 5.08R | 64 op · +6.1R · PF 1.232 · DD 8.42R | 142 op · +26.9R · PF 1.401 · DD 15.55R | 108 | 0.968 |
 | TV32_lorentzian Machine Learning: Lorentzian Classification (jdehorty), kNN causal | aprendizado | **CANDIDATA** | H4 | {"nn": 8, "L": 2000, "label": "futuro", "exit": "dinamico", "k": 2.0, "side": "long"} | 93 op · +113.1R · PF 4.045 · DD 4.98R | 30 op · +5.3R · PF 1.483 · DD 4.22R | 78 op · +48.2R · PF 2.139 · DD 11.03R | 288 | 0.0 |
+| TV39_smoothed_ha Trend Indicator A-V2: cor da Heikin Ashi suavizada por EMA | tendencia | **CANDIDATA** | D1 | {"n": 21, "k": 1.5, "side": "both"} | 111 op · +133.2R · PF 4.264 · DD 4.75R | 45 op · +5.9R · PF 1.289 · DD 6.26R | 84 op · +34.8R · PF 1.83 · DD 7.34R | 90 | 0.95 |
 | L01_supertrend Supertrend (virada de direção) | tendencia | **REPROVADA_VALIDACAO** | H4 | {"atr_n": 7, "mult": 2.5, "side": "long"} | 133 op · +142.5R · PF 4.143 · DD 4.28R | 62 op · +1.2R · PF 1.047 · DD 5.72R | - | 120 | 0.003 |
 | L02_adx_dmi Sistema direcional de Wilder (DI+/DI- com ADX) | tendencia | **REPROVADA_VALIDACAO** | H4 | {"n": 10, "adx_min": 15, "k": 2.0, "side": "long"} | 411 op · +156.1R · PF 2.314 · DD 7.9R | 175 op · -13.6R · PF 0.775 · DD 26.72R | - | 144 | 0.0 |
 | L03_ichimoku Ichimoku: cruzamento Tenkan/Kijun com nuvem e Chikou | tendencia | **REPROVADA_VALIDACAO** | H1 | {"s": 3, "exit": "tk", "k": 2.0, "side": "both"} | 209 op · +198.1R · PF 2.324 · DD 13.61R | 92 op · -19.0R · PF 0.749 · DD 22.59R | - | 72 | 0.0 |
@@ -57,6 +58,21 @@ Gerado por `python research/lab/report.py`. Rodada 1 usou o protocolo lab-v1 e a
 | TV33_smc_bos Smart Money Concepts (LuxAlgo): BOS/CHoCH da estrutura de swing | rompimento | **REPROVADA_VALIDACAO** | H4 | {"size": 10, "mode": "choch", "k": 3.0, "side": "both"} | 161 op · +162.9R · PF 3.219 · DD 5.2R | 69 op · -7.2R · PF 0.833 · DD 8.05R | - | 270 | 0.079 |
 | TV34_andean Andean Oscillator (alexgrover): cruzamento Bull/Bear | tendencia | **REPROVADA_VALIDACAO** | H1 | {"n": 200, "mode": "cruz", "k": 4.0, "side": "long"} | 146 op · +255.5R · PF 4.668 · DD 6.44R | 75 op · -10.1R · PF 0.785 · DD 25.48R | - | 144 | 0.992 |
 | TV35_trend_magic Trend Magic (CCI + ATR): virada da linha | tendencia | **REPROVADA_VALIDACAO** | H4 | {"n": 20, "coef": 1.5, "mode": "alerta", "k": 3.0, "side": "long"} | 182 op · +135.7R · PF 3.266 · DD 5.4R | 84 op · -1.1R · PF 0.965 · DD 11.32R | - | 288 | 0.984 |
+| TV36_ott Optimized Trend Tracker (OTT): linha de suporte VAR cruza a OTT | tendencia | **REPROVADA_VALIDACAO** | H4 | {"period": 10, "percent": 5.0, "k": 2.0, "side": "long"} | 75 op · +242.9R · PF 6.739 · DD 6.18R | 33 op · -10.9R · PF 0.585 · DD 13.78R | - | 192 | 0.992 |
+| TV37_alphatrend AlphaTrend (MFI + ATR): cruzamento com a própria linha de 2 candles atrás | tendencia | **REPROVADA_VALIDACAO** | H4 | {"coef": 1.5, "period": 14, "filt": "mfi", "k": 2.0, "side": "long"} | 80 op · +252.4R · PF 6.362 · DD 9.23R | 30 op · -7.7R · PF 0.673 · DD 14.75R | - | 288 | 0.998 |
+| TV38_follow_line Follow Line (rompimento de Bollinger + ATR): virada da linha | tendencia | **REPROVADA_VALIDACAO** | H4 | {"bb": 34, "dev": 0.75, "atrf": 0, "k": 2.0, "side": "long"} | 143 op · +229.2R · PF 4.466 · DD 5.82R | 77 op · -17.1R · PF 0.675 · DD 27.34R | - | 216 | 1.0 |
+| TV40_tsi True Strength Index (Blau / everget) | momento | **REPROVADA_VALIDACAO** | H4 | {"long": 40, "short": 7, "signal": 13, "zone": 0, "k": 2.0, "side": "long"} | 396 op · +160.5R · PF 2.119 · DD 9.55R | 170 op · -17.3R · PF 0.772 · DD 24.27R | - | 288 | 0.813 |
+| TV41_ttf Trend Trigger Factor (Pee / everget) | tendencia | **REPROVADA_VALIDACAO** | H4 | {"n": 10, "level": 125, "k": 3.0, "side": "long"} | 85 op · +190.9R · PF 6.258 · DD 5.24R | 43 op · -6.9R · PF 0.718 · DD 11.05R | - | 216 | 0.999 |
+| TV42_tcf Trend Continuation Factor (Pee / everget) | tendencia | **REPROVADA_VALIDACAO** | H4 | {"n": 20, "exit": "opposite", "k": 2.0, "side": "both"} | 330 op · +222.8R · PF 2.331 · DD 8.25R | 167 op · -31.0R · PF 0.721 · DD 32.96R | - | 108 | 0.903 |
+| TV43_ultimate_rsi Ultimate RSI (LuxAlgo) | momento | **REPROVADA_VALIDACAO** | H4 | {"n": 21, "m": 21, "mode": "signal", "k": 3.0, "side": "long"} | 351 op · +115.7R · PF 2.427 · DD 4.58R | 141 op · -7.5R · PF 0.822 · DD 14.71R | - | 288 | 0.907 |
+| TV44_trendflex Trendflex de Ehlers: cruzamento da linha zero | tendencia | **REPROVADA_VALIDACAO** | H4 | {"n": 40, "k": 3.0, "side": "long"} | 139 op · +144.8R · PF 4.016 · DD 5.23R | 69 op · -19.5R · PF 0.488 · DD 19.89R | - | 72 | 0.999 |
+| TV45_reversion_index Reversion Index de Ehlers: Smooth cruza Trigger em zona extrema | reversao | **REPROVADA_VALIDACAO** | D1 | {"L": 40, "lvl": 0.0, "k": 3.0, "side": "long"} | 60 op · +3.2R · PF 1.462 · DD 3.76R | 40 op · -0.2R · PF 0.97 · DD 3.42R | - | 180 | 0.0 |
+| TV46_cybernetic Cybernetic Oscillator de Ehlers: lado da linha zero (modo Trend) | tendencia | **REPROVADA_VALIDACAO** | H4 | {"lp": 20, "hp": 90, "k": 2.0, "side": "long"} | 240 op · +159.1R · PF 2.691 · DD 6.32R | 99 op · -11.9R · PF 0.788 · DD 20.39R | - | 144 | 0.998 |
+| TV47_continuation_index Continuation Index de Ehlers: comprado acima de +0,5, vendido abaixo de -0,5 | tendencia | **REPROVADA_VALIDACAO** | H4 | {"L": 80, "gamma": 0.8, "order": 8, "k": 2.0, "side": "long"} | 156 op · +196.4R · PF 3.535 · DD 7.86R | 69 op · -19.1R · PF 0.586 · DD 25.77R | - | 240 | 0.996 |
+| TV48_decycler Ehlers Decycler Oscillator (everget): cruzamento das duas linhas ou do zero | tendencia | **REPROVADA_VALIDACAO** | H4 | {"p1": 125, "mode": "zero", "k": 2.0, "side": "long"} | 171 op · +167.1R · PF 3.167 · DD 7.34R | 63 op · -8.4R · PF 0.773 · DD 13.19R | - | 96 | 0.998 |
+| TV49_cyber_cycle Ehlers Cyber Cycle (everget): cruzamento Cycle/Trigger | reversao | **REPROVADA_VALIDACAO** | D1 | {"alpha": 0.1, "k": 2.0, "side": "long"} | 209 op · +43.1R · PF 1.975 · DD 4.15R | 89 op · -5.3R · PF 0.771 · DD 9.31R | - | 72 | 0.788 |
+| TV50_center_gravity Ehlers Center of Gravity (everget): cruzamento CG/CG anterior | reversao | **REPROVADA_VALIDACAO** | D1 | {"length": 8, "k": 2.0, "side": "long"} | 193 op · +62.0R · PF 3.131 · DD 2.54R | 84 op · -5.2R · PF 0.77 · DD 9.22R | - | 60 | 0.999 |
+| TV51_roofing Ehlers Roofing Filter (everget): cruzamento do zero ou do próprio valor 2 candles atrás | reversao | **REPROVADA_VALIDACAO** | H4 | {"hp": 80, "ssf": 14, "mode": "zero", "k": 2.0, "side": "long"} | 278 op · +151.1R · PF 2.423 · DD 8.42R | 119 op · -8.1R · PF 0.864 · DD 17.58R | - | 192 | 0.995 |
 | L15_floor_pivots Pivôs clássicos diários (P, R1, S1): rejeição ou rompimento | padroes | **REPROVADA_DESENVOLVIMENTO** | M15 | (melhor reprovada) | 731 op · +12.3R · PF 1.037 · DD 40.25R | - | - | 144 | - |
 | L17_btc_seasonality Sazonalidade intradiária do BTC (21h-23h UTC) | tempo_volume | **REPROVADA_DESENVOLVIMENTO** | H1 | (melhor reprovada) | 1827 op · -206.9R · PF 0.547 · DD 209.49R | - | - | 12 | - |
 | L17_btc_seasonality_r1 Sazonalidade intradiária do BTC (21h-23h UTC) só em dias fortes | tempo_volume | **REPROVADA_DESENVOLVIMENTO** | H1 | (melhor reprovada) | 261 op · -7.5R · PF 0.865 · DD 12.75R | - | - | 27 | - |
@@ -87,5 +103,8 @@ Resultado sem a maior operação e em % do capital com 0,5% de risco por operaç
 | TV32_lorentzian | development | 93 | +113.1 | +89.5 | +56.5 | 2.49 | +6628.6 |
 | TV32_lorentzian | validation | 30 | +5.3 | +1.6 | +2.6 | 2.11 | -43.0 |
 | TV32_lorentzian | reserve | 78 | +48.2 | +26.4 | +24.1 | 5.52 | +401.8 |
+| TV39_smoothed_ha | development | 111 | +133.2 | +94.5 | +66.6 | 2.38 | +6628.6 |
+| TV39_smoothed_ha | validation | 45 | +5.9 | +1.6 | +2.9 | 3.13 | -43.0 |
+| TV39_smoothed_ha | reserve | 84 | +34.8 | +22.5 | +17.4 | 3.67 | +401.8 |
 
 Fontes e regras completas em `strategies/` e `results/`. Notas de cada agente em `notes/`.
