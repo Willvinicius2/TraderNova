@@ -4,6 +4,8 @@ Três passos tiram o TraderNova do computador. Os três usam só planos **gratui
 
 ## 1. Banco: aplicar as migrações no Supabase (issue #14)
 
+**Feito em 21/10/2026.** As quatro migrações da Fase 1 (`202609150001`, `202610190001`, `202610200001` e `202610210001`) estão aplicadas no projeto real, registradas com as mesmas versões dos arquivos. O RLS foi conferido no banco: `anon` não lê nenhuma tabela e `authenticated` não grava sinais. O advisor de segurança está sem avisos. Os comandos abaixo continuam valendo para migrações futuras.
+
 Projeto: `TraderNova` (ref `cnlvasvvmlfwzcecduhy`, plano gratuito).
 
 **Will:** reautorize a integração do Supabase no Claude, ou copie a *connection string* em Project Settings → Database (modo *Session*, com a senha do banco).
