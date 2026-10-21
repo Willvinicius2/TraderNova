@@ -25,6 +25,7 @@ import engine  # noqa: E402
 
 PROTOCOL = json.loads((LAB / "protocol.json").read_text())
 MAX_COMBOS = 400
+MAX_DD_PCT = 10.0  # perda total da conta (10%) com 0,5% de risco por operação
 
 
 def load_bars(asset: str, tf: str) -> pd.DataFrame:
@@ -127,7 +128,8 @@ def main():
             rows.append({"tf": tf, "params": c, "dev": m})
         for row in [r for r in rows if r["tf"] == tf]:
             m = row["dev"]
-            ok = m["trades"] >= min_trades(tf, "development") and m["netR"] > 0 and (m["pf"] or 0) >= 1.15
+            ok = (m["trades"] >= min_trades(tf, "development") and m["netR"] > 0 and (m["pf"] or 0) >= 1.15
+                  and m["semMaiorR"] > 0 and m["maxDDPct"] <= MAX_DD_PCT)
             nbs = [cache[json.dumps(nb, sort_keys=True)] for nb in neighbors(meta, row["params"])]
             nb_pf = statistics.median([(x["pf"] or 0) for x in nbs]) if nbs else None
             row["neighborMedianPF"] = round(nb_pf, 3) if nb_pf is not None else None
@@ -137,7 +139,8 @@ def main():
             if row["eligible"] and (best is None or row["score"] > best["score"]):
                 best = row
 
-    srs = [r["dev"]["sharpeTrade"] for r in rows]
+    def same_tf_srs(tf):
+        return [r["dev"]["sharpeTrade"] for r in rows if r["tf"] == tf]
     top = sorted(rows, key=lambda r: r["score"], reverse=True)[:5]
     out = {
         "strategy": a.sid,
@@ -157,6 +160,13 @@ def main():
     if best is None:
         out["verdict"] = "REPROVADA_DESENVOLVIMENTO"
         out["selected"] = None
+        # curva da melhor combinação no desenvolvimento, só para visualização
+        if top:
+            t0 = top[0]
+            df0 = load_bars(a.asset, t0["tf"])
+            df0 = df0[df0.index >= pd.Timestamp(per["warmup"][0], tz="UTC")]
+            trd0, _ = evaluate(mod, df0, t0["params"], cb, dev_a, dev_b)
+            out["curves"] = {"development": engine.curve(trd0)}
     else:
         tf = best["tf"]
         df = load_bars(a.asset, tf)
@@ -165,15 +175,18 @@ def main():
         r = np.array([t.r for t in trd])
         sk = float(pd.Series(r).skew()) if len(r) > 2 else 0.0
         ku = float(pd.Series(r).kurt() + 3) if len(r) > 3 else 3.0
-        dsr = deflated_sharpe(best["dev"]["sharpeTrade"], len(r), srs, sk, ku)
+        dsr = deflated_sharpe(best["dev"]["sharpeTrade"], len(r), same_tf_srs(tf), sk, ku)
+        curves = {"development": engine.curve(trd)}
         sel = {"tf": tf, "params": best["params"], "development": best["dev"],
                "neighborMedianPF": best["neighborMedianPF"], "deflatedSharpe": dsr}
         verdict = "CANDIDATA"
         for stage, pf_min, fail in (("validation", 1.15, "REPROVADA_VALIDACAO"), ("reserve", 1.10, "REPROVADA_RESERVA")):
             s, e = per[stage]
-            _, mb = evaluate(mod, df, best["params"], cb, s, e)
+            trb, mb = evaluate(mod, df, best["params"], cb, s, e)
             _, ms = evaluate(mod, df, best["params"], cs, s, e)
-            ok = mb["trades"] >= min_trades(tf, stage) and mb["netR"] > 0 and (mb["pf"] or 0) >= pf_min and ms["netR"] > 0
+            curves[stage] = engine.curve(trb)
+            ok = (mb["trades"] >= min_trades(tf, stage) and mb["netR"] > 0 and (mb["pf"] or 0) >= pf_min and ms["netR"] > 0
+                  and mb["semMaiorR"] > 0 and mb["maxDDPct"] <= MAX_DD_PCT)
             sel[stage] = {"base": mb, "stress": ms, "passed": bool(ok)}
             if not ok:
                 verdict = fail
@@ -181,6 +194,7 @@ def main():
         if dsr is not None and dsr < 0.5:
             sel["warning"] = "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
         out["selected"] = sel
+        out["curves"] = curves
         out["verdict"] = verdict
 
     res = LAB / "results"

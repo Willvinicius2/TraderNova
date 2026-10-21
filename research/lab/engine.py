@@ -152,7 +152,7 @@ def metrics(trades: list[Trade], years: float, risk_pct: float = 0.5) -> dict:
     r = np.array([x.r for x in trades], dtype=float)
     if len(r) == 0:
         return {"trades": 0, "netR": 0.0, "pf": None, "winRate": None, "expR": None, "maxDDR": 0.0,
-                "sharpeTrade": None, "tStat": None, "tradesPerYear": 0.0, "retPct": 0.0, "maxDDPct": 0.0, "avgBars": None}
+                "sharpeTrade": None, "tStat": None, "tradesPerYear": 0.0, "retPct": 0.0, "maxDDPct": 0.0, "avgBars": None, "semMaiorR": 0.0}
     gp, gl = r[r > 0].sum(), -r[r < 0].sum()
     eq = np.cumsum(r)
     dd = float(np.max(np.maximum.accumulate(np.r_[0, eq])[1:] - eq)) if len(eq) else 0.0
@@ -171,4 +171,14 @@ def metrics(trades: list[Trade], years: float, risk_pct: float = 0.5) -> dict:
         "retPct": round(float(r.sum() * risk_pct), 2),
         "maxDDPct": round(dd * risk_pct, 2),
         "avgBars": round(float(np.mean([x.bars for x in trades])), 1),
+        "semMaiorR": round(float(r.sum() - r.max()), 2),
     }
+
+
+def curve(trades: list[Trade], points: int = 150) -> list[list]:
+    """Curva acumulada em R (data de saída, R acumulado), reduzida para no máximo `points` pontos."""
+    if not trades:
+        return []
+    eq = np.cumsum([t.r for t in trades])
+    idx = np.unique(np.linspace(0, len(trades) - 1, min(points, len(trades))).astype(int))
+    return [[trades[i].exit_time[:10], round(float(eq[i]), 2)] for i in idx]

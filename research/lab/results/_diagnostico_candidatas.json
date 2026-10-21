@@ -88,5 +88,35 @@
    "buyHoldPct": 401.8
   },
   "fragil": false
+ },
+ "TV21_aroon": {
+  "development": {
+   "trades": 176,
+   "netR": 114.63,
+   "semMaiorR": 99.8,
+   "maiorR": 14.83,
+   "retPct05": 57.32,
+   "ddPct05": 2.54,
+   "buyHoldPct": 6628.6
+  },
+  "validation": {
+   "trades": 64,
+   "netR": 6.09,
+   "semMaiorR": 2.22,
+   "maiorR": 3.87,
+   "retPct05": 3.05,
+   "ddPct05": 4.21,
+   "buyHoldPct": -43.0
+  },
+  "reserve": {
+   "trades": 142,
+   "netR": 26.92,
+   "semMaiorR": 7.89,
+   "maiorR": 19.02,
+   "retPct05": 13.46,
+   "ddPct05": 7.78,
+   "buyHoldPct": 401.8
+  },
+  "fragil": false
  }
 }

@@ -27,9 +27,9 @@ def main():
     results.sort(key=lambda r: (order[r["verdict"]], r["strategy"]))
 
     lines = [
-        f"# Laboratório de estratégias: resultados (rodada {a.round})",
+        f"# Laboratório de estratégias: resultados até a rodada {a.round}",
         "",
-        "Gerado por `python research/lab/report.py`. Protocolo em `protocol.json`: calibração só no desenvolvimento (BTC 2016–2020), "
+        "Gerado por `python research/lab/report.py`. Rodada 1 usou o protocolo lab-v1 e a rodada 2 o lab-v2 (mais rígido); ver `protocol.json`. Calibração só no desenvolvimento (BTC 2016–2020), "
         "validação 2021–2022 e reserva 2023–out/2026 sem reajuste, custo base 0,10% por lado e stress 0,20%. "
         "CANDIDATA passou no histórico, mas ainda precisa de acompanhamento prospectivo, custos reais da conta e risco conjunto. Não é promessa de lucro.",
         "",

@@ -13,6 +13,8 @@ import engine  # noqa: E402
 
 out = {}
 for p in sorted((LAB / "results").glob("*.json")):
+    if p.name.startswith("_"):
+        continue
     r = json.loads(p.read_text())
     if r["verdict"] != "CANDIDATA":
         continue

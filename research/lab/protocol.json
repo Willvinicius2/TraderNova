@@ -1,29 +1,59 @@
 {
-  "id": "lab-v1",
+  "id": "lab-v2",
   "registeredAt": "2026-10-21",
   "purpose": "Laboratório contínuo de estratégias de sinais. Cada estratégia vem de uma fonte pública citada, é calibrada só no período de desenvolvimento e só então é avaliada em validação e reserva, sem reajuste.",
   "assets": {
     "BTCUSD": {
       "source": "Bitstamp BTC/USD 1 minuto (github.com/ff137/bitstamp-btcusd-minute-data, commit 6bc74ad), reamostrado em UTC",
-      "costSide": {"base": 0.0010, "stress": 0.0020},
+      "costSide": {
+        "base": 0.001,
+        "stress": 0.002
+      },
       "costNote": "Base 0,10% por lado (taxa + slippage, perto do spot Binance/Kraken). Stress dobra. CFD de mesa pode custar mais; confirmar antes de operar.",
       "periods": {
-        "warmup": ["2014-01-01", "2016-01-01"],
-        "development": ["2016-01-01", "2021-01-01"],
-        "validation": ["2021-01-01", "2023-01-01"],
-        "reserve": ["2023-01-01", "2026-10-21"]
+        "warmup": [
+          "2014-01-01",
+          "2016-01-01"
+        ],
+        "development": [
+          "2016-01-01",
+          "2021-01-01"
+        ],
+        "validation": [
+          "2021-01-01",
+          "2023-01-01"
+        ],
+        "reserve": [
+          "2023-01-01",
+          "2026-10-21"
+        ]
       },
       "chronologyCaveat": "Pesquisas anteriores do projeto viram BTC de set/2024 a set/2026 (outras estratégias). A reserva não é amostra intocada pelo projeto, mas nenhuma estratégia deste laboratório é ajustada nela."
     },
     "EURUSD": {
       "source": "HistData/FX-Data 1 minuto quando disponível no cache local",
-      "costSide": {"base": 0.00004, "stress": 0.00008},
+      "costSide": {
+        "base": 4e-05,
+        "stress": 8e-05
+      },
       "costNote": "Base ~0,8 pip ida e volta incluindo slippage; stress dobra.",
       "periods": {
-        "warmup": ["2009-01-01", "2010-01-01"],
-        "development": ["2010-01-01", "2016-01-01"],
-        "validation": ["2016-01-01", "2019-01-01"],
-        "reserve": ["2019-01-01", "2023-01-01"]
+        "warmup": [
+          "2009-01-01",
+          "2010-01-01"
+        ],
+        "development": [
+          "2010-01-01",
+          "2016-01-01"
+        ],
+        "validation": [
+          "2016-01-01",
+          "2019-01-01"
+        ],
+        "reserve": [
+          "2019-01-01",
+          "2023-01-01"
+        ]
       }
     }
   },
@@ -37,9 +67,16 @@
     "validation": "trades >= 20 (D1: >= 10), netR > 0, PF >= 1.15 no custo base e netR > 0 no custo stress.",
     "reserve": "trades >= 20 (D1: >= 10), netR > 0, PF >= 1.10 no custo base e netR > 0 no custo stress.",
     "deflatedSharpe": "Reportado (Bailey & López de Prado, 2014) usando o número total de combinações testadas; DSR < 0.5 vira aviso de provável sorte na seleção.",
-    "verdicts": ["REPROVADA_DESENVOLVIMENTO", "REPROVADA_VALIDACAO", "REPROVADA_RESERVA", "CANDIDATA"],
+    "verdicts": [
+      "REPROVADA_DESENVOLVIMENTO",
+      "REPROVADA_VALIDACAO",
+      "REPROVADA_RESERVA",
+      "CANDIDATA"
+    ],
     "candidateMeaning": "CANDIDATA = passou em histórico. Ainda precisa de acompanhamento prospectivo, custos reais da conta e risco conjunto antes de virar sinal. Nunca é promessa de lucro."
   },
   "uniqueness": "registry.json lista todas as estratégias já testadas no projeto (inclusive as rodadas antigas T1–T3, G1–G5 e triagem FX). Não repetir: a mesma regra central com outros parâmetros, outro ativo ou outro tempo gráfico conta como a mesma estratégia.",
-  "risk": "Resultados em R (risco do stop). Retorno em % assume 0,5% de risco fixo por operação, sem juros compostos."
+  "risk": "Resultados em R (risco do stop). Retorno em % assume 0,5% de risco fixo por operação, sem juros compostos.",
+  "amendedAt": "2026-10-21 (após a rodada 1, antes da rodada 2)",
+  "amendment": "lab-v2 vale da rodada 2 em diante; a rodada 1 fica registrada como lab-v1. Mudanças: (1) em todas as fases o resultado precisa continuar positivo sem a maior operação; (2) drawdown em % com 0,5% de risco por operação <= 10% (perda total da conta) em todas as fases; (3) Deflated Sharpe calculado só entre combinações do mesmo tempo gráfico; (4) curvas de capital salvas para o painel."
 }

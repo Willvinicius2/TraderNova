@@ -1,0 +1,316 @@
+<style>
+  .lb { font-family: var(--font-anthropic-sans); display: flex; flex-direction: column; gap: var(--cds-gap-xl); }
+  .lb-head h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+  .lb-head p { margin: var(--cds-gap-xs) 0 0; color: var(--color-fg-muted); max-width: 70ch; }
+  .lb-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: var(--cds-gap-md); }
+  .lb-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); }
+  .lb-kpi span { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .lb-kpi b { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; }
+  .lb-kpi b.ok { color: var(--color-ok); }
+  .lb h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-xs); }
+  .lb-note { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin: 0 0 var(--cds-gap-md); max-width: 75ch; }
+  .lb-agents { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: var(--cds-gap-md); min-height: 6rem; }
+  .lb-agent { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md); display: flex; flex-direction: column; gap: var(--cds-gap-sm); }
+  .lb-agent-top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--cds-gap-sm); }
+  .lb-agent-name { font-weight: var(--cds-font-weight-medium); overflow-wrap: anywhere; }
+  .lb-agent-foco { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .lb-bar { height: 6px; border-radius: 3px; background: var(--cds-chart-grid); overflow: hidden; }
+  .lb-bar > i { display: block; height: 100%; border-radius: 3px; background: var(--cds-chart-muted); }
+  .lb-agent.run .lb-bar > i { background: var(--color-warn); }
+  .lb-agent-meta { display: flex; justify-content: space-between; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); font-variant-numeric: tabular-nums; }
+  .lb-pill { font-size: var(--cds-font-size-caption); padding: 1px 8px; border-radius: 999px; border: 1px solid var(--color-border-line); white-space: nowrap; color: var(--color-fg-muted); }
+  .lb-pill.run { color: var(--color-warn); border-color: currentColor; }
+  .lb-pill.run::before { content: ""; display: inline-block; width: .4rem; height: .4rem; border-radius: 50%; background: currentColor; margin-right: 5px; vertical-align: middle; }
+  @media (prefers-reduced-motion: no-preference) { .lb-pill.run::before { animation: lb-pulse 1.4s var(--cds-ease-out) infinite; } }
+  @keyframes lb-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+  .lb-pill.cand { color: var(--color-ok); border-color: currentColor; }
+  .lb-pill.bad { color: var(--color-bad); border-color: currentColor; }
+  .lb-filters { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); margin-bottom: var(--cds-gap-md); }
+  .lb-filters button { font: inherit; font-size: var(--cds-font-size-caption); padding: 4px 12px; border-radius: 999px; border: 1px solid var(--color-border-line); background: var(--color-panel); color: var(--color-fg); cursor: pointer; }
+  .lb-filters button[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); border-color: var(--color-fg); }
+  .lb-filters button:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+  .lb-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-bottom: var(--cds-gap-md); }
+  .lb-legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+  .lb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: var(--cds-gap-md); min-height: 10rem; }
+  .lb-cell { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-sm) var(--cds-pad-md); display: flex; flex-direction: column; gap: 4px; position: relative; min-width: 0; }
+  .lb-cell-top { display: flex; justify-content: space-between; gap: var(--cds-gap-sm); align-items: flex-start; }
+  .lb-cell-name { font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); min-width: 0; overflow-wrap: anywhere; }
+  .lb-cell-sub { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); font-variant-numeric: tabular-nums; }
+  .lb-cell svg { display: block; }
+  .lb-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; z-index: 2; }
+  .lb-tip span { color: var(--cds-text-secondary); }
+  .lb-tablebox { max-height: 32rem; overflow: auto; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-panel); }
+  .lb-table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+  .lb-table th, .lb-table td { padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+  .lb-table th { position: sticky; top: 0; background: var(--color-panel); z-index: 1; }
+  .lb-table th button { font: inherit; font-weight: var(--cds-font-weight-medium); background: none; border: 0; padding: 0; color: var(--color-fg); cursor: pointer; }
+  .lb-table td.num, .lb-table th.num { text-align: right; }
+  .lb-table td.pos { color: var(--color-ok); }
+  .lb-table td.neg { color: var(--color-bad); }
+  .lb-table a { color: inherit; }
+  .lb-search { font: inherit; font-size: var(--cds-font-size-caption); padding: 6px 10px; border-radius: var(--cds-radius); border: 1px solid var(--color-border-line); background: var(--color-panel); color: var(--color-fg); width: min(100%, 20rem); margin-bottom: var(--cds-gap-sm); }
+  [data-dash-source-state=empty] { color: transparent; }
+  [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+</style>
+
+<div class="lb">
+  <header class="lb-head" id="topo">
+    <h1>Laboratório Trader Nova</h1>
+    <p class="lb-takeaway dash-skeleton" data-source="resumo" data-field="frase" data-row="0">—</p>
+  </header>
+
+  <section class="lb-kpis" id="numeros">
+    <div class="lb-kpi"><span>Estratégias testadas</span><b class="dash-skeleton" data-source="resumo" data-field="testadas" data-row="0">—</b></div>
+    <div class="lb-kpi"><span>Candidatas (passaram no histórico)</span><b class="ok dash-skeleton" data-source="resumo" data-field="candidatas" data-row="0">—</b></div>
+    <div class="lb-kpi"><span>Reprovadas</span><b class="dash-skeleton" data-source="resumo" data-field="reprovadas" data-row="0">—</b></div>
+    <div class="lb-kpi"><span>Agentes rodando agora</span><b class="dash-skeleton" data-source="resumo" data-field="rodando" data-row="0">—</b></div>
+  </section>
+
+  <section id="agentes">
+    <h2>Agentes</h2>
+    <p class="lb-note">Cada agente pesquisa estratégias publicadas, calibra os parâmetros só em 2016–2020 e depois testa sem reajuste em 2021–2022 (validação) e 2023–2026 (reserva). A barra mostra quantas das suas estratégias já terminaram.</p>
+    <div class="lb-agents" data-source="agentes"></div>
+  </section>
+
+  <section id="curvas">
+    <h2>Curvas de resultado por estratégia</h2>
+    <p class="lb-note">Resultado acumulado em R (múltiplos do risco por operação) no BTCUSD, já com custos. Cada fase recomeça do zero; cada gráfico tem sua própria escala. Uma estratégia boa sobe nas três cores.</p>
+    <div class="lb-filters" role="group" aria-label="Filtrar estratégias">
+      <button type="button" data-f="todas" aria-pressed="true">Todas</button>
+      <button type="button" data-f="cand" aria-pressed="false">Só candidatas</button>
+      <button type="button" data-f="1" aria-pressed="false">Rodada 1</button>
+      <button type="button" data-f="2" aria-pressed="false">Rodada 2 (TradingView)</button>
+    </div>
+    <div class="lb-legend">
+      <span><i class="lg-dev"></i>Desenvolvimento 2016–2020 (calibração)</span>
+      <span><i class="lg-val"></i>Validação 2021–2022</span>
+      <span><i class="lg-res"></i>Reserva 2023–2026</span>
+    </div>
+    <div class="lb-grid" data-source="curvas estrategias"></div>
+  </section>
+
+  <section id="tabela">
+    <h2>Todas as estratégias</h2>
+    <p class="lb-note">Números da combinação escolhida no desenvolvimento. Validação e reserva só aparecem quando a fase anterior passou. Clique no título da coluna para ordenar.</p>
+    <input class="lb-search" id="lb-busca" type="search" placeholder="Buscar estratégia, agente ou família" aria-label="Buscar estratégia">
+    <div class="lb-tablebox">
+      <table class="lb-table" data-source="estrategias" data-row-key="id">
+        <thead><tr>
+          <th data-field="id"><button type="button" data-k="id">ID</button></th>
+          <th data-field="nome"><button type="button" data-k="nome">Estratégia</button></th>
+          <th data-field="rodada" class="num"><button type="button" data-k="rodada">Rodada</button></th>
+          <th data-field="agente"><button type="button" data-k="agente">Agente</button></th>
+          <th data-field="veredito"><button type="button" data-k="veredito">Veredito</button></th>
+          <th data-field="tempo"><button type="button" data-k="tempo">Tempo</button></th>
+          <th data-field="dev_r" class="num"><button type="button" data-k="dev_r">Dev R</button></th>
+          <th data-field="dev_pf" class="num"><button type="button" data-k="dev_pf">Dev PF</button></th>
+          <th data-field="val_r" class="num"><button type="button" data-k="val_r">Val R</button></th>
+          <th data-field="val_pf" class="num"><button type="button" data-k="val_pf">Val PF</button></th>
+          <th data-field="res_r" class="num"><button type="button" data-k="res_r">Reserva R</button></th>
+          <th data-field="res_pf" class="num"><button type="button" data-k="res_pf">Reserva PF</button></th>
+          <th data-field="combinacoes" class="num"><button type="button" data-k="combinacoes">Combinações</button></th>
+          <th data-field="fonte"><button type="button" data-k="fonte">Fonte</button></th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<script>
+  dash.calc('resumo', {
+    inputs: ['estrategias', 'agentes'],
+    title: 'Resumo do laboratório',
+    description: 'Conta estratégias por veredito e agentes com situação "Rodando".',
+    fn: (estrategias, agentes) => {
+      const testadas = estrategias.length;
+      const candidatas = estrategias.filter((e) => e.veredito === 'Candidata').length;
+      const rodando = agentes.filter((a) => a.situacao === 'Rodando').length;
+      const frase = rodando > 0
+        ? `${rodando} agentes estão testando estratégias agora. Até aqui, ${candidatas} de ${testadas} passaram no histórico; nenhuma está aprovada para sinal real.`
+        : `${candidatas} de ${testadas} estratégias passaram no histórico; nenhuma está aprovada para sinal real.`;
+      return [{ testadas, candidatas, reprovadas: testadas - candidatas, rodando, frase }];
+    },
+  });
+</script>
+
+<script>
+  const PH = [
+    { k: 'development', cls: 'lg-dev', color: () => 'var(--cds-chart-muted)', nome: 'Desenvolvimento' },
+    { k: 'validation', cls: 'lg-val', color: () => dash.colors[0], nome: 'Validação' },
+    { k: 'reserve', cls: 'lg-res', color: () => dash.colors[1], nome: 'Reserva' },
+  ];
+  PH.forEach((p) => document.querySelectorAll('.' + p.cls).forEach((el) => { el.style.background = p.color(); }));
+  const fmtR = window.lbFmtR = (v) => (v == null ? '—' : (v > 0 ? '+' : '') + d3.format(',.1f')(v));
+  const fmtPF = window.lbFmtPF = (v) => (v == null ? '—' : d3.format('.2f')(v));
+  let filtro = 'todas';
+  document.querySelectorAll('.lb-filters button').forEach((b) => b.addEventListener('click', () => {
+    filtro = b.dataset.f;
+    document.querySelectorAll('.lb-filters button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    drawGrid();
+  }));
+  window.lbPill = (v) => (v === 'Candidata' ? 'lb-pill cand' : 'lb-pill bad');
+
+  function drawGrid() {
+    const grid = document.querySelector('.lb-grid');
+    const E = dash.data('estrategias');
+    const C = dash.data('curvas');
+    if (E.status !== 'ok' || C.status !== 'ok') { grid.replaceChildren(); return; }
+    const byId = d3.group(C.data, (d) => d.id);
+    const list = E.data.filter((e) => filtro === 'todas' || (filtro === 'cand' ? e.veredito === 'Candidata' : String(e.rodada) === filtro));
+    grid.replaceChildren();
+    for (const e of list) {
+      const cell = document.createElement('div');
+      cell.className = 'lb-cell';
+      cell.id = 'c-' + e.id;
+      const top = document.createElement('div');
+      top.className = 'lb-cell-top';
+      const name = document.createElement('div');
+      name.className = 'lb-cell-name';
+      name.textContent = `${e.id.split('_')[0]} · ${e.nome}`;
+      const pill = document.createElement('span');
+      pill.className = window.lbPill(e.veredito);
+      pill.textContent = e.veredito === 'Candidata' ? 'Candidata' : e.veredito.replace('Reprovada no ', 'Reprovou: ').replace('Reprovada na ', 'Reprovou: ');
+      top.append(name, pill);
+      const sub = document.createElement('div');
+      sub.className = 'lb-cell-sub';
+      sub.textContent = `${e.tempo} · dev ${fmtR(e.dev_r)}R · val ${fmtR(e.val_r)}R · res ${fmtR(e.res_r)}R`;
+      cell.append(top, sub);
+      grid.append(cell);
+      const pts = (byId.get(e.id) || []).map((d) => ({ ...d, t: new Date(d.data) }));
+      const W = Math.max(160, cell.clientWidth - 24), H = 84, m = { t: 6, r: 4, b: 14, l: 4 };
+      const svg = d3.select(cell).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+        .attr('aria-label', `Curva de ${e.nome}`);
+      const x = d3.scaleUtc([new Date('2016-01-01'), new Date('2026-10-21')], [m.l, W - m.r]);
+      const ext = d3.extent([0, ...pts.map((p) => p.r)]);
+      const y = d3.scaleLinear(ext[0] === ext[1] ? [-1, 1] : ext, [H - m.b, m.t]).nice();
+      ['2021-01-01', '2023-01-01'].forEach((d) => svg.append('line').attr('x1', x(new Date(d))).attr('x2', x(new Date(d)))
+        .attr('y1', m.t).attr('y2', H - m.b).attr('stroke', 'var(--cds-chart-grid)'));
+      svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(0)).attr('y2', y(0))
+        .attr('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '3 3');
+      [['2016', '2016-01-01'], ['2021', '2021-01-01'], ['2023', '2023-01-01']].forEach(([lab, d]) => svg.append('text')
+        .attr('x', x(new Date(d)) + 2).attr('y', H - 3).attr('fill', 'var(--color-fg-muted)').attr('font-size', 9).text(lab));
+      const starts = { development: '2016-01-01', validation: '2021-01-01', reserve: '2023-01-01' };
+      for (const p of PH) {
+        const s = pts.filter((d) => d.fase === p.k);
+        if (!s.length) continue;
+        const series = [{ t: new Date(starts[p.k]), r: 0 }, ...s];
+        svg.append('path').datum(series).attr('fill', 'none').attr('stroke', p.color()).attr('stroke-width', 1.8)
+          .attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round')
+          .attr('d', d3.line().x((d) => x(d.t)).y((d) => y(d.r)));
+      }
+      if (!pts.length) svg.append('text').attr('x', W / 2).attr('y', H / 2).attr('text-anchor', 'middle')
+        .attr('fill', 'var(--color-fg-muted)').attr('font-size', 10).text('Sem operações');
+      const tip = document.createElement('div');
+      tip.className = 'lb-tip';
+      tip.hidden = true;
+      cell.append(tip);
+      const dot = svg.append('circle').attr('r', 3).attr('visibility', 'hidden');
+      svg.on('pointermove', (ev) => {
+        if (!pts.length) return;
+        const [mx] = d3.pointer(ev);
+        const t = x.invert(mx);
+        const near = d3.least(pts, (p) => Math.abs(p.t - t));
+        const ph = PH.find((p) => p.k === near.fase);
+        dot.attr('cx', x(near.t)).attr('cy', y(near.r)).attr('fill', ph.color()).attr('visibility', 'visible');
+        tip.replaceChildren();
+        const a = document.createElement('span'); a.textContent = `${near.data} · ${ph.nome}`;
+        const b = document.createElement('div'); b.textContent = `${fmtR(near.r)}R acumulado na fase`;
+        tip.append(a, b);
+        tip.hidden = false;
+        const box = cell.getBoundingClientRect();
+        const px = (x(near.t) / W) * (box.width - 24) + 12;
+        tip.style.left = Math.min(Math.max(4, px - tip.offsetWidth / 2), box.width - tip.offsetWidth - 4) + 'px';
+        tip.style.top = '4px';
+      }).on('pointerleave', () => { tip.hidden = true; dot.attr('visibility', 'hidden'); });
+    }
+  }
+  window.lbDrawGrid = drawGrid;
+</script>
+
+<script>
+  let sortK = 'rodada', sortDir = 1;
+  const busca = document.getElementById('lb-busca');
+  busca.addEventListener('input', () => window.lbDrawTable());
+  document.querySelectorAll('.lb-table th button').forEach((b) => b.addEventListener('click', () => {
+    if (sortK === b.dataset.k) sortDir = -sortDir; else { sortK = b.dataset.k; sortDir = 1; }
+    window.lbDrawTable();
+  }));
+  const fmtR = window.lbFmtR, fmtPF = window.lbFmtPF;
+  const num = new Set(['rodada', 'dev_r', 'dev_pf', 'val_r', 'val_pf', 'res_r', 'res_pf', 'combinacoes']);
+  window.lbDrawTable = () => {
+    const tb = document.querySelector('.lb-table tbody');
+    const E = dash.data('estrategias');
+    tb.replaceChildren();
+    document.querySelectorAll('.lb-table th').forEach((th) => th.setAttribute('aria-sort',
+      th.dataset.field === sortK ? (sortDir > 0 ? 'ascending' : 'descending') : 'none'));
+    if (E.status !== 'ok') return;
+    const q = busca.value.trim().toLowerCase();
+    const rows = E.data.filter((e) => !q || [e.id, e.nome, e.agente, e.familia, e.veredito].join(' ').toLowerCase().includes(q));
+    rows.sort((a, b) => {
+      const va = a[sortK], vb = b[sortK];
+      if (va == null && vb == null) return 0;
+      if (va == null) return 1;
+      if (vb == null) return -1;
+      return (num.has(sortK) ? va - vb : String(va).localeCompare(String(vb))) * sortDir || a.id.localeCompare(b.id);
+    });
+    for (const e of rows) {
+      const tr = document.createElement('tr');
+      const cell = (txt, cls) => { const td = document.createElement('td'); td.textContent = txt; if (cls) td.className = cls; tr.append(td); return td; };
+      const sign = (v) => (v == null ? 'num' : v > 0 ? 'num pos' : 'num neg');
+      cell(e.id);
+      cell(e.nome);
+      cell(String(e.rodada), 'num');
+      cell(e.agente);
+      const v = cell(''); const pill = document.createElement('span'); pill.className = window.lbPill(e.veredito); pill.textContent = e.veredito; v.append(pill);
+      cell(e.tempo);
+      cell(fmtR(e.dev_r), sign(e.dev_r)); cell(fmtPF(e.dev_pf), 'num');
+      cell(fmtR(e.val_r), sign(e.val_r)); cell(fmtPF(e.val_pf), 'num');
+      cell(fmtR(e.res_r), sign(e.res_r)); cell(fmtPF(e.res_pf), 'num');
+      cell(d3.format(',')(e.combinacoes), 'num');
+      const src = cell('');
+      if (e.fonte && /^https:\/\//.test(e.fonte)) {
+        const a = document.createElement('a'); a.href = e.fonte; a.target = '_blank'; a.rel = 'noopener';
+        a.textContent = new URL(e.fonte).hostname.replace('www.', ''); src.append(a);
+      }
+      tb.append(tr);
+    }
+  };
+</script>
+
+<script>
+  dash.onData(() => {
+    const A = dash.data('agentes');
+    const box = document.querySelector('.lb-agents');
+    box.replaceChildren();
+    if (A.status === 'ok') {
+      const rows = [...A.data].sort((a, b) => (a.situacao === 'Rodando' ? 0 : 1) - (b.situacao === 'Rodando' ? 0 : 1) || b.rodada - a.rodada);
+      for (const a of rows) {
+        const run = a.situacao === 'Rodando';
+        const card = document.createElement('div');
+        card.className = 'lb-agent' + (run ? ' run' : '');
+        const top = document.createElement('div'); top.className = 'lb-agent-top';
+        const n = document.createElement('div'); n.className = 'lb-agent-name'; n.textContent = a.agente;
+        const p = document.createElement('span'); p.className = 'lb-pill' + (run ? ' run' : ''); p.textContent = a.situacao;
+        top.append(n, p);
+        const f = document.createElement('div'); f.className = 'lb-agent-foco'; f.textContent = `Rodada ${a.rodada} · ${a.foco}`;
+        const bar = document.createElement('div'); bar.className = 'lb-bar';
+        const fill = document.createElement('i'); fill.style.width = `${(100 * a.concluidas) / Math.max(1, a.estrategias)}%`;
+        bar.append(fill);
+        const meta = document.createElement('div'); meta.className = 'lb-agent-meta';
+        const m1 = document.createElement('span'); m1.textContent = `${a.concluidas} de ${a.estrategias} estratégias`;
+        const m2 = document.createElement('span'); m2.textContent = `${a.candidatas} candidata${a.candidatas === 1 ? '' : 's'}`;
+        meta.append(m1, m2);
+        card.append(top, f, bar, meta);
+        box.append(card);
+      }
+    }
+    for (const el of document.querySelectorAll('[data-source="resumo"]')) {
+      const R = dash.data('resumo');
+      if (R.status === 'ok' && R.data.length) { el.textContent = String(R.data[0][el.dataset.field]); el.classList.remove('dash-skeleton'); }
+      else if (R.status === 'error') el.classList.remove('dash-skeleton');
+    }
+    window.lbDrawGrid();
+    window.lbDrawTable();
+  });
+</script>

@@ -6,30 +6,30 @@ from engine import atr  # noqa: F401  (Wilder)
 
 
 def sma(x, n):
-    return pd.Series(x).rolling(n).mean().values
+    return pd.Series(x).rolling(n).mean().to_numpy(copy=True)
 
 
 def ema(x, n):
-    return pd.Series(x).ewm(span=n, adjust=False, min_periods=n).mean().values
+    return pd.Series(x).ewm(span=n, adjust=False, min_periods=n).mean().to_numpy(copy=True)
 
 
 def rsi(x, n=14):
     d = pd.Series(x).diff()
     up = d.clip(lower=0).ewm(alpha=1 / n, adjust=False, min_periods=n).mean()
     dn = (-d.clip(upper=0)).ewm(alpha=1 / n, adjust=False, min_periods=n).mean()
-    return (100 - 100 / (1 + up / dn)).values
+    return (100 - 100 / (1 + up / dn)).to_numpy(copy=True)
 
 
 def stdev(x, n):
-    return pd.Series(x).rolling(n).std(ddof=0).values
+    return pd.Series(x).rolling(n).std(ddof=0).to_numpy(copy=True)
 
 
 def highest(x, n):
-    return pd.Series(x).rolling(n).max().values
+    return pd.Series(x).rolling(n).max().to_numpy(copy=True)
 
 
 def lowest(x, n):
-    return pd.Series(x).rolling(n).min().values
+    return pd.Series(x).rolling(n).min().to_numpy(copy=True)
 
 
 def prev(x, k=1):
