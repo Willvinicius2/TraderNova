@@ -69,7 +69,7 @@ export const storedSessionSchema=z.object({accessToken:z.string().min(10),refres
 // Renova quando falta menos de um minuto.
 export const needsRefresh=(s:Session,now:number)=>s.expiresAt-now<60_000;
 
-// Diário: entrada local <-> linha de public.journal_entries (migração 202610201001).
+// Diário: entrada local <-> linha de public.journal_entries (migração 202610210101).
 const localSignal=z.object({id:z.string().max(100),assetId:z.enum(['XAUUSD','NAS100','BTCUSD','ETHUSD','SOLUSD','EURUSD','USDJPY']),direction:z.enum(['Compra','Venda']),createdAt:z.number().finite(),expiresAt:z.number().finite(),entry:z.number().finite().positive(),stop:z.number().finite().positive(),target:z.number().finite().positive(),demo:z.literal(true),strategyId:z.string().max(40)});
 export type JournalRow={client_id:string;decision:'reviewed'|'ignored';note:string|null;mode:'demo';signal_snapshot:z.infer<typeof localSignal>;decided_at:string;imported:boolean};
 const decisionToRow={Revisado:'reviewed',Ignorado:'ignored'} as const;

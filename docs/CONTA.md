@@ -29,7 +29,7 @@ Aba Conta ── e-mail ──► POST /auth/v1/otp (PKCE S256, chave publicáve
 
 ## Configurar quando o Supabase estiver acessível
 
-1. Aplicar as migrações (inclui `202610201001_account.sql`) com `scripts/apply-migrations.mjs`.
+1. Aplicar as migrações (inclui `202610210101_account.sql`) com `scripts/apply-migrations.mjs`.
 2. Em **Authentication → URL Configuration**, adicionar às Redirect URLs:
    - `https://tradernova.willvinicius.chatgpt.site/?aba=conta`
    - `tradernova://auth`
