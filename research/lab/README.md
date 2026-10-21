@@ -17,12 +17,14 @@ Lugar único para pesquisar, calibrar e validar estratégias de sinais. Nada aqu
 python research/lab/data.py --bitstamp <pasta do clone>   # instruções no topo de data.py
 python research/lab/calibrate.py L01_supertrend
 python research/lab/report.py --round 1
+python research/lab/data.py --fxdata EURUSD --work <pasta>   # ticks Dukascopy do FX-Data, ~2 h de rede
+python research/lab/crossasset.py --asset EURUSD          # CANDIDATAS do BTC no EURUSD, sem recalibrar
 ```
 
 Requer Python 3 com pandas e numpy. Dados ficam em `research/cache/lab/` (não versionado).
 
 ## Limites conhecidos
 
-- Rodada 1 só tem BTCUSD (Bitstamp). A rede do ambiente bloqueia Binance, Yahoo e Dukascopy; ouro, FX, NAS100, ETH e SOL entram quando houver fonte acessível.
+- Rodada 1 só tem BTCUSD (Bitstamp). A rede do ambiente bloqueia Binance, Yahoo e Dukascopy; EURUSD entrou via espelho GitHub dos ticks Dukascopy (2009 a 08/07/2022) só para teste cruzado (`results/_cross_EURUSD.json`). Ouro, NAS100, ETH e SOL seguem sem fonte acessível com cobertura suficiente.
 - O desenvolvimento (2016–2020) foi um mercado de alta forte no BTC; estratégias compradas tendem a parecer boas ali. Por isso a validação 2021–2022 inclui o ano de baixa de 2022.
 - Custos são cenários fixos, não custos executáveis certificados da mesa.

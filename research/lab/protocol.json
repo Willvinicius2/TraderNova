@@ -57,7 +57,24 @@
       },
       "chronologyCaveat": "O projeto já fez triagens em EURUSD H1 (registry.json: triagem trend/opening/reversion e FX-RSI), então nenhum período do EURUSD é amostra intocada pelo projeto. Nenhuma estratégia do laboratório é calibrada no EURUSD pelo teste cruzado.",
       "note": "Escolha do ativo: ETHUSD (1ª preferência) não tem fonte acessível com 2016–2026 (Bitstamp ETH só começa em ago/2017 e as fontes horárias estão em Kaggle/Hugging Face/CryptoDataDownload, bloqueados). XAUUSD no FX-Data só vai de 2011 a 2018 e o espelho MT5 em ejtraderLabs/historical-data só cobre mai/2012–mar/2022, de corretora e fuso desconhecidos. EURUSD é o único com 2009–2022 completo, fonte primária conhecida (Dukascopy) e fuso UTC. Períodos e custos são os que já estavam registrados em protocol.json antes de qualquer resultado em EURUSD neste laboratório; o teste cruzado (crossasset.py) usa exatamente estes valores, sem recalibrar. Desenvolvimento 2010–2015 tem crise do euro e tendência de baixa 2014–15; validação 2016–2018 é lateral; reserva 2019–2022 inclui covid e a queda de 2022 até abaixo da paridade.",
-      "periodsNote": "Reserva registrada antes como 2019–2022 inteiro; a fonte termina em 08/07/2022 (o ramo EURUSD-2022 parou de ser atualizado), então o fim foi ajustado à cobertura real antes de qualquer resultado."
+      "periodsNote": "Reserva registrada antes como 2019–2022 inteiro; a fonte termina em 08/07/2022 (o ramo EURUSD-2022 parou de ser atualizado), então o fim foi ajustado à cobertura real antes de qualquer resultado.",
+      "sourceCommits": {
+        "2009": "b2974cad2b4e430760c9ef4adbf1164b0facb4c0",
+        "2010": "09de0dedb94abd9d098279a4a9af610dd854cad7",
+        "2011": "8fbe8209830ca941dfa7f5616caf82213b18f222",
+        "2012": "10720109add9b76ec5b2d0416c95e25ede6a4209",
+        "2013": "f301d558ae05a5c9e7739ad4e835af885985166e",
+        "2014": "42873af65e80e577634531b97dbcf4de6e73b04c",
+        "2015": "8c28f58466ccf6acfeccdb85202d484546c956ff",
+        "2016": "3e0a2a6e5dfed1d138fd949b3a7a050959fc38b0",
+        "2017": "b75e2d846045d937a004eb10252d459f71204ddb",
+        "2018": "5c11b5b111000deaeef266a9096fa748f1cc31ce",
+        "2019": "c725b97f15dcf1c4a8c6ac18612ece3350ed8ef9",
+        "2020": "35dfd70322a923b6d50f1606f9a284cd2df2f17e",
+        "2021": "918726d119013dd243d7329b760f8adbfd396bc7",
+        "2022": "94c8b8aefb12e5c591fa44e546f60dd8e4262d88"
+      },
+      "dataQuality": "Checado antes dos testes: 2009-01-01 a 2022-07-08, 5,04 milhões de minutos, sem high<low nem preço fora de 1,007–1,515; fuso UTC (abre domingo 21/22h e fecha sexta 20/21h UTC conforme horário de verão dos EUA; o espelho MT5 ejtraderLabs bate com deslocamento UTC+2/+3, diferença mediana 0,9 pip). Faltam 6 dias úteis no fim de mês (31/03, 31/05, 31/08/2021; 31/01, 31/03, 31/05/2022) e os feriados de 25/12 e 01/01 têm pouca liquidez. Spread mediano 0,8–1,0 pip em 2009–2012 e 0,25–0,35 pip de 2013 em diante."
     }
   },
   "calibration": {
