@@ -50,7 +50,7 @@ def main():
         if base_id not in known:
             reg["strategies"].append({
                 "id": base_id, "name": r["name"], "family": r["family"], "coreRule": r["rule"],
-                "testedOn": f"{r['asset']} lab-v1", "status": r["verdict"], "origin": f"laboratório rodada {a.round}",
+                "testedOn": f"{r['asset']} {r['protocol']}", "status": r["verdict"], "origin": f"laboratório rodada {a.round}",
                 "sources": r["sources"],
             })
             known.add(base_id)

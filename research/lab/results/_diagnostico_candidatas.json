@@ -118,5 +118,35 @@
    "buyHoldPct": 401.8
   },
   "fragil": false
+ },
+ "TV32_lorentzian": {
+  "development": {
+   "trades": 93,
+   "netR": 113.1,
+   "semMaiorR": 89.46,
+   "maiorR": 23.64,
+   "retPct05": 56.55,
+   "ddPct05": 2.49,
+   "buyHoldPct": 6628.6
+  },
+  "validation": {
+   "trades": 30,
+   "netR": 5.28,
+   "semMaiorR": 1.56,
+   "maiorR": 3.72,
+   "retPct05": 2.64,
+   "ddPct05": 2.11,
+   "buyHoldPct": -43.0
+  },
+  "reserve": {
+   "trades": 78,
+   "netR": 48.21,
+   "semMaiorR": 26.42,
+   "maiorR": 21.79,
+   "retPct05": 24.1,
+   "ddPct05": 5.52,
+   "buyHoldPct": 401.8
+  },
+  "fragil": false
  }
 }

@@ -31,12 +31,12 @@
       "chronologyCaveat": "Pesquisas anteriores do projeto viram BTC de set/2024 a set/2026 (outras estratégias). A reserva não é amostra intocada pelo projeto, mas nenhuma estratégia deste laboratório é ajustada nela."
     },
     "EURUSD": {
-      "source": "HistData/FX-Data 1 minuto quando disponível no cache local",
+      "source": "Dukascopy ticks (bid/ask, UTC) publicados em github.com/FX-Data/FX-Data-EURUSD-DS, um ramo por ano (EURUSD-2009 a EURUSD-2022; commits por ano em research/cache/lab/../ e no campo sourceCommits), reduzidos a M1 pelo preço médio (bid+ask)/2 e reamostrados em UTC por research/lab/data.py --fxdata EURUSD. D1 junta as horas de domingo ao candle de segunda.",
       "costSide": {
         "base": 4e-05,
         "stress": 8e-05
       },
-      "costNote": "Base ~0,8 pip ida e volta incluindo slippage; stress dobra.",
+      "costNote": "Mantido o custo registrado antes da coleta: base 0,4 pip por lado (~0,8 pip ida e volta) sobre o preço médio, cobrindo meio spread ECN + comissão + slippage em conta ECN barata; stress 0,8 pip por lado (~1,6 pip ida e volta), perto de conta standard sem comissão. Os preços são mid, então o spread inteiro precisa caber no custo.",
       "periods": {
         "warmup": [
           "2009-01-01",
@@ -54,7 +54,9 @@
           "2019-01-01",
           "2023-01-01"
         ]
-      }
+      },
+      "chronologyCaveat": "O projeto já fez triagens em EURUSD H1 (registry.json: triagem trend/opening/reversion e FX-RSI), então nenhum período do EURUSD é amostra intocada pelo projeto. Nenhuma estratégia do laboratório é calibrada no EURUSD pelo teste cruzado.",
+      "note": "Escolha do ativo: ETHUSD (1ª preferência) não tem fonte acessível com 2016–2026 (Bitstamp ETH só começa em ago/2017 e as fontes horárias estão em Kaggle/Hugging Face/CryptoDataDownload, bloqueados). XAUUSD no FX-Data só vai de 2011 a 2018 e o espelho MT5 em ejtraderLabs/historical-data só cobre mai/2012–mar/2022, de corretora e fuso desconhecidos. EURUSD é o único com 2009–2022 completo, fonte primária conhecida (Dukascopy) e fuso UTC. Períodos e custos são os que já estavam registrados em protocol.json antes de qualquer resultado em EURUSD neste laboratório; o teste cruzado (crossasset.py) usa exatamente estes valores, sem recalibrar. Desenvolvimento 2010–2015 tem crise do euro e tendência de baixa 2014–15; validação 2016–2018 é lateral; reserva 2019–2022 inclui covid e a queda de 2022 até abaixo da paridade."
     }
   },
   "calibration": {

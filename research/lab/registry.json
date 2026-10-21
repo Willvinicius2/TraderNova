@@ -752,6 +752,172 @@
     "https://en.wikipedia.org/wiki/Commodity_channel_index",
     "https://kr.tradingview.com/script/5rwCAgVK-Commodity-Channel-Index-CCI"
    ]
+  },
+  {
+   "id": "TV32_lorentzian",
+   "name": "Machine Learning: Lorentzian Classification (jdehorty), kNN causal",
+   "family": "aprendizado",
+   "coreRule": "Atributos do Pine (padrões): RSI(14), WaveTrend(hlc3,10,11), CCI(fech,20), ADX(20), RSI(9); RSI/ADX reescalados para 0-1 e WT/CCI normalizados pelo mínimo/máximo histórico ACUMULADO (como o Pine; o porte Python usa o mínimo/máximo da amostra inteira, que olha o futuro, e não foi copiado). Distância Lorentziana d=Σ log(1+|f_t-f_j|). Para cada candle t procura os k vizinhos mais próximos entre candles passados j da janela de L candles, espaçados de 4 em 4 (o Pine também espaça os vizinhos 4 candles). Rótulo 'futuro' (pedido: versão causal do propósito do autor): sinal de fech[j+4]-fech[j], usado só quando j+4<=t (já fechado). Rótulo 'pine': reprodução literal do pareamento do script (y = curto se fech[j-4]<fech[j], longo se maior), que também é causal mas na prática é reversão dos últimos 4 candles. Previsão = soma dos rótulos dos k vizinhos (kNN exato em vez da busca aproximada do Pine). Filtros padrão: volatilidade ATR(1)>ATR(10) e regime (inclinação do filtro de Kalman KLMF >= -0,1 da média de 200); sinal = +1 se previsão>0 e filtros, -1 se <0 e filtros, senão mantém. Compra quando o sinal vira +1 e o kernel de regressão racional-quadrático (h=8, r=8, x=25, só candles passados, sem repintura) está subindo; venda no espelho (side=both). Saída 'fixo4' = padrão do Pine: 4 candles ou sinal oposto novo antes disso; 'dinamico' = virada do kernel. Stop de proteção k*ATR14 (o script não tem stop).",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "CANDIDATA",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/WhBzgfDu-Machine-Learning-Lorentzian-Classification/",
+    "https://pypi.org/project/advanced-ta/0.1.7/ (porte Python do Pine; código lido no pacote baixado)"
+   ]
+  },
+  {
+   "id": "TV24_vix_fix",
+   "name": "CM Williams Vix Fix (ChrisMoody): compra em pico de medo",
+   "family": "reversao",
+   "coreRule": "Pine de ChrisMoody: wvf = (máxima dos fechamentos em pd - mínima)/máxima dos fechamentos em pd * 100; banda = SMA(wvf,bbl) + mult*desvio(wvf,bbl); rangeHigh = máx(wvf, lb)*ph. Pico de medo (barra verde) quando wvf >= banda ou wvf >= rangeHigh. Gatilho 'spike': compra no fechamento da primeira barra verde; 'fade': compra quando a sequência verde termina (primeira barra não verde após verde). O script é só indicador, sem saída nem stop: saída por tempo (hold candles) e stop de proteção k*ATR14. Só compra (o indicador só mede medo de queda).",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/og7JPrRA-CM-Williams-Vix-Fix-Finds-Market-Bottoms/",
+    "https://www.luxalgo.com/library/indicator/og7JPrRA-cm-williams-vix-fix-finds-market-bottoms"
+   ]
+  },
+  {
+   "id": "TV25_waddah_attar",
+   "name": "Waddah Attar Explosion (LazyBear)",
+   "family": "tendencia",
+   "coreRule": "Pine de LazyBear: t1 = (MACD(fech) - MACD(fech[1]))*sensibilidade, MACD = EMA20-EMA40; explosão e1 = largura das Bandas de Bollinger(20, 2); zona morta = RMA(TR,100)*dz (padrão 3,7). Barra verde = t1>0, vermelha = t1<0 (valor |t1|). Notas do autor: compra quando a barra verde fica acima da linha de explosão e acima da zona morta (entra na primeira barra em que isso acontece); sai quando a barra cai abaixo da linha de explosão. Venda simétrica com barra vermelha. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/iu3kKWDI-Waddah-Attar-Explosion-LazyBear/",
+    "https://www.mql5.com/en/market/product/188997"
+   ]
+  },
+  {
+   "id": "TV26_impulse_macd",
+   "name": "Impulse MACD (LazyBear)",
+   "family": "tendencia",
+   "coreRule": "Pine de LazyBear: hi = SMMA(máxima, n), lo = SMMA(mínima, n), mi = ZLEMA(hlc3, n) (2*EMA - EMA(EMA)); md = mi-hi se mi>hi, mi-lo se mi<lo, senão 0; sinal = SMA(md, 9). Gatilho 'zero': compra quando md passa de <=0 para >0 (preço sai do canal SMMA por cima), vende no inverso; sai quando md volta a <=0 (>=0 na venda). Gatilho 'signal': compra quando md cruza acima do sinal com md>0, vende no inverso com md<0; sai no cruzamento oposto md/sinal. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/qt6xLfLi-Impulse-MACD-LazyBear/",
+    "https://prorealcode.com/topic/conversion-indicateur-tradingview-impulse-macd-de-lazybear",
+    "https://raw.githubusercontent.com/remiotore/freqtrade/44beaeb6a420cd8e9f2e4ea93e11d6cfa192ee03/strategies/ImpulseMACD.py"
+   ]
+  },
+  {
+   "id": "TV27_vfi",
+   "name": "Volume Flow Indicator (LazyBear / Katsanos)",
+   "family": "volume",
+   "coreRule": "typical=hlc3; inter=log(typ)-log(typ[1]); cutoff=coef*desvio(inter,30)*fech; vave=SMA(volume,n)[1]; vc=min(volume, 2,5*vave); vcp=+vc se typ-typ[1]>cutoff, -vc se < -cutoff, senão 0; VFI=soma(vcp,n)/vave; sinal=EMA(VFI,5). Gatilho 'zero' (Katsanos): compra quando VFI cruza acima de 0, vende quando cruza abaixo; sai no cruzamento oposto. Gatilho 'signal': cruzamento VFI x sinal. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/MhlDpfdS-Volume-Flow-Indicator-LazyBear/",
+    "https://traders.com/Documentation/FEEDbk_docs/2004/06/TradersTips/TradersTips.html",
+    "https://prorealcode.com/prorealtime-indicators/volume-flow-indicator"
+   ]
+  },
+  {
+   "id": "TV28_coral_trend",
+   "name": "Coral Trend (LazyBear): virada de cor",
+   "family": "tendencia",
+   "coreRule": "Pine de LazyBear (sm=21, cd=0,4 por padrão): di=(sm-1)/2+1, c1=2/(di+1); seis EMAs em cascata i1..i6 do fechamento com c1; bfr = -cd^3*i6 + c3*i5 + c4*i4 + c5*i3 (c3=3(cd²+cd³), c4=-3(2cd²+cd+cd³), c5=3cd+1+cd³+3cd²), filtro tipo T3 de Tillson. Cor verde quando bfr>bfr[1], vermelha quando bfr<bfr[1]. Compra quando a cor vira para verde, venda quando vira para vermelha (sinais Buy/Sell da versão pine-v4); sai/inverte na virada oposta. O Pine não tem stop: stop de proteção k*ATR14. TradingView inacessível ao WebFetch: código conferido em cópias citadas pela busca (Tradovate, MarketCalls AFL).",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/qyUwc2Al-Coral-Trend-Indicator-LazyBear/",
+    "https://www.tradingview.com/script/AzQo1gRi-Coral-Trend-Indicator-LazyBear-pine-v4/",
+    "https://community.tradovate.com/t/coral-trend-indicator/4276",
+    "https://www.marketcalls.in/amibroker/coral-trend-indicator-amibroker-afl-code.html"
+   ]
+  },
+  {
+   "id": "TV29_half_trend",
+   "name": "HalfTrend (everget): sinal Buy/Sell",
+   "family": "tendencia",
+   "coreRule": "Pine original do everget (repositório GitHub do autor): highPrice/lowPrice = máxima/mínima das últimas 'amplitude' barras, highma/lowma = SMA(high/low, amplitude). Em alta, guarda minHighPrice; vira para alta quando lowma > minHighPrice e fechamento > máxima anterior. Em baixa, guarda maxLowPrice; vira para baixa quando highma < maxLowPrice e fechamento < mínima anterior. Compra no sinal Buy (trend 1->0), vende no Sell (0->1); sai/inverte no sinal oposto. channelDeviation só desenha o canal ATR e não altera sinais. Pine sem stop: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/U1SJ8ubc-HalfTrend/",
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/trailing_stops/halftrend.pine",
+    "https://www.marketcalls.in/amibroker/halftrend-amibroker-afl-code-better-than-supertrend.html"
+   ]
+  },
+  {
+   "id": "TV30_gaussian_channel",
+   "name": "Gaussian Channel (DonovanWall): rompimento da banda com filtro subindo",
+   "family": "tendencia",
+   "coreRule": "Indicador de DonovanWall (padrões: fonte hlc3, polos N=4, período 144, mult 1,414, sem modos lag/fast): beta=(1-cos(2pi/per))/(1,414^(2/N)-1), alpha=-beta+sqrt(beta²+2beta); filtro gaussiano de N polos = N EMAs em cascata com esse alpha (equivalente exato à recursão f_filt9x); bandas = filtro ± filtro(TR)*mult. Regra das estratégias públicas baseadas nele (ex.: 'Gaussian Channel Strategy'): compra quando o filtro sobe (verde) e o fechamento está acima da banda alta; sai quando o fechamento volta abaixo da banda alta (ou o filtro fica vermelho). Venda no espelho com a banda baixa (opcional). Stop inicial = distância até a banda oposta (a estratégia pública usa a banda baixa como stop), com mínimo de 1 ATR14. TradingView inacessível ao WebFetch: fórmulas conferidas nos resumos de busca e no port MQL5.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/WpVY7GKW-Gaussian-Channel-DW/",
+    "https://www.tradingview.com/script/erJi1tWf-Gaussian-Channel-Strategy/",
+    "https://www.mql5.com/en/job/239460"
+   ]
+  },
+  {
+   "id": "TV31_mcginley",
+   "name": "McGinley Dynamic: virada da inclinação",
+   "family": "tendencia",
+   "coreRule": "McGinley Dynamic (Pine do everget): MD = MD[1] + (C - MD[1]) / (K * N * (C/MD[1])^4), semente = fechamento (K=1 equivale à versão embutida do TradingView; everget usa K=0,6). Compra quando a inclinação da linha vira de caindo para subindo (MD>MD[1] depois de MD[1]<=MD[2]); vende na virada para baixo; sai/inverte na virada oposta. Não é cruzamento de duas médias nem de preço com média. Pine sem stop: stop de proteção k*ATR14. A razão C/MD[1] é limitada a [0,5; 2] (correção numérica do 'Improved McGinley Dynamic'), sem efeito em condições normais.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/9l0vfJdy-McGinley-Dynamic/",
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/movings/mcginley_dynamic.pine",
+    "https://www.investopedia.com/terms/m/mcginley-dynamic.asp"
+   ]
+  },
+  {
+   "id": "TV33_smc_bos",
+   "name": "Smart Money Concepts (LuxAlgo): BOS/CHoCH da estrutura de swing",
+   "family": "rompimento",
+   "coreRule": "Lógica do Pine LuxAlgo (reproduzida da definição do script; WebFetch/GitHub não abriram o código, só resumos): leg(size): se high[size] > maior máxima dos 'size' candles seguintes começa perna de baixa; se low[size] < menor mínima dos 'size' seguintes começa perna de alta. Início de perna de baixa = topo de swing confirmado em high[size] (nível novo, 'crossed'=falso); início de perna de alta = fundo de swing em low[size]. Rompimento: ta.crossover(close, topo) com topo ainda não cruzado -> se o viés era de baixa é CHoCH, senão BOS; o viés vira alta e o topo fica marcado como cruzado (espelho com crossunder do fundo). Swings só existem 'size' candles depois, então não há repintura. Regra testada: modo 'choch' entra só na mudança de caráter (virada do viés); modo 'bos' entra só no BOS de continuação a favor do viés; modo 'todos' entra em qualquer rompimento. Compra sai (e side=both inverte) no rompimento de baixa (que é sempre CHoCH contra o viés de alta). Sem stop no indicador: stop de proteção k*ATR14. Diferente da TV08 (Pivot Reversal): níveis de swing da perna LuxAlgo, cruzamento pelo fechamento, cada nível vale uma vez e a entrada depende do viés de estrutura (BOS x CHoCH).",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/CnB3fSph-Smart-Money-Concepts-SMC-LuxAlgo/",
+    "https://www.luxalgo.com/library/indicator/smart-money-concepts-smc/",
+    "https://www.scribd.com/document/846054813/ict-code-indicator (cópia do Pine 'Smart Money Concepts [LuxAlgo]')"
+   ]
+  },
+  {
+   "id": "TV34_andean",
+   "name": "Andean Oscillator (alexgrover): cruzamento Bull/Bear",
+   "family": "tendencia",
+   "coreRule": "Pine de alexgrover (lido via resumo do WebSearch; o WebFetch não abriu as páginas): alpha=2/(n+1); envelopes 'online' up1=max(C,O,up1[1]-(up1[1]-C)*alpha), up2=max(C²,O²,up2[1]-(up2[1]-C²)*alpha), dn1=min(C,O,dn1[1]+(C-dn1[1])*alpha), dn2=min(C²,O²,dn2[1]+(C²-dn2[1])*alpha); Bull=sqrt(dn2-dn1²), Bear=sqrt(up2-up1²), Signal=EMA(max(Bull,Bear),9). Leitura do autor: Bull>Bear = tendência de alta, e o componente acima da linha de sinal indica tendência forte. Regra testada: compra quando Bull cruza acima de Bear (modo 'cruz') ou quando Bull>Bear e Bull>Signal começam a valer juntos (modo 'sinal'); venda no espelho (side=both); sai quando a condição oposta aparece (Bear cruza acima de Bull). O script é indicador, sem stop: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/x9qYvBYN-Andean-Oscillator/",
+    "https://alpaca.markets/learn/andean-oscillator-a-new-technical-indicator-based-on-an-online-algorithm-for-trend-analysis/",
+    "https://www.prorealcode.com/prorealtime-indicators/andean-oscillator/"
+   ]
+  },
+  {
+   "id": "TV35_trend_magic",
+   "name": "Trend Magic (CCI + ATR): virada da linha",
+   "family": "tendencia",
+   "coreRule": "Pine (CCI período 20, coeficiente 1, ATR período 5): ATR=SMA(TR,5); upT=mín-ATR*coef; downT=máx+ATR*coef; MagicTrend = se CCI(fech,n)>=0: max(upT, MagicTrend[1]) (só sobe); senão min(downT, MagicTrend[1]) (só desce). Cor azul/verde com CCI>=0 e vermelha/rosa com CCI<0. Sinais do script: compra quando a mínima cruza acima da linha (crossover(low,MagicTrend)) e venda quando a máxima cruza abaixo (crossunder(high,MagicTrend)) = modo 'alerta'; modo 'cor' entra na troca de cor (CCI cruza 0). Sai/inverte no sinal oposto do mesmo modo. side=long só compra. Sem stop no script: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v2",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 3",
+   "sources": [
+    "https://www.tradingview.com/script/kRIjThLZ-Trend-Magic/",
+    "https://www.luxalgo.com/library/indicator/kRIjThLZ-trend-magic/",
+    "https://it.tradingview.com/script/uRqGTZOw"
+   ]
   }
  ]
 }

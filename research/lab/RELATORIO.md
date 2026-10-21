@@ -1,4 +1,4 @@
-# Laboratório de estratégias: resultados até a rodada 2
+# Laboratório de estratégias: resultados até a rodada 3
 
 Gerado por `python research/lab/report.py`. Rodada 1 usou o protocolo lab-v1 e a rodada 2 o lab-v2 (mais rígido); ver `protocol.json`. Calibração só no desenvolvimento (BTC 2016–2020), validação 2021–2022 e reserva 2023–out/2026 sem reajuste, custo base 0,10% por lado e stress 0,20%. CANDIDATA passou no histórico, mas ainda precisa de acompanhamento prospectivo, custos reais da conta e risco conjunto. Não é promessa de lucro.
 
@@ -8,6 +8,7 @@ Gerado por `python research/lab/report.py`. Rodada 1 usou o protocolo lab-v1 e a
 | L07_stochastic Estocástico de Lane (cruzamento %K/%D nas zonas) | reversao | **CANDIDATA** | D1 | {"n": 9, "zone": 25, "k": 3.0, "side": "long"} | 36 op · +4.9R · PF 1.729 · DD 2.03R | 20 op · +1.9R · PF 1.537 · DD 1.58R | 38 op · +5.2R · PF 1.541 · DD 2.79R | 108 | 0.221 |
 | L12_keltner_breakout Rompimento do canal de Keltner | volatilidade | **CANDIDATA** | H4 | {"n": 50, "k": 3.0, "stop_k": 1.5, "side": "both"} | 122 op · +270.1R · PF 4.571 · DD 5.64R | 53 op · +9.3R · PF 1.258 · DD 9.31R | 143 op · +45.4R · PF 1.389 · DD 40.57R | 144 | 0.028 |
 | TV21_aroon Aroon (Chande): cruzamento Up/Down | tendencia | **CANDIDATA** | H4 | {"n": 50, "level": 70, "k": 4.0, "side": "both"} | 176 op · +114.6R · PF 2.731 · DD 5.08R | 64 op · +6.1R · PF 1.232 · DD 8.42R | 142 op · +26.9R · PF 1.401 · DD 15.55R | 108 | 0.968 |
+| TV32_lorentzian Machine Learning: Lorentzian Classification (jdehorty), kNN causal | aprendizado | **CANDIDATA** | H4 | {"nn": 8, "L": 2000, "label": "futuro", "exit": "dinamico", "k": 2.0, "side": "long"} | 93 op · +113.1R · PF 4.045 · DD 4.98R | 30 op · +5.3R · PF 1.483 · DD 4.22R | 78 op · +48.2R · PF 2.139 · DD 11.03R | 288 | 0.0 |
 | L01_supertrend Supertrend (virada de direção) | tendencia | **REPROVADA_VALIDACAO** | H4 | {"atr_n": 7, "mult": 2.5, "side": "long"} | 133 op · +142.5R · PF 4.143 · DD 4.28R | 62 op · +1.2R · PF 1.047 · DD 5.72R | - | 120 | 0.003 |
 | L02_adx_dmi Sistema direcional de Wilder (DI+/DI- com ADX) | tendencia | **REPROVADA_VALIDACAO** | H4 | {"n": 10, "adx_min": 15, "k": 2.0, "side": "long"} | 411 op · +156.1R · PF 2.314 · DD 7.9R | 175 op · -13.6R · PF 0.775 · DD 26.72R | - | 144 | 0.0 |
 | L03_ichimoku Ichimoku: cruzamento Tenkan/Kijun com nuvem e Chikou | tendencia | **REPROVADA_VALIDACAO** | H1 | {"s": 3, "exit": "tk", "k": 2.0, "side": "both"} | 209 op · +198.1R · PF 2.324 · DD 13.61R | 92 op · -19.0R · PF 0.749 · DD 22.59R | - | 72 | 0.0 |
@@ -45,6 +46,17 @@ Gerado por `python research/lab/report.py`. Rodada 1 usou o protocolo lab-v1 e a
 | TV20_hull_suite Hull Suite (InSilico): virada da Hull MA | tendencia | **REPROVADA_VALIDACAO** | H4 | {"mode": "hma", "length": 89, "k": 3.0, "side": "long"} | 154 op · +147.1R · PF 3.987 · DD 6.38R | 77 op · -12.4R · PF 0.648 · DD 17.9R | - | 144 | 1.0 |
 | TV22_vortex Vortex Indicator: cruzamento VI+/VI- | tendencia | **REPROVADA_VALIDACAO** | D1 | {"n": 42, "k": 2.0, "side": "both"} | 76 op · +120.2R · PF 5.843 · DD 3.97R | 25 op · -1.2R · PF 0.897 · DD 4.84R | - | 72 | 0.992 |
 | TV23_cci CCI (Lambert): rompimento de ±100 | momento | **REPROVADA_VALIDACAO** | H4 | {"n": 50, "exit": "zero", "k": 2.0, "side": "long"} | 113 op · +221.2R · PF 4.25 · DD 7.55R | 51 op · +0.3R · PF 1.009 · DD 13.78R | - | 144 | 0.998 |
+| TV24_vix_fix CM Williams Vix Fix (ChrisMoody): compra em pico de medo | reversao | **REPROVADA_VALIDACAO** | D1 | {"pd": 22, "mult": 2.0, "ph": 0.85, "trigger": "fade", "hold": 20, "k": 2.0} | 54 op · +35.6R · PF 2.828 · DD 5.93R | 21 op · -2.5R · PF 0.75 · DD 4.38R | - | 36 | 0.933 |
+| TV25_waddah_attar Waddah Attar Explosion (LazyBear) | tendencia | **REPROVADA_VALIDACAO** | H4 | {"sens": 150, "dz": 3.7, "k": 2.0, "side": "long"} | 586 op · +99.2R · PF 1.739 · DD 7.11R | 269 op · -31.4R · PF 0.617 · DD 35.1R | - | 72 | 0.988 |
+| TV26_impulse_macd Impulse MACD (LazyBear) | tendencia | **REPROVADA_VALIDACAO** | H4 | {"n": 34, "trigger": "zero", "k": 3.0, "side": "long"} | 72 op · +136.3R · PF 5.045 · DD 5.17R | 29 op · -4.5R · PF 0.783 · DD 12.63R | - | 72 | 0.999 |
+| TV27_vfi Volume Flow Indicator (LazyBear / Katsanos) | volume | **REPROVADA_VALIDACAO** | D1 | {"n": 130, "trigger": "zero", "k": 2.0, "side": "both"} | 32 op · +394.2R · PF 30.626 · DD 6.03R | 15 op · +2.4R · PF 1.529 · DD 2.27R | - | 72 | 0.552 |
+| TV28_coral_trend Coral Trend (LazyBear): virada de cor | tendencia | **REPROVADA_VALIDACAO** | H4 | {"sm": 34, "cd": 0.2, "k": 2.0, "side": "long"} | 125 op · +214.1R · PF 4.192 · DD 7.7R | 54 op · -14.3R · PF 0.636 · DD 15.95R | - | 144 | 0.998 |
+| TV29_half_trend HalfTrend (everget): sinal Buy/Sell | tendencia | **REPROVADA_VALIDACAO** | H4 | {"amplitude": 5, "k": 2.0, "side": "long"} | 127 op · +189.4R · PF 3.891 · DD 6.8R | 59 op · -14.9R · PF 0.623 · DD 16.99R | - | 108 | 0.996 |
+| TV30_gaussian_channel Gaussian Channel (DonovanWall): rompimento da banda com filtro subindo | tendencia | **REPROVADA_VALIDACAO** | H4 | {"poles": 2, "per": 216, "mult": 1.0, "side": "long"} | 181 op · +146.0R · PF 4.264 · DD 4.14R | 70 op · -6.7R · PF 0.695 · DD 10.43R | - | 216 | 0.996 |
+| TV31_mcginley McGinley Dynamic: virada da inclinação | tendencia | **REPROVADA_VALIDACAO** | D1 | {"length": 34, "kmd": 0.6, "k": 2.0, "side": "both"} | 84 op · +106.7R · PF 6.363 · DD 3.87R | 51 op · -4.5R · PF 0.73 · DD 7.45R | - | 120 | 0.948 |
+| TV33_smc_bos Smart Money Concepts (LuxAlgo): BOS/CHoCH da estrutura de swing | rompimento | **REPROVADA_VALIDACAO** | H4 | {"size": 10, "mode": "choch", "k": 3.0, "side": "both"} | 161 op · +162.9R · PF 3.219 · DD 5.2R | 69 op · -7.2R · PF 0.833 · DD 8.05R | - | 270 | 0.079 |
+| TV34_andean Andean Oscillator (alexgrover): cruzamento Bull/Bear | tendencia | **REPROVADA_VALIDACAO** | H1 | {"n": 200, "mode": "cruz", "k": 4.0, "side": "long"} | 146 op · +255.5R · PF 4.668 · DD 6.44R | 75 op · -10.1R · PF 0.785 · DD 25.48R | - | 144 | 0.992 |
+| TV35_trend_magic Trend Magic (CCI + ATR): virada da linha | tendencia | **REPROVADA_VALIDACAO** | H4 | {"n": 20, "coef": 1.5, "mode": "alerta", "k": 3.0, "side": "long"} | 182 op · +135.7R · PF 3.266 · DD 5.4R | 84 op · -1.1R · PF 0.965 · DD 11.32R | - | 288 | 0.984 |
 | L15_floor_pivots Pivôs clássicos diários (P, R1, S1): rejeição ou rompimento | padroes | **REPROVADA_DESENVOLVIMENTO** | M15 | (melhor reprovada) | 731 op · +12.3R · PF 1.037 · DD 40.25R | - | - | 144 | - |
 | L17_btc_seasonality Sazonalidade intradiária do BTC (21h-23h UTC) | tempo_volume | **REPROVADA_DESENVOLVIMENTO** | H1 | (melhor reprovada) | 1827 op · -206.9R · PF 0.547 · DD 209.49R | - | - | 12 | - |
 | L17_btc_seasonality_r1 Sazonalidade intradiária do BTC (21h-23h UTC) só em dias fortes | tempo_volume | **REPROVADA_DESENVOLVIMENTO** | H1 | (melhor reprovada) | 261 op · -7.5R · PF 0.865 · DD 12.75R | - | - | 27 | - |
@@ -72,5 +84,8 @@ Resultado sem a maior operação e em % do capital com 0,5% de risco por operaç
 | TV21_aroon | development | 176 | +114.6 | +99.8 | +57.3 | 2.54 | +6628.6 |
 | TV21_aroon | validation | 64 | +6.1 | +2.2 | +3.0 | 4.21 | -43.0 |
 | TV21_aroon | reserve | 142 | +26.9 | +7.9 | +13.5 | 7.78 | +401.8 |
+| TV32_lorentzian | development | 93 | +113.1 | +89.5 | +56.5 | 2.49 | +6628.6 |
+| TV32_lorentzian | validation | 30 | +5.3 | +1.6 | +2.6 | 2.11 | -43.0 |
+| TV32_lorentzian | reserve | 78 | +48.2 | +26.4 | +24.1 | 5.52 | +401.8 |
 
 Fontes e regras completas em `strategies/` e `results/`. Notas de cada agente em `notes/`.

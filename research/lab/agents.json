@@ -1,0 +1,5 @@
+[
+ {"agente": "r3-lazybear", "rodada": 3, "foco": "TradingView comunidade (LazyBear e cia.)", "ids": ["TV24", "TV25", "TV26", "TV27"]},
+ {"agente": "r3-filtros", "rodada": 3, "foco": "TradingView comunidade (filtros de tendência)", "ids": ["TV28", "TV29", "TV30", "TV31"]},
+ {"agente": "r3-estrutura", "rodada": 3, "foco": "TradingView comunidade (estrutura e ML)", "ids": ["TV32", "TV33", "TV34", "TV35"]}
+]
