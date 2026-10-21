@@ -22,6 +22,10 @@ AGENTS = [
     {"agente": "tv-comunidade-e", "rodada": 2, "foco": "TradingView comunidade", "ids": ["TV16", "TV17", "TV18", "TV19"]},
     {"agente": "tv-comunidade-f", "rodada": 2, "foco": "TradingView comunidade", "ids": ["TV20", "TV21", "TV22", "TV23"]},
 ]
+# Rodadas automáticas: research/lab/agents.json acrescenta agentes novos sem editar este arquivo.
+_extra = Path(__file__).resolve().parent / "agents.json"
+if _extra.exists():
+    AGENTS += json.loads(_extra.read_text())
 VERDICT = {"CANDIDATA": "Candidata", "REPROVADA_RESERVA": "Reprovada na reserva",
            "REPROVADA_VALIDACAO": "Reprovada na validação", "REPROVADA_DESENVOLVIMENTO": "Reprovada no desenvolvimento"}
 
