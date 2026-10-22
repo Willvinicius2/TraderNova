@@ -120,6 +120,62 @@
         "2018": "7ff5085c1f652df1551df5379429fd2f09314eb5"
       },
       "dataQuality": "Checado antes do teste cruzado: 30/03/2007 a 17/06/2018, 3,99 milhões de minutos; commits dos 12 ramos iguais aos de sourceCommits. O FX-Data guarda o USDJPY dividido por 100 (1,0722 = 107,22); data.py volta os candles à escala em ienes. Sem high<low nem open/close fora da faixa; faixa 75,58–125,86, batendo com os marcos conhecidos (mínima histórica de 31/10/2011 antes da intervenção do BoJ, máxima de 05/06/2015 ~125,8, mínima do Brexit 24/06/2016 ~99,0; maiores saltos de 1 minuto no Brexit, na intervenção de 31/10/2011, na intervenção do G7 de 18/03/2011 e no Lehman). Fuso UTC: abre domingo 21h (horário de verão dos EUA) ou 22h UTC e fecha sexta 20h/21h UTC. Faltam 4 dias úteis seguidos em 15–18/06/2009 (desenvolvimento) e os feriados 25/12 e 01/01 (alguns sem dados, outros com pouca liquidez). Spread mediano: 1,36 pip (2007), 1,1–1,3 (2008–2011), 0,70 (2012), 0,54 (2013) e 0,29–0,38 pip de 2014 em diante. Atenção ao custo: em 2007–2012 o meio spread (0,5–0,7 pip) fica acima do custo base registrado (~0,4–0,47 pip por lado), então o custo base subestima o desenvolvimento desses anos; o stress (~0,8–0,94 pip por lado) cobre o spread inteiro. Custo mantido como registrado antes da coleta; validação e reserva (2014+) têm spread 0,3–0,4 pip, abaixo do custo base."
+    },
+    "ETHUSD": {
+      "source": "Binance spot ETHUSDT 1h (binance-public-data, espelho S3 s3-ap-northeast-1.amazonaws.com/data.binance.vision, arquivos mensais com SHA-256), baixado com research/ferramentas/dados_binance.py (ramo claude/project-thread-j6qdm4) e reamostrado em UTC. Manifesto com as URLs e SHA-256 em research/lab/dados/manifest_ETHUSDT_spot.json.",
+      "costSide": {
+        "base": 0.001,
+        "stress": 0.002
+      },
+      "costNote": "Mesmo custo do BTCUSD (0,10% por lado, stress 0,20%). Spot Binance com BNB/maker costuma ficar abaixo; altcoin em corretora pequena pode custar mais.",
+      "periods": {
+        "warmup": [
+          "2017-08-17",
+          "2018-01-01"
+        ],
+        "development": [
+          "2018-01-01",
+          "2021-01-01"
+        ],
+        "validation": [
+          "2021-01-01",
+          "2023-01-01"
+        ],
+        "reserve": [
+          "2023-01-01",
+          "2026-10-01"
+        ]
+      },
+      "dataQuality": "79.794 horas de 17/08/2017 a 30/09/2026; 28 lacunas (170 horas, paradas da Binance); 43 registros de fev/2018 com horário fora da hora cheia foram descartados; sem high<low.",
+      "note": "Registrado em 22/10/2026 antes de qualquer resultado no ETH. Cripto anda junto com o BTC, então passar no ETH é prova mais fraca de que a regra é geral do que passar em câmbio; serve para separar 'funciona em cripto' de 'sorte no BTC'."
+    },
+    "SOLUSD": {
+      "source": "Binance spot SOLUSDT 1h (mesma fonte e método do ETHUSD). Manifesto em research/lab/dados/manifest_SOLUSDT_spot.json.",
+      "costSide": {
+        "base": 0.001,
+        "stress": 0.002
+      },
+      "costNote": "Mesmo custo do BTCUSD (0,10% por lado, stress 0,20%). Spot Binance com BNB/maker costuma ficar abaixo; altcoin em corretora pequena pode custar mais.",
+      "periods": {
+        "warmup": [
+          "2020-08-11",
+          "2021-01-01"
+        ],
+        "development": [
+          "2021-01-01",
+          "2023-01-01"
+        ],
+        "validation": [
+          "2023-01-01",
+          "2025-01-01"
+        ],
+        "reserve": [
+          "2025-01-01",
+          "2026-10-01"
+        ]
+      },
+      "dataQuality": "53.783 horas de 11/08/2020 a 30/09/2026; 10 lacunas (19 horas); sem high<low.",
+      "note": "Registrado em 22/10/2026 antes de qualquer resultado no SOL. Histórico curto: desenvolvimento de só 2 anos."
     }
   },
   "calibration": {

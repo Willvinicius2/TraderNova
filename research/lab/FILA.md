@@ -10,6 +10,8 @@ Uma estratégia só sai do laboratório quando:
 3. fica 30 dias em acompanhamento simulado em tempo real sem quebrar o limite de queda.
 Quando 1 e 2 acontecerem, avisar o Will na hora.
 
+**Situação em 22/10/2026:** a triagem em massa (`TRIAGEM.md`) achou 51 regras que passam no BTC e no ETH ou SOL com os mesmos parâmetros, 17 em ambos; nenhuma passa em câmbio. Will avisado. Itens 1 e 2 estão pendentes da revisão do código (agentes `triagem-revisao-*`) e o item 3 ainda não começou. **Não abrir rodadas novas até o Will responder.**
+
 ## Dados (agente de dados, toda rodada até resolver)
 - [ ] ETHUSD horário/minuto em repositório público do GitHub (a rede só deixa clonar via git do github.com)
 - [ ] XAUUSD horário (2010+)

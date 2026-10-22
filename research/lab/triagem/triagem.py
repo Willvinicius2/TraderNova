@@ -8,7 +8,7 @@ Uso:
   python research/lab/triagem/triagem.py candles            # candles em JSON para o Node
   python research/lab/triagem/triagem.py sinais  [--asset BTCUSD] [--tf H4,D1] [--ids a,b] [--jobs 4]
   python research/lab/triagem/triagem.py testar  [--tf H4,D1]
-  python research/lab/triagem/triagem.py cruzado            # candidatas da triagem em EURUSD e USDJPY
+  python research/lab/triagem/triagem.py cruzado            # candidatas da triagem em EURUSD, USDJPY, ETHUSD e SOLUSD
   python research/lab/triagem/triagem.py resumo             # TRIAGEM.md e arquivo do painel
 Precisa de research/cache/lab/tri/lci.mjs (bundle da biblioteca) e dos candles em JSON (ver CICLO.md).
 """
@@ -38,6 +38,7 @@ OUT = TRI / "out"
 RES = LAB / "results" / "triagem"
 K_STOP = 2.0
 STAGES = (("development", 1.15), ("validation", 1.15), ("reserve", 1.10))
+OUTROS = ("EURUSD", "USDJPY", "ETHUSD", "SOLUSD")
 
 
 def all_ids():
@@ -47,7 +48,7 @@ def all_ids():
 
 def cmd_candles(a):
     TRI.mkdir(parents=True, exist_ok=True)
-    for asset in ("BTCUSD", "EURUSD", "USDJPY"):
+    for asset in ("BTCUSD", "EURUSD", "USDJPY", "ETHUSD", "SOLUSD"):
         for tf in ("H4", "D1"):
             d = C.load_bars(asset, tf)
             t = ((d.index - pd.Timestamp("1970-01-01", tz="UTC")) // pd.Timedelta("1s")).astype(int).tolist()
@@ -208,7 +209,7 @@ def cmd_cruzado(a):
             cands += [r for r in json.loads(p.read_text())["linhas"] if r["veredito"] == "CANDIDATA"]
     print(len(cands), "candidatas", flush=True)
     ids = sorted({r["id"] for r in cands})
-    for asset in ("EURUSD", "USDJPY"):
+    for asset in OUTROS:
         if ids:
             subprocess.run([sys.executable, __file__, "sinais", "--asset", asset, "--ids", ",".join(ids)], check=False)
     out = []
@@ -218,7 +219,7 @@ def cmd_cruzado(a):
         d = json.loads((OUT / "BTCUSD" / r["tf"] / f"{r['id']}.json").read_text())
         ru = next(x for x in d["regras"] if x["nome"] == r["regra"])
         item = {"id": r["id"], "nome": r["nome"], "tf": r["tf"], "regra": r["regra"], "placeboBTC": placebo(df, build_sig(df, ru), btc), "ativos": {}}
-        for asset in ("EURUSD", "USDJPY"):
+        for asset in OUTROS:
             cfg = C.PROTOCOL["assets"][asset]
             dfa = C.load_bars(asset, r["tf"])
             pa = OUT / asset / r["tf"] / f"{r['id']}.json"
@@ -261,13 +262,13 @@ def cmd_resumo(a):
          f"| **Candidatas** | **{cnt.get('CANDIDATA', 0)}** |", ""]
     good = [r for r in rows if r["veredito"] in ("CANDIDATA", "REPROVADA_RESERVA", "REPROVADA_VALIDACAO")]
     good.sort(key=lambda r: ({"CANDIDATA": 0, "REPROVADA_RESERVA": 1, "REPROVADA_VALIDACAO": 2}[r["veredito"]], -(r["fases"]["development"]["base"]["netR"])))
-    L += ["## Passaram no desenvolvimento", "", "| Indicador | Tempo | Regra | Veredito | Dev | Validação | Reserva | DSR | EURUSD | USDJPY |", "|---|---|---|---|---|---|---|---|---|---|"]
+    L += ["## Passaram no desenvolvimento", "", "| Indicador | Tempo | Regra | Veredito | Dev | Validação | Reserva | DSR | EURUSD | USDJPY | ETHUSD | SOLUSD |", "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     f = lambda m: f"{m['trades']} op · {m['netR']:+.1f}R · PF {m['pf']}" if m else "-"
     for r in good[:150]:
         fs = r["fases"]; c = cruz.get((r["id"], r["tf"], r["regra"]))
         ca = (lambda k: ("passa" if c["ativos"][k]["passou"] else "não")) if c else (lambda k: "-")
         L.append(f"| {r['nome']} (`{r['id']}`) | {r['tf']} | {r['regra']} | **{r['veredito']}** | {f(fs['development']['base'])} | "
-                 f"{f(fs.get('validation', {}).get('base'))} | {f(fs.get('reserve', {}).get('base'))} | {r.get('dsr', '-')} | {ca('EURUSD')} | {ca('USDJPY')} |")
+                 f"{f(fs.get('validation', {}).get('base'))} | {f(fs.get('reserve', {}).get('base'))} | {r.get('dsr', '-')} | {ca('EURUSD')} | {ca('USDJPY')} | {ca('ETHUSD')} | {ca('SOLUSD')} |")
     meta = [c for c in cruz.values() if c["metaAtingida"]]
     def bate(r):
         c = cruz.get((r["id"], r["tf"], r["regra"]))
@@ -288,7 +289,7 @@ def cmd_resumo(a):
         ("Passaram também na validação", cnt.get("REPROVADA_RESERVA", 0) + cnt.get("CANDIDATA", 0)),
         ("Candidatas (passaram nas 3 fases)", cnt.get("CANDIDATA", 0)),
         ("Ganham do placebo com folga", nbate),
-        ("Passaram também em EURUSD ou USDJPY", len(meta)),
+        ("Passaram também em outro ativo", len(meta)),
         ("Repintam (fora do teste)", cnt.get("REPINTA", 0)), ("Sem sinal de compra/venda", cnt.get("SEM_SINAL", 0)),
         ("Erro ou lentidão", cnt.get("ERRO", 0))])]
     (LAB / "dashboard" / "funil.json").write_text(json.dumps(funil, ensure_ascii=False))
