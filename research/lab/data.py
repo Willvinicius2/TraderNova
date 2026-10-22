@@ -12,6 +12,11 @@ EURUSD: ticks Dukascopy publicados em github.com/FX-Data/FX-Data-EURUSD-DS (um r
   python research/lab/data.py --fxdata EURUSD --work <pasta> [--years 2009-2022]
   Os commits usados ficam em <work>/EURUSD_<ano>.commit e em <work>/EURUSD_sources.json.
 
+USDJPY (e outros pares do FX-Data): mesmo processo, ramos USDJPY-<ano>; a fonte vai de 29/03/2007 a 17/06/2018.
+  python research/lab/data.py --fxdata USDJPY --work <pasta> --years 2007-2018
+  Pares com preço na casa das dezenas/centenas (JPY, XAU) são gravados com mais dígitos significativos.
+  O FX-Data guarda o USDJPY dividido por 100 (1,0722 = 107,22); os candles finais voltam à escala em ienes.
+
 Fins de semana no FX: o mercado abre domingo ~21/22h UTC. No D1 as horas de domingo entram no candle de segunda,
 para não criar um "dia" de 2 horas. M15/H1/H4 são reamostrados direto em UTC (sem candles vazios).
 """
@@ -87,7 +92,8 @@ def fx_year(pair: str, year: int, work: Path) -> Path:
         shutil.rmtree(repo / m.split("/")[0], ignore_errors=True)
     df = pd.concat(parts)
     df.index.name = "time"
-    df.to_csv(out, float_format="%.6g")
+    # %.6g basta para EURUSD (1,xxxxx); USDJPY/XAUUSD (100,xxx / 1000,xx) precisam de mais dígitos
+    df.to_csv(out, float_format="%.6g" if df.close.max() < 10 else "%.8g")
     shutil.rmtree(repo)
     return out
 
@@ -103,6 +109,9 @@ def fxdata(pair: str, work: str, years: str):
         {str(y): (w / f"{pair}_{y}.commit").read_text().strip() for y in ys if (w / f"{pair}_{y}.commit").exists()}, indent=1))
     m = pd.concat(pd.read_csv(p, index_col=0, parse_dates=True) for p in paths).sort_index()
     m = m[~m.index.duplicated()]
+    if pair.endswith("JPY") and m.close.median() < 10:
+        # o FX-Data grava os pares de iene divididos por 100 (USDJPY 1,0722 = 107,22 ienes); volta à escala real
+        m[["open", "high", "low", "close", "spread"]] *= 100
     OUT.mkdir(parents=True, exist_ok=True)
     for tf, rule in RULES.items():
         if tf == "D1":

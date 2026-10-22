@@ -31,3 +31,7 @@ Agora a contagem considera só os anos de 2016 a 2020. A saída forçada conta e
 | Aprovadas | 0 |
 
 Nenhuma candidata passou no teste cruzado com EURUSD (`results/_cross_EURUSD.json`).
+
+## Segundo ativo: USDJPY (2007 a jun/2018)
+
+Ticks Dukascopy de FX-Data/FX-Data-USDJPY-DS. Ouro, índices e outras criptos não têm fonte acessível com ~10 anos. Nenhuma das 6 candidatas passou nas 3 fases (`results/_cross_USDJPY.json`): todas reprovam na reserva (jul/2016 a jun/2018), sempre negativas sem a maior operação.

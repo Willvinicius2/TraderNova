@@ -75,6 +75,51 @@
         "2022": "94c8b8aefb12e5c591fa44e546f60dd8e4262d88"
       },
       "dataQuality": "Checado antes dos testes: 2009-01-01 a 2022-07-08, 5,04 milhões de minutos, sem high<low nem preço fora de 1,007–1,515; fuso UTC (abre domingo 21/22h e fecha sexta 20/21h UTC conforme horário de verão dos EUA; o espelho MT5 ejtraderLabs bate com deslocamento UTC+2/+3, diferença mediana 0,9 pip). Faltam 6 dias úteis no fim de mês (31/03, 31/05, 31/08/2021; 31/01, 31/03, 31/05/2022) e os feriados de 25/12 e 01/01 têm pouca liquidez. Spread mediano 0,8–1,0 pip em 2009–2012 e 0,25–0,35 pip de 2013 em diante."
+    },
+    "USDJPY": {
+      "registeredAt": "2026-10-22 (antes da coleta dos candles e de qualquer resultado em USDJPY no laboratório)",
+      "source": "Dukascopy ticks (bid/ask, UTC) publicados em github.com/FX-Data/FX-Data-USDJPY-DS, um ramo por ano (USDJPY-2007 a USDJPY-2018, commits em sourceCommits), reduzidos a M1 pelo preço médio (bid+ask)/2 e reamostrados em UTC por research/lab/data.py --fxdata USDJPY --years 2007-2018. D1 junta as horas de domingo ao candle de segunda.",
+      "costSide": {
+        "base": 4e-05,
+        "stress": 8e-05
+      },
+      "costNote": "Mesmo custo relativo do EURUSD, fixado antes da coleta: base 0,004% por lado do preço médio (≈0,4–0,48 pip por lado com o USDJPY entre 100 e 120; ≈0,8–1 pip ida e volta), cobrindo meio spread ECN + comissão + slippage em conta ECN barata; stress 0,008% por lado (≈1,6–2 pips ida e volta), perto de conta standard sem comissão. Os preços são mid, então o spread inteiro precisa caber no custo; o spread mediano da fonte é conferido em dataQuality.",
+      "periods": {
+        "warmup": [
+          "2007-04-01",
+          "2008-01-01"
+        ],
+        "development": [
+          "2008-01-01",
+          "2014-01-01"
+        ],
+        "validation": [
+          "2014-01-01",
+          "2016-07-01"
+        ],
+        "reserve": [
+          "2016-07-01",
+          "2018-06-16"
+        ]
+      },
+      "chronologyCaveat": "Até aqui o laboratório não rodou nada em USDJPY; registry.json deve ser consultado para triagens antigas do projeto em FX. O período 2007–2018 se sobrepõe ao do EURUSD (2009–2022), então os dois testes cruzados não são independentes no tempo, só no ativo. Nenhuma estratégia é calibrada no USDJPY pelo teste cruzado.",
+      "note": "Escolha do ativo: preferência por classe diferente do câmbio, mas nenhuma fonte acessível (só github.com, PyPI e npm) cumpre fonte conhecida + UTC + ~10 anos contínuos: XAUUSD no FX-Data vai só de 2011 a jun/2018 (~7,5 anos), XAGUSD de 2010 a 2018; o FX-Data não tem índices; philipperemy/FX-1-Minute-Data (HistData, com SPX/NSX/XAU) não guarda mais os dados no git (estão no Google Drive, bloqueado); os repositórios de XAUUSD/NDX achados (getdata-finance, alexgabrielbarbu90-hue) cobrem 1–2 anos ou são amostras; ETH/outras criptos seguem sem fonte longa (ver nota do EURUSD). Entre os pares do FX-Data todos terminam em 2018; USDJPY (abr/2007–jun/2018, ~11 anos) foi preferido a GBPUSD por ser menos correlacionado com o EURUSD já testado (iene é moeda de refúgio, dólar na base, regime do BoJ). Desenvolvimento 2008–2013 tem crise de 2008, iene forte até 2012 (mínima ~76) e o início da Abenomics em 2013 (alta forte); validação 2014–jun/2016 tem a alta até ~125 em 2015 e a volta; reserva jul/2016–jun/2018 tem a alta pós-eleição dos EUA e lateralidade 105–115.",
+      "periodsNote": "Cobertura da fonte vista só pela lista de arquivos (sem preços) antes do registro: o ramo USDJPY-2007 começa em 29/03/2007 (março tem 3 arquivos horários, por isso o aquecimento começa em 01/04/2007) e o ramo USDJPY-2018 termina em 17/06/2018 22h UTC; a reserva termina em 16/06/2018 (sábado), última semana completa.",
+      "sourceCommits": {
+        "2007": "b55c9f94922f1f728a3c0d4f09b42221f042c4e5",
+        "2008": "665523257e9f44f1cdfae57ed36bc0e49fbfa5c0",
+        "2009": "6c0027f83ffd6ddd21708f1ad666c49f777d41e4",
+        "2010": "43bf181e08c052bc961b345298bacc9f0753253b",
+        "2011": "d755e1ca8f1cc5dfa830a1fc1563106bd38a4ab2",
+        "2012": "ee7898269910c5929558c8160b39d9161f586481",
+        "2013": "5e0dd8b16b91df63d953e7cdd880202d9f389ba6",
+        "2014": "ca0686d61e6f1f9e6c025fafd03d1bee600518ff",
+        "2015": "7f97f1693e59c35d09842c282e055d2953b1926a",
+        "2016": "4ab0b95f9541d3dc3c45ad400c54b5b85f764167",
+        "2017": "425a00f7c9c8b8194b72832516d5e4e4e9230d6a",
+        "2018": "7ff5085c1f652df1551df5379429fd2f09314eb5"
+      },
+      "dataQuality": "Checado antes do teste cruzado: 30/03/2007 a 17/06/2018, 3,99 milhões de minutos; commits dos 12 ramos iguais aos de sourceCommits. O FX-Data guarda o USDJPY dividido por 100 (1,0722 = 107,22); data.py volta os candles à escala em ienes. Sem high<low nem open/close fora da faixa; faixa 75,58–125,86, batendo com os marcos conhecidos (mínima histórica de 31/10/2011 antes da intervenção do BoJ, máxima de 05/06/2015 ~125,8, mínima do Brexit 24/06/2016 ~99,0; maiores saltos de 1 minuto no Brexit, na intervenção de 31/10/2011, na intervenção do G7 de 18/03/2011 e no Lehman). Fuso UTC: abre domingo 21h (horário de verão dos EUA) ou 22h UTC e fecha sexta 20h/21h UTC. Faltam 4 dias úteis seguidos em 15–18/06/2009 (desenvolvimento) e os feriados 25/12 e 01/01 (alguns sem dados, outros com pouca liquidez). Spread mediano: 1,36 pip (2007), 1,1–1,3 (2008–2011), 0,70 (2012), 0,54 (2013) e 0,29–0,38 pip de 2014 em diante. Atenção ao custo: em 2007–2012 o meio spread (0,5–0,7 pip) fica acima do custo base registrado (~0,4–0,47 pip por lado), então o custo base subestima o desenvolvimento desses anos; o stress (~0,8–0,94 pip por lado) cobre o spread inteiro. Custo mantido como registrado antes da coleta; validação e reserva (2014+) têm spread 0,3–0,4 pip, abaixo do custo base."
     }
   },
   "calibration": {
@@ -99,5 +144,6 @@
   "risk": "Resultados em R (risco do stop). Retorno em % assume 0,5% de risco fixo por operação, sem juros compostos.",
   "amendedAt": "2026-10-21 (após a rodada 1, antes da rodada 2)",
   "amendment": "lab-v2 vale da rodada 2 em diante; a rodada 1 fica registrada como lab-v1. Mudanças: (1) em todas as fases o resultado precisa continuar positivo sem a maior operação; (2) drawdown em % com 0,5% de risco por operação <= 10% (perda total da conta) em todas as fases; (3) Deflated Sharpe calculado só entre combinações do mesmo tempo gráfico; (4) curvas de capital salvas para o painel.",
-  "amendment3": "lab-v3 vale da rodada 5 em diante (registrado em 21/10/2026, depois da rodada 4 e antes da 5). Motivo: em 4 rodadas, quase toda estratégia escolhida no desenvolvimento era 'só compra' e ganhava apenas por estar comprada na alta do BTC de 2016–2020. Mudança: no desenvolvimento, a combinação precisa ter resultado positivo em pelo menos 4 dos 5 anos (2016, 2017, 2018, 2019, 2020), o que inclui o ano de baixa de 2018. Candidatas passam também pelo placebo.py (entradas embaralhadas) e o resultado é reportado."
+  "amendment3": "lab-v3 vale da rodada 5 em diante (registrado em 21/10/2026, depois da rodada 4 e antes da 5). Motivo: em 4 rodadas, quase toda estratégia escolhida no desenvolvimento era 'só compra' e ganhava apenas por estar comprada na alta do BTC de 2016–2020. Mudança: no desenvolvimento, a combinação precisa ter resultado positivo em pelo menos 4 dos 5 anos (2016, 2017, 2018, 2019, 2020), o que inclui o ano de baixa de 2018. Candidatas passam também pelo placebo.py (entradas embaralhadas) e o resultado é reportado.",
+  "amendment3Fix": "22/10/2026, durante a rodada 5: a contagem de anos do lab-v3 passou a considerar só 2016–2020 (saída forçada no fim conta no último ano; ano sem saída conta como não positivo). Todas as estratégias da rodada 5 foram recalculadas; nenhum veredito mudou."
 }

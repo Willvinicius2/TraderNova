@@ -18,7 +18,7 @@ python research/lab/data.py --bitstamp <pasta do clone>   # instruções no topo
 python research/lab/calibrate.py L01_supertrend
 python research/lab/report.py --round 1
 python research/lab/data.py --fxdata EURUSD --work <pasta>   # ticks Dukascopy do FX-Data, ~2 h de rede
-python research/lab/crossasset.py --asset EURUSD          # CANDIDATAS do BTC no EURUSD, sem recalibrar
+python research/lab/crossasset.py --asset EURUSD          # CANDIDATAS do BTC no EURUSD, sem recalibrar (também USDJPY)
 ```
 
 Requer Python 3 com pandas e numpy. Dados ficam em `research/cache/lab/` (não versionado).
