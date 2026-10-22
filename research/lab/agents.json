@@ -163,5 +163,49 @@
    "TV82",
    "TV83"
   ]
+ },
+ {
+  "agente": "r7-ml",
+  "rodada": 7,
+  "foco": "TradingView: aprendizado de máquina",
+  "ids": [
+   "TV84",
+   "TV85",
+   "TV86",
+   "TV87"
+  ]
+ },
+ {
+  "agente": "r7-candle-volume",
+  "rodada": 7,
+  "foco": "TradingView: candle, volume e Renko",
+  "ids": [
+   "TV88",
+   "TV89",
+   "TV90",
+   "TV91"
+  ]
+ },
+ {
+  "agente": "r7-ciclos",
+  "rodada": 7,
+  "foco": "TradingView: ciclos, telas e perfil",
+  "ids": [
+   "TV92",
+   "TV93",
+   "TV94",
+   "TV95"
+  ]
+ },
+ {
+  "agente": "r7-diversos",
+  "rodada": 7,
+  "foco": "TradingView: diversos",
+  "ids": [
+   "TV100",
+   "TV101",
+   "TV102",
+   "TV103"
+  ]
  }
 ]

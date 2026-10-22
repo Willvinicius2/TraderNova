@@ -138,7 +138,7 @@ Também são open-source e não repintam, mas a regra precisa ser escolhida ou m
 | TV82 | Absolute Strength Index / Zeiierman (a ASH, Absolute Strength Histogram, é a variante NNFX) | indicador | Retorno do período normalizado entre os percentis de vencedores e perdedores. Compra quando o ASI cruza acima da linha de sinal. | não | DE `absolute-strength-index.ts` | — |
 | TV83 | Trendilo / dudeowns | indicador | ALMA da variação % comparada com a banda de RMS. Comprado quando fica acima de +banda, vendido abaixo de −banda. | não | TV | — |
 
-### Bloco 13: aprendizado de máquina open-source (TV84–TV87)
+### Bloco 13: aprendizado de máquina open-source (TV84–TV87) · testado na rodada 7
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV84 | Machine Learning: kNN-based Strategy / capissimo | estratégia | Duas variáveis (RSI, CCI ou ROC curto e longo) e rótulo sign(Δfech). Os k vizinhos votam: soma > 0 compra, < 0 vende, com filtro ATR(10) > ATR(40). | não, se o treino for walk-forward | DE `ml-knn-strategy.ts` | parente do TV32 Lorentzian (em teste). Se o TV32 reprovar, rebaixar este item. |
@@ -146,7 +146,7 @@ Também são open-source e não repintam, mas a regra precisa ser escolhida ou m
 | TV86 | Machine Learning: Logistic Regression / capissimo | estratégia | Regressão logística do preço contra uma série sintética em janela deslizante. Compra quando a previsão vira para cima. | não | TV | parente do TV32 |
 | TV87 | Machine Learning: kNN Trend Predictor / tkarolak | indicador | Curva com média dos vizinhos. Comprado quando a curva fica abaixo do preço. | **sim se look-ahead=on**; usar off | DE `machine-learning-knn-trend-predictor.ts` | baixa dentro do bloco |
 
-### Bloco 14: candle, volume e Renko (TV88–TV91)
+### Bloco 14: candle, volume e Renko (TV88–TV91) · testado na rodada 7
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV88 | Full Candle [Alorse] | estratégia | Vela "cheia" (sombras ≤ x% do range) de alta acima da EMA compra; o espelho vende. Alvo curto. | não | AL `strategies/other/Full Candle.pine` | parente do L16 (outro padrão) |
@@ -154,7 +154,7 @@ Também são open-source e não repintam, mas a regra precisa ser escolhida ou m
 | TV90 | Open Close Cross Strategy R5.1 / JustUncleL | estratégia | Média (SMMA/DEMA etc.) do fechamento contra a média da abertura. Compra quando a média do fechamento cruza acima da média da abertura. | não (versão NoRepaint) | DE `open-close-cross.ts` | parente do TV39 (cor de vela suavizada) e do T1. Conferir. |
 | TV91 | Renko ATR overlay (troca de tijolo) / LonesomeTheBlue | indicador | Tijolos Renko de tamanho ATR desenhados sobre candles normais. Compra quando aparece o 1º (ou 2º) tijolo de alta depois de tijolos de baixa. | não sobre candles normais (o gráfico Renko nativo do TV repinta) | DE `renko-candles-overlay.ts`, `renko-flip-alert.ts` | parente do L01 (reversão por distância fixa) |
 
-### Bloco 15: ciclos, telas múltiplas e perfil (TV92–TV95)
+### Bloco 15: ciclos, telas múltiplas e perfil (TV92–TV95) · testado na rodada 7
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV92 | Ehlers Sinewave (Even Better Sinewave) / comunidade e LazyBear | indicador | Compra quando a Sine cruza acima da LeadSine (modo ciclo) e só opera quando o ciclo é válido. | não | TV | — |
@@ -175,7 +175,7 @@ Pouca amostra, regra pouco definida, filtro sem sinal próprio ou código só no
 | TV98 | Bitcoin Pi Cycle Top & Bottom / Commandoum (Philip Swift) | indicador | SMA111 cruza acima de 2×SMA350 e marca topo. A versão z-score também marca fundo. | não | DE `bitcoin-pi-cycle-top-bottom-indicator-z-score.ts` | só 3 ou 4 sinais na história, sem poder estatístico |
 | TV99 | Weis Wave Volume / LazyBear | indicador | Volume somado por onda. Compra quando a onda de alta tem volume maior que a onda de alta anterior e o preço rompe a máxima da onda. A regra foi montada; o autor não a fecha. | não | DE `weis-wave-volume-lazybear.ts` | — |
 
-### Bloco 17: diversos (TV100–TV103)
+### Bloco 17: diversos (TV100–TV103) · testado na rodada 7
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV100 | Better Volume Indicator / LazyBear | indicador | Barra de clímax (volume × range máximo de 20) contra a tendência marca reversão. Regra montada. | não | DE `better-volume.ts` | — |

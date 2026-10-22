@@ -196,7 +196,8 @@ def main():
             _, ms = evaluate(mod, df, best["params"], cs, s, e)
             curves[stage] = engine.curve(trb)
             ok = (mb["trades"] >= min_trades(tf, stage) and mb["netR"] > 0 and (mb["pf"] or 0) >= pf_min and ms["netR"] > 0
-                  and mb["semMaiorR"] > 0 and mb["maxDDPct"] <= MAX_DD_PCT)
+                  and mb["semMaiorR"] > 0 and mb["maxDDPct"] <= MAX_DD_PCT
+                  and (PROTOCOL["id"] < "lab-v4" or ms["maxDDPct"] <= MAX_DD_PCT))
             sel[stage] = {"base": mb, "stress": ms, "passed": bool(ok)}
             if not ok:
                 verdict = fail

@@ -13,7 +13,7 @@ Quando 1 e 2 acontecerem, avisar o Will na hora.
 ## Dados (agente de dados, toda rodada até resolver)
 - [ ] ETHUSD horário/minuto em repositório público do GitHub (a rede só deixa clonar via git do github.com)
 - [ ] XAUUSD horário (2010+)
-- [ ] EURUSD / USDJPY horário (2010+), por exemplo FX-Data/*-DS (ticks por hora; reamostrar só os anos necessários)
+- [x] EURUSD (2009–2022) e USDJPY (2007–2018) via FX-Data (rodadas 4 e 5)
 - [ ] NAS100 / NDX diário ou horário
 
 ## Estratégias (fontes públicas; uma por item)

@@ -298,5 +298,35 @@
    "buyHoldPct": 401.8
   },
   "fragil": false
+ },
+ "TV85_ai_trend_nav": {
+  "development": {
+   "trades": 68,
+   "netR": 194.41,
+   "semMaiorR": 144.04,
+   "maiorR": 50.36,
+   "retPct05": 97.2,
+   "ddPct05": 3.34,
+   "buyHoldPct": 6628.6
+  },
+  "validation": {
+   "trades": 29,
+   "netR": 9.68,
+   "semMaiorR": 0.12,
+   "maiorR": 9.56,
+   "retPct05": 4.84,
+   "ddPct05": 4.37,
+   "buyHoldPct": -43.0
+  },
+  "reserve": {
+   "trades": 70,
+   "netR": 39.35,
+   "semMaiorR": 18.68,
+   "maiorR": 20.67,
+   "retPct05": 19.67,
+   "ddPct05": 4.46,
+   "buyHoldPct": 401.8
+  },
+  "fragil": false
  }
 }
