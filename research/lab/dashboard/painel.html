@@ -51,6 +51,14 @@
   .lb-search { font: inherit; font-size: var(--cds-font-size-caption); padding: 6px 10px; border-radius: var(--cds-radius); border: 1px solid var(--color-border-line); background: var(--color-panel); color: var(--color-fg); width: min(100%, 20rem); margin-bottom: var(--cds-gap-sm); }
   [data-dash-source-state=empty] { color: transparent; }
   [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+  .lb-funil { display: flex; flex-direction: column; gap: 6px; max-width: 46rem; margin-bottom: var(--cds-gap-md); }
+  .lb-funil-row { display: grid; grid-template-columns: minmax(0, 15rem) 1fr 4.5rem; gap: var(--cds-gap-sm); align-items: center; font-size: var(--cds-font-size-caption); }
+  .lb-funil-row span { color: var(--color-fg-muted); overflow-wrap: anywhere; }
+  .lb-funil-row b { font-variant-numeric: tabular-nums; text-align: right; font-weight: var(--cds-font-weight-medium); }
+  .lb-funil-row .lb-bar { height: 10px; border-radius: 5px; }
+  .lb-funil-row.ok .lb-bar > i { background: var(--color-ok); }
+  .lb-funil-row.fora span, .lb-funil-row.fora b { opacity: .7; }
+  @media (max-width: 30rem) { .lb-funil-row { grid-template-columns: 1fr 3.5rem; } .lb-funil-row .lb-bar { grid-column: 1 / -1; grid-row: 2; } }
 </style>
 
 <div class="lb">
@@ -64,6 +72,23 @@
     <div class="lb-kpi"><span>Candidatas (passaram no histórico)</span><b class="ok dash-skeleton" data-source="resumo" data-field="candidatas" data-row="0">—</b></div>
     <div class="lb-kpi"><span>Reprovadas</span><b class="dash-skeleton" data-source="resumo" data-field="reprovadas" data-row="0">—</b></div>
     <div class="lb-kpi"><span>Agentes rodando agora</span><b class="dash-skeleton" data-source="resumo" data-field="rodando" data-row="0">—</b></div>
+  </section>
+
+  <section id="triagem">
+    <h2>Triagem em massa: todos os scripts do TradingView</h2>
+    <p class="lb-note">Os ~1.700 scripts da biblioteca (traduzidos do Pine) rodam no BTCUSD em H4 e D1 com os parâmetros padrão do autor, sem calibrar nada, comprando e vendendo, com stop de 2×ATR. Quem repinta (usa dado futuro) fica fora. Passar aqui ainda não aprova: a candidata vai para revisão no laboratório completo.</p>
+    <div class="lb-funil" data-source="funil" role="list" aria-label="Funil da triagem"></div>
+    <input class="lb-search" id="lb-busca-tri" type="search" placeholder="Buscar script da triagem" aria-label="Buscar script da triagem">
+    <div class="lb-tablebox">
+      <table class="lb-table" data-source="triagem" data-row-key="chave">
+        <thead><tr>
+          <th>Script</th><th>Tempo</th><th>Regra de sinal</th><th>Veredito</th>
+          <th class="num">Dev R</th><th class="num">Dev PF</th><th class="num">Val R</th><th class="num">Val PF</th>
+          <th class="num">Reserva R</th><th class="num">Reserva PF</th><th class="num">DSR</th><th>EURUSD / USDJPY</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </section>
 
   <section id="agentes">
@@ -279,6 +304,48 @@
 </script>
 
 <script>
+  window.lbDrawTriagem = () => {
+    const F = dash.data('funil'), T = dash.data('triagem');
+    const fb = document.querySelector('.lb-funil');
+    fb.replaceChildren();
+    if (F.status === 'ok' && F.data.length) {
+      const rows = [...F.data].sort((a, b) => a.ordem - b.ordem);
+      const max = Math.max(1, ...rows.map((r) => r.regras));
+      rows.forEach((r, k) => {
+        const row = document.createElement('div');
+        row.className = 'lb-funil-row' + (k >= 4 && k <= 6 ? ' ok' : '') + (k >= 7 ? ' fora' : '');
+        row.setAttribute('role', 'listitem');
+        const l = document.createElement('span'); l.textContent = r.etapa;
+        const bar = document.createElement('div'); bar.className = 'lb-bar';
+        const i = document.createElement('i'); i.style.width = `${Math.max(r.regras ? 1 : 0, (100 * r.regras) / max)}%`; bar.append(i);
+        const v = document.createElement('b'); v.textContent = r.regras.toLocaleString('pt-BR');
+        row.append(l, bar, v); fb.append(row);
+      });
+    }
+    const tb = document.querySelector('table[data-source="triagem"] tbody');
+    tb.replaceChildren();
+    if (T.status !== 'ok') return;
+    const q = (document.getElementById('lb-busca-tri').value || '').toLowerCase();
+    const ord = { 'Candidata': 0, 'Reprovada na reserva': 1, 'Reprovada na validação': 2 };
+    const rows = T.data.filter((r) => !q || `${r.nome} ${r.id} ${r.regra}`.toLowerCase().includes(q))
+      .sort((a, b) => ord[a.veredito] - ord[b.veredito] || (b.dev_netR || 0) - (a.dev_netR || 0)).slice(0, 300);
+    const td = (txt, cls) => { const c = document.createElement('td'); if (cls) c.className = cls; c.textContent = txt; return c; };
+    const num = (v, f) => (v == null ? td('–', 'num') : td(f(v), 'num' + (typeof v === 'number' && f === window.lbFmtR ? (v > 0 ? ' pos' : v < 0 ? ' neg' : '') : '')));
+    for (const r of rows) {
+      const tr = document.createElement('tr');
+      const pill = document.createElement('span');
+      pill.className = 'lb-pill' + (r.veredito === 'Candidata' ? ' cand' : '');
+      pill.textContent = r.veredito;
+      const vc = document.createElement('td'); vc.append(pill);
+      tr.append(td(r.nome), td(r.tf), td(r.regra), vc,
+        num(r.dev_netR, window.lbFmtR), num(r.dev_pf, window.lbFmtPF), num(r.val_netR, window.lbFmtR), num(r.val_pf, window.lbFmtPF),
+        num(r.res_netR, window.lbFmtR), num(r.res_pf, window.lbFmtPF), num(r.dsr, (x) => x.toFixed(2)), td(r.cruzado || '–'));
+      tb.append(tr);
+    }
+  };
+  document.getElementById('lb-busca-tri').addEventListener('input', () => window.lbDrawTriagem());
+</script>
+<script>
   dash.onData(() => {
     const A = dash.data('agentes');
     const box = document.querySelector('.lb-agents');
@@ -312,5 +379,6 @@
     }
     window.lbDrawGrid();
     window.lbDrawTable();
+    window.lbDrawTriagem();
   });
 </script>

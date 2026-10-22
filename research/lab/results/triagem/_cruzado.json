@@ -1,0 +1,10520 @@
+[
+ {
+  "id": "ai-trend-navigator",
+  "nome": "AI Trend Navigator [K-Neighbor]",
+  "tf": "H4",
+  "regra": "Knn Crossover Average Knn / Knn Crossunder Average Knn",
+  "placeboBTC": {
+   "development": 48.34,
+   "validation": -0.44,
+   "reserve": 16.23
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 26.34,
+     "pf": 1.269,
+     "trades": 147,
+     "falhas": [
+      "DD>10%",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -20.81,
+     "pf": 0.72,
+     "trades": 102,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -17.3,
+     "pf": 0.756,
+     "trades": 103,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 1.97,
+     "pf": 1.017,
+     "trades": 159,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 17.07,
+     "pf": 1.327,
+     "trades": 85,
+     "falhas": [
+      "sem a maior<=0",
+      "DD>10%",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -1.61,
+     "pf": 0.951,
+     "trades": 45,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "alpha-trading-signal-up-side-down",
+  "nome": "Alpha Trading Signal _ Up side Down",
+  "tf": "H4",
+  "regra": "SuperTrend Buy / SuperTrend Sell",
+  "placeboBTC": {
+   "development": 63.09,
+   "validation": 1.87,
+   "reserve": 12.29
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -2.67,
+     "pf": 0.984,
+     "trades": 266,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -13.63,
+     "pf": 0.844,
+     "trades": 135,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 1.28,
+     "pf": 1.014,
+     "trades": 151,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -40.76,
+     "pf": 0.772,
+     "trades": 267,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.46,
+     "pf": 0.98,
+     "trades": 111,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 1.84,
+     "pf": 1.042,
+     "trades": 77,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "change-point-detection",
+  "nome": "Change-Point Detection (CUSUM)",
+  "tf": "H4",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 59.5,
+   "validation": 3.15,
+   "reserve": 16.11
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 43.87,
+     "pf": 2.008,
+     "trades": 62,
+     "falhas": []
+    },
+    "validation": {
+     "netR": 10.61,
+     "pf": 1.496,
+     "trades": 33,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -11.15,
+     "pf": 0.735,
+     "trades": 49,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -16.74,
+     "pf": 0.764,
+     "trades": 84,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": 29.51,
+     "pf": 2.39,
+     "trades": 31,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 4.84,
+     "pf": 1.336,
+     "trades": 22,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "ema-vwma-atr-smoothed-buysell-tom-zeng-202509",
+  "nome": "EMA + VWMA + ATR Smoothed BuySell (merged) - TOM ZENG 202509",
+  "tf": "H4",
+  "regra": "Buy Signal / Sell Signal",
+  "placeboBTC": {
+   "development": 30.33,
+   "validation": -3.5,
+   "reserve": 15.73
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 8.88,
+     "pf": 1.137,
+     "trades": 84,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -11.71,
+     "pf": 0.723,
+     "trades": 49,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -7.46,
+     "pf": 0.808,
+     "trades": 51,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -1.02,
+     "pf": 0.984,
+     "trades": 79,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 33.35,
+     "pf": 2.41,
+     "trades": 33,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 13.27,
+     "pf": 1.764,
+     "trades": 29,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "gaussian-filter-trend",
+  "nome": "Gaussian Filter Trend",
+  "tf": "H4",
+  "regra": "Bullish Trend Signal / Bearish Trend Signal",
+  "placeboBTC": {
+   "development": 46.56,
+   "validation": -7.97,
+   "reserve": 18.78
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 26.22,
+     "pf": 1.305,
+     "trades": 135,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -16.34,
+     "pf": 0.706,
+     "trades": 77,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -24.19,
+     "pf": 0.641,
+     "trades": 89,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -32.37,
+     "pf": 0.664,
+     "trades": 127,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 41.71,
+     "pf": 2.015,
+     "trades": 61,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -4.3,
+     "pf": 0.86,
+     "trades": 41,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "ichimoku-kink-hy",
+  "nome": "Ichimoku Kinkō hyō 目均衡表",
+  "tf": "H4",
+  "regra": "Signal: Bullish Reversal ▲ / Signal: Bearish Reversal ▼",
+  "placeboBTC": {
+   "development": 46.76,
+   "validation": -2.62,
+   "reserve": 9.66
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -11.53,
+     "pf": 0.807,
+     "trades": 80,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 11.08,
+     "pf": 1.372,
+     "trades": 41,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 0.5,
+     "pf": 1.012,
+     "trades": 57,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -13.03,
+     "pf": 0.796,
+     "trades": 85,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": 5.5,
+     "pf": 1.199,
+     "trades": 36,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 10.18,
+     "pf": 1.688,
+     "trades": 22,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "mechart-moving-average-and-above-v1-1",
+  "nome": "MechArt Moving Average and % Above V1.1",
+  "tf": "H4",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 70.25,
+   "validation": -10.92,
+   "reserve": -2.19
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 23.65,
+     "pf": 1.204,
+     "trades": 293,
+     "falhas": [
+      "DD>10%",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -26.95,
+     "pf": 0.706,
+     "trades": 214,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -6.97,
+     "pf": 0.904,
+     "trades": 187,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 1.11,
+     "pf": 1.008,
+     "trades": 354,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 1.39,
+     "pf": 1.022,
+     "trades": 151,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -0.15,
+     "pf": 0.996,
+     "trades": 95,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "muses-afl-script",
+  "nome": "Muses afl script",
+  "tf": "H4",
+  "regra": "Buy Alert / Sell Alert",
+  "placeboBTC": {
+   "development": 21.8,
+   "validation": -0.75,
+   "reserve": 9.99
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -8.37,
+     "pf": 0.905,
+     "trades": 122,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -19.56,
+     "pf": 0.623,
+     "trades": 65,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -11.85,
+     "pf": 0.79,
+     "trades": 75,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -38.28,
+     "pf": 0.583,
+     "trades": 121,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": -11.36,
+     "pf": 0.713,
+     "trades": 55,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -2.51,
+     "pf": 0.915,
+     "trades": 39,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "philakone-ema-swing",
+  "nome": "Philakone 55 EMA Swing Trading",
+  "tf": "H4",
+  "regra": "Buy Condition / Sell Condition",
+  "placeboBTC": {
+   "development": 51.91,
+   "validation": 3.69,
+   "reserve": 6.19
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -10.17,
+     "pf": 0.913,
+     "trades": 158,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -24.64,
+     "pf": 0.703,
+     "trades": 108,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -30.93,
+     "pf": 0.619,
+     "trades": 108,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -25.48,
+     "pf": 0.776,
+     "trades": 157,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": 13.71,
+     "pf": 1.233,
+     "trades": 84,
+     "falhas": [
+      "sem a maior<=0",
+      "DD>10%",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -5.36,
+     "pf": 0.856,
+     "trades": 49,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "pivot-breakout-high-low-signals",
+  "nome": "Pivot Breakout High&Low Signals",
+  "tf": "H4",
+  "regra": "Buy Alert / Sell Alert",
+  "placeboBTC": {
+   "development": 85.91,
+   "validation": -2.5,
+   "reserve": 43.09
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 33.65,
+     "pf": 1.353,
+     "trades": 139,
+     "falhas": [
+      "DD>10%"
+     ]
+    },
+    "validation": {
+     "netR": -16.12,
+     "pf": 0.762,
+     "trades": 83,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -10.5,
+     "pf": 0.847,
+     "trades": 99,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 26.44,
+     "pf": 1.264,
+     "trades": 141,
+     "falhas": [
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.46,
+     "pf": 1.045,
+     "trades": 70,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 10.85,
+     "pf": 1.451,
+     "trades": 38,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "pullback-scalp-trade-v2",
+  "nome": "Pullback Scalp Trade V2",
+  "tf": "H4",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 68.14,
+   "validation": 4.45,
+   "reserve": 17.61
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 16.75,
+     "pf": 1.158,
+     "trades": 147,
+     "falhas": [
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -21.12,
+     "pf": 0.689,
+     "trades": 89,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 5.62,
+     "pf": 1.095,
+     "trades": 85,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "DD>10%",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 42.12,
+     "pf": 1.487,
+     "trades": 130,
+     "falhas": [
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 9.95,
+     "pf": 1.221,
+     "trades": 64,
+     "falhas": [
+      "sem a maior<=0",
+      "DD>10%",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -3.94,
+     "pf": 0.868,
+     "trades": 42,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "relative-strength-heatmap",
+  "nome": "Relative Strength Heatmap",
+  "tf": "H4",
+  "regra": "RSI Heatmap Strong Bull / RSI Heatmap Strong Bear",
+  "placeboBTC": {
+   "development": 96.66,
+   "validation": -5.88,
+   "reserve": 19.19
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 40.78,
+     "pf": 1.743,
+     "trades": 64,
+     "falhas": [
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.77,
+     "pf": 1.098,
+     "trades": 34,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -20.53,
+     "pf": 0.469,
+     "trades": 44,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -4.77,
+     "pf": 0.929,
+     "trades": 73,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 17.23,
+     "pf": 1.816,
+     "trades": 26,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 3.02,
+     "pf": 1.227,
+     "trades": 20,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "rsi-trend-navigator",
+  "nome": "RSI Trend Navigator",
+  "tf": "H4",
+  "regra": "RSI Trend Bullish / RSI Trend Bearish",
+  "placeboBTC": {
+   "development": 36.87,
+   "validation": -1.67,
+   "reserve": -4.11
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 3.52,
+     "pf": 1.051,
+     "trades": 91,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -25.09,
+     "pf": 0.48,
+     "trades": 60,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -28.45,
+     "pf": 0.479,
+     "trades": 65,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -4.35,
+     "pf": 0.942,
+     "trades": 89,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.79,
+     "pf": 1.083,
+     "trades": 41,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -10.32,
+     "pf": 0.556,
+     "trades": 31,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "smart-money-breakouts",
+  "nome": "Smart Money Breakouts",
+  "tf": "H4",
+  "regra": "BUY / Sell",
+  "placeboBTC": {
+   "development": 88.59,
+   "validation": 1.61,
+   "reserve": 26.45
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 0.54,
+     "pf": 1.008,
+     "trades": 84,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.75,
+     "pf": 1.077,
+     "trades": 44,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -52.5,
+     "pf": 0.147,
+     "trades": 67,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -18.46,
+     "pf": 0.752,
+     "trades": 89,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": 21.12,
+     "pf": 1.717,
+     "trades": 39,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -5.92,
+     "pf": 0.646,
+     "trades": 23,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "supersmoother-ma-oscillator",
+  "nome": "SuperSmoother MA Oscillator",
+  "tf": "H4",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 30.82,
+   "validation": -5.03,
+   "reserve": 18.45
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 22.76,
+     "pf": 1.232,
+     "trades": 143,
+     "falhas": [
+      "DD>10%",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.53,
+     "pf": 1.01,
+     "trades": 73,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 8.2,
+     "pf": 1.124,
+     "trades": 94,
+     "falhas": [
+      "sem a maior<=0",
+      "DD>10%",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 50.09,
+     "pf": 1.628,
+     "trades": 126,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 15.52,
+     "pf": 1.341,
+     "trades": 69,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 4.57,
+     "pf": 1.143,
+     "trades": 46,
+     "falhas": [
+      "sem a maior<=0",
+      "DD>10%",
+      "DD stress>10%"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "supertrend-channels",
+  "nome": "SuperTrend Channels",
+  "tf": "H4",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 63.09,
+   "validation": 1.87,
+   "reserve": 12.29
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -2.67,
+     "pf": 0.984,
+     "trades": 266,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -13.63,
+     "pf": 0.844,
+     "trades": 135,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 1.28,
+     "pf": 1.014,
+     "trades": 151,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -40.76,
+     "pf": 0.772,
+     "trades": 267,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.46,
+     "pf": 0.98,
+     "trades": 111,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 1.84,
+     "pf": 1.042,
+     "trades": 77,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "supertrend-relative-volume-kernel",
+  "nome": "SuperTrend + Relative Volume (Kernel Optimized)",
+  "tf": "H4",
+  "regra": "Bullish Trend / Bearish Trend",
+  "placeboBTC": {
+   "development": 63.09,
+   "validation": 1.87,
+   "reserve": 12.29
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -2.67,
+     "pf": 0.984,
+     "trades": 266,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -13.63,
+     "pf": 0.844,
+     "trades": 135,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 1.28,
+     "pf": 1.014,
+     "trades": 151,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -40.76,
+     "pf": 0.772,
+     "trades": 267,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.46,
+     "pf": 0.98,
+     "trades": 111,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 1.84,
+     "pf": 1.042,
+     "trades": 77,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "supertrend",
+  "nome": "Supertrend",
+  "tf": "H4",
+  "regra": "Downtrend to Uptrend / Uptrend to Downtrend",
+  "placeboBTC": {
+   "development": 63.09,
+   "validation": 1.87,
+   "reserve": 12.29
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -2.67,
+     "pf": 0.984,
+     "trades": 266,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -13.63,
+     "pf": 0.844,
+     "trades": 135,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 1.28,
+     "pf": 1.014,
+     "trades": 151,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -40.76,
+     "pf": 0.772,
+     "trades": 267,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.46,
+     "pf": 0.98,
+     "trades": 111,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 1.84,
+     "pf": 1.042,
+     "trades": 77,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "trend-scalper",
+  "nome": "Trend Scalper",
+  "tf": "H4",
+  "regra": "Long Alert / Short Alert",
+  "placeboBTC": {
+   "development": 15.43,
+   "validation": -13.41,
+   "reserve": -64.22
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 34.23,
+     "pf": 1.32,
+     "trades": 146,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -21.11,
+     "pf": 0.717,
+     "trades": 91,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -2.52,
+     "pf": 0.967,
+     "trades": 100,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 24.63,
+     "pf": 1.252,
+     "trades": 138,
+     "falhas": [
+      "DD>10%"
+     ]
+    },
+    "validation": {
+     "netR": 15.83,
+     "pf": 1.306,
+     "trades": 68,
+     "falhas": [
+      "sem a maior<=0",
+      "DD>10%",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 14.0,
+     "pf": 1.528,
+     "trades": 40,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volume-based-moving-average",
+  "nome": "Volume-Based Moving Average",
+  "tf": "H4",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 48.41,
+   "validation": -3.37,
+   "reserve": 14.45
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -20.51,
+     "pf": 0.942,
+     "trades": 1006,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -31.33,
+     "pf": 0.844,
+     "trades": 628,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -0.14,
+     "pf": 0.999,
+     "trades": 617,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 9.83,
+     "pf": 1.035,
+     "trades": 907,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 31.57,
+     "pf": 1.259,
+     "trades": 384,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 10.14,
+     "pf": 1.096,
+     "trades": 364,
+     "falhas": [
+      "PF<1.1"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volume-supertrend-ai",
+  "nome": "Volume SuperTrend AI (Expo)",
+  "tf": "H4",
+  "regra": "1 Bullish Trend Start / 2 Bearish Trend Start",
+  "placeboBTC": {
+   "development": 55.0,
+   "validation": -4.56,
+   "reserve": 17.37
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 41.78,
+     "pf": 1.478,
+     "trades": 129,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -18.59,
+     "pf": 0.706,
+     "trades": 79,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -7.66,
+     "pf": 0.874,
+     "trades": 85,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 18.14,
+     "pf": 1.193,
+     "trades": 128,
+     "falhas": [
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 27.56,
+     "pf": 1.569,
+     "trades": 71,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -0.53,
+     "pf": 0.982,
+     "trades": 39,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "acceleration-bands-htf",
+  "nome": "Acceleration Bands HTF",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 21.22,
+   "validation": 0.25,
+   "reserve": 7.7
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 13.48,
+     "pf": 1.628,
+     "trades": 52,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 6.49,
+     "pf": 1.779,
+     "trades": 26,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 8.29,
+     "pf": 1.734,
+     "trades": 32,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 17.72,
+     "pf": 2.046,
+     "trades": 51,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 19.94,
+     "pf": 3.242,
+     "trades": 25,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -2.05,
+     "pf": 0.738,
+     "trades": 23,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "adaptive-entropy-trend",
+  "nome": "Adaptive Entropy Trend",
+  "tf": "D1",
+  "regra": "Bullish Trend Signal / Bearish Trend Signal",
+  "placeboBTC": {
+   "development": 18.98,
+   "validation": 0.74,
+   "reserve": 5.32
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 2.18,
+     "pf": 1.079,
+     "trades": 41,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -4.48,
+     "pf": 0.583,
+     "trades": 15,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.04,
+     "pf": 1.002,
+     "trades": 24,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 17.97,
+     "pf": 1.72,
+     "trades": 38,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.01,
+     "pf": 1.001,
+     "trades": 15,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -8.13,
+     "pf": 0.327,
+     "trades": 17,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "adaptive-friction-filter",
+  "nome": "Adaptive Friction Filter (AFF)",
+  "tf": "D1",
+  "regra": "Bullish Trend Signal / Bearish Trend Signal",
+  "placeboBTC": {
+   "development": 7.49,
+   "validation": -0.72,
+   "reserve": 4.17
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 8.32,
+     "pf": 1.176,
+     "trades": 135,
+     "falhas": [
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -15.97,
+     "pf": 0.544,
+     "trades": 80,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -9.13,
+     "pf": 0.755,
+     "trades": 93,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 3.66,
+     "pf": 1.076,
+     "trades": 137,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 7.69,
+     "pf": 1.368,
+     "trades": 59,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -5.21,
+     "pf": 0.697,
+     "trades": 43,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "adaptive-hull-ma",
+  "nome": "72s: Adaptive Hull Moving Average+",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 49.52,
+   "validation": 2.69,
+   "reserve": 9.57
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 24.24,
+     "pf": 1.714,
+     "trades": 71,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.23,
+     "pf": 0.988,
+     "trades": 39,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 5.92,
+     "pf": 1.414,
+     "trades": 30,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 12.52,
+     "pf": 1.453,
+     "trades": 53,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 18.66,
+     "pf": 2.767,
+     "trades": 29,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 7.38,
+     "pf": 2.114,
+     "trades": 17,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "adaptive-rsi-lyro-rs",
+  "nome": "Adaptive RSI | Lyro RS",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 12.6,
+   "validation": 0.97,
+   "reserve": 3.12
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -1.35,
+     "pf": 0.981,
+     "trades": 263,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -11.23,
+     "pf": 0.718,
+     "trades": 151,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.42,
+     "pf": 0.963,
+     "trades": 171,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -15.16,
+     "pf": 0.799,
+     "trades": 301,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": 10.53,
+     "pf": 1.436,
+     "trades": 109,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 1.74,
+     "pf": 1.1,
+     "trades": 78,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "adaptive-trend-flow",
+  "nome": "Adaptive Trend Flow [QuantAlgo]",
+  "tf": "D1",
+  "regra": "Adaptive Trend Flow Long / Adaptive Trend Flow Short",
+  "placeboBTC": {
+   "development": 23.64,
+   "validation": -2.29,
+   "reserve": 7.57
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 18.57,
+     "pf": 1.867,
+     "trades": 41,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 4.65,
+     "pf": 1.551,
+     "trades": 16,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -12.96,
+     "pf": 0.506,
+     "trades": 37,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 7.5,
+     "pf": 1.246,
+     "trades": 44,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": -8.42,
+     "pf": 0.461,
+     "trades": 21,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.58,
+     "pf": 0.843,
+     "trades": 14,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "adx-and-di",
+  "nome": "ADX and DI",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 18.93,
+   "validation": -0.42,
+   "reserve": 5.9
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 15.03,
+     "pf": 1.408,
+     "trades": 139,
+     "falhas": []
+    },
+    "validation": {
+     "netR": 0.16,
+     "pf": 1.008,
+     "trades": 62,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.75,
+     "pf": 0.968,
+     "trades": 87,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 4.64,
+     "pf": 1.102,
+     "trades": 129,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.21,
+     "pf": 1.108,
+     "trades": 65,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.61,
+     "pf": 1.047,
+     "trades": 35,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "adx-with-shaded-zone",
+  "nome": "ADX with Shaded Zone",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 23.07,
+   "validation": 1.58,
+   "reserve": 6.04
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 11.3,
+     "pf": 1.29,
+     "trades": 131,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.26,
+     "pf": 0.943,
+     "trades": 70,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.56,
+     "pf": 0.9,
+     "trades": 87,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 3.3,
+     "pf": 1.073,
+     "trades": 131,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 3.31,
+     "pf": 1.169,
+     "trades": 59,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 4.44,
+     "pf": 1.406,
+     "trades": 37,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "ai-source-switching-moving-average",
+  "nome": "AI Source Switching Moving Average",
+  "tf": "D1",
+  "regra": "AI Trend Flip Up / AI Trend Flip Down",
+  "placeboBTC": {
+   "development": 21.86,
+   "validation": 1.08,
+   "reserve": 4.04
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 13.61,
+     "pf": 1.535,
+     "trades": 53,
+     "falhas": []
+    },
+    "validation": {
+     "netR": -1.79,
+     "pf": 0.861,
+     "trades": 21,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -13.73,
+     "pf": 0.414,
+     "trades": 38,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 8.63,
+     "pf": 1.258,
+     "trades": 51,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": 5.94,
+     "pf": 1.521,
+     "trades": 21,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.04,
+     "pf": 0.766,
+     "trades": 18,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "ai-weighted-rsi",
+  "nome": "AI-Weighted RSI",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 16.09,
+   "validation": 1.84,
+   "reserve": 7.61
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -1.11,
+     "pf": 0.985,
+     "trades": 267,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.33,
+     "pf": 0.958,
+     "trades": 161,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 4.5,
+     "pf": 1.114,
+     "trades": 179,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 5.21,
+     "pf": 1.082,
+     "trades": 275,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "validation": {
+     "netR": 2.57,
+     "pf": 1.085,
+     "trades": 106,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 8.38,
+     "pf": 1.447,
+     "trades": 88,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "allma-trend-radar",
+  "nome": "AllMA Trend Radar",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 18.98,
+   "validation": -1.14,
+   "reserve": 2.29
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 2.2,
+     "pf": 1.06,
+     "trades": 86,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -10.81,
+     "pf": 0.601,
+     "trades": 54,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -6.97,
+     "pf": 0.747,
+     "trades": 57,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 3.38,
+     "pf": 1.096,
+     "trades": 81,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.6,
+     "pf": 1.03,
+     "trades": 37,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 5.74,
+     "pf": 1.875,
+     "trades": 23,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "awesome-accelerator-zone-oscillator",
+  "nome": "Awesome_Accelerator_Zone Oscillator",
+  "tf": "D1",
+  "regra": "linha 1 x zero",
+  "placeboBTC": {
+   "development": 23.8,
+   "validation": 0.73,
+   "reserve": 6.12
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 20.84,
+     "pf": 1.689,
+     "trades": 65,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.78,
+     "pf": 0.908,
+     "trades": 38,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.75,
+     "pf": 0.882,
+     "trades": 45,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 8.22,
+     "pf": 1.243,
+     "trades": 66,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.9,
+     "pf": 1.055,
+     "trades": 33,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.32,
+     "pf": 0.546,
+     "trades": 21,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "b-a-d-v0-4",
+  "nome": "B + A + D v0.4",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 14.34,
+   "validation": 0.19,
+   "reserve": 10.79
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -1.7,
+     "pf": 0.977,
+     "trades": 229,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -2.66,
+     "pf": 0.922,
+     "trades": 123,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.27,
+     "pf": 1.03,
+     "trades": 143,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -3.17,
+     "pf": 0.954,
+     "trades": 241,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -3.94,
+     "pf": 0.877,
+     "trades": 102,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -9.42,
+     "pf": 0.657,
+     "trades": 76,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "bacap-price-structure-21-ema-trend",
+  "nome": "BACAP PRICE STRUCTURE 21 EMA TREND",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 17.69,
+   "validation": -2.98,
+   "reserve": 5.91
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 18.23,
+     "pf": 1.494,
+     "trades": 174,
+     "falhas": []
+    },
+    "validation": {
+     "netR": -14.53,
+     "pf": 0.528,
+     "trades": 111,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 4.33,
+     "pf": 1.192,
+     "trades": 101,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 6.05,
+     "pf": 1.128,
+     "trades": 175,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 6.51,
+     "pf": 1.332,
+     "trades": 87,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.41,
+     "pf": 1.032,
+     "trades": 55,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "bilateral-filter-for-loop",
+  "nome": "Bilateral Filter For Loop",
+  "tf": "D1",
+  "regra": "Bilateral Filter FL Long / Bilateral Filter FL Short",
+  "placeboBTC": {
+   "development": 59.74,
+   "validation": -2.52,
+   "reserve": 25.91
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 7.76,
+     "pf": 1.285,
+     "trades": 40,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -5.96,
+     "pf": 0.662,
+     "trades": 24,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.44,
+     "pf": 1.026,
+     "trades": 26,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 19.72,
+     "pf": 2.117,
+     "trades": 30,
+     "falhas": [
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 19.6,
+     "pf": 2.999,
+     "trades": 16,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 3.26,
+     "pf": 1.568,
+     "trades": 11,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "bollinger-awesome-alert",
+  "nome": "Bollinger Awesome Alert R1.1",
+  "tf": "D1",
+  "regra": "BBAWE Buy / BBAWE Sell",
+  "placeboBTC": {
+   "development": 9.68,
+   "validation": -1.65,
+   "reserve": 0.2
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 3.78,
+     "pf": 1.112,
+     "trades": 82,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -8.56,
+     "pf": 0.634,
+     "trades": 48,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -8.31,
+     "pf": 0.688,
+     "trades": 59,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 3.7,
+     "pf": 1.113,
+     "trades": 84,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 9.5,
+     "pf": 1.568,
+     "trades": 38,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -2.05,
+     "pf": 0.748,
+     "trades": 25,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "buy-sell-signal-kelfry98",
+  "nome": "Buy Sell Signal",
+  "tf": "D1",
+  "regra": "🟢 BUY Signal / 🔴 SELL Signal",
+  "placeboBTC": {
+   "development": 12.54,
+   "validation": -1.33,
+   "reserve": 6.51
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 13.52,
+     "pf": 1.423,
+     "trades": 81,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -6.4,
+     "pf": 0.736,
+     "trades": 64,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -3.3,
+     "pf": 0.882,
+     "trades": 68,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 15.55,
+     "pf": 1.456,
+     "trades": 86,
+     "falhas": [
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 7.05,
+     "pf": 1.412,
+     "trades": 41,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -4.83,
+     "pf": 0.529,
+     "trades": 27,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "clean-buy-sell-pro",
+  "nome": "Clean Buy Sell Pro",
+  "tf": "D1",
+  "regra": "BUY Signal / SELL Signal",
+  "placeboBTC": {
+   "development": 48.35,
+   "validation": 1.16,
+   "reserve": 6.53
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 13.68,
+     "pf": 1.606,
+     "trades": 40,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -5.18,
+     "pf": 0.689,
+     "trades": 22,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 4.35,
+     "pf": 1.304,
+     "trades": 20,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 2.74,
+     "pf": 1.093,
+     "trades": 42,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 17.95,
+     "pf": 2.558,
+     "trades": 14,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -12.51,
+     "pf": 0.16,
+     "trades": 19,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "cm-pivot-points-filtered",
+  "nome": "CM_Pivot Points_M-W-D-4H-1H_Filtered",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 26.18,
+   "validation": 0.02,
+   "reserve": 8.3
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 6.73,
+     "pf": 1.246,
+     "trades": 94,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -6.49,
+     "pf": 0.723,
+     "trades": 58,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.87,
+     "pf": 0.918,
+     "trades": 72,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 2.84,
+     "pf": 1.076,
+     "trades": 91,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 24.27,
+     "pf": 3.416,
+     "trades": 35,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 1.04,
+     "pf": 1.104,
+     "trades": 31,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "consecutive-higher-lower-closings",
+  "nome": "Consecutive Higher/Lower Closings",
+  "tf": "D1",
+  "regra": "Buy Alert / Sell Alert",
+  "placeboBTC": {
+   "development": 15.84,
+   "validation": -2.41,
+   "reserve": 7.89
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 15.67,
+     "pf": 1.403,
+     "trades": 107,
+     "falhas": []
+    },
+    "validation": {
+     "netR": -6.78,
+     "pf": 0.711,
+     "trades": 58,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.12,
+     "pf": 1.004,
+     "trades": 68,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 24.09,
+     "pf": 1.685,
+     "trades": 103,
+     "falhas": []
+    },
+    "validation": {
+     "netR": 4.02,
+     "pf": 1.22,
+     "trades": 49,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -11.69,
+     "pf": 0.344,
+     "trades": 36,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "curved-trend-channels",
+  "nome": "Curved Trend Channels",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 12.55,
+   "validation": 0.99,
+   "reserve": 6.76
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -5.26,
+     "pf": 0.876,
+     "trades": 109,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -2.96,
+     "pf": 0.865,
+     "trades": 64,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -3.91,
+     "pf": 0.82,
+     "trades": 65,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -1.12,
+     "pf": 0.966,
+     "trades": 102,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -7.52,
+     "pf": 0.629,
+     "trades": 47,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 6.09,
+     "pf": 1.605,
+     "trades": 33,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "cvd-rupward",
+  "nome": "CVD (Cumulative Volume Delta)",
+  "tf": "D1",
+  "regra": "CVD Cross Up MA B Alert / CVD Cross Down MA B Alert",
+  "placeboBTC": {
+   "development": 22.23,
+   "validation": -0.27,
+   "reserve": 0.23
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 3.4,
+     "pf": 1.112,
+     "trades": 118,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -14.95,
+     "pf": 0.444,
+     "trades": 103,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 3.55,
+     "pf": 1.191,
+     "trades": 73,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 24.01,
+     "pf": 1.766,
+     "trades": 110,
+     "falhas": []
+    },
+    "validation": {
+     "netR": -2.13,
+     "pf": 0.893,
+     "trades": 70,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.65,
+     "pf": 0.908,
+     "trades": 56,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "delta-rsi-oscillator",
+  "nome": "Delta-RSI Oscillator",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 11.94,
+   "validation": -0.98,
+   "reserve": 1.8
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 15.39,
+     "pf": 1.272,
+     "trades": 180,
+     "falhas": []
+    },
+    "validation": {
+     "netR": -0.12,
+     "pf": 0.996,
+     "trades": 96,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 7.32,
+     "pf": 1.199,
+     "trades": 115,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -11.66,
+     "pf": 0.844,
+     "trades": 217,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.6,
+     "pf": 1.103,
+     "trades": 84,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -11.65,
+     "pf": 0.597,
+     "trades": 70,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "directional-indicator-crossovers-v1",
+  "nome": "Directional Indicator Crossovers v1",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 21.1,
+   "validation": -2.72,
+   "reserve": 5.96
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 10.11,
+     "pf": 1.232,
+     "trades": 153,
+     "falhas": [
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -5.05,
+     "pf": 0.814,
+     "trades": 89,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.21,
+     "pf": 1.046,
+     "trades": 101,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 11.37,
+     "pf": 1.239,
+     "trades": 169,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "validation": {
+     "netR": 4.1,
+     "pf": 1.214,
+     "trades": 63,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 4.9,
+     "pf": 1.418,
+     "trades": 41,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "dmi-delta-by-0xjcf",
+  "nome": "DMI Delta by 0xjcf",
+  "tf": "D1",
+  "regra": "linha 1 x zero",
+  "placeboBTC": {
+   "development": 18.93,
+   "validation": -0.42,
+   "reserve": 5.9
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 15.03,
+     "pf": 1.408,
+     "trades": 139,
+     "falhas": []
+    },
+    "validation": {
+     "netR": 0.16,
+     "pf": 1.008,
+     "trades": 62,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.75,
+     "pf": 0.968,
+     "trades": 87,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 4.64,
+     "pf": 1.102,
+     "trades": 129,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.21,
+     "pf": 1.108,
+     "trades": 65,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.61,
+     "pf": 1.047,
+     "trades": 35,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "double-median-atr-bands-misinkomaster",
+  "nome": "Double Median ATR Bands | MisinkoMaster",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 23.51,
+   "validation": 0.27,
+   "reserve": 4.04
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 18.53,
+     "pf": 1.48,
+     "trades": 138,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -6.65,
+     "pf": 0.703,
+     "trades": 64,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 4.48,
+     "pf": 1.204,
+     "trades": 75,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 18.39,
+     "pf": 1.525,
+     "trades": 111,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 11.84,
+     "pf": 1.868,
+     "trades": 47,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -1.25,
+     "pf": 0.908,
+     "trades": 45,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "double-median-sd-bands-misinkomaster",
+  "nome": "Double Median SD Bands | MisinkoMaster",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 12.84,
+   "validation": -1.55,
+   "reserve": 2.58
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 17.67,
+     "pf": 1.549,
+     "trades": 96,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -6.86,
+     "pf": 0.684,
+     "trades": 63,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 5.54,
+     "pf": 1.298,
+     "trades": 51,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 12.88,
+     "pf": 1.414,
+     "trades": 94,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 15.38,
+     "pf": 2.722,
+     "trades": 30,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 8.31,
+     "pf": 2.025,
+     "trades": 33,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "double-rsi",
+  "nome": "Double RSI",
+  "tf": "D1",
+  "regra": "DRSI: Buy / DRSI: Sell",
+  "placeboBTC": {
+   "development": 18.13,
+   "validation": 2.92,
+   "reserve": 8.0
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 6.7,
+     "pf": 1.256,
+     "trades": 52,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.38,
+     "pf": 0.976,
+     "trades": 28,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 5.13,
+     "pf": 1.336,
+     "trades": 30,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 17.57,
+     "pf": 1.718,
+     "trades": 47,
+     "falhas": [
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 1.94,
+     "pf": 1.146,
+     "trades": 23,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.6,
+     "pf": 0.617,
+     "trades": 15,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "dual-ma-sd-oscillator",
+  "nome": "Dual MA SD Oscillator",
+  "tf": "D1",
+  "regra": "Bull Signal / Bear Signal",
+  "placeboBTC": {
+   "development": 10.95,
+   "validation": -0.49,
+   "reserve": 9.82
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 17.83,
+     "pf": 1.765,
+     "trades": 45,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.74,
+     "pf": 1.248,
+     "trades": 22,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.56,
+     "pf": 0.921,
+     "trades": 33,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 16.04,
+     "pf": 1.559,
+     "trades": 46,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 8.26,
+     "pf": 1.771,
+     "trades": 21,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -1.5,
+     "pf": 0.86,
+     "trades": 19,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "dynamic-flow-ribbons",
+  "nome": "Dynamic Flow Ribbons",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 14.5,
+   "validation": 0.36,
+   "reserve": 7.36
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 6.04,
+     "pf": 1.134,
+     "trades": 155,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "validation": {
+     "netR": -6.73,
+     "pf": 0.758,
+     "trades": 86,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 2.22,
+     "pf": 1.09,
+     "trades": 109,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 0.97,
+     "pf": 1.019,
+     "trades": 171,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 4.96,
+     "pf": 1.239,
+     "trades": 73,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -3.29,
+     "pf": 0.779,
+     "trades": 45,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "dynamic-trend-channel",
+  "nome": "Dynamic Trend Channel (DTC)",
+  "tf": "D1",
+  "regra": "Buy Alert / Sell Alert",
+  "placeboBTC": {
+   "development": 37.83,
+   "validation": -0.27,
+   "reserve": 10.95
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 13.12,
+     "pf": 1.623,
+     "trades": 34,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.2,
+     "pf": 0.983,
+     "trades": 17,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -6.18,
+     "pf": 0.688,
+     "trades": 27,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 12.0,
+     "pf": 1.398,
+     "trades": 40,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 7.11,
+     "pf": 1.489,
+     "trades": 18,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.32,
+     "pf": 0.552,
+     "trades": 16,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "easy-trend-colors",
+  "nome": "Easy Entry/Exit Trend Colors",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": -28.77,
+   "validation": -4.77,
+   "reserve": -28.72
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 6.25,
+     "pf": 1.114,
+     "trades": 163,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -4.67,
+     "pf": 0.84,
+     "trades": 86,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 2.74,
+     "pf": 1.085,
+     "trades": 87,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -2.06,
+     "pf": 0.964,
+     "trades": 156,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 13.58,
+     "pf": 1.685,
+     "trades": 56,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 0.04,
+     "pf": 1.002,
+     "trades": 48,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "ehlers-adaptive-trend-indicator",
+  "nome": "Ehlers Adaptive Trend Indicator",
+  "tf": "D1",
+  "regra": "Buy Signal / Sell Signal",
+  "placeboBTC": {
+   "development": -0.33,
+   "validation": -6.51,
+   "reserve": -19.8
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 13.48,
+     "pf": 1.397,
+     "trades": 65,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.83,
+     "pf": 0.95,
+     "trades": 33,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -11.39,
+     "pf": 0.584,
+     "trades": 49,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 5.95,
+     "pf": 1.16,
+     "trades": 69,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -4.42,
+     "pf": 0.772,
+     "trades": 35,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.64,
+     "pf": 0.871,
+     "trades": 24,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "elder-force",
+  "nome": "Elder's force index",
+  "tf": "D1",
+  "regra": "linha 1 x zero",
+  "placeboBTC": {
+   "development": 24.26,
+   "validation": -0.93,
+   "reserve": 8.21
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 10.06,
+     "pf": 1.187,
+     "trades": 219,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -15.1,
+     "pf": 0.6,
+     "trades": 147,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.29,
+     "pf": 1.009,
+     "trades": 153,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -6.09,
+     "pf": 0.901,
+     "trades": 255,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 5.17,
+     "pf": 1.194,
+     "trades": 107,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 2.34,
+     "pf": 1.161,
+     "trades": 59,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "elliott-wave-oscillator",
+  "nome": "Elliott Wave Oscillator",
+  "tf": "D1",
+  "regra": "linha 1 x zero",
+  "placeboBTC": {
+   "development": 25.78,
+   "validation": -2.19,
+   "reserve": 1.15
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 22.03,
+     "pf": 1.738,
+     "trades": 69,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.98,
+     "pf": 0.944,
+     "trades": 38,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -4.37,
+     "pf": 0.823,
+     "trades": 45,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 11.56,
+     "pf": 1.347,
+     "trades": 68,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 1.03,
+     "pf": 1.058,
+     "trades": 35,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 2.97,
+     "pf": 1.292,
+     "trades": 21,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "ema-rma-clouds-by-alpachino",
+  "nome": "EMA/RMA clouds by Alpachino",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 30.14,
+   "validation": -1.27,
+   "reserve": 6.55
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 7.43,
+     "pf": 1.22,
+     "trades": 134,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -3.51,
+     "pf": 0.833,
+     "trades": 70,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 6.57,
+     "pf": 1.348,
+     "trades": 73,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 17.09,
+     "pf": 1.595,
+     "trades": 105,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 6.6,
+     "pf": 1.425,
+     "trades": 55,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -1.12,
+     "pf": 0.889,
+     "trades": 35,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "emergent-rays-novathemachine",
+  "nome": "Emergent Rays - NovaTheMachine",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 17.69,
+   "validation": -2.98,
+   "reserve": 5.91
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 18.23,
+     "pf": 1.494,
+     "trades": 174,
+     "falhas": []
+    },
+    "validation": {
+     "netR": -14.53,
+     "pf": 0.528,
+     "trades": 111,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 4.33,
+     "pf": 1.192,
+     "trades": 101,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 6.05,
+     "pf": 1.128,
+     "trades": 175,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 6.51,
+     "pf": 1.332,
+     "trades": 87,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.41,
+     "pf": 1.032,
+     "trades": 55,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "entry-points",
+  "nome": "Entry Points",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 25.05,
+   "validation": 2.35,
+   "reserve": 11.37
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 13.59,
+     "pf": 1.497,
+     "trades": 99,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.51,
+     "pf": 0.968,
+     "trades": 45,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 7.99,
+     "pf": 1.631,
+     "trades": 39,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 10.99,
+     "pf": 1.394,
+     "trades": 92,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 26.77,
+     "pf": 3.673,
+     "trades": 35,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.9,
+     "pf": 0.512,
+     "trades": 33,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "fibonacci-levels",
+  "nome": "Fibonacci Levels",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 30.4,
+   "validation": 1.16,
+   "reserve": 11.62
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 7.63,
+     "pf": 1.279,
+     "trades": 98,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.23,
+     "pf": 0.985,
+     "trades": 44,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 9.56,
+     "pf": 1.862,
+     "trades": 38,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 8.93,
+     "pf": 1.3,
+     "trades": 95,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 26.77,
+     "pf": 3.673,
+     "trades": 35,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -7.95,
+     "pf": 0.318,
+     "trades": 31,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "fourier-series-model-of-the-market",
+  "nome": "Fourier series Model Of The Market",
+  "tf": "D1",
+  "regra": "FSMM: Above Zero / FSMM: Below Zero",
+  "placeboBTC": {
+   "development": 1.9,
+   "validation": 0.9,
+   "reserve": 3.1
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 11.05,
+     "pf": 1.142,
+     "trades": 271,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.21,
+     "pf": 1.006,
+     "trades": 141,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.0,
+     "pf": 0.909,
+     "trades": 189,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -1.9,
+     "pf": 0.978,
+     "trades": 303,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -11.57,
+     "pf": 0.714,
+     "trades": 128,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -12.9,
+     "pf": 0.63,
+     "trades": 109,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "futech-v-spike-v-highlighter",
+  "nome": "FuTech V-Spike & V-Highlighter",
+  "tf": "D1",
+  "regra": "Bullish Volume Spike / Bearish Volume Spike",
+  "placeboBTC": {
+   "development": 17.28,
+   "validation": -3.71,
+   "reserve": 2.09
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -3.08,
+     "pf": 0.395,
+     "trades": 7,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.71,
+     "pf": 0.023,
+     "trades": 6,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 4.58,
+     "pf": 1.745,
+     "trades": 9,
+     "falhas": [
+      "poucas operações",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 5.95,
+     "pf": 1.712,
+     "trades": 12,
+     "falhas": [
+      "poucas operações",
+      "sem a maior<=0",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": -4.44,
+     "pf": 0.0,
+     "trades": 5,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.08,
+     "pf": 0.521,
+     "trades": 6,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "futech-v-spike-v-highlighter",
+  "nome": "FuTech V-Spike & V-Highlighter",
+  "tf": "D1",
+  "regra": "Bullish Highest Volume Candle / Bearish Highest Volume Candle",
+  "placeboBTC": {
+   "development": 30.51,
+   "validation": 3.29,
+   "reserve": 8.04
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -14.13,
+     "pf": 0.66,
+     "trades": 69,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -7.99,
+     "pf": 0.515,
+     "trades": 29,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -7.86,
+     "pf": 0.582,
+     "trades": 32,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -18.11,
+     "pf": 0.516,
+     "trades": 69,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 0/6"
+     ]
+    },
+    "validation": {
+     "netR": 9.26,
+     "pf": 2.876,
+     "trades": 12,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -8.95,
+     "pf": 0.321,
+     "trades": 21,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "fvg-positioning-average",
+  "nome": "FVG Positioning Average",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 8.65,
+   "validation": 1.78,
+   "reserve": 7.57
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 10.8,
+     "pf": 1.345,
+     "trades": 97,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 5.01,
+     "pf": 1.286,
+     "trades": 54,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 7.13,
+     "pf": 1.511,
+     "trades": 47,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 22.39,
+     "pf": 1.906,
+     "trades": 89,
+     "falhas": [
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -4.8,
+     "pf": 0.806,
+     "trades": 65,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.69,
+     "pf": 0.955,
+     "trades": 47,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "high-volume-buyers-sellers",
+  "nome": "High Volume Buyers/Sellers+",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 38.95,
+   "validation": -0.4,
+   "reserve": 2.23
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -1.0,
+     "pf": 0.0,
+     "trades": 1,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 0/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.41,
+     "pf": 0.0,
+     "trades": 3,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.01,
+     "pf": 0.0,
+     "trades": 1,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "motivo": "sem o mesmo sinal neste ativo"
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "htc-peppermint-07-cci-w-signal-s-r-rsi",
+  "nome": "HTC peppermint_07 CCI w signal + s&r RSI",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 50.47,
+   "validation": -3.57,
+   "reserve": 12.02
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 10.97,
+     "pf": 1.534,
+     "trades": 32,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 3.65,
+     "pf": 1.411,
+     "trades": 12,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 3.54,
+     "pf": 1.215,
+     "trades": 22,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 13.3,
+     "pf": 1.518,
+     "trades": 35,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 9.79,
+     "pf": 1.881,
+     "trades": 16,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.74,
+     "pf": 0.512,
+     "trades": 16,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "ichimoku-oscillator",
+  "nome": "Conversion Periods",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 25.91,
+   "validation": 0.01,
+   "reserve": 4.56
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 13.27,
+     "pf": 1.638,
+     "trades": 35,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.22,
+     "pf": 1.017,
+     "trades": 20,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.28,
+     "pf": 0.872,
+     "trades": 26,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 6.06,
+     "pf": 1.207,
+     "trades": 42,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.07,
+     "pf": 0.897,
+     "trades": 17,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.79,
+     "pf": 0.762,
+     "trades": 12,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "institutional-orderblock-pressure",
+  "nome": "Institutional OrderBlock Pressure",
+  "tf": "D1",
+  "regra": "Bullish OB Line Crossed Up / Bearish OB Line Crossed Down",
+  "placeboBTC": {
+   "development": 30.36,
+   "validation": -2.9,
+   "reserve": -5.21
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 21.02,
+     "pf": 1.967,
+     "trades": 36,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.49,
+     "pf": 1.217,
+     "trades": 25,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.81,
+     "pf": 0.907,
+     "trades": 30,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 8.91,
+     "pf": 1.311,
+     "trades": 47,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 18.87,
+     "pf": 2.208,
+     "trades": 25,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.52,
+     "pf": 0.826,
+     "trades": 23,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "interpolated-median-volatility-lsma-otto",
+  "nome": "Interpolated Median Volatility LSMA | Otto",
+  "tf": "D1",
+  "regra": "IMVL long / IMVL short",
+  "placeboBTC": {
+   "development": 14.8,
+   "validation": 2.55,
+   "reserve": 2.46
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 18.09,
+     "pf": 1.68,
+     "trades": 47,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -7.68,
+     "pf": 0.442,
+     "trades": 20,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.04,
+     "pf": 0.75,
+     "trades": 31,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 8.5,
+     "pf": 1.278,
+     "trades": 48,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.65,
+     "pf": 1.048,
+     "trades": 21,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -6.23,
+     "pf": 0.307,
+     "trades": 14,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "kalman-hull-bands-for-loop-rakoquant",
+  "nome": "Kalman Hull Bands For Loop | RakoQuant",
+  "tf": "D1",
+  "regra": "RakoQuant Bull Breakout / RakoQuant Bear Breakout",
+  "placeboBTC": {
+   "development": 27.13,
+   "validation": 2.49,
+   "reserve": 2.96
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 9.86,
+     "pf": 1.39,
+     "trades": 38,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.68,
+     "pf": 1.054,
+     "trades": 18,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 5.12,
+     "pf": 1.369,
+     "trades": 22,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 29.17,
+     "pf": 3.421,
+     "trades": 24,
+     "falhas": [
+      "poucas operações",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 1.26,
+     "pf": 1.087,
+     "trades": 22,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.44,
+     "pf": 0.841,
+     "trades": 14,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "kalman-hull-kijun",
+  "nome": "Kalman Hull Kijun",
+  "tf": "D1",
+  "regra": "Kalman Hull Kijun Long / Kalman Hull Kijun Short",
+  "placeboBTC": {
+   "development": -0.83,
+   "validation": -5.92,
+   "reserve": -12.59
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 9.09,
+     "pf": 1.225,
+     "trades": 142,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -7.41,
+     "pf": 0.736,
+     "trades": 86,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 3.27,
+     "pf": 1.167,
+     "trades": 78,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 8.93,
+     "pf": 1.204,
+     "trades": 135,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.12,
+     "pf": 0.952,
+     "trades": 64,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.47,
+     "pf": 1.033,
+     "trades": 42,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "macd-dema",
+  "nome": "MACD DEMA",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 8.84,
+   "validation": 0.27,
+   "reserve": 5.72
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 8.81,
+     "pf": 1.139,
+     "trades": 199,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.18,
+     "pf": 1.076,
+     "trades": 97,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 13.15,
+     "pf": 1.414,
+     "trades": 119,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -1.07,
+     "pf": 0.983,
+     "trades": 195,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -13.66,
+     "pf": 0.627,
+     "trades": 98,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -12.64,
+     "pf": 0.538,
+     "trades": 68,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "macd-with-crossings-and-above-below-zero",
+  "nome": "MACD With Crossings and Above Below Zero",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": -7.57,
+   "validation": -3.15,
+   "reserve": -16.01
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 15.26,
+     "pf": 1.414,
+     "trades": 140,
+     "falhas": []
+    },
+    "validation": {
+     "netR": 0.16,
+     "pf": 1.008,
+     "trades": 62,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.38,
+     "pf": 0.904,
+     "trades": 89,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 9.98,
+     "pf": 1.219,
+     "trades": 132,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 1.0,
+     "pf": 1.046,
+     "trades": 65,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.1,
+     "pf": 1.007,
+     "trades": 36,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "macdas",
+  "nome": "MACDAS",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 18.79,
+   "validation": 1.05,
+   "reserve": 2.78
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 5.99,
+     "pf": 1.102,
+     "trades": 171,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.89,
+     "pf": 1.028,
+     "trades": 101,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 6.84,
+     "pf": 1.227,
+     "trades": 101,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 11.03,
+     "pf": 1.204,
+     "trades": 177,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.79,
+     "pf": 0.938,
+     "trades": 84,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -3.52,
+     "pf": 0.846,
+     "trades": 56,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "market-structure-trend",
+  "nome": "Market Structure Trend",
+  "tf": "D1",
+  "regra": "Bullish Structure Shift / Bearish Structure Shift",
+  "placeboBTC": {
+   "development": 24.84,
+   "validation": -1.29,
+   "reserve": 3.37
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 20.75,
+     "pf": 2.013,
+     "trades": 36,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -7.29,
+     "pf": 0.45,
+     "trades": 19,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -7.59,
+     "pf": 0.571,
+     "trades": 27,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 22.13,
+     "pf": 2.209,
+     "trades": 31,
+     "falhas": [
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -7.25,
+     "pf": 0.311,
+     "trades": 15,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.81,
+     "pf": 0.91,
+     "trades": 14,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "mesa-phase-adaptive-band-trend",
+  "nome": "MESA Phase-Adaptive Band Trend",
+  "tf": "D1",
+  "regra": "Long Signal / Short Signal",
+  "placeboBTC": {
+   "development": 23.3,
+   "validation": -0.96,
+   "reserve": 1.64
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 12.58,
+     "pf": 1.476,
+     "trades": 51,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 1.08,
+     "pf": 1.074,
+     "trades": 27,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.62,
+     "pf": 1.037,
+     "trades": 30,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 12.03,
+     "pf": 1.349,
+     "trades": 53,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": -7.58,
+     "pf": 0.539,
+     "trades": 25,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.9,
+     "pf": 1.286,
+     "trades": 17,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "ml-moving-average",
+  "nome": "ML Moving Average",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 12.6,
+   "validation": -1.99,
+   "reserve": 4.13
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -6.87,
+     "pf": 0.902,
+     "trades": 239,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.09,
+     "pf": 0.966,
+     "trades": 126,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 5.16,
+     "pf": 1.14,
+     "trades": 149,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -5.31,
+     "pf": 0.92,
+     "trades": 252,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.04,
+     "pf": 1.002,
+     "trades": 99,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 2.75,
+     "pf": 1.132,
+     "trades": 68,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "moneyball-ema-macd-indicator",
+  "nome": "Moneyball EMA-MACD indicator",
+  "tf": "D1",
+  "regra": "MACD New High Above Zero Line / MACD New Low Below Zero Line",
+  "placeboBTC": {
+   "development": 37.58,
+   "validation": -1.02,
+   "reserve": 4.86
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 7.26,
+     "pf": 1.262,
+     "trades": 49,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.84,
+     "pf": 0.882,
+     "trades": 23,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.21,
+     "pf": 1.013,
+     "trades": 27,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 18.42,
+     "pf": 1.685,
+     "trades": 41,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 15.48,
+     "pf": 2.074,
+     "trades": 20,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -3.13,
+     "pf": 0.68,
+     "trades": 17,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "multitimeframe-fair-value-gap-fvg",
+  "nome": "Multitimeframe Fair Value Gap – FVG",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 23.95,
+   "validation": -2.54,
+   "reserve": 8.11
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 14.16,
+     "pf": 1.348,
+     "trades": 161,
+     "falhas": []
+    },
+    "validation": {
+     "netR": -10.14,
+     "pf": 0.669,
+     "trades": 102,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 3.32,
+     "pf": 1.138,
+     "trades": 109,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 12.88,
+     "pf": 1.343,
+     "trades": 149,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -5.35,
+     "pf": 0.803,
+     "trades": 103,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -6.27,
+     "pf": 0.639,
+     "trades": 63,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "nadaraya-watson-trend",
+  "nome": "Nadaraya-Watson Trend",
+  "tf": "D1",
+  "regra": "Source Cross Above Upper Band / Source Cross Below Lower Band",
+  "placeboBTC": {
+   "development": 34.38,
+   "validation": 1.19,
+   "reserve": 7.22
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 17.13,
+     "pf": 1.617,
+     "trades": 46,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.94,
+     "pf": 0.933,
+     "trades": 22,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.79,
+     "pf": 0.957,
+     "trades": 28,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 3.2,
+     "pf": 1.086,
+     "trades": 52,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.12,
+     "pf": 0.935,
+     "trades": 27,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.07,
+     "pf": 0.912,
+     "trades": 18,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "normalized-candles-rsi",
+  "nome": "Normalized Candles RSI",
+  "tf": "D1",
+  "regra": "Norm Close Cross Above 50 / Norm Close Cross Below 50",
+  "placeboBTC": {
+   "development": 15.73,
+   "validation": 0.11,
+   "reserve": 8.92
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 13.69,
+     "pf": 1.282,
+     "trades": 218,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -7.47,
+     "pf": 0.746,
+     "trades": 105,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.04,
+     "pf": 0.917,
+     "trades": 123,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 3.85,
+     "pf": 1.073,
+     "trades": 219,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 6.7,
+     "pf": 1.344,
+     "trades": 79,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -5.38,
+     "pf": 0.658,
+     "trades": 71,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "obv-custom-ma-strategy",
+  "nome": "OBV + Custom MA Strategy",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 13.64,
+   "validation": -3.52,
+   "reserve": 9.98
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -6.45,
+     "pf": 0.904,
+     "trades": 301,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -14.49,
+     "pf": 0.569,
+     "trades": 135,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -3.15,
+     "pf": 0.913,
+     "trades": 175,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 10.71,
+     "pf": 1.196,
+     "trades": 251,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "validation": {
+     "netR": 13.61,
+     "pf": 1.621,
+     "trades": 111,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -5.07,
+     "pf": 0.769,
+     "trades": 95,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "order-block-detector",
+  "nome": "Order Block Detector",
+  "tf": "D1",
+  "regra": "Bullish OB Formed / Bearish OB Formed",
+  "placeboBTC": {
+   "development": 18.3,
+   "validation": -3.55,
+   "reserve": 8.67
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 2.64,
+     "pf": 1.067,
+     "trades": 68,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -5.64,
+     "pf": 0.755,
+     "trades": 44,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -11.37,
+     "pf": 0.525,
+     "trades": 38,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -5.68,
+     "pf": 0.861,
+     "trades": 79,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.45,
+     "pf": 0.974,
+     "trades": 31,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -7.74,
+     "pf": 0.499,
+     "trades": 24,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "perforance-integral",
+  "nome": "Perforance integral",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 13.92,
+   "validation": 1.49,
+   "reserve": 7.04
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 18.17,
+     "pf": 1.614,
+     "trades": 101,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -6.6,
+     "pf": 0.734,
+     "trades": 71,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.85,
+     "pf": 1.088,
+     "trades": 69,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 9.7,
+     "pf": 1.25,
+     "trades": 121,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.13,
+     "pf": 1.006,
+     "trades": 57,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 2.08,
+     "pf": 1.214,
+     "trades": 33,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "pivot-breakout-high-low-signals",
+  "nome": "Pivot Breakout High&Low Signals",
+  "tf": "D1",
+  "regra": "Bullish Pivot Breakout / Bearish Pivot Breakout",
+  "placeboBTC": {
+   "development": 39.48,
+   "validation": -1.7,
+   "reserve": 5.99
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 22.0,
+     "pf": 2.075,
+     "trades": 37,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -3.9,
+     "pf": 0.753,
+     "trades": 24,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -10.91,
+     "pf": 0.498,
+     "trades": 32,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 16.34,
+     "pf": 1.639,
+     "trades": 40,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 10.72,
+     "pf": 1.877,
+     "trades": 19,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.82,
+     "pf": 0.743,
+     "trades": 16,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "pivot-hilo-support-n-resistance-levels-r3-3",
+  "nome": "Pivot Hilo Support n Resistance Levels R3-3 by JustUncleL",
+  "tf": "D1",
+  "regra": "Fractal Break Long / Fractal Break Short",
+  "placeboBTC": {
+   "development": 38.78,
+   "validation": -2.44,
+   "reserve": 5.97
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 24.82,
+     "pf": 2.344,
+     "trades": 35,
+     "falhas": [
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -4.14,
+     "pf": 0.738,
+     "trades": 23,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -11.3,
+     "pf": 0.48,
+     "trades": 32,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 17.34,
+     "pf": 1.706,
+     "trades": 39,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 13.47,
+     "pf": 2.463,
+     "trades": 16,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.82,
+     "pf": 0.908,
+     "trades": 14,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "price-action-bands-trend-volatility",
+  "nome": "Price Action Bands | Trend & Volatility",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 19.43,
+   "validation": 0.1,
+   "reserve": 8.41
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 4.54,
+     "pf": 1.13,
+     "trades": 113,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -3.86,
+     "pf": 0.794,
+     "trades": 63,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -12.14,
+     "pf": 0.558,
+     "trades": 83,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 23.87,
+     "pf": 1.803,
+     "trades": 99,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 6.97,
+     "pf": 1.523,
+     "trades": 39,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 9.36,
+     "pf": 2.785,
+     "trades": 23,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "price-action-engulfing-patterns",
+  "nome": "Price Action: Engulfing Patterns",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 20.77,
+   "validation": 4.74,
+   "reserve": 4.56
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -29.65,
+     "pf": 0.586,
+     "trades": 167,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": 1.27,
+     "pf": 1.046,
+     "trades": 86,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.43,
+     "pf": 1.048,
+     "trades": 84,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -8.37,
+     "pf": 0.828,
+     "trades": 119,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 8.96,
+     "pf": 1.736,
+     "trades": 27,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 8.39,
+     "pf": 1.975,
+     "trades": 31,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "qtechlabs-machine-learning-logistic-regression-indicator",
+  "nome": "QTechLabs Machine Learning Logistic Regression Indicator",
+  "tf": "D1",
+  "regra": "Buy Signal / Sell Signal",
+  "placeboBTC": {
+   "development": 3.72,
+   "validation": 1.15,
+   "reserve": -7.13
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 21.25,
+     "pf": 1.623,
+     "trades": 85,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -16.17,
+     "pf": 0.378,
+     "trades": 53,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -3.51,
+     "pf": 0.867,
+     "trades": 58,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -0.95,
+     "pf": 0.976,
+     "trades": 91,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 7.0,
+     "pf": 1.51,
+     "trades": 29,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 5.38,
+     "pf": 1.534,
+     "trades": 28,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "rci-ribbon",
+  "nome": "RCI ribbon",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 8.25,
+   "validation": 1.67,
+   "reserve": -0.78
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -1.6,
+     "pf": 0.972,
+     "trades": 133,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.16,
+     "pf": 0.955,
+     "trades": 77,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.19,
+     "pf": 1.006,
+     "trades": 89,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 5.01,
+     "pf": 1.107,
+     "trades": 138,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -4.13,
+     "pf": 0.845,
+     "trades": 67,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 5.13,
+     "pf": 1.356,
+     "trades": 40,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "redk-vader",
+  "nome": "Length",
+  "tf": "D1",
+  "regra": "*  VADER Speeding Up / ** VADER Slowing Down",
+  "placeboBTC": {
+   "development": 13.48,
+   "validation": 2.62,
+   "reserve": 2.29
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -1.85,
+     "pf": 0.966,
+     "trades": 145,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -6.57,
+     "pf": 0.76,
+     "trades": 83,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -6.87,
+     "pf": 0.825,
+     "trades": 93,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -4.61,
+     "pf": 0.918,
+     "trades": 143,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 3.64,
+     "pf": 1.147,
+     "trades": 66,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.02,
+     "pf": 0.999,
+     "trades": 50,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "rma-atr-bands",
+  "nome": "RMA ATR Bands",
+  "tf": "D1",
+  "regra": "RMA ATR Bands Long / RMA ATR Bands Short",
+  "placeboBTC": {
+   "development": 16.57,
+   "validation": 0.6,
+   "reserve": 8.53
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 21.82,
+     "pf": 1.891,
+     "trades": 47,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.62,
+     "pf": 1.195,
+     "trades": 24,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.81,
+     "pf": 0.9,
+     "trades": 31,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 1.9,
+     "pf": 1.058,
+     "trades": 50,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 1.37,
+     "pf": 1.091,
+     "trades": 23,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 2.69,
+     "pf": 1.292,
+     "trades": 19,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "roc-weighted-ma-oscillator",
+  "nome": "ROC-Weighted MA Oscillator",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 26.25,
+   "validation": -1.94,
+   "reserve": 4.0
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 13.14,
+     "pf": 1.654,
+     "trades": 36,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -2.11,
+     "pf": 0.852,
+     "trades": 21,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -3.47,
+     "pf": 0.816,
+     "trades": 29,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 17.41,
+     "pf": 1.637,
+     "trades": 42,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 26.63,
+     "pf": 5.056,
+     "trades": 13,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -1.53,
+     "pf": 0.81,
+     "trades": 13,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "rsi-zone-step-lines",
+  "nome": "RSI Zone Step Lines",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 17.66,
+   "validation": -1.44,
+   "reserve": 3.64
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 22.79,
+     "pf": 1.598,
+     "trades": 125,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -11.45,
+     "pf": 0.571,
+     "trades": 66,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.63,
+     "pf": 1.026,
+     "trades": 70,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 16.11,
+     "pf": 1.42,
+     "trades": 131,
+     "falhas": [
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 17.52,
+     "pf": 2.348,
+     "trades": 48,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -8.9,
+     "pf": 0.518,
+     "trades": 53,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "sell-buy-rates",
+  "nome": "Sell & Buy Rates",
+  "tf": "D1",
+  "regra": "linha 1 x zero",
+  "placeboBTC": {
+   "development": 16.46,
+   "validation": -3.54,
+   "reserve": 4.91
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 11.98,
+     "pf": 1.246,
+     "trades": 185,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -23.92,
+     "pf": 0.437,
+     "trades": 142,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 1.93,
+     "pf": 1.067,
+     "trades": 119,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 0.83,
+     "pf": 1.015,
+     "trades": 218,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 13.03,
+     "pf": 1.624,
+     "trades": 96,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 3.42,
+     "pf": 1.241,
+     "trades": 57,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "sma-dma-crossing-signal",
+  "nome": "SMA DMA Crossing Signal",
+  "tf": "D1",
+  "regra": "BUY indication / SELL indication",
+  "placeboBTC": {
+   "development": 15.38,
+   "validation": -1.62,
+   "reserve": 5.95
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 11.58,
+     "pf": 1.39,
+     "trades": 67,
+     "falhas": []
+    },
+    "validation": {
+     "netR": -2.15,
+     "pf": 0.88,
+     "trades": 38,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 3.36,
+     "pf": 1.195,
+     "trades": 37,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 14.63,
+     "pf": 1.473,
+     "trades": 66,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 4.32,
+     "pf": 1.338,
+     "trades": 25,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.93,
+     "pf": 0.805,
+     "trades": 23,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "sma-squeeze-oscillator",
+  "nome": "SMA Squeeze Oscillator",
+  "tf": "D1",
+  "regra": "Bull Cross Alert / Bear Cross Alert",
+  "placeboBTC": {
+   "development": 20.44,
+   "validation": 3.21,
+   "reserve": 8.58
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 17.8,
+     "pf": 2.319,
+     "trades": 30,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 4.24,
+     "pf": 1.428,
+     "trades": 21,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.92,
+     "pf": 1.138,
+     "trades": 20,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -9.99,
+     "pf": 0.619,
+     "trades": 36,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 21.81,
+     "pf": 3.328,
+     "trades": 16,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.77,
+     "pf": 0.873,
+     "trades": 12,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "smart-money-concepts-luxalgo",
+  "nome": "Smart Money Concepts (SMC)",
+  "tf": "D1",
+  "regra": "Internal Bullish CHoCH / Internal Bearish CHoCH",
+  "placeboBTC": {
+   "development": 23.06,
+   "validation": -3.52,
+   "reserve": 4.52
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 20.9,
+     "pf": 2.137,
+     "trades": 36,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.47,
+     "pf": 1.044,
+     "trades": 17,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -7.25,
+     "pf": 0.591,
+     "trades": 27,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -6.91,
+     "pf": 0.76,
+     "trades": 42,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": 18.34,
+     "pf": 2.928,
+     "trades": 15,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -4.59,
+     "pf": 0.673,
+     "trades": 20,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "smi-ergodic-osc",
+  "nome": "SMI ergodic oscillator",
+  "tf": "D1",
+  "regra": "linha 1 x zero",
+  "placeboBTC": {
+   "development": 12.6,
+   "validation": -1.08,
+   "reserve": 4.62
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 4.77,
+     "pf": 1.071,
+     "trades": 223,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -3.49,
+     "pf": 0.903,
+     "trades": 129,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.03,
+     "pf": 1.001,
+     "trades": 129,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 5.97,
+     "pf": 1.098,
+     "trades": 203,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.55,
+     "pf": 0.95,
+     "trades": 104,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.56,
+     "pf": 0.778,
+     "trades": 72,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "smi-ergodic",
+  "nome": "SMI ergodic indicator",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 12.6,
+   "validation": -1.08,
+   "reserve": 4.62
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 4.77,
+     "pf": 1.071,
+     "trades": 223,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -3.49,
+     "pf": 0.903,
+     "trades": 129,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.03,
+     "pf": 1.001,
+     "trades": 129,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 5.97,
+     "pf": 1.098,
+     "trades": 203,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.55,
+     "pf": 0.95,
+     "trades": 104,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.56,
+     "pf": 0.778,
+     "trades": 72,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "smi",
+  "nome": "Stochastic momentum index",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 6.72,
+   "validation": 0.1,
+   "reserve": 7.54
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 1.06,
+     "pf": 1.014,
+     "trades": 264,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.94,
+     "pf": 1.027,
+     "trades": 135,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 3.09,
+     "pf": 1.071,
+     "trades": 157,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -13.72,
+     "pf": 0.832,
+     "trades": 267,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 7.66,
+     "pf": 1.241,
+     "trades": 108,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -3.53,
+     "pf": 0.867,
+     "trades": 86,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "smooth-rsi",
+  "nome": "Smooth RSI",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 24.38,
+   "validation": 1.24,
+   "reserve": 3.23
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 5.83,
+     "pf": 1.156,
+     "trades": 97,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -4.57,
+     "pf": 0.751,
+     "trades": 56,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -6.14,
+     "pf": 0.761,
+     "trades": 69,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 9.24,
+     "pf": 1.223,
+     "trades": 110,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 2.35,
+     "pf": 1.117,
+     "trades": 59,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.14,
+     "pf": 1.091,
+     "trades": 33,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "smoothed-source-weighted-ema",
+  "nome": "Smoothed Source Weighted EMA",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 20.23,
+   "validation": 0.63,
+   "reserve": 7.43
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 14.22,
+     "pf": 1.556,
+     "trades": 80,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.33,
+     "pf": 1.022,
+     "trades": 46,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 7.36,
+     "pf": 1.478,
+     "trades": 50,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 22.58,
+     "pf": 2.264,
+     "trades": 63,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 17.41,
+     "pf": 2.764,
+     "trades": 31,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 2.44,
+     "pf": 1.273,
+     "trades": 37,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "strong-demands-supplies-liquidity-zonas-de",
+  "nome": "Strong Demands & Supplies + Liquidity | Zonas de Compra e Venda",
+  "tf": "D1",
+  "regra": "Bullish Engulfing / Bearish Engulfing",
+  "placeboBTC": {
+   "development": 20.82,
+   "validation": 3.67,
+   "reserve": 5.29
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -29.54,
+     "pf": 0.604,
+     "trades": 177,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": 1.47,
+     "pf": 1.053,
+     "trades": 86,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.29,
+     "pf": 0.991,
+     "trades": 89,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -3.8,
+     "pf": 0.922,
+     "trades": 131,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.14,
+     "pf": 0.937,
+     "trades": 39,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 8.33,
+     "pf": 1.753,
+     "trades": 36,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "tasc-2026-04-a-synthetic-oscillator",
+  "nome": "TASC 2026.04 A Synthetic Oscillator",
+  "tf": "D1",
+  "regra": "linha 1 x zero",
+  "placeboBTC": {
+   "development": 15.11,
+   "validation": -0.3,
+   "reserve": 1.05
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 2.6,
+     "pf": 1.037,
+     "trades": 210,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 5.72,
+     "pf": 1.192,
+     "trades": 109,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -7.76,
+     "pf": 0.825,
+     "trades": 131,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -16.11,
+     "pf": 0.797,
+     "trades": 225,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -2.61,
+     "pf": 0.91,
+     "trades": 84,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -7.03,
+     "pf": 0.737,
+     "trades": 70,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "tma-overlay",
+  "nome": "TMA Overlay",
+  "tf": "D1",
+  "regra": "Bullish Engulfing / Bearish Engulfing",
+  "placeboBTC": {
+   "development": 20.82,
+   "validation": 3.67,
+   "reserve": 5.29
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -29.54,
+     "pf": 0.604,
+     "trades": 177,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": 1.47,
+     "pf": 1.053,
+     "trades": 86,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.29,
+     "pf": 0.991,
+     "trades": 89,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -3.8,
+     "pf": 0.922,
+     "trades": 131,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.14,
+     "pf": 0.937,
+     "trades": 39,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 8.33,
+     "pf": 1.753,
+     "trades": 36,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "tmo",
+  "nome": "TMO (True Momentum Oscillator)",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 12.53,
+   "validation": 0.16,
+   "reserve": 8.0
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -7.06,
+     "pf": 0.914,
+     "trades": 245,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.9,
+     "pf": 1.028,
+     "trades": 115,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -8.22,
+     "pf": 0.823,
+     "trades": 145,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 8.3,
+     "pf": 1.137,
+     "trades": 211,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -2.83,
+     "pf": 0.918,
+     "trades": 98,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -7.22,
+     "pf": 0.738,
+     "trades": 82,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "tr-high-low-meter",
+  "nome": "TR High/Low meter",
+  "tf": "D1",
+  "regra": "Buy Signal / Sell Signal",
+  "placeboBTC": {
+   "development": 20.19,
+   "validation": -0.69,
+   "reserve": 2.43
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -0.27,
+     "pf": 0.991,
+     "trades": 63,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.63,
+     "pf": 0.919,
+     "trades": 38,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -10.38,
+     "pf": 0.616,
+     "trades": 51,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 11.97,
+     "pf": 1.325,
+     "trades": 70,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 4.67,
+     "pf": 1.441,
+     "trades": 21,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.5,
+     "pf": 0.501,
+     "trades": 21,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "traders-reality-main",
+  "nome": "Traders Reality Main",
+  "tf": "D1",
+  "regra": "Green Vector Candle / Red Vector Candle",
+  "placeboBTC": {
+   "development": 15.69,
+   "validation": 1.58,
+   "reserve": 5.56
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 6.42,
+     "pf": 1.196,
+     "trades": 73,
+     "falhas": [
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -3.5,
+     "pf": 0.834,
+     "trades": 44,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.58,
+     "pf": 0.938,
+     "trades": 51,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -8.94,
+     "pf": 0.81,
+     "trades": 96,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 10.06,
+     "pf": 1.71,
+     "trades": 33,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 1.94,
+     "pf": 1.168,
+     "trades": 26,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "trama",
+  "nome": "Trend Regularity Adaptive MA",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 34.96,
+   "validation": -3.25,
+   "reserve": 9.89
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 7.85,
+     "pf": 1.206,
+     "trades": 143,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -8.33,
+     "pf": 0.704,
+     "trades": 93,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 3.29,
+     "pf": 1.165,
+     "trades": 93,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 6.43,
+     "pf": 1.134,
+     "trades": 169,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.65,
+     "pf": 1.028,
+     "trades": 71,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.93,
+     "pf": 0.856,
+     "trades": 45,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "trend-flow-oscillator-adx",
+  "nome": "Trend Flow Oscillator (CMF + MFI) + ADX",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 19.51,
+   "validation": -3.12,
+   "reserve": 1.05
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 10.72,
+     "pf": 1.337,
+     "trades": 85,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -13.95,
+     "pf": 0.39,
+     "trades": 58,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -8.86,
+     "pf": 0.656,
+     "trades": 55,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -11.41,
+     "pf": 0.683,
+     "trades": 77,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -14.44,
+     "pf": 0.469,
+     "trades": 48,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.96,
+     "pf": 1.164,
+     "trades": 29,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "trend-predictor-ribbon",
+  "nome": "Trend Predictor Ribbon Clone - Fixed roj karo moj karo",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 12.72,
+   "validation": 1.33,
+   "reserve": 7.07
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 10.72,
+     "pf": 1.318,
+     "trades": 73,
+     "falhas": []
+    },
+    "validation": {
+     "netR": -10.19,
+     "pf": 0.564,
+     "trades": 42,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.65,
+     "pf": 0.762,
+     "trades": 51,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -2.92,
+     "pf": 0.921,
+     "trades": 71,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.75,
+     "pf": 0.96,
+     "trades": 33,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 4.06,
+     "pf": 1.64,
+     "trades": 21,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "trend-pro",
+  "nome": "Trend-Pro",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 14.32,
+   "validation": 2.72,
+   "reserve": 2.8
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -12.3,
+     "pf": 0.634,
+     "trades": 62,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -14.18,
+     "pf": 0.226,
+     "trades": 29,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.45,
+     "pf": 0.867,
+     "trades": 35,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 6.75,
+     "pf": 1.236,
+     "trades": 59,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -3.21,
+     "pf": 0.796,
+     "trades": 26,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 5.47,
+     "pf": 1.806,
+     "trades": 17,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "trend-with-adx-ema-buy-sell-signals",
+  "nome": "Trend with ADX/EMA - Buy & Sell Signals",
+  "tf": "D1",
+  "regra": "Trend Green Alert / Trend Red Alert",
+  "placeboBTC": {
+   "development": -8.26,
+   "validation": -3.65,
+   "reserve": -18.01
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 14.76,
+     "pf": 1.398,
+     "trades": 140,
+     "falhas": []
+    },
+    "validation": {
+     "netR": 0.16,
+     "pf": 1.008,
+     "trades": 62,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.24,
+     "pf": 0.909,
+     "trades": 89,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 9.71,
+     "pf": 1.212,
+     "trades": 132,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.91,
+     "pf": 1.042,
+     "trades": 67,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.39,
+     "pf": 0.972,
+     "trades": 36,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "trendlines-with-breaks",
+  "nome": "Trendlines with Breaks [LuxAlgo]",
+  "tf": "D1",
+  "regra": "Upward Breakout / Downward Breakout",
+  "placeboBTC": {
+   "development": 24.24,
+   "validation": 0.01,
+   "reserve": 6.64
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 15.11,
+     "pf": 1.682,
+     "trades": 39,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.38,
+     "pf": 1.03,
+     "trades": 22,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.62,
+     "pf": 1.124,
+     "trades": 21,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 3.35,
+     "pf": 1.112,
+     "trades": 45,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 9.99,
+     "pf": 1.804,
+     "trades": 20,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -3.53,
+     "pf": 0.617,
+     "trades": 14,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "triple-ma-for-loop",
+  "nome": "Triple MA For Loop",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 16.81,
+   "validation": -1.71,
+   "reserve": 6.54
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 11.93,
+     "pf": 1.682,
+     "trades": 28,
+     "falhas": [
+      "poucas operações",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 8.71,
+     "pf": 1.984,
+     "trades": 18,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 4.36,
+     "pf": 1.365,
+     "trades": 20,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 22.69,
+     "pf": 2.441,
+     "trades": 31,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 28.49,
+     "pf": 5.251,
+     "trades": 13,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -5.68,
+     "pf": 0.143,
+     "trades": 9,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "ultimate-rsi",
+  "nome": "Ultimate RSI [LuxAlgo]",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": 18.77,
+   "validation": -0.14,
+   "reserve": 5.09
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -8.15,
+     "pf": 0.856,
+     "trades": 147,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -5.17,
+     "pf": 0.788,
+     "trades": 69,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -6.98,
+     "pf": 0.773,
+     "trades": 85,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -12.24,
+     "pf": 0.789,
+     "trades": 160,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 15.9,
+     "pf": 1.933,
+     "trades": 59,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 1.0,
+     "pf": 1.064,
+     "trades": 49,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volatility-bands",
+  "nome": "Volatility Bands",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 22.02,
+   "validation": -2.71,
+   "reserve": 6.04
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 18.4,
+     "pf": 2.275,
+     "trades": 43,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -2.91,
+     "pf": 0.67,
+     "trades": 26,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 10.72,
+     "pf": 4.246,
+     "trades": 10,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 16.54,
+     "pf": 2.057,
+     "trades": 41,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 4.57,
+     "pf": null,
+     "trades": 1,
+     "falhas": [
+      "poucas operações",
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -4.59,
+     "pf": 0.232,
+     "trades": 23,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volatility-breakout-pulse",
+  "nome": "Volatility Breakout Pulse (VBP FIX)",
+  "tf": "D1",
+  "regra": "BUY ALERT / SELL ALERT",
+  "placeboBTC": {
+   "development": 54.11,
+   "validation": -3.79,
+   "reserve": 9.08
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 19.92,
+     "pf": 1.938,
+     "trades": 39,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -3.62,
+     "pf": 0.739,
+     "trades": 21,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -17.17,
+     "pf": 0.296,
+     "trades": 33,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 10.3,
+     "pf": 1.352,
+     "trades": 44,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -2.38,
+     "pf": 0.804,
+     "trades": 19,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -6.64,
+     "pf": 0.45,
+     "trades": 18,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volatility-gated-trend-oscillator",
+  "nome": "Volatility-Gated Trend Oscillator",
+  "tf": "D1",
+  "regra": "Bullish Trend Signal / Bearish Trend Signal",
+  "placeboBTC": {
+   "development": 31.16,
+   "validation": -2.13,
+   "reserve": 1.33
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 17.29,
+     "pf": 1.827,
+     "trades": 37,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -8.09,
+     "pf": 0.299,
+     "trades": 14,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.6,
+     "pf": 0.837,
+     "trades": 25,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 14.38,
+     "pf": 1.507,
+     "trades": 42,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 16.32,
+     "pf": 2.336,
+     "trades": 19,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.07,
+     "pf": 0.345,
+     "trades": 11,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volatility-stop",
+  "nome": "Volatility stop",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 13.16,
+   "validation": -0.35,
+   "reserve": 3.91
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 2.95,
+     "pf": 1.071,
+     "trades": 87,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -6.37,
+     "pf": 0.681,
+     "trades": 42,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 0.8,
+     "pf": 1.034,
+     "trades": 53,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 0.65,
+     "pf": 1.015,
+     "trades": 89,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.93,
+     "pf": 1.048,
+     "trades": 37,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.06,
+     "pf": 0.894,
+     "trades": 25,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "vold-ratio-histogram",
+  "nome": "VOLD Ratio Histogram",
+  "tf": "D1",
+  "regra": "linha 1 x zero",
+  "placeboBTC": {
+   "development": 27.09,
+   "validation": 2.37,
+   "reserve": -1.49
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -2.9,
+     "pf": 0.932,
+     "trades": 134,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -19.79,
+     "pf": 0.41,
+     "trades": 87,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": -0.41,
+     "pf": 0.982,
+     "trades": 62,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 19.42,
+     "pf": 1.541,
+     "trades": 128,
+     "falhas": [
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -11.56,
+     "pf": 0.572,
+     "trades": 65,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 2.85,
+     "pf": 1.19,
+     "trades": 42,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volume-based-moving-average",
+  "nome": "Volume-Based Moving Average",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 20.91,
+   "validation": -2.13,
+   "reserve": 3.96
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 8.52,
+     "pf": 1.107,
+     "trades": 336,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -17.05,
+     "pf": 0.643,
+     "trades": 180,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "stress<=0",
+      "DD stress>10%"
+     ]
+    },
+    "reserve": {
+     "netR": 10.13,
+     "pf": 1.241,
+     "trades": 202,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -12.02,
+     "pf": 0.845,
+     "trades": 329,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 10.06,
+     "pf": 1.34,
+     "trades": 140,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -9.56,
+     "pf": 0.699,
+     "trades": 134,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volume-candle-highlighter",
+  "nome": "Volume Candle Highlighter",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 23.96,
+   "validation": -0.45,
+   "reserve": 3.56
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 2.34,
+     "pf": 2.7,
+     "trades": 3,
+     "falhas": [
+      "poucas operações",
+      "sem a maior<=0",
+      "anos positivos 1/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.84,
+     "pf": 0.0,
+     "trades": 6,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 7.35,
+     "pf": 4.657,
+     "trades": 5,
+     "falhas": [
+      "poucas operações"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -3.41,
+     "pf": 0.15,
+     "trades": 5,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 0/6"
+     ]
+    },
+    "validation": {
+     "netR": -2.01,
+     "pf": 0.0,
+     "trades": 2,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.56,
+     "pf": 0.0,
+     "trades": 3,
+     "falhas": [
+      "poucas operações",
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volume-spike-and-contraction-indicator",
+  "nome": "Volume Spike and Contraction Indicator",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 31.08,
+   "validation": -0.92,
+   "reserve": -1.57
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 3.82,
+     "pf": 1.092,
+     "trades": 99,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -10.29,
+     "pf": 0.557,
+     "trades": 48,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -11.97,
+     "pf": 0.586,
+     "trades": 58,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -21.91,
+     "pf": 0.538,
+     "trades": 100,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 0/6"
+     ]
+    },
+    "validation": {
+     "netR": 18.93,
+     "pf": 2.289,
+     "trades": 37,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -3.51,
+     "pf": 0.759,
+     "trades": 32,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volume-weighted-money-flow",
+  "nome": "Volume-Weighted Money Flow",
+  "tf": "D1",
+  "regra": "Bullish Strength: Absolute Consensus (100%) / Bearish Strength: Absolute Consensus (100%)",
+  "placeboBTC": {
+   "development": 40.77,
+   "validation": -2.18,
+   "reserve": 8.48
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 19.42,
+     "pf": 1.691,
+     "trades": 56,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -8.16,
+     "pf": 0.573,
+     "trades": 34,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.83,
+     "pf": 1.125,
+     "trades": 34,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 7.04,
+     "pf": 1.193,
+     "trades": 62,
+     "falhas": [
+      "sem a maior<=0",
+      "DD>10%",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -1.27,
+     "pf": 0.916,
+     "trades": 24,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.6,
+     "pf": 1.15,
+     "trades": 19,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volume-weighted-pivot-bands",
+  "nome": "Volume-Weighted Pivot Bands",
+  "tf": "D1",
+  "regra": "Cross Above R1 / Cross Below S1",
+  "placeboBTC": {
+   "development": 33.59,
+   "validation": 1.28,
+   "reserve": 1.72
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 15.96,
+     "pf": 1.516,
+     "trades": 52,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.3,
+     "pf": 0.981,
+     "trades": 26,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -5.87,
+     "pf": 0.733,
+     "trades": 35,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 4.84,
+     "pf": 1.132,
+     "trades": 57,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.87,
+     "pf": 1.058,
+     "trades": 27,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 2.71,
+     "pf": 1.274,
+     "trades": 17,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volume-weighted-rsi",
+  "nome": "Volume Weighted RSI (VW RSI)",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "placeboBTC": {
+   "development": 22.04,
+   "validation": 0.42,
+   "reserve": 4.88
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 4.08,
+     "pf": 1.084,
+     "trades": 212,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -14.63,
+     "pf": 0.516,
+     "trades": 119,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -8.15,
+     "pf": 0.783,
+     "trades": 167,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 15.09,
+     "pf": 1.329,
+     "trades": 217,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "validation": {
+     "netR": 14.06,
+     "pf": 1.761,
+     "trades": 93,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": -4.41,
+     "pf": 0.787,
+     "trades": 83,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "volumetric-entropy-index",
+  "nome": "Volumetric Entropy Index",
+  "tf": "D1",
+  "regra": "EMA DNA Bull Cross / EMA DNA Bear Cross",
+  "placeboBTC": {
+   "development": 12.05,
+   "validation": -1.15,
+   "reserve": 7.97
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -6.4,
+     "pf": 0.908,
+     "trades": 301,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": -11.69,
+     "pf": 0.695,
+     "trades": 144,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 1.83,
+     "pf": 1.056,
+     "trades": 163,
+     "falhas": [
+      "PF<1.1",
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -0.74,
+     "pf": 0.989,
+     "trades": 300,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.56,
+     "pf": 1.021,
+     "trades": 104,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -16.0,
+     "pf": 0.48,
+     "trades": 108,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "vortex-pro-with-moving-average",
+  "nome": "Vortex Pro with Moving average",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "placeboBTC": {
+   "development": -0.38,
+   "validation": -1.53,
+   "reserve": 6.93
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 4.21,
+     "pf": 1.066,
+     "trades": 229,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -6.69,
+     "pf": 0.826,
+     "trades": 147,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -4.07,
+     "pf": 0.916,
+     "trades": 167,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 8.15,
+     "pf": 1.133,
+     "trades": 243,
+     "falhas": [
+      "PF<1.15",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.85,
+     "pf": 0.974,
+     "trades": 106,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 5.62,
+     "pf": 1.267,
+     "trades": 90,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "voss-predictive-filter",
+  "nome": "Voss Predictive Filter",
+  "tf": "D1",
+  "regra": "Voss Predictive Filter: Above Zero / Voss Predictive Filter: Below Zero",
+  "placeboBTC": {
+   "development": 13.32,
+   "validation": -1.89,
+   "reserve": 1.9
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": -4.75,
+     "pf": 0.933,
+     "trades": 210,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 1.73,
+     "pf": 1.054,
+     "trades": 102,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.79,
+     "pf": 0.954,
+     "trades": 115,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": -10.32,
+     "pf": 0.866,
+     "trades": 233,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -3.44,
+     "pf": 0.888,
+     "trades": 89,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -12.21,
+     "pf": 0.605,
+     "trades": 73,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "wavelet-transform-trend",
+  "nome": "Wavelet Transform Trend",
+  "tf": "D1",
+  "regra": "Bullish Wavelet Trend / Bearish Wavelet Trend",
+  "placeboBTC": {
+   "development": 27.48,
+   "validation": -0.47,
+   "reserve": 4.4
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 19.18,
+     "pf": 1.773,
+     "trades": 51,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -0.37,
+     "pf": 0.975,
+     "trades": 25,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -2.24,
+     "pf": 0.859,
+     "trades": 31,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 14.13,
+     "pf": 1.46,
+     "trades": 52,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 0.06,
+     "pf": 1.004,
+     "trades": 25,
+     "falhas": [
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -1.53,
+     "pf": 0.817,
+     "trades": 19,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "weis-wave-candle",
+  "nome": "Weis Wave Candle",
+  "tf": "D1",
+  "regra": "Upward Trend Change / Downward Trend Change",
+  "placeboBTC": {
+   "development": 22.76,
+   "validation": -1.01,
+   "reserve": -1.81
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 13.83,
+     "pf": 1.93,
+     "trades": 30,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": -6.52,
+     "pf": 0.527,
+     "trades": 23,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -3.4,
+     "pf": 0.816,
+     "trades": 35,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 22.48,
+     "pf": 2.352,
+     "trades": 35,
+     "falhas": [
+      "anos positivos 2/6"
+     ]
+    },
+    "validation": {
+     "netR": 14.11,
+     "pf": 1.952,
+     "trades": 21,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 8.89,
+     "pf": 3.495,
+     "trades": 9,
+     "falhas": [
+      "poucas operações"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "williams-alligator",
+  "nome": "Williams alligator",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 17.88,
+   "validation": -4.12,
+   "reserve": 7.51
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 7.28,
+     "pf": 1.194,
+     "trades": 113,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -6.68,
+     "pf": 0.734,
+     "trades": 84,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 6.11,
+     "pf": 1.391,
+     "trades": 59,
+     "falhas": []
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 7.68,
+     "pf": 1.171,
+     "trades": 150,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": 5.07,
+     "pf": 1.275,
+     "trades": 53,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    },
+    "reserve": {
+     "netR": -0.53,
+     "pf": 0.952,
+     "trades": 37,
+     "falhas": [
+      "netR<=0",
+      "PF<1.1",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    }
+   }
+  },
+  "metaAtingida": false
+ },
+ {
+  "id": "zero-lag-garch-bands-nal",
+  "nome": "Zero-Lag GARCH Bands | NAL",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "placeboBTC": {
+   "development": 20.56,
+   "validation": -1.82,
+   "reserve": 3.9
+  },
+  "ativos": {
+   "EURUSD": {
+    "passou": false,
+    "development": {
+     "netR": 17.73,
+     "pf": 1.494,
+     "trades": 106,
+     "falhas": [
+      "sem a maior<=0",
+      "anos positivos 3/6"
+     ]
+    },
+    "validation": {
+     "netR": -12.11,
+     "pf": 0.486,
+     "trades": 58,
+     "falhas": [
+      "netR<=0",
+      "PF<1.15",
+      "sem a maior<=0",
+      "stress<=0"
+     ]
+    },
+    "reserve": {
+     "netR": 2.79,
+     "pf": 1.132,
+     "trades": 66,
+     "falhas": [
+      "sem a maior<=0"
+     ]
+    }
+   },
+   "USDJPY": {
+    "passou": false,
+    "development": {
+     "netR": 10.58,
+     "pf": 1.31,
+     "trades": 106,
+     "falhas": [
+      "anos positivos 4/6"
+     ]
+    },
+    "validation": {
+     "netR": 10.56,
+     "pf": 1.878,
+     "trades": 35,
+     "falhas": []
+    },
+    "reserve": {
+     "netR": 5.41,
+     "pf": 1.545,
+     "trades": 38,
+     "falhas": []
+    }
+   }
+  },
+  "metaAtingida": false
+ }
+]
