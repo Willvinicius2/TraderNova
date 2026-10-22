@@ -18,7 +18,8 @@ alter table public.journal_entries add constraint journal_entries_has_signal che
 -- Exemplos sintéticos continuam marcados como demo: um registro demo nunca aponta para um sinal de pesquisa real.
 alter table public.journal_entries add constraint journal_entries_demo_not_research check(mode<>'demo' or research_signal_id is null);
 
-create table public.user_preferences (
+-- if not exists: a tabela foi criada antes no projeto real (22/10/2026), separada do resto desta migração.
+create table if not exists public.user_preferences (
  user_id uuid primary key default auth.uid() references auth.users(id) on delete cascade,
  theme text check(theme in ('essential','dark','light','system')),
  density text check(density in ('comfortable','compact')),
@@ -29,7 +30,11 @@ alter table public.user_preferences enable row level security;
 revoke all on public.user_preferences from anon,authenticated;
 grant select,insert,update,delete on public.user_preferences to authenticated;
 grant all on public.user_preferences to service_role;
-create policy own_preferences on public.user_preferences for all to authenticated using((select auth.uid())=user_id) with check((select auth.uid())=user_id);
+do $$ begin
+ if not exists(select 1 from pg_policies where schemaname='public' and tablename='user_preferences' and policyname='own_preferences') then
+  create policy own_preferences on public.user_preferences for all to authenticated using((select auth.uid())=user_id) with check((select auth.uid())=user_id);
+ end if;
+end $$;
 
 -- Exportação dos dados do próprio usuário. security invoker: as políticas de RLS decidem o que entra.
 create function public.export_my_data() returns jsonb language sql stable security invoker set search_path='' as $$
