@@ -1,0 +1,73 @@
+{
+ "ano": 2026,
+ "treino": [
+  "2023-01-01",
+  "2026-01-01"
+ ],
+ "calculadoEm": "2026-10-22T14:36:55+00:00",
+ "membros": {
+  "TV85_ai_trend_nav": {
+   "escolha": {
+    "tf": "H4",
+    "params": {
+     "k": 10,
+     "k_atr": 3.0,
+     "maLen": 10,
+     "side": "long",
+     "smooth": 50
+    }
+   },
+   "treino": {
+    "trades": 37,
+    "netR": 57.31,
+    "pf": 3.861,
+    "maxDDR": 5.0,
+    "maxDDPct": 2.5,
+    "semMaiorR": 38.62,
+    "winRate": 0.243
+   },
+   "strategySha256": "1086b6f459373ae7a2947c6aa2a3b7941a63b16861a20668781e0d0031afa335"
+  },
+  "TV39_smoothed_ha": {
+   "escolha": {
+    "tf": "D1",
+    "params": {
+     "k": 1.5,
+     "n": 14,
+     "side": "long"
+    }
+   },
+   "treino": {
+    "trades": 36,
+    "netR": 37.81,
+    "pf": 3.231,
+    "maxDDR": 3.32,
+    "maxDDPct": 1.66,
+    "semMaiorR": 25.56,
+    "winRate": 0.306
+   },
+   "strategySha256": "fbeed75e5150644ba71ed97cc8df4f94b459e1ab8eec7739d7ea5907b84ea7ff"
+  },
+  "TV74_rvi": {
+   "escolha": {
+    "tf": "H4",
+    "params": {
+     "k": 3.0,
+     "lvl": 60,
+     "side": "both",
+     "trend": 200
+    }
+   },
+   "treino": {
+    "trades": 248,
+    "netR": 52.31,
+    "pf": 1.883,
+    "maxDDR": 4.86,
+    "maxDDPct": 2.43,
+    "semMaiorR": 36.26,
+    "winRate": 0.355
+   },
+   "strategySha256": "3927db8464e1de4b34e54c620e4d1ef6fd2b6c024e8873353df375bc4c77cfe8"
+  }
+ }
+}

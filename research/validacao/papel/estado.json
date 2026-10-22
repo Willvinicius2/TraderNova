@@ -1,0 +1,60 @@
+{
+ "inicio": "2026-10-22",
+ "atualizadoEm": "2026-10-22T14:37:56+00:00",
+ "riscoPorMembroPct": 0.1667,
+ "membros": {
+  "TV85_ai_trend_nav": {
+   "escolha": {
+    "tf": "H4",
+    "params": {
+     "k": 10,
+     "k_atr": 3.0,
+     "maLen": 10,
+     "side": "long",
+     "smooth": 50
+    }
+   },
+   "fechadas": [],
+   "aberta": null,
+   "Rfechado": 0,
+   "ultimoCandle": "2026-10-21 20:00:00+00:00",
+   "fimDados": "2026-10-22 02:00:00+00:00",
+   "sinalNaProximaAbertura": null
+  },
+  "TV39_smoothed_ha": {
+   "escolha": {
+    "tf": "D1",
+    "params": {
+     "k": 1.5,
+     "n": 14,
+     "side": "long"
+    }
+   },
+   "fechadas": [],
+   "aberta": null,
+   "Rfechado": 0,
+   "ultimoCandle": "2026-10-21 00:00:00+00:00",
+   "fimDados": "2026-10-22 02:00:00+00:00",
+   "sinalNaProximaAbertura": null
+  },
+  "TV74_rvi": {
+   "escolha": {
+    "tf": "H4",
+    "params": {
+     "k": 3.0,
+     "lvl": 60,
+     "side": "both",
+     "trend": 200
+    }
+   },
+   "fechadas": [],
+   "aberta": null,
+   "Rfechado": 0,
+   "ultimoCandle": "2026-10-21 20:00:00+00:00",
+   "fimDados": "2026-10-22 02:00:00+00:00",
+   "sinalNaProximaAbertura": null
+  }
+ },
+ "Rtotal": 0.0,
+ "contaPct": 0.0
+}
