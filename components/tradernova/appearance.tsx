@@ -53,6 +53,8 @@ const themes = [
   {value: 'dark', title: 'Nova Lab', description: 'Grafite e roxo', Icon: Moon},
   {value: 'light', title: 'Claro & Direto', description: 'Branco e azul', Icon: Sun},
 ] as const;
+// Densidade atual e setter, para a sincronização de preferências da conta.
+export function useDensity() {return useContext(DensityContext);}
 export function ThemeToggle() {
   const {theme, setTheme} = useTheme();
   const mounted = useMounted();

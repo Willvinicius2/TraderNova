@@ -21,4 +21,9 @@ assert.equal(site.parentPage(`${site.SITE_URL}?aba=robo&sinal=test`), `${site.SI
 assert.equal(site.parentPage(`${site.SITE_URL}?aba=diario`), `${site.SITE_URL}?aba=mercado`);
 assert.equal(site.parentPage(site.SITE_URL), null);
 assert.equal(site.parentPage('https://evil.example/?aba=diario'), null);
-console.log('Mobile checks passed: original site, origin boundary, HTTPS-only external links, UUID-only deep links, valid bridge script.');
+assert.equal(site.authLink('tradernova://auth?code=abc-123'), `${site.SITE_URL}?aba=conta&code=abc-123`);
+assert.equal(site.authLink('tradernova://auth/?code=abc_1.2'), `${site.SITE_URL}?aba=conta&code=abc_1.2`);
+assert.equal(site.authLink('tradernova://auth#error=access_denied&error_description=Link+expirado'), `${site.SITE_URL}?aba=conta&error_description=Link+expirado`);
+for (const url of ['tradernova://auth', 'tradernova://auth?aba=robo', 'tradernova://auth?code=%3Cscript%3E', 'tradernova://auth?code=a%26aba%3Drobo', 'tradernova://authx?code=a', 'tradernova://auth/x?code=a', 'https://auth?code=a', ' tradernova://auth?code=a', `tradernova://auth?code=${'a'.repeat(300)}`]) assert.equal(site.authLink(url), null, url);
+assert.equal(new URL(site.authLink('tradernova://auth?code=a&redirect=https://evil.example')).searchParams.has('redirect'), false, 'só code e erro passam');
+console.log('Mobile checks passed: original site, origin boundary, HTTPS-only external links, UUID-only deep links, auth return links, valid bridge script.');
