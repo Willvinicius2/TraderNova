@@ -1,0 +1,177 @@
+{
+ "note": "BTCUSD: custos e períodos de research/lab/protocol.json (lab-v4). Outros ativos: candles MT5 de github.com/ejtraderLabs/historical-data (commit fbd29b3, nov/2012 a mar/2022, fuso do servidor), convertidos por dados_fx.py; custos fixados antes de rodar.",
+ "trainYears": 3,
+ "minTradesPerYear": 12,
+ "assets": {
+  "BTCUSD": {
+   "start": "2014-01-01",
+   "end": "2026-10-21",
+   "wfFirstTest": 2019,
+   "wfLastTest": 2026,
+   "costSide": {
+    "base": 0.001,
+    "stress": 0.002
+   },
+   "phases": {
+    "development": [
+     "2016-01-01",
+     "2021-01-01"
+    ],
+    "validation": [
+     "2021-01-01",
+     "2023-01-01"
+    ],
+    "reserve": [
+     "2023-01-01",
+     "2026-10-21"
+    ]
+   }
+  },
+  "EJ_XAUUSD": {
+   "start": "2013-01-01",
+   "end": "2022-03-05",
+   "wfFirstTest": 2017,
+   "wfLastTest": 2022,
+   "costSide": {
+    "base": 0.00015,
+    "stress": 0.0003
+   },
+   "phases": {
+    "development": [
+     "2014-01-01",
+     "2018-01-01"
+    ],
+    "validation": [
+     "2018-01-01",
+     "2020-01-01"
+    ],
+    "reserve": [
+     "2020-01-01",
+     "2022-03-05"
+    ]
+   },
+   "costNote": "Base 0,015% por lado (~0,2-0,3 USD), meio spread de CFD de ouro + slippage; stress dobra."
+  },
+  "EJ_EURUSD": {
+   "start": "2013-01-01",
+   "end": "2022-03-05",
+   "wfFirstTest": 2017,
+   "wfLastTest": 2022,
+   "costSide": {
+    "base": 4e-05,
+    "stress": 8e-05
+   },
+   "phases": {
+    "development": [
+     "2014-01-01",
+     "2018-01-01"
+    ],
+    "validation": [
+     "2018-01-01",
+     "2020-01-01"
+    ],
+    "reserve": [
+     "2020-01-01",
+     "2022-03-05"
+    ]
+   },
+   "costNote": "Mesmo custo do laboratório para EURUSD/USDJPY; GBPUSD, AUDUSD e USDCAD um pouco mais caros (0,005% por lado)."
+  },
+  "EJ_GBPUSD": {
+   "start": "2013-01-01",
+   "end": "2022-03-05",
+   "wfFirstTest": 2017,
+   "wfLastTest": 2022,
+   "costSide": {
+    "base": 5e-05,
+    "stress": 0.0001
+   },
+   "phases": {
+    "development": [
+     "2014-01-01",
+     "2018-01-01"
+    ],
+    "validation": [
+     "2018-01-01",
+     "2020-01-01"
+    ],
+    "reserve": [
+     "2020-01-01",
+     "2022-03-05"
+    ]
+   }
+  },
+  "EJ_USDJPY": {
+   "start": "2013-01-01",
+   "end": "2022-03-05",
+   "wfFirstTest": 2017,
+   "wfLastTest": 2022,
+   "costSide": {
+    "base": 4e-05,
+    "stress": 8e-05
+   },
+   "phases": {
+    "development": [
+     "2014-01-01",
+     "2018-01-01"
+    ],
+    "validation": [
+     "2018-01-01",
+     "2020-01-01"
+    ],
+    "reserve": [
+     "2020-01-01",
+     "2022-03-05"
+    ]
+   }
+  },
+  "EJ_AUDUSD": {
+   "start": "2013-01-01",
+   "end": "2022-03-05",
+   "wfFirstTest": 2017,
+   "wfLastTest": 2022,
+   "costSide": {
+    "base": 5e-05,
+    "stress": 0.0001
+   },
+   "phases": {
+    "development": [
+     "2014-01-01",
+     "2018-01-01"
+    ],
+    "validation": [
+     "2018-01-01",
+     "2020-01-01"
+    ],
+    "reserve": [
+     "2020-01-01",
+     "2022-03-05"
+    ]
+   }
+  },
+  "EJ_USDCAD": {
+   "start": "2013-01-01",
+   "end": "2022-03-05",
+   "wfFirstTest": 2017,
+   "wfLastTest": 2022,
+   "costSide": {
+    "base": 5e-05,
+    "stress": 0.0001
+   },
+   "phases": {
+    "development": [
+     "2014-01-01",
+     "2018-01-01"
+    ],
+    "validation": [
+     "2018-01-01",
+     "2020-01-01"
+    ],
+    "reserve": [
+     "2020-01-01",
+     "2022-03-05"
+    ]
+   }
+  }
+ }
+}

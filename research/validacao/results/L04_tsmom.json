@@ -1,0 +1,9040 @@
+{
+ "strategy": "L04_tsmom",
+ "name": "Momentum de série temporal (TSMOM)",
+ "labProtocol": "lab-v1",
+ "labTf": "D1",
+ "labParams": {
+  "look": 60,
+  "rebal": 1,
+  "k": 2.0,
+  "side": "long"
+ },
+ "strategySha256": "4f22a565434fd81080b85b54922d70b4684e5d88ae1e5c174214540f8ffba3f3",
+ "shaMatchesLab": true,
+ "assets": {
+  "BTCUSD": {
+   "buyHoldPctByYear": {
+    "2015": 34.2,
+    "2016": 124.3,
+    "2017": 1336.4,
+    "2018": -73.4,
+    "2019": 94.1,
+    "2020": 304.9,
+    "2021": 59.4,
+    "2022": -64.2,
+    "2023": 155.6,
+    "2024": 121.0,
+    "2025": -6.3,
+    "2026": -4.6
+   },
+   "fixed": {
+    "orig": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "long"
+     },
+     "byYear": {
+      "2015": {
+       "netR": 5.86,
+       "trades": 7,
+       "shorts": 0
+      },
+      "2016": {
+       "netR": 546.0,
+       "trades": 7,
+       "shorts": 0
+      },
+      "2017": {
+       "netR": 0.0,
+       "trades": 0,
+       "shorts": 0
+      },
+      "2018": {
+       "netR": -3.32,
+       "trades": 15,
+       "shorts": 0
+      },
+      "2019": {
+       "netR": 23.5,
+       "trades": 13,
+       "shorts": 0
+      },
+      "2020": {
+       "netR": 68.17,
+       "trades": 9,
+       "shorts": 0
+      },
+      "2021": {
+       "netR": 2.13,
+       "trades": 5,
+       "shorts": 0
+      },
+      "2022": {
+       "netR": -5.71,
+       "trades": 11,
+       "shorts": 0
+      },
+      "2023": {
+       "netR": 24.68,
+       "trades": 6,
+       "shorts": 0
+      },
+      "2024": {
+       "netR": 11.63,
+       "trades": 16,
+       "shorts": 0
+      },
+      "2025": {
+       "netR": 0.2,
+       "trades": 8,
+       "shorts": 0
+      },
+      "2026": {
+       "netR": 5.32,
+       "trades": 5,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 44,
+       "netR": 634.35,
+       "pf": 70.566,
+       "maxDDR": 4.85,
+       "maxDDPct": 2.42,
+       "semMaiorR": 94.94,
+       "winRate": 0.364
+      },
+      "validation": {
+       "trades": 16,
+       "netR": -3.58,
+       "pf": 0.446,
+       "maxDDR": 5.71,
+       "maxDDPct": 2.86,
+       "semMaiorR": -5.09,
+       "winRate": 0.312
+      },
+      "reserve": {
+       "trades": 35,
+       "netR": 41.82,
+       "pf": 5.05,
+       "maxDDR": 3.62,
+       "maxDDPct": 1.81,
+       "semMaiorR": 25.15,
+       "winRate": 0.343
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 44,
+       "netR": 632.46,
+       "pf": 65.114,
+       "maxDDR": 5.47,
+       "maxDDPct": 2.73,
+       "semMaiorR": 93.66,
+       "winRate": 0.318
+      },
+      "validation": {
+       "trades": 16,
+       "netR": -3.91,
+       "pf": 0.417,
+       "maxDDR": 5.96,
+       "maxDDPct": 2.98,
+       "semMaiorR": -5.4,
+       "winRate": 0.312
+      },
+      "reserve": {
+       "trades": 35,
+       "netR": 40.63,
+       "pf": 4.68,
+       "maxDDR": 4.0,
+       "maxDDPct": 2.0,
+       "semMaiorR": 24.03,
+       "winRate": 0.314
+      }
+     },
+     "all": {
+      "trades": 95,
+      "netR": 672.59,
+      "pf": 26.958,
+      "maxDDR": 5.71,
+      "maxDDPct": 2.86,
+      "semMaiorR": 133.18,
+      "winRate": 0.347
+     }
+    },
+    "both": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2015": {
+       "netR": 2.37,
+       "trades": 14,
+       "shorts": 7
+      },
+      "2016": {
+       "netR": 543.5,
+       "trades": 16,
+       "shorts": 9
+      },
+      "2017": {
+       "netR": 0.0,
+       "trades": 0,
+       "shorts": 0
+      },
+      "2018": {
+       "netR": 10.69,
+       "trades": 32,
+       "shorts": 17
+      },
+      "2019": {
+       "netR": 21.79,
+       "trades": 27,
+       "shorts": 14
+      },
+      "2020": {
+       "netR": 64.01,
+       "trades": 18,
+       "shorts": 9
+      },
+      "2021": {
+       "netR": 5.32,
+       "trades": 11,
+       "shorts": 6
+      },
+      "2022": {
+       "netR": -3.53,
+       "trades": 21,
+       "shorts": 10
+      },
+      "2023": {
+       "netR": 21.02,
+       "trades": 11,
+       "shorts": 5
+      },
+      "2024": {
+       "netR": 7.67,
+       "trades": 36,
+       "shorts": 20
+      },
+      "2025": {
+       "netR": 0.54,
+       "trades": 17,
+       "shorts": 9
+      },
+      "2026": {
+       "netR": 9.05,
+       "trades": 8,
+       "shorts": 3
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 93,
+       "netR": 639.99,
+       "pf": 26.142,
+       "maxDDR": 5.99,
+       "maxDDPct": 3.0,
+       "semMaiorR": 100.58,
+       "winRate": 0.333
+      },
+      "validation": {
+       "trades": 32,
+       "netR": 1.79,
+       "pf": 1.186,
+       "maxDDR": 4.73,
+       "maxDDPct": 2.37,
+       "semMaiorR": -1.48,
+       "winRate": 0.375
+      },
+      "reserve": {
+       "trades": 72,
+       "netR": 38.28,
+       "pf": 2.586,
+       "maxDDR": 7.67,
+       "maxDDPct": 3.83,
+       "semMaiorR": 21.6,
+       "winRate": 0.361
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 93,
+       "netR": 636.81,
+       "pf": 24.421,
+       "maxDDR": 6.29,
+       "maxDDPct": 3.14,
+       "semMaiorR": 98.01,
+       "winRate": 0.28
+      },
+      "validation": {
+       "trades": 32,
+       "netR": 1.17,
+       "pf": 1.116,
+       "maxDDR": 4.96,
+       "maxDDPct": 2.48,
+       "semMaiorR": -2.09,
+       "winRate": 0.375
+      },
+      "reserve": {
+       "trades": 72,
+       "netR": 35.95,
+       "pf": 2.406,
+       "maxDDR": 8.46,
+       "maxDDPct": 4.23,
+       "semMaiorR": 19.35,
+       "winRate": 0.347
+      }
+     },
+     "all": {
+      "trades": 197,
+      "netR": 680.05,
+      "pf": 12.487,
+      "maxDDR": 7.67,
+      "maxDDPct": 3.83,
+      "semMaiorR": 140.65,
+      "winRate": 0.35
+     }
+    },
+    "short": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2015": {
+       "netR": -3.49,
+       "trades": 7,
+       "shorts": 7
+      },
+      "2016": {
+       "netR": -2.5,
+       "trades": 9,
+       "shorts": 9
+      },
+      "2017": {
+       "netR": 0.0,
+       "trades": 0,
+       "shorts": 0
+      },
+      "2018": {
+       "netR": 14.01,
+       "trades": 17,
+       "shorts": 17
+      },
+      "2019": {
+       "netR": -1.71,
+       "trades": 14,
+       "shorts": 14
+      },
+      "2020": {
+       "netR": -4.16,
+       "trades": 9,
+       "shorts": 9
+      },
+      "2021": {
+       "netR": 3.19,
+       "trades": 6,
+       "shorts": 6
+      },
+      "2022": {
+       "netR": 2.18,
+       "trades": 10,
+       "shorts": 10
+      },
+      "2023": {
+       "netR": -3.66,
+       "trades": 5,
+       "shorts": 5
+      },
+      "2024": {
+       "netR": -3.96,
+       "trades": 20,
+       "shorts": 20
+      },
+      "2025": {
+       "netR": 0.34,
+       "trades": 9,
+       "shorts": 9
+      },
+      "2026": {
+       "netR": 3.73,
+       "trades": 3,
+       "shorts": 3
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 49,
+       "netR": 5.64,
+       "pf": 1.345,
+       "maxDDR": 5.87,
+       "maxDDPct": 2.93,
+       "semMaiorR": -8.15,
+       "winRate": 0.306
+      },
+      "validation": {
+       "trades": 16,
+       "netR": 5.37,
+       "pf": 2.71,
+       "maxDDR": 1.3,
+       "maxDDPct": 0.65,
+       "semMaiorR": 2.1,
+       "winRate": 0.438
+      },
+      "reserve": {
+       "trades": 37,
+       "netR": -3.55,
+       "pf": 0.743,
+       "maxDDR": 9.47,
+       "maxDDPct": 4.74,
+       "semMaiorR": -7.15,
+       "winRate": 0.378
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 49,
+       "netR": 4.35,
+       "pf": 1.251,
+       "maxDDR": 6.47,
+       "maxDDPct": 3.23,
+       "semMaiorR": -9.4,
+       "winRate": 0.245
+      },
+      "validation": {
+       "trades": 16,
+       "netR": 5.08,
+       "pf": 2.53,
+       "maxDDR": 1.39,
+       "maxDDPct": 0.69,
+       "semMaiorR": 1.82,
+       "winRate": 0.438
+      },
+      "reserve": {
+       "trades": 37,
+       "netR": -4.68,
+       "pf": 0.678,
+       "maxDDR": 10.36,
+       "maxDDPct": 5.18,
+       "semMaiorR": -8.25,
+       "winRate": 0.378
+      }
+     },
+     "all": {
+      "trades": 102,
+      "netR": 7.47,
+      "pf": 1.224,
+      "maxDDR": 9.97,
+      "maxDDPct": 4.98,
+      "semMaiorR": -6.33,
+      "winRate": 0.353
+     }
+    },
+    "regime": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2015": {
+       "netR": 4.71,
+       "trades": 10,
+       "shorts": 8
+      },
+      "2016": {
+       "netR": 546.0,
+       "trades": 7,
+       "shorts": 0
+      },
+      "2017": {
+       "netR": 0.0,
+       "trades": 0,
+       "shorts": 0
+      },
+      "2018": {
+       "netR": 12.29,
+       "trades": 19,
+       "shorts": 19
+      },
+      "2019": {
+       "netR": 12.67,
+       "trades": 16,
+       "shorts": 12
+      },
+      "2020": {
+       "netR": 65.12,
+       "trades": 13,
+       "shorts": 3
+      },
+      "2021": {
+       "netR": -3.57,
+       "trades": 15,
+       "shorts": 7
+      },
+      "2022": {
+       "netR": 2.18,
+       "trades": 10,
+       "shorts": 10
+      },
+      "2023": {
+       "netR": 13.82,
+       "trades": 7,
+       "shorts": 3
+      },
+      "2024": {
+       "netR": 8.76,
+       "trades": 22,
+       "shorts": 9
+      },
+      "2025": {
+       "netR": -1.45,
+       "trades": 16,
+       "shorts": 8
+      },
+      "2026": {
+       "netR": 8.17,
+       "trades": 4,
+       "shorts": 3
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 55,
+       "netR": 636.07,
+       "pf": 38.425,
+       "maxDDR": 6.53,
+       "maxDDPct": 3.27,
+       "semMaiorR": 96.67,
+       "winRate": 0.364
+      },
+      "validation": {
+       "trades": 25,
+       "netR": -1.39,
+       "pf": 0.813,
+       "maxDDR": 4.75,
+       "maxDDPct": 2.38,
+       "semMaiorR": -4.66,
+       "winRate": 0.24
+      },
+      "reserve": {
+       "trades": 49,
+       "netR": 29.3,
+       "pf": 2.852,
+       "maxDDR": 5.26,
+       "maxDDPct": 2.63,
+       "semMaiorR": 19.48,
+       "winRate": 0.367
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 55,
+       "netR": 633.99,
+       "pf": 36.389,
+       "maxDDR": 6.85,
+       "maxDDPct": 3.42,
+       "semMaiorR": 95.19,
+       "winRate": 0.309
+      },
+      "validation": {
+       "trades": 25,
+       "netR": -1.83,
+       "pf": 0.764,
+       "maxDDR": 4.94,
+       "maxDDPct": 2.47,
+       "semMaiorR": -5.08,
+       "winRate": 0.24
+      },
+      "reserve": {
+       "trades": 49,
+       "netR": 27.79,
+       "pf": 2.662,
+       "maxDDR": 5.74,
+       "maxDDPct": 2.87,
+       "semMaiorR": 18.03,
+       "winRate": 0.367
+      }
+     },
+     "all": {
+      "trades": 129,
+      "netR": 663.98,
+      "pf": 17.502,
+      "maxDDR": 6.53,
+      "maxDDPct": 3.27,
+      "semMaiorR": 124.57,
+      "winRate": 0.341
+     }
+    }
+   },
+   "sensitivity": {
+    "orig": {
+     "development": {
+      "combos": 180,
+      "positivas": 180,
+      "pfMediano": 20.287
+     },
+     "validation": {
+      "combos": 180,
+      "positivas": 46,
+      "pfMediano": 0.46
+     },
+     "reserve": {
+      "combos": 180,
+      "positivas": 161,
+      "pfMediano": 3.463
+     },
+     "todasAsFasesPositivas": 46
+    },
+    "regime": {
+     "development": {
+      "combos": 90,
+      "positivas": 90,
+      "pfMediano": 27.678
+     },
+     "validation": {
+      "combos": 90,
+      "positivas": 30,
+      "pfMediano": 0.829
+     },
+     "reserve": {
+      "combos": 90,
+      "positivas": 83,
+      "pfMediano": 2.52
+     },
+     "todasAsFasesPositivas": 30
+    }
+   },
+   "walkForward": {
+    "orig": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 85,
+        "netR": 2181.2,
+        "pf": 34.499,
+        "maxDDR": 15.21,
+        "maxDDPct": 7.61,
+        "semMaiorR": 77.04,
+        "winRate": 0.259
+       },
+       "test": {
+        "trades": 50,
+        "netR": 126.65,
+        "pf": 3.858,
+        "maxDDR": 23.69,
+        "maxDDPct": 11.84,
+        "semMaiorR": -29.44,
+        "winRate": 0.16
+       },
+       "testStressNetR": 118.97,
+       "shortShare": 0.6
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 42,
+        "netR": 122.4,
+        "pf": 8.045,
+        "maxDDR": 6.4,
+        "maxDDPct": 3.2,
+        "semMaiorR": 31.38,
+        "winRate": 0.429
+       },
+       "test": {
+        "trades": 32,
+        "netR": 66.08,
+        "pf": 3.257,
+        "maxDDR": 29.25,
+        "maxDDPct": 14.62,
+        "semMaiorR": -27.76,
+        "winRate": 0.094
+       },
+       "testStressNetR": 64.39,
+       "shortShare": 0.56
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 40,
+        "netR": 284.48,
+        "pf": 10.748,
+        "maxDDR": 11.33,
+        "maxDDPct": 5.66,
+        "semMaiorR": 99.2,
+        "winRate": 0.275
+       },
+       "test": {
+        "trades": 6,
+        "netR": 8.05,
+        "pf": 3.563,
+        "maxDDR": 2.09,
+        "maxDDPct": 1.05,
+        "semMaiorR": 1.67,
+        "winRate": 0.5
+       },
+       "testStressNetR": 7.79,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "long"
+        }
+       },
+       "train": {
+        "trades": 44,
+        "netR": 498.89,
+        "pf": 11.853,
+        "maxDDR": 16.47,
+        "maxDDPct": 8.23,
+        "semMaiorR": 145.91,
+        "winRate": 0.068
+       },
+       "test": {
+        "trades": 14,
+        "netR": -15.91,
+        "pf": 0.0,
+        "maxDDR": 15.91,
+        "maxDDPct": 7.96,
+        "semMaiorR": -14.83,
+        "winRate": 0.0
+       },
+       "testStressNetR": -17.82,
+       "shortShare": 0.0
+      },
+      {
+       "testYear": 2023,
+       "chosen": {
+        "tf": "H4",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 114,
+        "netR": 141.3,
+        "pf": 3.282,
+        "maxDDR": 9.34,
+        "maxDDPct": 4.67,
+        "semMaiorR": 33.23,
+        "winRate": 0.377
+       },
+       "test": {
+        "trades": 20,
+        "netR": 75.01,
+        "pf": 8.811,
+        "maxDDR": 3.1,
+        "maxDDPct": 1.55,
+        "semMaiorR": 36.56,
+        "winRate": 0.45
+       },
+       "testStressNetR": 72.84,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2024,
+       "chosen": {
+        "tf": "H4",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 105,
+        "netR": 87.86,
+        "pf": 2.547,
+        "maxDDR": 10.51,
+        "maxDDPct": 5.26,
+        "semMaiorR": 49.42,
+        "winRate": 0.371
+       },
+       "test": {
+        "trades": 54,
+        "netR": 12.41,
+        "pf": 1.328,
+        "maxDDR": 14.33,
+        "maxDDPct": 7.16,
+        "semMaiorR": -10.93,
+        "winRate": 0.222
+       },
+       "testStressNetR": 8.96,
+       "shortShare": 0.44
+      },
+      {
+       "testYear": 2025,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "long"
+        }
+       },
+       "train": {
+        "trades": 60,
+        "netR": 158.16,
+        "pf": 3.853,
+        "maxDDR": 18.24,
+        "maxDDPct": 9.12,
+        "semMaiorR": 13.35,
+        "winRate": 0.183
+       },
+       "test": {
+        "trades": 3,
+        "netR": 13.58,
+        "pf": 6.746,
+        "maxDDR": 2.36,
+        "maxDDPct": 1.18,
+        "semMaiorR": -2.36,
+        "winRate": 0.333
+       },
+       "testStressNetR": 13.01,
+       "shortShare": 0.0
+      },
+      {
+       "testYear": 2026,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "long"
+        }
+       },
+       "train": {
+        "trades": 49,
+        "netR": 211.69,
+        "pf": 6.346,
+        "maxDDR": 16.78,
+        "maxDDPct": 8.39,
+        "semMaiorR": 120.6,
+        "winRate": 0.265
+       },
+       "test": {
+        "trades": 18,
+        "netR": 8.68,
+        "pf": 1.439,
+        "maxDDR": 19.77,
+        "maxDDPct": 9.88,
+        "semMaiorR": -19.77,
+        "winRate": 0.056
+       },
+       "testStressNetR": 4.87,
+       "shortShare": 0.0
+      }
+     ],
+     "oos": {
+      "trades": 197,
+      "netR": 294.56,
+      "pf": 2.815,
+      "maxDDR": 35.0,
+      "maxDDPct": 17.5,
+      "semMaiorR": 138.46,
+      "winRate": 0.188
+     },
+     "oosStressNetR": 272.99,
+     "oosStressDDPct": 19.37,
+     "yearsTraded": 8,
+     "yearsPositive": 7
+    },
+    "orig_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 48,
+        "netR": 554.18,
+        "pf": 49.844,
+        "maxDDR": 3.46,
+        "maxDDPct": 1.73,
+        "semMaiorR": 14.77,
+        "winRate": 0.375
+       },
+       "test": {
+        "trades": 27,
+        "netR": 21.79,
+        "pf": 3.95,
+        "maxDDR": 5.03,
+        "maxDDPct": 2.51,
+        "semMaiorR": -4.14,
+        "winRate": 0.222
+       },
+       "testStressNetR": 21.05,
+       "shortShare": 0.52
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 36,
+        "netR": 44.84,
+        "pf": 7.843,
+        "maxDDR": 2.76,
+        "maxDDPct": 1.38,
+        "semMaiorR": 12.37,
+        "winRate": 0.472
+       },
+       "test": {
+        "trades": 16,
+        "netR": 26.72,
+        "pf": 3.703,
+        "maxDDR": 9.87,
+        "maxDDPct": 4.94,
+        "semMaiorR": -9.31,
+        "winRate": 0.188
+       },
+       "testStressNetR": 26.37,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "long"
+        }
+       },
+       "train": {
+        "trades": 37,
+        "netR": 88.35,
+        "pf": 11.103,
+        "maxDDR": 4.85,
+        "maxDDPct": 2.42,
+        "semMaiorR": 22.01,
+        "winRate": 0.324
+       },
+       "test": {
+        "trades": 5,
+        "netR": 2.13,
+        "pf": 9.657,
+        "maxDDR": 0.16,
+        "maxDDPct": 0.08,
+        "semMaiorR": 0.62,
+        "winRate": 0.6
+       },
+       "testStressNetR": 2.05,
+       "shortShare": 0.0
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 32,
+        "netR": 98.37,
+        "pf": 8.04,
+        "maxDDR": 3.06,
+        "maxDDPct": 1.53,
+        "semMaiorR": 29.0,
+        "winRate": 0.375
+       },
+       "test": {
+        "trades": 14,
+        "netR": -2.31,
+        "pf": 0.698,
+        "maxDDR": 3.7,
+        "maxDDPct": 1.85,
+        "semMaiorR": -6.42,
+        "winRate": 0.357
+       },
+       "testStressNetR": -2.63,
+       "shortShare": 0.36
+      },
+      {
+       "testYear": 2023,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 35,
+        "netR": 72.68,
+        "pf": 5.454,
+        "maxDDR": 3.7,
+        "maxDDPct": 1.85,
+        "semMaiorR": 3.32,
+        "winRate": 0.4
+       },
+       "test": {
+        "trades": 8,
+        "netR": 19.8,
+        "pf": 9.136,
+        "maxDDR": 1.05,
+        "maxDDPct": 0.53,
+        "semMaiorR": 9.91,
+        "winRate": 0.625
+       },
+       "testStressNetR": 19.48,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2024,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 87,
+        "netR": 30.29,
+        "pf": 2.238,
+        "maxDDR": 6.02,
+        "maxDDPct": 3.01,
+        "semMaiorR": 15.71,
+        "winRate": 0.414
+       },
+       "test": {
+        "trades": 38,
+        "netR": 3.97,
+        "pf": 1.303,
+        "maxDDR": 6.52,
+        "maxDDPct": 3.26,
+        "semMaiorR": -3.96,
+        "winRate": 0.316
+       },
+       "testStressNetR": 3.06,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2025,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "long"
+        }
+       },
+       "train": {
+        "trades": 31,
+        "netR": 29.16,
+        "pf": 3.647,
+        "maxDDR": 4.92,
+        "maxDDPct": 2.46,
+        "semMaiorR": 5.21,
+        "winRate": 0.323
+       },
+       "test": {
+        "trades": 2,
+        "netR": 2.19,
+        "pf": 3.69,
+        "maxDDR": 0.82,
+        "maxDDPct": 0.41,
+        "semMaiorR": -0.82,
+        "winRate": 0.5
+       },
+       "testStressNetR": 2.12,
+       "shortShare": 0.0
+      },
+      {
+       "testYear": 2026,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "long"
+        }
+       },
+       "train": {
+        "trades": 46,
+        "netR": 37.32,
+        "pf": 3.976,
+        "maxDDR": 3.92,
+        "maxDDPct": 1.96,
+        "semMaiorR": 22.74,
+        "winRate": 0.391
+       },
+       "test": {
+        "trades": 18,
+        "netR": 3.94,
+        "pf": 1.875,
+        "maxDDR": 3.98,
+        "maxDDPct": 1.99,
+        "semMaiorR": -3.79,
+        "winRate": 0.333
+       },
+       "testStressNetR": 3.36,
+       "shortShare": 0.0
+      }
+     ],
+     "oos": {
+      "trades": 128,
+      "netR": 78.24,
+      "pf": 2.7,
+      "maxDDR": 11.21,
+      "maxDDPct": 5.61,
+      "semMaiorR": 42.21,
+      "winRate": 0.32
+     },
+     "oosStressNetR": 74.86,
+     "oosStressDDPct": 5.77,
+     "yearsTraded": 8,
+     "yearsPositive": 7
+    },
+    "orig_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 129,
+      "netR": 127.5,
+      "pf": 2.114,
+      "maxDDR": 57.51,
+      "maxDDPct": 28.76,
+      "semMaiorR": 33.66,
+      "winRate": 0.163
+     },
+     "oosStressNetR": 111.47,
+     "oosStressDDPct": 35.23,
+     "yearsTraded": 7,
+     "yearsPositive": 4
+    },
+    "orig_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 125,
+      "netR": 255.36,
+      "pf": 3.446,
+      "maxDDR": 33.73,
+      "maxDDPct": 16.87,
+      "semMaiorR": 99.27,
+      "winRate": 0.168
+     },
+     "oosStressNetR": 241.52,
+     "oosStressDDPct": 18.74,
+     "yearsTraded": 8,
+     "yearsPositive": 4
+    },
+    "regime": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 50,
+        "netR": 2184.23,
+        "pf": 63.943,
+        "maxDDR": 9.03,
+        "maxDDPct": 4.51,
+        "semMaiorR": 80.07,
+        "winRate": 0.3
+       },
+       "test": {
+        "trades": 33,
+        "netR": 65.6,
+        "pf": 3.014,
+        "maxDDR": 15.38,
+        "maxDDPct": 7.69,
+        "semMaiorR": -21.48,
+        "winRate": 0.091
+       },
+       "testStressNetR": 60.64,
+       "shortShare": 0.82
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 37,
+        "netR": 64.57,
+        "pf": 4.439,
+        "maxDDR": 6.81,
+        "maxDDPct": 3.41,
+        "semMaiorR": 20.65,
+        "winRate": 0.324
+       },
+       "test": {
+        "trades": 21,
+        "netR": 77.9,
+        "pf": 5.886,
+        "maxDDR": 15.94,
+        "maxDDPct": 7.97,
+        "semMaiorR": -15.94,
+        "winRate": 0.048
+       },
+       "testStressNetR": 76.81,
+       "shortShare": 0.43
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 39,
+        "netR": 423.78,
+        "pf": 14.11,
+        "maxDDR": 12.59,
+        "maxDDPct": 6.29,
+        "semMaiorR": 53.22,
+        "winRate": 0.179
+       },
+       "test": {
+        "trades": 20,
+        "netR": -19.17,
+        "pf": 0.025,
+        "maxDDR": 19.17,
+        "maxDDPct": 9.59,
+        "semMaiorR": -19.66,
+        "winRate": 0.05
+       },
+       "testStressNetR": -21.0,
+       "shortShare": 0.3
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 37,
+        "netR": 196.84,
+        "pf": 8.161,
+        "maxDDR": 8.27,
+        "maxDDPct": 4.13,
+        "semMaiorR": 20.35,
+        "winRate": 0.216
+       },
+       "test": {
+        "trades": 11,
+        "netR": -0.15,
+        "pf": 0.981,
+        "maxDDR": 4.21,
+        "maxDDPct": 2.11,
+        "semMaiorR": -5.46,
+        "winRate": 0.273
+       },
+       "testStressNetR": -0.78,
+       "shortShare": 1.0
+      },
+      {
+       "testYear": 2023,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 19,
+        "netR": 71.2,
+        "pf": 8.786,
+        "maxDDR": 4.63,
+        "maxDDPct": 2.31,
+        "semMaiorR": 0.2,
+        "winRate": 0.316
+       },
+       "test": {
+        "trades": 8,
+        "netR": 4.89,
+        "pf": 1.785,
+        "maxDDR": 5.25,
+        "maxDDPct": 2.63,
+        "semMaiorR": -5.25,
+        "winRate": 0.25
+       },
+       "testStressNetR": 4.59,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2024,
+       "chosen": {
+        "tf": "H4",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 39,
+        "netR": 18.83,
+        "pf": 2.245,
+        "maxDDR": 5.79,
+        "maxDDPct": 2.9,
+        "semMaiorR": 4.69,
+        "winRate": 0.205
+       },
+       "test": {
+        "trades": 30,
+        "netR": 8.69,
+        "pf": 1.835,
+        "maxDDR": 8.96,
+        "maxDDPct": 4.48,
+        "semMaiorR": -1.37,
+        "winRate": 0.3
+       },
+       "testStressNetR": 7.6,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2025,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 70,
+        "netR": 86.46,
+        "pf": 3.061,
+        "maxDDR": 13.36,
+        "maxDDPct": 6.68,
+        "semMaiorR": 53.54,
+        "winRate": 0.343
+       },
+       "test": {
+        "trades": 38,
+        "netR": -4.82,
+        "pf": 0.793,
+        "maxDDR": 14.6,
+        "maxDDPct": 7.3,
+        "semMaiorR": -11.64,
+        "winRate": 0.158
+       },
+       "testStressNetR": -7.63,
+       "shortShare": 0.61
+      },
+      {
+       "testYear": 2026,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 365,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 38,
+        "netR": 122.82,
+        "pf": 4.751,
+        "maxDDR": 10.64,
+        "maxDDPct": 5.32,
+        "semMaiorR": 0.24,
+        "winRate": 0.132
+       },
+       "test": {
+        "trades": 1,
+        "netR": 27.52,
+        "pf": null,
+        "maxDDR": 0.0,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": 1.0
+       },
+       "testStressNetR": 27.35,
+       "shortShare": 1.0
+      }
+     ],
+     "oos": {
+      "trades": 162,
+      "netR": 160.45,
+      "pf": 2.386,
+      "maxDDR": 24.57,
+      "maxDDPct": 12.29,
+      "semMaiorR": 66.61,
+      "winRate": 0.16
+     },
+     "oosStressNetR": 147.59,
+     "oosStressDDPct": 13.64,
+     "yearsTraded": 8,
+     "yearsPositive": 5
+    },
+    "regime_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 26,
+        "netR": 558.28,
+        "pf": 102.916,
+        "maxDDR": 1.94,
+        "maxDDPct": 0.97,
+        "semMaiorR": 18.88,
+        "winRate": 0.423
+       },
+       "test": {
+        "trades": 16,
+        "netR": 12.67,
+        "pf": 3.061,
+        "maxDDR": 3.5,
+        "maxDDPct": 1.75,
+        "semMaiorR": -4.79,
+        "winRate": 0.188
+       },
+       "testStressNetR": 12.22,
+       "shortShare": 0.75
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 53,
+        "netR": 47.1,
+        "pf": 4.126,
+        "maxDDR": 4.67,
+        "maxDDPct": 2.34,
+        "semMaiorR": 26.6,
+        "winRate": 0.283
+       },
+       "test": {
+        "trades": 13,
+        "netR": 46.1,
+        "pf": 13.287,
+        "maxDDR": 2.1,
+        "maxDDPct": 1.05,
+        "semMaiorR": 3.9,
+        "winRate": 0.462
+       },
+       "testStressNetR": 45.71,
+       "shortShare": 0.31
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 19,
+        "netR": 100.2,
+        "pf": 15.502,
+        "maxDDR": 3.96,
+        "maxDDPct": 1.98,
+        "semMaiorR": 29.21,
+        "winRate": 0.421
+       },
+       "test": {
+        "trades": 8,
+        "netR": -3.62,
+        "pf": 0.218,
+        "maxDDR": 4.63,
+        "maxDDPct": 2.31,
+        "semMaiorR": -4.63,
+        "winRate": 0.125
+       },
+       "testStressNetR": -3.75,
+       "shortShare": 0.38
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 18,
+        "netR": 84.55,
+        "pf": 10.627,
+        "maxDDR": 4.63,
+        "maxDDPct": 2.31,
+        "semMaiorR": 13.55,
+        "winRate": 0.278
+       },
+       "test": {
+        "trades": 5,
+        "netR": 3.03,
+        "pf": 2.903,
+        "maxDDR": 1.19,
+        "maxDDPct": 0.6,
+        "semMaiorR": -0.94,
+        "winRate": 0.4
+       },
+       "testStressNetR": 2.93,
+       "shortShare": 1.0
+      },
+      {
+       "testYear": 2023,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 19,
+        "netR": 71.2,
+        "pf": 8.786,
+        "maxDDR": 4.63,
+        "maxDDPct": 2.31,
+        "semMaiorR": 0.2,
+        "winRate": 0.316
+       },
+       "test": {
+        "trades": 8,
+        "netR": 4.89,
+        "pf": 1.785,
+        "maxDDR": 5.25,
+        "maxDDPct": 2.63,
+        "semMaiorR": -5.25,
+        "winRate": 0.25
+       },
+       "testStressNetR": 4.59,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2024,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 54,
+        "netR": 16.51,
+        "pf": 2.063,
+        "maxDDR": 6.59,
+        "maxDDPct": 3.29,
+        "semMaiorR": 6.05,
+        "winRate": 0.463
+       },
+       "test": {
+        "trades": 23,
+        "netR": 7.06,
+        "pf": 1.869,
+        "maxDDR": 4.93,
+        "maxDDPct": 2.46,
+        "semMaiorR": -0.3,
+        "winRate": 0.304
+       },
+       "testStressNetR": 6.49,
+       "shortShare": 0.35
+      },
+      {
+       "testYear": 2025,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 37,
+        "netR": 32.12,
+        "pf": 3.715,
+        "maxDDR": 5.94,
+        "maxDDPct": 2.97,
+        "semMaiorR": 8.16,
+        "winRate": 0.351
+       },
+       "test": {
+        "trades": 11,
+        "netR": 2.88,
+        "pf": 1.711,
+        "maxDDR": 3.2,
+        "maxDDPct": 1.6,
+        "semMaiorR": -1.04,
+        "winRate": 0.182
+       },
+       "testStressNetR": 2.6,
+       "shortShare": 0.82
+      },
+      {
+       "testYear": 2026,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 40,
+        "netR": 31.62,
+        "pf": 3.214,
+        "maxDDR": 5.94,
+        "maxDDPct": 2.97,
+        "semMaiorR": 7.67,
+        "winRate": 0.25
+       },
+       "test": {
+        "trades": 3,
+        "netR": 0.19,
+        "pf": 1.199,
+        "maxDDR": 0.97,
+        "maxDDPct": 0.49,
+        "semMaiorR": -0.97,
+        "winRate": 0.333
+       },
+       "testStressNetR": 0.09,
+       "shortShare": 0.67
+      }
+     ],
+     "oos": {
+      "trades": 87,
+      "netR": 73.21,
+      "pf": 3.062,
+      "maxDDR": 5.84,
+      "maxDDPct": 2.92,
+      "semMaiorR": 31.01,
+      "winRate": 0.276
+     },
+     "oosStressNetR": 70.87,
+     "oosStressDDPct": 3.17,
+     "yearsTraded": 8,
+     "yearsPositive": 7
+    },
+    "regime_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 159,
+      "netR": 134.89,
+      "pf": 2.189,
+      "maxDDR": 20.06,
+      "maxDDPct": 10.03,
+      "semMaiorR": 43.14,
+      "winRate": 0.182
+     },
+     "oosStressNetR": 123.39,
+     "oosStressDDPct": 11.2,
+     "yearsTraded": 7,
+     "yearsPositive": 5
+    },
+    "regime_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 160,
+      "netR": 406.14,
+      "pf": 4.867,
+      "maxDDR": 23.06,
+      "maxDDPct": 11.53,
+      "semMaiorR": 59.89,
+      "winRate": 0.212
+     },
+     "oosStressNetR": 393.2,
+     "oosStressDDPct": 13.3,
+     "yearsTraded": 8,
+     "yearsPositive": 6
+    }
+   }
+  },
+  "EJ_XAUUSD": {
+   "buyHoldPctByYear": {
+    "2014": -3.0,
+    "2015": -10.6,
+    "2016": 8.2,
+    "2017": 13.1,
+    "2018": -2.3,
+    "2019": 18.6,
+    "2020": 24.6,
+    "2021": -4.2,
+    "2022": 7.6
+   },
+   "fixed": {
+    "orig": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "long"
+     },
+     "byYear": {
+      "2014": {
+       "netR": -3.82,
+       "trades": 9,
+       "shorts": 0
+      },
+      "2015": {
+       "netR": -4.36,
+       "trades": 11,
+       "shorts": 0
+      },
+      "2016": {
+       "netR": 6.6,
+       "trades": 3,
+       "shorts": 0
+      },
+      "2017": {
+       "netR": 0.64,
+       "trades": 12,
+       "shorts": 0
+      },
+      "2018": {
+       "netR": 2.14,
+       "trades": 5,
+       "shorts": 0
+      },
+      "2019": {
+       "netR": 8.51,
+       "trades": 6,
+       "shorts": 0
+      },
+      "2020": {
+       "netR": 2.76,
+       "trades": 5,
+       "shorts": 0
+      },
+      "2021": {
+       "netR": -2.45,
+       "trades": 9,
+       "shorts": 0
+      },
+      "2022": {
+       "netR": 2.66,
+       "trades": 2,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 35,
+       "netR": -0.94,
+       "pf": 0.922,
+       "maxDDR": 8.18,
+       "maxDDPct": 4.09,
+       "semMaiorR": -4.84,
+       "winRate": 0.314
+      },
+      "validation": {
+       "trades": 11,
+       "netR": 10.65,
+       "pf": 3.894,
+       "maxDDR": 1.57,
+       "maxDDPct": 0.78,
+       "semMaiorR": 0.03,
+       "winRate": 0.182
+      },
+      "reserve": {
+       "trades": 16,
+       "netR": 2.97,
+       "pf": 1.547,
+       "maxDDR": 3.38,
+       "maxDDPct": 1.69,
+       "semMaiorR": -0.3,
+       "winRate": 0.438
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 35,
+       "netR": -1.39,
+       "pf": 0.887,
+       "maxDDR": 8.41,
+       "maxDDPct": 4.2,
+       "semMaiorR": -5.28,
+       "winRate": 0.286
+      },
+      "validation": {
+       "trades": 11,
+       "netR": 10.48,
+       "pf": 3.748,
+       "maxDDR": 1.62,
+       "maxDDPct": 0.81,
+       "semMaiorR": -0.12,
+       "winRate": 0.182
+      },
+      "reserve": {
+       "trades": 16,
+       "netR": 2.8,
+       "pf": 1.506,
+       "maxDDR": 3.48,
+       "maxDDPct": 1.74,
+       "semMaiorR": -0.47,
+       "winRate": 0.438
+      }
+     },
+     "all": {
+      "trades": 62,
+      "netR": 12.68,
+      "pf": 1.6,
+      "maxDDR": 8.18,
+      "maxDDPct": 4.09,
+      "semMaiorR": 2.06,
+      "winRate": 0.323
+     }
+    },
+    "both": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": -5.66,
+       "trades": 16,
+       "shorts": 7
+      },
+      "2015": {
+       "netR": -5.55,
+       "trades": 22,
+       "shorts": 11
+      },
+      "2016": {
+       "netR": 9.56,
+       "trades": 6,
+       "shorts": 3
+      },
+      "2017": {
+       "netR": -3.0,
+       "trades": 22,
+       "shorts": 10
+      },
+      "2018": {
+       "netR": 5.35,
+       "trades": 9,
+       "shorts": 4
+      },
+      "2019": {
+       "netR": 7.85,
+       "trades": 13,
+       "shorts": 7
+      },
+      "2020": {
+       "netR": 0.67,
+       "trades": 9,
+       "shorts": 4
+      },
+      "2021": {
+       "netR": -2.97,
+       "trades": 18,
+       "shorts": 9
+      },
+      "2022": {
+       "netR": 0.88,
+       "trades": 5,
+       "shorts": 3
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 66,
+       "netR": -4.66,
+       "pf": 0.796,
+       "maxDDR": 11.22,
+       "maxDDPct": 5.61,
+       "semMaiorR": -8.56,
+       "winRate": 0.288
+      },
+      "validation": {
+       "trades": 22,
+       "netR": 13.2,
+       "pf": 3.02,
+       "maxDDR": 2.37,
+       "maxDDPct": 1.19,
+       "semMaiorR": 2.59,
+       "winRate": 0.227
+      },
+      "reserve": {
+       "trades": 32,
+       "netR": -1.42,
+       "pf": 0.881,
+       "maxDDR": 6.43,
+       "maxDDPct": 3.22,
+       "semMaiorR": -4.69,
+       "winRate": 0.375
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 66,
+       "netR": -5.5,
+       "pf": 0.766,
+       "maxDDR": 11.65,
+       "maxDDPct": 5.83,
+       "semMaiorR": -9.39,
+       "winRate": 0.273
+      },
+      "validation": {
+       "trades": 22,
+       "netR": 12.87,
+       "pf": 2.897,
+       "maxDDR": 2.48,
+       "maxDDPct": 1.24,
+       "semMaiorR": 2.27,
+       "winRate": 0.227
+      },
+      "reserve": {
+       "trades": 32,
+       "netR": -1.77,
+       "pf": 0.855,
+       "maxDDR": 6.76,
+       "maxDDPct": 3.38,
+       "semMaiorR": -5.04,
+       "winRate": 0.375
+      }
+     },
+     "all": {
+      "trades": 120,
+      "netR": 7.12,
+      "pf": 1.172,
+      "maxDDR": 11.22,
+      "maxDDPct": 5.61,
+      "semMaiorR": -3.5,
+      "winRate": 0.3
+     }
+    },
+    "short": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": -1.84,
+       "trades": 7,
+       "shorts": 7
+      },
+      "2015": {
+       "netR": -1.19,
+       "trades": 11,
+       "shorts": 11
+      },
+      "2016": {
+       "netR": 2.96,
+       "trades": 3,
+       "shorts": 3
+      },
+      "2017": {
+       "netR": -3.64,
+       "trades": 10,
+       "shorts": 10
+      },
+      "2018": {
+       "netR": 3.21,
+       "trades": 4,
+       "shorts": 4
+      },
+      "2019": {
+       "netR": -0.65,
+       "trades": 7,
+       "shorts": 7
+      },
+      "2020": {
+       "netR": -2.09,
+       "trades": 4,
+       "shorts": 4
+      },
+      "2021": {
+       "netR": -0.52,
+       "trades": 9,
+       "shorts": 9
+      },
+      "2022": {
+       "netR": -1.78,
+       "trades": 3,
+       "shorts": 3
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 31,
+       "netR": -3.72,
+       "pf": 0.658,
+       "maxDDR": 3.72,
+       "maxDDPct": 1.86,
+       "semMaiorR": -7.32,
+       "winRate": 0.258
+      },
+      "validation": {
+       "trades": 11,
+       "netR": 2.55,
+       "pf": 1.895,
+       "maxDDR": 1.8,
+       "maxDDPct": 0.9,
+       "semMaiorR": -1.62,
+       "winRate": 0.273
+      },
+      "reserve": {
+       "trades": 16,
+       "netR": -4.39,
+       "pf": 0.33,
+       "maxDDR": 4.39,
+       "maxDDPct": 2.2,
+       "semMaiorR": -5.13,
+       "winRate": 0.312
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 31,
+       "netR": -4.11,
+       "pf": 0.632,
+       "maxDDR": 4.11,
+       "maxDDPct": 2.05,
+       "semMaiorR": -7.7,
+       "winRate": 0.258
+      },
+      "validation": {
+       "trades": 11,
+       "netR": 2.39,
+       "pf": 1.805,
+       "maxDDR": 1.89,
+       "maxDDPct": 0.95,
+       "semMaiorR": -1.77,
+       "winRate": 0.273
+      },
+      "reserve": {
+       "trades": 16,
+       "netR": -4.57,
+       "pf": 0.316,
+       "maxDDR": 4.57,
+       "maxDDPct": 2.28,
+       "semMaiorR": -5.29,
+       "winRate": 0.312
+      }
+     },
+     "all": {
+      "trades": 58,
+      "netR": -5.56,
+      "pf": 0.726,
+      "maxDDR": 5.56,
+      "maxDDPct": 2.78,
+      "semMaiorR": -9.73,
+      "winRate": 0.276
+     }
+    },
+    "regime": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": -6.92,
+       "trades": 17,
+       "shorts": 5
+      },
+      "2015": {
+       "netR": -2.93,
+       "trades": 15,
+       "shorts": 11
+      },
+      "2016": {
+       "netR": 4.63,
+       "trades": 8,
+       "shorts": 5
+      },
+      "2017": {
+       "netR": -2.26,
+       "trades": 14,
+       "shorts": 5
+      },
+      "2018": {
+       "netR": 3.27,
+       "trades": 5,
+       "shorts": 3
+      },
+      "2019": {
+       "netR": 8.51,
+       "trades": 6,
+       "shorts": 0
+      },
+      "2020": {
+       "netR": 1.56,
+       "trades": 7,
+       "shorts": 2
+      },
+      "2021": {
+       "netR": -6.46,
+       "trades": 20,
+       "shorts": 12
+      },
+      "2022": {
+       "netR": 2.04,
+       "trades": 5,
+       "shorts": 3
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 54,
+       "netR": -7.48,
+       "pf": 0.641,
+       "maxDDR": 10.03,
+       "maxDDPct": 5.01,
+       "semMaiorR": -10.46,
+       "winRate": 0.278
+      },
+      "validation": {
+       "trades": 11,
+       "netR": 11.77,
+       "pf": 5.269,
+       "maxDDR": 1.13,
+       "maxDDPct": 0.57,
+       "semMaiorR": 1.16,
+       "winRate": 0.273
+      },
+      "reserve": {
+       "trades": 32,
+       "netR": -2.85,
+       "pf": 0.739,
+       "maxDDR": 7.87,
+       "maxDDPct": 3.93,
+       "semMaiorR": -6.12,
+       "winRate": 0.25
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 54,
+       "netR": -8.16,
+       "pf": 0.617,
+       "maxDDR": 10.69,
+       "maxDDPct": 5.35,
+       "semMaiorR": -11.13,
+       "winRate": 0.259
+      },
+      "validation": {
+       "trades": 11,
+       "netR": 11.6,
+       "pf": 5.032,
+       "maxDDR": 1.17,
+       "maxDDPct": 0.58,
+       "semMaiorR": 1.0,
+       "winRate": 0.273
+      },
+      "reserve": {
+       "trades": 32,
+       "netR": -3.21,
+       "pf": 0.713,
+       "maxDDR": 8.2,
+       "maxDDPct": 4.1,
+       "semMaiorR": -6.48,
+       "winRate": 0.25
+      }
+     },
+     "all": {
+      "trades": 97,
+      "netR": 1.44,
+      "pf": 1.042,
+      "maxDDR": 10.03,
+      "maxDDPct": 5.01,
+      "semMaiorR": -9.17,
+      "winRate": 0.268
+     }
+    }
+   },
+   "sensitivity": {
+    "orig": {
+     "development": {
+      "combos": 180,
+      "positivas": 36,
+      "pfMediano": 0.732
+     },
+     "validation": {
+      "combos": 180,
+      "positivas": 168,
+      "pfMediano": 3.119
+     },
+     "reserve": {
+      "combos": 180,
+      "positivas": 72,
+      "pfMediano": 0.812
+     },
+     "todasAsFasesPositivas": 20
+    },
+    "regime": {
+     "development": {
+      "combos": 90,
+      "positivas": 0,
+      "pfMediano": 0.414
+     },
+     "validation": {
+      "combos": 90,
+      "positivas": 82,
+      "pfMediano": 3.231
+     },
+     "reserve": {
+      "combos": 90,
+      "positivas": 5,
+      "pfMediano": 0.615
+     },
+     "todasAsFasesPositivas": 0
+    }
+   },
+   "walkForward": {
+    "orig": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 52,
+        "netR": 25.03,
+        "pf": 1.646,
+        "maxDDR": 12.87,
+        "maxDDPct": 6.43,
+        "semMaiorR": 8.39,
+        "winRate": 0.231
+       },
+       "test": {
+        "trades": 19,
+        "netR": -11.17,
+        "pf": 0.285,
+        "maxDDR": 13.91,
+        "maxDDPct": 6.95,
+        "semMaiorR": -13.91,
+        "winRate": 0.211
+       },
+       "testStressNetR": -11.95,
+       "shortShare": 0.63
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 19,
+        "netR": 12.92,
+        "pf": 2.825,
+        "maxDDR": 3.45,
+        "maxDDPct": 1.72,
+        "semMaiorR": 9.34,
+        "winRate": 0.421
+       },
+       "test": {
+        "trades": 5,
+        "netR": 3.48,
+        "pf": 1.963,
+        "maxDDR": 2.03,
+        "maxDDPct": 1.02,
+        "semMaiorR": -3.61,
+        "winRate": 0.2
+       },
+       "testStressNetR": 3.4,
+       "shortShare": 0.6
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "H4",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "long"
+        }
+       },
+       "train": {
+        "trades": 42,
+        "netR": 41.01,
+        "pf": 2.845,
+        "maxDDR": 7.86,
+        "maxDDPct": 3.93,
+        "semMaiorR": 12.21,
+        "winRate": 0.381
+       },
+       "test": {
+        "trades": 10,
+        "netR": 5.76,
+        "pf": 1.907,
+        "maxDDR": 4.25,
+        "maxDDPct": 2.13,
+        "semMaiorR": -4.5,
+        "winRate": 0.3
+       },
+       "testStressNetR": 5.52,
+       "shortShare": 0.0
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 38,
+        "netR": 56.0,
+        "pf": 2.577,
+        "maxDDR": 10.71,
+        "maxDDPct": 5.36,
+        "semMaiorR": 19.82,
+        "winRate": 0.132
+       },
+       "test": {
+        "trades": 35,
+        "netR": -28.32,
+        "pf": 0.193,
+        "maxDDR": 28.32,
+        "maxDDPct": 14.16,
+        "semMaiorR": -33.66,
+        "winRate": 0.057
+       },
+       "testStressNetR": -30.53,
+       "shortShare": 0.63
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "long"
+        }
+       },
+       "train": {
+        "trades": 56,
+        "netR": 69.54,
+        "pf": 2.665,
+        "maxDDR": 13.42,
+        "maxDDPct": 6.71,
+        "semMaiorR": 9.72,
+        "winRate": 0.25
+       },
+       "test": {
+        "trades": 5,
+        "netR": 20.42,
+        "pf": 7.334,
+        "maxDDR": 2.15,
+        "maxDDPct": 1.07,
+        "semMaiorR": -1.68,
+        "winRate": 0.4
+       },
+       "testStressNetR": 20.04,
+       "shortShare": 0.0
+      }
+     ],
+     "oos": {
+      "trades": 74,
+      "netR": -9.83,
+      "pf": 0.846,
+      "maxDDR": 34.66,
+      "maxDDPct": 17.33,
+      "semMaiorR": -31.92,
+      "winRate": 0.162
+     },
+     "oosStressNetR": -13.52,
+     "oosStressDDPct": 19.12,
+     "yearsTraded": 5,
+     "yearsPositive": 3
+    },
+    "orig_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 4.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 28,
+        "netR": 6.25,
+        "pf": 2.412,
+        "maxDDR": 1.47,
+        "maxDDPct": 0.74,
+        "semMaiorR": 3.1,
+        "winRate": 0.429
+       },
+       "test": {
+        "trades": 14,
+        "netR": -5.12,
+        "pf": 0.176,
+        "maxDDR": 6.15,
+        "maxDDPct": 3.08,
+        "semMaiorR": -5.96,
+        "winRate": 0.286
+       },
+       "testStressNetR": -5.23,
+       "shortShare": 0.43
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 19,
+        "netR": 12.92,
+        "pf": 2.825,
+        "maxDDR": 3.45,
+        "maxDDPct": 1.72,
+        "semMaiorR": 9.34,
+        "winRate": 0.421
+       },
+       "test": {
+        "trades": 5,
+        "netR": 3.48,
+        "pf": 1.963,
+        "maxDDR": 2.03,
+        "maxDDPct": 1.02,
+        "semMaiorR": -3.61,
+        "winRate": 0.2
+       },
+       "testStressNetR": 3.4,
+       "shortShare": 0.6
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "long"
+        }
+       },
+       "train": {
+        "trades": 34,
+        "netR": 12.73,
+        "pf": 2.314,
+        "maxDDR": 3.4,
+        "maxDDPct": 1.7,
+        "semMaiorR": 1.44,
+        "winRate": 0.412
+       },
+       "test": {
+        "trades": 9,
+        "netR": 1.19,
+        "pf": 1.345,
+        "maxDDR": 2.46,
+        "maxDDPct": 1.23,
+        "semMaiorR": -2.72,
+        "winRate": 0.333
+       },
+       "testStressNetR": 1.11,
+       "shortShare": 0.0
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 31,
+        "netR": 13.87,
+        "pf": 2.396,
+        "maxDDR": 2.37,
+        "maxDDPct": 1.19,
+        "semMaiorR": 3.25,
+        "winRate": 0.258
+       },
+       "test": {
+        "trades": 18,
+        "netR": -2.97,
+        "pf": 0.554,
+        "maxDDR": 4.44,
+        "maxDDPct": 2.22,
+        "semMaiorR": -3.7,
+        "winRate": 0.444
+       },
+       "testStressNetR": -3.17,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 46,
+      "netR": -3.42,
+      "pf": 0.829,
+      "maxDDR": 7.34,
+      "maxDDPct": 3.67,
+      "semMaiorR": -10.51,
+      "winRate": 0.348
+     },
+     "oosStressNetR": -3.89,
+     "oosStressDDPct": 3.74,
+     "yearsTraded": 4,
+     "yearsPositive": 2
+    },
+    "orig_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 80,
+      "netR": -10.24,
+      "pf": 0.85,
+      "maxDDR": 28.33,
+      "maxDDPct": 14.17,
+      "semMaiorR": -27.26,
+      "winRate": 0.175
+     },
+     "oosStressNetR": -14.61,
+     "oosStressDDPct": 15.22,
+     "yearsTraded": 5,
+     "yearsPositive": 3
+    },
+    "orig_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 68,
+      "netR": 27.52,
+      "pf": 1.62,
+      "maxDDR": 17.33,
+      "maxDDPct": 8.66,
+      "semMaiorR": -0.26,
+      "winRate": 0.265
+     },
+     "oosStressNetR": 25.4,
+     "oosStressDDPct": 8.97,
+     "yearsTraded": 5,
+     "yearsPositive": 3
+    },
+    "regime": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 27,
+        "netR": 5.64,
+        "pf": 1.69,
+        "maxDDR": 5.86,
+        "maxDDPct": 2.93,
+        "semMaiorR": 2.66,
+        "winRate": 0.407
+       },
+       "test": {
+        "trades": 6,
+        "netR": 8.51,
+        "pf": 5.031,
+        "maxDDR": 1.13,
+        "maxDDPct": 0.57,
+        "semMaiorR": -2.11,
+        "winRate": 0.167
+       },
+       "testStressNetR": 8.41,
+       "shortShare": 0.0
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "H4",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 50,
+        "netR": 33.56,
+        "pf": 2.038,
+        "maxDDR": 14.06,
+        "maxDDPct": 7.03,
+        "semMaiorR": 4.76,
+        "winRate": 0.22
+       },
+       "test": {
+        "trades": 13,
+        "netR": 3.11,
+        "pf": 1.346,
+        "maxDDR": 5.28,
+        "maxDDPct": 2.64,
+        "semMaiorR": -7.14,
+        "winRate": 0.231
+       },
+       "testStressNetR": 2.83,
+       "shortShare": 0.23
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 39,
+        "netR": 41.87,
+        "pf": 2.8,
+        "maxDDR": 6.29,
+        "maxDDPct": 3.14,
+        "semMaiorR": 11.96,
+        "winRate": 0.282
+       },
+       "test": {
+        "trades": 41,
+        "netR": -20.35,
+        "pf": 0.246,
+        "maxDDR": 20.35,
+        "maxDDPct": 10.17,
+        "semMaiorR": -24.72,
+        "winRate": 0.098
+       },
+       "testStressNetR": -21.59,
+       "shortShare": 0.63
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 60,
+      "netR": -8.73,
+      "pf": 0.771,
+      "maxDDR": 25.62,
+      "maxDDPct": 12.81,
+      "semMaiorR": -19.34,
+      "winRate": 0.133
+     },
+     "oosStressNetR": -10.35,
+     "oosStressDDPct": 13.52,
+     "yearsTraded": 3,
+     "yearsPositive": 2
+    },
+    "regime_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 27,
+        "netR": 5.64,
+        "pf": 1.69,
+        "maxDDR": 5.86,
+        "maxDDPct": 2.93,
+        "semMaiorR": 2.66,
+        "winRate": 0.407
+       },
+       "test": {
+        "trades": 6,
+        "netR": 8.51,
+        "pf": 5.031,
+        "maxDDR": 1.13,
+        "maxDDPct": 0.57,
+        "semMaiorR": -2.11,
+        "winRate": 0.167
+       },
+       "testStressNetR": 8.41,
+       "shortShare": 0.0
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 24,
+        "netR": 9.0,
+        "pf": 2.175,
+        "maxDDR": 2.71,
+        "maxDDPct": 1.36,
+        "semMaiorR": 0.15,
+        "winRate": 0.417
+       },
+       "test": {
+        "trades": 6,
+        "netR": -1.37,
+        "pf": 0.634,
+        "maxDDR": 3.33,
+        "maxDDPct": 1.67,
+        "semMaiorR": -3.75,
+        "winRate": 0.167
+       },
+       "testStressNetR": -1.43,
+       "shortShare": 0.17
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 18,
+        "netR": 13.34,
+        "pf": 3.535,
+        "maxDDR": 2.21,
+        "maxDDPct": 1.11,
+        "semMaiorR": 2.72,
+        "winRate": 0.333
+       },
+       "test": {
+        "trades": 20,
+        "netR": -6.46,
+        "pf": 0.154,
+        "maxDDR": 6.46,
+        "maxDDPct": 3.23,
+        "semMaiorR": -6.99,
+        "winRate": 0.2
+       },
+       "testStressNetR": -6.69,
+       "shortShare": 0.6
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 32,
+      "netR": 0.68,
+      "pf": 1.05,
+      "maxDDR": 8.96,
+      "maxDDPct": 4.48,
+      "semMaiorR": -9.94,
+      "winRate": 0.188
+     },
+     "oosStressNetR": 0.29,
+     "oosStressDDPct": 4.64,
+     "yearsTraded": 3,
+     "yearsPositive": 1
+    },
+    "regime_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 110,
+      "netR": -52.02,
+      "pf": 0.396,
+      "maxDDR": 52.19,
+      "maxDDPct": 26.1,
+      "semMaiorR": -61.51,
+      "winRate": 0.118
+     },
+     "oosStressNetR": -57.63,
+     "oosStressDDPct": 28.88,
+     "yearsTraded": 3,
+     "yearsPositive": 1
+    },
+    "regime_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 52,
+      "netR": -13.9,
+      "pf": 0.543,
+      "maxDDR": 20.55,
+      "maxDDPct": 10.28,
+      "semMaiorR": -23.25,
+      "winRate": 0.154
+     },
+     "oosStressNetR": -15.37,
+     "oosStressDDPct": 10.98,
+     "yearsTraded": 2,
+     "yearsPositive": 1
+    }
+   }
+  },
+  "EJ_EURUSD": {
+   "buyHoldPctByYear": {
+    "2014": -12.0,
+    "2015": -9.9,
+    "2016": -3.3,
+    "2017": 14.2,
+    "2018": -4.6,
+    "2019": -2.0,
+    "2020": 8.9,
+    "2021": -7.1,
+    "2022": -3.9
+   },
+   "fixed": {
+    "orig": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "long"
+     },
+     "byYear": {
+      "2014": {
+       "netR": -0.85,
+       "trades": 5,
+       "shorts": 0
+      },
+      "2015": {
+       "netR": -2.26,
+       "trades": 8,
+       "shorts": 0
+      },
+      "2016": {
+       "netR": -3.27,
+       "trades": 13,
+       "shorts": 0
+      },
+      "2017": {
+       "netR": 9.8,
+       "trades": 11,
+       "shorts": 0
+      },
+      "2018": {
+       "netR": -0.8,
+       "trades": 5,
+       "shorts": 0
+      },
+      "2019": {
+       "netR": -6.42,
+       "trades": 16,
+       "shorts": 0
+      },
+      "2020": {
+       "netR": 0.88,
+       "trades": 14,
+       "shorts": 0
+      },
+      "2021": {
+       "netR": -3.32,
+       "trades": 7,
+       "shorts": 0
+      },
+      "2022": {
+       "netR": -0.87,
+       "trades": 2,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 37,
+       "netR": 3.42,
+       "pf": 1.287,
+       "maxDDR": 7.87,
+       "maxDDPct": 3.94,
+       "semMaiorR": -4.47,
+       "winRate": 0.27
+      },
+      "validation": {
+       "trades": 21,
+       "netR": -7.21,
+       "pf": 0.122,
+       "maxDDR": 8.1,
+       "maxDDPct": 4.05,
+       "semMaiorR": -7.96,
+       "winRate": 0.143
+      },
+      "reserve": {
+       "trades": 23,
+       "netR": -3.31,
+       "pf": 0.591,
+       "maxDDR": 4.33,
+       "maxDDPct": 2.16,
+       "semMaiorR": -6.01,
+       "winRate": 0.348
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 37,
+       "netR": 3.22,
+       "pf": 1.267,
+       "maxDDR": 8.03,
+       "maxDDPct": 4.01,
+       "semMaiorR": -4.66,
+       "winRate": 0.27
+      },
+      "validation": {
+       "trades": 21,
+       "netR": -7.37,
+       "pf": 0.117,
+       "maxDDR": 8.25,
+       "maxDDPct": 4.12,
+       "semMaiorR": -8.11,
+       "winRate": 0.143
+      },
+      "reserve": {
+       "trades": 23,
+       "netR": -3.46,
+       "pf": 0.578,
+       "maxDDR": 4.38,
+       "maxDDPct": 2.19,
+       "semMaiorR": -6.16,
+       "winRate": 0.348
+      }
+     },
+     "all": {
+      "trades": 81,
+      "netR": -7.11,
+      "pf": 0.748,
+      "maxDDR": 10.8,
+      "maxDDPct": 5.4,
+      "semMaiorR": -15.0,
+      "winRate": 0.259
+     }
+    },
+    "both": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 17.63,
+       "trades": 9,
+       "shorts": 4
+      },
+      "2015": {
+       "netR": -2.77,
+       "trades": 16,
+       "shorts": 8
+      },
+      "2016": {
+       "netR": -8.1,
+       "trades": 28,
+       "shorts": 15
+      },
+      "2017": {
+       "netR": 7.09,
+       "trades": 21,
+       "shorts": 10
+      },
+      "2018": {
+       "netR": 4.03,
+       "trades": 11,
+       "shorts": 6
+      },
+      "2019": {
+       "netR": -10.13,
+       "trades": 32,
+       "shorts": 16
+      },
+      "2020": {
+       "netR": -3.79,
+       "trades": 29,
+       "shorts": 15
+      },
+      "2021": {
+       "netR": -2.54,
+       "trades": 13,
+       "shorts": 6
+      },
+      "2022": {
+       "netR": 1.75,
+       "trades": 3,
+       "shorts": 1
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 74,
+       "netR": 13.86,
+       "pf": 1.565,
+       "maxDDR": 13.27,
+       "maxDDPct": 6.63,
+       "semMaiorR": -5.45,
+       "winRate": 0.284
+      },
+      "validation": {
+       "trades": 43,
+       "netR": -6.1,
+       "pf": 0.584,
+       "maxDDR": 12.34,
+       "maxDDPct": 6.17,
+       "semMaiorR": -11.44,
+       "winRate": 0.209
+      },
+      "reserve": {
+       "trades": 45,
+       "netR": -4.58,
+       "pf": 0.711,
+       "maxDDR": 9.45,
+       "maxDDPct": 4.73,
+       "semMaiorR": -7.7,
+       "winRate": 0.333
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 74,
+       "netR": 13.46,
+       "pf": 1.542,
+       "maxDDR": 13.54,
+       "maxDDPct": 6.77,
+       "semMaiorR": -5.84,
+       "winRate": 0.284
+      },
+      "validation": {
+       "trades": 43,
+       "netR": -6.42,
+       "pf": 0.57,
+       "maxDDR": 12.63,
+       "maxDDPct": 6.31,
+       "semMaiorR": -11.75,
+       "winRate": 0.209
+      },
+      "reserve": {
+       "trades": 45,
+       "netR": -4.87,
+       "pf": 0.696,
+       "maxDDR": 9.73,
+       "maxDDPct": 4.86,
+       "semMaiorR": -7.99,
+       "winRate": 0.311
+      }
+     },
+     "all": {
+      "trades": 162,
+      "netR": 3.18,
+      "pf": 1.058,
+      "maxDDR": 21.04,
+      "maxDDPct": 10.52,
+      "semMaiorR": -16.12,
+      "winRate": 0.278
+     }
+    },
+    "short": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 18.48,
+       "trades": 4,
+       "shorts": 4
+      },
+      "2015": {
+       "netR": -0.5,
+       "trades": 8,
+       "shorts": 8
+      },
+      "2016": {
+       "netR": -4.83,
+       "trades": 15,
+       "shorts": 15
+      },
+      "2017": {
+       "netR": -2.71,
+       "trades": 10,
+       "shorts": 10
+      },
+      "2018": {
+       "netR": 4.83,
+       "trades": 6,
+       "shorts": 6
+      },
+      "2019": {
+       "netR": -3.71,
+       "trades": 16,
+       "shorts": 16
+      },
+      "2020": {
+       "netR": -4.67,
+       "trades": 15,
+       "shorts": 15
+      },
+      "2021": {
+       "netR": 0.78,
+       "trades": 6,
+       "shorts": 6
+      },
+      "2022": {
+       "netR": 2.63,
+       "trades": 1,
+       "shorts": 1
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 37,
+       "netR": 10.44,
+       "pf": 1.826,
+       "maxDDR": 8.73,
+       "maxDDPct": 4.36,
+       "semMaiorR": -8.87,
+       "winRate": 0.297
+      },
+      "validation": {
+       "trades": 22,
+       "netR": 1.11,
+       "pf": 1.173,
+       "maxDDR": 4.72,
+       "maxDDPct": 2.36,
+       "semMaiorR": -4.23,
+       "winRate": 0.273
+      },
+      "reserve": {
+       "trades": 22,
+       "netR": -1.26,
+       "pf": 0.836,
+       "maxDDR": 7.02,
+       "maxDDPct": 3.51,
+       "semMaiorR": -4.39,
+       "winRate": 0.318
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 37,
+       "netR": 10.24,
+       "pf": 1.801,
+       "maxDDR": 8.89,
+       "maxDDPct": 4.44,
+       "semMaiorR": -9.06,
+       "winRate": 0.297
+      },
+      "validation": {
+       "trades": 22,
+       "netR": 0.96,
+       "pf": 1.145,
+       "maxDDR": 4.85,
+       "maxDDPct": 2.42,
+       "semMaiorR": -4.38,
+       "winRate": 0.273
+      },
+      "reserve": {
+       "trades": 22,
+       "netR": -1.41,
+       "pf": 0.82,
+       "maxDDR": 7.15,
+       "maxDDPct": 3.57,
+       "semMaiorR": -4.52,
+       "winRate": 0.273
+      }
+     },
+     "all": {
+      "trades": 81,
+      "netR": 10.29,
+      "pf": 1.384,
+      "maxDDR": 14.63,
+      "maxDDPct": 7.31,
+      "semMaiorR": -9.02,
+      "winRate": 0.296
+     }
+    },
+    "regime": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 19.8,
+       "trades": 9,
+       "shorts": 4
+      },
+      "2015": {
+       "netR": -2.07,
+       "trades": 13,
+       "shorts": 8
+      },
+      "2016": {
+       "netR": -6.8,
+       "trades": 22,
+       "shorts": 11
+      },
+      "2017": {
+       "netR": 7.58,
+       "trades": 11,
+       "shorts": 7
+      },
+      "2018": {
+       "netR": 2.09,
+       "trades": 6,
+       "shorts": 6
+      },
+      "2019": {
+       "netR": -5.15,
+       "trades": 18,
+       "shorts": 16
+      },
+      "2020": {
+       "netR": 0.14,
+       "trades": 18,
+       "shorts": 10
+      },
+      "2021": {
+       "netR": -0.28,
+       "trades": 8,
+       "shorts": 2
+      },
+      "2022": {
+       "netR": 2.63,
+       "trades": 1,
+       "shorts": 1
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 55,
+       "netR": 18.51,
+       "pf": 2.081,
+       "maxDDR": 10.91,
+       "maxDDPct": 5.45,
+       "semMaiorR": -2.97,
+       "winRate": 0.2
+      },
+      "validation": {
+       "trades": 24,
+       "netR": -3.06,
+       "pf": 0.613,
+       "maxDDR": 6.16,
+       "maxDDPct": 3.08,
+       "semMaiorR": -5.67,
+       "winRate": 0.25
+      },
+      "reserve": {
+       "trades": 27,
+       "netR": 2.49,
+       "pf": 1.297,
+       "maxDDR": 3.41,
+       "maxDDPct": 1.7,
+       "semMaiorR": -0.64,
+       "winRate": 0.407
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 55,
+       "netR": 18.22,
+       "pf": 2.05,
+       "maxDDR": 11.1,
+       "maxDDPct": 5.55,
+       "semMaiorR": -3.26,
+       "winRate": 0.2
+      },
+      "validation": {
+       "trades": 24,
+       "netR": -3.23,
+       "pf": 0.597,
+       "maxDDR": 6.3,
+       "maxDDPct": 3.15,
+       "semMaiorR": -5.84,
+       "winRate": 0.25
+      },
+      "reserve": {
+       "trades": 27,
+       "netR": 2.31,
+       "pf": 1.272,
+       "maxDDR": 3.46,
+       "maxDDPct": 1.73,
+       "semMaiorR": -0.81,
+       "winRate": 0.37
+      }
+     },
+     "all": {
+      "trades": 106,
+      "netR": 17.94,
+      "pf": 1.537,
+      "maxDDR": 10.91,
+      "maxDDPct": 5.45,
+      "semMaiorR": -3.54,
+      "winRate": 0.264
+     }
+    }
+   },
+   "sensitivity": {
+    "orig": {
+     "development": {
+      "combos": 180,
+      "positivas": 138,
+      "pfMediano": 1.757
+     },
+     "validation": {
+      "combos": 180,
+      "positivas": 16,
+      "pfMediano": 0.127
+     },
+     "reserve": {
+      "combos": 180,
+      "positivas": 106,
+      "pfMediano": 1.145
+     },
+     "todasAsFasesPositivas": 14
+    },
+    "regime": {
+     "development": {
+      "combos": 90,
+      "positivas": 88,
+      "pfMediano": 3.008
+     },
+     "validation": {
+      "combos": 90,
+      "positivas": 27,
+      "pfMediano": 0.649
+     },
+     "reserve": {
+      "combos": 90,
+      "positivas": 85,
+      "pfMediano": 1.875
+     },
+     "todasAsFasesPositivas": 27
+    }
+   },
+   "walkForward": {
+    "orig": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 28,
+        "netR": 30.19,
+        "pf": 4.213,
+        "maxDDR": 3.25,
+        "maxDDPct": 1.63,
+        "semMaiorR": 2.15,
+        "winRate": 0.464
+       },
+       "test": {
+        "trades": 9,
+        "netR": 5.2,
+        "pf": 1.839,
+        "maxDDR": 4.18,
+        "maxDDPct": 2.09,
+        "semMaiorR": -2.12,
+        "winRate": 0.222
+       },
+       "testStressNetR": 5.15,
+       "shortShare": 0.33
+      },
+      {
+       "testYear": 2018,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 28,
+        "netR": 10.04,
+        "pf": 1.894,
+        "maxDDR": 4.18,
+        "maxDDPct": 2.09,
+        "semMaiorR": 2.72,
+        "winRate": 0.429
+       },
+       "test": {
+        "trades": 13,
+        "netR": -2.9,
+        "pf": 0.54,
+        "maxDDR": 3.86,
+        "maxDDPct": 1.93,
+        "semMaiorR": -5.84,
+        "winRate": 0.154
+       },
+       "testStressNetR": -2.97,
+       "shortShare": 0.54
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 31,
+        "netR": 7.8,
+        "pf": 1.565,
+        "maxDDR": 4.18,
+        "maxDDPct": 2.09,
+        "semMaiorR": 0.48,
+        "winRate": 0.29
+       },
+       "test": {
+        "trades": 18,
+        "netR": -7.58,
+        "pf": 0.266,
+        "maxDDR": 8.1,
+        "maxDDPct": 4.05,
+        "semMaiorR": -9.39,
+        "winRate": 0.167
+       },
+       "testStressNetR": -7.73,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 40,
+      "netR": -5.28,
+      "pf": 0.769,
+      "maxDDR": 11.29,
+      "maxDDPct": 5.65,
+      "semMaiorR": -12.59,
+      "winRate": 0.175
+     },
+     "oosStressNetR": -5.55,
+     "oosStressDDPct": 5.74,
+     "yearsTraded": 3,
+     "yearsPositive": 1
+    },
+    "orig_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 28,
+        "netR": 30.19,
+        "pf": 4.213,
+        "maxDDR": 3.25,
+        "maxDDPct": 1.63,
+        "semMaiorR": 2.15,
+        "winRate": 0.464
+       },
+       "test": {
+        "trades": 9,
+        "netR": 5.2,
+        "pf": 1.839,
+        "maxDDR": 4.18,
+        "maxDDPct": 2.09,
+        "semMaiorR": -2.12,
+        "winRate": 0.222
+       },
+       "testStressNetR": 5.15,
+       "shortShare": 0.33
+      },
+      {
+       "testYear": 2018,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 28,
+        "netR": 10.04,
+        "pf": 1.894,
+        "maxDDR": 4.18,
+        "maxDDPct": 2.09,
+        "semMaiorR": 2.72,
+        "winRate": 0.429
+       },
+       "test": {
+        "trades": 13,
+        "netR": -2.9,
+        "pf": 0.54,
+        "maxDDR": 3.86,
+        "maxDDPct": 1.93,
+        "semMaiorR": -5.84,
+        "winRate": 0.154
+       },
+       "testStressNetR": -2.97,
+       "shortShare": 0.54
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 31,
+        "netR": 7.8,
+        "pf": 1.565,
+        "maxDDR": 4.18,
+        "maxDDPct": 2.09,
+        "semMaiorR": 0.48,
+        "winRate": 0.29
+       },
+       "test": {
+        "trades": 18,
+        "netR": -7.58,
+        "pf": 0.266,
+        "maxDDR": 8.1,
+        "maxDDPct": 4.05,
+        "semMaiorR": -9.39,
+        "winRate": 0.167
+       },
+       "testStressNetR": -7.73,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 40,
+      "netR": -5.28,
+      "pf": 0.769,
+      "maxDDR": 11.29,
+      "maxDDPct": 5.65,
+      "semMaiorR": -12.59,
+      "winRate": 0.175
+     },
+     "oosStressNetR": -5.55,
+     "oosStressDDPct": 5.74,
+     "yearsTraded": 3,
+     "yearsPositive": 1
+    },
+    "orig_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 62,
+      "netR": -16.8,
+      "pf": 0.543,
+      "maxDDR": 22.9,
+      "maxDDPct": 11.45,
+      "semMaiorR": -19.74,
+      "winRate": 0.21
+     },
+     "oosStressNetR": -17.85,
+     "oosStressDDPct": 11.94,
+     "yearsTraded": 4,
+     "yearsPositive": 1
+    },
+    "orig_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 27,
+      "netR": -5.72,
+      "pf": 0.455,
+      "maxDDR": 6.53,
+      "maxDDPct": 3.26,
+      "semMaiorR": -8.66,
+      "winRate": 0.185
+     },
+     "oosStressNetR": -5.85,
+     "oosStressDDPct": 3.32,
+     "yearsTraded": 2,
+     "yearsPositive": 0
+    },
+    "regime": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 41,
+        "netR": 13.24,
+        "pf": 2.218,
+        "maxDDR": 6.08,
+        "maxDDPct": 3.04,
+        "semMaiorR": 2.73,
+        "winRate": 0.293
+       },
+       "test": {
+        "trades": 10,
+        "netR": 5.14,
+        "pf": 2.272,
+        "maxDDR": 2.89,
+        "maxDDPct": 1.44,
+        "semMaiorR": -0.88,
+        "winRate": 0.2
+       },
+       "testStressNetR": 5.08,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 4.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 19,
+        "netR": 3.74,
+        "pf": 2.018,
+        "maxDDR": 1.01,
+        "maxDDPct": 0.5,
+        "semMaiorR": 0.77,
+        "winRate": 0.421
+       },
+       "test": {
+        "trades": 9,
+        "netR": -1.99,
+        "pf": 0.403,
+        "maxDDR": 2.22,
+        "maxDDPct": 1.11,
+        "semMaiorR": -2.89,
+        "winRate": 0.222
+       },
+       "testStressNetR": -2.03,
+       "shortShare": 0.78
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 52,
+        "netR": 37.5,
+        "pf": 1.868,
+        "maxDDR": 13.03,
+        "maxDDPct": 6.52,
+        "semMaiorR": 1.36,
+        "winRate": 0.192
+       },
+       "test": {
+        "trades": 18,
+        "netR": 8.84,
+        "pf": 1.639,
+        "maxDDR": 13.56,
+        "maxDDPct": 6.78,
+        "semMaiorR": -6.25,
+        "winRate": 0.167
+       },
+       "testStressNetR": 8.22,
+       "shortShare": 0.44
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 37,
+      "netR": 11.98,
+      "pf": 1.565,
+      "maxDDR": 15.78,
+      "maxDDPct": 7.89,
+      "semMaiorR": -3.11,
+      "winRate": 0.189
+     },
+     "oosStressNetR": 11.27,
+     "oosStressDDPct": 8.18,
+     "yearsTraded": 3,
+     "yearsPositive": 2
+    },
+    "regime_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 41,
+        "netR": 13.24,
+        "pf": 2.218,
+        "maxDDR": 6.08,
+        "maxDDPct": 3.04,
+        "semMaiorR": 2.73,
+        "winRate": 0.293
+       },
+       "test": {
+        "trades": 10,
+        "netR": 5.14,
+        "pf": 2.272,
+        "maxDDR": 2.89,
+        "maxDDPct": 1.44,
+        "semMaiorR": -0.88,
+        "winRate": 0.2
+       },
+       "testStressNetR": 5.08,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 4.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 19,
+        "netR": 3.74,
+        "pf": 2.018,
+        "maxDDR": 1.01,
+        "maxDDPct": 0.5,
+        "semMaiorR": 0.77,
+        "winRate": 0.421
+       },
+       "test": {
+        "trades": 9,
+        "netR": -1.99,
+        "pf": 0.403,
+        "maxDDR": 2.22,
+        "maxDDPct": 1.11,
+        "semMaiorR": -2.89,
+        "winRate": 0.222
+       },
+       "testStressNetR": -2.03,
+       "shortShare": 0.78
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 19,
+        "netR": 8.29,
+        "pf": 2.702,
+        "maxDDR": 1.93,
+        "maxDDPct": 0.96,
+        "semMaiorR": 1.93,
+        "winRate": 0.579
+       },
+       "test": {
+        "trades": 11,
+        "netR": 0.39,
+        "pf": 1.092,
+        "maxDDR": 4.05,
+        "maxDDPct": 2.02,
+        "semMaiorR": -2.3,
+        "winRate": 0.364
+       },
+       "testStressNetR": 0.32,
+       "shortShare": 0.55
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 30,
+      "netR": 3.53,
+      "pf": 1.304,
+      "maxDDR": 6.08,
+      "maxDDPct": 3.04,
+      "semMaiorR": -2.48,
+      "winRate": 0.267
+     },
+     "oosStressNetR": 3.37,
+     "oosStressDDPct": 3.08,
+     "yearsTraded": 3,
+     "yearsPositive": 2
+    },
+    "regime_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 35,
+      "netR": -9.1,
+      "pf": 0.507,
+      "maxDDR": 11.01,
+      "maxDDPct": 5.51,
+      "semMaiorR": -12.05,
+      "winRate": 0.229
+     },
+     "oosStressNetR": -9.76,
+     "oosStressDDPct": 5.76,
+     "yearsTraded": 3,
+     "yearsPositive": 0
+    },
+    "regime_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 25,
+      "netR": 44.97,
+      "pf": 4.069,
+      "maxDDR": 8.89,
+      "maxDDPct": 4.45,
+      "semMaiorR": -3.76,
+      "winRate": 0.2
+     },
+     "oosStressNetR": 44.35,
+     "oosStressDDPct": 4.7,
+     "yearsTraded": 4,
+     "yearsPositive": 2
+    }
+   }
+  },
+  "EJ_GBPUSD": {
+   "buyHoldPctByYear": {
+    "2014": -5.9,
+    "2015": -5.2,
+    "2016": -16.3,
+    "2017": 9.6,
+    "2018": -5.6,
+    "2019": 4.0,
+    "2020": 3.5,
+    "2021": -0.9,
+    "2022": -2.2
+   },
+   "fixed": {
+    "orig": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "long"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 1.19,
+       "trades": 3,
+       "shorts": 0
+      },
+      "2015": {
+       "netR": -0.79,
+       "trades": 6,
+       "shorts": 0
+      },
+      "2016": {
+       "netR": -2.6,
+       "trades": 9,
+       "shorts": 0
+      },
+      "2017": {
+       "netR": 8.36,
+       "trades": 11,
+       "shorts": 0
+      },
+      "2018": {
+       "netR": -1.46,
+       "trades": 3,
+       "shorts": 0
+      },
+      "2019": {
+       "netR": 1.7,
+       "trades": 7,
+       "shorts": 0
+      },
+      "2020": {
+       "netR": 3.26,
+       "trades": 8,
+       "shorts": 0
+      },
+      "2021": {
+       "netR": -1.64,
+       "trades": 6,
+       "shorts": 0
+      },
+      "2022": {
+       "netR": -1.78,
+       "trades": 2,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 29,
+       "netR": 6.15,
+       "pf": 1.951,
+       "maxDDR": 4.61,
+       "maxDDPct": 2.3,
+       "semMaiorR": 1.94,
+       "winRate": 0.517
+      },
+      "validation": {
+       "trades": 10,
+       "netR": 0.24,
+       "pf": 1.087,
+       "maxDDR": 1.91,
+       "maxDDPct": 0.95,
+       "semMaiorR": -0.91,
+       "winRate": 0.4
+      },
+      "reserve": {
+       "trades": 16,
+       "netR": -0.17,
+       "pf": 0.975,
+       "maxDDR": 3.42,
+       "maxDDPct": 1.71,
+       "semMaiorR": -3.17,
+       "winRate": 0.438
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 29,
+       "netR": 5.96,
+       "pf": 1.91,
+       "maxDDR": 4.72,
+       "maxDDPct": 2.36,
+       "semMaiorR": 1.76,
+       "winRate": 0.517
+      },
+      "validation": {
+       "trades": 10,
+       "netR": 0.18,
+       "pf": 1.064,
+       "maxDDR": 1.93,
+       "maxDDPct": 0.96,
+       "semMaiorR": -0.96,
+       "winRate": 0.4
+      },
+      "reserve": {
+       "trades": 16,
+       "netR": -0.27,
+       "pf": 0.959,
+       "maxDDR": 3.49,
+       "maxDDPct": 1.74,
+       "semMaiorR": -3.27,
+       "winRate": 0.438
+      }
+     },
+     "all": {
+      "trades": 55,
+      "netR": 6.22,
+      "pf": 1.393,
+      "maxDDR": 4.61,
+      "maxDDPct": 2.3,
+      "semMaiorR": 2.01,
+      "winRate": 0.473
+     }
+    },
+    "both": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 14.16,
+       "trades": 7,
+       "shorts": 4
+      },
+      "2015": {
+       "netR": 2.6,
+       "trades": 12,
+       "shorts": 6
+      },
+      "2016": {
+       "netR": 0.11,
+       "trades": 18,
+       "shorts": 9
+      },
+      "2017": {
+       "netR": 7.09,
+       "trades": 21,
+       "shorts": 10
+      },
+      "2018": {
+       "netR": 3.19,
+       "trades": 7,
+       "shorts": 4
+      },
+      "2019": {
+       "netR": 4.46,
+       "trades": 13,
+       "shorts": 6
+      },
+      "2020": {
+       "netR": 2.44,
+       "trades": 16,
+       "shorts": 8
+      },
+      "2021": {
+       "netR": -0.2,
+       "trades": 11,
+       "shorts": 5
+      },
+      "2022": {
+       "netR": -1.78,
+       "trades": 2,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 58,
+       "netR": 23.96,
+       "pf": 2.789,
+       "maxDDR": 2.95,
+       "maxDDPct": 1.48,
+       "semMaiorR": 10.85,
+       "winRate": 0.466
+      },
+      "validation": {
+       "trades": 20,
+       "netR": 7.65,
+       "pf": 2.932,
+       "maxDDR": 2.52,
+       "maxDDPct": 1.26,
+       "semMaiorR": 2.47,
+       "winRate": 0.55
+      },
+      "reserve": {
+       "trades": 29,
+       "netR": 0.46,
+       "pf": 1.043,
+       "maxDDR": 2.44,
+       "maxDDPct": 1.22,
+       "semMaiorR": -2.54,
+       "winRate": 0.414
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 58,
+       "netR": 23.59,
+       "pf": 2.735,
+       "maxDDR": 3.02,
+       "maxDDPct": 1.51,
+       "semMaiorR": 10.49,
+       "winRate": 0.466
+      },
+      "validation": {
+       "trades": 20,
+       "netR": 7.53,
+       "pf": 2.877,
+       "maxDDR": 2.57,
+       "maxDDPct": 1.28,
+       "semMaiorR": 2.36,
+       "winRate": 0.55
+      },
+      "reserve": {
+       "trades": 29,
+       "netR": 0.27,
+       "pf": 1.025,
+       "maxDDR": 2.46,
+       "maxDDPct": 1.23,
+       "semMaiorR": -2.73,
+       "winRate": 0.414
+      }
+     },
+     "all": {
+      "trades": 107,
+      "netR": 32.07,
+      "pf": 2.144,
+      "maxDDR": 2.95,
+      "maxDDPct": 1.48,
+      "semMaiorR": 18.96,
+      "winRate": 0.467
+     }
+    },
+    "short": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 12.97,
+       "trades": 4,
+       "shorts": 4
+      },
+      "2015": {
+       "netR": 3.4,
+       "trades": 6,
+       "shorts": 6
+      },
+      "2016": {
+       "netR": 2.71,
+       "trades": 9,
+       "shorts": 9
+      },
+      "2017": {
+       "netR": -1.27,
+       "trades": 10,
+       "shorts": 10
+      },
+      "2018": {
+       "netR": 4.65,
+       "trades": 4,
+       "shorts": 4
+      },
+      "2019": {
+       "netR": 2.76,
+       "trades": 6,
+       "shorts": 6
+      },
+      "2020": {
+       "netR": -0.82,
+       "trades": 8,
+       "shorts": 8
+      },
+      "2021": {
+       "netR": 1.45,
+       "trades": 5,
+       "shorts": 5
+      },
+      "2022": {
+       "netR": 0.0,
+       "trades": 0,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 29,
+       "netR": 17.81,
+       "pf": 3.572,
+       "maxDDR": 2.16,
+       "maxDDPct": 1.08,
+       "semMaiorR": 4.7,
+       "winRate": 0.414
+      },
+      "validation": {
+       "trades": 10,
+       "netR": 7.41,
+       "pf": 7.276,
+       "maxDDR": 0.89,
+       "maxDDPct": 0.44,
+       "semMaiorR": 2.23,
+       "winRate": 0.7
+      },
+      "reserve": {
+       "trades": 13,
+       "netR": 0.63,
+       "pf": 1.153,
+       "maxDDR": 2.75,
+       "maxDDPct": 1.37,
+       "semMaiorR": -1.66,
+       "winRate": 0.385
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 29,
+       "netR": 17.62,
+       "pf": 3.505,
+       "maxDDR": 2.19,
+       "maxDDPct": 1.1,
+       "semMaiorR": 4.53,
+       "winRate": 0.414
+      },
+      "validation": {
+       "trades": 10,
+       "netR": 7.35,
+       "pf": 7.144,
+       "maxDDR": 0.9,
+       "maxDDPct": 0.45,
+       "semMaiorR": 2.17,
+       "winRate": 0.7
+      },
+      "reserve": {
+       "trades": 13,
+       "netR": 0.54,
+       "pf": 1.131,
+       "maxDDR": 2.8,
+       "maxDDPct": 1.4,
+       "semMaiorR": -1.73,
+       "winRate": 0.385
+      }
+     },
+     "all": {
+      "trades": 52,
+      "netR": 25.85,
+      "pf": 3.12,
+      "maxDDR": 2.75,
+      "maxDDPct": 1.37,
+      "semMaiorR": 12.74,
+      "winRate": 0.462
+     }
+    },
+    "regime": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 12.37,
+       "trades": 4,
+       "shorts": 1
+      },
+      "2015": {
+       "netR": -2.4,
+       "trades": 16,
+       "shorts": 9
+      },
+      "2016": {
+       "netR": 1.71,
+       "trades": 10,
+       "shorts": 9
+      },
+      "2017": {
+       "netR": 5.64,
+       "trades": 12,
+       "shorts": 4
+      },
+      "2018": {
+       "netR": 0.83,
+       "trades": 6,
+       "shorts": 6
+      },
+      "2019": {
+       "netR": 1.43,
+       "trades": 10,
+       "shorts": 6
+      },
+      "2020": {
+       "netR": 2.33,
+       "trades": 10,
+       "shorts": 3
+      },
+      "2021": {
+       "netR": -1.6,
+       "trades": 11,
+       "shorts": 5
+      },
+      "2022": {
+       "netR": 0.0,
+       "trades": 0,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 42,
+       "netR": 17.31,
+       "pf": 2.333,
+       "maxDDR": 6.63,
+       "maxDDPct": 3.32,
+       "semMaiorR": 6.13,
+       "winRate": 0.405
+      },
+      "validation": {
+       "trades": 16,
+       "netR": 2.27,
+       "pf": 1.719,
+       "maxDDR": 1.44,
+       "maxDDPct": 0.72,
+       "semMaiorR": 0.58,
+       "winRate": 0.438
+      },
+      "reserve": {
+       "trades": 21,
+       "netR": 0.73,
+       "pf": 1.112,
+       "maxDDR": 3.0,
+       "maxDDPct": 1.5,
+       "semMaiorR": -2.27,
+       "winRate": 0.333
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 42,
+       "netR": 17.04,
+       "pf": 2.297,
+       "maxDDR": 6.72,
+       "maxDDPct": 3.36,
+       "semMaiorR": 5.88,
+       "winRate": 0.405
+      },
+      "validation": {
+       "trades": 16,
+       "netR": 2.17,
+       "pf": 1.677,
+       "maxDDR": 1.5,
+       "maxDDPct": 0.75,
+       "semMaiorR": 0.49,
+       "winRate": 0.438
+      },
+      "reserve": {
+       "trades": 21,
+       "netR": 0.59,
+       "pf": 1.089,
+       "maxDDR": 3.08,
+       "maxDDPct": 1.54,
+       "semMaiorR": -2.41,
+       "winRate": 0.333
+      }
+     },
+     "all": {
+      "trades": 79,
+      "netR": 20.32,
+      "pf": 1.895,
+      "maxDDR": 6.63,
+      "maxDDPct": 3.32,
+      "semMaiorR": 9.14,
+      "winRate": 0.392
+     }
+    }
+   },
+   "sensitivity": {
+    "orig": {
+     "development": {
+      "combos": 180,
+      "positivas": 93,
+      "pfMediano": 1.022
+     },
+     "validation": {
+      "combos": 180,
+      "positivas": 40,
+      "pfMediano": 0.17
+     },
+     "reserve": {
+      "combos": 180,
+      "positivas": 72,
+      "pfMediano": 0.738
+     },
+     "todasAsFasesPositivas": 13
+    },
+    "regime": {
+     "development": {
+      "combos": 90,
+      "positivas": 60,
+      "pfMediano": 1.474
+     },
+     "validation": {
+      "combos": 90,
+      "positivas": 12,
+      "pfMediano": 0.242
+     },
+     "reserve": {
+      "combos": 90,
+      "positivas": 28,
+      "pfMediano": 0.783
+     },
+     "todasAsFasesPositivas": 4
+    }
+   },
+   "walkForward": {
+    "orig": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 45,
+        "netR": 45.3,
+        "pf": 2.617,
+        "maxDDR": 8.06,
+        "maxDDPct": 4.03,
+        "semMaiorR": 7.41,
+        "winRate": 0.333
+       },
+       "test": {
+        "trades": 31,
+        "netR": 15.93,
+        "pf": 1.929,
+        "maxDDR": 6.89,
+        "maxDDPct": 3.45,
+        "semMaiorR": 4.57,
+        "winRate": 0.355
+       },
+       "testStressNetR": 15.43,
+       "shortShare": 0.48
+      },
+      {
+       "testYear": 2018,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 44,
+        "netR": 53.46,
+        "pf": 2.483,
+        "maxDDR": 12.28,
+        "maxDDPct": 6.14,
+        "semMaiorR": 23.24,
+        "winRate": 0.205
+       },
+       "test": {
+        "trades": 17,
+        "netR": 1.71,
+        "pf": 1.11,
+        "maxDDR": 7.55,
+        "maxDDPct": 3.77,
+        "semMaiorR": -14.78,
+        "winRate": 0.118
+       },
+       "testStressNetR": 1.13,
+       "shortShare": 0.35
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "H4",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 60,
+        "netR": 27.03,
+        "pf": 1.806,
+        "maxDDR": 6.13,
+        "maxDDPct": 3.07,
+        "semMaiorR": 12.97,
+        "winRate": 0.35
+       },
+       "test": {
+        "trades": 14,
+        "netR": 10.33,
+        "pf": 3.577,
+        "maxDDR": 2.04,
+        "maxDDPct": 1.02,
+        "semMaiorR": 5.94,
+        "winRate": 0.643
+       },
+       "testStressNetR": 10.1,
+       "shortShare": 0.43
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "H4",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 55,
+        "netR": 34.79,
+        "pf": 2.287,
+        "maxDDR": 6.13,
+        "maxDDPct": 3.07,
+        "semMaiorR": 20.73,
+        "winRate": 0.418
+       },
+       "test": {
+        "trades": 33,
+        "netR": -1.73,
+        "pf": 0.929,
+        "maxDDR": 8.29,
+        "maxDDPct": 4.15,
+        "semMaiorR": -8.29,
+        "winRate": 0.212
+       },
+       "testStressNetR": -2.22,
+       "shortShare": 0.39
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "H4",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 41,
+        "netR": 11.74,
+        "pf": 1.797,
+        "maxDDR": 3.04,
+        "maxDDPct": 1.52,
+        "semMaiorR": 4.71,
+        "winRate": 0.415
+       },
+       "test": {
+        "trades": 12,
+        "netR": -1.51,
+        "pf": 0.7,
+        "maxDDR": 4.43,
+        "maxDDPct": 2.21,
+        "semMaiorR": -3.84,
+        "winRate": 0.417
+       },
+       "testStressNetR": -1.63,
+       "shortShare": 0.42
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 40,
+        "netR": 6.7,
+        "pf": 1.65,
+        "maxDDR": 2.44,
+        "maxDDPct": 1.22,
+        "semMaiorR": 3.7,
+        "winRate": 0.525
+       },
+       "test": {
+        "trades": 2,
+        "netR": -1.78,
+        "pf": 0.0,
+        "maxDDR": 1.78,
+        "maxDDPct": 0.89,
+        "semMaiorR": -1.01,
+        "winRate": 0.0
+       },
+       "testStressNetR": -1.8,
+       "shortShare": 0.0
+      }
+     ],
+     "oos": {
+      "trades": 109,
+      "netR": 22.95,
+      "pf": 1.339,
+      "maxDDR": 8.29,
+      "maxDDPct": 4.15,
+      "semMaiorR": 6.46,
+      "winRate": 0.312
+     },
+     "oosStressNetR": 21.01,
+     "oosStressDDPct": 4.39,
+     "yearsTraded": 6,
+     "yearsPositive": 3
+    },
+    "orig_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 37,
+        "netR": 16.87,
+        "pf": 2.707,
+        "maxDDR": 2.95,
+        "maxDDPct": 1.48,
+        "semMaiorR": 3.76,
+        "winRate": 0.432
+       },
+       "test": {
+        "trades": 21,
+        "netR": 7.09,
+        "pf": 3.021,
+        "maxDDR": 1.48,
+        "maxDDPct": 0.74,
+        "semMaiorR": 2.88,
+        "winRate": 0.524
+       },
+       "testStressNetR": 6.97,
+       "shortShare": 0.48
+      },
+      {
+       "testYear": 2018,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 51,
+        "netR": 9.8,
+        "pf": 1.825,
+        "maxDDR": 2.95,
+        "maxDDPct": 1.48,
+        "semMaiorR": 4.25,
+        "winRate": 0.451
+       },
+       "test": {
+        "trades": 7,
+        "netR": 3.19,
+        "pf": 2.25,
+        "maxDDR": 1.99,
+        "maxDDPct": 0.99,
+        "semMaiorR": -1.99,
+        "winRate": 0.286
+       },
+       "testStressNetR": 3.15,
+       "shortShare": 0.57
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 46,
+        "netR": 10.39,
+        "pf": 1.957,
+        "maxDDR": 2.56,
+        "maxDDPct": 1.28,
+        "semMaiorR": 5.21,
+        "winRate": 0.435
+       },
+       "test": {
+        "trades": 13,
+        "netR": 4.46,
+        "pf": 4.171,
+        "maxDDR": 0.79,
+        "maxDDPct": 0.4,
+        "semMaiorR": 2.82,
+        "winRate": 0.692
+       },
+       "testStressNetR": 4.38,
+       "shortShare": 0.46
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 41,
+        "netR": 14.74,
+        "pf": 2.974,
+        "maxDDR": 2.52,
+        "maxDDPct": 1.26,
+        "semMaiorR": 9.56,
+        "winRate": 0.537
+       },
+       "test": {
+        "trades": 16,
+        "netR": 2.44,
+        "pf": 1.432,
+        "maxDDR": 2.11,
+        "maxDDPct": 1.06,
+        "semMaiorR": -0.57,
+        "winRate": 0.375
+       },
+       "testStressNetR": 2.35,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 36,
+        "netR": 10.09,
+        "pf": 2.05,
+        "maxDDR": 2.52,
+        "maxDDPct": 1.26,
+        "semMaiorR": 4.91,
+        "winRate": 0.472
+       },
+       "test": {
+        "trades": 11,
+        "netR": -0.2,
+        "pf": 0.939,
+        "maxDDR": 2.44,
+        "maxDDPct": 1.22,
+        "semMaiorR": -1.94,
+        "winRate": 0.545
+       },
+       "testStressNetR": -0.28,
+       "shortShare": 0.45
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 40,
+        "netR": 6.7,
+        "pf": 1.65,
+        "maxDDR": 2.44,
+        "maxDDPct": 1.22,
+        "semMaiorR": 3.7,
+        "winRate": 0.525
+       },
+       "test": {
+        "trades": 2,
+        "netR": -1.78,
+        "pf": 0.0,
+        "maxDDR": 1.78,
+        "maxDDPct": 0.89,
+        "semMaiorR": -1.01,
+        "winRate": 0.0
+       },
+       "testStressNetR": -1.8,
+       "shortShare": 0.0
+      }
+     ],
+     "oos": {
+      "trades": 70,
+      "netR": 15.2,
+      "pf": 1.838,
+      "maxDDR": 2.52,
+      "maxDDPct": 1.26,
+      "semMaiorR": 10.02,
+      "winRate": 0.486
+     },
+     "oosStressNetR": 14.77,
+     "oosStressDDPct": 1.28,
+     "yearsTraded": 6,
+     "yearsPositive": 4
+    },
+    "orig_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 99,
+      "netR": 20.95,
+      "pf": 1.278,
+      "maxDDR": 15.2,
+      "maxDDPct": 7.6,
+      "semMaiorR": 5.42,
+      "winRate": 0.222
+     },
+     "oosStressNetR": 18.39,
+     "oosStressDDPct": 8.08,
+     "yearsTraded": 6,
+     "yearsPositive": 3
+    },
+    "orig_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 92,
+      "netR": 24.24,
+      "pf": 1.374,
+      "maxDDR": 11.37,
+      "maxDDPct": 5.69,
+      "semMaiorR": 8.71,
+      "winRate": 0.261
+     },
+     "oosStressNetR": 22.24,
+     "oosStressDDPct": 6.3,
+     "yearsTraded": 6,
+     "yearsPositive": 3
+    },
+    "regime": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "H4",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 41,
+        "netR": 37.15,
+        "pf": 2.489,
+        "maxDDR": 13.98,
+        "maxDDPct": 6.99,
+        "semMaiorR": 5.76,
+        "winRate": 0.22
+       },
+       "test": {
+        "trades": 20,
+        "netR": 13.23,
+        "pf": 2.239,
+        "maxDDR": 5.7,
+        "maxDDPct": 2.85,
+        "semMaiorR": 2.29,
+        "winRate": 0.35
+       },
+       "testStressNetR": 12.91,
+       "shortShare": 0.4
+      },
+      {
+       "testYear": 2018,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 55,
+        "netR": 20.72,
+        "pf": 1.678,
+        "maxDDR": 14.24,
+        "maxDDPct": 7.12,
+        "semMaiorR": 6.17,
+        "winRate": 0.255
+       },
+       "test": {
+        "trades": 12,
+        "netR": 0.39,
+        "pf": 1.058,
+        "maxDDR": 3.04,
+        "maxDDPct": 1.52,
+        "semMaiorR": -4.48,
+        "winRate": 0.25
+       },
+       "testStressNetR": 0.19,
+       "shortShare": 1.0
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 57,
+        "netR": 47.91,
+        "pf": 2.122,
+        "maxDDR": 10.19,
+        "maxDDPct": 5.1,
+        "semMaiorR": 25.18,
+        "winRate": 0.246
+       },
+       "test": {
+        "trades": 36,
+        "netR": -15.27,
+        "pf": 0.498,
+        "maxDDR": 18.82,
+        "maxDDPct": 9.41,
+        "semMaiorR": -24.29,
+        "winRate": 0.139
+       },
+       "testStressNetR": -16.41,
+       "shortShare": 0.22
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 28,
+        "netR": 7.91,
+        "pf": 2.406,
+        "maxDDR": 1.68,
+        "maxDDPct": 0.84,
+        "semMaiorR": 3.7,
+        "winRate": 0.5
+       },
+       "test": {
+        "trades": 10,
+        "netR": 2.33,
+        "pf": 1.826,
+        "maxDDR": 1.4,
+        "maxDDPct": 0.7,
+        "semMaiorR": -0.68,
+        "winRate": 0.3
+       },
+       "testStressNetR": 2.28,
+       "shortShare": 0.3
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 26,
+        "netR": 4.6,
+        "pf": 1.77,
+        "maxDDR": 1.44,
+        "maxDDPct": 0.72,
+        "semMaiorR": 1.59,
+        "winRate": 0.385
+       },
+       "test": {
+        "trades": 11,
+        "netR": -1.6,
+        "pf": 0.573,
+        "maxDDR": 3.0,
+        "maxDDPct": 1.5,
+        "semMaiorR": -3.0,
+        "winRate": 0.364
+       },
+       "testStressNetR": -1.68,
+       "shortShare": 0.45
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 29,
+        "netR": 1.79,
+        "pf": 1.491,
+        "maxDDR": 1.49,
+        "maxDDPct": 0.75,
+        "semMaiorR": 0.09,
+        "winRate": 0.414
+       },
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       },
+       "testStressNetR": 0.0,
+       "shortShare": null
+      }
+     ],
+     "oos": {
+      "trades": 89,
+      "netR": -0.92,
+      "pf": 0.983,
+      "maxDDR": 21.86,
+      "maxDDPct": 10.93,
+      "semMaiorR": -11.86,
+      "winRate": 0.247
+     },
+     "oosStressNetR": -2.72,
+     "oosStressDDPct": 11.38,
+     "yearsTraded": 6,
+     "yearsPositive": 3
+    },
+    "regime_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 30,
+        "netR": 11.67,
+        "pf": 2.11,
+        "maxDDR": 6.63,
+        "maxDDPct": 3.32,
+        "semMaiorR": 0.49,
+        "winRate": 0.333
+       },
+       "test": {
+        "trades": 12,
+        "netR": 5.64,
+        "pf": 3.28,
+        "maxDDR": 1.68,
+        "maxDDPct": 0.84,
+        "semMaiorR": 1.43,
+        "winRate": 0.583
+       },
+       "testStressNetR": 5.57,
+       "shortShare": 0.33
+      },
+      {
+       "testYear": 2018,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 38,
+        "netR": 4.95,
+        "pf": 1.409,
+        "maxDDR": 6.63,
+        "maxDDPct": 3.32,
+        "semMaiorR": 0.72,
+        "winRate": 0.368
+       },
+       "test": {
+        "trades": 6,
+        "netR": 0.83,
+        "pf": 1.588,
+        "maxDDR": 0.8,
+        "maxDDPct": 0.4,
+        "semMaiorR": -0.86,
+        "winRate": 0.333
+       },
+       "testStressNetR": 0.8,
+       "shortShare": 1.0
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 28,
+        "netR": 8.19,
+        "pf": 2.273,
+        "maxDDR": 1.68,
+        "maxDDPct": 0.84,
+        "semMaiorR": 3.97,
+        "winRate": 0.464
+       },
+       "test": {
+        "trades": 10,
+        "netR": 1.43,
+        "pf": 1.827,
+        "maxDDR": 1.15,
+        "maxDDPct": 0.58,
+        "semMaiorR": -0.2,
+        "winRate": 0.5
+       },
+       "testStressNetR": 1.37,
+       "shortShare": 0.6
+      },
+      {
+       "testYear": 2020,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 28,
+        "netR": 7.91,
+        "pf": 2.406,
+        "maxDDR": 1.68,
+        "maxDDPct": 0.84,
+        "semMaiorR": 3.7,
+        "winRate": 0.5
+       },
+       "test": {
+        "trades": 10,
+        "netR": 2.33,
+        "pf": 1.826,
+        "maxDDR": 1.4,
+        "maxDDPct": 0.7,
+        "semMaiorR": -0.68,
+        "winRate": 0.3
+       },
+       "testStressNetR": 2.28,
+       "shortShare": 0.3
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 26,
+        "netR": 4.6,
+        "pf": 1.77,
+        "maxDDR": 1.44,
+        "maxDDPct": 0.72,
+        "semMaiorR": 1.59,
+        "winRate": 0.385
+       },
+       "test": {
+        "trades": 11,
+        "netR": -1.6,
+        "pf": 0.573,
+        "maxDDR": 3.0,
+        "maxDDPct": 1.5,
+        "semMaiorR": -3.0,
+        "winRate": 0.364
+       },
+       "testStressNetR": -1.68,
+       "shortShare": 0.45
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 29,
+        "netR": 1.79,
+        "pf": 1.491,
+        "maxDDR": 1.49,
+        "maxDDPct": 0.75,
+        "semMaiorR": 0.09,
+        "winRate": 0.414
+       },
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       },
+       "testStressNetR": 0.0,
+       "shortShare": null
+      }
+     ],
+     "oos": {
+      "trades": 49,
+      "netR": 8.65,
+      "pf": 1.71,
+      "maxDDR": 3.0,
+      "maxDDPct": 1.5,
+      "semMaiorR": 4.43,
+      "winRate": 0.429
+     },
+     "oosStressNetR": 8.33,
+     "oosStressDDPct": 1.54,
+     "yearsTraded": 6,
+     "yearsPositive": 4
+    },
+    "regime_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 70,
+      "netR": -9.29,
+      "pf": 0.797,
+      "maxDDR": 22.93,
+      "maxDDPct": 11.46,
+      "semMaiorR": -19.01,
+      "winRate": 0.214
+     },
+     "oosStressNetR": -11.0,
+     "oosStressDDPct": 11.95,
+     "yearsTraded": 4,
+     "yearsPositive": 2
+    },
+    "regime_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 63,
+      "netR": 3.06,
+      "pf": 1.117,
+      "maxDDR": 10.77,
+      "maxDDPct": 5.38,
+      "semMaiorR": -1.81,
+      "winRate": 0.333
+     },
+     "oosStressNetR": 2.35,
+     "oosStressDDPct": 5.53,
+     "yearsTraded": 6,
+     "yearsPositive": 3
+    }
+   }
+  },
+  "EJ_USDJPY": {
+   "buyHoldPctByYear": {
+    "2014": 13.9,
+    "2015": -0.2,
+    "2016": -2.8,
+    "2017": -3.5,
+    "2018": -2.6,
+    "2019": -0.7,
+    "2020": -5.0,
+    "2021": 11.6,
+    "2022": -0.2
+   },
+   "fixed": {
+    "orig": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "long"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 23.58,
+       "trades": 12,
+       "shorts": 0
+      },
+      "2015": {
+       "netR": -1.01,
+       "trades": 8,
+       "shorts": 0
+      },
+      "2016": {
+       "netR": 2.35,
+       "trades": 4,
+       "shorts": 0
+      },
+      "2017": {
+       "netR": -1.65,
+       "trades": 11,
+       "shorts": 0
+      },
+      "2018": {
+       "netR": 1.1,
+       "trades": 6,
+       "shorts": 0
+      },
+      "2019": {
+       "netR": -0.89,
+       "trades": 6,
+       "shorts": 0
+      },
+      "2020": {
+       "netR": -4.33,
+       "trades": 8,
+       "shorts": 0
+      },
+      "2021": {
+       "netR": 7.03,
+       "trades": 9,
+       "shorts": 0
+      },
+      "2022": {
+       "netR": 0.12,
+       "trades": 2,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 35,
+       "netR": 23.28,
+       "pf": 3.376,
+       "maxDDR": 3.21,
+       "maxDDPct": 1.6,
+       "semMaiorR": -2.99,
+       "winRate": 0.343
+      },
+      "validation": {
+       "trades": 12,
+       "netR": 0.21,
+       "pf": 1.057,
+       "maxDDR": 1.61,
+       "maxDDPct": 0.8,
+       "semMaiorR": -1.27,
+       "winRate": 0.583
+      },
+      "reserve": {
+       "trades": 19,
+       "netR": 2.81,
+       "pf": 1.512,
+       "maxDDR": 5.01,
+       "maxDDPct": 2.51,
+       "semMaiorR": -2.19,
+       "winRate": 0.263
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 35,
+       "netR": 23.07,
+       "pf": 3.324,
+       "maxDDR": 3.24,
+       "maxDDPct": 1.62,
+       "semMaiorR": -3.18,
+       "winRate": 0.343
+      },
+      "validation": {
+       "trades": 12,
+       "netR": 0.12,
+       "pf": 1.034,
+       "maxDDR": 1.63,
+       "maxDDPct": 0.81,
+       "semMaiorR": -1.35,
+       "winRate": 0.583
+      },
+      "reserve": {
+       "trades": 19,
+       "netR": 2.67,
+       "pf": 1.475,
+       "maxDDR": 5.09,
+       "maxDDPct": 2.55,
+       "semMaiorR": -2.33,
+       "winRate": 0.263
+      }
+     },
+     "all": {
+      "trades": 66,
+      "netR": 26.3,
+      "pf": 2.39,
+      "maxDDR": 6.54,
+      "maxDDPct": 3.27,
+      "semMaiorR": 0.03,
+      "winRate": 0.364
+     }
+    },
+    "both": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 21.19,
+       "trades": 25,
+       "shorts": 13
+      },
+      "2015": {
+       "netR": -1.18,
+       "trades": 15,
+       "shorts": 7
+      },
+      "2016": {
+       "netR": 8.79,
+       "trades": 9,
+       "shorts": 5
+      },
+      "2017": {
+       "netR": -3.14,
+       "trades": 24,
+       "shorts": 13
+      },
+      "2018": {
+       "netR": 3.4,
+       "trades": 12,
+       "shorts": 6
+      },
+      "2019": {
+       "netR": 1.11,
+       "trades": 11,
+       "shorts": 5
+      },
+      "2020": {
+       "netR": -6.15,
+       "trades": 18,
+       "shorts": 10
+      },
+      "2021": {
+       "netR": 5.28,
+       "trades": 17,
+       "shorts": 8
+      },
+      "2022": {
+       "netR": -0.76,
+       "trades": 4,
+       "shorts": 2
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 73,
+       "netR": 25.66,
+       "pf": 2.231,
+       "maxDDR": 5.08,
+       "maxDDPct": 2.54,
+       "semMaiorR": -0.61,
+       "winRate": 0.356
+      },
+      "validation": {
+       "trades": 23,
+       "netR": 4.51,
+       "pf": 1.995,
+       "maxDDR": 1.4,
+       "maxDDPct": 0.7,
+       "semMaiorR": 2.43,
+       "winRate": 0.522
+      },
+      "reserve": {
+       "trades": 39,
+       "netR": -1.63,
+       "pf": 0.865,
+       "maxDDR": 7.31,
+       "maxDDPct": 3.65,
+       "semMaiorR": -6.64,
+       "winRate": 0.282
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 73,
+       "netR": 25.24,
+       "pf": 2.196,
+       "maxDDR": 5.24,
+       "maxDDPct": 2.62,
+       "semMaiorR": -1.01,
+       "winRate": 0.356
+      },
+      "validation": {
+       "trades": 23,
+       "netR": 4.35,
+       "pf": 1.943,
+       "maxDDR": 1.41,
+       "maxDDPct": 0.7,
+       "semMaiorR": 2.28,
+       "winRate": 0.522
+      },
+      "reserve": {
+       "trades": 39,
+       "netR": -1.93,
+       "pf": 0.843,
+       "maxDDR": 7.49,
+       "maxDDPct": 3.74,
+       "semMaiorR": -6.93,
+       "winRate": 0.282
+      }
+     },
+     "all": {
+      "trades": 135,
+      "netR": 28.54,
+      "pf": 1.762,
+      "maxDDR": 7.31,
+      "maxDDPct": 3.65,
+      "semMaiorR": 2.28,
+      "winRate": 0.363
+     }
+    },
+    "short": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": -2.39,
+       "trades": 13,
+       "shorts": 13
+      },
+      "2015": {
+       "netR": -0.17,
+       "trades": 7,
+       "shorts": 7
+      },
+      "2016": {
+       "netR": 6.44,
+       "trades": 5,
+       "shorts": 5
+      },
+      "2017": {
+       "netR": -1.49,
+       "trades": 13,
+       "shorts": 13
+      },
+      "2018": {
+       "netR": 2.3,
+       "trades": 6,
+       "shorts": 6
+      },
+      "2019": {
+       "netR": 2.0,
+       "trades": 5,
+       "shorts": 5
+      },
+      "2020": {
+       "netR": -1.81,
+       "trades": 10,
+       "shorts": 10
+      },
+      "2021": {
+       "netR": -1.75,
+       "trades": 8,
+       "shorts": 8
+      },
+      "2022": {
+       "netR": -0.88,
+       "trades": 2,
+       "shorts": 2
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 38,
+       "netR": 2.38,
+       "pf": 1.216,
+       "maxDDR": 3.57,
+       "maxDDPct": 1.78,
+       "semMaiorR": -5.8,
+       "winRate": 0.368
+      },
+      "validation": {
+       "trades": 11,
+       "netR": 4.31,
+       "pf": 5.702,
+       "maxDDR": 0.44,
+       "maxDDPct": 0.22,
+       "semMaiorR": 2.23,
+       "winRate": 0.455
+      },
+      "reserve": {
+       "trades": 20,
+       "netR": -4.44,
+       "pf": 0.323,
+       "maxDDR": 4.44,
+       "maxDDPct": 2.22,
+       "semMaiorR": -5.72,
+       "winRate": 0.3
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 38,
+       "netR": 2.17,
+       "pf": 1.194,
+       "maxDDR": 3.7,
+       "maxDDPct": 1.85,
+       "semMaiorR": -6.01,
+       "winRate": 0.368
+      },
+      "validation": {
+       "trades": 11,
+       "netR": 4.23,
+       "pf": 5.414,
+       "maxDDR": 0.45,
+       "maxDDPct": 0.23,
+       "semMaiorR": 2.16,
+       "winRate": 0.455
+      },
+      "reserve": {
+       "trades": 20,
+       "netR": -4.6,
+       "pf": 0.312,
+       "maxDDR": 4.6,
+       "maxDDPct": 2.3,
+       "semMaiorR": -5.86,
+       "winRate": 0.3
+      }
+     },
+     "all": {
+      "trades": 69,
+      "netR": 2.24,
+      "pf": 1.121,
+      "maxDDR": 4.72,
+      "maxDDPct": 2.36,
+      "semMaiorR": -5.94,
+      "winRate": 0.362
+     }
+    },
+    "regime": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 16.62,
+       "trades": 16,
+       "shorts": 2
+      },
+      "2015": {
+       "netR": -2.36,
+       "trades": 13,
+       "shorts": 5
+      },
+      "2016": {
+       "netR": 8.99,
+       "trades": 6,
+       "shorts": 5
+      },
+      "2017": {
+       "netR": -3.42,
+       "trades": 18,
+       "shorts": 7
+      },
+      "2018": {
+       "netR": -0.12,
+       "trades": 13,
+       "shorts": 4
+      },
+      "2019": {
+       "netR": -0.19,
+       "trades": 13,
+       "shorts": 6
+      },
+      "2020": {
+       "netR": -4.26,
+       "trades": 15,
+       "shorts": 11
+      },
+      "2021": {
+       "netR": 4.85,
+       "trades": 10,
+       "shorts": 3
+      },
+      "2022": {
+       "netR": 0.12,
+       "trades": 2,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 53,
+       "netR": 19.84,
+       "pf": 2.222,
+       "maxDDR": 4.77,
+       "maxDDPct": 2.39,
+       "semMaiorR": -0.71,
+       "winRate": 0.283
+      },
+      "validation": {
+       "trades": 26,
+       "netR": -0.3,
+       "pf": 0.954,
+       "maxDDR": 1.89,
+       "maxDDPct": 0.95,
+       "semMaiorR": -2.38,
+       "winRate": 0.231
+      },
+      "reserve": {
+       "trades": 27,
+       "netR": 0.71,
+       "pf": 1.094,
+       "maxDDR": 5.4,
+       "maxDDPct": 2.7,
+       "semMaiorR": -2.58,
+       "winRate": 0.296
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 53,
+       "netR": 19.52,
+       "pf": 2.186,
+       "maxDDR": 4.82,
+       "maxDDPct": 2.41,
+       "semMaiorR": -1.02,
+       "winRate": 0.283
+      },
+      "validation": {
+       "trades": 26,
+       "netR": -0.49,
+       "pf": 0.927,
+       "maxDDR": 1.94,
+       "maxDDPct": 0.97,
+       "semMaiorR": -2.56,
+       "winRate": 0.231
+      },
+      "reserve": {
+       "trades": 27,
+       "netR": 0.52,
+       "pf": 1.067,
+       "maxDDR": 5.53,
+       "maxDDPct": 2.77,
+       "semMaiorR": -2.77,
+       "winRate": 0.296
+      }
+     },
+     "all": {
+      "trades": 106,
+      "netR": 20.25,
+      "pf": 1.666,
+      "maxDDR": 9.21,
+      "maxDDPct": 4.6,
+      "semMaiorR": -0.3,
+      "winRate": 0.274
+     }
+    }
+   },
+   "sensitivity": {
+    "orig": {
+     "development": {
+      "combos": 180,
+      "positivas": 163,
+      "pfMediano": 2.345
+     },
+     "validation": {
+      "combos": 180,
+      "positivas": 13,
+      "pfMediano": 0.36
+     },
+     "reserve": {
+      "combos": 180,
+      "positivas": 96,
+      "pfMediano": 1.05
+     },
+     "todasAsFasesPositivas": 3
+    },
+    "regime": {
+     "development": {
+      "combos": 90,
+      "positivas": 90,
+      "pfMediano": 2.236
+     },
+     "validation": {
+      "combos": 90,
+      "positivas": 2,
+      "pfMediano": 0.352
+     },
+     "reserve": {
+      "combos": 90,
+      "positivas": 43,
+      "pfMediano": 0.988
+     },
+     "todasAsFasesPositivas": 0
+    }
+   },
+   "walkForward": {
+    "orig": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 43,
+        "netR": 80.83,
+        "pf": 3.949,
+        "maxDDR": 8.64,
+        "maxDDPct": 4.32,
+        "semMaiorR": 32.2,
+        "winRate": 0.372
+       },
+       "test": {
+        "trades": 25,
+        "netR": -23.95,
+        "pf": 0.015,
+        "maxDDR": 24.31,
+        "maxDDPct": 12.15,
+        "semMaiorR": -24.31,
+        "winRate": 0.04
+       },
+       "testStressNetR": -24.27,
+       "shortShare": 0.6
+      },
+      {
+       "testYear": 2018,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 42,
+        "netR": 5.67,
+        "pf": 2.009,
+        "maxDDR": 1.73,
+        "maxDDPct": 0.86,
+        "semMaiorR": 0.51,
+        "winRate": 0.333
+       },
+       "test": {
+        "trades": 11,
+        "netR": 1.83,
+        "pf": 3.073,
+        "maxDDR": 0.66,
+        "maxDDPct": 0.33,
+        "semMaiorR": 0.84,
+        "winRate": 0.636
+       },
+       "testStressNetR": 1.79,
+       "shortShare": 0.55
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "H4",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 47,
+        "netR": 13.42,
+        "pf": 1.859,
+        "maxDDR": 5.3,
+        "maxDDPct": 2.65,
+        "semMaiorR": 2.96,
+        "winRate": 0.404
+       },
+       "test": {
+        "trades": 11,
+        "netR": 0.12,
+        "pf": 1.038,
+        "maxDDR": 1.41,
+        "maxDDPct": 0.7,
+        "semMaiorR": -2.6,
+        "winRate": 0.364
+       },
+       "testStressNetR": 0.01,
+       "shortShare": 0.45
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 47,
+      "netR": -22.0,
+      "pf": 0.224,
+      "maxDDR": 24.61,
+      "maxDDPct": 12.3,
+      "semMaiorR": -24.72,
+      "winRate": 0.255
+     },
+     "oosStressNetR": -22.46,
+     "oosStressDDPct": 12.47,
+     "yearsTraded": 3,
+     "yearsPositive": 2
+    },
+    "orig_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 30,
+        "netR": 34.73,
+        "pf": 4.863,
+        "maxDDR": 2.3,
+        "maxDDPct": 1.15,
+        "semMaiorR": 11.23,
+        "winRate": 0.5
+       },
+       "test": {
+        "trades": 14,
+        "netR": -10.11,
+        "pf": 0.048,
+        "maxDDR": 10.11,
+        "maxDDPct": 5.06,
+        "semMaiorR": -10.63,
+        "winRate": 0.071
+       },
+       "testStressNetR": -10.18,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2018,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 42,
+        "netR": 5.67,
+        "pf": 2.009,
+        "maxDDR": 1.73,
+        "maxDDPct": 0.86,
+        "semMaiorR": 0.51,
+        "winRate": 0.333
+       },
+       "test": {
+        "trades": 11,
+        "netR": 1.83,
+        "pf": 3.073,
+        "maxDDR": 0.66,
+        "maxDDPct": 0.33,
+        "semMaiorR": 0.84,
+        "winRate": 0.636
+       },
+       "testStressNetR": 1.79,
+       "shortShare": 0.55
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 45,
+        "netR": 9.05,
+        "pf": 1.742,
+        "maxDDR": 4.79,
+        "maxDDPct": 2.39,
+        "semMaiorR": 0.86,
+        "winRate": 0.4
+       },
+       "test": {
+        "trades": 11,
+        "netR": 1.11,
+        "pf": 1.59,
+        "maxDDR": 1.12,
+        "maxDDPct": 0.56,
+        "semMaiorR": -0.97,
+        "winRate": 0.455
+       },
+       "testStressNetR": 1.03,
+       "shortShare": 0.45
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 36,
+      "netR": -7.17,
+      "pf": 0.464,
+      "maxDDR": 10.78,
+      "maxDDPct": 5.39,
+      "semMaiorR": -9.25,
+      "winRate": 0.361
+     },
+     "oosStressNetR": -7.36,
+     "oosStressDDPct": 5.43,
+     "yearsTraded": 3,
+     "yearsPositive": 2
+    },
+    "orig_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 45,
+      "netR": -42.18,
+      "pf": 0.041,
+      "maxDDR": 42.18,
+      "maxDDPct": 21.09,
+      "semMaiorR": -43.64,
+      "winRate": 0.044
+     },
+     "oosStressNetR": -43.2,
+     "oosStressDDPct": 21.6,
+     "yearsTraded": 2,
+     "yearsPositive": 0
+    },
+    "orig_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 79,
+      "netR": -43.83,
+      "pf": 0.214,
+      "maxDDR": 45.57,
+      "maxDDPct": 22.78,
+      "semMaiorR": -48.38,
+      "winRate": 0.152
+     },
+     "oosStressNetR": -45.57,
+     "oosStressDDPct": 23.62,
+     "yearsTraded": 4,
+     "yearsPositive": 1
+    },
+    "regime": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 45,
+        "netR": 118.66,
+        "pf": 4.043,
+        "maxDDR": 12.56,
+        "maxDDPct": 6.28,
+        "semMaiorR": 21.19,
+        "winRate": 0.133
+       },
+       "test": {
+        "trades": 17,
+        "netR": -17.31,
+        "pf": 0.0,
+        "maxDDR": 17.31,
+        "maxDDPct": 8.66,
+        "semMaiorR": -16.44,
+        "winRate": 0.0
+       },
+       "testStressNetR": -17.78,
+       "shortShare": 0.24
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 38,
+        "netR": 37.69,
+        "pf": 2.116,
+        "maxDDR": 19.58,
+        "maxDDPct": 9.79,
+        "semMaiorR": 11.13,
+        "winRate": 0.132
+       },
+       "test": {
+        "trades": 29,
+        "netR": -28.51,
+        "pf": 0.0,
+        "maxDDR": 28.51,
+        "maxDDPct": 14.26,
+        "semMaiorR": -28.27,
+        "winRate": 0.0
+       },
+       "testStressNetR": -29.73,
+       "shortShare": 0.66
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 46,
+      "netR": -45.82,
+      "pf": 0.0,
+      "maxDDR": 45.82,
+      "maxDDPct": 22.91,
+      "semMaiorR": -45.58,
+      "winRate": 0.0
+     },
+     "oosStressNetR": -47.5,
+     "oosStressDDPct": 23.75,
+     "yearsTraded": 2,
+     "yearsPositive": 0
+    },
+    "regime_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 22,
+        "netR": 23.99,
+        "pf": 3.748,
+        "maxDDR": 3.57,
+        "maxDDPct": 1.78,
+        "semMaiorR": 5.99,
+        "winRate": 0.455
+       },
+       "test": {
+        "trades": 9,
+        "netR": -6.99,
+        "pf": 0.0,
+        "maxDDR": 6.99,
+        "maxDDPct": 3.49,
+        "semMaiorR": -6.91,
+        "winRate": 0.0
+       },
+       "testStressNetR": -7.04,
+       "shortShare": 0.33
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 9,
+      "netR": -6.99,
+      "pf": 0.0,
+      "maxDDR": 6.99,
+      "maxDDPct": 3.49,
+      "semMaiorR": -6.91,
+      "winRate": 0.0
+     },
+     "oosStressNetR": -7.04,
+     "oosStressDDPct": 3.52,
+     "yearsTraded": 1,
+     "yearsPositive": 0
+    },
+    "regime_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 42,
+      "netR": -17.24,
+      "pf": 0.469,
+      "maxDDR": 18.33,
+      "maxDDPct": 9.17,
+      "semMaiorR": -27.11,
+      "winRate": 0.143
+     },
+     "oosStressNetR": -18.13,
+     "oosStressDDPct": 9.41,
+     "yearsTraded": 2,
+     "yearsPositive": 1
+    },
+    "regime_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 60,
+      "netR": -17.47,
+      "pf": 0.646,
+      "maxDDR": 36.26,
+      "maxDDPct": 18.13,
+      "semMaiorR": -31.25,
+      "winRate": 0.117
+     },
+     "oosStressNetR": -19.2,
+     "oosStressDDPct": 18.82,
+     "yearsTraded": 2,
+     "yearsPositive": 1
+    }
+   }
+  },
+  "EJ_AUDUSD": {
+   "buyHoldPctByYear": {
+    "2014": -8.1,
+    "2015": -10.5,
+    "2016": -1.4,
+    "2017": 8.3,
+    "2018": -9.7,
+    "2019": 0.1,
+    "2020": 10.0,
+    "2021": -5.6,
+    "2022": 1.6
+   },
+   "fixed": {
+    "orig": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "long"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 1.75,
+       "trades": 4,
+       "shorts": 0
+      },
+      "2015": {
+       "netR": -1.47,
+       "trades": 7,
+       "shorts": 0
+      },
+      "2016": {
+       "netR": -1.18,
+       "trades": 10,
+       "shorts": 0
+      },
+      "2017": {
+       "netR": 0.8,
+       "trades": 5,
+       "shorts": 0
+      },
+      "2018": {
+       "netR": -1.92,
+       "trades": 7,
+       "shorts": 0
+      },
+      "2019": {
+       "netR": -3.46,
+       "trades": 11,
+       "shorts": 0
+      },
+      "2020": {
+       "netR": 5.5,
+       "trades": 5,
+       "shorts": 0
+      },
+      "2021": {
+       "netR": -3.02,
+       "trades": 10,
+       "shorts": 0
+      },
+      "2022": {
+       "netR": 1.51,
+       "trades": 1,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 26,
+       "netR": -0.09,
+       "pf": 0.985,
+       "maxDDR": 4.2,
+       "maxDDPct": 2.1,
+       "semMaiorR": -1.94,
+       "winRate": 0.346
+      },
+      "validation": {
+       "trades": 18,
+       "netR": -5.38,
+       "pf": 0.121,
+       "maxDDR": 5.64,
+       "maxDDPct": 2.82,
+       "semMaiorR": -5.65,
+       "winRate": 0.222
+      },
+      "reserve": {
+       "trades": 16,
+       "netR": 3.99,
+       "pf": 2.162,
+       "maxDDR": 3.09,
+       "maxDDPct": 1.55,
+       "semMaiorR": 1.4,
+       "winRate": 0.438
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 26,
+       "netR": -0.23,
+       "pf": 0.964,
+       "maxDDR": 4.28,
+       "maxDDPct": 2.14,
+       "semMaiorR": -2.07,
+       "winRate": 0.346
+      },
+      "validation": {
+       "trades": 18,
+       "netR": -5.5,
+       "pf": 0.115,
+       "maxDDR": 5.75,
+       "maxDDPct": 2.87,
+       "semMaiorR": -5.77,
+       "winRate": 0.222
+      },
+      "reserve": {
+       "trades": 16,
+       "netR": 3.91,
+       "pf": 2.121,
+       "maxDDR": 3.14,
+       "maxDDPct": 1.57,
+       "semMaiorR": 1.32,
+       "winRate": 0.438
+      }
+     },
+     "all": {
+      "trades": 60,
+      "netR": -1.48,
+      "pf": 0.907,
+      "maxDDR": 7.86,
+      "maxDDPct": 3.93,
+      "semMaiorR": -4.07,
+      "winRate": 0.333
+     }
+    },
+    "both": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 18.86,
+       "trades": 8,
+       "shorts": 4
+      },
+      "2015": {
+       "netR": 0.13,
+       "trades": 13,
+       "shorts": 6
+      },
+      "2016": {
+       "netR": -4.44,
+       "trades": 23,
+       "shorts": 13
+      },
+      "2017": {
+       "netR": -0.18,
+       "trades": 9,
+       "shorts": 4
+      },
+      "2018": {
+       "netR": 0.97,
+       "trades": 13,
+       "shorts": 6
+      },
+      "2019": {
+       "netR": -4.22,
+       "trades": 22,
+       "shorts": 11
+      },
+      "2020": {
+       "netR": 7.76,
+       "trades": 10,
+       "shorts": 5
+      },
+      "2021": {
+       "netR": -2.61,
+       "trades": 22,
+       "shorts": 12
+      },
+      "2022": {
+       "netR": 1.51,
+       "trades": 1,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 53,
+       "netR": 14.37,
+       "pf": 2.054,
+       "maxDDR": 6.83,
+       "maxDDPct": 3.42,
+       "semMaiorR": -2.52,
+       "winRate": 0.321
+      },
+      "validation": {
+       "trades": 35,
+       "netR": -3.26,
+       "pf": 0.716,
+       "maxDDR": 4.22,
+       "maxDDPct": 2.11,
+       "semMaiorR": -6.48,
+       "winRate": 0.343
+      },
+      "reserve": {
+       "trades": 33,
+       "netR": 6.66,
+       "pf": 1.976,
+       "maxDDR": 3.78,
+       "maxDDPct": 1.89,
+       "semMaiorR": 3.53,
+       "winRate": 0.455
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 53,
+       "netR": 14.08,
+       "pf": 2.02,
+       "maxDDR": 7.0,
+       "maxDDPct": 3.5,
+       "semMaiorR": -2.8,
+       "winRate": 0.321
+      },
+      "validation": {
+       "trades": 35,
+       "netR": -3.49,
+       "pf": 0.7,
+       "maxDDR": 4.38,
+       "maxDDPct": 2.19,
+       "semMaiorR": -6.71,
+       "winRate": 0.343
+      },
+      "reserve": {
+       "trades": 33,
+       "netR": 6.48,
+       "pf": 1.937,
+       "maxDDR": 3.86,
+       "maxDDPct": 1.93,
+       "semMaiorR": 3.36,
+       "winRate": 0.455
+      }
+     },
+     "all": {
+      "trades": 121,
+      "netR": 17.77,
+      "pf": 1.556,
+      "maxDDR": 8.49,
+      "maxDDPct": 4.24,
+      "semMaiorR": 0.88,
+      "winRate": 0.364
+     }
+    },
+    "short": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 17.11,
+       "trades": 4,
+       "shorts": 4
+      },
+      "2015": {
+       "netR": 1.6,
+       "trades": 6,
+       "shorts": 6
+      },
+      "2016": {
+       "netR": -3.27,
+       "trades": 13,
+       "shorts": 13
+      },
+      "2017": {
+       "netR": -0.99,
+       "trades": 4,
+       "shorts": 4
+      },
+      "2018": {
+       "netR": 2.89,
+       "trades": 6,
+       "shorts": 6
+      },
+      "2019": {
+       "netR": -0.77,
+       "trades": 11,
+       "shorts": 11
+      },
+      "2020": {
+       "netR": 2.26,
+       "trades": 5,
+       "shorts": 5
+      },
+      "2021": {
+       "netR": 0.41,
+       "trades": 12,
+       "shorts": 12
+      },
+      "2022": {
+       "netR": 0.0,
+       "trades": 0,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 27,
+       "netR": 14.46,
+       "pf": 2.976,
+       "maxDDR": 4.52,
+       "maxDDPct": 2.26,
+       "semMaiorR": -2.43,
+       "winRate": 0.296
+      },
+      "validation": {
+       "trades": 17,
+       "netR": 2.12,
+       "pf": 1.395,
+       "maxDDR": 2.19,
+       "maxDDPct": 1.09,
+       "semMaiorR": -1.1,
+       "winRate": 0.471
+      },
+      "reserve": {
+       "trades": 17,
+       "netR": 2.67,
+       "pf": 1.788,
+       "maxDDR": 3.1,
+       "maxDDPct": 1.55,
+       "semMaiorR": -0.46,
+       "winRate": 0.471
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 27,
+       "netR": 14.31,
+       "pf": 2.931,
+       "maxDDR": 4.61,
+       "maxDDPct": 2.3,
+       "semMaiorR": -2.56,
+       "winRate": 0.296
+      },
+      "validation": {
+       "trades": 17,
+       "netR": 2.0,
+       "pf": 1.37,
+       "maxDDR": 2.22,
+       "maxDDPct": 1.11,
+       "semMaiorR": -1.21,
+       "winRate": 0.471
+      },
+      "reserve": {
+       "trades": 17,
+       "netR": 2.58,
+       "pf": 1.75,
+       "maxDDR": 3.15,
+       "maxDDPct": 1.58,
+       "semMaiorR": -0.55,
+       "winRate": 0.471
+      }
+     },
+     "all": {
+      "trades": 61,
+      "netR": 19.25,
+      "pf": 2.198,
+      "maxDDR": 5.88,
+      "maxDDPct": 2.94,
+      "semMaiorR": 2.36,
+      "winRate": 0.393
+     }
+    },
+    "regime": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 12.31,
+       "trades": 5,
+       "shorts": 1
+      },
+      "2015": {
+       "netR": 1.6,
+       "trades": 6,
+       "shorts": 6
+      },
+      "2016": {
+       "netR": -3.32,
+       "trades": 14,
+       "shorts": 8
+      },
+      "2017": {
+       "netR": -1.4,
+       "trades": 10,
+       "shorts": 5
+      },
+      "2018": {
+       "netR": 2.06,
+       "trades": 10,
+       "shorts": 5
+      },
+      "2019": {
+       "netR": -1.44,
+       "trades": 12,
+       "shorts": 11
+      },
+      "2020": {
+       "netR": 8.01,
+       "trades": 7,
+       "shorts": 3
+      },
+      "2021": {
+       "netR": -0.83,
+       "trades": 12,
+       "shorts": 5
+      },
+      "2022": {
+       "netR": 0.32,
+       "trades": 1,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 35,
+       "netR": 9.19,
+       "pf": 2.007,
+       "maxDDR": 5.9,
+       "maxDDPct": 2.95,
+       "semMaiorR": -1.85,
+       "winRate": 0.286
+      },
+      "validation": {
+       "trades": 22,
+       "netR": 0.62,
+       "pf": 1.086,
+       "maxDDR": 2.45,
+       "maxDDPct": 1.22,
+       "semMaiorR": -2.61,
+       "winRate": 0.409
+      },
+      "reserve": {
+       "trades": 20,
+       "netR": 7.51,
+       "pf": 3.268,
+       "maxDDR": 2.68,
+       "maxDDPct": 1.34,
+       "semMaiorR": 4.38,
+       "winRate": 0.5
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 35,
+       "netR": 8.99,
+       "pf": 1.971,
+       "maxDDR": 6.01,
+       "maxDDPct": 3.01,
+       "semMaiorR": -2.04,
+       "winRate": 0.257
+      },
+      "validation": {
+       "trades": 22,
+       "netR": 0.47,
+       "pf": 1.065,
+       "maxDDR": 2.48,
+       "maxDDPct": 1.24,
+       "semMaiorR": -2.75,
+       "winRate": 0.409
+      },
+      "reserve": {
+       "trades": 20,
+       "netR": 7.4,
+       "pf": 3.195,
+       "maxDDR": 2.73,
+       "maxDDPct": 1.36,
+       "semMaiorR": 4.27,
+       "winRate": 0.5
+      }
+     },
+     "all": {
+      "trades": 77,
+      "netR": 17.31,
+      "pf": 1.886,
+      "maxDDR": 7.18,
+      "maxDDPct": 3.59,
+      "semMaiorR": 6.28,
+      "winRate": 0.377
+     }
+    }
+   },
+   "sensitivity": {
+    "orig": {
+     "development": {
+      "combos": 180,
+      "positivas": 82,
+      "pfMediano": 0.925
+     },
+     "validation": {
+      "combos": 180,
+      "positivas": 32,
+      "pfMediano": 0.164
+     },
+     "reserve": {
+      "combos": 180,
+      "positivas": 143,
+      "pfMediano": 1.591
+     },
+     "todasAsFasesPositivas": 8
+    },
+    "regime": {
+     "development": {
+      "combos": 90,
+      "positivas": 68,
+      "pfMediano": 1.357
+     },
+     "validation": {
+      "combos": 90,
+      "positivas": 59,
+      "pfMediano": 1.311
+     },
+     "reserve": {
+      "combos": 90,
+      "positivas": 86,
+      "pfMediano": 2.569
+     },
+     "todasAsFasesPositivas": 42
+    }
+   },
+   "walkForward": {
+    "orig": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 36,
+        "netR": 24.08,
+        "pf": 2.028,
+        "maxDDR": 6.93,
+        "maxDDPct": 3.47,
+        "semMaiorR": 11.86,
+        "winRate": 0.361
+       },
+       "test": {
+        "trades": 11,
+        "netR": 0.12,
+        "pf": 1.013,
+        "maxDDR": 5.49,
+        "maxDDPct": 2.75,
+        "semMaiorR": -8.54,
+        "winRate": 0.182
+       },
+       "testStressNetR": -0.05,
+       "shortShare": 0.36
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 37,
+        "netR": 17.88,
+        "pf": 1.703,
+        "maxDDR": 6.93,
+        "maxDDPct": 3.47,
+        "semMaiorR": 9.22,
+        "winRate": 0.324
+       },
+       "test": {
+        "trades": 7,
+        "netR": -4.13,
+        "pf": 0.321,
+        "maxDDR": 6.09,
+        "maxDDPct": 3.05,
+        "semMaiorR": -6.09,
+        "winRate": 0.143
+       },
+       "testStressNetR": -4.24,
+       "shortShare": 0.71
+      }
+     ],
+     "oos": {
+      "trades": 18,
+      "netR": -4.02,
+      "pf": 0.736,
+      "maxDDR": 9.14,
+      "maxDDPct": 4.57,
+      "semMaiorR": -12.67,
+      "winRate": 0.167
+     },
+     "oosStressNetR": -4.29,
+     "oosStressDDPct": 4.64,
+     "yearsTraded": 2,
+     "yearsPositive": 1
+    },
+    "orig_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 23,
+        "netR": 9.55,
+        "pf": 2.363,
+        "maxDDR": 2.26,
+        "maxDDPct": 1.13,
+        "semMaiorR": 5.7,
+        "winRate": 0.565
+       },
+       "test": {
+        "trades": 7,
+        "netR": 1.45,
+        "pf": 1.684,
+        "maxDDR": 1.01,
+        "maxDDPct": 0.5,
+        "semMaiorR": -1.55,
+        "winRate": 0.571
+       },
+       "testStressNetR": 1.41,
+       "shortShare": 0.57
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 7,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 25,
+        "netR": 8.05,
+        "pf": 2.039,
+        "maxDDR": 2.26,
+        "maxDDPct": 1.13,
+        "semMaiorR": 4.93,
+        "winRate": 0.56
+       },
+       "test": {
+        "trades": 1,
+        "netR": 1.4,
+        "pf": null,
+        "maxDDR": 0.0,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": 1.0
+       },
+       "testStressNetR": 1.39,
+       "shortShare": 0.0
+      }
+     ],
+     "oos": {
+      "trades": 8,
+      "netR": 2.85,
+      "pf": 2.343,
+      "maxDDR": 1.01,
+      "maxDDPct": 0.5,
+      "semMaiorR": -0.15,
+      "winRate": 0.625
+     },
+     "oosStressNetR": 2.8,
+     "oosStressDDPct": 0.51,
+     "yearsTraded": 2,
+     "yearsPositive": 2
+    },
+    "orig_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 77,
+      "netR": -50.63,
+      "pf": 0.26,
+      "maxDDR": 54.54,
+      "maxDDPct": 27.27,
+      "semMaiorR": -56.55,
+      "winRate": 0.104
+     },
+     "oosStressNetR": -53.01,
+     "oosStressDDPct": 28.45,
+     "yearsTraded": 4,
+     "yearsPositive": 0
+    },
+    "orig_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 27,
+      "netR": -1.49,
+      "pf": 0.871,
+      "maxDDR": 5.35,
+      "maxDDPct": 2.67,
+      "semMaiorR": -4.49,
+      "winRate": 0.407
+     },
+     "oosStressNetR": -1.68,
+     "oosStressDDPct": 2.74,
+     "yearsTraded": 4,
+     "yearsPositive": 2
+    },
+    "regime": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 55,
+        "netR": 49.43,
+        "pf": 2.201,
+        "maxDDR": 9.22,
+        "maxDDPct": 4.61,
+        "semMaiorR": 25.85,
+        "winRate": 0.255
+       },
+       "test": {
+        "trades": 32,
+        "netR": -0.93,
+        "pf": 0.964,
+        "maxDDR": 15.56,
+        "maxDDPct": 7.78,
+        "semMaiorR": -17.83,
+        "winRate": 0.125
+       },
+       "testStressNetR": -1.94,
+       "shortShare": 0.41
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 51,
+        "netR": 58.4,
+        "pf": 2.589,
+        "maxDDR": 17.57,
+        "maxDDPct": 8.78,
+        "semMaiorR": 36.93,
+        "winRate": 0.275
+       },
+       "test": {
+        "trades": 24,
+        "netR": -13.02,
+        "pf": 0.36,
+        "maxDDR": 13.02,
+        "maxDDPct": 6.51,
+        "semMaiorR": -18.94,
+        "winRate": 0.125
+       },
+       "testStressNetR": -13.78,
+       "shortShare": 0.58
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 50,
+        "netR": 35.77,
+        "pf": 1.981,
+        "maxDDR": 13.02,
+        "maxDDPct": 6.51,
+        "semMaiorR": 19.87,
+        "winRate": 0.26
+       },
+       "test": {
+        "trades": 4,
+        "netR": 1.7,
+        "pf": 1.803,
+        "maxDDR": 2.07,
+        "maxDDPct": 1.03,
+        "semMaiorR": -2.11,
+        "winRate": 0.25
+       },
+       "testStressNetR": 1.57,
+       "shortShare": 0.75
+      }
+     ],
+     "oos": {
+      "trades": 60,
+      "netR": -12.25,
+      "pf": 0.746,
+      "maxDDR": 17.35,
+      "maxDDPct": 8.68,
+      "semMaiorR": -29.15,
+      "winRate": 0.133
+     },
+     "oosStressNetR": -14.15,
+     "oosStressDDPct": 9.28,
+     "yearsTraded": 3,
+     "yearsPositive": 1
+    },
+    "regime_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 31,
+        "netR": 5.92,
+        "pf": 1.68,
+        "maxDDR": 2.14,
+        "maxDDPct": 1.07,
+        "semMaiorR": 1.89,
+        "winRate": 0.419
+       },
+       "test": {
+        "trades": 16,
+        "netR": 0.18,
+        "pf": 1.046,
+        "maxDDR": 2.12,
+        "maxDDPct": 1.06,
+        "semMaiorR": -2.73,
+        "winRate": 0.25
+       },
+       "testStressNetR": 0.07,
+       "shortShare": 0.5
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 60,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 29,
+        "netR": 8.63,
+        "pf": 2.152,
+        "maxDDR": 2.45,
+        "maxDDPct": 1.22,
+        "semMaiorR": 5.41,
+        "winRate": 0.483
+       },
+       "test": {
+        "trades": 12,
+        "netR": -0.83,
+        "pf": 0.719,
+        "maxDDR": 2.68,
+        "maxDDPct": 1.34,
+        "semMaiorR": -2.16,
+        "winRate": 0.333
+       },
+       "testStressNetR": -0.9,
+       "shortShare": 0.42
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 24,
+        "netR": 6.2,
+        "pf": 1.884,
+        "maxDDR": 2.18,
+        "maxDDPct": 1.09,
+        "semMaiorR": 1.16,
+        "winRate": 0.458
+       },
+       "test": {
+        "trades": 1,
+        "netR": -0.61,
+        "pf": 0.0,
+        "maxDDR": 0.61,
+        "maxDDPct": 0.31,
+        "semMaiorR": 0.0,
+        "winRate": 0.0
+       },
+       "testStressNetR": -0.62,
+       "shortShare": 1.0
+      }
+     ],
+     "oos": {
+      "trades": 29,
+      "netR": -1.26,
+      "pf": 0.829,
+      "maxDDR": 3.38,
+      "maxDDPct": 1.69,
+      "semMaiorR": -4.16,
+      "winRate": 0.276
+     },
+     "oosStressNetR": -1.44,
+     "oosStressDDPct": 1.73,
+     "yearsTraded": 3,
+     "yearsPositive": 1
+    },
+    "regime_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 28,
+      "netR": -11.32,
+      "pf": 0.496,
+      "maxDDR": 15.08,
+      "maxDDPct": 7.54,
+      "semMaiorR": -17.25,
+      "winRate": 0.143
+     },
+     "oosStressNetR": -12.21,
+     "oosStressDDPct": 7.96,
+     "yearsTraded": 2,
+     "yearsPositive": 1
+    },
+    "regime_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 70,
+      "netR": -9.89,
+      "pf": 0.818,
+      "maxDDR": 15.93,
+      "maxDDPct": 7.97,
+      "semMaiorR": -26.79,
+      "winRate": 0.129
+     },
+     "oosStressNetR": -12.12,
+     "oosStressDDPct": 8.26,
+     "yearsTraded": 4,
+     "yearsPositive": 1
+    }
+   }
+  },
+  "EJ_USDCAD": {
+   "buyHoldPctByYear": {
+    "2014": 9.2,
+    "2015": 18.7,
+    "2016": -2.8,
+    "2017": -6.3,
+    "2018": 8.9,
+    "2019": -4.9,
+    "2020": -2.0,
+    "2021": -0.6,
+    "2022": 0.8
+   },
+   "fixed": {
+    "orig": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "long"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 11.62,
+       "trades": 4,
+       "shorts": 0
+      },
+      "2015": {
+       "netR": 2.65,
+       "trades": 8,
+       "shorts": 0
+      },
+      "2016": {
+       "netR": -1.67,
+       "trades": 5,
+       "shorts": 0
+      },
+      "2017": {
+       "netR": -2.4,
+       "trades": 9,
+       "shorts": 0
+      },
+      "2018": {
+       "netR": 0.16,
+       "trades": 11,
+       "shorts": 0
+      },
+      "2019": {
+       "netR": -3.75,
+       "trades": 10,
+       "shorts": 0
+      },
+      "2020": {
+       "netR": 3.53,
+       "trades": 5,
+       "shorts": 0
+      },
+      "2021": {
+       "netR": -0.5,
+       "trades": 5,
+       "shorts": 0
+      },
+      "2022": {
+       "netR": -0.63,
+       "trades": 5,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 26,
+       "netR": 10.2,
+       "pf": 2.284,
+       "maxDDR": 4.1,
+       "maxDDPct": 2.05,
+       "semMaiorR": -2.26,
+       "winRate": 0.423
+      },
+      "validation": {
+       "trades": 21,
+       "netR": -3.59,
+       "pf": 0.436,
+       "maxDDR": 4.55,
+       "maxDDPct": 2.28,
+       "semMaiorR": -4.84,
+       "winRate": 0.286
+      },
+      "reserve": {
+       "trades": 15,
+       "netR": 2.4,
+       "pf": 1.64,
+       "maxDDR": 2.1,
+       "maxDDPct": 1.05,
+       "semMaiorR": -0.35,
+       "winRate": 0.467
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 26,
+       "netR": 10.02,
+       "pf": 2.243,
+       "maxDDR": 4.2,
+       "maxDDPct": 2.1,
+       "semMaiorR": -2.44,
+       "winRate": 0.423
+      },
+      "validation": {
+       "trades": 21,
+       "netR": -3.76,
+       "pf": 0.42,
+       "maxDDR": 4.67,
+       "maxDDPct": 2.33,
+       "semMaiorR": -5.01,
+       "winRate": 0.286
+      },
+      "reserve": {
+       "trades": 15,
+       "netR": 2.27,
+       "pf": 1.594,
+       "maxDDR": 2.16,
+       "maxDDPct": 1.08,
+       "semMaiorR": -0.47,
+       "winRate": 0.467
+      }
+     },
+     "all": {
+      "trades": 62,
+      "netR": 9.01,
+      "pf": 1.499,
+      "maxDDR": 7.69,
+      "maxDDPct": 3.84,
+      "semMaiorR": -3.45,
+      "winRate": 0.387
+     }
+    },
+    "both": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 11.76,
+       "trades": 7,
+       "shorts": 3
+      },
+      "2015": {
+       "netR": 0.28,
+       "trades": 16,
+       "shorts": 8
+      },
+      "2016": {
+       "netR": -2.41,
+       "trades": 10,
+       "shorts": 5
+      },
+      "2017": {
+       "netR": -1.6,
+       "trades": 18,
+       "shorts": 9
+      },
+      "2018": {
+       "netR": -3.16,
+       "trades": 22,
+       "shorts": 11
+      },
+      "2019": {
+       "netR": -6.51,
+       "trades": 22,
+       "shorts": 12
+      },
+      "2020": {
+       "netR": 7.79,
+       "trades": 10,
+       "shorts": 5
+      },
+      "2021": {
+       "netR": -2.01,
+       "trades": 9,
+       "shorts": 4
+      },
+      "2022": {
+       "netR": -1.54,
+       "trades": 9,
+       "shorts": 4
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 51,
+       "netR": 8.03,
+       "pf": 1.484,
+       "maxDDR": 7.28,
+       "maxDDPct": 3.64,
+       "semMaiorR": -4.43,
+       "winRate": 0.314
+      },
+      "validation": {
+       "trades": 44,
+       "netR": -9.67,
+       "pf": 0.358,
+       "maxDDR": 10.71,
+       "maxDDPct": 5.35,
+       "semMaiorR": -10.92,
+       "winRate": 0.273
+      },
+      "reserve": {
+       "trades": 28,
+       "netR": 4.25,
+       "pf": 1.595,
+       "maxDDR": 3.74,
+       "maxDDPct": 1.87,
+       "semMaiorR": 1.4,
+       "winRate": 0.393
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 51,
+       "netR": 7.67,
+       "pf": 1.455,
+       "maxDDR": 7.42,
+       "maxDDPct": 3.71,
+       "semMaiorR": -4.78,
+       "winRate": 0.314
+      },
+      "validation": {
+       "trades": 44,
+       "netR": -10.04,
+       "pf": 0.345,
+       "maxDDR": 11.07,
+       "maxDDPct": 5.54,
+       "semMaiorR": -11.29,
+       "winRate": 0.273
+      },
+      "reserve": {
+       "trades": 28,
+       "netR": 4.01,
+       "pf": 1.55,
+       "maxDDR": 3.87,
+       "maxDDPct": 1.94,
+       "semMaiorR": 1.17,
+       "winRate": 0.393
+      }
+     },
+     "all": {
+      "trades": 123,
+      "netR": 2.62,
+      "pf": 1.067,
+      "maxDDR": 16.22,
+      "maxDDPct": 8.11,
+      "semMaiorR": -9.85,
+      "winRate": 0.317
+     }
+    },
+    "short": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 0.14,
+       "trades": 3,
+       "shorts": 3
+      },
+      "2015": {
+       "netR": -2.37,
+       "trades": 8,
+       "shorts": 8
+      },
+      "2016": {
+       "netR": -0.74,
+       "trades": 5,
+       "shorts": 5
+      },
+      "2017": {
+       "netR": 0.79,
+       "trades": 9,
+       "shorts": 9
+      },
+      "2018": {
+       "netR": -3.32,
+       "trades": 11,
+       "shorts": 11
+      },
+      "2019": {
+       "netR": -2.76,
+       "trades": 12,
+       "shorts": 12
+      },
+      "2020": {
+       "netR": 4.27,
+       "trades": 5,
+       "shorts": 5
+      },
+      "2021": {
+       "netR": -1.51,
+       "trades": 4,
+       "shorts": 4
+      },
+      "2022": {
+       "netR": -0.9,
+       "trades": 4,
+       "shorts": 4
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 25,
+       "netR": -2.17,
+       "pf": 0.749,
+       "maxDDR": 5.71,
+       "maxDDPct": 2.85,
+       "semMaiorR": -6.22,
+       "winRate": 0.2
+      },
+      "validation": {
+       "trades": 23,
+       "netR": -6.08,
+       "pf": 0.301,
+       "maxDDR": 7.12,
+       "maxDDPct": 3.56,
+       "semMaiorR": -7.12,
+       "winRate": 0.261
+      },
+      "reserve": {
+       "trades": 13,
+       "netR": 1.85,
+       "pf": 1.545,
+       "maxDDR": 2.41,
+       "maxDDPct": 1.21,
+       "semMaiorR": -0.99,
+       "winRate": 0.308
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 25,
+       "netR": -2.34,
+       "pf": 0.734,
+       "maxDDR": 5.84,
+       "maxDDPct": 2.92,
+       "semMaiorR": -6.38,
+       "winRate": 0.2
+      },
+      "validation": {
+       "trades": 23,
+       "netR": -6.28,
+       "pf": 0.289,
+       "maxDDR": 7.31,
+       "maxDDPct": 3.65,
+       "semMaiorR": -7.31,
+       "winRate": 0.261
+      },
+      "reserve": {
+       "trades": 13,
+       "netR": 1.74,
+       "pf": 1.501,
+       "maxDDR": 2.47,
+       "maxDDPct": 1.24,
+       "semMaiorR": -1.1,
+       "winRate": 0.308
+      }
+     },
+     "all": {
+      "trades": 61,
+      "netR": -6.4,
+      "pf": 0.692,
+      "maxDDR": 10.02,
+      "maxDDPct": 5.01,
+      "semMaiorR": -10.44,
+      "winRate": 0.246
+     }
+    },
+    "regime": {
+     "params": {
+      "look": 60,
+      "rebal": 1,
+      "k": 2.0,
+      "side": "both"
+     },
+     "byYear": {
+      "2014": {
+       "netR": 9.04,
+       "trades": 6,
+       "shorts": 2
+      },
+      "2015": {
+       "netR": 2.65,
+       "trades": 8,
+       "shorts": 0
+      },
+      "2016": {
+       "netR": -4.13,
+       "trades": 11,
+       "shorts": 7
+      },
+      "2017": {
+       "netR": -0.3,
+       "trades": 13,
+       "shorts": 9
+      },
+      "2018": {
+       "netR": -2.02,
+       "trades": 14,
+       "shorts": 4
+      },
+      "2019": {
+       "netR": -8.12,
+       "trades": 23,
+       "shorts": 12
+      },
+      "2020": {
+       "netR": 6.07,
+       "trades": 7,
+       "shorts": 5
+      },
+      "2021": {
+       "netR": -2.77,
+       "trades": 8,
+       "shorts": 1
+      },
+      "2022": {
+       "netR": -0.63,
+       "trades": 5,
+       "shorts": 0
+      }
+     },
+     "phases": {
+      "development": {
+       "trades": 38,
+       "netR": 7.25,
+       "pf": 1.564,
+       "maxDDR": 7.24,
+       "maxDDPct": 3.62,
+       "semMaiorR": -3.61,
+       "winRate": 0.263
+      },
+      "validation": {
+       "trades": 37,
+       "netR": -10.15,
+       "pf": 0.275,
+       "maxDDR": 11.19,
+       "maxDDPct": 5.59,
+       "semMaiorR": -11.34,
+       "winRate": 0.216
+      },
+      "reserve": {
+       "trades": 20,
+       "netR": 2.67,
+       "pf": 1.385,
+       "maxDDR": 3.77,
+       "maxDDPct": 1.89,
+       "semMaiorR": -0.18,
+       "winRate": 0.35
+      }
+     },
+     "phasesStress": {
+      "development": {
+       "trades": 38,
+       "netR": 6.99,
+       "pf": 1.536,
+       "maxDDR": 7.38,
+       "maxDDPct": 3.69,
+       "semMaiorR": -3.87,
+       "winRate": 0.263
+      },
+      "validation": {
+       "trades": 37,
+       "netR": -10.48,
+       "pf": 0.265,
+       "maxDDR": 11.51,
+       "maxDDPct": 5.76,
+       "semMaiorR": -11.67,
+       "winRate": 0.216
+      },
+      "reserve": {
+       "trades": 20,
+       "netR": 2.5,
+       "pf": 1.356,
+       "maxDDR": 3.84,
+       "maxDDPct": 1.92,
+       "semMaiorR": -0.34,
+       "winRate": 0.35
+      }
+     },
+     "all": {
+      "trades": 95,
+      "netR": -0.22,
+      "pf": 0.993,
+      "maxDDR": 15.62,
+      "maxDDPct": 7.81,
+      "semMaiorR": -11.09,
+      "winRate": 0.263
+     }
+    }
+   },
+   "sensitivity": {
+    "orig": {
+     "development": {
+      "combos": 180,
+      "positivas": 136,
+      "pfMediano": 1.565
+     },
+     "validation": {
+      "combos": 180,
+      "positivas": 8,
+      "pfMediano": 0.355
+     },
+     "reserve": {
+      "combos": 180,
+      "positivas": 112,
+      "pfMediano": 1.143
+     },
+     "todasAsFasesPositivas": 2
+    },
+    "regime": {
+     "development": {
+      "combos": 90,
+      "positivas": 83,
+      "pfMediano": 1.661
+     },
+     "validation": {
+      "combos": 90,
+      "positivas": 0,
+      "pfMediano": 0.133
+     },
+     "reserve": {
+      "combos": 90,
+      "positivas": 60,
+      "pfMediano": 1.246
+     },
+     "todasAsFasesPositivas": 0
+    }
+   },
+   "walkForward": {
+    "orig": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 2.0,
+         "look": 30,
+         "rebal": 1,
+         "side": "long"
+        }
+       },
+       "train": {
+        "trades": 62,
+        "netR": 53.23,
+        "pf": 2.099,
+        "maxDDR": 14.09,
+        "maxDDPct": 7.04,
+        "semMaiorR": 14.83,
+        "winRate": 0.21
+       },
+       "test": {
+        "trades": 18,
+        "netR": -1.53,
+        "pf": 0.902,
+        "maxDDR": 6.17,
+        "maxDDPct": 3.08,
+        "semMaiorR": -11.38,
+        "winRate": 0.167
+       },
+       "testStressNetR": -2.23,
+       "shortShare": 0.0
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": {
+        "tf": "H1",
+        "params": {
+         "k": 4.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 55,
+        "netR": 14.1,
+        "pf": 1.452,
+        "maxDDR": 11.65,
+        "maxDDPct": 5.82,
+        "semMaiorR": 0.56,
+        "winRate": 0.327
+       },
+       "test": {
+        "trades": 8,
+        "netR": -6.36,
+        "pf": 0.109,
+        "maxDDR": 7.14,
+        "maxDDPct": 3.57,
+        "semMaiorR": -7.14,
+        "winRate": 0.125
+       },
+       "testStressNetR": -6.51,
+       "shortShare": 0.38
+      }
+     ],
+     "oos": {
+      "trades": 26,
+      "netR": -7.89,
+      "pf": 0.653,
+      "maxDDR": 12.34,
+      "maxDDPct": 6.17,
+      "semMaiorR": -17.74,
+      "winRate": 0.154
+     },
+     "oosStressNetR": -8.74,
+     "oosStressDDPct": 6.34,
+     "yearsTraded": 2,
+     "yearsPositive": 0
+    },
+    "orig_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": {
+        "tf": "D1",
+        "params": {
+         "k": 2.0,
+         "look": 90,
+         "rebal": 1,
+         "side": "both"
+        }
+       },
+       "train": {
+        "trades": 19,
+        "netR": 13.57,
+        "pf": 4.078,
+        "maxDDR": 1.66,
+        "maxDDPct": 0.83,
+        "semMaiorR": 1.4,
+        "winRate": 0.526
+       },
+       "test": {
+        "trades": 17,
+        "netR": -6.41,
+        "pf": 0.227,
+        "maxDDR": 6.41,
+        "maxDDPct": 3.2,
+        "semMaiorR": -7.84,
+        "winRate": 0.176
+       },
+       "testStressNetR": -6.53,
+       "shortShare": 0.47
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 17,
+      "netR": -6.41,
+      "pf": 0.227,
+      "maxDDR": 6.41,
+      "maxDDPct": 3.2,
+      "semMaiorR": -7.84,
+      "winRate": 0.176
+     },
+     "oosStressNetR": -6.53,
+     "oosStressDDPct": 3.26,
+     "yearsTraded": 1,
+     "yearsPositive": 0
+    },
+    "orig_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 41,
+      "netR": -14.56,
+      "pf": 0.35,
+      "maxDDR": 14.79,
+      "maxDDPct": 7.4,
+      "semMaiorR": -17.03,
+      "winRate": 0.268
+     },
+     "oosStressNetR": -15.23,
+     "oosStressDDPct": 7.72,
+     "yearsTraded": 3,
+     "yearsPositive": 0
+    },
+    "orig_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 42,
+      "netR": -8.32,
+      "pf": 0.761,
+      "maxDDR": 14.31,
+      "maxDDPct": 7.16,
+      "semMaiorR": -15.69,
+      "winRate": 0.19
+     },
+     "oosStressNetR": -10.01,
+     "oosStressDDPct": 7.87,
+     "yearsTraded": 2,
+     "yearsPositive": 1
+    },
+    "regime": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 0,
+      "netR": 0.0,
+      "pf": null,
+      "maxDDPct": 0.0,
+      "semMaiorR": 0.0,
+      "winRate": null
+     },
+     "oosStressNetR": 0.0,
+     "oosStressDDPct": 0.0,
+     "yearsTraded": 0,
+     "yearsPositive": 0
+    },
+    "regime_D1": {
+     "trainYears": 3,
+     "folds": [
+      {
+       "testYear": 2017,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2018,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2019,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2020,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2021,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      },
+      {
+       "testYear": 2022,
+       "chosen": null,
+       "test": {
+        "trades": 0,
+        "netR": 0.0,
+        "pf": null,
+        "maxDDPct": 0.0,
+        "semMaiorR": 0.0,
+        "winRate": null
+       }
+      }
+     ],
+     "oos": {
+      "trades": 0,
+      "netR": 0.0,
+      "pf": null,
+      "maxDDPct": 0.0,
+      "semMaiorR": 0.0,
+      "winRate": null
+     },
+     "oosStressNetR": 0.0,
+     "oosStressDDPct": 0.0,
+     "yearsTraded": 0,
+     "yearsPositive": 0
+    },
+    "regime_treino2": {
+     "trainYears": 2,
+     "oos": {
+      "trades": 5,
+      "netR": -0.63,
+      "pf": 0.687,
+      "maxDDR": 1.01,
+      "maxDDPct": 0.51,
+      "semMaiorR": -1.92,
+      "winRate": 0.4
+     },
+     "oosStressNetR": -0.67,
+     "oosStressDDPct": 0.51,
+     "yearsTraded": 1,
+     "yearsPositive": 0
+    },
+    "regime_treino4": {
+     "trainYears": 4,
+     "oos": {
+      "trades": 51,
+      "netR": -6.35,
+      "pf": 0.854,
+      "maxDDR": 20.76,
+      "maxDDPct": 10.38,
+      "semMaiorR": -28.62,
+      "winRate": 0.157
+     },
+     "oosStressNetR": -8.31,
+     "oosStressDDPct": 10.97,
+     "yearsTraded": 2,
+     "yearsPositive": 1
+    }
+   }
+  }
+ }
+}
