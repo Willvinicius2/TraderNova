@@ -124,9 +124,13 @@ def main():
         cache = {}
         for c in combos:
             trs, m = evaluate(mod, df, c, cb, dev_a, dev_b)
+            # Anos do desenvolvimento pela data de saída; a saída forçada no 1º instante após o fim conta no último ano.
+            # Ano sem saída conta como não positivo (operação que atravessa anos não "ganha" os anos do meio).
+            y0, y1 = int(dev_a[:4]), int((pd.Timestamp(dev_b) - pd.Timedelta(seconds=1)).year)
             by_year = {}
             for t in trs:
-                by_year[t.exit_time[:4]] = by_year.get(t.exit_time[:4], 0.0) + t.r
+                y = min(max(int(t.exit_time[:4]), y0), y1)
+                by_year[y] = by_year.get(y, 0.0) + t.r
             m["anosPositivos"] = sum(1 for v in by_year.values() if v > 0)
             m["anosTotal"] = int(round(years(dev_a, dev_b)))
             cache[json.dumps(c, sort_keys=True)] = m

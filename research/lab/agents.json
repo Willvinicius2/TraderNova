@@ -75,5 +75,49 @@
    "TV50",
    "TV51"
   ]
+ },
+ {
+  "agente": "r5-volume",
+  "rodada": 5,
+  "foco": "TradingView: fluxo de volume",
+  "ids": [
+   "TV52",
+   "TV53",
+   "TV54",
+   "TV55"
+  ]
+ },
+ {
+  "agente": "r5-elder-williams",
+  "rodada": 5,
+  "foco": "TradingView: Elder e Bill Williams",
+  "ids": [
+   "TV56",
+   "TV57",
+   "TV58",
+   "TV59"
+  ]
+ },
+ {
+  "agente": "r5-reversao-curta",
+  "rodada": 5,
+  "foco": "TradingView: reversão curta e volatilidade",
+  "ids": [
+   "TV60",
+   "TV61",
+   "TV62",
+   "TV63"
+  ]
+ },
+ {
+  "agente": "r5-padroes",
+  "rodada": 5,
+  "foco": "TradingView: padrões de barras",
+  "ids": [
+   "TV64",
+   "TV65",
+   "TV66",
+   "TV67"
+  ]
  }
 ]

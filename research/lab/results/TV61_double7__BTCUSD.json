@@ -1,0 +1,491 @@
+{
+ "strategy": "TV61_double7",
+ "name": "Double 7's de Connors: mínima de 7 fechamentos acima da SMA200",
+ "family": "reversao",
+ "sources": [
+  "https://strategyquant.com/blog/larry-connors-double-7-strategy-tested-on-spy-and-8-other-markets/",
+  "https://www.tradingview.com/script/DzVF4GvJ-Connors-Double-Seven-with-options",
+  "Connors & Alvarez (2008), Short Term Trading Strategies That Work, cap. Double 7's"
+ ],
+ "rule": "Compra quando fechamento > SMA200 e o fechamento é o menor dos últimos n (inclui o atual); sai quando o fechamento é o maior dos últimos n. Venda espelhada (both) abaixo da SMA200. Sem stop no original: stop de proteção k*ATR14.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v3",
+ "strategySha256": "91dc4d32eb9251080435131d5e56b04d9ba300a506a02ff7973429c759b69e1b",
+ "refinement": null,
+ "combinationsTested": 54,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "n": 10,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 49,
+    "netR": 10.07,
+    "pf": 1.62,
+    "winRate": 0.673,
+    "expR": 0.2055,
+    "maxDDR": 2.65,
+    "sharpeTrade": 0.2099,
+    "tStat": 1.47,
+    "tradesPerYear": 9.8,
+    "retPct": 5.03,
+    "maxDDPct": 1.33,
+    "avgBars": 9.1,
+    "semMaiorR": 7.34,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.426,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 10,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 76,
+    "netR": 9.45,
+    "pf": 1.339,
+    "winRate": 0.618,
+    "expR": 0.1244,
+    "maxDDR": 4.92,
+    "sharpeTrade": 0.13,
+    "tStat": 1.13,
+    "tradesPerYear": 15.2,
+    "retPct": 4.73,
+    "maxDDPct": 2.46,
+    "avgBars": 8.9,
+    "semMaiorR": 6.73,
+    "anosPositivos": 5,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.29,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 7,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 72,
+    "netR": 8.82,
+    "pf": 1.426,
+    "winRate": 0.681,
+    "expR": 0.1226,
+    "maxDDR": 5.44,
+    "sharpeTrade": 0.1501,
+    "tStat": 1.27,
+    "tradesPerYear": 14.4,
+    "retPct": 4.41,
+    "maxDDPct": 2.72,
+    "avgBars": 6.6,
+    "semMaiorR": 6.1,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.463,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 5,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 109,
+    "netR": 9.7,
+    "pf": 1.361,
+    "winRate": 0.679,
+    "expR": 0.0889,
+    "maxDDR": 5.99,
+    "sharpeTrade": 0.1297,
+    "tStat": 1.35,
+    "tradesPerYear": 21.8,
+    "retPct": 4.85,
+    "maxDDPct": 2.99,
+    "avgBars": 4.5,
+    "semMaiorR": 8.13,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.426,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 5,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 102,
+    "netR": 6.92,
+    "pf": 1.428,
+    "winRate": 0.706,
+    "expR": 0.0679,
+    "maxDDR": 3.39,
+    "sharpeTrade": 0.1381,
+    "tStat": 1.39,
+    "tradesPerYear": 20.4,
+    "retPct": 3.46,
+    "maxDDPct": 1.69,
+    "avgBars": 5.1,
+    "semMaiorR": 5.88,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.311,
+   "robust": true,
+   "eligible": false
+  }
+ ],
+ "selected": {
+  "tf": "D1",
+  "params": {
+   "n": 10,
+   "k": 2.0,
+   "side": "long"
+  },
+  "development": {
+   "trades": 49,
+   "netR": 10.07,
+   "pf": 1.62,
+   "winRate": 0.673,
+   "expR": 0.2055,
+   "maxDDR": 2.65,
+   "sharpeTrade": 0.2099,
+   "tStat": 1.47,
+   "tradesPerYear": 9.8,
+   "retPct": 5.03,
+   "maxDDPct": 1.33,
+   "avgBars": 9.1,
+   "semMaiorR": 7.34,
+   "anosPositivos": 4,
+   "anosTotal": 5
+  },
+  "neighborMedianPF": 1.426,
+  "deflatedSharpe": 0.743,
+  "validation": {
+   "base": {
+    "trades": 12,
+    "netR": -0.11,
+    "pf": 0.973,
+    "winRate": 0.667,
+    "expR": -0.0091,
+    "maxDDR": 2.45,
+    "sharpeTrade": -0.0118,
+    "tStat": -0.04,
+    "tradesPerYear": 6.0,
+    "retPct": -0.05,
+    "maxDDPct": 1.23,
+    "avgBars": 8.3,
+    "semMaiorR": -1.03
+   },
+   "stress": {
+    "trades": 12,
+    "netR": -0.29,
+    "pf": 0.929,
+    "winRate": 0.667,
+    "expR": -0.0244,
+    "maxDDR": 2.57,
+    "sharpeTrade": -0.0318,
+    "tStat": -0.11,
+    "tradesPerYear": 6.0,
+    "retPct": -0.15,
+    "maxDDPct": 1.28,
+    "avgBars": 8.3,
+    "semMaiorR": -1.2
+   },
+   "passed": false
+  }
+ },
+ "curves": {
+  "development": [
+   [
+    "2016-01-15",
+    -1.03
+   ],
+   [
+    "2016-02-14",
+    -0.22
+   ],
+   [
+    "2016-03-28",
+    0.36
+   ],
+   [
+    "2016-05-07",
+    1.02
+   ],
+   [
+    "2016-05-28",
+    2.98
+   ],
+   [
+    "2016-06-23",
+    1.96
+   ],
+   [
+    "2016-08-02",
+    0.94
+   ],
+   [
+    "2016-09-04",
+    1.88
+   ],
+   [
+    "2016-10-01",
+    1.93
+   ],
+   [
+    "2016-11-17",
+    2.93
+   ],
+   [
+    "2017-01-11",
+    1.92
+   ],
+   [
+    "2017-01-22",
+    3.01
+   ],
+   [
+    "2017-03-10",
+    1.99
+   ],
+   [
+    "2017-03-18",
+    0.98
+   ],
+   [
+    "2017-04-01",
+    1.6
+   ],
+   [
+    "2017-04-21",
+    2.31
+   ],
+   [
+    "2017-07-05",
+    2.62
+   ],
+   [
+    "2017-07-15",
+    1.61
+   ],
+   [
+    "2017-07-21",
+    4.33
+   ],
+   [
+    "2017-09-14",
+    3.32
+   ],
+   [
+    "2017-09-28",
+    4.73
+   ],
+   [
+    "2017-10-30",
+    5.65
+   ],
+   [
+    "2017-11-12",
+    4.64
+   ],
+   [
+    "2017-11-17",
+    6.6
+   ],
+   [
+    "2017-12-22",
+    5.59
+   ],
+   [
+    "2018-01-06",
+    6.37
+   ],
+   [
+    "2018-01-17",
+    5.36
+   ],
+   [
+    "2018-02-05",
+    4.35
+   ],
+   [
+    "2018-03-03",
+    4.96
+   ],
+   [
+    "2018-03-14",
+    3.95
+   ],
+   [
+    "2019-04-21",
+    4.62
+   ],
+   [
+    "2019-05-04",
+    5.81
+   ],
+   [
+    "2019-06-13",
+    6.28
+   ],
+   [
+    "2019-07-09",
+    7.14
+   ],
+   [
+    "2019-08-02",
+    7.24
+   ],
+   [
+    "2019-08-15",
+    6.22
+   ],
+   [
+    "2019-09-03",
+    6.75
+   ],
+   [
+    "2019-09-24",
+    5.73
+   ],
+   [
+    "2019-10-10",
+    5.76
+   ],
+   [
+    "2020-02-26",
+    4.74
+   ],
+   [
+    "2020-05-31",
+    5.6
+   ],
+   [
+    "2020-06-23",
+    6.01
+   ],
+   [
+    "2020-07-07",
+    6.13
+   ],
+   [
+    "2020-07-22",
+    6.51
+   ],
+   [
+    "2020-09-02",
+    6.91
+   ],
+   [
+    "2020-09-15",
+    7.41
+   ],
+   [
+    "2020-10-09",
+    8.23
+   ],
+   [
+    "2020-12-01",
+    9.47
+   ],
+   [
+    "2020-12-16",
+    10.07
+   ]
+  ],
+  "validation": [
+   [
+    "2021-01-31",
+    0.49
+   ],
+   [
+    "2021-03-08",
+    0.93
+   ],
+   [
+    "2021-03-31",
+    1.52
+   ],
+   [
+    "2021-04-11",
+    2.14
+   ],
+   [
+    "2021-04-23",
+    1.12
+   ],
+   [
+    "2021-05-01",
+    2.05
+   ],
+   [
+    "2021-05-19",
+    1.04
+   ],
+   [
+    "2021-09-19",
+    1.28
+   ],
+   [
+    "2021-11-03",
+    1.73
+   ],
+   [
+    "2021-11-26",
+    0.71
+   ],
+   [
+    "2021-12-04",
+    -0.31
+   ],
+   [
+    "2021-12-24",
+    -0.11
+   ]
+  ]
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

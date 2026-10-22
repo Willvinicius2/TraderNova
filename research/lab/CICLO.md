@@ -20,3 +20,4 @@ Se `/home/user/labdata/pine/` não existir (container novo), clonar com `git clo
 ## Lições que valem para toda rodada
 - 2016–2020 foi alta forte do BTC: quase todo seguidor de tendência "só compra" brilha no desenvolvimento e quebra em 2021–2022. Isso não é sinal da regra.
 - Para candidatas, rodar o teste placebo (mesma regra de saída, entradas ao acaso ou previsões embaralhadas): se o placebo ganha parecido, a vantagem não é da estratégia (caso TV32 Lorentzian).
+- Rodada 5: indicadores de volume, Elder/Williams, reversão curta de Connors e padrões de barras deram 0 de 16. Vantagem grande no desenvolvimento com DSR baixo ou dependente de uma operação quase sempre some em 2021–2022. Próximos blocos (9 em diante) devem priorizar regras que já operam vendido ou têm filtro de regime.

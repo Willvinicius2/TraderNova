@@ -81,7 +81,7 @@ def main():
         if p.exists():
             st = json.loads(p.read_text())
         total = len(a["ids"])
-        situacao = "Concluído" if len(done) >= total else ("Rodando" if (a["rodada"] == 2 or done) else "Na fila")
+        situacao = "Concluído" if len(done) >= total else ("Rodando" if (a["rodada"] == 2 or done or st) else "Na fila")
         agents.append({
             "agente": a["agente"], "rodada": a["rodada"], "foco": a["foco"], "estrategias": total,
             "concluidas": min(len(done), total), "candidatas": sum(1 for x in done if x["veredito"] == "Candidata"),

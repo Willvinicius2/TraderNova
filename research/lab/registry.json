@@ -1134,6 +1134,275 @@
     "https://www.tradingview.com/script/rVixuZKT-Ehlers-Roofing-Filter/",
     "https://github.com/everget/tradingview-pinescript-indicators/blob/master/oscillators/ehlers_roofing_filter.pine"
    ]
+  },
+  {
+   "id": "TV54_eom",
+   "name": "Ease of Movement (Arms): SMA do EMV cruza o zero",
+   "family": "volume",
+   "coreRule": "EMV = (hl2 - hl2[1]) * (H-L) / volume (candle sem volume = 0); EOM = SMA(n) do EMV. Compra quando o EOM cruza acima de 0, vende (side=both) quando cruza abaixo; sai no cruzamento oposto. Filtro 'sma200': compra só acima da SMA200 e vende só abaixo. Sem stop na fonte: stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_RESERVA",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://in.tradingview.com/support/solutions/43000502256",
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ease-of-movement-emv",
+    "https://github.com/deepentropy/lightweight-charts-indicators/blob/main/src/standard/ease-of-movement.ts"
+   ]
+  },
+  {
+   "id": "TV63_mass_index",
+   "name": "Mass Index 'reversal bulge' (Dorsey/everget): entra contra a EMA(9)",
+   "family": "reversao",
+   "coreRule": "MI = soma(25) de EMA9(H-L)/EMA9(EMA9(H-L)). Bulge armado quando MI > brk; sinal quando, depois disso, MI fecha abaixo de brk-0,5. Se a EMA(9) do fechamento subiu no candle do sinal, vende; se caiu, compra. Sai após hold candles ou alvo 2R; stop k*ATR14 (a fonte não tem stop).",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_RESERVA",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/mass-index",
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/oscillators/mass_index.pine",
+    "https://en.wikipedia.org/wiki/Mass_index"
+   ]
+  },
+  {
+   "id": "TV52_klinger",
+   "name": "Klinger Volume Oscillator (everget): KVO cruza o sinal, filtro EMA100 opcional",
+   "family": "volume",
+   "coreRule": "trend = sinal da variação do hlc3 (mantém o anterior se zero); dm = H-L; cm acumula dm enquanto trend não muda (reinicia em dm+dm[1] na virada); VF = 100*vol*trend*|2*dm/cm-1|; KVO = EMA34(VF)-EMA55(VF); sinal = EMA(sig) do KVO. Compra quando KVO cruza acima do sinal, vende (side=both) quando cruza abaixo; sai no cruzamento oposto. Filtro 'ema100': compra só com fechamento acima da EMA100 e vende só abaixo. Sem stop no original: stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/volume/klinger_volume_oscillator.pine",
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/klinger-volume-oscillator",
+    "https://de.tradingview.com/scripts/klinger/"
+   ]
+  },
+  {
+   "id": "TV53_cmf",
+   "name": "Chaikin Money Flow (CMF [Yield]): cruza acima de +limiar compra, abaixo de -limiar vende",
+   "family": "volume",
+   "coreRule": "AD = ((2C-L-H)/(H-L))*vol (0 se H=L); CMF = Σ(AD,n)/Σ(vol,n). Compra quando o CMF cruza acima de +th; vende (side=both) quando cruza abaixo de -th. Saída 'opposite': no sinal contrário (cruza abaixo de -th / acima de +th); saída 'zero': quando o CMF cruza o zero contra a posição. Sem stop na fonte: stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/chaikin-money-flow-cmf/",
+    "https://github.com/f13end/tradingview-custom-indicators/blob/master/indicators/CMF%20%5BYield%5D"
+   ]
+  },
+  {
+   "id": "TV55_nvi",
+   "name": "Negative Volume Index (everget): NVI cruza a própria EMA",
+   "family": "volume",
+   "coreRule": "NVI começa em 100 e só muda nos candles com volume menor que o anterior: NVI = NVI[1]*C/C[1]; senão repete. Sinal = EMA(sig) do NVI. Compra quando o NVI cruza acima do sinal; vende (side=both) quando cruza abaixo; sai no cruzamento oposto. Sem stop na fonte: stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/volume/negative_volume_index.pine",
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/negative-volume-index-nvi",
+    "https://en.wikipedia.org/wiki/Negative_volume_index"
+   ]
+  },
+  {
+   "id": "TV56_elder_ray",
+   "name": "Elder-Ray: pullback com Bear/Bull Power",
+   "family": "tendencia",
+   "coreRule": "Bull Power = máxima - EMA(n); Bear Power = mínima - EMA(n). Compra quando a EMA(n) sobe (EMA > EMA anterior) e o Bear Power está negativo mas maior que no candle anterior (pullback perdendo força). Venda espelhada: EMA caindo e Bull Power positivo mas menor que no candle anterior. Saída exit='ema': quando a EMA vira contra a posição; exit='opp': só no sinal oposto (inversão). O indicador não tem stop: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://www.daytrading.com/elder-ray-index",
+    "https://doc.stocksharp.com/en/topics/api/indicators/list_of_indicators/elder_ray",
+    "https://www.luxalgo.com/library/indicator/elder-ray/",
+    "https://github.com/deepentropy/lightweight-charts-indicators/blob/main/src/standard/bull-bear-power.ts"
+   ]
+  },
+  {
+   "id": "TV57_force_pullback",
+   "name": "Elder Force Index(2): pullback na tendência da EMA(22)",
+   "family": "tendencia",
+   "coreRule": "FI = EMA(2) de (fech - fech anterior) * volume. Tendência: EMA(t) subindo/caindo. mode='neg': compra no candle em que o FI cruza abaixo de 0 com a EMA subindo (venda: FI cruza acima de 0 com a EMA caindo). mode='turn': compra quando o FI volta acima de 0 depois de ter ficado negativo (cruzamento) com a EMA subindo; venda espelhada. Saída exit='fi': no modo neg sai quando o FI fica positivo (venda: negativo); no modo turn sai quando o FI volta a ficar negativo (venda: positivo). exit='ema': sai quando a EMA vira contra. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/force-index",
+    "https://github.com/deepentropy/lightweight-charts-indicators/blob/main/src/standard/elder-force.ts",
+    "https://ta-lib.org/functions/efi.html"
+   ]
+  },
+  {
+   "id": "TV58_ao_saucer",
+   "name": "Awesome Oscillator: saucer (Bill Williams)",
+   "family": "tendencia",
+   "coreRule": "AO = SMA(5) - SMA(34) da mediana (máx+mín)/2. Compra quando as 3 últimas barras do AO estão acima de 0, as duas primeiras são vermelhas (AO caindo) e a última é verde (AO subindo). Venda espelhada abaixo de 0. Saída exit='zero': quando o AO cruza o zero contra a posição; exit='color2': depois de duas barras seguidas da cor contrária. Alvo opcional em R (target=0 = sem alvo). Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://in.tradingview.com/support/solutions/43000501826",
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/oscillators/awesome_oscillator.pine",
+    "https://www.cmcmarkets.com/en-gb/trading-guides/awesome-oscillator"
+   ]
+  },
+  {
+   "id": "TV59_accelerator",
+   "name": "Accelerator Oscillator (Bill Williams): 2 barras verdes acima de 0 ou 3 abaixo",
+   "family": "tendencia",
+   "coreRule": "AO = SMA(5) - SMA(34) da mediana; AC = AO - SMA(5) do AO; coluna verde = AC > AC anterior. Compra com 2 colunas verdes seguidas com as duas acima de 0, ou 3 verdes seguidas com as três abaixo de 0. Venda espelhada (2 vermelhas abaixo de 0 ou 3 vermelhas acima). Saída exit='red1': primeira coluna da cor contrária (regra de Williams de não ficar contra a cor); exit='red2': duas colunas contrárias seguidas; exit='opp': só no sinal oposto. Alvo opcional em R. Sem stop no original: stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://www.metatrader5.com/en/mobile-trading/iphone/help/chart/indicators/bw_indicators/accelerator_oscillator",
+    "https://github.com/everget/tradingview-pinescript-indicators/blob/master/oscillators/accelerator_oscillator.pine",
+    "https://www.luxalgo.com/library/indicator/accelerator-oscillator/"
+   ]
+  },
+  {
+   "id": "TV60_connors_rsi_r1",
+   "name": "Connors RSI (CRSI) extremo com filtro SMA200",
+   "family": "reversao",
+   "coreRule": "Igual ao TV60 com SMA de tendência de comprimento trend (200/400/800). CRSI = média de RSI(3) do fechamento, RSI(2) da sequência de altas/baixas e PercentRank(100) do retorno de 1 candle. Compra quando fechamento > SMA200 e CRSI < limiar; sai quando CRSI > nível de saída. Venda espelhada (both): fechamento < SMA200 e CRSI > 100-limiar, sai quando CRSI < 100-saída. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://www.tradingview.com/support/solutions/43000502017-connors-rsi-crsi/",
+    "https://www.luxalgo.com/library/concept/connors-rsi.md",
+    "https://github.com/deepentropy/lightweight-charts-indicators/blob/main/src/standard/connors-rsi.ts",
+    "Connors, Alvarez & Radtke (2012), An Introduction to ConnorsRSI"
+   ]
+  },
+  {
+   "id": "TV61_double7",
+   "name": "Double 7's de Connors: mínima de 7 fechamentos acima da SMA200",
+   "family": "reversao",
+   "coreRule": "Compra quando fechamento > SMA200 e o fechamento é o menor dos últimos n (inclui o atual); sai quando o fechamento é o maior dos últimos n. Venda espelhada (both) abaixo da SMA200. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://strategyquant.com/blog/larry-connors-double-7-strategy-tested-on-spy-and-8-other-markets/",
+    "https://www.tradingview.com/script/DzVF4GvJ-Connors-Double-Seven-with-options",
+    "Connors & Alvarez (2008), Short Term Trading Strategies That Work, cap. Double 7's"
+   ]
+  },
+  {
+   "id": "TV62_connors_pctb_r2",
+   "name": "%b de Connors: fechamentos seguidos com %B(20,2) baixo acima da SMA200",
+   "family": "reversao",
+   "coreRule": "Igual ao TV62 com SMA de tendência trend (100/200) e, se volf=1, só entra com ATR14/fechamento abaixo da mediana dos últimos 500 candles. %B = (fechamento - banda inferior)/(banda superior - banda inferior), Bollinger(20,2). Compra quando fechamento > SMA200 e %B < lo nos últimos d fechamentos seguidos; sai quando %B > 1-lo (0,8 no original). Venda espelhada (both) abaixo da SMA200 com %B > 1-lo por d candles, sai com %B < lo. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://quantifiedstrategies.substack.com/p/larry-connors-b-strategy-bollinger-eb7",
+    "https://doc.stocksharp.com/es/api-examples/0968_Larry_Connors_Bollinger_PercentB",
+    "https://www.tradingview.com/script/yXkWPSlU",
+    "Connors & Alvarez (2009), High Probability ETF Trading, cap. %b"
+   ]
+  },
+  {
+   "id": "TV64_three_bar",
+   "name": "Three Bar Reversal Pattern (LuxAlgo): confirmação acima da 1ª barra",
+   "family": "padroes",
+   "coreRule": "Pine LuxAlgo: padrão de alta = barra 1 de baixa, barra 2 de baixa com máxima e mínima menores que a barra 1, barra 3 de alta com máxima acima da máxima da barra 1 (espelho para baixa). Tipo 'Enhanced' exige que a barra 3 já feche além da máxima da barra 1; 'All' aceita os dois. Filtro de tendência opcional do script ('Aligned'): Supertrend(10, 3) ou Donchian(13) dos fechamentos. O padrão fica aberto até um fechamento acima da máxima da barra 1 (confirmação = compra) ou abaixo da menor mínima das barras 2-3 (falha), ou até aparecer o padrão oposto. O indicador marca a confirmação na barra seguinte (usa close[1]); aqui a decisão é tomada no próprio fechamento que confirma e a entrada é na abertura seguinte (mesma informação, sem olhar o futuro). Sem saída no indicador: stop na linha de falha (menor mínima das barras 2-3; mínimo 0,25*ATR14), alvo em tr*R; confirmação oposta fecha (side=long) ou inverte (side=both). Detalhe não reproduzido: no lado vendido o Pine cancela a confirmação se um padrão de alta surge no candle seguinte (exigiria olhar 1 candle à frente).",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://www.tradingview.com/script/ct5E4FSn-Three-Bar-Reversal-Pattern-LuxAlgo/",
+    "https://github.com/deepentropy/lightweight-charts-indicators (src/community/three-bar-reversal-pattern.ts, port fiel do Pine, commit f8e1b0e)"
+   ]
+  },
+  {
+   "id": "TV65_nbar_reversal",
+   "name": "N Bar Reversal Detector (LuxAlgo): rompimento da máxima da 1ª barra do padrão",
+   "family": "padroes",
+   "coreRule": "Pine LuxAlgo (minBars 50%, tipo 'All'): no candle i, a barra de referência é i-N; percorre as barras i-1..i-N+1 enquanto nenhuma tiver máxima acima da máxima de i-N, contando as de baixa; padrão de alta se (barras de baixa)/(N-1) >= 50% e a máxima de i passa a máxima de i-N (e não havia padrão no candle anterior); linha de falha = menor mínima do trecho (com i). Espelho para baixa. Filtro opcional 'Aligned' do script: Supertrend(10, 3) ou Donchian(13). O padrão fica aberto até um fechamento acima da máxima de i-N (confirmação = compra) ou abaixo da linha de falha, ou padrão oposto. Decisão no fechamento que confirma (o indicador marca 1 candle depois com close[1]), entrada na abertura seguinte. Sem saída no indicador: stop na linha de falha (mínimo 0,25*ATR14), alvo tr*R, confirmação oposta fecha/inverte.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://www.tradingview.com/script/efR5fu0R-N-Bar-Reversal-Detector-LuxAlgo/",
+    "https://www.luxalgo.com/library/indicator/n-bar-reversal-detector/",
+    "https://github.com/deepentropy/lightweight-charts-indicators (src/community/n-bar-reversal-detector.ts, port fiel do Pine, commit f8e1b0e)"
+   ]
+  },
+  {
+   "id": "TV66_pinbar_magic",
+   "name": "Pin Bar Magic v1: pin bar que fura a média com leque de médias alinhado",
+   "family": "padroes",
+   "coreRule": "Pine v4: SMA lenta 50, EMA média 18, EMA rápida 6 (variante '10/20/50' com EMA10/EMA20/SMA50 também testada). Pin bar de alta: sombra inferior (até o corpo) > 66% do range; de baixa espelhado. Leque de alta: EMA rápida > EMA média > SMA lenta. 'Pierce' de alta: a mínima fura uma das 3 médias com abertura e fechamento acima dela. Sinal = leque + pin bar + pierce. O Pine coloca compra stop na máxima do candle anterior ao pin bar (high[1]) com stop em low[1] - 0,5*ATR14[1] (fórmula do tamanho da posição) e cancela a ordem quando passam mais de 3 candles. Aproximação: compra na abertura seguinte quando um fechamento, do pin bar até 3 candles depois, fica acima de high[1]; stop = distância até low[1] - m*ATR14[1]. Saída do Pine: close_all quando a EMA rápida cruza abaixo da média (venda: acima) e trailing de 1 ponto/1 ponto (quase nada; aqui trailing de tk*ATR14 sobre o fechamento, como na descrição da fila). O fechamento de sexta 16h do Pine (forex) não se aplica ao BTC 24/7 e foi omitido.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://github.com/Alorse/pinescript-strategies (strategies/other/Pin Bar Magic v1.pine, commit 8fb3837)",
+    "https://doc.stocksharp.com/de/api-examples/0439_Pin_Bar_Magic",
+    "https://www.tradingview.com/scripts/pinbar/"
+   ]
+  },
+  {
+   "id": "TV67_rbd",
+   "name": "Rally Base Drop Signals (LuxAlgo): DBR compra, RBD vende",
+   "family": "padroes",
+   "coreRule": "Pine LuxAlgo: vela verde = fech > abert, vermelha = fech < abert. Rally = vela verde com a anterior verde; Drop = vermelha com a anterior vermelha; Base = qualquer outra. Guarda as 3 últimas fases distintas (só muda quando a fase atual difere da última guardada). Sinal no candle em que a sequência passa a ser Drop-Base-Rally (compra) ou Rally-Base-Drop (venda); com cont=True também Rally-Base-Rally compra e Drop-Base-Drop vende (os 4 sinais do script). Entrada na abertura seguinte. O indicador não tem stop nem saída: stop de proteção k*ATR14, alvo tr*R (0 = sem alvo) e o sinal oposto fecha (side=long) ou inverte (side=both).",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://www.tradingview.com/scripts/rallybasedrop/",
+    "https://github.com/deepentropy/lightweight-charts-indicators (src/community/rally-base-drop-signals.ts, port fiel do Pine, commit f8e1b0e)"
+   ]
+  },
+  {
+   "id": "TV60_connors_rsi",
+   "name": "Connors RSI (CRSI) extremo com filtro SMA200",
+   "family": "reversao",
+   "coreRule": "CRSI = média de RSI(3) do fechamento, RSI(2) da sequência de altas/baixas e PercentRank(100) do retorno de 1 candle. Compra quando fechamento > SMA200 e CRSI < limiar; sai quando CRSI > nível de saída. Venda espelhada (both): fechamento < SMA200 e CRSI > 100-limiar, sai quando CRSI < 100-saída. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://www.tradingview.com/support/solutions/43000502017-connors-rsi-crsi/",
+    "https://www.luxalgo.com/library/concept/connors-rsi.md",
+    "https://github.com/deepentropy/lightweight-charts-indicators/blob/main/src/standard/connors-rsi.ts",
+    "Connors, Alvarez & Radtke (2012), An Introduction to ConnorsRSI"
+   ]
+  },
+  {
+   "id": "TV62_connors_pctb",
+   "name": "%b de Connors: fechamentos seguidos com %B(20,2) baixo acima da SMA200",
+   "family": "reversao",
+   "coreRule": "%B = (fechamento - banda inferior)/(banda superior - banda inferior), Bollinger(20,2). Compra quando fechamento > SMA200 e %B < lo nos últimos d fechamentos seguidos; sai quando %B > 1-lo (0,8 no original). Venda espelhada (both) abaixo da SMA200 com %B > 1-lo por d candles, sai com %B < lo. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://quantifiedstrategies.substack.com/p/larry-connors-b-strategy-bollinger-eb7",
+    "https://doc.stocksharp.com/es/api-examples/0968_Larry_Connors_Bollinger_PercentB",
+    "https://www.tradingview.com/script/yXkWPSlU",
+    "Connors & Alvarez (2009), High Probability ETF Trading, cap. %b"
+   ]
+  },
+  {
+   "id": "TV62_connors_pctb_r1",
+   "name": "%b de Connors: fechamentos seguidos com %B(20,2) baixo acima da SMA200",
+   "family": "reversao",
+   "coreRule": "Igual ao TV62, com SMA de tendência trend (100/200) e saída em %B > xb (0,5 ou 0,8; venda espelhada sai com %B < 1-xb). %B = (fechamento - banda inferior)/(banda superior - banda inferior), Bollinger(20,2). Compra quando fechamento > SMA200 e %B < lo nos últimos d fechamentos seguidos; sai quando %B > 1-lo (0,8 no original). Venda espelhada (both) abaixo da SMA200 com %B > 1-lo por d candles, sai com %B < lo. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 5",
+   "sources": [
+    "https://quantifiedstrategies.substack.com/p/larry-connors-b-strategy-bollinger-eb7",
+    "https://doc.stocksharp.com/es/api-examples/0968_Larry_Connors_Bollinger_PercentB",
+    "https://www.tradingview.com/script/yXkWPSlU",
+    "Connors & Alvarez (2009), High Probability ETF Trading, cap. %b"
+   ]
   }
  ]
 }

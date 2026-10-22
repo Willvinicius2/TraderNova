@@ -1,0 +1,402 @@
+{
+ "strategy": "TV62_connors_pctb_r1",
+ "name": "%b de Connors: fechamentos seguidos com %B(20,2) baixo acima da SMA200",
+ "family": "reversao",
+ "sources": [
+  "https://quantifiedstrategies.substack.com/p/larry-connors-b-strategy-bollinger-eb7",
+  "https://doc.stocksharp.com/es/api-examples/0968_Larry_Connors_Bollinger_PercentB",
+  "https://www.tradingview.com/script/yXkWPSlU",
+  "Connors & Alvarez (2009), High Probability ETF Trading, cap. %b"
+ ],
+ "rule": "Igual ao TV62, com SMA de tendência trend (100/200) e saída em %B > xb (0,5 ou 0,8; venda espelhada sai com %B < 1-xb). %B = (fechamento - banda inferior)/(banda superior - banda inferior), Bollinger(20,2). Compra quando fechamento > SMA200 e %B < lo nos últimos d fechamentos seguidos; sai quando %B > 1-lo (0,8 no original). Venda espelhada (both) abaixo da SMA200 com %B > 1-lo por d candles, sai com %B < lo. Sem stop no original: stop de proteção k*ATR14.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v3",
+ "strategySha256": "f4a55300050799bbb41d95faf0a2592ac8a2d266205cfebeb1884c526cc7fb69",
+ "refinement": null,
+ "combinationsTested": 288,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H4",
+   "params": {
+    "trend": 200,
+    "d": 4,
+    "lo": 0.1,
+    "xb": 0.8,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 50,
+    "netR": 8.18,
+    "pf": 1.463,
+    "winRate": 0.66,
+    "expR": 0.1637,
+    "maxDDR": 3.33,
+    "sharpeTrade": 0.1755,
+    "tStat": 1.24,
+    "tradesPerYear": 10.0,
+    "retPct": 4.09,
+    "maxDDPct": 1.66,
+    "avgBars": 15.1,
+    "semMaiorR": 6.73,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.185,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "trend": 200,
+    "d": 4,
+    "lo": 0.1,
+    "xb": 0.5,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 50,
+    "netR": 5.14,
+    "pf": 1.33,
+    "winRate": 0.68,
+    "expR": 0.1029,
+    "maxDDR": 4.45,
+    "sharpeTrade": 0.1257,
+    "tStat": 0.89,
+    "tradesPerYear": 10.0,
+    "retPct": 2.57,
+    "maxDDPct": 2.23,
+    "avgBars": 9.4,
+    "semMaiorR": 3.73,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.096,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "trend": 100,
+    "d": 4,
+    "lo": 0.2,
+    "xb": 0.8,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 105,
+    "netR": 6.28,
+    "pf": 1.14,
+    "winRate": 0.581,
+    "expR": 0.0598,
+    "maxDDR": 6.5,
+    "sharpeTrade": 0.0608,
+    "tStat": 0.62,
+    "tradesPerYear": 21.0,
+    "retPct": 3.14,
+    "maxDDPct": 3.25,
+    "avgBars": 13.2,
+    "semMaiorR": 4.27,
+    "anosPositivos": 5,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.993,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "trend": 200,
+    "d": 4,
+    "lo": 0.1,
+    "xb": 0.8,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 47,
+    "netR": 4.58,
+    "pf": 1.358,
+    "winRate": 0.723,
+    "expR": 0.0975,
+    "maxDDR": 3.55,
+    "sharpeTrade": 0.1352,
+    "tStat": 0.93,
+    "tradesPerYear": 9.4,
+    "retPct": 2.29,
+    "maxDDPct": 1.77,
+    "avgBars": 17.4,
+    "semMaiorR": 3.61,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.053,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "trend": 100,
+    "d": 4,
+    "lo": 0.1,
+    "xb": 0.8,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 28,
+    "netR": 3.95,
+    "pf": 1.425,
+    "winRate": 0.679,
+    "expR": 0.1411,
+    "maxDDR": 3.96,
+    "sharpeTrade": 0.1621,
+    "tStat": 0.86,
+    "tradesPerYear": 5.6,
+    "retPct": 1.98,
+    "maxDDPct": 1.98,
+    "avgBars": 16.5,
+    "semMaiorR": 2.6,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.151,
+   "robust": true,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null,
+ "curves": {
+  "development": [
+   [
+    "2016-02-27",
+    0.89
+   ],
+   [
+    "2016-03-04",
+    -0.18
+   ],
+   [
+    "2016-03-05",
+    -1.26
+   ],
+   [
+    "2016-05-06",
+    -0.84
+   ],
+   [
+    "2016-05-13",
+    -0.38
+   ],
+   [
+    "2016-06-21",
+    -1.41
+   ],
+   [
+    "2016-06-22",
+    -2.44
+   ],
+   [
+    "2016-06-25",
+    -0.98
+   ],
+   [
+    "2016-09-18",
+    -0.95
+   ],
+   [
+    "2016-09-24",
+    -0.31
+   ],
+   [
+    "2016-10-22",
+    0.35
+   ],
+   [
+    "2016-11-15",
+    1.58
+   ],
+   [
+    "2016-11-29",
+    1.7
+   ],
+   [
+    "2017-01-11",
+    0.68
+   ],
+   [
+    "2017-02-14",
+    1.24
+   ],
+   [
+    "2017-03-10",
+    2.64
+   ],
+   [
+    "2017-03-17",
+    1.6
+   ],
+   [
+    "2017-04-17",
+    2.02
+   ],
+   [
+    "2017-06-14",
+    1.0
+   ],
+   [
+    "2017-06-15",
+    -0.02
+   ],
+   [
+    "2017-07-28",
+    0.95
+   ],
+   [
+    "2017-09-06",
+    2.23
+   ],
+   [
+    "2017-11-12",
+    1.2
+   ],
+   [
+    "2017-11-15",
+    2.41
+   ],
+   [
+    "2017-12-20",
+    1.38
+   ],
+   [
+    "2017-12-21",
+    0.36
+   ],
+   [
+    "2017-12-26",
+    1.18
+   ],
+   [
+    "2018-03-07",
+    0.14
+   ],
+   [
+    "2018-05-03",
+    1.48
+   ],
+   [
+    "2018-08-01",
+    0.43
+   ],
+   [
+    "2019-03-05",
+    1.85
+   ],
+   [
+    "2019-03-27",
+    2.96
+   ],
+   [
+    "2019-04-15",
+    3.46
+   ],
+   [
+    "2019-04-30",
+    3.67
+   ],
+   [
+    "2019-05-19",
+    4.85
+   ],
+   [
+    "2019-05-24",
+    5.74
+   ],
+   [
+    "2019-06-03",
+    6.87
+   ],
+   [
+    "2019-06-04",
+    5.84
+   ],
+   [
+    "2019-06-07",
+    6.42
+   ],
+   [
+    "2019-08-14",
+    5.38
+   ],
+   [
+    "2019-11-15",
+    4.32
+   ],
+   [
+    "2020-01-26",
+    4.86
+   ],
+   [
+    "2020-02-05",
+    5.75
+   ],
+   [
+    "2020-04-16",
+    6.5
+   ],
+   [
+    "2020-05-13",
+    7.12
+   ],
+   [
+    "2020-05-27",
+    7.25
+   ],
+   [
+    "2020-08-14",
+    8.19
+   ],
+   [
+    "2020-11-29",
+    8.94
+   ],
+   [
+    "2020-12-09",
+    7.89
+   ],
+   [
+    "2020-12-12",
+    8.18
+   ]
+  ]
+ }
+}

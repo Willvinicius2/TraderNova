@@ -37,7 +37,7 @@ Também clonei e apaguei o `pineforge-corpus`, porque ele só traz scripts de te
 
 ## Prioridade ALTA (TV36–TV75)
 
-### Bloco 1: trailing adaptativo da comunidade turca e afins (TV36–TV39)
+### Bloco 1: trailing adaptativo da comunidade turca e afins (TV36–TV39) · testado na rodada 4
 | ID | Nome / autor | Tipo | Regra central (uma linha) | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV36 | Optimized Trend Tracker (OTT) / KivancOzbilgic (criação de Anıl Özekşi) | indicador | VAR (média tipo VIDYA com CMO de 9 candles) com stop percentual (padrão 1,4%) que só aperta. Compra quando a VAR cruza acima da OTT e vende no cruzamento abaixo. | não | DE `optimized-trend-tracker.ts` | parente do L01 (stop móvel), mas aplicado a uma média adaptativa com distância percentual. PMax, MOST, HOTT-LOTT e Stochastic OTT são variações deste item e não entram. |
@@ -45,7 +45,7 @@ Também clonei e apaguei o `pineforge-corpus`, porque ele só traz scripts de te
 | TV38 | Follow Line Indicator / Dreadblitz | indicador | Fechamento acima da Bollinger(21,1) leva a linha para mínima − ATR(5), sem nunca descer; fechamento abaixo da banda inferior faz o espelho. A tendência vira quando a linha muda de sentido. | não | DE `follow-line.ts` | parente do L01; o gatilho é o rompimento da Bollinger |
 | TV39 | Trend Indicator A-V2 (Smoothed Heikin Ashi Cloud) / DZIV | indicador | Médias (EMA) de abertura e fechamento Heikin Ashi. Compra quando o fechamento HA suavizado cruza acima da abertura HA suavizada. | não | DE `trend-indicator-a-v2.ts` | parente do L13. O L13 exige N velas HA sem sombra; aqui a regra é a cor da HA suavizada. |
 
-### Bloco 2: momento duplamente suavizado e pressão (TV40–TV43)
+### Bloco 2: momento duplamente suavizado e pressão (TV40–TV43) · testado na rodada 4
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV40 | True Strength Index (William Blau) / everget e EMB | indicador | TSI = EMA(EMA(Δfech,25),13) / EMA(EMA(\|Δfech\|,25),13). Compra quando cruza acima da linha de sinal EMA(13), de preferência abaixo de 0. | não | EV `oscillators/tsi_true_strength_index.pine` | parente do TV09; é momento, não diferença de médias. Ergodic e Price Momentum Oscillator são variações. |
@@ -53,7 +53,7 @@ Também clonei e apaguei o `pineforge-corpus`, porque ele só traz scripts de te
 | TV42 | Trend Continuation Factor (M. H. Pee) / everget | indicador | Soma das variações positivas e negativas com "momentum acumulado". Compra quando +TCF > 0 e −TCF < 0. | não | EV `oscillators/trend_continuation_factor.pine` | — |
 | TV43 | Ultimate RSI / LuxAlgo | indicador | Usa o range inteiro quando há nova máxima ou mínima de n candles, senão Δfech. aRSI = média(diff)/média(\|diff\|)·50+50. Compra quando cruza acima da linha de sinal ou de 50. | não | DE `ultimate-rsi.ts` | parente do FX-RSI; o insumo muda (range em expansão) e a regra é cruzamento, não sobrevenda |
 
-### Bloco 3: Ehlers recentes publicados na TASC (TV44–TV47)
+### Bloco 3: Ehlers recentes publicados na TASC (TV44–TV47) · testado na rodada 4
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV44 | Reflex & Trendflex (Ehlers, TASC 2020) / e2e4 | indicador | Trendflex = média de (SuperSmoother − SuperSmoother[i]) normalizada por RMS. Compra quando o Trendflex cruza acima de 0 e vende abaixo. | não | DE `reflex-trendflex.ts` | — |
@@ -61,7 +61,7 @@ Também clonei e apaguei o `pineforge-corpus`, porque ele só traz scripts de te
 | TV46 | TASC 2025.06 Cybernetic Oscillator / PineCodersTASC (Ehlers) | indicador | Passa-alta mais SuperSmoother, dividido pelo RMS. Comprado acima de 0 e vendido abaixo (modo "Trend" do artigo). | não | DE `tasc-2025-06-cybernetic-oscillator.ts` | — |
 | TV47 | TASC 2025.09 The Continuation Index / PineCodersTASC (Ehlers) | indicador | Transformada de Fisher inversa de 2·(UltimateSmoother − Laguerre)/média. Comprado acima de +0,5, vendido abaixo de −0,5, fora no meio. | não | DE `tasc-2025-09-the-continuation-index.ts` | — |
 
-### Bloco 4: Ehlers clássicos (TV48–TV51)
+### Bloco 4: Ehlers clássicos (TV48–TV51) · testado na rodada 4
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV48 | Ehlers Decycler Oscillator / everget | indicador | Diferença entre dois passa-altas (períodos 125 e 100) do preço. Compra quando cruza acima de 0. | não | EV `oscillators/ehlers_decycler_oscillator.pine` | — |
@@ -69,7 +69,7 @@ Também clonei e apaguei o `pineforge-corpus`, porque ele só traz scripts de te
 | TV50 | Ehlers Center of Gravity / everget | indicador | CG = −Σ(i·preço[i])/Σpreço[i]. Compra quando o CG cruza acima do sinal (CG[1]). | não | EV `oscillators/center_of_gravity_oscillator.pine` | — |
 | TV51 | Ehlers Roofing Filter / everget | indicador | Passa-alta de 48 mais SuperSmoother de 10. Compra quando cruza acima de 0 (ou acima do próprio valor atrasado de 2 candles). | não | EV `oscillators/ehlers_roofing_filter.pine` | — |
 
-### Bloco 5: fluxo de volume (TV52–TV55)
+### Bloco 5: fluxo de volume (TV52–TV55) · testado na rodada 5
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV52 | Klinger Volume Oscillator (Stephen Klinger) / everget | indicador | KVO = EMA34 − EMA55 do "volume force". Compra quando o KVO cruza acima do sinal EMA(13), com filtro de tendência opcional. | não | EV `volume/klinger_volume_oscillator.pine` | parente do TV13; o volume force é diferente da ADL |
@@ -77,7 +77,7 @@ Também clonei e apaguei o `pineforge-corpus`, porque ele só traz scripts de te
 | TV54 | Ease of Movement (Richard Arms) / EMB | indicador | EMV = ((H+L)/2 − (H+L)[1]/2) / (vol/(H−L)), com SMA(14). Compra quando cruza acima de 0. | não | EMB | — |
 | TV55 | Negative Volume Index (Fosback) / everget | indicador | O NVI só muda nos candles de volume menor que o anterior. Comprado com NVI acima da própria EMA(255), fora abaixo. | não | EV `volume/negative_volume_index.pine` | — |
 
-### Bloco 6: Elder e Bill Williams, regras ainda não testadas (TV56–TV59)
+### Bloco 6: Elder e Bill Williams, regras ainda não testadas (TV56–TV59) · testado na rodada 5
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV56 | Elder-Ray (Bull/Bear Power) / EMB "Bull Bear Power" | indicador | Compra quando a EMA(13) sobe e o Bear Power (mín − EMA13) está negativo mas subindo. Venda espelhada com o Bull Power. | não | EMB | parente do TV12 (mesmo autor), mas aqui é pullback, não impulso |
@@ -85,7 +85,7 @@ Também clonei e apaguei o `pineforge-corpus`, porque ele só traz scripts de te
 | TV58 | Awesome Oscillator: "saucer" (Bill Williams) / everget | indicador | Com AO > 0, duas barras vermelhas seguidas de uma verde dão compra (espelho para venda). | não | EV `oscillators/awesome_oscillator.pine` | o cruzamento de zero do AO é DUPLICADO do T1, mas o padrão saucer não é |
 | TV59 | Accelerator Oscillator (Bill Williams) / everget | indicador | AC = AO − SMA5(AO). Compra com 2 barras verdes seguidas acima de 0 ou 3 abaixo de 0. Venda espelhada. | não | EV `oscillators/accelerator_oscillator.pine` | parente do L14 (mesmo autor, outra regra) |
 
-### Bloco 7: reversão curta e volatilidade (TV60–TV63)
+### Bloco 7: reversão curta e volatilidade (TV60–TV63) · testado na rodada 5
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV60 | Connors RSI (Connors & Alvarez) / EMB | indicador | CRSI = média de RSI(3), RSI(2) da sequência de altas e baixas e PercentRank(100) do retorno de 1 candle. Compra com CRSI < 10 acima da SMA200 e sai com CRSI > 70. | não | EMB; EV `oscillators/stochastic_connors_rsi.pine` (versão estocástica) | parente do L05; o oscilador é composto, não RSI(2) puro |
@@ -93,7 +93,7 @@ Também clonei e apaguei o `pineforge-corpus`, porque ele só traz scripts de te
 | TV62 | %b de Connors (3 dias abaixo de 0,2) / regra do livro | estratégia | Acima da SMA200, compra após 3 fechamentos seguidos com %B(20,2) < 0,2 e sai com %B > 0,8. | não | TV (regra trivial) | parente do G3; aqui não espera a volta para dentro da banda |
 | TV63 | Mass Index "reversal bulge" (Donald Dorsey) / everget | indicador | Soma(25) de EMA9(H−L)/EMA9(EMA9(H−L)). Quando sobe acima de 27 e depois cai abaixo de 26,5, entra contra a direção da EMA(9). | não | EV `oscillators/mass_index.pine` | — |
 
-### Bloco 8: padrões de barras (TV64–TV67)
+### Bloco 8: padrões de barras (TV64–TV67) · testado na rodada 5
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV64 | Three Bar Reversal Pattern / LuxAlgo | indicador | Barra de baixa, depois barra de baixa com máxima e mínima menores, depois barra de alta com máxima acima da primeira. Compra na confirmação (fechamento acima da máxima da barra 1) e invalida abaixo da mínima. | não | DE `three-bar-reversal-pattern.ts` | — |
