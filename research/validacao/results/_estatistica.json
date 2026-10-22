@@ -1,0 +1,197 @@
+{
+ "ativo": "BTCUSD",
+ "risco": 0.005,
+ "nLab": 153,
+ "estrategias": {
+  "TV85_ai_trend_nav": {
+   "combinacoes": 108,
+   "sharpeAnualOOS": 0.86,
+   "dsrNula": {
+    "dsr": 0.19274764085818813,
+    "srEsperadoPorSorte": 0.053421419832816265,
+    "sr": 0.045245254310551826,
+    "nTentativas": 261,
+    "varSharpes": 0.000351000351000351,
+    "varEstimadaDaNula": true
+   },
+   "dsrVarGrade": {
+    "dsr": 0.975137531269921,
+    "srEsperadoPorSorte": 0.02675713982320726,
+    "sr": 0.045245254310551826,
+    "nTentativas": 261,
+    "varSharpes": 8.805541616880322e-05,
+    "varEstimadaDaNula": false
+   },
+   "pbo": {
+    "pbo": 0.2209013209013209,
+    "combinacoes": 12870,
+    "variantes": 108,
+    "blocos": 16,
+    "logitMediano": 1.211940973975113,
+    "sharpeDentroMedio": 0.06527685376483001,
+    "sharpeForaMedio": 0.05072398095276427
+   },
+   "spaGradeContraZero": {
+    "pConsistente": 0.0442,
+    "pInferior": 0.0442,
+    "pSuperior": 0.0442,
+    "variantes": 108,
+    "reps": 5000,
+    "bloco": 14
+   },
+   "spaWFContraMediaMovel": {
+    "pConsistente": 0.4658,
+    "pInferior": 0.4658,
+    "pSuperior": 0.4658,
+    "variantes": 1,
+    "reps": 5000,
+    "bloco": 14
+   },
+   "bootstrap": {
+    "trades": 136,
+    "reps": 10000,
+    "ddP50": 0.04062187248429122,
+    "ddP95": 0.07906312053466688,
+    "pfP5": 1.9128370735382343,
+    "pfP50": 3.401338853746146,
+    "probPrejuizo": 0.0007
+   }
+  },
+  "TV39_smoothed_ha": {
+   "combinacoes": 90,
+   "sharpeAnualOOS": 0.75,
+   "dsrNula": {
+    "dsr": 0.0861588049585354,
+    "srEsperadoPorSorte": 0.05299346046301368,
+    "sr": 0.03933455581993394,
+    "nTentativas": 243,
+    "varSharpes": 0.000351000351000351,
+    "varEstimadaDaNula": true
+   },
+   "dsrVarGrade": {
+    "dsr": 1.1808385906563304e-39,
+    "srEsperadoPorSorte": 0.17069191309888643,
+    "sr": 0.03933455581993394,
+    "nTentativas": 243,
+    "varSharpes": 0.0036415718489612634,
+    "varEstimadaDaNula": false
+   },
+   "pbo": {
+    "pbo": 0.055633255633255635,
+    "combinacoes": 12870,
+    "variantes": 90,
+    "blocos": 16,
+    "logitMediano": 0.9162907318741551,
+    "sharpeDentroMedio": 0.0626600856365103,
+    "sharpeForaMedio": 0.04946319654803758
+   },
+   "spaGradeContraZero": {
+    "pConsistente": 0.0582,
+    "pInferior": 0.0448,
+    "pSuperior": 0.149,
+    "variantes": 90,
+    "reps": 5000,
+    "bloco": 14
+   },
+   "spaWFContraMediaMovel": {
+    "pConsistente": 0.6602,
+    "pInferior": 0.5348,
+    "pSuperior": 0.6602,
+    "variantes": 1,
+    "reps": 5000,
+    "bloco": 14
+   },
+   "bootstrap": {
+    "trades": 201,
+    "reps": 10000,
+    "ddP50": 0.05264276854544936,
+    "ddP95": 0.10220637555794136,
+    "pfP5": 1.4076623750796762,
+    "pfP50": 2.3337725004161416,
+    "probPrejuizo": 0.0038
+   }
+  },
+  "TV74_rvi": {
+   "combinacoes": 108,
+   "sharpeAnualOOS": 1.0,
+   "dsrNula": {
+    "dsr": 0.4718186152867703,
+    "srEsperadoPorSorte": 0.053421419832816265,
+    "sr": 0.05254482154820555,
+    "nTentativas": 261,
+    "varSharpes": 0.000351000351000351,
+    "varEstimadaDaNula": true
+   },
+   "dsrVarGrade": {
+    "dsr": 5.342353021922602e-20,
+    "srEsperadoPorSorte": 0.16514939318610625,
+    "sr": 0.05254482154820555,
+    "nTentativas": 261,
+    "varSharpes": 0.003354522138018795,
+    "varEstimadaDaNula": false
+   },
+   "pbo": {
+    "pbo": 0.0003885003885003885,
+    "combinacoes": 12870,
+    "variantes": 108,
+    "blocos": 16,
+    "logitMediano": 3.0349529867072733,
+    "sharpeDentroMedio": 0.0731210858853615,
+    "sharpeForaMedio": 0.06510121898031858
+   },
+   "spaGradeContraZero": {
+    "pConsistente": 0.0718,
+    "pInferior": 0.0472,
+    "pSuperior": 0.2322,
+    "variantes": 108,
+    "reps": 5000,
+    "bloco": 14
+   },
+   "spaWFContraMediaMovel": {
+    "pConsistente": 0.715,
+    "pInferior": 0.5326,
+    "pSuperior": 0.715,
+    "variantes": 1,
+    "reps": 5000,
+    "bloco": 14
+   },
+   "bootstrap": {
+    "trades": 532,
+    "reps": 10000,
+    "ddP50": 0.04994881853499128,
+    "ddP95": 0.09138814780678532,
+    "pfP5": 1.2931439607949173,
+    "pfP50": 1.7057899980218607,
+    "probPrejuizo": 0.001
+   }
+  }
+ },
+ "carteira": {
+  "sharpeAnualOOS": 1.45,
+  "dsrNula": {
+   "dsr": 0.9685851994161317,
+   "srEsperadoPorSorte": 0.056705485902015136,
+   "sr": 0.07581719485595581,
+   "nTentativas": 459,
+   "varSharpes": 0.000351000351000351,
+   "varEstimadaDaNula": true
+  },
+  "spaContraMediaMovel": {
+   "pConsistente": 0.6402,
+   "pInferior": 0.5404,
+   "pSuperior": 0.6402,
+   "variantes": 1,
+   "reps": 5000,
+   "bloco": 14
+  },
+  "spaContraZero": {
+   "pConsistente": 0.0016,
+   "pInferior": 0.0016,
+   "pSuperior": 0.0016,
+   "variantes": 1,
+   "reps": 5000,
+   "bloco": 14
+  }
+ },
+ "mediaMovelSharpeAnualOOS": 0.66
+}

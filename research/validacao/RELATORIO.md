@@ -10,6 +10,26 @@ Data: 22/10/2026. Pasta separada do laboratório (`research/lab` não foi altera
 - **Fora do BTC nada se sustenta.** Em ouro e cinco pares de forex (2013–2022), nenhuma candidata foi positiva de forma estável. O ouro é a exceção parcial: CUSUM, Keltner, Derivative Oscillator e Lorentzian foram positivos com 2, 3 e 4 anos de calibração, mas com pouca margem (PF 1,1–1,9) e só 6 anos de teste.
 - **Descartar:** Estocástico (L07), Momentum 60d (L04, queda de 17%), Aroon (TV21) e Lorentzian (TV32).
 
+## Correção de testes múltiplos (ferramentas do PR #53)
+
+Rodado com `estatistica_candidatas.py` sobre séries diárias (0,5% de risco por operação), 2019–2026 fora da amostra. Detalhes em `results/_estatistica.json`.
+
+| | TV85 | TV39 | TV74 | Carteira das 3 | Média móvel |
+|---|---|---|---|---|---|
+| Sharpe anual fora da amostra | 0,86 | 0,75 | 1,00 | **1,45** | 0,66 |
+| DSR (N = 153 + grade) | 0,19 | 0,09 | 0,47 | **0,97** (N = 459) | — |
+| PBO da grade (CSCV, 16 blocos) | 0,22 | 0,06 | 0,00 | — | — |
+| SPA: grade contra ficar fora (p) | 0,04 | 0,06 | 0,07 | 0,002 | — |
+| SPA: contra a média móvel (p) | 0,47 | 0,66 | 0,72 | 0,64 | — |
+| Bootstrap: queda no pior 5% | 7,9% | 10,2% | 9,1% | — | — |
+
+Leitura:
+- **Sozinhas, nenhuma passa no DSR.** Depois de mais de 250 tentativas, o Sharpe de cada uma é compatível com sorte (DSR < 0,5).
+- **A grade não está sobreajustada:** PBO baixo, ou seja, a melhor combinação dentro da amostra costuma continuar boa fora dela. O problema não é escolher parâmetro, é a vantagem ser pequena.
+- **Juntas passam:** a carteira das 3 tem Sharpe 1,45 e DSR 0,97 mesmo contando todas as 459 tentativas, e o SPA contra ficar fora do mercado dá p = 0,002.
+- **Nenhuma rende mais que a média móvel** (SPA p de 0,47 a 0,72). A carteira ganha em risco (Sharpe 1,45 contra 0,66), não em retorno médio.
+- Ressalva: as 3 foram escolhidas entre 11 olhando o mesmo walk-forward, e o DSR da carteira não desconta essa escolha por inteiro.
+
 ## O que foi testado
 
 Para cada uma das 11 candidatas (motor, regras e dados do laboratório):
