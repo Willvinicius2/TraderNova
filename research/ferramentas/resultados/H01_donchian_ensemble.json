@@ -1,0 +1,488 @@
+{
+ "id": "H01_donchian_ensemble",
+ "nome": "Ensemble de Donchian (5 a 360 dias) com alvo de volatilidade, comprado e vendido",
+ "fonte": "Zarattini, Pagani e Barbon (2025), Catching Crypto Trends; extensão long/short do relatório GitHub do projeto",
+ "sha256": "0e4ee832b8484af67de77e64fceee40736be8206f90d0dc0ea35f0461bf95ff4",
+ "freq": "1D",
+ "ativos": [
+  "BTCUSDT",
+  "ETHUSDT",
+  "SOLUSDT"
+ ],
+ "grade": {
+  "alvo_vol": [
+   0.15,
+   0.2,
+   0.25
+  ],
+  "modo": [
+   "so_long",
+   "simetrico",
+   "mm200"
+  ],
+  "vol_janela": [
+   30,
+   90
+  ]
+ },
+ "variantes": 18,
+ "portoes": "ferramentas-v1",
+ "custos": {
+  "taxa": 0.0005,
+  "slippage": 0.0002,
+  "funding": true
+ },
+ "desenvolvimento": [
+  "2020-01-01 00:00:00+00:00",
+  "2025-10-01 00:00:00+00:00"
+ ],
+ "etapas": {
+  "lookahead": {
+   "ok": true,
+   "porAtivo": {
+    "BTCUSDT": {
+     "ok": true,
+     "pontos": 25,
+     "divergencias": []
+    },
+    "ETHUSDT": {
+     "ok": true,
+     "pontos": 25,
+     "divergencias": []
+    },
+    "SOLUSDT": {
+     "ok": true,
+     "pontos": 25,
+     "divergencias": []
+    }
+   }
+  },
+  "grade": {
+   "sharpeAnualPorVariante": [
+    {
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "so_long",
+      "vol_janela": 30
+     },
+     "sharpe": 1.389
+    },
+    {
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "so_long",
+      "vol_janela": 90
+     },
+     "sharpe": 1.27
+    },
+    {
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "simetrico",
+      "vol_janela": 30
+     },
+     "sharpe": 0.882
+    },
+    {
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "simetrico",
+      "vol_janela": 90
+     },
+     "sharpe": 0.758
+    },
+    {
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "mm200",
+      "vol_janela": 30
+     },
+     "sharpe": 0.85
+    },
+    {
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "mm200",
+      "vol_janela": 90
+     },
+     "sharpe": 0.846
+    },
+    {
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "so_long",
+      "vol_janela": 30
+     },
+     "sharpe": 1.389
+    },
+    {
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "so_long",
+      "vol_janela": 90
+     },
+     "sharpe": 1.27
+    },
+    {
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "simetrico",
+      "vol_janela": 30
+     },
+     "sharpe": 0.882
+    },
+    {
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "simetrico",
+      "vol_janela": 90
+     },
+     "sharpe": 0.758
+    },
+    {
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "mm200",
+      "vol_janela": 30
+     },
+     "sharpe": 0.85
+    },
+    {
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "mm200",
+      "vol_janela": 90
+     },
+     "sharpe": 0.846
+    },
+    {
+     "params": {
+      "alvo_vol": 0.25,
+      "modo": "so_long",
+      "vol_janela": 30
+     },
+     "sharpe": 1.389
+    },
+    {
+     "params": {
+      "alvo_vol": 0.25,
+      "modo": "so_long",
+      "vol_janela": 90
+     },
+     "sharpe": 1.27
+    },
+    {
+     "params": {
+      "alvo_vol": 0.25,
+      "modo": "simetrico",
+      "vol_janela": 30
+     },
+     "sharpe": 0.882
+    },
+    {
+     "params": {
+      "alvo_vol": 0.25,
+      "modo": "simetrico",
+      "vol_janela": 90
+     },
+     "sharpe": 0.758
+    },
+    {
+     "params": {
+      "alvo_vol": 0.25,
+      "modo": "mm200",
+      "vol_janela": 30
+     },
+     "sharpe": 0.85
+    },
+    {
+     "params": {
+      "alvo_vol": 0.25,
+      "modo": "mm200",
+      "vol_janela": 90
+     },
+     "sharpe": 0.846
+    }
+   ],
+   "fracaoPositivas": 1.0
+  },
+  "walkForward": {
+   "retornoTotal": 0.2541004557395927,
+   "sharpeAnual": 0.7920937497194334,
+   "ddMax": 0.07361943207481803,
+   "trades": 76,
+   "pf": 5.380041072593237,
+   "porLado": {
+    "comprado": {
+     "trades": 74,
+     "retorno": 0.3356942005949183,
+     "pf": 5.723057264558803
+    },
+    "vendido": {
+     "trades": 2,
+     "retorno": -0.004531580062433961,
+     "pf": 0.0
+    }
+   },
+   "porAno": {
+    "2021": -0.0005,
+    "2022": -0.0392,
+    "2023": 0.1776,
+    "2024": 0.0868,
+    "2025": 0.0205
+   },
+   "anosPositivos": "3/5",
+   "janelas": 16,
+   "janelasPositivas": 0.5,
+   "eficiencia": 0.5857867427752839,
+   "inicioForaDaAmostra": "2021-12-31 00:00:00+00:00",
+   "escolhas": [
+    {
+     "teste": "2021-12-31",
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    },
+    {
+     "teste": "2022-03-31",
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    },
+    {
+     "teste": "2022-06-29",
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    },
+    {
+     "teste": "2022-09-27",
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    },
+    {
+     "teste": "2022-12-26",
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "so_long",
+      "vol_janela": 90
+     }
+    },
+    {
+     "teste": "2023-03-26",
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    },
+    {
+     "teste": "2023-06-24",
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    },
+    {
+     "teste": "2023-09-22",
+     "params": {
+      "alvo_vol": 0.25,
+      "modo": "mm200",
+      "vol_janela": 90
+     }
+    },
+    {
+     "teste": "2023-12-21",
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "so_long",
+      "vol_janela": 90
+     }
+    },
+    {
+     "teste": "2024-03-20",
+     "params": {
+      "alvo_vol": 0.25,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    },
+    {
+     "teste": "2024-06-18",
+     "params": {
+      "alvo_vol": 0.25,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    },
+    {
+     "teste": "2024-09-16",
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    },
+    {
+     "teste": "2024-12-15",
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    },
+    {
+     "teste": "2025-03-15",
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "so_long",
+      "vol_janela": 90
+     }
+    },
+    {
+     "teste": "2025-06-13",
+     "params": {
+      "alvo_vol": 0.2,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    },
+    {
+     "teste": "2025-09-11",
+     "params": {
+      "alvo_vol": 0.15,
+      "modo": "so_long",
+      "vol_janela": 30
+     }
+    }
+   ]
+  },
+  "cpcv": {
+   "sharpesPorCaminho": [
+    0.059583638423135986,
+    0.06268600489861699,
+    0.06818496357519203,
+    0.06664741383529214,
+    0.06998101839685474,
+    0.07004693175132196,
+    0.06242833585228648,
+    0.07182348233210734,
+    0.07669771734729323
+   ],
+   "mediano": 0.06818496357519203,
+   "fracaoPositivos": 1.0,
+   "caminhos": 9,
+   "divisoes": 45
+  },
+  "pbo": {
+   "pbo": 0.05384615384615385,
+   "combinacoes": 12870,
+   "variantes": 18,
+   "blocos": 16,
+   "logitMediano": 1.6739764335716711,
+   "sharpeDentroMedio": 0.07187098222252902,
+   "sharpeForaMedio": 0.067360473855864
+  },
+  "psr": 0.9396592725166604,
+  "dsr": {
+   "dsr": 0.5963481349386603,
+   "srEsperadoPorSorte": 0.034944050435732406,
+   "sr": 0.04146008175373368,
+   "nTentativas": 171,
+   "varSharpes": 0.00016578866005184637,
+   "varEstimadaDaNula": false
+  },
+  "minTRL": {
+   "barras": 1538.869585424079,
+   "temos": 1370
+  },
+  "spa": {
+   "pConsistente": 0.0112,
+   "pInferior": 0.0112,
+   "pSuperior": 0.0112,
+   "variantes": 18,
+   "reps": 5000,
+   "bloco": 13
+  },
+  "mcpt": {
+   "real": 0.07270230583594121,
+   "p": 0.22885572139303484,
+   "n": 200,
+   "mediaPermutada": 0.06259169368174325
+  },
+  "bootstrap": {
+   "trades": 76,
+   "reps": 10000,
+   "ddP50": 0.019770806063353352,
+   "ddP95": 0.041767006426547286,
+   "pfP5": 1.7846274295076843,
+   "pfP50": 5.209091547083823,
+   "probPrejuizo": 0.013
+  },
+  "estresse": {
+   "custo2x": {
+    "sharpeAnual": 0.7574880559676512,
+    "pf": 5.152646752803684,
+    "retornoTotal": 0.24106130105174617,
+    "ddMax": 0.07556039209581178
+   },
+   "custo3x": {
+    "sharpeAnual": 0.7228634116472965,
+    "pf": 4.93653521865926,
+    "retornoTotal": 0.22815731848033383,
+    "ddMax": 0.07749733671356862
+   },
+   "atraso1barra": {
+    "sharpeAnual": 0.6696992186841083,
+    "pf": 4.7613931573491675,
+    "retornoTotal": 0.21157953847020572,
+    "ddMax": 0.07545316331471918
+   },
+   "vizinhosPositivos": 1.0,
+   "semFunding": {
+    "sharpeAnual": 0.9514871493231036,
+    "pf": 6.313851451652211,
+    "retornoTotal": 0.3163614347628394,
+    "ddMax": 0.0646622142501776
+   }
+  }
+ },
+ "portoesResultado": {
+  "lookahead": true,
+  "trades": false,
+  "pf": true,
+  "dd": true,
+  "janelasPositivas": false,
+  "eficiencia": true,
+  "cpcv": true,
+  "pbo": true,
+  "psr": false,
+  "dsr": false,
+  "spa": true,
+  "mcpt": false,
+  "bootstrap": true,
+  "custo2x": true,
+  "atraso": true,
+  "vizinhos": true
+ },
+ "veredito": "REPROVADA_TRADES",
+ "falhas": [
+  "trades",
+  "janelasPositivas",
+  "psr",
+  "dsr",
+  "mcpt"
+ ],
+ "nTentativasUsadoNoDSR": 171,
+ "segundos": 207.2
+}
