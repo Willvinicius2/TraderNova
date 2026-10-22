@@ -1403,6 +1403,228 @@
     "https://www.tradingview.com/script/yXkWPSlU",
     "Connors & Alvarez (2009), High Probability ETF Trading, cap. %b"
    ]
+  },
+  {
+   "id": "TV72_cusum",
+   "name": "Change-Point Detection (CUSUM) LuxAlgo: opera a mudança de regime",
+   "family": "regime",
+   "coreRule": "Compra no fechamento em que o CUSUM confirma mudança para cima (sPos > h) e vende (both) quando confirma mudança para baixo (sNeg < -h). Sai/inverte na mudança oposta. Stop de proteção stopk*ATR14. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "CANDIDATA",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://www.luxalgo.com/library/indicator/change-point-detection-cusum/",
+    "https://www.tradingview.com/scripts/cusum/",
+    "github.com/deepentropy/lightweight-charts-indicators src/community/change-point-detection.ts (port fiel do Pine, MPL-2.0)"
+   ]
+  },
+  {
+   "id": "TV74_rvi",
+   "name": "Relative Volatility Index refinado (Dorsey): cruzamento do nível com filtro de tendência",
+   "family": "volatilidade",
+   "coreRule": "Compra quando o RVI cruza acima de lvl (50 = regra simples; 55/60 = confirmação mais forte) e, se trend>0, fechamento acima da EMA(trend); vende (both) quando cruza abaixo de 100-lvl e fechamento abaixo da EMA(trend). Sai da compra quando o RVI cruza abaixo de 50 (venda: acima de 50). Stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "CANDIDATA",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "github.com/everget/tradingview-pinescript-indicators oscillators/relative_volatility_index.pine (GPL-3.0)",
+    "https://www.luxalgo.com/library/concept/relative-volatility-index/"
+   ]
+  },
+  {
+   "id": "TV79_derivative_osc",
+   "name": "Derivative Oscillator (Constance Brown/everget): RSI suavizado menos sua SMA9, cruzamento do zero",
+   "family": "momento",
+   "coreRule": "Pine everget: sRSI = EMA3(EMA5(RSI(rsi))); DOSC = sRSI - SMA9(sRSI); sinal = SMA9(DOSC). Brown (Technical Analysis for the Trading Professional): compra quando o DOSC cruza acima de 0, vende quando cruza abaixo (trig=zero) ou, variante, DOSC cruzando a linha de sinal (trig=signal). Filtro de regime opcional: compra só com fechamento > EMA(trend) e venda só abaixo (0 = sem filtro). O cruzamento oposto sempre fecha. O script não tem stop: stop k*ATR14. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "CANDIDATA",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://github.com/everget/tradingview-pinescript-indicators (oscillators/derivative_oscillator.pine, Pine original de everget)",
+    "https://help.tc2000.com/m/69445/l/755852-derivative-oscillator",
+    "https://in.tradingview.com/script/6wfwJ6To-Indicator-Derivative-Oscillator"
+   ]
+  },
+  {
+   "id": "TV81_tdi",
+   "name": "Traders Dynamic Index (Dean Malone)",
+   "family": "momentum",
+   "coreRule": "RSI(rsi) do fechamento (Wilder). Linha de preço = SMA2(RSI), linha de sinal = SMA7(RSI), linha base = SMA34(RSI) e bandas = base ± 1,6185 × desvio-padrão(RSI, 34). Compra quando a linha de preço cruza acima da linha de sinal com a linha de preço acima de 50 e abaixo da banda superior (dentro das bandas); com base=1 exige também a linha base acima de 50 (filtro de regime descrito pela LuxAlgo). Venda (side=both) no espelho (abaixo de 50, acima da banda inferior, base abaixo de 50). Saída: exit=cross sai no cruzamento oposto preço/sinal; exit=base sai quando a linha de preço cruza a linha base contra a posição. Indicador sem stop: stop de proteção k × ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "CANDIDATA",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://www.luxalgo.com/library/concept/traders-dynamic-index/",
+    "https://www.earnforex.com/es/indicadores/Traders-Dynamic-Index/",
+    "github.com/deepentropy/lightweight-charts-indicators src/community/tdi-rsi.ts (port do 'TDI - Traders Dynamic Index [Goldminds]', MPL-2.0)"
+   ]
+  },
+  {
+   "id": "TV68_breakout_finder",
+   "name": "Breakout Finder (LonesomeTheBlue)",
+   "family": "rompimento",
+   "coreRule": "Pine 'Breakout Finder': guarda pivôs de alta/baixa (pivothigh/low(prd,prd), confirmados prd candles depois) dos últimos 200 candles. Compra quando um candle de alta fecha acima da máxima dos prd candles anteriores e acima de um grupo de >= mintest pivôs de alta que ficam numa faixa de largura cw% do range de 300 candles abaixo do maior pivô rompido (abertura <= topo da faixa e máxima anterior < topo). Venda no espelho com pivôs de baixa. O indicador não tem saída: stop inicial e stop móvel k*ATR14, sinal oposto inverte. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://www.tradingview.com/script/EvkXjgyw-Breakout-Finder/",
+    "https://www.luxalgo.com/library/indicator/EvkXjgyw-breakout-finder/",
+    "github.com/deepentropy/lightweight-charts-indicators src/community/breakout-finder.ts (tradução do Pine, MPL-2.0)"
+   ]
+  },
+  {
+   "id": "TV69_trendline_breaks",
+   "name": "Trendlines with Breaks (LuxAlgo, sem backpaint)",
+   "family": "rompimento",
+   "coreRule": "Pine 'Trendlines with Breaks' com backpaint=false (versão sem repintura): no pivô de alta (pivothigh(len,len), confirmado len candles depois) a linha de baixa parte do pivô e cai slope = ATR(len)/len*mult por candle; o valor de hoje é upper - slope*len. Compra quando o fechamento passa acima da linha de baixa (upos sobe de 0 para 1); vende quando o fechamento passa abaixo da linha de alta dos pivôs de baixa (dnos sobe). Sinal oposto inverte. Pine sem stop: stop de proteção k*ATR14. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://www.tradingview.com/script/IYL88A1N-Trendlines-with-Breaks-LuxAlgo/",
+    "github.com/deepentropy/lightweight-charts-indicators src/community/trendlines-with-breaks.ts (tradução do Pine)"
+   ]
+  },
+  {
+   "id": "TV70_darvas",
+   "name": "Darvas Box (caixa confirmada)",
+   "family": "rompimento",
+   "coreRule": "Pine 'DARVAS BOX' (boxp): NH = última máxima que superou a máxima dos boxp candles anteriores; a caixa é confirmada quando passam boxp-2 candles sem nova máxima e highest(high,boxp-2) < highest(high,boxp-1): topo = NH, fundo = lowest(low,boxp) nesse candle. Compra quando o fechamento cruza acima do topo confirmado; sai (ou vende, em 'both') quando o fechamento cruza abaixo do fundo. Stop de proteção k*ATR14 (o Pine não tem). Entrada na abertura seguinte. A tradução do deepentropy é simplificada (sem confirmação) e não foi usada; segui o Pine clássico do script.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://prorealcode.com/topic/darvas-boxes-de-trading-viex",
+    "https://www.investopedia.com/terms/d/darvasboxtheory.asp",
+    "Nicolas Darvas, 'How I Made $2,000,000 in the Stock Market' (1960)",
+    "github.com/deepentropy/lightweight-charts-indicators src/community/darvas-box.ts (versão simplificada, não usada)"
+   ]
+  },
+  {
+   "id": "TV71_range_detector",
+   "name": "Range Detector (LuxAlgo)",
+   "family": "rompimento",
+   "coreRule": "Pine 'Range Detector': ma = SMA(close,len), faixa = ATR(atrLen)*mult. Há range quando nenhum dos len últimos fechamentos fica a mais de faixa da ma de hoje (count==0) e no candle anterior havia (count[1]!=0): se o range novo encosta no anterior, a caixa é ampliada; senão nova caixa topo=ma+faixa, fundo=ma-faixa. Compra quando o fechamento passa acima do topo da última caixa (estado os vira 1); vende quando passa abaixo do fundo (os vira -1). Sem saída no Pine: stop inicial e móvel k*ATR14, sinal oposto inverte. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://www.tradingview.com/script/QOuZIuvH-Range-Detector-LuxAlgo/",
+    "github.com/deepentropy/lightweight-charts-indicators src/community/range-detector.ts (tradução do Pine)"
+   ]
+  },
+  {
+   "id": "TV73_rwi",
+   "name": "Random Walk Index (Poulos): cruzamento RWIhigh/RWIlow acima do limiar",
+   "family": "tendencia",
+   "coreRule": "Compra quando RWIhigh(n) cruza acima de RWIlow(n) com RWIhigh > thr; vende (both) quando RWIlow cruza acima de RWIhigh com RWIlow > thr. Sai/inverte no cruzamento oposto das linhas. Stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "github.com/everget/tradingview-pinescript-indicators oscillators/random_walk_index.pine (GPL-3.0)",
+    "https://tradingsim.com/blog/random-walk-index/",
+    "https://www.tradingview.com/script/I271vJqF-Indicators-Chartmill-Value-Indicator-Random-Walk-Index"
+   ]
+  },
+  {
+   "id": "TV75_pfe",
+   "name": "Polarized Fractal Efficiency (Hannula): cruzamento do limiar",
+   "family": "tendencia",
+   "coreRule": "Compra quando o PFE(n, EMA m) cruza acima de +thr (thr=0: linha zero, regra simples); vende (both) quando cruza abaixo de -thr. Sai da compra quando o PFE cruza abaixo de 0 (venda: acima de 0). Stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://www.luxalgo.com/library/concept/polarized-fractal-efficiency/",
+    "https://cn.tradingview.com/script/OESOW4zd-Polarized-Fractal-Efficiency",
+    "https://indicators.agenatrader.com/standard-indicators/polarized-fractal-efficiency-pfe",
+    "Hannula, H. (1994), Polarized Fractal Efficiency, Technical Analysis of Stocks & Commodities, jan/1994"
+   ]
+  },
+  {
+   "id": "TV76_vzo",
+   "name": "Volume Zone Oscillator (Khalil/Steckler, LazyBear): zonas com ADX e EMA60",
+   "family": "volume",
+   "coreRule": "VZO = 100*EMA_n(volume com sinal)/EMA_n(volume), sinal + se fechamento > anterior, senão -. Regras do código _VZO_Strategy (Traders' Tips TASC mai/2011), sem as saídas por divergência. Tendência = ADX14 > adx; com tendência e preço > EMA60: compra quando VZO cruza acima de -40 ou de 0; sai quando VZO cruza abaixo de 60 ou (preço < EMA60 e VZO < 0). Com tendência e preço < EMA60: vende quando cruza abaixo de +40 ou de 0; cobre quando cruza acima de -60 ou (preço > EMA60 e VZO > 0). Sem tendência (ADX <= adx): compra ao cruzar acima de -40 ou +15, sai ao cruzar abaixo de +40 ou -5; vende ao cruzar abaixo de +40 ou -5, cobre ao cruzar acima de -40 ou +15. O script não tem stop: stop de proteção k*ATR14. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://traders.com/Documentation/FEEDbk_docs/2011/05/Khalil.html",
+    "https://traders.com/Documentation/FEEDbk_docs/2011/05/TradersTips.html (código _VZO_Strategy da TradeStation com as regras)",
+    "https://toslc.thinkorswim.com/center/reference/Tech-Indicators/studies-library/V-Z/VolumeZoneOscillator",
+    "https://it.tradingview.com/script/P6bSDkjh-Volume-Zone-Oscillator-VZO"
+   ]
+  },
+  {
+   "id": "TV77_pzo",
+   "name": "Price Zone Oscillator (Khalil/Steckler, LazyBear): zonas com ADX e EMA60",
+   "family": "momento",
+   "coreRule": "PZO = 100*EMA_n(fechamento com sinal)/EMA_n(fechamento), sinal + se fechamento > anterior, senão -. Mesmas regras de zona do VZO (Khalil/Steckler; LE/SX do thinkorswim: -40, +15, 0, +40, -5, +-60), sem as saídas por divergência. Tendência = ADX14 > adx; com tendência e preço > EMA60: compra quando VZO cruza acima de -40 ou de 0; sai quando VZO cruza abaixo de 60 ou (preço < EMA60 e VZO < 0). Com tendência e preço < EMA60: vende quando cruza abaixo de +40 ou de 0; cobre quando cruza acima de -60 ou (preço > EMA60 e VZO > 0). Sem tendência (ADX <= adx): compra ao cruzar acima de -40 ou +15, sai ao cruzar abaixo de +40 ou -5; vende ao cruzar abaixo de +40 ou -5, cobre ao cruzar acima de -40 ou +15. O script não tem stop: stop de proteção k*ATR14. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://www.traders.com/Documentation/FEEDbk_docs/2011/06/Khalil.html",
+    "https://toslc.thinkorswim.com/center/reference/Tech-Indicators/strategies/L-P/PriceZoneOscillatorLE",
+    "https://toslc.thinkorswim.com/center/reference/Tech-Indicators/strategies/L-P/PriceZoneOscillatorSX",
+    "https://traders.com/Documentation/FEEDbk_docs/2011/05/TradersTips.html (mesmas zonas do VZO, que o artigo do PZO reutiliza)"
+   ]
+  },
+  {
+   "id": "TV78_stoch_pop",
+   "name": "CM Stochastic POP (Bernstein/ChrisMoody): %K estoura a zona e segue o momento",
+   "family": "momento",
+   "coreRule": "%K = SMA5 do estocástico rápido de kLen. ChrisMoody: %K acima da linha superior U = compra, abaixo da inferior L = venda, entre elas = sem operação; as linhas são de entrada e de saída. Aqui: compra quando %K cruza acima de U, vende quando cruza abaixo de L = 100-U (zonas simétricas; o script usa 60/30 por padrão e Bernstein 80/20); a compra sai quando %K cruza de volta abaixo de U e a venda quando cruza acima de L. Filtro opcional de Steckler: só entra se o ADX14 do candle anterior < adx_max (100 = sem filtro). Sem stop no script: stop k*ATR14. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://github.com/deepentropy/lightweight-charts-indicators (src/community/stoch-pop-1.ts, port do 'CM_Stochastic POP Method 1' de ChrisMoody)",
+    "https://www.luxalgo.com/library/concept/stochastic-pop.md (Bernstein; filtro ADX(14) < 20 de Steckler, TASC 2000)"
+   ]
+  },
+  {
+   "id": "TV80_ssl_hybrid",
+   "name": "SSL Hybrid (Mihkel00)",
+   "family": "tendencia",
+   "coreRule": "Baseline = HMA(close, len); canal = baseline ± 0,2 × EMA(TR, len). SSL2 = linha SSL das JMA(5) de máximas/mínimas (fase 3, potência 1); continuação de compra (buy_atr do Pine) = fechamento acima da baseline e acima da SSL2, com a SSL2 a menos de 0,9 × ATR(14, WMA) do fechamento. Compra no primeiro candle em que o fechamento está acima do canal superior E a SSL2 confirma; venda (side=both) no espelho (abaixo do canal inferior e sell_atr). Sai quando o fechamento cruza a SSL3 de saída (linha SSL das HMA(len3) de máximas/mínimas) contra a posição, como as setas de saída do original. O indicador não tem stop: stop de proteção k × ATR14 (Wilder). Pine do TradingView não abre; lógica lida no port TS fiel do deepentropy.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://www.tradingview.com/script/FyW6Gz4r-SSL-Hybrid/",
+    "https://www.prorealcode.com/prorealtime-indicators/ssl-hybrid-indicator",
+    "github.com/deepentropy/lightweight-charts-indicators src/community/ssl-hybrid.ts (port fiel do Pine, MPL-2.0)"
+   ]
+  },
+  {
+   "id": "TV82_asi",
+   "name": "Absolute Strength Index [ASI] (Zeiierman)",
+   "family": "momentum",
+   "coreRule": "Para cada candle, os L retornos de 1 candle anteriores (close[i]/close[i+1]-1, i=1..L) são ordenados; o retorno no percentil 85% é o limiar dos vencedores e o do percentil 15% o dos perdedores. ASI = (retorno de L candles - perdedor) / (vencedor - perdedor) × 2 - 1; sinal = SMA(ASI, ma). Compra quando o ASI cruza acima do sinal; venda (side=both) quando cruza abaixo; sai no cruzamento oposto. Indicador sem stop: stop de proteção k × ATR14. Página do TradingView vista só pelo resumo de busca; fórmula lida no port TS do deepentropy.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://www.tradingview.com/scripts/asi/",
+    "github.com/deepentropy/lightweight-charts-indicators src/community/absolute-strength-index.ts (port fiel do Pine, MPL-2.0)"
+   ]
+  },
+  {
+   "id": "TV83_trendilo",
+   "name": "Trendilo (dudeowns)",
+   "family": "tendencia",
+   "coreRule": "pch = (close - close[1]) / close × 100; avpch = ALMA(pch, len, offset 0,85, sigma 6); rms = bmult × raiz(soma(avpch², len)/len). Estado +1 quando avpch > rms, -1 quando avpch < -rms, 0 entre as bandas. Compra quando o estado vira +1; venda (side=both) quando vira -1. Saída: exit=neutral sai quando o estado deixa de ser o da posição (volta para dentro da banda); exit=flip só sai no estado oposto. Indicador sem stop: stop de proteção k × ATR14. Pine original no TradingView (não abre aqui); fórmula conferida no port ProBuilder da ProRealCode.",
+   "testedOn": "BTCUSD lab-v3",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 6",
+   "sources": [
+    "https://jp.tradingview.com/script/h5kMWewu-Trendilo-OPEN-SOURCE",
+    "https://prorealcode.com/prorealtime-indicators/trendilo"
+   ]
   }
  ]
 }

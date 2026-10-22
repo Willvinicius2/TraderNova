@@ -119,5 +119,49 @@
    "TV66",
    "TV67"
   ]
+ },
+ {
+  "agente": "r6-rompimento",
+  "rodada": 6,
+  "foco": "TradingView: rompimento estrutural",
+  "ids": [
+   "TV68",
+   "TV69",
+   "TV70",
+   "TV71"
+  ]
+ },
+ {
+  "agente": "r6-regime",
+  "rodada": 6,
+  "foco": "TradingView: regime estatístico",
+  "ids": [
+   "TV72",
+   "TV73",
+   "TV74",
+   "TV75"
+  ]
+ },
+ {
+  "agente": "r6-zonas",
+  "rodada": 6,
+  "foco": "TradingView: osciladores de zona",
+  "ids": [
+   "TV76",
+   "TV77",
+   "TV78",
+   "TV79"
+  ]
+ },
+ {
+  "agente": "r6-nnfx",
+  "rodada": 6,
+  "foco": "TradingView: sistemas NNFX",
+  "ids": [
+   "TV80",
+   "TV81",
+   "TV82",
+   "TV83"
+  ]
  }
 ]

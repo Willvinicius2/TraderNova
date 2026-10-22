@@ -101,7 +101,7 @@ Também clonei e apaguei o `pineforge-corpus`, porque ele só traz scripts de te
 | TV66 | Pin Bar Magic v1 / ZenAndTheArtOfTrading (cópia no repositório Alorse) | estratégia | Pin bar (sombra ≥ 66% do range) que fura a EMA rápida, com leque EMA(10/20/50) alinhado. Ordem stop na máxima anterior, cancelada após 3 candles, com trailing por ATR. | não | AL `strategies/other/Pin Bar Magic v1.pine` | parente do L16 (padrão de candle mais tendência), mas é outro padrão |
 | TV67 | Rally-Base-Drop Signals / LuxAlgo | indicador | Rally = 2 velas verdes, drop = 2 vermelhas, base = o resto. "Drop-Base-Rally" compra e "Rally-Base-Drop" vende. | não | DE `rally-base-drop-signals.ts` | parente do TV02, porém por fases e não por contagem |
 
-### Bloco 9: rompimento estrutural (TV68–TV71)
+### Bloco 9: rompimento estrutural (TV68–TV71) · testado na rodada 6
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV68 | Breakout Finder / LonesomeTheBlue | indicador | Compra quando uma barra de alta fecha acima da máxima de N candles e de um grupo de ≥ 2 pivôs de alta dentro de uma faixa estreita (Threshold % do range de 300 candles). | atraso (pivôs) | DE `breakout-finder.ts` | parente do TV08. Exige consolidação testada várias vezes. |
@@ -109,7 +109,7 @@ Também clonei e apaguei o `pineforge-corpus`, porque ele só traz scripts de te
 | TV70 | Darvas Box (Nicolas Darvas) / comunidade | indicador | O topo da caixa é uma máxima de N candles que não é superada nos 3 candles seguintes. Compra quando o fechamento rompe o topo da caixa confirmada e sai quando perde o fundo. | não | DE `darvas-box.ts` | parente do T3. Exige confirmação da caixa, o que o Donchian não faz. |
 | TV71 | Range Detector / LuxAlgo | indicador | Detecta lateralidade quando todos os fechamentos de N candles ficam a menos de 1 ATR da SMA. Compra quando o fechamento rompe o topo do range. | não | DE `range-detector.ts` | parente do L11 e do L09 (contração seguida de rompimento), com outra medida |
 
-### Bloco 10: regime estatístico e direcional (TV72–TV75)
+### Bloco 10: regime estatístico e direcional (TV72–TV75) · testado na rodada 6
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV72 | Change-Point Detection (CUSUM) / LuxAlgo | indicador | CUSUM do z-score dos log-retornos (sPos/sNeg com k e h). Mudança para cima (sPos > h) compra e mudança para baixo vende. | não | DE `change-point-detection.ts` | — |
@@ -122,7 +122,7 @@ Também clonei e apaguei o `pineforge-corpus`, porque ele só traz scripts de te
 ## Prioridade MÉDIA (TV76–TV95)
 Também são open-source e não repintam, mas a regra precisa ser escolhida ou montada (o autor não fecha a entrada), o código só existe no TradingView, ou o sistema tem muitas peças.
 
-### Bloco 11: osciladores de zona com filtro (TV76–TV79)
+### Bloco 11: osciladores de zona com filtro (TV76–TV79) · testado na rodada 6
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV76 | Volume Zone Oscillator (Walid Khalil) / LazyBear | indicador | VZO = 100·EMA(vol com sinal)/EMA(vol). Compra quando cruza acima de +40 com ADX > 18 e preço acima da EMA(60), regras do artigo da TASC. | não | TV (LazyBear) | parente do TV13 |
@@ -130,7 +130,7 @@ Também são open-source e não repintam, mas a regra precisa ser escolhida ou m
 | TV78 | CM Stochastic POP (Jake Bernstein) / ChrisMoody | indicador | Estocástico entre 40 e 60 que "estoura" acima de 60 dá compra e abaixo de 40 dá venda. É momento, não reversão. | não | DE `stoch-pop-1.ts` | parente do L07 com a lógica oposta (rompimento de zona, não cruzamento em extremo) |
 | TV79 | Derivative Oscillator (Constance Brown) / everget | indicador | RSI(14) suavizado duas vezes menos a SMA(9) dele mesmo. Compra quando cruza acima de 0. | não | EV `oscillators/derivative_oscillator.pine` | parente do FX-RSI e do TV09 (é um "MACD do RSI"). Conferir se o agente não vê como duplicado. |
 
-### Bloco 12: sistemas compostos estilo NNFX e forex (TV80–TV83)
+### Bloco 12: sistemas compostos estilo NNFX e forex (TV80–TV83) · testado na rodada 6
 | ID | Nome / autor | Tipo | Regra central | Repinta | Código | Duplicidade |
 |---|---|---|---|---|---|---|
 | TV80 | SSL Hybrid / Mihkel00 | indicador | Baseline (HMA60) com canal de ATR, mais SSL2 para continuação e SSL3 para saída. Compra quando fecha acima do canal da baseline com SSL2 confirmando e sai no cruzamento da SSL de saída. | não | DE `ssl-hybrid.ts` | parente do TV15. A baseline com faixa de ATR e a saída separada mudam o sistema. |

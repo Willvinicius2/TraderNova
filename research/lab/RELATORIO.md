@@ -1,4 +1,4 @@
-# Laboratório de estratégias: resultados até a rodada 5
+# Laboratório de estratégias: resultados até a rodada 6
 
 Gerado por `python research/lab/report.py`. Rodada 1 usou o protocolo lab-v1 e a rodada 2 o lab-v2 (mais rígido); ver `protocol.json`. Calibração só no desenvolvimento (BTC 2016–2020), validação 2021–2022 e reserva 2023–out/2026 sem reajuste, custo base 0,10% por lado e stress 0,20%. CANDIDATA passou no histórico, mas ainda precisa de acompanhamento prospectivo, custos reais da conta e risco conjunto. Não é promessa de lucro.
 
@@ -10,6 +10,10 @@ Gerado por `python research/lab/report.py`. Rodada 1 usou o protocolo lab-v1 e a
 | TV21_aroon Aroon (Chande): cruzamento Up/Down | tendencia | **CANDIDATA** | H4 | {"n": 50, "level": 70, "k": 4.0, "side": "both"} | 176 op · +114.6R · PF 2.731 · DD 5.08R | 64 op · +6.1R · PF 1.232 · DD 8.42R | 142 op · +26.9R · PF 1.401 · DD 15.55R | 108 | 0.968 |
 | TV32_lorentzian Machine Learning: Lorentzian Classification (jdehorty), kNN causal | aprendizado | **CANDIDATA** | H4 | {"nn": 8, "L": 2000, "label": "futuro", "exit": "dinamico", "k": 2.0, "side": "long"} | 93 op · +113.1R · PF 4.045 · DD 4.98R | 30 op · +5.3R · PF 1.483 · DD 4.22R | 78 op · +48.2R · PF 2.139 · DD 11.03R | 288 | 0.0 |
 | TV39_smoothed_ha Trend Indicator A-V2: cor da Heikin Ashi suavizada por EMA | tendencia | **CANDIDATA** | D1 | {"n": 21, "k": 1.5, "side": "both"} | 111 op · +133.2R · PF 4.264 · DD 4.75R | 45 op · +5.9R · PF 1.289 · DD 6.26R | 84 op · +34.8R · PF 1.83 · DD 7.34R | 90 | 0.95 |
+| TV72_cusum Change-Point Detection (CUSUM) LuxAlgo: opera a mudança de regime | regime | **CANDIDATA** | H4 | {"length": 30, "h": 3.0, "slack": 0.5, "stopk": 2.0, "side": "long"} | 71 op · +153.4R · PF 5.071 · DD 5.53R | 27 op · +13.1R · PF 1.787 · DD 9.9R | 61 op · +100.3R · PF 3.36 · DD 7.86R | 324 | 0.66 |
+| TV74_rvi Relative Volatility Index refinado (Dorsey): cruzamento do nível com filtro de tendência | volatilidade | **CANDIDATA** | H4 | {"lvl": 60, "trend": 0, "k": 2.0, "side": "long"} | 353 op · +155.9R · PF 2.435 · DD 7.08R | 140 op · +7.9R · PF 1.169 · DD 13.28R | 282 op · +58.3R · PF 1.531 · DD 18.07R | 108 | 0.999 |
+| TV79_derivative_osc Derivative Oscillator (Constance Brown/everget): RSI suavizado menos sua SMA9, cruzamento do zero | momento | **CANDIDATA** | H4 | {"rsi": 14, "trig": "zero", "trend": 200, "k": 2.0, "side": "long"} | 313 op · +115.0R · PF 2.097 · DD 6.33R | 78 op · +8.4R · PF 1.34 · DD 7.27R | 217 op · +41.9R · PF 1.478 · DD 10.98R | 216 | 0.982 |
+| TV81_tdi Traders Dynamic Index (Dean Malone) | momentum | **CANDIDATA** | H4 | {"rsi": 21, "base": 1, "exit": "base", "k": 3.0, "side": "long"} | 240 op · +75.8R · PF 2.229 · DD 5.48R | 69 op · +4.0R · PF 1.223 · DD 4.72R | 179 op · +21.2R · PF 1.392 · DD 9.39R | 144 | 0.998 |
 | TV54_eom Ease of Movement (Arms): SMA do EMV cruza o zero | volume | **REPROVADA_RESERVA** | D1 | {"n": 28, "filt": "sma200", "k": 2.0, "side": "both"} | 58 op · +97.0R · PF 8.243 · DD 3.93R | 32 op · +3.6R · PF 1.365 · DD 3.44R | 53 op · +0.4R · PF 1.019 · DD 10.87R | 108 | 0.989 |
 | TV63_mass_index Mass Index 'reversal bulge' (Dorsey/everget): entra contra a EMA(9) | reversao | **REPROVADA_RESERVA** | H4 | {"brk": 27.0, "hold": 10, "k": 3.0, "side": "both"} | 83 op · +10.6R · PF 1.604 · DD 4.04R | 29 op · +1.9R · PF 1.491 · DD 1.04R | 90 op · -10.0R · PF 0.528 · DD 13.12R | 108 | 0.027 |
 | L01_supertrend Supertrend (virada de direção) | tendencia | **REPROVADA_VALIDACAO** | H4 | {"atr_n": 7, "mult": 2.5, "side": "long"} | 133 op · +142.5R · PF 4.143 · DD 4.28R | 62 op · +1.2R · PF 1.047 · DD 5.72R | - | 120 | 0.003 |
@@ -89,6 +93,18 @@ Gerado por `python research/lab/report.py`. Rodada 1 usou o protocolo lab-v1 e a
 | TV65_nbar_reversal N Bar Reversal Detector (LuxAlgo): rompimento da máxima da 1ª barra do padrão | padroes | **REPROVADA_VALIDACAO** | H1 | {"nbars": 10, "trend": "st", "tr": 3.0, "side": "long"} | 112 op · +51.8R · PF 1.75 · DD 7.68R | 43 op · +2.5R · PF 1.087 · DD 8.96R | - | 216 | 0.447 |
 | TV66_pinbar_magic Pin Bar Magic v1: pin bar que fura a média com leque de médias alinhado | padroes | **REPROVADA_VALIDACAO** | H4 | {"emas": "10/20/50", "m": 0.5, "tk": 5.0, "side": "long"} | 63 op · +86.0R · PF 3.176 · DD 8.79R | 22 op · +2.5R · PF 1.173 · DD 7.6R | - | 96 | 0.977 |
 | TV67_rbd Rally Base Drop Signals (LuxAlgo): DBR compra, RBD vende | padroes | **REPROVADA_VALIDACAO** | D1 | {"cont": false, "k": 1.0, "tr": 0.0, "side": "long"} | 143 op · +140.6R · PF 3.666 · DD 6.98R | 63 op · -8.9R · PF 0.766 · DD 15.79R | - | 192 | 0.979 |
+| TV68_breakout_finder Breakout Finder (LonesomeTheBlue) | rompimento | **REPROVADA_VALIDACAO** | H4 | {"prd": 3, "cw": 5.0, "mintest": 2, "k": 3.0, "side": "both"} | 187 op · +93.6R · PF 2.357 · DD 4.41R | 75 op · +0.0R · PF 1.001 · DD 8.67R | - | 216 | 0.0 |
+| TV69_trendline_breaks Trendlines with Breaks (LuxAlgo, sem backpaint) | rompimento | **REPROVADA_VALIDACAO** | H4 | {"length": 10, "mult": 0.5, "k": 2.0, "side": "long"} | 100 op · +279.7R · PF 6.831 · DD 5.97R | 60 op · -13.7R · PF 0.676 · DD 26.18R | - | 180 | 0.995 |
+| TV70_darvas Darvas Box (caixa confirmada) | rompimento | **REPROVADA_VALIDACAO** | H4 | {"boxp": 13, "k": 2.0, "side": "long"} | 85 op · +213.0R · PF 5.393 · DD 6.64R | 42 op · -8.6R · PF 0.722 · DD 14.33R | - | 108 | 0.999 |
+| TV71_range_detector Range Detector (LuxAlgo) | rompimento | **REPROVADA_VALIDACAO** | H1 | {"length": 30, "mult": 1.0, "k": 4.0, "side": "long"} | 166 op · +142.2R · PF 3.444 · DD 6.25R | 69 op · -2.1R · PF 0.927 · DD 6.79R | - | 216 | 0.998 |
+| TV73_rwi Random Walk Index (Poulos): cruzamento RWIhigh/RWIlow acima do limiar | tendencia | **REPROVADA_VALIDACAO** | H1 | {"n": 20, "thr": 0.8, "k": 3.0, "side": "both"} | 142 op · +26.9R · PF 1.638 · DD 5.68R | 38 op · +3.0R · PF 1.209 · DD 7.03R | - | 144 | 0.001 |
+| TV75_pfe Polarized Fractal Efficiency (Hannula): cruzamento do limiar | tendencia | **REPROVADA_VALIDACAO** | H4 | {"n": 14, "m": 8, "thr": 50, "k": 2.0, "side": "long"} | 240 op · +147.6R · PF 2.563 · DD 5.74R | 86 op · -27.0R · PF 0.511 · DD 32.93R | - | 216 | 0.997 |
+| TV76_vzo Volume Zone Oscillator (Khalil/Steckler, LazyBear): zonas com ADX e EMA60 | volume | **REPROVADA_VALIDACAO** | D1 | {"n": 21, "adx": 18, "k": 2.0, "side": "long"} | 41 op · +62.1R · PF 5.229 · DD 3.22R | 11 op · -0.6R · PF 0.893 · DD 2.14R | - | 108 | 0.974 |
+| TV77_pzo Price Zone Oscillator (Khalil/Steckler, LazyBear): zonas com ADX e EMA60 | momento | **REPROVADA_VALIDACAO** | D1 | {"n": 21, "adx": 15, "k": 2.0, "side": "both"} | 51 op · +66.7R · PF 5.141 · DD 3.79R | 19 op · -1.2R · PF 0.901 · DD 5.66R | - | 108 | 0.97 |
+| TV78_stoch_pop CM Stochastic POP (Bernstein/ChrisMoody): %K estoura a zona e segue o momento | momento | **REPROVADA_VALIDACAO** | H4 | {"klen": 21, "up": 70, "adx_max": 100, "k": 2.0, "side": "both"} | 505 op · +166.1R · PF 1.923 · DD 8.87R | 237 op · -35.0R · PF 0.677 · DD 36.38R | - | 216 | 0.727 |
+| TV80_ssl_hybrid SSL Hybrid (Mihkel00) | tendencia | **REPROVADA_VALIDACAO** | H4 | {"len": 90, "len3": 25, "k": 2.5, "side": "long"} | 384 op · +66.6R · PF 1.645 · DD 10.16R | 163 op · -14.8R · PF 0.699 · DD 17.45R | - | 144 | 0.861 |
+| TV82_asi Absolute Strength Index [ASI] (Zeiierman) | momentum | **REPROVADA_VALIDACAO** | D1 | {"L": 25, "ma": 21, "k": 2.0, "side": "long"} | 92 op · +67.3R · PF 3.81 · DD 5.25R | 40 op · -2.2R · PF 0.805 · DD 5.3R | - | 144 | 0.965 |
+| TV83_trendilo Trendilo (dudeowns) | tendencia | **REPROVADA_VALIDACAO** | H1 | {"len": 80, "bmult": 1.2, "exit": "flip", "k": 2.5, "side": "long"} | 183 op · +348.1R · PF 3.993 · DD 8.87R | 90 op · -8.5R · PF 0.874 · DD 28.33R | - | 144 | 0.99 |
 | L15_floor_pivots Pivôs clássicos diários (P, R1, S1): rejeição ou rompimento | padroes | **REPROVADA_DESENVOLVIMENTO** | M15 | (melhor reprovada) | 731 op · +12.3R · PF 1.037 · DD 40.25R | - | - | 144 | - |
 | L17_btc_seasonality Sazonalidade intradiária do BTC (21h-23h UTC) | tempo_volume | **REPROVADA_DESENVOLVIMENTO** | H1 | (melhor reprovada) | 1827 op · -206.9R · PF 0.547 · DD 209.49R | - | - | 12 | - |
 | L17_btc_seasonality_r1 Sazonalidade intradiária do BTC (21h-23h UTC) só em dias fortes | tempo_volume | **REPROVADA_DESENVOLVIMENTO** | H1 | (melhor reprovada) | 261 op · -7.5R · PF 0.865 · DD 12.75R | - | - | 27 | - |
@@ -125,5 +141,17 @@ Resultado sem a maior operação e em % do capital com 0,5% de risco por operaç
 | TV39_smoothed_ha | development | 111 | +133.2 | +94.5 | +66.6 | 2.38 | +6628.6 |
 | TV39_smoothed_ha | validation | 45 | +5.9 | +1.6 | +2.9 | 3.13 | -43.0 |
 | TV39_smoothed_ha | reserve | 84 | +34.8 | +22.5 | +17.4 | 3.67 | +401.8 |
+| TV72_cusum | development | 71 | +153.4 | +121.9 | +76.7 | 2.76 | +6628.6 |
+| TV72_cusum | validation | 27 | +13.1 | +1.4 | +6.6 | 4.95 | -43.0 |
+| TV72_cusum | reserve | 61 | +100.3 | +64.9 | +50.2 | 3.93 | +401.8 |
+| TV74_rvi | development | 353 | +155.9 | +139.8 | +78.0 | 3.54 | +6628.6 |
+| TV74_rvi | validation | 140 | +7.9 | +2.7 | +3.9 | 6.64 | -43.0 |
+| TV74_rvi | reserve | 282 | +58.3 | +34.2 | +29.1 | 9.03 | +401.8 |
+| TV79_derivative_osc | development | 313 | +115.0 | +101.0 | +57.5 | 3.16 | +6628.6 |
+| TV79_derivative_osc | validation | 78 | +8.4 | +5.3 | +4.2 | 3.63 | -43.0 |
+| TV79_derivative_osc | reserve | 217 | +41.9 | +31.5 | +20.9 | 5.49 | +401.8 |
+| TV81_tdi | development | 240 | +75.8 | +66.2 | +37.9 | 2.74 | +6628.6 |
+| TV81_tdi | validation | 69 | +4.0 | +1.5 | +2.0 | 2.36 | -43.0 |
+| TV81_tdi | reserve | 179 | +21.2 | +7.0 | +10.6 | 4.7 | +401.8 |
 
 Fontes e regras completas em `strategies/` e `results/`. Notas de cada agente em `notes/`.

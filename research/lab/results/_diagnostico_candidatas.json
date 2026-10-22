@@ -178,5 +178,125 @@
    "buyHoldPct": 401.8
   },
   "fragil": false
+ },
+ "TV72_cusum": {
+  "development": {
+   "trades": 71,
+   "netR": 153.45,
+   "semMaiorR": 121.88,
+   "maiorR": 31.58,
+   "retPct05": 76.73,
+   "ddPct05": 2.76,
+   "buyHoldPct": 6628.6
+  },
+  "validation": {
+   "trades": 27,
+   "netR": 13.11,
+   "semMaiorR": 1.37,
+   "maiorR": 11.74,
+   "retPct05": 6.56,
+   "ddPct05": 4.95,
+   "buyHoldPct": -43.0
+  },
+  "reserve": {
+   "trades": 61,
+   "netR": 100.34,
+   "semMaiorR": 64.89,
+   "maiorR": 35.45,
+   "retPct05": 50.17,
+   "ddPct05": 3.93,
+   "buyHoldPct": 401.8
+  },
+  "fragil": false
+ },
+ "TV74_rvi": {
+  "development": {
+   "trades": 353,
+   "netR": 155.92,
+   "semMaiorR": 139.77,
+   "maiorR": 16.15,
+   "retPct05": 77.96,
+   "ddPct05": 3.54,
+   "buyHoldPct": 6628.6
+  },
+  "validation": {
+   "trades": 140,
+   "netR": 7.86,
+   "semMaiorR": 2.67,
+   "maiorR": 5.19,
+   "retPct05": 3.93,
+   "ddPct05": 6.64,
+   "buyHoldPct": -43.0
+  },
+  "reserve": {
+   "trades": 282,
+   "netR": 58.27,
+   "semMaiorR": 34.19,
+   "maiorR": 24.08,
+   "retPct05": 29.13,
+   "ddPct05": 9.03,
+   "buyHoldPct": 401.8
+  },
+  "fragil": false
+ },
+ "TV79_derivative_osc": {
+  "development": {
+   "trades": 313,
+   "netR": 114.97,
+   "semMaiorR": 100.96,
+   "maiorR": 14.0,
+   "retPct05": 57.48,
+   "ddPct05": 3.16,
+   "buyHoldPct": 6628.6
+  },
+  "validation": {
+   "trades": 78,
+   "netR": 8.44,
+   "semMaiorR": 5.31,
+   "maiorR": 3.13,
+   "retPct05": 4.22,
+   "ddPct05": 3.63,
+   "buyHoldPct": -43.0
+  },
+  "reserve": {
+   "trades": 217,
+   "netR": 41.87,
+   "semMaiorR": 31.51,
+   "maiorR": 10.36,
+   "retPct05": 20.93,
+   "ddPct05": 5.49,
+   "buyHoldPct": 401.8
+  },
+  "fragil": false
+ },
+ "TV81_tdi": {
+  "development": {
+   "trades": 240,
+   "netR": 75.82,
+   "semMaiorR": 66.19,
+   "maiorR": 9.62,
+   "retPct05": 37.91,
+   "ddPct05": 2.74,
+   "buyHoldPct": 6628.6
+  },
+  "validation": {
+   "trades": 69,
+   "netR": 4.01,
+   "semMaiorR": 1.49,
+   "maiorR": 2.52,
+   "retPct05": 2.0,
+   "ddPct05": 2.36,
+   "buyHoldPct": -43.0
+  },
+  "reserve": {
+   "trades": 179,
+   "netR": 21.22,
+   "semMaiorR": 7.04,
+   "maiorR": 14.18,
+   "retPct05": 10.61,
+   "ddPct05": 4.7,
+   "buyHoldPct": 401.8
+  },
+  "fragil": false
  }
 }

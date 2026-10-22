@@ -1,0 +1,534 @@
+{
+ "strategy": "TV77_pzo",
+ "name": "Price Zone Oscillator (Khalil/Steckler, LazyBear): zonas com ADX e EMA60",
+ "family": "momento",
+ "sources": [
+  "https://www.traders.com/Documentation/FEEDbk_docs/2011/06/Khalil.html",
+  "https://toslc.thinkorswim.com/center/reference/Tech-Indicators/strategies/L-P/PriceZoneOscillatorLE",
+  "https://toslc.thinkorswim.com/center/reference/Tech-Indicators/strategies/L-P/PriceZoneOscillatorSX",
+  "https://traders.com/Documentation/FEEDbk_docs/2011/05/TradersTips.html (mesmas zonas do VZO, que o artigo do PZO reutiliza)"
+ ],
+ "rule": "PZO = 100*EMA_n(fechamento com sinal)/EMA_n(fechamento), sinal + se fechamento > anterior, senão -. Mesmas regras de zona do VZO (Khalil/Steckler; LE/SX do thinkorswim: -40, +15, 0, +40, -5, +-60), sem as saídas por divergência. Tendência = ADX14 > adx; com tendência e preço > EMA60: compra quando VZO cruza acima de -40 ou de 0; sai quando VZO cruza abaixo de 60 ou (preço < EMA60 e VZO < 0). Com tendência e preço < EMA60: vende quando cruza abaixo de +40 ou de 0; cobre quando cruza acima de -60 ou (preço > EMA60 e VZO > 0). Sem tendência (ADX <= adx): compra ao cruzar acima de -40 ou +15, sai ao cruzar abaixo de +40 ou -5; vende ao cruzar abaixo de +40 ou -5, cobre ao cruzar acima de -40 ou +15. O script não tem stop: stop de proteção k*ATR14. Entrada na abertura seguinte.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v3",
+ "strategySha256": "9eb8446a42981c47d4900cb747e6312e66b441d826a6f3338243dce3f1015ccb",
+ "refinement": null,
+ "combinationsTested": 108,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "n": 21,
+    "adx": 15,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 51,
+    "netR": 66.66,
+    "pf": 5.141,
+    "winRate": 0.412,
+    "expR": 1.3071,
+    "maxDDR": 3.79,
+    "sharpeTrade": 0.3136,
+    "tStat": 2.24,
+    "tradesPerYear": 10.2,
+    "retPct": 33.33,
+    "maxDDPct": 1.89,
+    "avgBars": 22.7,
+    "semMaiorR": 45.54,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 4.2,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 21,
+    "adx": 15,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 29,
+    "netR": 62.2,
+    "pf": 7.665,
+    "winRate": 0.448,
+    "expR": 2.1449,
+    "maxDDR": 4.09,
+    "sharpeTrade": 0.4055,
+    "tStat": 2.18,
+    "tradesPerYear": 5.8,
+    "retPct": 31.1,
+    "maxDDPct": 2.04,
+    "avgBars": 23.1,
+    "semMaiorR": 41.08,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 5.229,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "n": 14,
+    "adx": 15,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 248,
+    "netR": 130.95,
+    "pf": 2.358,
+    "winRate": 0.335,
+    "expR": 0.528,
+    "maxDDR": 10.8,
+    "sharpeTrade": 0.1867,
+    "tStat": 2.94,
+    "tradesPerYear": 49.6,
+    "retPct": 65.48,
+    "maxDDPct": 5.4,
+    "avgBars": 18.2,
+    "semMaiorR": 103.93,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 2.244,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 21,
+    "adx": 22,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 74,
+    "netR": 61.34,
+    "pf": 3.238,
+    "winRate": 0.392,
+    "expR": 0.8289,
+    "maxDDR": 5.14,
+    "sharpeTrade": 0.22,
+    "tStat": 1.89,
+    "tradesPerYear": 14.8,
+    "retPct": 30.67,
+    "maxDDPct": 2.57,
+    "avgBars": 17.0,
+    "semMaiorR": 37.91,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 3.212,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "n": 14,
+    "adx": 18,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 299,
+    "netR": 143.92,
+    "pf": 2.327,
+    "winRate": 0.341,
+    "expR": 0.4814,
+    "maxDDR": 12.15,
+    "sharpeTrade": 0.1741,
+    "tStat": 3.01,
+    "tradesPerYear": 59.8,
+    "retPct": 71.96,
+    "maxDDPct": 6.08,
+    "avgBars": 14.8,
+    "semMaiorR": 116.91,
+    "anosPositivos": 5,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 2.103,
+   "robust": true,
+   "eligible": true
+  }
+ ],
+ "selected": {
+  "tf": "D1",
+  "params": {
+   "n": 21,
+   "adx": 15,
+   "k": 2.0,
+   "side": "both"
+  },
+  "development": {
+   "trades": 51,
+   "netR": 66.66,
+   "pf": 5.141,
+   "winRate": 0.412,
+   "expR": 1.3071,
+   "maxDDR": 3.79,
+   "sharpeTrade": 0.3136,
+   "tStat": 2.24,
+   "tradesPerYear": 10.2,
+   "retPct": 33.33,
+   "maxDDPct": 1.89,
+   "avgBars": 22.7,
+   "semMaiorR": 45.54,
+   "anosPositivos": 4,
+   "anosTotal": 5
+  },
+  "neighborMedianPF": 4.2,
+  "deflatedSharpe": 0.97,
+  "validation": {
+   "base": {
+    "trades": 19,
+    "netR": -1.17,
+    "pf": 0.901,
+    "winRate": 0.263,
+    "expR": -0.0615,
+    "maxDDR": 5.66,
+    "sharpeTrade": -0.0411,
+    "tStat": -0.18,
+    "tradesPerYear": 9.5,
+    "retPct": -0.58,
+    "maxDDPct": 2.83,
+    "avgBars": 27.3,
+    "semMaiorR": -5.24
+   },
+   "stress": {
+    "trades": 19,
+    "netR": -1.53,
+    "pf": 0.874,
+    "winRate": 0.263,
+    "expR": -0.0805,
+    "maxDDR": 5.85,
+    "sharpeTrade": -0.0538,
+    "tStat": -0.23,
+    "tradesPerYear": 9.5,
+    "retPct": -0.77,
+    "maxDDPct": 2.92,
+    "avgBars": 27.3,
+    "semMaiorR": -5.59
+   },
+   "passed": false
+  }
+ },
+ "curves": {
+  "development": [
+   [
+    "2016-01-15",
+    -1.03
+   ],
+   [
+    "2016-03-06",
+    -1.35
+   ],
+   [
+    "2016-03-19",
+    -1.71
+   ],
+   [
+    "2016-03-21",
+    -1.89
+   ],
+   [
+    "2016-04-11",
+    -2.06
+   ],
+   [
+    "2016-04-18",
+    -1.61
+   ],
+   [
+    "2016-04-20",
+    -2.68
+   ],
+   [
+    "2016-05-21",
+    -3.12
+   ],
+   [
+    "2016-06-08",
+    4.67
+   ],
+   [
+    "2016-07-23",
+    4.45
+   ],
+   [
+    "2016-09-04",
+    5.42
+   ],
+   [
+    "2016-09-22",
+    4.88
+   ],
+   [
+    "2016-10-08",
+    4.44
+   ],
+   [
+    "2016-12-25",
+    22.01
+   ],
+   [
+    "2017-05-06",
+    24.67
+   ],
+   [
+    "2017-07-11",
+    24.09
+   ],
+   [
+    "2017-09-15",
+    25.12
+   ],
+   [
+    "2017-09-25",
+    24.95
+   ],
+   [
+    "2017-12-09",
+    46.07
+   ],
+   [
+    "2018-01-10",
+    45.06
+   ],
+   [
+    "2018-01-16",
+    44.05
+   ],
+   [
+    "2018-02-18",
+    44.18
+   ],
+   [
+    "2018-03-02",
+    43.55
+   ],
+   [
+    "2018-04-21",
+    43.78
+   ],
+   [
+    "2018-05-11",
+    42.76
+   ],
+   [
+    "2018-07-18",
+    44.15
+   ],
+   [
+    "2018-08-28",
+    43.45
+   ],
+   [
+    "2018-09-22",
+    42.88
+   ],
+   [
+    "2018-11-02",
+    43.34
+   ],
+   [
+    "2018-11-14",
+    42.28
+   ],
+   [
+    "2019-02-19",
+    47.47
+   ],
+   [
+    "2019-04-10",
+    52.93
+   ],
+   [
+    "2019-06-28",
+    55.83
+   ],
+   [
+    "2019-08-15",
+    55.46
+   ],
+   [
+    "2019-08-17",
+    55.21
+   ],
+   [
+    "2019-09-03",
+    55.0
+   ],
+   [
+    "2019-09-20",
+    55.07
+   ],
+   [
+    "2019-09-23",
+    54.73
+   ],
+   [
+    "2019-11-09",
+    53.98
+   ],
+   [
+    "2019-11-12",
+    53.6
+   ],
+   [
+    "2020-01-07",
+    54.68
+   ],
+   [
+    "2020-02-27",
+    54.48
+   ],
+   [
+    "2020-03-07",
+    54.04
+   ],
+   [
+    "2020-03-08",
+    53.69
+   ],
+   [
+    "2020-04-24",
+    55.49
+   ],
+   [
+    "2020-06-28",
+    57.22
+   ],
+   [
+    "2020-09-04",
+    59.39
+   ],
+   [
+    "2020-09-16",
+    58.74
+   ],
+   [
+    "2020-10-10",
+    58.09
+   ],
+   [
+    "2020-10-24",
+    61.09
+   ],
+   [
+    "2021-01-01",
+    66.66
+   ]
+  ],
+  "validation": [
+   [
+    "2021-01-22",
+    -1.01
+   ],
+   [
+    "2021-04-22",
+    1.72
+   ],
+   [
+    "2021-05-12",
+    0.7
+   ],
+   [
+    "2021-07-27",
+    2.26
+   ],
+   [
+    "2021-09-20",
+    1.24
+   ],
+   [
+    "2021-10-01",
+    0.22
+   ],
+   [
+    "2021-11-19",
+    -0.34
+   ],
+   [
+    "2021-11-23",
+    -0.94
+   ],
+   [
+    "2022-02-08",
+    0.61
+   ],
+   [
+    "2022-02-16",
+    0.36
+   ],
+   [
+    "2022-03-01",
+    -0.66
+   ],
+   [
+    "2022-03-04",
+    -1.68
+   ],
+   [
+    "2022-03-25",
+    -2.38
+   ],
+   [
+    "2022-04-11",
+    -3.4
+   ],
+   [
+    "2022-08-14",
+    0.67
+   ],
+   [
+    "2022-08-18",
+    0.11
+   ],
+   [
+    "2022-10-26",
+    -0.91
+   ],
+   [
+    "2022-11-08",
+    -1.95
+   ],
+   [
+    "2023-01-01",
+    -1.17
+   ]
+  ]
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}
