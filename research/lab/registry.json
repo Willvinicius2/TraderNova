@@ -1888,6 +1888,300 @@
     "https://www.metrotrade.com/what-is-the-80-rule-in-futures-trading/",
     "https://www.marketcalls.in/market-profile/market-profile-how-to-play-80-percentage-rule.html"
    ]
+  },
+  {
+   "id": "L30_td_setup9_r1",
+   "name": "TD Sequential (DeMark): setup 9 a favor da tendência SMA",
+   "family": "reversao",
+   "coreRule": "Setup de compra: depois de uma virada de preço baixista (candle anterior com fech > fech de 4 candles antes e o atual com fech < fech[4]), 9 fechamentos seguidos menores que o fechamento de 4 candles antes; qualquer fech >= fech[4] zera a contagem. Perfeição (DeMark): mínima do candle 8 ou do 9 <= mínimas dos candles 6 e 7. Setup de venda no espelho (máximas do 8 ou 9 >= máximas do 6 e 7). Compra no fechamento do candle 9 do setup de compra (perfect=1 exige perfeição); vende (side=both) no 9 do setup de venda. Saída por tempo (hold candles) ou ao completar o setup oposto. Stop 'td' = TD Risk Level de Perl/DeMark: menor mínima do setup menos o range verdadeiro desse candle (venda: maior máxima + range), com piso de 0,5*ATR14; 'atr2'/'atr3' = k*ATR14. Sem countdown 13. Refinamento r1: setup de compra só vale com fech > SMA(trend) e o de venda com fech < SMA(trend).",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_RESERVA",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://www.luxalgo.com/library/concept/td-sequential/",
+    "https://www.mql5.com/en/blogs/post/750147",
+    "Thomas R. DeMark, The New Science of Technical Analysis (Wiley, 1994); Jason Perl, DeMark Indicators (Bloomberg, 2008)"
+   ]
+  },
+  {
+   "id": "L21_kama",
+   "name": "Kaufman KAMA: entrada na virada da KAMA com filtro de Efficiency Ratio",
+   "family": "tendencia",
+   "coreRule": "ER = |fech - fech[n]| / soma(|Δfech|, n); SC = (ER*(2/3 - 2/31) + 2/31)^2; KAMA = KAMA[1] + SC*(fech - KAMA[1]). Virada para cima (regra de filtro de Kaufman): KAMA sobe mais que f x desvio-padrão(ΔKAMA, 20) acima da mínima da KAMA desde a última virada para baixo (f=0: qualquer subida). Compra na virada para cima se ER(n) >= er_min; vende (both) na virada para baixo com o mesmo filtro. Sai na virada oposta (inverte se 'both' e o filtro de ER deixar). Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/kaufmans-adaptive-moving-average-kama",
+    "https://ta-lib.org/functions/er.html",
+    "Perry J. Kaufman, Smarter Trading (1995) / Trading Systems and Methods: regra de filtro da AMA (virada maior que f x desvio-padrão das variações da AMA)"
+   ]
+  },
+  {
+   "id": "L22_linreg_slope",
+   "name": "Linear Regression Slope: cruzamento de limiar da inclinação normalizada",
+   "family": "tendencia",
+   "coreRule": "Inclinação b da regressão linear de mínimos quadrados do fechamento nos últimos n candles; normalizada s = b*n/ATR14 (subida da reta na janela, em ATRs, para servir em qualquer preço). StockCharts: inclinação positiva = alta, cruzamento do zero = mudança de tendência. Compra quando s cruza acima de +thr (thr=0: cruzamento do zero); vende (both) quando cruza abaixo de -thr. Sai da compra quando s cruza abaixo de 0 (venda: acima de 0). Sem stop na fonte: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/slope",
+    "https://toslc.thinkorswim.com/center/reference/Tech-Indicators/studies-library/G-L/LinearRegressionSlope"
+   ]
+  },
+  {
+   "id": "L23_mama_fama",
+   "name": "Ehlers MAMA/FAMA: cruzamento MAMA x FAMA",
+   "family": "tendencia",
+   "coreRule": "Preço (máx+mín)/2. Transformada de Hilbert de Ehlers (Smooth 4-3-2-1, Detrender, I1/Q1, jI/jQ, discriminador homódino) dá o período do ciclo e a fase = atan(Q1/I1); DeltaPhase = max(fase[1]-fase, 1); alpha = max(fast/DeltaPhase, slow) (máx. fast). MAMA = alpha*preço + (1-alpha)*MAMA[1]; FAMA = 0,5*alpha*MAMA + (1-0,5*alpha)*FAMA[1]. Ehlers: o cruzamento MAMA/FAMA é o sistema. Compra quando MAMA cruza acima da FAMA; vende (both) quando cruza abaixo; sai/inverte no cruzamento oposto. Sem stop no original: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "John F. Ehlers, 'MESA Adaptive Moving Averages', Technical Analysis of Stocks & Commodities, set/2001 (código EasyLanguage do autor)",
+    "https://prorealcode.com/prorealtime-indicators/john-ehlers-mama-the-mother-of-adaptive-moving-average",
+    "https://www.luxalgo.com/library/indicator/qF12FAVo-mama-ehlers-mesa-adaptive-moving-average/",
+    "/home/user/labdata/pine/deepentropy_lightweight-charts-indicators/src/community/mama-fama.ts (porte do Pine 'MAMA - FAMA (Ehlers) [KN]')"
+   ]
+  },
+  {
+   "id": "L24_tii",
+   "name": "Trend Intensity Index (M. H. Pee): cruzamento dos níveis extremos",
+   "family": "tendencia",
+   "coreRule": "MA = SMA(fech, P) (Pee: P=60); nos últimos P/2 candles, SDPOS = soma de (fech-MA) quando positivo, SDNEG = soma de (MA-fech) quando positivo; TII = 100*SDPOS/(SDPOS+SDNEG). Linnsoft: compra quando TII cruza acima de 80, vende quando cruza abaixo de 20, fica até o sinal oposto. Grade: nível = 70/80/90 (venda em 100-nível); saída 'oposto' (sinal oposto, regra da fonte) ou '50' (TII volta a cruzar 50). Sem stop na fonte: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://www.traders.com/Documentation/FEEDbk_docs/2002/06/Abstracts_new/Pee/pee.html",
+    "https://linnsoft.com/techind/trend-intensity-index-tii",
+    "https://c.mql5.com/forextsd/forum/75/trend_intensity_index_-_m.h.pee.pdf"
+   ]
+  },
+  {
+   "id": "L25_coppock",
+   "name": "Coppock Curve: cruzamento da linha zero",
+   "family": "momento",
+   "coreRule": "Coppock = WMA(10) de [ROC(14) + ROC(11)] (Coppock, períodos mensais no original; aqui todos os períodos multiplicados por 'scale' no tempo gráfico testado). StockCharts: compra quando a curva cruza de negativo para positivo; Coppock não usava sinal de venda, mas muitos analistas usam o cruzamento abaixo de zero para sair (side=long) ou vender (side=both). Filtro de regime opcional: compra só com fechamento > EMA(trend), venda só abaixo (0 = sem filtro). O cruzamento oposto sempre fecha. Sem stop no original: stop de proteção k*ATR14. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/coppock-curve",
+    "https://www.luxalgo.com/blog/coppock-curve-long-term-momentum-for-market-direction/"
+   ]
+  },
+  {
+   "id": "L26_kst",
+   "name": "Know Sure Thing (Pring): KST cruza a linha de sinal",
+   "family": "momento",
+   "coreRule": "KST diário de Pring: KST = 1*SMA10(ROC10) + 2*SMA10(ROC15) + 3*SMA10(ROC20) + 4*SMA15(ROC30); sinal = SMA9(KST) (todos os períodos multiplicados por 'scale'). Compra quando o KST cruza acima do sinal (histograma cruza acima de zero); vende (side=both) quando cruza abaixo; o cruzamento oposto sempre fecha. Filtro opcional 'zero' de Pring (KST acima de zero confirma alta): zf=1 exige KST>0 na compra e KST<0 na venda (cruzamento a favor da tendência do próprio KST). Filtro de regime opcional EMA(trend). Sem stop no original: stop de proteção k*ATR14. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://www.optuma.com/kb/tools/price/pring-know-sure-thing-kst",
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/know-sure-thing-kst (não abriu; citado pelo nome)",
+    "Martin Pring, 'Technical Analysis Explained' (KST de curto prazo/diário)"
+   ]
+  },
+  {
+   "id": "L27_trix",
+   "name": "TRIX: cruzamento da linha de sinal ou do zero",
+   "family": "momento",
+   "coreRule": "StockCharts: E3 = EMA(n) de EMA(n) de EMA(n) do fechamento; TRIX = variação % de 1 candle de E3; sinal = EMA9(TRIX). trig=signal: compra quando TRIX cruza acima do sinal, vende (side=both) quando cruza abaixo. trig=zero: compra quando TRIX cruza acima de zero (E3 passa a subir), vende quando cruza abaixo. O cruzamento oposto sempre fecha. Filtro de regime opcional EMA(trend). Sem stop na fonte: stop de proteção k*ATR14. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/trix",
+    "https://rdrr.io/cran/TTR/man/TRIX.html"
+   ]
+  },
+  {
+   "id": "L28_ultimate_osc_r2",
+   "name": "Ultimate Oscillator: fundo/topo mais alto após nível lv + cruzamento de 50 (Twiggs), saídas de Williams",
+   "family": "reversao",
+   "coreRule": "UO de Williams (7/14/28 x 'scale'). Compra (Twiggs): depois de o UO cair abaixo de lv (30 no original) (guarda o menor valor desse mergulho), um novo fundo do UO (pivô com 2 candles de cada lado, conhecido 2 candles depois) mais alto que esse menor valor arma o sinal; compra quando o UO cruza acima de 50 depois desse fundo; se o 2º fundo já estiver acima de 50, compra quando o UO sobe 10 pontos a partir dele. Se o UO voltar abaixo do 1º fundo, o mergulho recomeça. Venda espelhada (acima de 100-lv, topo mais baixo, cruza abaixo de 50). Saídas de Williams: compra fecha com UO > 70 ou, depois de passar de 50, UO < 45; venda fecha com UO < 30 ou UO > 65; sinal oposto inverte. Filtro de regime opcional: compra só com fechamento > EMA(trend), venda só abaixo. Stop k*ATR14. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://www.incrediblecharts.com/indicators/ultimate-oscillator.php",
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ultimate-oscillator"
+   ]
+  },
+  {
+   "id": "L29_demarker",
+   "name": "DeMarker (DeMark): saída das zonas 0,3/0,7",
+   "family": "oscilador",
+   "coreRule": "DeMax = máx - máx[1] se positivo, senão 0; DeMin = mín[1] - mín se positivo, senão 0; DeM = SMA(DeMax,n)/(SMA(DeMax,n)+SMA(DeMin,n)). Zonas de DeMark: sobrevenda < lo (0,3), sobrecompra > 1-lo (0,7). Compra quando o DeM sai da sobrevenda (cruza de volta acima de lo); vende (side=both) quando sai da sobrecompra (cruza abaixo de 1-lo). Saída 'opp': compra sai quando o DeM sai da sobrecompra (e vice-versa, com inversão); saída 'mid': compra sai quando o DeM cruza abaixo de 0,5 (momento virou) ou quando sai da sobrecompra; venda no espelho. Fonte sem stop fixo (sugere estrutura de preço): stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://capital.com/en-gb/learn/technical-analysis/demarker-indicator",
+    "https://roboforex.com/blog/education/defining-the-market-state-and-possible-reversals-with-demarker-indicator/",
+    "https://www.tradingview.com/script/CF1kNGYo-DeMarker-DeM",
+    "Thomas R. DeMark, The New Science of Technical Analysis (Wiley, 1994)"
+   ]
+  },
+  {
+   "id": "L31_laguerre_rsi",
+   "name": "Laguerre RSI (Ehlers): cruzamento de 0,2/0,8",
+   "family": "oscilador",
+   "coreRule": "Filtro de Laguerre de 4 estágios no fechamento: L0 = (1-g)*C + g*L0[1]; L1 = -g*L0 + L0[1] + g*L1[1]; L2 = -g*L1 + L1[1] + g*L2[1]; L3 = -g*L2 + L2[1] + g*L3[1]. CU = soma das diferenças positivas L0-L1, L1-L2, L2-L3; CD = soma das negativas; LRSI = CU/(CU+CD). Regra de Ehlers: compra quando o LRSI cruza acima de lo (0,2) e vende quando cruza abaixo de 1-lo (0,8). Saída 'opp': a compra sai no sinal de venda (cruza abaixo de 1-lo; inverte se side=both); 'mid': sai também quando o LRSI cruza 0,5 contra a posição. Sem stop na fonte: stop de proteção k*ATR14.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://backtrader.readthedocs.io/en/latest/_modules/backtrader/indicators/lrsi.html",
+    "https://motivewave.com/studies/laguerre_rsi.htm",
+    "https://www.luxalgo.com/library/indicator/w0hoT58L-laguerre-rsi/",
+    "John F. Ehlers, Cybernetic Analysis for Stocks and Futures (Wiley, 2004), cap. 'Time Warp - Without Space Travel'",
+    "/home/user/labdata/pine/deepentropy_lightweight-charts-indicators/src/community/laguerre-rsi.ts (TheLark, laguerre RSI v4)"
+   ]
+  },
+  {
+   "id": "L32_zscore_revert_r2",
+   "name": "Z-score curto contra a média (D1/H4): entra no extremo, sai na média",
+   "family": "reversao",
+   "coreRule": "z = (fech - SMA(fech,n))/desvio-padrão(fech,n). Compra quando z cruza abaixo de -zin (entra no extremo, sem esperar voltar para dentro da banda, diferente do G3); vende (side=both) quando z cruza acima de +zin. Sai na média: a compra sai quando z >= 0 e a venda quando z <= 0. Stop de proteção k*ATR14 (a fonte usa stop percentual fixo; aqui ATR para servir a vários tempos gráficos). Refinamento r2: só H4/D1, n de 10 a 30 e zin de 1,0 a 2,0.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://it.tradingview.com/script/ymvBzYSw-Z-Score-Mean-Reversion-Strategy",
+    "https://doc.stocksharp.com/en/api-examples/0218_ZScore_Reversal",
+    "Definição clássica: z = (preço - média)/desvio-padrão (reversão à média; ver Ernest Chan, Algorithmic Trading, Wiley 2013, cap. 2)"
+   ]
+  },
+  {
+   "id": "L33_chandelier",
+   "name": "Chandelier Exit (LeBeau) como sistema",
+   "family": "tendencia",
+   "coreRule": "Chandelier Exit de LeBeau (StockCharts): linha de compra = maior máxima (ou maior fechamento, 'Use Close' do script everget) de n candles - mult*ATR(n); linha de venda = menor mínima (ou fechamento) de n + mult*ATR(n). Como no Pine everget, as linhas só apertam enquanto o fechamento anterior está do lado certo, e a direção vira para alta quando o fechamento passa acima da linha de venda anterior e para baixa quando fecha abaixo da linha de compra anterior. Compra na virada para alta, vende (side=both) na virada para baixa. exit='flip': sai/inverte só na virada (stop inicial = distância até a linha do candle de sinal, mínimo 0,5*ATR14); exit='trail': a própria linha Chandelier é o stop móvel (uso original de LeBeau, stop tocado no intradiário) e não há reentrada até a próxima virada. Diferença do L01 Supertrend: a âncora é o extremo de n candles (máxima mais alta / mínima mais baixa), não o meio (máx+mín)/2 do candle atual, e a virada exige cruzar a linha OPOSTA; no modo trail sai pela linha do mesmo lado sem inverter. Diferença do TV10 SAR: distância fixa em ATR do extremo, sem fator de aceleração que aperta com o tempo.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/chandelier-exit",
+    "https://www.tradingview.com/script/AqXxNS7j-Chandelier-Exit/ (everget; Pine em /home/user/labdata/pine/everget_tradingview-pinescript-indicators e porte em deepentropy .../community/chandelier-exit.ts)",
+    "https://corporatefinanceinstitute.com/resources/equities/chandelier-exit/"
+   ]
+  },
+  {
+   "id": "L34_wide_range_bar",
+   "name": "Reversão após Wide Range Bar (exaustão)",
+   "family": "reversao",
+   "coreRule": "Wide Range Bar (definição da LuxAlgo): range (máx-mín) > k x média do range dos 20 candles anteriores; a direção vem da posição do fechamento (CLV = ((fech-mín)-(máx-fech))/range): WRB de baixa fecha no terço de baixo (CLV <= -0,5) e abaixo da abertura; WRB de alta no espelho. Uso de reversão descrito pela fonte: WRB no fim de um movimento estendido sinaliza exaustão. Compra após WRB de baixa (venda após WRB de alta, side=both). ctx='ext' exige que o WRB vá a favor de um movimento já estendido (fechamento abaixo da SMA50 para WRB de baixa, acima para de alta); ctx='none' não filtra. confirm='imediato' entra na abertura seguinte ao WRB; 'confirmado' espera o candle seguinte fechar no sentido da reversão (fech > abert e > fechamento do WRB na compra) e entra na abertura depois dele (versão fechada da sugestão 'esperar o candle seguinte segurar'). Stop além do extremo do WRB (e do candle de confirmação) + 0,25*ATR14, mínimo 0,5*ATR14; alvo target_r em R; saída por tempo em 10 candles. Diferente de TV06 outside bar, TV66 pin bar e TV64 three bar: o gatilho é só o tamanho anormal do range e o fechamento no extremo, sem padrão de dois/três candles.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://www.luxalgo.com/library/concept/wide-range-bar/",
+    "https://dotnettutorials.net/lesson/wrb-trading-strategy/"
+   ]
+  },
+  {
+   "id": "L35_market_structure",
+   "name": "Market Structure (Higher High / Higher Low, quebra de estrutura)",
+   "family": "tendencia",
+   "coreRule": "Pivôs de swing confirmados com atraso: topo em j se a máxima de j é maior que as p anteriores e >= que as p seguintes, só conhecido em j+p (fundo no espelho); sem repintura. Estrutura de alta: o último topo confirmado é maior que o anterior (HH) e o fundo recém-confirmado é maior que o anterior (HL); cycles=2 exige também o par anterior ascendente (dois ciclos HH/HL, como a fonte). Entrada (daytradingtoolkit): mode='confirm' compra na abertura após o candle que confirma o HL, se o fechamento ainda está acima dele; mode='trigger' arma uma compra acima da máxima do candle de confirmação (aproximada por fechamento acima dela, entrada na abertura seguinte) por até p candles, cancelada se fechar abaixo do HL. Stop logo abaixo do HL (- 0,25*ATR14, mínimo 0,5*ATR14). Saída: quebra de estrutura = fechamento abaixo do último fundo confirmado (que sobe a cada novo HL, servindo de stop móvel); alvo opcional target_r=2 (mínimo 2:1 da fonte; 0 = sem alvo). Venda (side=both) no espelho com LH/LL. Diferente do TV33 SMC BOS: lá a entrada é o rompimento (cruzamento) de um topo de swing; aqui a entrada é no recuo, quando o fundo mais alto se confirma dentro de uma sequência HH/HL já formada, e a saída é a perda do fundo.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://daytradingtoolkit.com/strategies/higher-high-higher-low-market-structure-strategy",
+    "https://crosstrade.io/learn/price-action/market-structure",
+    "Dow (teoria de Dow: tendência de alta = topos e fundos ascendentes); pivôs de swing como ta.pivothigh/ta.pivotlow do Pine"
+   ]
+  },
+  {
+   "id": "L36_hurst_switch",
+   "name": "Hurst exponent como interruptor tendência/reversão",
+   "family": "regime",
+   "coreRule": "Hurst por R/S clássico (como o indicador mql5): retornos log dos últimos W candles (só passado, até o fechamento de i), blocos de 8, 16, 32... (até W/2), média de R/S dos blocos não sobrepostos que terminam em i, H = inclinação de log(R/S) contra log(tamanho), suavizado por EMA 5. Correção de viés: o R/S em janela curta dá ~0,57 num passeio aleatório, então subtraímos a mediana do mesmo estimador em passeio aleatório gaussiano simulado (semente fixa, sem usar o BTC) e somamos 0,5. Regime: H >= 0,5+band = tendência; H <= 0,5-band = reversão; no meio não abre nada (band=0,05 é o 0,55/0,45 publicado). Regras de cada regime (clássicas, não ajustadas ao resultado): tendência = rompimento de Donchian (fechamento acima da máxima de N candles anteriores compra, abaixo da mínima vende), saída no rompimento contrário de N/2 candles (exceto se o regime virou reversão); reversão = z-score do fechamento contra a SMA(N) <= -2 compra, >= +2 vende, alvo na SMA. Stop k*ATR14 nos dois regimes. side=long só compra.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://www.mql5.com/en/code/76439 (HurstExponentRegimeSwitch: R/S em 200 candles, bloco mínimo 8, 6 dobras, EMA 5, tendência >= 0,55, reversão <= 0,45)",
+    "https://www.luxalgo.com/library/concept/hurst-exponent/ (H > 0,5 favorece seguir tendência, H < 0,5 favorece reversão, perto de 0,5 ficar de fora)",
+    "https://backtrader.readthedocs.io/en/latest/_modules/backtrader/indicators/hurst.html",
+    "Hurst (1951); Mandelbrot & Wallis (1969), análise R/S; Anis & Lloyd (1976) sobre o viés do R/S em amostras curtas"
+   ]
+  },
+  {
+   "id": "L28_ultimate_osc",
+   "name": "Ultimate Oscillator (Williams): divergência confirmada + rompimento, saídas 70/45 e 30/65",
+   "family": "reversao",
+   "coreRule": "UO = 100*(4*A7 + 2*A14 + A28)/7, A_n = soma_n(BP)/soma_n(TR), BP = F - min(m, F[1]), TR = max(M, F[1]) - min(m, F[1]) (períodos x 'scale'). Compra (Williams): divergência de alta entre dois fundos de preço consecutivos (pivô de mínima com r candles de cada lado, só conhecido r candles depois): mínima do 2º fundo < do 1º, mínimo do UO em volta do 2º fundo > em volta do 1º, UO abaixo de 30 no 1º fundo, fundos separados por no máximo 'gap' candles; a partir da confirmação, compra quando o UO passa acima da máxima do UO entre os dois fundos (cancela se o preço perder a mínima do 2º fundo ou após 'gap' candles). Venda espelhada (topos, UO acima de 70 no 1º topo, UO cai abaixo da mínima entre os topos). Saídas de Williams: compra fecha com UO > 70 ou, depois de passar de 50, UO < 45; venda fecha com UO < 30 ou UO > 65; sinal oposto inverte. O '50 depois da entrada' é contado desde o último sinal de compra. Stop de proteção k*ATR14 (o original não tem). Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ultimate-oscillator",
+    "https://www.incrediblecharts.com/indicators/ultimate-oscillator.php",
+    "https://en.wikipedia.org/wiki/Ultimate_oscillator",
+    "Larry Williams, 'The Ultimate Oscillator', Technical Analysis of Stocks & Commodities, 1985"
+   ]
+  },
+  {
+   "id": "L28_ultimate_osc_r1",
+   "name": "Ultimate Oscillator: fundo/topo mais alto + cruzamento de 50 (Twiggs), saídas de Williams",
+   "family": "reversao",
+   "coreRule": "UO de Williams (7/14/28 x 'scale'). Compra (Twiggs): depois de o UO cair abaixo de 30 (guarda o menor valor desse mergulho), um novo fundo do UO (pivô com r candles de cada lado, conhecido r candles depois) mais alto que esse menor valor arma o sinal; compra quando o UO cruza acima de 50 depois desse fundo; se o 2º fundo já estiver acima de 50, compra quando o UO sobe 10 pontos a partir dele. Se o UO voltar abaixo do 1º fundo, o mergulho recomeça. Venda espelhada (acima de 70, topo mais baixo, cruza abaixo de 50). Saídas de Williams: compra fecha com UO > 70 ou, depois de passar de 50, UO < 45; venda fecha com UO < 30 ou UO > 65; sinal oposto inverte. Filtro de regime opcional: compra só com fechamento > EMA(trend), venda só abaixo. Stop k*ATR14. Entrada na abertura seguinte.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://www.incrediblecharts.com/indicators/ultimate-oscillator.php",
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ultimate-oscillator"
+   ]
+  },
+  {
+   "id": "L30_td_setup9",
+   "name": "TD Sequential (DeMark): setup 9 perfeito",
+   "family": "reversao",
+   "coreRule": "Setup de compra: depois de uma virada de preço baixista (candle anterior com fech > fech de 4 candles antes e o atual com fech < fech[4]), 9 fechamentos seguidos menores que o fechamento de 4 candles antes; qualquer fech >= fech[4] zera a contagem. Perfeição (DeMark): mínima do candle 8 ou do 9 <= mínimas dos candles 6 e 7. Setup de venda no espelho (máximas do 8 ou 9 >= máximas do 6 e 7). Compra no fechamento do candle 9 do setup de compra (perfect=1 exige perfeição); vende (side=both) no 9 do setup de venda. Saída por tempo (hold candles) ou ao completar o setup oposto. Stop 'td' = TD Risk Level de Perl/DeMark: menor mínima do setup menos o range verdadeiro desse candle (venda: maior máxima + range), com piso de 0,5*ATR14; 'atr2'/'atr3' = k*ATR14. Sem countdown 13.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://www.luxalgo.com/library/concept/td-sequential/",
+    "https://www.mql5.com/en/blogs/post/750147",
+    "Thomas R. DeMark, The New Science of Technical Analysis (Wiley, 1994); Jason Perl, DeMark Indicators (Bloomberg, 2008)"
+   ]
+  },
+  {
+   "id": "L32_zscore_revert",
+   "name": "Z-score contra a média: entra no extremo, sai na média",
+   "family": "reversao",
+   "coreRule": "z = (fech - SMA(fech,n))/desvio-padrão(fech,n). Compra quando z cruza abaixo de -zin (entra no extremo, sem esperar voltar para dentro da banda, diferente do G3); vende (side=both) quando z cruza acima de +zin. Sai na média: a compra sai quando z >= 0 e a venda quando z <= 0. Stop de proteção k*ATR14 (a fonte usa stop percentual fixo; aqui ATR para servir a vários tempos gráficos).",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://it.tradingview.com/script/ymvBzYSw-Z-Score-Mean-Reversion-Strategy",
+    "https://doc.stocksharp.com/en/api-examples/0218_ZScore_Reversal",
+    "Definição clássica: z = (preço - média)/desvio-padrão (reversão à média; ver Ernest Chan, Algorithmic Trading, Wiley 2013, cap. 2)"
+   ]
+  },
+  {
+   "id": "L32_zscore_revert_r1",
+   "name": "Z-score contra a média em regime lateral (ER de Kaufman)",
+   "family": "reversao",
+   "coreRule": "z = (fech - SMA(fech,n))/desvio-padrão(fech,n). Compra quando z cruza abaixo de -zin (entra no extremo, sem esperar voltar para dentro da banda, diferente do G3); vende (side=both) quando z cruza acima de +zin. Sai na média: a compra sai quando z >= 0 e a venda quando z <= 0. Stop de proteção k*ATR14 (a fonte usa stop percentual fixo; aqui ATR para servir a vários tempos gráficos). Refinamento r1: só entra se ER(n) = |fech - fech[n]| / soma(|fech - fech[1]|, n) < er.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 8",
+   "sources": [
+    "https://it.tradingview.com/script/ymvBzYSw-Z-Score-Mean-Reversion-Strategy",
+    "https://doc.stocksharp.com/en/api-examples/0218_ZScore_Reversal",
+    "Definição clássica: z = (preço - média)/desvio-padrão (reversão à média; ver Ernest Chan, Algorithmic Trading, Wiley 2013, cap. 2)"
+   ]
   }
  ]
 }

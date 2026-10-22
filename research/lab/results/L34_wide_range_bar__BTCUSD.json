@@ -1,0 +1,443 @@
+{
+ "strategy": "L34_wide_range_bar",
+ "name": "Reversão após Wide Range Bar (exaustão)",
+ "family": "reversao",
+ "sources": [
+  "https://www.luxalgo.com/library/concept/wide-range-bar/",
+  "https://dotnettutorials.net/lesson/wrb-trading-strategy/"
+ ],
+ "rule": "Wide Range Bar (definição da LuxAlgo): range (máx-mín) > k x média do range dos 20 candles anteriores; a direção vem da posição do fechamento (CLV = ((fech-mín)-(máx-fech))/range): WRB de baixa fecha no terço de baixo (CLV <= -0,5) e abaixo da abertura; WRB de alta no espelho. Uso de reversão descrito pela fonte: WRB no fim de um movimento estendido sinaliza exaustão. Compra após WRB de baixa (venda após WRB de alta, side=both). ctx='ext' exige que o WRB vá a favor de um movimento já estendido (fechamento abaixo da SMA50 para WRB de baixa, acima para de alta); ctx='none' não filtra. confirm='imediato' entra na abertura seguinte ao WRB; 'confirmado' espera o candle seguinte fechar no sentido da reversão (fech > abert e > fechamento do WRB na compra) e entra na abertura depois dele (versão fechada da sugestão 'esperar o candle seguinte segurar'). Stop além do extremo do WRB (e do candle de confirmação) + 0,25*ATR14, mínimo 0,5*ATR14; alvo target_r em R; saída por tempo em 10 candles. Diferente de TV06 outside bar, TV66 pin bar e TV64 three bar: o gatilho é só o tamanho anormal do range e o fechamento no extremo, sem padrão de dois/três candles.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v4",
+ "strategySha256": "42fcf6a657516e17503e4993d165972f2e968792b8c99fd66ecb8f3fec01a213",
+ "refinement": null,
+ "combinationsTested": 288,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "k": 1.75,
+    "ctx": "none",
+    "confirm": "confirmado",
+    "target_r": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 29,
+    "netR": 6.74,
+    "pf": 1.593,
+    "winRate": 0.586,
+    "expR": 0.2324,
+    "maxDDR": 2.76,
+    "sharpeTrade": 0.1966,
+    "tStat": 1.06,
+    "tradesPerYear": 5.8,
+    "retPct": 3.37,
+    "maxDDPct": 1.38,
+    "avgBars": 6.2,
+    "semMaiorR": 4.76,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.326,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "k": 2.0,
+    "ctx": "ext",
+    "confirm": "confirmado",
+    "target_r": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 35,
+    "netR": 6.65,
+    "pf": 1.396,
+    "winRate": 0.486,
+    "expR": 0.1901,
+    "maxDDR": 4.42,
+    "sharpeTrade": 0.1455,
+    "tStat": 0.86,
+    "tradesPerYear": 7.0,
+    "retPct": 3.33,
+    "maxDDPct": 2.21,
+    "avgBars": 4.8,
+    "semMaiorR": 4.68,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.225,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "k": 2.0,
+    "ctx": "none",
+    "confirm": "confirmado",
+    "target_r": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 24,
+    "netR": 6.5,
+    "pf": 1.786,
+    "winRate": 0.625,
+    "expR": 0.2708,
+    "maxDDR": 2.22,
+    "sharpeTrade": 0.2373,
+    "tStat": 1.16,
+    "tradesPerYear": 4.8,
+    "retPct": 3.25,
+    "maxDDPct": 1.11,
+    "avgBars": 6.5,
+    "semMaiorR": 4.52,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.465,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "k": 2.0,
+    "ctx": "ext",
+    "confirm": "confirmado",
+    "target_r": 1.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 35,
+    "netR": 5.72,
+    "pf": 1.501,
+    "winRate": 0.629,
+    "expR": 0.1634,
+    "maxDDR": 2.88,
+    "sharpeTrade": 0.1882,
+    "tStat": 1.11,
+    "tradesPerYear": 7.0,
+    "retPct": 2.86,
+    "maxDDPct": 1.44,
+    "avgBars": 3.8,
+    "semMaiorR": 4.73,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.168,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "k": 1.75,
+    "ctx": "ext",
+    "confirm": "confirmado",
+    "target_r": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 45,
+    "netR": 5.21,
+    "pf": 1.222,
+    "winRate": 0.444,
+    "expR": 0.1158,
+    "maxDDR": 4.42,
+    "sharpeTrade": 0.0889,
+    "tStat": 0.6,
+    "tradesPerYear": 9.0,
+    "retPct": 2.61,
+    "maxDDPct": 2.21,
+    "avgBars": 5.0,
+    "semMaiorR": 3.24,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.08,
+   "robust": true,
+   "eligible": false
+  }
+ ],
+ "selected": {
+  "tf": "D1",
+  "params": {
+   "k": 2.0,
+   "ctx": "ext",
+   "confirm": "confirmado",
+   "target_r": 2.0,
+   "side": "both"
+  },
+  "development": {
+   "trades": 35,
+   "netR": 6.65,
+   "pf": 1.396,
+   "winRate": 0.486,
+   "expR": 0.1901,
+   "maxDDR": 4.42,
+   "sharpeTrade": 0.1455,
+   "tStat": 0.86,
+   "tradesPerYear": 7.0,
+   "retPct": 3.33,
+   "maxDDPct": 2.21,
+   "avgBars": 4.8,
+   "semMaiorR": 4.68,
+   "anosPositivos": 4,
+   "anosTotal": 5
+  },
+  "neighborMedianPF": 1.225,
+  "deflatedSharpe": 0.0,
+  "validation": {
+   "base": {
+    "trades": 11,
+    "netR": -5.11,
+    "pf": 0.434,
+    "winRate": 0.182,
+    "expR": -0.4643,
+    "maxDDR": 8.0,
+    "sharpeTrade": -0.3855,
+    "tStat": -1.28,
+    "tradesPerYear": 5.5,
+    "retPct": -2.55,
+    "maxDDPct": 4.0,
+    "avgBars": 2.3,
+    "semMaiorR": -7.08
+   },
+   "stress": {
+    "trades": 11,
+    "netR": -5.62,
+    "pf": 0.405,
+    "winRate": 0.182,
+    "expR": -0.511,
+    "maxDDR": 8.41,
+    "sharpeTrade": -0.423,
+    "tStat": -1.4,
+    "tradesPerYear": 5.5,
+    "retPct": -2.81,
+    "maxDDPct": 4.21,
+    "avgBars": 2.3,
+    "semMaiorR": -7.56
+   },
+   "passed": false
+  },
+  "warning": "Deflated Sharpe < 0.5: a escolha no desenvolvimento pode ser sorte entre muitas combinações."
+ },
+ "curves": {
+  "development": [
+   [
+    "2016-01-15",
+    1.95
+   ],
+   [
+    "2016-01-27",
+    2.03
+   ],
+   [
+    "2016-04-24",
+    0.88
+   ],
+   [
+    "2016-05-27",
+    2.79
+   ],
+   [
+    "2016-05-31",
+    1.75
+   ],
+   [
+    "2016-06-21",
+    3.72
+   ],
+   [
+    "2016-10-22",
+    2.55
+   ],
+   [
+    "2016-10-26",
+    1.41
+   ],
+   [
+    "2016-11-01",
+    0.35
+   ],
+   [
+    "2016-12-27",
+    -0.7
+   ],
+   [
+    "2016-12-30",
+    1.19
+   ],
+   [
+    "2017-01-13",
+    2.51
+   ],
+   [
+    "2017-01-23",
+    4.09
+   ],
+   [
+    "2017-03-25",
+    3.07
+   ],
+   [
+    "2017-08-01",
+    2.47
+   ],
+   [
+    "2017-08-07",
+    1.43
+   ],
+   [
+    "2017-09-26",
+    1.69
+   ],
+   [
+    "2017-12-09",
+    3.67
+   ],
+   [
+    "2018-06-12",
+    2.63
+   ],
+   [
+    "2018-06-24",
+    1.59
+   ],
+   [
+    "2018-08-03",
+    3.55
+   ],
+   [
+    "2018-10-15",
+    5.48
+   ],
+   [
+    "2018-12-06",
+    5.03
+   ],
+   [
+    "2019-01-22",
+    4.46
+   ],
+   [
+    "2019-03-07",
+    4.21
+   ],
+   [
+    "2019-05-13",
+    3.19
+   ],
+   [
+    "2019-05-26",
+    2.15
+   ],
+   [
+    "2019-07-01",
+    4.12
+   ],
+   [
+    "2020-01-17",
+    3.02
+   ],
+   [
+    "2020-03-24",
+    3.46
+   ],
+   [
+    "2020-05-07",
+    2.44
+   ],
+   [
+    "2020-05-10",
+    4.4
+   ],
+   [
+    "2020-06-13",
+    4.43
+   ],
+   [
+    "2020-09-15",
+    4.71
+   ],
+   [
+    "2020-11-07",
+    6.65
+   ]
+  ],
+  "validation": [
+   [
+    "2021-01-10",
+    1.97
+   ],
+   [
+    "2021-05-16",
+    0.95
+   ],
+   [
+    "2021-08-03",
+    2.9
+   ],
+   [
+    "2021-10-03",
+    1.83
+   ],
+   [
+    "2021-10-10",
+    0.79
+   ],
+   [
+    "2021-10-19",
+    -0.26
+   ],
+   [
+    "2022-05-11",
+    -1.29
+   ],
+   [
+    "2022-08-26",
+    -2.35
+   ],
+   [
+    "2022-09-16",
+    -3.4
+   ],
+   [
+    "2022-11-21",
+    -4.01
+   ],
+   [
+    "2022-12-19",
+    -5.11
+   ]
+  ]
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

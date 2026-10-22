@@ -1,0 +1,247 @@
+{
+ "strategy": "L30_td_setup9",
+ "name": "TD Sequential (DeMark): setup 9 perfeito",
+ "family": "reversao",
+ "sources": [
+  "https://www.luxalgo.com/library/concept/td-sequential/",
+  "https://www.mql5.com/en/blogs/post/750147",
+  "Thomas R. DeMark, The New Science of Technical Analysis (Wiley, 1994); Jason Perl, DeMark Indicators (Bloomberg, 2008)"
+ ],
+ "rule": "Setup de compra: depois de uma virada de preço baixista (candle anterior com fech > fech de 4 candles antes e o atual com fech < fech[4]), 9 fechamentos seguidos menores que o fechamento de 4 candles antes; qualquer fech >= fech[4] zera a contagem. Perfeição (DeMark): mínima do candle 8 ou do 9 <= mínimas dos candles 6 e 7. Setup de venda no espelho (máximas do 8 ou 9 >= máximas do 6 e 7). Compra no fechamento do candle 9 do setup de compra (perfect=1 exige perfeição); vende (side=both) no 9 do setup de venda. Saída por tempo (hold candles) ou ao completar o setup oposto. Stop 'td' = TD Risk Level de Perl/DeMark: menor mínima do setup menos o range verdadeiro desse candle (venda: maior máxima + range), com piso de 0,5*ATR14; 'atr2'/'atr3' = k*ATR14. Sem countdown 13.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v4",
+ "strategySha256": "3acb6fe9ba541b1cf68d7134bf5a053fa2b7fe54dbd14363ff7f1cf5c1aff49c",
+ "refinement": null,
+ "combinationsTested": 144,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "perfect": 0,
+    "hold": 20,
+    "stop": "td",
+    "side": "long"
+   },
+   "dev": {
+    "trades": 14,
+    "netR": 13.81,
+    "pf": 4.328,
+    "winRate": 0.643,
+    "expR": 0.9863,
+    "maxDDR": 1.1,
+    "sharpeTrade": 0.5159,
+    "tStat": 1.93,
+    "tradesPerYear": 2.8,
+    "retPct": 6.9,
+    "maxDDPct": 0.55,
+    "avgBars": 14.1,
+    "semMaiorR": 8.39,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 3.283,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "perfect": 0,
+    "hold": 13,
+    "stop": "td",
+    "side": "long"
+   },
+   "dev": {
+    "trades": 14,
+    "netR": 12.56,
+    "pf": 4.637,
+    "winRate": 0.643,
+    "expR": 0.8974,
+    "maxDDR": 1.16,
+    "sharpeTrade": 0.4995,
+    "tStat": 1.87,
+    "tradesPerYear": 2.8,
+    "retPct": 6.28,
+    "maxDDPct": 0.58,
+    "avgBars": 10.4,
+    "semMaiorR": 7.14,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 3.579,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "perfect": 0,
+    "hold": 9,
+    "stop": "td",
+    "side": "long"
+   },
+   "dev": {
+    "trades": 14,
+    "netR": 11.03,
+    "pf": 4.455,
+    "winRate": 0.643,
+    "expR": 0.7878,
+    "maxDDR": 1.15,
+    "sharpeTrade": 0.4412,
+    "tStat": 1.65,
+    "tradesPerYear": 2.8,
+    "retPct": 5.51,
+    "maxDDPct": 0.57,
+    "avgBars": 7.9,
+    "semMaiorR": 5.61,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 3.12,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "perfect": 0,
+    "hold": 20,
+    "stop": "atr2",
+    "side": "long"
+   },
+   "dev": {
+    "trades": 13,
+    "netR": 9.96,
+    "pf": 3.7,
+    "winRate": 0.615,
+    "expR": 0.7659,
+    "maxDDR": 1.22,
+    "sharpeTrade": 0.4941,
+    "tStat": 1.78,
+    "tradesPerYear": 2.6,
+    "retPct": 4.98,
+    "maxDDPct": 0.61,
+    "avgBars": 14.0,
+    "semMaiorR": 5.78,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 3.233,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "perfect": 0,
+    "hold": 13,
+    "stop": "atr2",
+    "side": "long"
+   },
+   "dev": {
+    "trades": 14,
+    "netR": 9.39,
+    "pf": 3.579,
+    "winRate": 0.643,
+    "expR": 0.6706,
+    "maxDDR": 1.37,
+    "sharpeTrade": 0.4635,
+    "tStat": 1.73,
+    "tradesPerYear": 2.8,
+    "retPct": 4.69,
+    "maxDDPct": 0.68,
+    "avgBars": 10.2,
+    "semMaiorR": 5.21,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 3.217,
+   "robust": true,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null,
+ "curves": {
+  "development": [
+   [
+    "2017-08-05",
+    3.43
+   ],
+   [
+    "2017-10-04",
+    3.85
+   ],
+   [
+    "2018-02-28",
+    4.61
+   ],
+   [
+    "2018-04-01",
+    3.6
+   ],
+   [
+    "2018-04-17",
+    4.82
+   ],
+   [
+    "2018-08-29",
+    5.85
+   ],
+   [
+    "2018-11-19",
+    4.84
+   ],
+   [
+    "2018-12-31",
+    5.64
+   ],
+   [
+    "2019-08-09",
+    8.0
+   ],
+   [
+    "2019-10-15",
+    7.91
+   ],
+   [
+    "2019-11-25",
+    6.9
+   ],
+   [
+    "2020-01-07",
+    9.41
+   ],
+   [
+    "2020-07-28",
+    14.83
+   ],
+   [
+    "2020-09-03",
+    13.81
+   ]
+  ]
+ }
+}

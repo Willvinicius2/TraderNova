@@ -19,36 +19,36 @@ Quando 1 e 2 acontecerem, avisar o Will na hora.
 ## Estratégias (fontes públicas; uma por item)
 Tendência e momentum
 - [ ] Dual Momentum (Antonacci): momentum absoluto + relativo
-- [ ] Kaufman Efficiency Ratio / KAMA como filtro de tendência com entrada na virada
-- [ ] Linear Regression Slope (inclinação de regressão)
-- [ ] Ehlers MAMA/FAMA
-- [ ] Trend Intensity Index / TII
+- [x] Kaufman Efficiency Ratio / KAMA como filtro de tendência com entrada na virada (rodada 8)
+- [x] Linear Regression Slope (inclinação de regressão) (rodada 8)
+- [x] Ehlers MAMA/FAMA (rodada 8)
+- [x] Trend Intensity Index / TII (rodada 8)
 - [ ] Choppiness Index como interruptor tendência/lateral
-- [ ] Coppock Curve
-- [ ] Know Sure Thing (Pring)
-- [ ] TRIX
+- [x] Coppock Curve (rodada 8)
+- [x] Know Sure Thing (Pring) (rodada 8)
+- [x] TRIX (rodada 8)
 - [ ] Rate of Change com volatilidade-alvo (Moskowitz vol scaling)
 Reversão e osciladores
-- [ ] Ultimate Oscillator (Williams)
-- [ ] DeMarker (DeMark)
-- [ ] TD Sequential (DeMark setup 9)
-- [ ] Laguerre RSI (Ehlers)
-- [ ] Z-score de preço contra média com saída na média
+- [x] Ultimate Oscillator (Williams) (rodada 8)
+- [x] DeMarker (DeMark) (rodada 8)
+- [x] TD Sequential (DeMark setup 9) (rodada 8)
+- [x] Laguerre RSI (Ehlers) (rodada 8)
+- [x] Z-score de preço contra média com saída na média (rodada 8)
 - [ ] Commodity Channel Index de 20 com divergência? (só se não repetir TV23)
 - [ ] Relative Vigor Index
 - [ ] Balance of Power
 Volatilidade e estrutura
-- [ ] Chandelier Exit como sistema (diferente de Supertrend? conferir regra central)
+- [x] Chandelier Exit como sistema (diferente de Supertrend? conferir regra central) (rodada 8)
 - [ ] ATR Channel breakout com filtro de volatilidade em contração (Bollinger Bandwidth percentil)
-- [ ] Gap/reversão após candle de range anormal (Wide Range Bar)
+- [x] Gap/reversão após candle de range anormal (Wide Range Bar) (rodada 8)
 - [ ] Turn of the month / dia do mês no BTC
 - [ ] Efeito fim de semana do BTC (sexta→segunda)
 - [ ] Reversão após queda de N desvios em H1 (crash-buying)
-- [ ] Market Structure (Higher High / Higher Low, quebra de estrutura)
+- [x] Market Structure (Higher High / Higher Low, quebra de estrutura) (rodada 8)
 - [ ] Order block / Fair Value Gap (ICT) com regras fechadas
 - [ ] Ichimoku Kumo breakout (regra diferente do L03? conferir)
 Combinação e regime (só regras publicadas, nada inventado sobre resultado visto)
 - [ ] Filtro de regime pela SMA 200 diária aplicado a uma regra nova de reversão
-- [ ] Hurst exponent como interruptor tendência/reversão
+- [x] Hurst exponent como interruptor tendência/reversão (rodada 8)
 - [ ] Volatility regime (ATR percentil) escolhendo entre rompimento e reversão
 - [ ] Ensemble de votação de 5 indicadores clássicos (Ratings próprios)

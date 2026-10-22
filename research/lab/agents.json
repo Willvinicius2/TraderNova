@@ -207,5 +207,49 @@
    "TV102",
    "TV103"
   ]
+ },
+ {
+  "agente": "r8-tendencia",
+  "rodada": 8,
+  "foco": "FILA.md: tendência adaptativa",
+  "ids": [
+   "L21",
+   "L22",
+   "L23",
+   "L24"
+  ]
+ },
+ {
+  "agente": "r8-momento",
+  "rodada": 8,
+  "foco": "FILA.md: momento clássico",
+  "ids": [
+   "L25",
+   "L26",
+   "L27",
+   "L28"
+  ]
+ },
+ {
+  "agente": "r8-osciladores",
+  "rodada": 8,
+  "foco": "FILA.md: osciladores e reversão",
+  "ids": [
+   "L29",
+   "L30",
+   "L31",
+   "L32"
+  ]
+ },
+ {
+  "agente": "r8-estrutura",
+  "rodada": 8,
+  "foco": "FILA.md: estrutura e regime",
+  "ids": [
+   "L33",
+   "L34",
+   "L35",
+   "L36"
+  ]
  }
 ]
