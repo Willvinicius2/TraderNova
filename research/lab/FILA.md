@@ -16,7 +16,7 @@ Quando 1 e 2 acontecerem, avisar o Will na hora.
 - [ ] Corrigir a classificação de títulos "Bearish … Crossover", separar marcadores de estado e de evento, e preferir o plot gatilho do autor na regra genérica; rodar a triagem de novo como triagem-v2 (contar as regras novas no DSR)
 
 ## Dados (agente de dados, toda rodada até resolver)
-- [ ] ETHUSD horário/minuto em repositório público do GitHub (a rede só deixa clonar via git do github.com)
+- [x] ETHUSD horário (Binance spot pelo espelho S3, 22/10; SOLUSD também)
 - [ ] XAUUSD horário (2010+)
 - [x] EURUSD (2009–2022) e USDJPY (2007–2018) via FX-Data (rodadas 4 e 5)
 - [ ] NAS100 / NDX diário ou horário

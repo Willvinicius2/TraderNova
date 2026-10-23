@@ -251,5 +251,48 @@
    "L35",
    "L36"
   ]
+ },
+ {
+  "agente": "r9-momento",
+  "rodada": 9,
+  "foco": "FILA.md: momento e força",
+  "ids": [
+   "L37",
+   "L38",
+   "L39",
+   "L40"
+  ]
+ },
+ {
+  "agente": "r9-regime",
+  "rodada": 9,
+  "foco": "FILA.md: regime e combinação",
+  "ids": [
+   "L41",
+   "L42",
+   "L43",
+   "L44"
+  ]
+ },
+ {
+  "agente": "r9-calendario",
+  "rodada": 9,
+  "foco": "FILA.md: calendário e reversão",
+  "ids": [
+   "L45",
+   "L46",
+   "L47",
+   "L48"
+  ]
+ },
+ {
+  "agente": "r9-estrutura",
+  "rodada": 9,
+  "foco": "FILA.md: estrutura e rompimento",
+  "ids": [
+   "L49",
+   "L50",
+   "L51"
+  ]
  }
 ]
