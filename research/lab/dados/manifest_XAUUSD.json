@@ -1,0 +1,33 @@
+{
+ "ativo": "XAUUSD",
+ "instrumento_fonte": "XAU/USD 1 minuto de servidor MetaTrader (corretora não identificada), cotação aparentemente bid, volume = ticks",
+ "cadeia_da_fonte": "Kaggle/Hugging Face ZombitX64/xauusd-gold-price-historical-data-2004-2025 (XAU_1m_data.jsonl, campo Date 'AAAA.MM.DD HH:MM' do MT) -> espelhado no GitHub por parshant65-lang em CSV diários (ingest_gold.py). Hugging Face/Kaggle são bloqueados aqui; usamos o espelho.",
+ "repositorios": {
+  "https://github.com/parshant65-lang/Gold-XAUUSD-1m-2010-2014-Historical-Data": "627b3b5adef8d8aa70d876c046b7bcc03ea60841",
+  "https://github.com/parshant65-lang/Gold-XAUUSD-1m-2015-2019-Historical-Data": "654002e81dc1ada541d1f20d4964d831d08843ee",
+  "https://github.com/parshant65-lang/Gold-XAUUSD-1m-2020-2025-Historical-Data": "59dcd3c52fd876606b9eaf03ea80dfaa56722c35"
+ },
+ "fuso": "O espelho rotula como UTC, mas é o relógio do servidor MT = Nova York + 7h (UTC+2 no inverno dos EUA, UTC+3 no verão). Conferido nos payrolls (08:30 NY): sem correção o pico caía +120 min no inverno e +180 no verão; corrigido cai em 0. Conversão: (hora - 7h) localizada em America/New_York -> UTC.",
+ "validacao_cruzada": "2011 inteiro comparado com Dukascopy (FX-Data/FX-Data-XAUUSD-DS, ramo XAUUSD-2011, commit 75406de38876b3ac13e4d2321d6dca1586d8692e, preço médio): 213.933 minutos em comum, diferença mediana -0,35 USD (esta fonte abaixo do mid, compatível com bid; spread mediano Dukascopy 0,42 USD), |dif| p99 3,7 USD; correlação dos retornos horários 0,973 sem defasagem e <0,11 com ±1h. O FX-Data guarda o XAUUSD dividido por 100.",
+ "periodo": [
+  "2010-01-03T23:05Z",
+  "2025-03-21"
+ ],
+ "corte": "A fonte vai até 01/10/2025, mas falta quase tudo de 24/03/2025 em diante (semanas inteiras de mar–set/2025 ausentes); cortado em 22/03/2025.",
+ "minutos_m1_total_fonte": 5327373,
+ "candles": {
+  "H1": 89136,
+  "H4": 24158,
+  "D1": 3939
+ },
+ "reamostragem": "Igual ao data.py --fxdata: H1/H4 em UTC sem candles vazios; D1 por dia UTC com domingo no candle de segunda.",
+ "checagens": {
+  "ohlc_inconsistente": 0,
+  "faixa_close": [
+   1049.97,
+   3053.27
+  ],
+  "niveis": "D1 06/09/2011 máx 1920,6 (recorde de 2011), 15/04/2013 mín 1337 (crash), 17/12/2015 ~1050 (fundo), 06/08/2020 ~2070 (recorde), 30/10/2024 ~2788",
+  "lacunas": "só feriados (Sexta-Feira Santa, Natal/Ano Novo) e algumas paradas curtas; nenhuma lacuna > 3,6 dias antes do corte; D1 com 258–261 candles por ano 2010–2024"
+ }
+}

@@ -1,0 +1,140 @@
+{
+ "ativo": "NAS100",
+ "instrumento_fonte": "NSXUSD (HistData.com, CFD do Nasdaq-100, cotação bid, 1 minuto, sem volume)",
+ "repositorio": "https://github.com/hizawye/better-backtest",
+ "commit": "c95db5a185ac024133dd8e7e2af4a77525258ca3",
+ "arquivos": "data/histdata/nsxusd/normalized/nsxusd_m1_YYYYMM.json (184 meses) + manifest.json com SHA-256 dos ZIPs originais da HistData",
+ "zipsHistData": [
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2010.zip",
+   "sha256": "4414870d1dca686af85d7fa58346c9772971600a67a6c7d07d9978d1558968b0",
+   "sizeBytes": 317711,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2011.zip",
+   "sha256": "80d38b149989c76f72cf7f668acb329cbc08118ac3ef4c5ec28226a97dd3c385",
+   "sizeBytes": 2683933,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2012.zip",
+   "sha256": "a9c25d0c3e26fe259bd2b539212a94d3e9f74220c044b33f96c107bca11ce072",
+   "sizeBytes": 2613631,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2013.zip",
+   "sha256": "7474da49bbe002a661ea0f3186578a84061685c8eaa7fda27e2b48b7eac6351d",
+   "sizeBytes": 2521561,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2014.zip",
+   "sha256": "3a2c5335f90ce30efe5c485aedb16300ccabd88b26c6df6b02e19229c2ac470f",
+   "sizeBytes": 2714257,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2015.zip",
+   "sha256": "b3d1c62f1a02b971fbc69f84ad31ff0d21e533b648c2ce1efe694488947cfee3",
+   "sizeBytes": 3173641,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2016.zip",
+   "sha256": "c78457c386eb5cd17cae4ec77f8fedf19ae37add2fafb3e4e3cbf97e9d3c8c19",
+   "sizeBytes": 3142300,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2017.zip",
+   "sha256": "162b6e8b54b16dc67a31072c89cb7a48066920c7f61f513d3b2ffcce8b625213",
+   "sizeBytes": 3005614,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2018.zip",
+   "sha256": "0cab833575b5967f08718a5ad869a85aa5e5c408fbbe725c01925b1da44ef34f",
+   "sizeBytes": 3560115,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2019.zip",
+   "sha256": "f7e0ac7ce964c864793c8928058cef11d1a886c68876f42b3e42d5bc61732698",
+   "sizeBytes": 3929822,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2020.zip",
+   "sha256": "896ff362259e56468f7a8acd32afa4dc21c309cf13a84e2c3e585dea0be4df84",
+   "sizeBytes": 4782514,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2021.zip",
+   "sha256": "ea22aa9f9a10f234cde03428f8117b2725e550f45ca17eb95fb1e4a9792c2977",
+   "sizeBytes": 4941583,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2022.zip",
+   "sha256": "b6bfac92a74c36719812014a38ce8cfcad05b4f15aca0d0e9e0dc1b1b3a098e7",
+   "sizeBytes": 5127487,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2023.zip",
+   "sha256": "0282f3b419c254d168c5dba86cdcfe6527f0d4ad32dd407a401d9367e2520ecc",
+   "sizeBytes": 4285675,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2024.zip",
+   "sha256": "70429c487544991e42d34ce505be00b2d02b74a6633b23ca07eba0f80bf24566",
+   "sizeBytes": 5195055,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_2025.zip",
+   "sha256": "865006539b7a3abe6ce3742e17604e5bf003b89583b349228570d343f78ae16f",
+   "sizeBytes": 5327460,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_202601.zip",
+   "sha256": "62d23149b48dffeff745915087563f8a712eca4cb3f557376fc53d34071245af",
+   "sizeBytes": 445108,
+   "rows": 0
+  },
+  {
+   "file": "raw-zips/HISTDATA_COM_ASCII_NSXUSD_M1_202602.zip",
+   "sha256": "7a7a5586962017af3336228c0cf4c571000bcdc4deaa37c30c6fb41c1cb88f37",
+   "sizeBytes": 220354,
+   "rows": 0
+  }
+ ],
+ "fuso": "Os timestamps do repositório são o relógio de parede da HistData gravado como se fosse UTC. Conferido nos payrolls (08:30 Nova York, 1ª sexta, 2011–2025) e na abertura à vista 09:30: a fonte segue o horário de Nova York COM horário de verão (não EST fixo, como a HistData diz). Conversão: tz_localize('America/New_York') -> UTC. Com EST fixo (+5h) o payroll caía 60 min atrasado em todo verão dos EUA.",
+ "periodo": [
+  "2010-11-14T23:01Z",
+  "2026-02-13T21:13Z"
+ ],
+ "minutos": 5075918,
+ "candles": {
+  "H1": 90368,
+  "H4": 24265,
+  "D1": 3952
+ },
+ "volume": "A fonte não tem volume (sempre 0); o volume gravado é o número de minutos com cotação no candle.",
+ "reamostragem": "Igual ao data.py --fxdata: H1/H4 em UTC sem candles vazios; D1 por dia UTC com as horas de domingo no candle de segunda.",
+ "checagens": {
+  "ohlc_inconsistente": 0,
+  "faixa_close": [
+   1988.5,
+   26236.2
+  ],
+  "niveis_conferidos": "fechamentos D1 batem com o NDX à vista: 19/02/2020 9733 (recorde pré-covid), 19/11/2021 16577, 28/12/2022 10701, 16/12/2024 22080; maiores variações de 1h em 09/04/2025 (pausa das tarifas, +7,4%) e mar/2020",
+  "lacunas": "semana 20–24/02/2017 inteira sem dados; feriados (Sexta-Feira Santa, Natal, Ano Novo) sem candle; de 20/02/2023 a ~31/07/2023 só ~16–17 horas por dia (faltam horas fora do pregão) — afeta H1/H4 desse trecho",
+  "dias_uteis_sem_D1": 28
+ }
+}

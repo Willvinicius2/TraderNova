@@ -38,7 +38,7 @@ OUT = TRI / "out"
 RES = LAB / "results" / "triagem"
 K_STOP = 2.0
 STAGES = (("development", 1.15), ("validation", 1.15), ("reserve", 1.10))
-OUTROS = ("EURUSD", "USDJPY", "ETHUSD", "SOLUSD")
+OUTROS = ("EURUSD", "USDJPY", "ETHUSD", "SOLUSD", "XAUUSD", "NAS100")
 
 
 def all_ids():
@@ -48,7 +48,7 @@ def all_ids():
 
 def cmd_candles(a):
     TRI.mkdir(parents=True, exist_ok=True)
-    for asset in ("BTCUSD", "EURUSD", "USDJPY", "ETHUSD", "SOLUSD"):
+    for asset in ("BTCUSD", "EURUSD", "USDJPY", "ETHUSD", "SOLUSD", "XAUUSD", "NAS100"):
         for tf in ("H4", "D1"):
             d = C.load_bars(asset, tf)
             t = ((d.index - pd.Timestamp("1970-01-01", tz="UTC")) // pd.Timedelta("1s")).astype(int).tolist()

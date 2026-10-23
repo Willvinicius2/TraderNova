@@ -17,43 +17,43 @@ Quando 1 e 2 acontecerem, avisar o Will na hora.
 
 ## Dados (agente de dados, toda rodada até resolver)
 - [x] ETHUSD horário (Binance spot pelo espelho S3, 22/10; SOLUSD também)
-- [ ] XAUUSD horário (2010+)
+- [x] XAUUSD horário 2010–03/2025 (rodada 9, servidor MetaTrader validado contra Dukascopy)
 - [x] EURUSD (2009–2022) e USDJPY (2007–2018) via FX-Data (rodadas 4 e 5)
-- [ ] NAS100 / NDX diário ou horário
+- [x] NAS100 horário 2010–02/2026 (rodada 9, HistData NSXUSD)
 
 ## Estratégias (fontes públicas; uma por item)
 Tendência e momentum
-- [ ] Dual Momentum (Antonacci): momentum absoluto + relativo
+- [x] Dual Momentum (Antonacci): momentum absoluto + relativo (rodada 9)
 - [x] Kaufman Efficiency Ratio / KAMA como filtro de tendência com entrada na virada (rodada 8)
 - [x] Linear Regression Slope (inclinação de regressão) (rodada 8)
 - [x] Ehlers MAMA/FAMA (rodada 8)
 - [x] Trend Intensity Index / TII (rodada 8)
-- [ ] Choppiness Index como interruptor tendência/lateral
+- [x] Choppiness Index como interruptor tendência/lateral (rodada 9)
 - [x] Coppock Curve (rodada 8)
 - [x] Know Sure Thing (Pring) (rodada 8)
 - [x] TRIX (rodada 8)
-- [ ] Rate of Change com volatilidade-alvo (Moskowitz vol scaling)
+- [x] Rate of Change com volatilidade-alvo (Moskowitz vol scaling) (rodada 9)
 Reversão e osciladores
 - [x] Ultimate Oscillator (Williams) (rodada 8)
 - [x] DeMarker (DeMark) (rodada 8)
 - [x] TD Sequential (DeMark setup 9) (rodada 8)
 - [x] Laguerre RSI (Ehlers) (rodada 8)
 - [x] Z-score de preço contra média com saída na média (rodada 8)
-- [ ] Commodity Channel Index de 20 com divergência? (só se não repetir TV23)
-- [ ] Relative Vigor Index
-- [ ] Balance of Power
+- [x] Commodity Channel Index de 20 com divergência? (só se não repetir TV23) (rodada 9)
+- [x] Relative Vigor Index (rodada 9)
+- [x] Balance of Power (rodada 9)
 Volatilidade e estrutura
 - [x] Chandelier Exit como sistema (diferente de Supertrend? conferir regra central) (rodada 8)
-- [ ] ATR Channel breakout com filtro de volatilidade em contração (Bollinger Bandwidth percentil)
+- [x] ATR Channel breakout com filtro de volatilidade em contração (Bollinger Bandwidth percentil) (rodada 9)
 - [x] Gap/reversão após candle de range anormal (Wide Range Bar) (rodada 8)
-- [ ] Turn of the month / dia do mês no BTC
-- [ ] Efeito fim de semana do BTC (sexta→segunda)
-- [ ] Reversão após queda de N desvios em H1 (crash-buying)
+- [x] Turn of the month / dia do mês no BTC (rodada 9)
+- [x] Efeito fim de semana do BTC (sexta→segunda) (rodada 9)
+- [x] Reversão após queda de N desvios em H1 (crash-buying) (rodada 9)
 - [x] Market Structure (Higher High / Higher Low, quebra de estrutura) (rodada 8)
-- [ ] Order block / Fair Value Gap (ICT) com regras fechadas
-- [ ] Ichimoku Kumo breakout (regra diferente do L03? conferir)
+- [x] Order block / Fair Value Gap (ICT) com regras fechadas (rodada 9)
+- [x] Ichimoku Kumo breakout (regra diferente do L03? conferir) (rodada 9)
 Combinação e regime (só regras publicadas, nada inventado sobre resultado visto)
-- [ ] Filtro de regime pela SMA 200 diária aplicado a uma regra nova de reversão
+- [x] Filtro de regime pela SMA 200 diária aplicado a uma regra nova de reversão (rodada 9)
 - [x] Hurst exponent como interruptor tendência/reversão (rodada 8)
-- [ ] Volatility regime (ATR percentil) escolhendo entre rompimento e reversão
-- [ ] Ensemble de votação de 5 indicadores clássicos (Ratings próprios)
+- [x] Volatility regime (ATR percentil) escolhendo entre rompimento e reversão (rodada 9)
+- [x] Ensemble de votação de 5 indicadores clássicos (Ratings próprios) (rodada 9)

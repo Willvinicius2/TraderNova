@@ -2182,6 +2182,234 @@
     "https://doc.stocksharp.com/en/api-examples/0218_ZScore_Reversal",
     "Definição clássica: z = (preço - média)/desvio-padrão (reversão à média; ver Ernest Chan, Algorithmic Trading, Wiley 2013, cap. 2)"
    ]
+  },
+  {
+   "id": "L38_roc_voltarget",
+   "name": "ROC com volatilidade-alvo (Moskowitz vol scaling): momentum em desvios ex-ante com zona neutra",
+   "family": "tendencia",
+   "coreRule": "z = ROC(look dias) / (sigma_diária_EWMA(com 60d) * sqrt(look)). Compra quando z cruza acima de z0; vende (both) quando cruza abaixo de -z0; sai quando z volta a cruzar 0. Se vmax>0, só abre se sigma <= vmax * mediana de sigma em 365 dias. Stop k * sigma_diária * preço.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "CANDIDATA",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://papers.ssrn.com/abstract=2089463",
+    "https://alphaarchitect.com/time-series-momentum-and-volatility-scaling/",
+    "https://quantpedia.com/deconstructing-the-time-series-momentum-strategy/"
+   ]
+  },
+  {
+   "id": "L40_balance_of_power",
+   "name": "Balance of Power (Livshin) suavizado: cruzamento de nível com filtro de tendência",
+   "family": "momentum",
+   "coreRule": "B = SMA(n) de (C-O)/(H-L) (0 quando H=L). Compra quando B cruza acima de +thr (se trend>0: fechamento acima da EMA(trend)); vende (both) quando cruza abaixo de -thr (fechamento abaixo da EMA). Sai da compra quando B cruza abaixo de 0 (venda: acima de 0). Stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "CANDIDATA",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "Igor Livshin, 'Balance of Market Power', Technical Analysis of Stocks & Commodities, ago/2001",
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/balance-of-power-bop",
+    "https://www.luxalgo.com/library/concept/balance-of-power.md",
+    "TradingView embutido BOP ((close-open)/(high-low)), port em github.com/deepentropy/lightweight-charts-indicators src/standard/bop.ts"
+   ]
+  },
+  {
+   "id": "L45_turn_of_month",
+   "name": "Turn of the month no BTC (últimos dias do mês + primeiros do seguinte)",
+   "family": "calendario",
+   "coreRule": "Janela do turn of the month (fonte: 'vento a favor' nos últimos dias do mês e nos primeiros do mês seguinte; a fonte não fixa os dias, então calibra-se a janela): comprado do início do dia UTC (dias_no_mês - before + 1) até o fechamento do dia 'after' do mês seguinte. Entrada na abertura D1 do primeiro dia da janela (decisão no fechamento do dia anterior, a data é calendário, não preço), saída na abertura do dia seguinte ao último da janela. side=both: vendido fora da janela (resto do mês), invertendo nas viradas. Stop de proteção k*ATR14 D1 (a fonte não tem). Difere do L17 (hora do dia): aqui é dia do mês.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_RESERVA",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://quantifiedstrategies.substack.com/p/bitcoin-the-end-of-month-effect",
+    "https://www.quantifiedstrategies.com/end-of-month-effect-in-bitcoin/",
+    "https://macrohive.com/hive-exclusives/does-turn-of-the-month-stock-trading-work-for-crypto",
+    "Ariel (1987), 'A monthly effect in stock returns', JFE; Lakonishok & Smidt (1988), RFS"
+   ]
+  },
+  {
+   "id": "L37_dual_momentum",
+   "name": "Dual Momentum (Antonacci) adaptado: momentum absoluto + relativo à própria história",
+   "family": "tendencia",
+   "coreRule": "A cada 'rebal' dias (fim de bloco, decisão no fechamento) calcula R = retorno de 'look' dias e M = média de R nos últimos 'rel' dias. Compra se R>0 e R>M; vende (both) se R<0 e R<M; senão fica em caixa. Sai no rebalanceamento em que a condição do lado aberto deixa de valer. Stop k*ATR de 14 dias.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "Gary Antonacci, Dual Momentum Investing (McGraw-Hill, 2014); https://www.optimalmomentum.com",
+    "https://awealthofcommonsense.com/2015/07/my-thoughts-on-gary-antonaccis-dual-momentum/",
+    "https://www.tradingview.com/script/7IWRmmC9-12M-Return-Strategy"
+   ]
+  },
+  {
+   "id": "L39_relative_vigor",
+   "name": "Relative Vigor Index (Ehlers): cruzamento com a linha de sinal, filtro de tendência e zona",
+   "family": "oscilador",
+   "coreRule": "RVGI = soma(len) de swma(C-O) / soma(len) de swma(H-L), sinal = swma(RVGI), swma=(x+2x1+2x2+x3)/6. Compra quando RVGI cruza acima do sinal (se trend>0: fechamento acima da EMA(trend); se zona=1: RVGI<0 no cruzamento); vende (both) no espelho. Sai no cruzamento oposto. Stop k*ATR14.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "John F. Ehlers, 'Something Old, Something New', Technical Analysis of Stocks & Commodities, jan/2002",
+    "https://www.luxalgo.com/library/indicator/relative-vigor-index/",
+    "https://capital.com/en-gb/learn/technical-analysis/relative-vigor-index",
+    "TradingView embutido RVGI (Pine: rvi = sum(swma(close-open),len)/sum(swma(high-low),len); sig = swma(rvi)), port em github.com/deepentropy/lightweight-charts-indicators src/standard/rvi.ts"
+   ]
+  },
+  {
+   "id": "L41_chop_switch",
+   "name": "Choppiness Index (Dreiss) como interruptor tendência/lateral",
+   "family": "regime",
+   "coreRule": "CHOP(n) = 100*log10(soma dos TR de n candles / (maior máxima n - menor mínima n))/log10(n). Regime de tendência: o CHOP cruza abaixo de lo (fim da congestão, uso de Dreiss); a direção é o sinal de fech - fech[n] (deslocamento líquido da janela): compra se positivo, vende se negativo. Sai quando o CHOP cruza acima de hi (volta à congestão) ou no stop móvel k*ATR14. Regime lateral (só em mode=switch): com CHOP > hi, compra quando o RSI(14) cruza de volta acima de 30 e vende quando cruza abaixo de 70; alvo na SMA(20) (mínimo 0,5 ATR), stop k*ATR14 (também móvel). Stop inicial k*ATR14 em tudo. side=long só compra.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://www.luxalgo.com/library/concept/choppiness-index/ (fórmula de Dreiss: 100*log10(soma TR n / (máx n - mín n))/log10(n), n=14; >61,8 congestão, <38,2 tendência; o CHOP não dá direção, que vem da estrutura)",
+    "https://www.tradingview.com/support/solutions/43000501980/ (Choppiness Index no Help Center do TradingView, mesmos limiares 61,8/38,2)",
+    "https://www.incrediblecharts.com/indicators/choppiness-index.php",
+    "E.W. Dreiss (anos 1990), definição clássica do autor"
+   ]
+  },
+  {
+   "id": "L42_sma200_reversion",
+   "name": "Reversão à banda da faixa média + IBS com regime SMA200 diária",
+   "family": "reversao",
+   "coreRule": "Média da faixa A = SMA(máx-mín, n). Banda de compra = maior máxima de n candles - mult*A; IBS = (fech-mín)/(máx-mín). Compra quando fecha abaixo da banda, IBS < ibs e o fechamento está acima da SMA200 dos fechamentos diários (em H1/H4 usa a SMA200 até o dia anterior completo). Sai quando o fechamento passa da máxima do candle anterior. Venda espelhada (side=both): banda = menor mínima de n + mult*A, IBS > 1-ibs, fechamento abaixo da SMA200 diária, sai quando fecha abaixo da mínima anterior. A fonte compra no fechamento; aqui entra na abertura seguinte. A fonte não tem stop: stop de proteção k*ATR14 e saída por tempo em 20 candles.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://quantifiedstrategies.substack.com/p/3-best-mean-reversion-trading-strategies (média de H-L de 25 dias; banda = máxima de 25 dias - 2,25 x essa média; compra no fechamento se fechar abaixo da banda e IBS < 0,6; sai quando o fechamento passa da máxima de ontem)",
+    "https://doc.stocksharp.com/en/api-examples/0541_Average_High_Low_Range_IBS_Reversal (mesma regra portada)",
+    "Filtro SMA200 diária: regra clássica de regime (Faber 2007; Connors & Alvarez, 'Short Term Trading Strategies That Work', 2008)"
+   ]
+  },
+  {
+   "id": "L43_atr_regime",
+   "name": "Regime de volatilidade (ATR percentil): rompimento x reversão",
+   "family": "regime",
+   "coreRule": "v = ATR14/fechamento; pct = fração dos últimos L valores de v (até o candle atual) menores ou iguais ao atual. Expansão (pct >= hi, e pct < stress se stress<1): compra quando o fechamento passa a maior máxima dos N candles anteriores, vende quando passa abaixo da menor mínima; sai no rompimento contrário de N/2 candles. Compressão (pct <= lo): RSI(2) < 10 compra, > 90 vende; sai quando o fechamento cruza a SMA(5) (acima na compra, abaixo na venda) enquanto o regime ainda é compressão; a saída do rompimento contrário de N/2 vale para qualquer posição. Entre lo e hi não abre nada. Stop k*ATR14. side=long só compra.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://www.luxalgo.com/library/concept/volatility-regime-switches/ (seguir tendência precisa de expansão de volatilidade; reversão se apoia em compressão; ficar de fora no estresse; regime por percentil móvel do ATR)",
+    "https://www.luxalgo.com/library/concept/volatility-percentile-rank/ (percentil da volatilidade na janela passada)",
+    "Rompimento de Donchian (Turtle) e RSI(2) de Connors como módulos clássicos, sem ajuste ao resultado"
+   ]
+  },
+  {
+   "id": "L44_ensemble_vote",
+   "name": "Ensemble de votação de 5 indicadores clássicos",
+   "family": "tendencia",
+   "coreRule": "Cinco votos (+1/0/-1): EMA20 > EMA50; fechamento > SMA200; RSI14 > 55 (+1) ou < 45 (-1); linha MACD(12,26,9) acima/abaixo do sinal; Estocástico %K(14, suavizado 3) > 55 ou < 45. Placar = 100*soma/5 suavizado por EMA(sm). Compra quando o placar cruza acima de +thr e vende quando cruza abaixo de -thr (inverte). Sai da compra quando o placar fica abaixo de ex e da venda quando fica acima de -ex. A fonte não define stop: stop k*ATR14. side=long só compra.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://www.luxalgo.com/library/indicator/ensemble-voting-of-signals/ (votos de cruzamento EMA 20/50, preço x SMA200, RSI14, MACD 12/26/9, Estocástico %K 14/3 e outros; zona neutra 5 em torno de 50; placar -100..+100 suavizado por EMA 3; limiar 20 Buy, 60 Strong Buy)",
+    "https://www.tradingview.com/script/Ztmvs25e-Ensemble-Consensus-System/ (consenso de indicadores, script público)"
+   ]
+  },
+  {
+   "id": "L46_weekend_effect",
+   "name": "Efeito fim de semana do BTC (sexta→segunda)",
+   "family": "calendario",
+   "coreRule": "Caporale & Plastun acham retorno anormal positivo do BTC na segunda-feira (efeito dia da semana); o item da FILA pede sexta→segunda. Posição só na janela de dias da semana [first..last] (4=sexta, 5=sábado, 6=domingo, 7=segunda, 8=terça): entra na abertura D1 (00:00 UTC) do dia 'first' e sai na abertura do dia seguinte a 'last'. side=long compra na janela; short vende na janela; both compra na janela e vende no resto da semana. Stop de proteção k*ATR14 D1 (a fonte não tem). Difere do L17 (hora do dia) e do L17_r1 (janela 21-23h só em certos dias).",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://quantpedia.com/the-day-of-the-week-effect-in-the-crypto-currency-market/",
+    "https://cesifo.org/DocDL/cesifo1_wp6716.pdf",
+    "https://www.diw.de/de/diw_01.c.567282.de/publikationen/diskussionspapiere/2017_1694/the_day_of_the_week_effect_in_the_crypto_currency_market.html",
+    "https://cointelegraph.com/markets/new-analysis-finds-that-mondays-are-the-best-days-to-buy-bitcoin"
+   ]
+  },
+  {
+   "id": "L47_crash_buying_r1",
+   "name": "Crash-buying H1 a favor do regime (SMA de N dias)",
+   "family": "reversao",
+   "coreRule": "Igual ao L47 (z = retorno log de m candles H1 / (desvio dos retornos de 1 candle nos 'look' candles anteriores × raiz(m)); compra se z < -N; side=both vende se z > +N), mas só compra com fechamento acima da SMA de 'trend_days' dias (24×N candles H1) e só vende abaixo dela. Saída por tempo após 'hold' candles; stop 2×ATR14.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://philippdubach.com/posts/crypto-mean-reversion-trading/",
+    "https://www.theseus.fi/handle/10024/902903"
+   ]
+  },
+  {
+   "id": "L48_cci_divergence",
+   "name": "CCI 20 com divergência confirmada (sem repintura)",
+   "family": "reversao",
+   "coreRule": "CCI(20) de Lambert sobre hlc3. Divergência de alta (StockSharp 0068): dois fundos de preço consecutivos (pivô de mínima com r candles de cada lado, só conhecido r candles depois, sem repintura), mínima do 2º < do 1º, mínimo do CCI em volta do 2º > em volta do 1º, CCI < -100 no 1º fundo, fundos a no máximo 'gap' candles. Compra na abertura seguinte à confirmação do 2º fundo. Venda espelhada (topos, CCI > +100). Saída quando o CCI cruza o zero (fonte); sinal oposto inverte. Stop k*ATR14 (fonte usa 2% fixo; aqui ATR para servir a vários tempos). Difere do TV23 (rompimento de ±100 sem divergência).",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://stocksharp.com/en/store/strategies.0068_cci_divergence",
+    "https://doc.stocksharp.com/en/api-examples/0068_CCI_Divergence",
+    "https://en.wikipedia.org/wiki/Commodity_channel_index",
+    "https://www.barchart.com/education/technical-indicators/commodity_channel_index"
+   ]
+  },
+  {
+   "id": "L49_fvg_orderblock",
+   "name": "ICT Fair Value Gap: retorno ao gap com rejeição no meio (CE)",
+   "family": "estrutura",
+   "coreRule": "FVG de alta formado no fechamento do 3º candle i: mínima[i] > máxima[i-2], com o candle do meio de alta e corpo >= disp*ATR14 (deslocamento). Zona = [máxima[i-2], mínima[i]], CE = meio da zona; o candle i-2 é tratado como o order block e sua mínima é o nível de invalidação. Só o gap mais recente de cada lado fica ativo, por até 'wait' candles. Entrada: num candle posterior que toca a zona (mínima <= topo do gap) e fecha acima do CE (rejeição), compra na abertura seguinte. Gap invalidado se fechar abaixo do fundo do gap. Stop: mínima do candle 1 (order block) - 0,1*ATR (mínimo 0,25*ATR); alvo fixo target_r em R. Filtro opcional trend=ema200 (só compra acima da EMA200, só vende abaixo). Venda espelhada (side=both). Aproximação: o ICT usa ordem limitada no gap; aqui a entrada é na abertura após o candle de rejeição.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://www.luxalgo.com/library/concept/fair-value-gap/",
+    "https://ninjatrader.com/futures/blogs/fair-value-gaps/",
+    "Pine 'ICT FVG Buy/Sell Signals' (svmstellarvisionmedia, MPL-2.0), porte em github.com/deepentropy/lightweight-charts-indicators src/community/ict-fvg-buy-sell-signals.ts",
+    "Michael J. Huddleston (ICT): FVG, consequent encroachment (CE) e order block = candle 1 do deslocamento"
+   ]
+  },
+  {
+   "id": "L50_kumo_breakout",
+   "name": "Ichimoku Kumo breakout com Chikou e nuvem futura",
+   "family": "tendencia",
+   "coreRule": "Linhas como no L03 (Tenkan 9*s, Kijun 26*s, Senkou B 52*s, nuvem deslocada 26*s: a nuvem em i usa dados até i-26*s). Diferente do L03 (que entra no cruzamento Tenkan/Kijun): aqui o gatilho é o FECHAMENTO cruzar acima do topo da nuvem (antes estava em ou abaixo dele), com Chikou confirmando (fechamento > fechamento de 26*s atrás) e, se future=yes, nuvem futura de alta (Senkou A > Senkou B calculados agora, sem deslocamento). Venda espelhada abaixo do fundo da nuvem. Saída: exit=kijun fecha do lado errado da Kijun; exit=cloud volta para dentro/além da nuvem (fechamento abaixo do fundo da nuvem na compra). Stop inicial k*ATR14 (a fonte não define stop).",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://www.oanda.com/bvi-en/skills-and-insights/education/technical-analysis/indicators-and-oscillators/ichimoku-cloud-trading-guide-key-strategies/",
+    "https://www.luxalgo.com/library/concept/ichimoku-signals.md",
+    "Goichi Hosoda, Ichimoku Kinko Hyo (definições 9/26/52)"
+   ]
+  },
+  {
+   "id": "L51_atr_squeeze_breakout",
+   "name": "Rompimento de canal ATR após BandWidth em contração (percentil)",
+   "family": "volatilidade",
+   "coreRule": "BandWidth = (BB superior - inferior)/SMA20*100 (Bollinger 20, 2 desvios). Contração: o percentil do BandWidth dentro dos últimos 'lb' candles (lb = ~6 meses no tempo gráfico: H1 4380, H4 1095, D1 180; janela causal) ficou <= pct em algum dos últimos 5 candles até i-1. Gatilho: fechamento cruza acima de SMA20 + k*ATR20 (canal ATR) -> compra; abaixo de SMA20 - k*ATR20 -> venda (side=both). Saída: exit=mid fechamento volta para o outro lado da SMA20; exit=trail stop móvel 3*ATR20 a partir do fechamento. Stop inicial stop_k*ATR20. Diferente do L09 TTM (BB dentro do Keltner + momentum) e do L12 Keltner (EMA±ATR sem filtro de contração): aqui o filtro é o percentil histórico do BandWidth e o gatilho é o canal ATR sobre SMA.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_VALIDACAO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/bollinger-bandwidth",
+    "https://www.luxalgo.com/library/concept/atr-bands.md",
+    "John Bollinger, Bollinger on Bollinger Bands (2001), 'The Squeeze' (BandWidth na mínima de ~6 meses)"
+   ]
+  },
+  {
+   "id": "L47_crash_buying",
+   "name": "Crash-buying: compra após queda de N desvios em H1",
+   "family": "reversao",
+   "coreRule": "Fonte (Dubach): compra quando o preço cai mais de 4 desvios-padrão numa janela de 2 horas e vende por tempo após 2 horas. Aqui: retorno log de m candles H1 (m=1 ou 2) dividido por (desvio-padrão dos retornos log de 1 candle nos 'look' candles ANTERIORES à janela × raiz(m)); compra quando z < -N; side=both também vende quando z > +N (pico de alta). Saída por tempo após 'hold' candles; stop de proteção k*ATR14 H1 (a fonte não tem). Difere do L32 (z-score do preço contra a SMA): aqui o gatilho é um choque de retorno de 1-2 horas.",
+   "testedOn": "BTCUSD lab-v4",
+   "status": "REPROVADA_DESENVOLVIMENTO",
+   "origin": "laboratório rodada 9",
+   "sources": [
+    "https://philippdubach.com/posts/crypto-mean-reversion-trading/",
+    "https://www.theseus.fi/handle/10024/902903"
+   ]
   }
  ]
 }

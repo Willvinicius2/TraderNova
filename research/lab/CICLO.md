@@ -6,7 +6,7 @@ Roteiro de cada rodada automática (o Claude segue isto a cada disparo agendado)
 2. Ler `FILA.md`, `registry.json` e o último `RODADA_N.md`. Escolher os próximos itens não marcados que não repetem nada do registro.
 3. Lançar 4 agentes de estratégia (4 estratégias cada) + 1 agente de dados, com as mesmas regras da rodada 2 (`protocol.json` lab-v2, `status.py`, notas em `notes/rN-*.md`).
 4. Ao fim: `diagnose.py`, `report.py --round N`, `export_dashboard.py`, atualizar o painel, escrever `RODADA_N.md`, marcar a fila, commit e push.
-5. Candidatas novas e antigas: rodar em todo ativo novo que o agente de dados trouxer, com os mesmos parâmetros (sem recalibrar).
+5. Candidatas novas e antigas (o placebo também roda no ativo cruzado: `ATIVO=<X> python3 research/lab/placebo_ativo.py`; passar sem bater o placebo não conta): rodar em todo ativo novo que o agente de dados trouxer, com os mesmos parâmetros (sem recalibrar).
 6. Acompanhamento em papel (23/10 a 22/11/2026): rodar `python3 research/lab/papel/papel.py` (baixa os candles diários da Binance, grava `papel/diario/<data>.json`, `PAPEL.md` e `dashboard/papel.json`), subir `papel.json` como arquivo do painel e atualizar `datasets/papel`. Regra que estoura 10% de queda ou tem operação que "mudou" sai do acompanhamento e isso vai no resumo. Os candles novos ficam em `research/cache/lab/papel/` (fora do git); num container novo o script baixa tudo de novo desde 01/10.
 7. Mandar ao Will um resumo curto (o que passou, o que falhou, placar acumulado). Se a meta de `FILA.md` for atingida, avisar com destaque.
 
@@ -17,6 +17,9 @@ Se `/home/user/labdata/pine/` não existir (container novo), clonar com `git clo
 - https://github.com/Alorse/pinescript-strategies
 - https://github.com/f13end/tradingview-custom-indicators
 - https://github.com/ArunKBhaskar/PineScript, https://github.com/ricardosantos79/pinescript, https://github.com/Heavy91/TradingView_Indicators
+
+## Quando a FILA.md acabar
+A rodada seguinte é a triagem-v2 (item da FILA.md) e um agente que monta itens novos para a FILA.md a partir dos repositórios Pine listados abaixo, sem repetir o registry.
 
 ## Lições que valem para toda rodada
 - 2016–2020 foi alta forte do BTC: quase todo seguidor de tendência "só compra" brilha no desenvolvimento e quebra em 2021–2022. Isso não é sinal da regra.
