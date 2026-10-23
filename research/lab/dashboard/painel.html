@@ -91,6 +91,20 @@
     </div>
   </section>
 
+  <section id="papel">
+    <h2>Acompanhamento ao vivo (papel)</h2>
+    <p class="lb-note" id="lb-papel-dia">As regras que passaram no BTC, no ETH e no SOL agora rodam em candles novos, que não existiam quando foram escolhidas. São 30 dias, sem ordens reais. R é o resultado em múltiplos do risco de cada operação.</p>
+    <div class="lb-tablebox">
+      <table class="lb-table" data-source="papel" data-row-key="chave">
+        <thead><tr>
+          <th>Script</th><th>Revisão</th><th>Tempo</th><th>Ativo</th><th class="num">Fechadas</th><th class="num">R fechado</th>
+          <th class="num">Abertas</th><th class="num">R aberto</th><th class="num">01–22/10 R</th><th>Última operação</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
   <section id="agentes">
     <h2>Agentes</h2>
     <p class="lb-note">Cada agente pesquisa estratégias publicadas, calibra os parâmetros só em 2016–2020 e depois testa sem reajuste em 2021–2022 (validação) e 2023–2026 (reserva). A barra mostra quantas das suas estratégias já terminaram.</p>
@@ -343,6 +357,24 @@
       tb.append(tr);
     }
   };
+  window.lbDrawPapel = () => {
+    const P = dash.data('papel');
+    const tb = document.querySelector('table[data-source="papel"] tbody');
+    tb.replaceChildren();
+    if (P.status !== 'ok' || !P.data.length) return;
+    const f = P.data[0];
+    document.getElementById('lb-papel-dia').textContent = `Dia ${f.dia} de ${f.dias} (começou em ${f.inicio.split('-').reverse().join('/')}, última atualização ${f.foto.split('-').reverse().join('/')}). As regras que passaram no BTC, no ETH e no SOL rodam em candles novos, que não existiam quando foram escolhidas. Sem ordens reais. R é o resultado em múltiplos do risco de cada operação.`;
+    const td = (txt, cls) => { const c = document.createElement('td'); if (cls) c.className = cls; c.textContent = txt; return c; };
+    const r = (v) => td(window.lbFmtR(v), 'num' + (v > 0 ? ' pos' : v < 0 ? ' neg' : ''));
+    const rk = { 'Aprovada': 0, 'Duvidosa': 1, 'Duplicata': 2, 'Reprovada': 3 };
+    const rows = [...P.data].sort((a, b) => (rk[a.revisao] ?? 9) - (rk[b.revisao] ?? 9) || (b.netR + b.aberto) - (a.netR + a.aberto) || a.id.localeCompare(b.id));
+    for (const x of rows) {
+      const tr = document.createElement('tr');
+      tr.append(td(x.id), td(x.revisao || '–'), td(x.tf), td(x.ativo), td(String(x.fechadas), 'num'), r(x.netR), td(String(x.abertas), 'num'), r(x.aberto), r(x.preNetR),
+        td(x.erro ? `erro: ${x.erro}` : (x.ultima || '–') + (x.mudou ? ` · ${x.mudou} mudaram` : '')));
+      tb.append(tr);
+    }
+  };
   document.getElementById('lb-busca-tri').addEventListener('input', () => window.lbDrawTriagem());
 </script>
 <script>
@@ -380,5 +412,6 @@
     window.lbDrawGrid();
     window.lbDrawTable();
     window.lbDrawTriagem();
+    window.lbDrawPapel();
   });
 </script>

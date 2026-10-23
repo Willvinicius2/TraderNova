@@ -1,0 +1,80 @@
+{
+ "id": "philakone-ema-swing",
+ "tf": "H4",
+ "regra": "Buy Condition / Sell Condition",
+ "resumo": {
+  "BTCUSD": "0/0",
+  "ETHUSD": "0/0",
+  "SOLUSD": "0/0"
+ },
+ "linhas": [
+  {
+   "variante": "padrão",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 237.33,
+      "pf": 2.974,
+      "trades": 171,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 13.22,
+      "pf": 1.264,
+      "trades": 72,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 41.6,
+      "pf": 1.428,
+      "trades": 135,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 84.73,
+      "pf": 2.265,
+      "trades": 96,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 22.04,
+      "pf": 1.537,
+      "trades": 64,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 58.66,
+      "pf": 1.554,
+      "trades": 142,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 65.44,
+      "pf": 2.563,
+      "trades": 65,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 55.14,
+      "pf": 2.166,
+      "trades": 73,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 28.98,
+      "pf": 1.926,
+      "trades": 53,
+      "falhas": []
+     }
+    }
+   }
+  }
+ ]
+}

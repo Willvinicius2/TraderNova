@@ -92,6 +92,9 @@ function loadBars(tf) {
   return B.time.map((t, i) => ({ time: t, open: B.open[i], high: B.high[i], low: B.low[i], close: B.close[i], volume: B.volume[i] }));
 }
 
+// Variante para o teste de vizinhos (vizinhos.py): LCI_INPUTS troca parâmetros padrão e LCI_SEM_REPINTURA pula o teste ao vivo.
+const OVR = process.env.LCI_INPUTS ? JSON.parse(process.env.LCI_INPUTS) : {};
+const SEM_REP = !!process.env.LCI_SEM_REPINTURA;
 const tfs = tfArg.split(',');
 const barsBy = Object.fromEntries(tfs.map((tf) => [tf, loadBars(tf)]));
 for (const id of ids) {
@@ -104,7 +107,7 @@ for (const id of ids) {
       if (!e) throw new Error('id desconhecido');
       if (e.requiredSymbols) { const rq = e.requiredSymbols(e.defaultInputs); if (rq && rq.length) throw new Error('precisa de outro ativo'); }
       if (e.usesVisibleRange) throw new Error('depende da área visível do gráfico');
-      const r = e.calculate(bars, { ...e.defaultInputs });
+      const r = e.calculate(bars, { ...e.defaultInputs, ...OVR });
       const rules = rulesOf(e, r, bars);
       // Teste "ao vivo": para até 12 sinais sorteados de cada regra (entre 40% e 95% do histórico), o indicador é
       // recalculado só com os candles até o candle do sinal; o sinal precisa aparecer ali, no último candle. Um sinal
@@ -114,7 +117,7 @@ for (const id of ids) {
       const at = (j) => { if (!cache.has(j)) cache.set(j, rulesOf(e, e.calculate(bars.slice(0, j + 1), { ...e.defaultInputs }), bars.slice(0, j + 1))); return cache.get(j); };
       let seed = 12345; const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
       const lo = Math.floor(bars.length * 0.4), hi = Math.floor(bars.length * 0.95);
-      for (const ru of rules) {
+      for (const ru of (SEM_REP ? [] : rules)) {
         const sig = [...ru.long.map((i) => [i, 'long']), ...ru.short.map((i) => [i, 'short'])].filter(([i]) => i >= lo && i < hi);
         const pick = [];
         while (pick.length < Math.min(12, sig.length)) { const x = sig[Math.floor(rnd() * sig.length)]; if (!pick.includes(x)) pick.push(x); }
@@ -122,7 +125,7 @@ for (const id of ids) {
         for (const [j, sd] of pick) { const o = at(j).find((x) => x.nome === ru.nome); if (!o || !o[sd].includes(j)) miss++; }
         ru.repinta = miss; ru.checados = pick.length;
       }
-      for (let k = 0; k < 6; k++) {
+      for (let k = 0; k < (SEM_REP ? 0 : 6); k++) {
         const j = lo + Math.floor(rnd() * (hi - lo));
         for (const o of at(j)) {
           const ru = rules.find((x) => x.nome === o.nome); if (!ru) continue;

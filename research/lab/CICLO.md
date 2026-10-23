@@ -7,7 +7,8 @@ Roteiro de cada rodada automática (o Claude segue isto a cada disparo agendado)
 3. Lançar 4 agentes de estratégia (4 estratégias cada) + 1 agente de dados, com as mesmas regras da rodada 2 (`protocol.json` lab-v2, `status.py`, notas em `notes/rN-*.md`).
 4. Ao fim: `diagnose.py`, `report.py --round N`, `export_dashboard.py`, atualizar o painel, escrever `RODADA_N.md`, marcar a fila, commit e push.
 5. Candidatas novas e antigas: rodar em todo ativo novo que o agente de dados trouxer, com os mesmos parâmetros (sem recalibrar).
-6. Mandar ao Will um resumo curto (o que passou, o que falhou, placar acumulado). Se a meta de `FILA.md` for atingida, avisar com destaque.
+6. Acompanhamento em papel (23/10 a 22/11/2026): rodar `python3 research/lab/papel/papel.py` (baixa os candles diários da Binance, grava `papel/diario/<data>.json`, `PAPEL.md` e `dashboard/papel.json`), subir `papel.json` como arquivo do painel e atualizar `datasets/papel`. Regra que estoura 10% de queda ou tem operação que "mudou" sai do acompanhamento e isso vai no resumo. Os candles novos ficam em `research/cache/lab/papel/` (fora do git); num container novo o script baixa tudo de novo desde 01/10.
+7. Mandar ao Will um resumo curto (o que passou, o que falhou, placar acumulado). Se a meta de `FILA.md` for atingida, avisar com destaque.
 
 ## Código Pine (fora do repositório)
 Se `/home/user/labdata/pine/` não existir (container novo), clonar com `git clone --depth 1` em `/home/user/labdata/pine/<dono>_<repo>`:

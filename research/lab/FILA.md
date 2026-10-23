@@ -10,7 +10,10 @@ Uma estratégia só sai do laboratório quando:
 3. fica 30 dias em acompanhamento simulado em tempo real sem quebrar o limite de queda.
 Quando 1 e 2 acontecerem, avisar o Will na hora.
 
-**Situação em 22/10/2026:** a triagem em massa (`TRIAGEM.md`) achou 51 regras que passam no BTC e no ETH ou SOL com os mesmos parâmetros, 17 em ambos; nenhuma passa em câmbio. Will avisado. Itens 1 e 2 estão pendentes da revisão do código (agentes `triagem-revisao-*`) e o item 3 ainda não começou. **Não abrir rodadas novas até o Will responder.**
+**Situação em 23/10/2026:** a triagem em massa (`TRIAGEM.md`) achou 17 regras que passam em BTC, ETH e SOL com os mesmos parâmetros (nenhuma em câmbio). O Will respondeu em 23/10: seguir. Revisão do código em `notes/triagem-revisao-*.md`; o item 3 (30 dias em papel) começou em 23/10 e vai até 22/11 (`PAPEL.md`, `papel/papel.py`). As rodadas voltaram a abrir normalmente.
+
+## Triagem-v2 (correções achadas na revisão de 23/10, ver REVISAO_TRIAGEM.md)
+- [ ] Corrigir a classificação de títulos "Bearish … Crossover", separar marcadores de estado e de evento, e preferir o plot gatilho do autor na regra genérica; rodar a triagem de novo como triagem-v2 (contar as regras novas no DSR)
 
 ## Dados (agente de dados, toda rodada até resolver)
 - [ ] ETHUSD horário/minuto em repositório público do GitHub (a rede só deixa clonar via git do github.com)
