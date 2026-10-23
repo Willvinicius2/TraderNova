@@ -1,0 +1,30 @@
+{
+ "versao": "ferramentas-v1",
+ "nota": "Portões fixos da validação. Mudar um limite exige nova versão e motivo no README; nunca depois de ver o resultado de uma hipótese.",
+ "reservaInicio": "2025-10-01",
+ "nHistorico": 153,
+ "nHistoricoFonte": "estratégias testadas pelo laboratório até a rodada 8 (research/lab/strategies no ramo do laboratório), cada uma com sua grade",
+ "walkForward": {"1D": {"treino": "730D", "teste": "90D"}, "4h": {"treino": "365D", "teste": "90D"}, "1h": {"treino": "365D", "teste": "60D"}},
+ "portoes": {
+  "lookahead": "sem divergência",
+  "tradesMin": 100,
+  "pfMin": 1.2,
+  "ddMax": 0.15,
+  "janelasPositivasMin": 0.6,
+  "eficienciaMin": 0.5,
+  "cpcvSharpeMedianoMin": 0.0,
+  "cpcvFracaoPositivosMin": 0.75,
+  "pboMax": 0.5,
+  "pboForte": 0.2,
+  "dsrMin": 0.95,
+  "psrMin": 0.95,
+  "spaPMax": 0.05,
+  "mcptPMax": 0.05,
+  "bootstrapDdP95Max": 0.25,
+  "bootstrapPfP5Min": 1.0,
+  "estresseCusto2xPfMin": 1.0,
+  "estresseAtrasoSharpeMin": 0.0,
+  "vizinhosPositivosMin": 0.6
+ },
+ "execucao": {"spaReps": 5000, "mcptN": 200, "bootstrapReps": 10000, "pboBlocos": 16, "cpcvGrupos": 10, "cpcvK": 2}
+}

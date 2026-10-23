@@ -1,0 +1,348 @@
+{
+ "id": "H06_filtro_funding",
+ "nome": "Momentum comprado com filtro de funding alto (zera ou vende)",
+ "fonte": "Schmeling, Schrimpf e Todorov, Crypto Carry (BIS WP 1087); hipótese 6 do relatório GitHub do projeto",
+ "sha256": "1c48fa601e3a76cc7f96e04acb0183ab4f0094c46438484f21c71f72c14bef55",
+ "freq": "1D",
+ "ativos": [
+  "BTCUSDT",
+  "ETHUSDT",
+  "SOLUSDT"
+ ],
+ "grade": {
+  "acao": [
+   "zerar",
+   "vender"
+  ],
+  "pct": [
+   0.8,
+   0.9
+  ]
+ },
+ "variantes": 4,
+ "portoes": "ferramentas-v1",
+ "custos": {
+  "taxa": 0.0005,
+  "slippage": 0.0002,
+  "funding": true
+ },
+ "desenvolvimento": [
+  "2020-01-01 00:00:00+00:00",
+  "2025-10-01 00:00:00+00:00"
+ ],
+ "etapas": {
+  "lookahead": {
+   "ok": true,
+   "porAtivo": {
+    "BTCUSDT": {
+     "ok": true,
+     "pontos": 25,
+     "divergencias": []
+    },
+    "ETHUSDT": {
+     "ok": true,
+     "pontos": 25,
+     "divergencias": []
+    },
+    "SOLUSDT": {
+     "ok": true,
+     "pontos": 25,
+     "divergencias": []
+    }
+   }
+  },
+  "grade": {
+   "sharpeAnualPorVariante": [
+    {
+     "params": {
+      "acao": "zerar",
+      "pct": 0.8
+     },
+     "sharpe": 1.553
+    },
+    {
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     },
+     "sharpe": 1.705
+    },
+    {
+     "params": {
+      "acao": "vender",
+      "pct": 0.8
+     },
+     "sharpe": 1.024
+    },
+    {
+     "params": {
+      "acao": "vender",
+      "pct": 0.9
+     },
+     "sharpe": 1.489
+    }
+   ],
+   "fracaoPositivas": 1.0
+  },
+  "walkForward": {
+   "retornoTotal": 0.3344132851948851,
+   "sharpeAnual": 1.0725774681926974,
+   "ddMax": 0.060534147227663926,
+   "trades": 239,
+   "pf": 1.9825903729122745,
+   "porLado": {
+    "comprado": {
+     "trades": 239,
+     "retorno": 0.297881427552544,
+     "pf": 1.9825903729122745
+    },
+    "vendido": {
+     "trades": 0,
+     "retorno": 0.0,
+     "pf": NaN
+    }
+   },
+   "porAno": {
+    "2021": 0.0,
+    "2022": -0.0331,
+    "2023": 0.2469,
+    "2024": 0.0659,
+    "2025": 0.0383
+   },
+   "anosPositivos": "3/5",
+   "janelas": 16,
+   "janelasPositivas": 0.4375,
+   "eficiencia": 0.618837044722347,
+   "inicioForaDaAmostra": "2021-12-31 00:00:00+00:00",
+   "escolhas": [
+    {
+     "teste": "2021-12-31",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2022-03-31",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2022-06-29",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2022-09-27",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2022-12-26",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2023-03-26",
+     "params": {
+      "acao": "vender",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2023-06-24",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2023-09-22",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2023-12-21",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.8
+     }
+    },
+    {
+     "teste": "2024-03-20",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2024-06-18",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2024-09-16",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2024-12-15",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2025-03-15",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2025-06-13",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    },
+    {
+     "teste": "2025-09-11",
+     "params": {
+      "acao": "zerar",
+      "pct": 0.9
+     }
+    }
+   ]
+  },
+  "cpcv": {
+   "sharpesPorCaminho": [
+    0.08925184228584174,
+    0.08358511742810298,
+    0.08925184228584174,
+    0.08925184228584174,
+    0.08925184228584174,
+    0.08925184228584174,
+    0.08130760404898998,
+    0.08925184228584174,
+    0.08925184228584174
+   ],
+   "mediano": 0.08925184228584174,
+   "fracaoPositivos": 1.0,
+   "caminhos": 9,
+   "divisoes": 45
+  },
+  "pbo": {
+   "pbo": 0.0337995337995338,
+   "combinacoes": 12870,
+   "variantes": 4,
+   "blocos": 16,
+   "logitMediano": 1.3862943611198908,
+   "sharpeDentroMedio": 0.08899500031303831,
+   "sharpeForaMedio": 0.08818417870489245
+  },
+  "psr": 0.9844737972581974,
+  "dsr": {
+   "dsr": 0.7153979792520593,
+   "srEsperadoPorSorte": 0.04132168286644362,
+   "sr": 0.05614127056833019,
+   "nTentativas": 159,
+   "varSharpes": 0.00023602667863564363,
+   "varEstimadaDaNula": false
+  },
+  "minTRL": {
+   "barras": 797.5244529940866,
+   "temos": 1370
+  },
+  "spa": {
+   "pConsistente": 0.001,
+   "pInferior": 0.001,
+   "pSuperior": 0.001,
+   "variantes": 4,
+   "reps": 5000,
+   "bloco": 13
+  },
+  "mcpt": {
+   "real": 0.08925184228584174,
+   "p": 0.05472636815920398,
+   "n": 200,
+   "mediaPermutada": 0.05702589498583329
+  },
+  "bootstrap": {
+   "trades": 239,
+   "reps": 10000,
+   "ddP50": 0.04049965406099848,
+   "ddP95": 0.0766379214330642,
+   "pfP5": 1.2712214172486958,
+   "pfP50": 1.9691572242366906,
+   "probPrejuizo": 0.0066
+  },
+  "estresse": {
+   "custo2x": {
+    "sharpeAnual": 0.9692018184134406,
+    "pf": 1.8805541978256315,
+    "retornoTotal": 0.2964625878649878,
+    "ddMax": 0.06466278289169147
+   },
+   "custo3x": {
+    "sharpeAnual": 0.8657139143974755,
+    "pf": 1.7842967295837622,
+    "retornoTotal": 0.2595885116068941,
+    "ddMax": 0.06877361194323528
+   },
+   "atraso1barra": {
+    "sharpeAnual": 0.7208801560613751,
+    "pf": 1.5212983535238214,
+    "retornoTotal": 0.21066391622407554,
+    "ddMax": 0.11921386246520094
+   },
+   "vizinhosPositivos": 1.0,
+   "semFunding": {
+    "sharpeAnual": 1.1792918957549923,
+    "pf": 2.1105791997725025,
+    "retornoTotal": 0.3750669876469581,
+    "ddMax": 0.05962881147057997
+   }
+  }
+ },
+ "portoesResultado": {
+  "lookahead": true,
+  "trades": true,
+  "pf": true,
+  "dd": true,
+  "janelasPositivas": false,
+  "eficiencia": true,
+  "cpcv": true,
+  "pbo": true,
+  "psr": true,
+  "dsr": false,
+  "spa": true,
+  "mcpt": false,
+  "bootstrap": true,
+  "custo2x": true,
+  "atraso": true,
+  "vizinhos": true
+ },
+ "veredito": "REPROVADA_JANELASPOSITIVAS",
+ "falhas": [
+  "janelasPositivas",
+  "dsr",
+  "mcpt"
+ ],
+ "nTentativasUsadoNoDSR": 159,
+ "segundos": 42.6
+}
