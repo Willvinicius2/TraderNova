@@ -1,0 +1,362 @@
+{
+ "id": "H02_tsmom_ensemble",
+ "nome": "Momentum de série temporal (7/14/28 dias) com alvo de volatilidade, comprado e vendido",
+ "fonte": "Liu e Tsyvinski, Risks and Returns of Cryptocurrency (NBER w24877); hipótese 2 do relatório GitHub do projeto",
+ "sha256": "f3748ef03e6b0a7659a538e07890622e68db05e13f7b4601906db7e4167e9ec9",
+ "freq": "1D",
+ "ativos": [
+  "BTCUSDT",
+  "ETHUSDT",
+  "SOLUSDT"
+ ],
+ "grade": {
+  "modo": [
+   "so_long",
+   "simetrico",
+   "mm200"
+  ],
+  "banda": [
+   0.0,
+   0.25
+  ]
+ },
+ "variantes": 6,
+ "portoes": "ferramentas-v1",
+ "custos": {
+  "taxa": 0.0005,
+  "slippage": 0.0002,
+  "funding": true
+ },
+ "desenvolvimento": [
+  "2020-01-01 00:00:00+00:00",
+  "2025-10-01 00:00:00+00:00"
+ ],
+ "etapas": {
+  "lookahead": {
+   "ok": true,
+   "porAtivo": {
+    "BTCUSDT": {
+     "ok": true,
+     "pontos": 25,
+     "divergencias": []
+    },
+    "ETHUSDT": {
+     "ok": true,
+     "pontos": 25,
+     "divergencias": []
+    },
+    "SOLUSDT": {
+     "ok": true,
+     "pontos": 25,
+     "divergencias": []
+    }
+   }
+  },
+  "grade": {
+   "sharpeAnualPorVariante": [
+    {
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     },
+     "sharpe": 1.745
+    },
+    {
+     "params": {
+      "modo": "so_long",
+      "banda": 0.25
+     },
+     "sharpe": 0.925
+    },
+    {
+     "params": {
+      "modo": "simetrico",
+      "banda": 0.0
+     },
+     "sharpe": 1.128
+    },
+    {
+     "params": {
+      "modo": "simetrico",
+      "banda": 0.25
+     },
+     "sharpe": 1.355
+    },
+    {
+     "params": {
+      "modo": "mm200",
+      "banda": 0.0
+     },
+     "sharpe": 1.127
+    },
+    {
+     "params": {
+      "modo": "mm200",
+      "banda": 0.25
+     },
+     "sharpe": 0.794
+    }
+   ],
+   "fracaoPositivas": 1.0
+  },
+  "walkForward": {
+   "retornoTotal": 0.35237954464556376,
+   "sharpeAnual": 1.0431306995531933,
+   "ddMax": 0.06952100035862785,
+   "trades": 246,
+   "pf": 1.9527976289719036,
+   "porLado": {
+    "comprado": {
+     "trades": 230,
+     "retorno": 0.3586867461385906,
+     "pf": 2.1952989684505892
+    },
+    "vendido": {
+     "trades": 16,
+     "retorno": -0.0372645333702204,
+     "pf": 0.0
+    }
+   },
+   "porAno": {
+    "2021": 0.0,
+    "2022": -0.0331,
+    "2023": 0.2562,
+    "2024": 0.0723,
+    "2025": 0.0383
+   },
+   "anosPositivos": "3/5",
+   "janelas": 16,
+   "janelasPositivas": 0.4375,
+   "eficiencia": 0.5881137890047968,
+   "inicioForaDaAmostra": "2021-12-31 00:00:00+00:00",
+   "escolhas": [
+    {
+     "teste": "2021-12-31",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2022-03-31",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2022-06-29",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2022-09-27",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2022-12-26",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2023-03-26",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2023-06-24",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2023-09-22",
+     "params": {
+      "modo": "simetrico",
+      "banda": 0.25
+     }
+    },
+    {
+     "teste": "2023-12-21",
+     "params": {
+      "modo": "simetrico",
+      "banda": 0.25
+     }
+    },
+    {
+     "teste": "2024-03-20",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2024-06-18",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2024-09-16",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2024-12-15",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2025-03-15",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2025-06-13",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    },
+    {
+     "teste": "2025-09-11",
+     "params": {
+      "modo": "so_long",
+      "banda": 0.0
+     }
+    }
+   ]
+  },
+  "cpcv": {
+   "sharpesPorCaminho": [
+    0.09133693635048691,
+    0.09133693635048691,
+    0.09133693635048691,
+    0.09133693635048691,
+    0.09133693635048691,
+    0.09133693635048691,
+    0.09133693635048691,
+    0.09133693635048691,
+    0.09133693635048691
+   ],
+   "mediano": 0.09133693635048691,
+   "fracaoPositivos": 1.0,
+   "caminhos": 9,
+   "divisoes": 45
+  },
+  "pbo": {
+   "pbo": 0.04009324009324009,
+   "combinacoes": 12870,
+   "variantes": 6,
+   "blocos": 16,
+   "logitMediano": 1.7917594692280545,
+   "sharpeDentroMedio": 0.0912216461826305,
+   "sharpeForaMedio": 0.0865606857571552
+  },
+  "psr": 0.9814497705557109,
+  "dsr": {
+   "dsr": 0.6056213510315571,
+   "srEsperadoPorSorte": 0.04758264998469341,
+   "sr": 0.054599956253440614,
+   "nTentativas": 161,
+   "varSharpes": 0.000311999351373813,
+   "varEstimadaDaNula": false
+  },
+  "minTRL": {
+   "barras": 853.2927652904007,
+   "temos": 1370
+  },
+  "spa": {
+   "pConsistente": 0.0014,
+   "pInferior": 0.0014,
+   "pSuperior": 0.0014,
+   "variantes": 6,
+   "reps": 5000,
+   "bloco": 13
+  },
+  "mcpt": {
+   "real": 0.09133693635048691,
+   "p": 0.024875621890547265,
+   "n": 200,
+   "mediaPermutada": 0.05447018243302824
+  },
+  "bootstrap": {
+   "trades": 246,
+   "reps": 10000,
+   "ddP50": 0.04674507207657075,
+   "ddP95": 0.09114841640937882,
+   "pfP5": 1.2003316685507854,
+   "pfP50": 1.9124574191302737,
+   "probPrejuizo": 0.0126
+  },
+  "estresse": {
+   "custo2x": {
+    "sharpeAnual": 0.9489457840260257,
+    "pf": 1.856642415157718,
+    "retornoTotal": 0.3146366235393976,
+    "ddMax": 0.07511448020999734
+   },
+   "custo3x": {
+    "sharpeAnual": 0.8547192457264697,
+    "pf": 1.7662668335677563,
+    "retornoTotal": 0.27794397072373367,
+    "ddMax": 0.08067502644374391
+   },
+   "atraso1barra": {
+    "sharpeAnual": 0.6291685913896216,
+    "pf": 1.4889550523535515,
+    "retornoTotal": 0.1967194290581331,
+    "ddMax": 0.11921386246520094
+   },
+   "vizinhosPositivos": 1.0,
+   "semFunding": {
+    "sharpeAnual": 1.1693631069430557,
+    "pf": 2.087549150092282,
+    "retornoTotal": 0.40534480128679906,
+    "ddMax": 0.0680072650733865
+   }
+  }
+ },
+ "portoesResultado": {
+  "lookahead": true,
+  "trades": true,
+  "pf": true,
+  "dd": true,
+  "janelasPositivas": false,
+  "eficiencia": true,
+  "cpcv": true,
+  "pbo": true,
+  "psr": true,
+  "dsr": false,
+  "spa": true,
+  "mcpt": true,
+  "bootstrap": true,
+  "custo2x": true,
+  "atraso": true,
+  "vizinhos": true
+ },
+ "veredito": "REPROVADA_JANELASPOSITIVAS",
+ "falhas": [
+  "janelasPositivas",
+  "dsr"
+ ],
+ "nTentativasUsadoNoDSR": 161,
+ "segundos": 52.7
+}

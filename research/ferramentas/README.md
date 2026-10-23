@@ -76,3 +76,9 @@ A reserva (de `reservaInicio` em diante) só abre com `--abrir-reserva`, uma vez
 | ID | Veredito | Fora da amostra (2022–set/2025, BTC+ETH+SOL) | Leitura |
 |---|---|---|---|
 | H01 Donchian ensemble com alvo de vol | REPROVADA (trades) | +25,4%, Sharpe 0,79, queda 7,4%, 76 trades, PF 5,4 | O walk-forward escolheu "só comprado" em 15 de 16 janelas; o lado vendido piorou o Sharpe em todas as variantes (0,76–0,88 contra 1,27–1,39). Funding custou ~0,16 de Sharpe. Passou PBO (0,05), SPA (p 0,011), CPCV e estresse; reprovou trades < 100, janelas positivas 50%, DSR 0,60 com N = 171 e MCPT p 0,23 (o ganho é quase todo a deriva de alta, que a permutação preserva) |
+| H02 Momentum 7/14/28 dias com alvo de vol | REPROVADA (janelas positivas, DSR) | +35,2%, Sharpe 1,04, queda 7,0%, 246 trades, PF 1,95 | Passou PBO (0,04), SPA (p 0,001), MCPT (p 0,025), CPCV, bootstrap e estresse (custo 3×: Sharpe 0,85). Reprovou 7 de 16 janelas positivas e DSR 0,61 com N = 161. O walk-forward escolheu "só comprado" em todas as janelas; o vendido perdeu (16 trades, −3,7%). Funding custou ~0,13 de Sharpe |
+| H06 Filtro de funding sobre o H02 | REPROVADA (janelas positivas, DSR, MCPT) | +33,4%, Sharpe 1,07, queda 6,1%, 239 trades | Zerar compras com funding de 7 dias acima do percentil 90 melhorou pouco a queda; vender nesses momentos piorou. Não acrescenta o suficiente ao H02 |
+
+Observação para a próxima versão dos portões (a decidir antes da próxima hipótese, não para reavaliar estas): em
+sistemas só comprados, janelas de 90 dias sem posição contam como "não positivas". Em H02, 4 das 9 janelas reprovadas
+ficaram zeradas. Vale considerar "≥ 60% das janelas com posição" em `ferramentas-v2`.
