@@ -1,0 +1,552 @@
+{
+ "strategy": "TV24_vix_fix",
+ "name": "CM Williams Vix Fix (ChrisMoody): compra em pico de medo",
+ "family": "reversao",
+ "sources": [
+  "https://www.tradingview.com/script/og7JPrRA-CM-Williams-Vix-Fix-Finds-Market-Bottoms/",
+  "https://www.luxalgo.com/library/indicator/og7JPrRA-cm-williams-vix-fix-finds-market-bottoms"
+ ],
+ "rule": "Pine de ChrisMoody: wvf = (máxima dos fechamentos em pd - mínima)/máxima dos fechamentos em pd * 100; banda = SMA(wvf,bbl) + mult*desvio(wvf,bbl); rangeHigh = máx(wvf, lb)*ph. Pico de medo (barra verde) quando wvf >= banda ou wvf >= rangeHigh. Gatilho 'spike': compra no fechamento da primeira barra verde; 'fade': compra quando a sequência verde termina (primeira barra não verde após verde). O script é só indicador, sem saída nem stop: saída por tempo (hold candles) e stop de proteção k*ATR14. Só compra (o indicador só mede medo de queda).",
+ "asset": "BTCUSD",
+ "protocol": "lab-v2",
+ "strategySha256": "574efb92e0152c9747e63b29394dda3bc70325205ebeb92cde62c46d91eb0085",
+ "refinement": null,
+ "combinationsTested": 36,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "pd": 22,
+    "mult": 2.0,
+    "ph": 0.85,
+    "trigger": "fade",
+    "hold": 20,
+    "k": 2.0
+   },
+   "dev": {
+    "trades": 54,
+    "netR": 35.6,
+    "pf": 2.828,
+    "winRate": 0.537,
+    "expR": 0.6592,
+    "maxDDR": 5.93,
+    "sharpeTrade": 0.3454,
+    "tStat": 2.54,
+    "tradesPerYear": 10.8,
+    "retPct": 17.8,
+    "maxDDPct": 2.97,
+    "avgBars": 16.0,
+    "semMaiorR": 28.19
+   },
+   "neighborMedianPF": 1.856,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "pd": 22,
+    "mult": 2.0,
+    "ph": 0.85,
+    "trigger": "spike",
+    "hold": 20,
+    "k": 3.0
+   },
+   "dev": {
+    "trades": 47,
+    "netR": 22.1,
+    "pf": 2.542,
+    "winRate": 0.596,
+    "expR": 0.4703,
+    "maxDDR": 4.6,
+    "sharpeTrade": 0.3233,
+    "tStat": 2.22,
+    "tradesPerYear": 9.4,
+    "retPct": 11.05,
+    "maxDDPct": 2.3,
+    "avgBars": 16.6,
+    "semMaiorR": 16.38
+   },
+   "neighborMedianPF": 2.067,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "pd": 22,
+    "mult": 2.0,
+    "ph": 0.85,
+    "trigger": "fade",
+    "hold": 20,
+    "k": 3.0
+   },
+   "dev": {
+    "trades": 51,
+    "netR": 20.45,
+    "pf": 2.277,
+    "winRate": 0.549,
+    "expR": 0.4009,
+    "maxDDR": 4.5,
+    "sharpeTrade": 0.2918,
+    "tStat": 2.08,
+    "tradesPerYear": 10.2,
+    "retPct": 10.22,
+    "maxDDPct": 2.25,
+    "avgBars": 17.3,
+    "semMaiorR": 15.5
+   },
+   "neighborMedianPF": 2.559,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "pd": 22,
+    "mult": 2.0,
+    "ph": 0.85,
+    "trigger": "fade",
+    "hold": 20,
+    "k": 3.0
+   },
+   "dev": {
+    "trades": 320,
+    "netR": 57.69,
+    "pf": 1.567,
+    "winRate": 0.547,
+    "expR": 0.1803,
+    "maxDDR": 14.14,
+    "sharpeTrade": 0.1532,
+    "tStat": 2.74,
+    "tradesPerYear": 64.0,
+    "retPct": 28.85,
+    "maxDDPct": 7.07,
+    "avgBars": 16.9,
+    "semMaiorR": 48.04
+   },
+   "neighborMedianPF": 1.378,
+   "robust": true,
+   "eligible": true
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "pd": 22,
+    "mult": 2.0,
+    "ph": 0.85,
+    "trigger": "spike",
+    "hold": 20,
+    "k": 4.0
+   },
+   "dev": {
+    "trades": 47,
+    "netR": 15.94,
+    "pf": 2.399,
+    "winRate": 0.596,
+    "expR": 0.3391,
+    "maxDDR": 4.2,
+    "sharpeTrade": 0.3042,
+    "tStat": 2.09,
+    "tradesPerYear": 9.4,
+    "retPct": 7.97,
+    "maxDDPct": 2.1,
+    "avgBars": 17.6,
+    "semMaiorR": 11.65
+   },
+   "neighborMedianPF": 2.542,
+   "robust": true,
+   "eligible": true
+  }
+ ],
+ "selected": {
+  "tf": "D1",
+  "params": {
+   "pd": 22,
+   "mult": 2.0,
+   "ph": 0.85,
+   "trigger": "fade",
+   "hold": 20,
+   "k": 2.0
+  },
+  "development": {
+   "trades": 54,
+   "netR": 35.6,
+   "pf": 2.828,
+   "winRate": 0.537,
+   "expR": 0.6592,
+   "maxDDR": 5.93,
+   "sharpeTrade": 0.3454,
+   "tStat": 2.54,
+   "tradesPerYear": 10.8,
+   "retPct": 17.8,
+   "maxDDPct": 2.97,
+   "avgBars": 16.0,
+   "semMaiorR": 28.19
+  },
+  "neighborMedianPF": 1.856,
+  "deflatedSharpe": 0.933,
+  "validation": {
+   "base": {
+    "trades": 21,
+    "netR": -2.47,
+    "pf": 0.75,
+    "winRate": 0.429,
+    "expR": -0.1176,
+    "maxDDR": 4.38,
+    "sharpeTrade": -0.1131,
+    "tStat": -0.52,
+    "tradesPerYear": 10.5,
+    "retPct": -1.23,
+    "maxDDPct": 2.19,
+    "avgBars": 15.6,
+    "semMaiorR": -4.86
+   },
+   "stress": {
+    "trades": 21,
+    "netR": -2.81,
+    "pf": 0.721,
+    "winRate": 0.429,
+    "expR": -0.134,
+    "maxDDR": 4.45,
+    "sharpeTrade": -0.1289,
+    "tStat": -0.59,
+    "tradesPerYear": 10.5,
+    "retPct": -1.41,
+    "maxDDPct": 2.22,
+    "avgBars": 15.6,
+    "semMaiorR": -5.19
+   },
+   "passed": false
+  }
+ },
+ "curves": {
+  "development": [
+   [
+    "2016-02-07",
+    -0.14
+   ],
+   [
+    "2016-03-28",
+    0.2
+   ],
+   [
+    "2016-05-19",
+    -0.85
+   ],
+   [
+    "2016-06-19",
+    6.56
+   ],
+   [
+    "2016-07-15",
+    6.55
+   ],
+   [
+    "2016-08-25",
+    6.52
+   ],
+   [
+    "2016-11-13",
+    9.25
+   ],
+   [
+    "2017-01-07",
+    8.21
+   ],
+   [
+    "2017-01-11",
+    7.19
+   ],
+   [
+    "2017-02-04",
+    8.75
+   ],
+   [
+    "2017-03-18",
+    7.73
+   ],
+   [
+    "2017-04-10",
+    8.78
+   ],
+   [
+    "2017-05-30",
+    12.76
+   ],
+   [
+    "2017-07-07",
+    13.0
+   ],
+   [
+    "2017-08-08",
+    15.92
+   ],
+   [
+    "2017-09-13",
+    15.99
+   ],
+   [
+    "2017-10-07",
+    16.89
+   ],
+   [
+    "2017-11-09",
+    19.84
+   ],
+   [
+    "2017-12-05",
+    24.7
+   ],
+   [
+    "2017-12-22",
+    23.7
+   ],
+   [
+    "2018-01-13",
+    23.48
+   ],
+   [
+    "2018-02-02",
+    22.48
+   ],
+   [
+    "2018-02-28",
+    23.47
+   ],
+   [
+    "2018-03-29",
+    22.47
+   ],
+   [
+    "2018-04-23",
+    23.72
+   ],
+   [
+    "2018-05-23",
+    22.7
+   ],
+   [
+    "2018-06-12",
+    21.68
+   ],
+   [
+    "2018-07-14",
+    21.72
+   ],
+   [
+    "2018-09-05",
+    23.05
+   ],
+   [
+    "2018-11-19",
+    22.02
+   ],
+   [
+    "2018-12-06",
+    21.01
+   ],
+   [
+    "2018-12-30",
+    21.3
+   ],
+   [
+    "2019-02-20",
+    22.75
+   ],
+   [
+    "2019-03-21",
+    23.56
+   ],
+   [
+    "2019-04-24",
+    25.1
+   ],
+   [
+    "2019-05-17",
+    31.29
+   ],
+   [
+    "2019-06-08",
+    31.99
+   ],
+   [
+    "2019-07-01",
+    30.97
+   ],
+   [
+    "2019-07-15",
+    29.96
+   ],
+   [
+    "2019-08-09",
+    30.63
+   ],
+   [
+    "2019-10-22",
+    30.49
+   ],
+   [
+    "2019-11-21",
+    29.46
+   ],
+   [
+    "2019-12-17",
+    29.12
+   ],
+   [
+    "2020-02-19",
+    28.1
+   ],
+   [
+    "2020-02-26",
+    27.07
+   ],
+   [
+    "2020-03-08",
+    26.05
+   ],
+   [
+    "2020-04-04",
+    27.12
+   ],
+   [
+    "2020-06-02",
+    28.32
+   ],
+   [
+    "2020-07-07",
+    28.09
+   ],
+   [
+    "2020-08-18",
+    29.99
+   ],
+   [
+    "2020-09-03",
+    28.96
+   ],
+   [
+    "2020-09-30",
+    29.55
+   ],
+   [
+    "2020-11-12",
+    32.93
+   ],
+   [
+    "2020-12-19",
+    35.6
+   ]
+  ],
+  "validation": [
+   [
+    "2021-01-04",
+    -1.02
+   ],
+   [
+    "2021-01-22",
+    -2.03
+   ],
+   [
+    "2021-02-13",
+    0.15
+   ],
+   [
+    "2021-03-17",
+    0.98
+   ],
+   [
+    "2021-04-25",
+    -0.03
+   ],
+   [
+    "2021-05-13",
+    -1.05
+   ],
+   [
+    "2021-05-18",
+    -2.06
+   ],
+   [
+    "2021-06-10",
+    -2.38
+   ],
+   [
+    "2021-09-21",
+    -3.4
+   ],
+   [
+    "2021-10-14",
+    -1.0
+   ],
+   [
+    "2021-11-19",
+    -1.83
+   ],
+   [
+    "2021-12-03",
+    -2.85
+   ],
+   [
+    "2021-12-26",
+    -2.73
+   ],
+   [
+    "2022-02-15",
+    -1.61
+   ],
+   [
+    "2022-03-18",
+    -1.25
+   ],
+   [
+    "2022-05-01",
+    -2.27
+   ],
+   [
+    "2022-06-03",
+    -2.03
+   ],
+   [
+    "2022-07-12",
+    -2.23
+   ],
+   [
+    "2022-09-29",
+    -2.2
+   ],
+   [
+    "2022-12-03",
+    -2.07
+   ],
+   [
+    "2023-01-01",
+    -2.47
+   ]
+  ]
+ },
+ "verdict": "REPROVADA_VALIDACAO"
+}

@@ -58,3 +58,4 @@ __pycache__/
 
 # worker de ingestão (dados locais)
 /worker-data/
+.claude/settings.local.json

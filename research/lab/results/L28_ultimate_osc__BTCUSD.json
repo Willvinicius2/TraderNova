@@ -1,0 +1,229 @@
+{
+ "strategy": "L28_ultimate_osc",
+ "name": "Ultimate Oscillator (Williams): divergência confirmada + rompimento, saídas 70/45 e 30/65",
+ "family": "reversao",
+ "sources": [
+  "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ultimate-oscillator",
+  "https://www.incrediblecharts.com/indicators/ultimate-oscillator.php",
+  "https://en.wikipedia.org/wiki/Ultimate_oscillator",
+  "Larry Williams, 'The Ultimate Oscillator', Technical Analysis of Stocks & Commodities, 1985"
+ ],
+ "rule": "UO = 100*(4*A7 + 2*A14 + A28)/7, A_n = soma_n(BP)/soma_n(TR), BP = F - min(m, F[1]), TR = max(M, F[1]) - min(m, F[1]) (períodos x 'scale'). Compra (Williams): divergência de alta entre dois fundos de preço consecutivos (pivô de mínima com r candles de cada lado, só conhecido r candles depois): mínima do 2º fundo < do 1º, mínimo do UO em volta do 2º fundo > em volta do 1º, UO abaixo de 30 no 1º fundo, fundos separados por no máximo 'gap' candles; a partir da confirmação, compra quando o UO passa acima da máxima do UO entre os dois fundos (cancela se o preço perder a mínima do 2º fundo ou após 'gap' candles). Venda espelhada (topos, UO acima de 70 no 1º topo, UO cai abaixo da mínima entre os topos). Saídas de Williams: compra fecha com UO > 70 ou, depois de passar de 50, UO < 45; venda fecha com UO < 30 ou UO > 65; sinal oposto inverte. O '50 depois da entrada' é contado desde o último sinal de compra. Stop de proteção k*ATR14 (o original não tem). Entrada na abertura seguinte.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v4",
+ "strategySha256": "f231530abb343b2f87800f184e47f9a6cff836cf0dc7d6c6b6b7f49395549cc1",
+ "refinement": null,
+ "combinationsTested": 144,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "scale": 1,
+    "r": 5,
+    "gap": 30,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 8,
+    "netR": 2.23,
+    "pf": 1.456,
+    "winRate": 0.25,
+    "expR": 0.2785,
+    "maxDDR": 3.87,
+    "sharpeTrade": 0.1237,
+    "tStat": 0.35,
+    "tradesPerYear": 1.6,
+    "retPct": 1.11,
+    "maxDDPct": 1.94,
+    "avgBars": 18.1,
+    "semMaiorR": -3.08,
+    "anosPositivos": 2,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.817,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "scale": 1,
+    "r": 5,
+    "gap": 60,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 8,
+    "netR": 2.23,
+    "pf": 1.456,
+    "winRate": 0.25,
+    "expR": 0.2785,
+    "maxDDR": 3.87,
+    "sharpeTrade": 0.1237,
+    "tStat": 0.35,
+    "tradesPerYear": 1.6,
+    "retPct": 1.11,
+    "maxDDPct": 1.94,
+    "avgBars": 18.1,
+    "semMaiorR": -3.08,
+    "anosPositivos": 2,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.817,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "scale": 1,
+    "r": 5,
+    "gap": 30,
+    "k": 3.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 8,
+    "netR": 0.48,
+    "pf": 1.114,
+    "winRate": 0.25,
+    "expR": 0.0606,
+    "maxDDR": 3.49,
+    "sharpeTrade": 0.0381,
+    "tStat": 0.11,
+    "tradesPerYear": 1.6,
+    "retPct": 0.24,
+    "maxDDPct": 1.74,
+    "avgBars": 19.6,
+    "semMaiorR": -3.05,
+    "anosPositivos": 2,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.075,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "scale": 1,
+    "r": 5,
+    "gap": 60,
+    "k": 3.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 8,
+    "netR": 0.48,
+    "pf": 1.114,
+    "winRate": 0.25,
+    "expR": 0.0606,
+    "maxDDR": 3.49,
+    "sharpeTrade": 0.0381,
+    "tStat": 0.11,
+    "tradesPerYear": 1.6,
+    "retPct": 0.24,
+    "maxDDPct": 1.74,
+    "avgBars": 19.6,
+    "semMaiorR": -3.05,
+    "anosPositivos": 2,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.075,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "scale": 1,
+    "r": 3,
+    "gap": 30,
+    "k": 3.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 8,
+    "netR": 0.27,
+    "pf": 1.075,
+    "winRate": 0.25,
+    "expR": 0.0332,
+    "maxDDR": 2.57,
+    "sharpeTrade": 0.0224,
+    "tStat": 0.06,
+    "tradesPerYear": 1.6,
+    "retPct": 0.13,
+    "maxDDPct": 1.29,
+    "avgBars": 13.8,
+    "semMaiorR": -3.27,
+    "anosPositivos": 1,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.712,
+   "robust": false,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null,
+ "curves": {
+  "development": [
+   [
+    "2016-11-20",
+    -0.75
+   ],
+   [
+    "2017-04-03",
+    -1.76
+   ],
+   [
+    "2017-07-18",
+    -2.78
+   ],
+   [
+    "2017-10-02",
+    -2.86
+   ],
+   [
+    "2017-11-16",
+    -3.87
+   ],
+   [
+    "2018-07-18",
+    -2.06
+   ],
+   [
+    "2019-06-14",
+    -3.08
+   ],
+   [
+    "2020-03-13",
+    2.23
+   ]
+  ]
+ }
+}

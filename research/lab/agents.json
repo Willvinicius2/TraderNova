@@ -1,0 +1,298 @@
+[
+ {
+  "agente": "r3-lazybear",
+  "rodada": 3,
+  "foco": "TradingView comunidade (LazyBear e cia.)",
+  "ids": [
+   "TV24",
+   "TV25",
+   "TV26",
+   "TV27"
+  ]
+ },
+ {
+  "agente": "r3-filtros",
+  "rodada": 3,
+  "foco": "TradingView comunidade (filtros de tendência)",
+  "ids": [
+   "TV28",
+   "TV29",
+   "TV30",
+   "TV31"
+  ]
+ },
+ {
+  "agente": "r3-estrutura",
+  "rodada": 3,
+  "foco": "TradingView comunidade (estrutura e ML)",
+  "ids": [
+   "TV32",
+   "TV33",
+   "TV34",
+   "TV35"
+  ]
+ },
+ {
+  "agente": "r4-trailing",
+  "rodada": 4,
+  "foco": "TradingView: trailing adaptativo",
+  "ids": [
+   "TV36",
+   "TV37",
+   "TV38",
+   "TV39"
+  ]
+ },
+ {
+  "agente": "r4-momento",
+  "rodada": 4,
+  "foco": "TradingView: momento suavizado",
+  "ids": [
+   "TV40",
+   "TV41",
+   "TV42",
+   "TV43"
+  ]
+ },
+ {
+  "agente": "r4-ehlers-tasc",
+  "rodada": 4,
+  "foco": "TradingView: Ehlers (TASC recentes)",
+  "ids": [
+   "TV44",
+   "TV45",
+   "TV46",
+   "TV47"
+  ]
+ },
+ {
+  "agente": "r4-ehlers-classicos",
+  "rodada": 4,
+  "foco": "TradingView: Ehlers clássicos",
+  "ids": [
+   "TV48",
+   "TV49",
+   "TV50",
+   "TV51"
+  ]
+ },
+ {
+  "agente": "r5-volume",
+  "rodada": 5,
+  "foco": "TradingView: fluxo de volume",
+  "ids": [
+   "TV52",
+   "TV53",
+   "TV54",
+   "TV55"
+  ]
+ },
+ {
+  "agente": "r5-elder-williams",
+  "rodada": 5,
+  "foco": "TradingView: Elder e Bill Williams",
+  "ids": [
+   "TV56",
+   "TV57",
+   "TV58",
+   "TV59"
+  ]
+ },
+ {
+  "agente": "r5-reversao-curta",
+  "rodada": 5,
+  "foco": "TradingView: reversão curta e volatilidade",
+  "ids": [
+   "TV60",
+   "TV61",
+   "TV62",
+   "TV63"
+  ]
+ },
+ {
+  "agente": "r5-padroes",
+  "rodada": 5,
+  "foco": "TradingView: padrões de barras",
+  "ids": [
+   "TV64",
+   "TV65",
+   "TV66",
+   "TV67"
+  ]
+ },
+ {
+  "agente": "r6-rompimento",
+  "rodada": 6,
+  "foco": "TradingView: rompimento estrutural",
+  "ids": [
+   "TV68",
+   "TV69",
+   "TV70",
+   "TV71"
+  ]
+ },
+ {
+  "agente": "r6-regime",
+  "rodada": 6,
+  "foco": "TradingView: regime estatístico",
+  "ids": [
+   "TV72",
+   "TV73",
+   "TV74",
+   "TV75"
+  ]
+ },
+ {
+  "agente": "r6-zonas",
+  "rodada": 6,
+  "foco": "TradingView: osciladores de zona",
+  "ids": [
+   "TV76",
+   "TV77",
+   "TV78",
+   "TV79"
+  ]
+ },
+ {
+  "agente": "r6-nnfx",
+  "rodada": 6,
+  "foco": "TradingView: sistemas NNFX",
+  "ids": [
+   "TV80",
+   "TV81",
+   "TV82",
+   "TV83"
+  ]
+ },
+ {
+  "agente": "r7-ml",
+  "rodada": 7,
+  "foco": "TradingView: aprendizado de máquina",
+  "ids": [
+   "TV84",
+   "TV85",
+   "TV86",
+   "TV87"
+  ]
+ },
+ {
+  "agente": "r7-candle-volume",
+  "rodada": 7,
+  "foco": "TradingView: candle, volume e Renko",
+  "ids": [
+   "TV88",
+   "TV89",
+   "TV90",
+   "TV91"
+  ]
+ },
+ {
+  "agente": "r7-ciclos",
+  "rodada": 7,
+  "foco": "TradingView: ciclos, telas e perfil",
+  "ids": [
+   "TV92",
+   "TV93",
+   "TV94",
+   "TV95"
+  ]
+ },
+ {
+  "agente": "r7-diversos",
+  "rodada": 7,
+  "foco": "TradingView: diversos",
+  "ids": [
+   "TV100",
+   "TV101",
+   "TV102",
+   "TV103"
+  ]
+ },
+ {
+  "agente": "r8-tendencia",
+  "rodada": 8,
+  "foco": "FILA.md: tendência adaptativa",
+  "ids": [
+   "L21",
+   "L22",
+   "L23",
+   "L24"
+  ]
+ },
+ {
+  "agente": "r8-momento",
+  "rodada": 8,
+  "foco": "FILA.md: momento clássico",
+  "ids": [
+   "L25",
+   "L26",
+   "L27",
+   "L28"
+  ]
+ },
+ {
+  "agente": "r8-osciladores",
+  "rodada": 8,
+  "foco": "FILA.md: osciladores e reversão",
+  "ids": [
+   "L29",
+   "L30",
+   "L31",
+   "L32"
+  ]
+ },
+ {
+  "agente": "r8-estrutura",
+  "rodada": 8,
+  "foco": "FILA.md: estrutura e regime",
+  "ids": [
+   "L33",
+   "L34",
+   "L35",
+   "L36"
+  ]
+ },
+ {
+  "agente": "r9-momento",
+  "rodada": 9,
+  "foco": "FILA.md: momento e força",
+  "ids": [
+   "L37",
+   "L38",
+   "L39",
+   "L40"
+  ]
+ },
+ {
+  "agente": "r9-regime",
+  "rodada": 9,
+  "foco": "FILA.md: regime e combinação",
+  "ids": [
+   "L41",
+   "L42",
+   "L43",
+   "L44"
+  ]
+ },
+ {
+  "agente": "r9-calendario",
+  "rodada": 9,
+  "foco": "FILA.md: calendário e reversão",
+  "ids": [
+   "L45",
+   "L46",
+   "L47",
+   "L48"
+  ]
+ },
+ {
+  "agente": "r9-estrutura",
+  "rodada": 9,
+  "foco": "FILA.md: estrutura e rompimento",
+  "ids": [
+   "L49",
+   "L50",
+   "L51"
+  ]
+ }
+]

@@ -1,0 +1,212 @@
+{
+ "strategy": "L19_mfi",
+ "name": "Money Flow Index: volta da sobrevenda/sobrecompra",
+ "family": "tempo_volume",
+ "sources": [
+  "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/money-flow-index-mfi",
+  "https://help.ctrader.com/indicators/built-in/volume/money-flow-index/"
+ ],
+ "rule": "MFI(n) de Quong & Soudack: preço típico (H+L+C)/3 vezes volume; razão entre fluxo positivo e negativo de n candles; MFI = 100 - 100/(1+razão). Níveis da fonte 20/80 (extremos 10/90). Compra quando o MFI volta a cruzar para cima do nível de sobrevenda (lo); venda quando volta a cruzar para baixo de 100-lo. Saída quando o MFI chega a 50 ('mid') ou ao nível oposto ('opposite'); stop k*ATR14. Volume é só do Bitstamp.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v1",
+ "strategySha256": "b15eb59a74fedd82dd1073a4911c7309ac58a2e3b665aaebef4ca3a63444cc51",
+ "refinement": null,
+ "combinationsTested": 144,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H4",
+   "params": {
+    "n": 20,
+    "lo": 10,
+    "exit": "opposite",
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 8,
+    "netR": 98.01,
+    "pf": 19.813,
+    "winRate": 0.375,
+    "expR": 12.2514,
+    "maxDDR": 4.14,
+    "sharpeTrade": 0.3862,
+    "tStat": 1.09,
+    "tradesPerYear": 1.6,
+    "retPct": 49.01,
+    "maxDDPct": 2.07,
+    "avgBars": 290.4
+   },
+   "neighborMedianPF": 1.848,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "n": 20,
+    "lo": 10,
+    "exit": "opposite",
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 8,
+    "netR": 63.68,
+    "pf": 13.393,
+    "winRate": 0.375,
+    "expR": 7.9595,
+    "maxDDR": 4.09,
+    "sharpeTrade": 0.3746,
+    "tStat": 1.06,
+    "tradesPerYear": 1.6,
+    "retPct": 31.84,
+    "maxDDPct": 2.05,
+    "avgBars": 293.5
+   },
+   "neighborMedianPF": 2.086,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "n": 20,
+    "lo": 10,
+    "exit": "opposite",
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 18,
+    "netR": 87.39,
+    "pf": 6.522,
+    "winRate": 0.167,
+    "expR": 4.8553,
+    "maxDDR": 9.4,
+    "sharpeTrade": 0.2262,
+    "tStat": 0.96,
+    "tradesPerYear": 3.6,
+    "retPct": 43.7,
+    "maxDDPct": 4.7,
+    "avgBars": 138.2
+   },
+   "neighborMedianPF": 0.736,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "n": 20,
+    "lo": 10,
+    "exit": "opposite",
+    "k": 3.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 17,
+    "netR": 54.3,
+    "pf": 4.742,
+    "winRate": 0.176,
+    "expR": 3.1942,
+    "maxDDR": 8.22,
+    "sharpeTrade": 0.2159,
+    "tStat": 0.89,
+    "tradesPerYear": 3.4,
+    "retPct": 27.15,
+    "maxDDPct": 4.11,
+    "avgBars": 150.4
+   },
+   "neighborMedianPF": 0.762,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "n": 20,
+    "lo": 10,
+    "exit": "opposite",
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 28,
+    "netR": 54.98,
+    "pf": 3.75,
+    "winRate": 0.321,
+    "expR": 1.9636,
+    "maxDDR": 10.44,
+    "sharpeTrade": 0.3682,
+    "tStat": 1.95,
+    "tradesPerYear": 5.6,
+    "retPct": 27.49,
+    "maxDDPct": 5.22,
+    "avgBars": 185.9
+   },
+   "neighborMedianPF": 1.452,
+   "robust": true,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null,
+ "curves": {
+  "development": [
+   [
+    "2016-04-22",
+    3.39
+   ],
+   [
+    "2016-08-02",
+    2.32
+   ],
+   [
+    "2016-12-23",
+    11.96
+   ],
+   [
+    "2017-12-08",
+    102.15
+   ],
+   [
+    "2018-11-15",
+    101.11
+   ],
+   [
+    "2018-11-20",
+    100.08
+   ],
+   [
+    "2019-09-26",
+    99.05
+   ],
+   [
+    "2020-03-12",
+    98.01
+   ]
+  ]
+ }
+}

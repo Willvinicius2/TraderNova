@@ -1,0 +1,522 @@
+{
+ "id": "traders-reality-main",
+ "tf": "D1",
+ "regra": "Green Vector Candle / Red Vector Candle",
+ "resumo": {
+  "BTCUSD": "nenhum parâmetro muda o sinal",
+  "ETHUSD": "nenhum parâmetro muda o sinal",
+  "SOLUSD": "nenhum parâmetro muda o sinal"
+ },
+ "linhas": [
+  {
+   "variante": "padrão",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 60.46,
+      "pf": 2.517,
+      "trades": 92,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 8.25,
+      "pf": 1.522,
+      "trades": 36,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 9.92,
+      "pf": 1.254,
+      "trades": 73,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 11.46,
+      "pf": 1.362,
+      "trades": 70,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.37,
+      "pf": 1.695,
+      "trades": 32,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 11.38,
+      "pf": 1.314,
+      "trades": 72,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 30.41,
+      "pf": 2.571,
+      "trades": 43,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 23.68,
+      "pf": 2.89,
+      "trades": 39,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 13.85,
+      "pf": 2.167,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "labelOffset=10",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "labelOffset=14",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "pivotOffset=5",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "pivotOffset=7",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "adrOffset=10",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "adrOffset=14",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "adrOffset50=10",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "adrOffset50=14",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "rdOffset=19",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "rdOffset=29",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "rdOffset50=19",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "rdOffset50=29",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "adrRange=11",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "adrRange=17",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "awrRange=3",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "awrRange=5",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "amrRange=5",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "amrRange=7",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "rdRange=12",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "rdRange=18",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "rwRange=10",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "rwRange=16",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "zonesMax=400",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "zonesMax=600",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "zoneTransparency=72",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  },
+  {
+   "variante": "zoneTransparency=108",
+   "ativos": {
+    "BTCUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "ETHUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    },
+    "SOLUSD": {
+     "passou": null,
+     "motivo": "sinal igual ao padrão"
+    }
+   }
+  }
+ ]
+}

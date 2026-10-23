@@ -1,0 +1,267 @@
+{
+ "strategy": "L32_zscore_revert",
+ "name": "Z-score contra a média: entra no extremo, sai na média",
+ "family": "reversao",
+ "sources": [
+  "https://it.tradingview.com/script/ymvBzYSw-Z-Score-Mean-Reversion-Strategy",
+  "https://doc.stocksharp.com/en/api-examples/0218_ZScore_Reversal",
+  "Definição clássica: z = (preço - média)/desvio-padrão (reversão à média; ver Ernest Chan, Algorithmic Trading, Wiley 2013, cap. 2)"
+ ],
+ "rule": "z = (fech - SMA(fech,n))/desvio-padrão(fech,n). Compra quando z cruza abaixo de -zin (entra no extremo, sem esperar voltar para dentro da banda, diferente do G3); vende (side=both) quando z cruza acima de +zin. Sai na média: a compra sai quando z >= 0 e a venda quando z <= 0. Stop de proteção k*ATR14 (a fonte usa stop percentual fixo; aqui ATR para servir a vários tempos gráficos).",
+ "asset": "BTCUSD",
+ "protocol": "lab-v4",
+ "strategySha256": "4bafc317a92a395d23ee424b88a15c97a83d3de72520733738bd358c8b4059ea",
+ "refinement": null,
+ "combinationsTested": 162,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "n": 20,
+    "zin": 2.5,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 19,
+    "netR": 6.17,
+    "pf": 1.862,
+    "winRate": 0.632,
+    "expR": 0.3246,
+    "maxDDR": 2.46,
+    "sharpeTrade": 0.2787,
+    "tStat": 1.21,
+    "tradesPerYear": 3.8,
+    "retPct": 3.08,
+    "maxDDPct": 1.23,
+    "avgBars": 8.1,
+    "semMaiorR": 3.44,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.179,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 50,
+    "zin": 2.0,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 10,
+    "netR": 5.05,
+    "pf": 2.237,
+    "winRate": 0.6,
+    "expR": 0.5051,
+    "maxDDR": 4.08,
+    "sharpeTrade": 0.3604,
+    "tStat": 1.14,
+    "tradesPerYear": 2.0,
+    "retPct": 2.53,
+    "maxDDPct": 2.04,
+    "avgBars": 21.0,
+    "semMaiorR": 2.33,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 2.138,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 50,
+    "zin": 2.0,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 10,
+    "netR": 4.59,
+    "pf": 3.257,
+    "winRate": 0.8,
+    "expR": 0.4588,
+    "maxDDR": 1.5,
+    "sharpeTrade": 0.5082,
+    "tStat": 1.61,
+    "tradesPerYear": 2.0,
+    "retPct": 2.29,
+    "maxDDPct": 0.75,
+    "avgBars": 23.7,
+    "semMaiorR": 2.77,
+    "anosPositivos": 5,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 2.141,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 100,
+    "zin": 2.0,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 5,
+    "netR": 4.48,
+    "pf": 3.185,
+    "winRate": 0.6,
+    "expR": 0.8954,
+    "maxDDR": 2.05,
+    "sharpeTrade": 0.4831,
+    "tStat": 1.08,
+    "tradesPerYear": 1.0,
+    "retPct": 2.24,
+    "maxDDPct": 1.02,
+    "avgBars": 32.0,
+    "semMaiorR": 1.34,
+    "anosPositivos": 2,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.024,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 50,
+    "zin": 1.5,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 20,
+    "netR": 4.3,
+    "pf": 1.528,
+    "winRate": 0.6,
+    "expR": 0.2152,
+    "maxDDR": 2.04,
+    "sharpeTrade": 0.201,
+    "tStat": 0.9,
+    "tradesPerYear": 4.0,
+    "retPct": 2.15,
+    "maxDDPct": 1.02,
+    "avgBars": 15.7,
+    "semMaiorR": 2.52,
+    "anosPositivos": 5,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.953,
+   "robust": false,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null,
+ "curves": {
+  "development": [
+   [
+    "2016-02-05",
+    0.73
+   ],
+   [
+    "2016-05-27",
+    1.6
+   ],
+   [
+    "2016-08-02",
+    0.57
+   ],
+   [
+    "2017-03-25",
+    -0.45
+   ],
+   [
+    "2017-07-21",
+    2.28
+   ],
+   [
+    "2017-09-28",
+    3.69
+   ],
+   [
+    "2018-02-15",
+    4.6
+   ],
+   [
+    "2018-06-22",
+    3.58
+   ],
+   [
+    "2018-10-27",
+    4.19
+   ],
+   [
+    "2018-11-15",
+    3.16
+   ],
+   [
+    "2018-11-20",
+    2.14
+   ],
+   [
+    "2019-02-09",
+    2.86
+   ],
+   [
+    "2019-08-02",
+    3.31
+   ],
+   [
+    "2019-09-24",
+    2.28
+   ],
+   [
+    "2019-10-26",
+    3.87
+   ],
+   [
+    "2019-12-19",
+    4.88
+   ],
+   [
+    "2020-03-09",
+    3.86
+   ],
+   [
+    "2020-03-25",
+    5.39
+   ],
+   [
+    "2020-09-17",
+    6.17
+   ]
+  ]
+ }
+}

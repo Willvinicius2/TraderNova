@@ -1,0 +1,393 @@
+{
+ "strategy": "TV102_damiani",
+ "name": "Damiani Volatmeter como filtro: Fisher cruza o Trigger só com volatilidade 'acordada'",
+ "family": "volatilidade",
+ "sources": [
+  "https://www.tradingview.com/script/z95IdM4a-Damiani-Volatmeter-loxx",
+  "https://docs.gehtsoftusa.com/fxcodebase-backup/backup/mt4-expert-advisors/d/damiani-volameter/",
+  "https://www.tradingview.com/support/solutions/43000589141-fisher-transform/"
+ ],
+ "rule": "Volatmeter ligado quando Line1 > Line2 (ATR curto/ATR longo, com supressor de atraso, acima de limiar - DP curto/DP longo). Gatilho: Fisher(n) cruza acima do Trigger (Fisher anterior) estando abaixo de -lvl = compra; cruza abaixo estando acima de +lvl = venda (side=both). Entra só se o Volatmeter está ligado no candle do sinal. Sai no cruzamento oposto do Fisher (sem filtro). Stop de proteção k*ATR14 (o original não tem stop).",
+ "asset": "BTCUSD",
+ "protocol": "lab-v4",
+ "strategySha256": "708576351c362c4089e425d77b93f9e8e0b8d553a6ce1df531e70655695b59a0",
+ "refinement": null,
+ "combinationsTested": 288,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "cfg": "13/40",
+    "thr": 1.2,
+    "n": 9,
+    "lvl": 0.5,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 48,
+    "netR": 9.27,
+    "pf": 1.737,
+    "winRate": 0.5,
+    "expR": 0.1931,
+    "maxDDR": 3.87,
+    "sharpeTrade": 0.1377,
+    "tStat": 0.95,
+    "tradesPerYear": 9.6,
+    "retPct": 4.63,
+    "maxDDPct": 1.94,
+    "avgBars": 6.7,
+    "semMaiorR": 1.21,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.401,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "cfg": "13/40",
+    "thr": 1.2,
+    "n": 13,
+    "lvl": 1.0,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 39,
+    "netR": 8.71,
+    "pf": 1.855,
+    "winRate": 0.385,
+    "expR": 0.2234,
+    "maxDDR": 3.14,
+    "sharpeTrade": 0.1443,
+    "tStat": 0.9,
+    "tradesPerYear": 7.8,
+    "retPct": 4.36,
+    "maxDDPct": 1.57,
+    "avgBars": 7.2,
+    "semMaiorR": 0.32,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.528,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "cfg": "13/40",
+    "thr": 1.2,
+    "n": 9,
+    "lvl": 1.0,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 37,
+    "netR": 7.94,
+    "pf": 1.684,
+    "winRate": 0.459,
+    "expR": 0.2145,
+    "maxDDR": 3.88,
+    "sharpeTrade": 0.1351,
+    "tStat": 0.82,
+    "tradesPerYear": 7.4,
+    "retPct": 3.97,
+    "maxDDPct": 1.94,
+    "avgBars": 7.0,
+    "semMaiorR": -0.12,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.428,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "cfg": "13/40",
+    "thr": 1.2,
+    "n": 13,
+    "lvl": 0.5,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 45,
+    "netR": 6.58,
+    "pf": 1.528,
+    "winRate": 0.356,
+    "expR": 0.1463,
+    "maxDDR": 3.14,
+    "sharpeTrade": 0.1002,
+    "tStat": 0.67,
+    "tradesPerYear": 9.0,
+    "retPct": 3.29,
+    "maxDDPct": 1.57,
+    "avgBars": 7.0,
+    "semMaiorR": -1.81,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.377,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "cfg": "13/40",
+    "thr": 1.2,
+    "n": 9,
+    "lvl": 0.5,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 48,
+    "netR": 6.1,
+    "pf": 1.72,
+    "winRate": 0.5,
+    "expR": 0.127,
+    "maxDDR": 2.88,
+    "sharpeTrade": 0.1354,
+    "tStat": 0.94,
+    "tradesPerYear": 9.6,
+    "retPct": 3.05,
+    "maxDDPct": 1.44,
+    "avgBars": 6.9,
+    "semMaiorR": 0.72,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.381,
+   "robust": true,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null,
+ "curves": {
+  "development": [
+   [
+    "2016-01-22",
+    -1.02
+   ],
+   [
+    "2016-03-16",
+    -0.92
+   ],
+   [
+    "2016-06-08",
+    7.14
+   ],
+   [
+    "2016-07-05",
+    7.49
+   ],
+   [
+    "2016-07-21",
+    7.52
+   ],
+   [
+    "2016-08-15",
+    7.35
+   ],
+   [
+    "2016-12-12",
+    8.11
+   ],
+   [
+    "2017-01-25",
+    8.63
+   ],
+   [
+    "2017-03-17",
+    7.62
+   ],
+   [
+    "2017-04-14",
+    8.93
+   ],
+   [
+    "2017-06-26",
+    8.89
+   ],
+   [
+    "2017-07-01",
+    8.69
+   ],
+   [
+    "2017-07-09",
+    8.71
+   ],
+   [
+    "2017-07-26",
+    9.63
+   ],
+   [
+    "2017-09-25",
+    9.62
+   ],
+   [
+    "2017-11-25",
+    10.46
+   ],
+   [
+    "2017-12-31",
+    9.65
+   ],
+   [
+    "2018-01-09",
+    9.72
+   ],
+   [
+    "2018-01-24",
+    9.59
+   ],
+   [
+    "2018-01-31",
+    9.22
+   ],
+   [
+    "2018-02-22",
+    10.18
+   ],
+   [
+    "2018-03-27",
+    9.92
+   ],
+   [
+    "2018-05-24",
+    9.12
+   ],
+   [
+    "2018-06-22",
+    8.1
+   ],
+   [
+    "2018-08-24",
+    8.35
+   ],
+   [
+    "2018-09-19",
+    8.06
+   ],
+   [
+    "2018-11-19",
+    7.03
+   ],
+   [
+    "2018-12-05",
+    6.59
+   ],
+   [
+    "2018-12-26",
+    7.69
+   ],
+   [
+    "2019-03-13",
+    7.73
+   ],
+   [
+    "2019-06-28",
+    11.13
+   ],
+   [
+    "2019-07-25",
+    10.77
+   ],
+   [
+    "2019-08-11",
+    11.55
+   ],
+   [
+    "2019-08-23",
+    10.93
+   ],
+   [
+    "2019-08-25",
+    10.73
+   ],
+   [
+    "2019-08-29",
+    10.2
+   ],
+   [
+    "2019-10-07",
+    9.7
+   ],
+   [
+    "2019-10-14",
+    9.79
+   ],
+   [
+    "2019-11-04",
+    10.39
+   ],
+   [
+    "2019-11-22",
+    9.69
+   ],
+   [
+    "2019-12-05",
+    9.71
+   ],
+   [
+    "2020-02-05",
+    10.09
+   ],
+   [
+    "2020-02-26",
+    9.25
+   ],
+   [
+    "2020-03-08",
+    8.23
+   ],
+   [
+    "2020-03-17",
+    8.02
+   ],
+   [
+    "2020-03-29",
+    8.64
+   ],
+   [
+    "2020-06-04",
+    8.7
+   ],
+   [
+    "2020-09-21",
+    9.27
+   ]
+  ]
+ }
+}

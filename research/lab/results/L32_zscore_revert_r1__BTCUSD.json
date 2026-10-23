@@ -1,0 +1,248 @@
+{
+ "strategy": "L32_zscore_revert_r1",
+ "name": "Z-score contra a média em regime lateral (ER de Kaufman)",
+ "family": "reversao",
+ "sources": [
+  "https://it.tradingview.com/script/ymvBzYSw-Z-Score-Mean-Reversion-Strategy",
+  "https://doc.stocksharp.com/en/api-examples/0218_ZScore_Reversal",
+  "Definição clássica: z = (preço - média)/desvio-padrão (reversão à média; ver Ernest Chan, Algorithmic Trading, Wiley 2013, cap. 2)"
+ ],
+ "rule": "z = (fech - SMA(fech,n))/desvio-padrão(fech,n). Compra quando z cruza abaixo de -zin (entra no extremo, sem esperar voltar para dentro da banda, diferente do G3); vende (side=both) quando z cruza acima de +zin. Sai na média: a compra sai quando z >= 0 e a venda quando z <= 0. Stop de proteção k*ATR14 (a fonte usa stop percentual fixo; aqui ATR para servir a vários tempos gráficos). Refinamento r1: só entra se ER(n) = |fech - fech[n]| / soma(|fech - fech[1]|, n) < er.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v4",
+ "strategySha256": "a99c81a6c6ed6e40917a6b8e81126ab515f6954c8d493ad5fd409cc4ca72d93c",
+ "refinement": "No desenvolvimento a entrada no extremo perdeu em H1/H4 (PF < 1): no BTC o z alto costuma ser começo de tendência. Filtro de regime lateral: só entra quando a eficiência de Kaufman (ER) dos últimos n candles está abaixo de er (mercado sem direção).",
+ "combinationsTested": 324,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "D1",
+   "params": {
+    "n": 20,
+    "zin": 2.5,
+    "er": 0.4,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 13,
+    "netR": 6.09,
+    "pf": 2.492,
+    "winRate": 0.692,
+    "expR": 0.4683,
+    "maxDDR": 2.04,
+    "sharpeTrade": 0.3965,
+    "tStat": 1.43,
+    "tradesPerYear": 2.6,
+    "retPct": 3.04,
+    "maxDDPct": 1.02,
+    "avgBars": 9.4,
+    "semMaiorR": 3.36,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.95,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 50,
+    "zin": 2.0,
+    "er": 0.4,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 10,
+    "netR": 5.05,
+    "pf": 2.237,
+    "winRate": 0.6,
+    "expR": 0.5051,
+    "maxDDR": 4.08,
+    "sharpeTrade": 0.3604,
+    "tStat": 1.14,
+    "tradesPerYear": 2.0,
+    "retPct": 2.53,
+    "maxDDPct": 2.04,
+    "avgBars": 21.0,
+    "semMaiorR": 2.33,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.672,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 20,
+    "zin": 2.5,
+    "er": 0.4,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 13,
+    "netR": 4.84,
+    "pf": 3.381,
+    "winRate": 0.846,
+    "expR": 0.3722,
+    "maxDDR": 1.02,
+    "sharpeTrade": 0.4831,
+    "tStat": 1.74,
+    "tradesPerYear": 2.6,
+    "retPct": 2.42,
+    "maxDDPct": 0.51,
+    "avgBars": 10.9,
+    "semMaiorR": 3.02,
+    "anosPositivos": 4,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.984,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 50,
+    "zin": 2.0,
+    "er": 0.4,
+    "k": 3.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 10,
+    "netR": 4.59,
+    "pf": 3.257,
+    "winRate": 0.8,
+    "expR": 0.4588,
+    "maxDDR": 1.5,
+    "sharpeTrade": 0.5082,
+    "tStat": 1.61,
+    "tradesPerYear": 2.0,
+    "retPct": 2.29,
+    "maxDDPct": 0.75,
+    "avgBars": 23.7,
+    "semMaiorR": 2.77,
+    "anosPositivos": 5,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 2.141,
+   "robust": true,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "n": 100,
+    "zin": 2.0,
+    "er": 0.2,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 5,
+    "netR": 4.48,
+    "pf": 3.185,
+    "winRate": 0.6,
+    "expR": 0.8954,
+    "maxDDR": 2.05,
+    "sharpeTrade": 0.4831,
+    "tStat": 1.08,
+    "tradesPerYear": 1.0,
+    "retPct": 2.24,
+    "maxDDPct": 1.02,
+    "avgBars": 32.0,
+    "semMaiorR": 1.34,
+    "anosPositivos": 2,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 1.835,
+   "robust": true,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null,
+ "curves": {
+  "development": [
+   [
+    "2016-02-05",
+    0.73
+   ],
+   [
+    "2016-05-27",
+    1.6
+   ],
+   [
+    "2016-08-02",
+    0.57
+   ],
+   [
+    "2017-03-25",
+    -0.45
+   ],
+   [
+    "2017-07-21",
+    2.28
+   ],
+   [
+    "2017-09-28",
+    3.69
+   ],
+   [
+    "2018-06-24",
+    2.67
+   ],
+   [
+    "2018-10-27",
+    3.28
+   ],
+   [
+    "2019-08-02",
+    3.73
+   ],
+   [
+    "2019-10-26",
+    5.32
+   ],
+   [
+    "2019-12-19",
+    6.33
+   ],
+   [
+    "2020-03-09",
+    5.31
+   ],
+   [
+    "2020-09-17",
+    6.09
+   ]
+  ]
+ }
+}

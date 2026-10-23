@@ -1,0 +1,1319 @@
+{
+ "id": "sma-dma-crossing-signal",
+ "tf": "D1",
+ "regra": "BUY indication / SELL indication",
+ "resumo": {
+  "BTCUSD": "17/18",
+  "ETHUSD": "16/18",
+  "SOLUSD": "14/18"
+ },
+ "linhas": [
+  {
+   "variante": "padrão",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.89,
+      "pf": 6.645,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.08,
+      "pf": 1.6,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.73,
+      "pf": 1.516,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.27,
+      "pf": 5.595,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "len30=24",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.89,
+      "pf": 6.645,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.08,
+      "pf": 1.6,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.73,
+      "pf": 1.516,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.27,
+      "pf": 5.595,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "len30=36",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.89,
+      "pf": 6.645,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.08,
+      "pf": 1.6,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.73,
+      "pf": 1.516,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.27,
+      "pf": 5.595,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "len50=40",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.89,
+      "pf": 6.645,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.08,
+      "pf": 1.6,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.73,
+      "pf": 1.516,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.27,
+      "pf": 5.595,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "len50=60",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.89,
+      "pf": 6.645,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.08,
+      "pf": 1.6,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.73,
+      "pf": 1.516,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.27,
+      "pf": 5.595,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "len100=80",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.89,
+      "pf": 6.645,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.08,
+      "pf": 1.6,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.73,
+      "pf": 1.516,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.27,
+      "pf": 5.595,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "len100=120",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.89,
+      "pf": 6.645,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.08,
+      "pf": 1.6,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.73,
+      "pf": 1.516,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.27,
+      "pf": 5.595,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "len200=160",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.89,
+      "pf": 6.645,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.08,
+      "pf": 1.6,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.73,
+      "pf": 1.516,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.27,
+      "pf": 5.595,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "len200=240",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.89,
+      "pf": 6.645,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.08,
+      "pf": 1.6,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.73,
+      "pf": 1.516,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.27,
+      "pf": 5.595,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "fastLen=22",
+   "ativos": {
+    "BTCUSD": {
+     "passou": false,
+     "development": {
+      "netR": 89.76,
+      "pf": 4.451,
+      "trades": 71,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 1.03,
+      "pf": 1.063,
+      "trades": 35,
+      "falhas": [
+       "PF<1.15",
+       "sem a maior<=0"
+      ]
+     },
+     "reserve": {
+      "netR": 21.76,
+      "pf": 1.603,
+      "trades": 70,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": false,
+     "development": {
+      "netR": 28.86,
+      "pf": 2.567,
+      "trades": 48,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 4.5,
+      "pf": 1.361,
+      "trades": 29,
+      "falhas": [
+       "sem a maior<=0"
+      ]
+     },
+     "reserve": {
+      "netR": 10.01,
+      "pf": 1.294,
+      "trades": 65,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 42.46,
+      "pf": 3.402,
+      "trades": 38,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 42.66,
+      "pf": 4.342,
+      "trades": 34,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 5.61,
+      "pf": 1.487,
+      "trades": 29,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "fastLen=34",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 112.9,
+      "pf": 7.215,
+      "trades": 50,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 6.08,
+      "pf": 1.511,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 37.31,
+      "pf": 2.774,
+      "trades": 48,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": false,
+     "development": {
+      "netR": 32.35,
+      "pf": 4.539,
+      "trades": 28,
+      "falhas": [
+       "poucas operações"
+      ]
+     },
+     "validation": {
+      "netR": 5.91,
+      "pf": 1.44,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 16.58,
+      "pf": 1.538,
+      "trades": 57,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": false,
+     "development": {
+      "netR": 43.69,
+      "pf": 5.044,
+      "trades": 26,
+      "falhas": [
+       "poucas operações"
+      ]
+     },
+     "validation": {
+      "netR": 47.52,
+      "pf": 7.509,
+      "trades": 24,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 6.82,
+      "pf": 1.7,
+      "trades": 21,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "slowLen=22",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 115.74,
+      "pf": 7.035,
+      "trades": 58,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.11,
+      "pf": 1.4,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 22.69,
+      "pf": 1.723,
+      "trades": 66,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 7.83,
+      "pf": 1.665,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 14.74,
+      "pf": 1.465,
+      "trades": 61,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 39.41,
+      "pf": 3.781,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 48.45,
+      "pf": 5.351,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "slowLen=34",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.83,
+      "pf": 6.644,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 17.83,
+      "pf": 1.526,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 32.06,
+      "pf": 3.193,
+      "trades": 42,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 8.52,
+      "pf": 1.769,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.26,
+      "pf": 1.493,
+      "trades": 61,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 26.64,
+      "pf": 2.784,
+      "trades": 34,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 48.45,
+      "pf": 5.351,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "shiftBars=11",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.89,
+      "pf": 6.645,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 22.99,
+      "pf": 1.726,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.4,
+      "pf": 3.18,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 8.85,
+      "pf": 1.824,
+      "trades": 27,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 17.81,
+      "pf": 1.617,
+      "trades": 61,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 39.56,
+      "pf": 3.821,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 48.11,
+      "pf": 5.193,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "shiftBars=17",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 109.04,
+      "pf": 6.811,
+      "trades": 54,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 18.76,
+      "pf": 1.555,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.2,
+      "pf": 1.885,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 16.53,
+      "pf": 1.548,
+      "trades": 61,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 48.45,
+      "pf": 5.351,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "atrLen=11",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 109.15,
+      "pf": 6.689,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.08,
+      "pf": 1.6,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.75,
+      "pf": 3.227,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 14.43,
+      "pf": 1.469,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": false,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.27,
+      "pf": 5.595,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 3.61,
+      "pf": 1.293,
+      "trades": 29,
+      "falhas": [
+       "sem a maior<=0"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "variante": "atrLen=17",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 108.89,
+      "pf": 6.645,
+      "trades": 56,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 5.35,
+      "pf": 1.426,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.08,
+      "pf": 1.6,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.47,
+      "pf": 3.185,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.73,
+      "pf": 1.516,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": true,
+     "development": {
+      "netR": 38.85,
+      "pf": 3.636,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.14,
+      "pf": 5.529,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.72,
+      "pf": 1.411,
+      "trades": 27,
+      "falhas": []
+     }
+    }
+   }
+  },
+  {
+   "variante": "atrBuffer=0.2",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 111.32,
+      "pf": 6.23,
+      "trades": 60,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 6.1,
+      "pf": 1.508,
+      "trades": 29,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 20.57,
+      "pf": 1.62,
+      "trades": 68,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 30.84,
+      "pf": 3.023,
+      "trades": 42,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 9.23,
+      "pf": 1.89,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 15.98,
+      "pf": 1.527,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": false,
+     "development": {
+      "netR": 38.12,
+      "pf": 3.465,
+      "trades": 34,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 50.62,
+      "pf": 5.804,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 2.64,
+      "pf": 1.198,
+      "trades": 31,
+      "falhas": [
+       "sem a maior<=0"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "variante": "atrBuffer=0.3",
+   "ativos": {
+    "BTCUSD": {
+     "passou": true,
+     "development": {
+      "netR": 107.13,
+      "pf": 6.526,
+      "trades": 54,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 7.63,
+      "pf": 1.663,
+      "trades": 27,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 19.85,
+      "pf": 1.59,
+      "trades": 66,
+      "falhas": []
+     }
+    },
+    "ETHUSD": {
+     "passou": true,
+     "development": {
+      "netR": 31.37,
+      "pf": 3.167,
+      "trades": 40,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 8.77,
+      "pf": 1.809,
+      "trades": 25,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 13.82,
+      "pf": 1.444,
+      "trades": 59,
+      "falhas": []
+     }
+    },
+    "SOLUSD": {
+     "passou": false,
+     "development": {
+      "netR": 38.31,
+      "pf": 3.523,
+      "trades": 32,
+      "falhas": []
+     },
+     "validation": {
+      "netR": 49.07,
+      "pf": 5.493,
+      "trades": 30,
+      "falhas": []
+     },
+     "reserve": {
+      "netR": 4.55,
+      "pf": 1.392,
+      "trades": 27,
+      "falhas": [
+       "sem a maior<=0"
+      ]
+     }
+    }
+   }
+  }
+ ]
+}

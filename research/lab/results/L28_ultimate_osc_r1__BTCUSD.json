@@ -1,0 +1,279 @@
+{
+ "strategy": "L28_ultimate_osc_r1",
+ "name": "Ultimate Oscillator: fundo/topo mais alto + cruzamento de 50 (Twiggs), saídas de Williams",
+ "family": "reversao",
+ "sources": [
+  "https://www.incrediblecharts.com/indicators/ultimate-oscillator.php",
+  "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ultimate-oscillator"
+ ],
+ "rule": "UO de Williams (7/14/28 x 'scale'). Compra (Twiggs): depois de o UO cair abaixo de 30 (guarda o menor valor desse mergulho), um novo fundo do UO (pivô com r candles de cada lado, conhecido r candles depois) mais alto que esse menor valor arma o sinal; compra quando o UO cruza acima de 50 depois desse fundo; se o 2º fundo já estiver acima de 50, compra quando o UO sobe 10 pontos a partir dele. Se o UO voltar abaixo do 1º fundo, o mergulho recomeça. Venda espelhada (acima de 70, topo mais baixo, cruza abaixo de 50). Saídas de Williams: compra fecha com UO > 70 ou, depois de passar de 50, UO < 45; venda fecha com UO < 30 ou UO > 65; sinal oposto inverte. Filtro de regime opcional: compra só com fechamento > EMA(trend), venda só abaixo. Stop k*ATR14. Entrada na abertura seguinte.",
+ "asset": "BTCUSD",
+ "protocol": "lab-v4",
+ "strategySha256": "777963cf7c7cb405c8bc1a864ebc953a7ef823d5ad25c4a469a97dc0dca7e79b",
+ "refinement": null,
+ "combinationsTested": 96,
+ "costs": {
+  "base": 0.001,
+  "stress": 0.002
+ },
+ "periods": {
+  "warmup": [
+   "2014-01-01",
+   "2016-01-01"
+  ],
+  "development": [
+   "2016-01-01",
+   "2021-01-01"
+  ],
+  "validation": [
+   "2021-01-01",
+   "2023-01-01"
+  ],
+  "reserve": [
+   "2023-01-01",
+   "2026-10-21"
+  ]
+ },
+ "topDevelopment": [
+  {
+   "tf": "H1",
+   "params": {
+    "scale": 2,
+    "r": 2,
+    "trend": 200,
+    "k": 3.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 21,
+    "netR": 12.57,
+    "pf": 2.443,
+    "winRate": 0.238,
+    "expR": 0.5987,
+    "maxDDR": 3.44,
+    "sharpeTrade": 0.1597,
+    "tStat": 0.73,
+    "tradesPerYear": 4.2,
+    "retPct": 6.29,
+    "maxDDPct": 1.72,
+    "avgBars": 75.2,
+    "semMaiorR": -4.0,
+    "anosPositivos": 2,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.862,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H1",
+   "params": {
+    "scale": 2,
+    "r": 2,
+    "trend": 200,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 21,
+    "netR": 14.58,
+    "pf": 1.936,
+    "winRate": 0.143,
+    "expR": 0.6943,
+    "maxDDR": 6.62,
+    "sharpeTrade": 0.1229,
+    "tStat": 0.56,
+    "tradesPerYear": 4.2,
+    "retPct": 7.29,
+    "maxDDPct": 3.31,
+    "avgBars": 49.0,
+    "semMaiorR": -10.28,
+    "anosPositivos": 1,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.806,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "H4",
+   "params": {
+    "scale": 1,
+    "r": 2,
+    "trend": 0,
+    "k": 2.0,
+    "side": "long"
+   },
+   "dev": {
+    "trades": 13,
+    "netR": 5.84,
+    "pf": 2.564,
+    "winRate": 0.385,
+    "expR": 0.4489,
+    "maxDDR": 3.2,
+    "sharpeTrade": 0.1954,
+    "tStat": 0.7,
+    "tradesPerYear": 2.6,
+    "retPct": 2.92,
+    "maxDDPct": 1.6,
+    "avgBars": 14.4,
+    "semMaiorR": -2.07,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.26,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "scale": 1,
+    "r": 3,
+    "trend": 0,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 15,
+    "netR": 4.1,
+    "pf": 1.529,
+    "winRate": 0.4,
+    "expR": 0.2733,
+    "maxDDR": 3.96,
+    "sharpeTrade": 0.1482,
+    "tStat": 0.57,
+    "tradesPerYear": 3.0,
+    "retPct": 2.05,
+    "maxDDPct": 1.98,
+    "avgBars": 24.8,
+    "semMaiorR": -1.21,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.037,
+   "robust": false,
+   "eligible": false
+  },
+  {
+   "tf": "D1",
+   "params": {
+    "scale": 1,
+    "r": 2,
+    "trend": 0,
+    "k": 2.0,
+    "side": "both"
+   },
+   "dev": {
+    "trades": 15,
+    "netR": 3.9,
+    "pf": 1.504,
+    "winRate": 0.4,
+    "expR": 0.26,
+    "maxDDR": 3.96,
+    "sharpeTrade": 0.1423,
+    "tStat": 0.55,
+    "tradesPerYear": 3.0,
+    "retPct": 1.95,
+    "maxDDPct": 1.98,
+    "avgBars": 22.7,
+    "semMaiorR": -1.41,
+    "anosPositivos": 3,
+    "anosTotal": 5
+   },
+   "neighborMedianPF": 0.037,
+   "robust": false,
+   "eligible": false
+  }
+ ],
+ "verdict": "REPROVADA_DESENVOLVIMENTO",
+ "selected": null,
+ "curves": {
+  "development": [
+   [
+    "2016-01-14",
+    -0.65
+   ],
+   [
+    "2016-02-03",
+    -0.58
+   ],
+   [
+    "2016-02-10",
+    -1.39
+   ],
+   [
+    "2016-03-06",
+    0.72
+   ],
+   [
+    "2016-03-14",
+    -0.05
+   ],
+   [
+    "2016-03-16",
+    -0.83
+   ],
+   [
+    "2016-03-20",
+    -1.56
+   ],
+   [
+    "2016-05-18",
+    -1.93
+   ],
+   [
+    "2016-05-21",
+    -2.3
+   ],
+   [
+    "2016-05-23",
+    -2.72
+   ],
+   [
+    "2016-06-30",
+    -2.72
+   ],
+   [
+    "2016-08-02",
+    13.85
+   ],
+   [
+    "2016-09-01",
+    13.61
+   ],
+   [
+    "2016-11-25",
+    13.46
+   ],
+   [
+    "2016-11-27",
+    13.02
+   ],
+   [
+    "2017-01-17",
+    14.44
+   ],
+   [
+    "2017-03-27",
+    15.55
+   ],
+   [
+    "2017-06-22",
+    14.51
+   ],
+   [
+    "2019-02-28",
+    14.3
+   ],
+   [
+    "2019-06-28",
+    13.28
+   ],
+   [
+    "2020-09-13",
+    12.57
+   ]
+  ]
+ }
+}

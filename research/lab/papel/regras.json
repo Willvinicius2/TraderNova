@@ -1,0 +1,104 @@
+[
+ {
+  "id": "philakone-ema-swing",
+  "tf": "H4",
+  "regra": "Buy Condition / Sell Condition",
+  "revisao": "Duvidosa"
+ },
+ {
+  "id": "adaptive-friction-filter",
+  "tf": "D1",
+  "regra": "Bullish Trend Signal / Bearish Trend Signal",
+  "revisao": "Duvidosa"
+ },
+ {
+  "id": "adx-and-di",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "revisao": "Duvidosa"
+ },
+ {
+  "id": "adx-with-shaded-zone",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "revisao": "Duvidosa"
+ },
+ {
+  "id": "bacap-price-structure-21-ema-trend",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "revisao": "Duvidosa"
+ },
+ {
+  "id": "directional-indicator-crossovers-v1",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "revisao": "Aprovada"
+ },
+ {
+  "id": "dmi-delta-by-0xjcf",
+  "tf": "D1",
+  "regra": "linha 1 x zero",
+  "revisao": "Duplicata"
+ },
+ {
+  "id": "dynamic-flow-ribbons",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "revisao": "Reprovada"
+ },
+ {
+  "id": "elder-force",
+  "tf": "D1",
+  "regra": "linha 1 x zero",
+  "revisao": "Duvidosa"
+ },
+ {
+  "id": "emergent-rays-novathemachine",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "revisao": "Duplicata"
+ },
+ {
+  "id": "kalman-hull-kijun",
+  "tf": "D1",
+  "regra": "Kalman Hull Kijun Long / Kalman Hull Kijun Short",
+  "revisao": "Aprovada"
+ },
+ {
+  "id": "macd-with-crossings-and-above-below-zero",
+  "tf": "D1",
+  "regra": "marcadores de compra / venda",
+  "revisao": "Duplicata"
+ },
+ {
+  "id": "macdas",
+  "tf": "D1",
+  "regra": "linha 1 x linha 2",
+  "revisao": "Aprovada"
+ },
+ {
+  "id": "sma-dma-crossing-signal",
+  "tf": "D1",
+  "regra": "BUY indication / SELL indication",
+  "revisao": "Aprovada"
+ },
+ {
+  "id": "traders-reality-main",
+  "tf": "D1",
+  "regra": "Green Vector Candle / Red Vector Candle",
+  "revisao": "Aprovada"
+ },
+ {
+  "id": "trend-with-adx-ema-buy-sell-signals",
+  "tf": "D1",
+  "regra": "Trend Green Alert / Trend Red Alert",
+  "revisao": "Aprovada"
+ },
+ {
+  "id": "zero-lag-garch-bands-nal",
+  "tf": "D1",
+  "regra": "fechamento x linha 1",
+  "revisao": "Duvidosa"
+ }
+]
